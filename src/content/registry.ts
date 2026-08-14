@@ -30,6 +30,11 @@ const ENTRIES: Entry[] = [
     model: require('../../assets/models/washing_machine.glb'),
   },
   {
+    doc: require('../../content/rice-cooker.json') as ObjectDoc,
+    model: require('../../assets/models/rice_cooker.glb'),
+    translations: { id: require('../../content/id/rice-cooker.json') },
+  },
+  {
     doc: require('../../content/microwave.json') as ObjectDoc,
     model: require('../../assets/models/microwave.glb'),
   },

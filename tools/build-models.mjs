@@ -36,6 +36,7 @@ import pistonEngine from './models/piston-engine.mjs';
 import refrigerator from './models/refrigerator.mjs';
 import washingMachine from './models/washing_machine.mjs';
 import microwave from './models/microwave.mjs';
+import riceCooker from './models/rice_cooker.mjs';
 import airConditioner from './models/air_conditioner.mjs';
 import heart from './models/heart.mjs';
 import rocketEngine from './models/rocket_engine.mjs';
@@ -63,6 +64,7 @@ const RECIPES = {
   refrigerator,
   washing_machine: washingMachine,
   microwave,
+  rice_cooker: riceCooker,
   air_conditioner: airConditioner,
   heart,
   rocket_engine: rocketEngine,
