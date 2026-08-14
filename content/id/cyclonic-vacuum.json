@@ -1,0 +1,162 @@
+{
+  "title": "Penyedot Debu Siklon",
+  "subtitle": "Jalur udara akibat perbedaan tekanan yang memisahkan debu sebelum mencapai motor",
+  "summary": "Penyedot debu tabung beroda ini mengarahkan udara kotor ke pemisah siklon di dalam tabung bening, menjatuhkan partikel berat, menyaring debu halus, lalu membuang udara bersih melewati motor dan kisi belakang.",
+  "scale": "Tabung ringkas, panjang sekitar 45 cm",
+  "parts": {
+    "outer_body": {
+      "name": "Bodi Tabung",
+      "short": "Cangkang rendah dan rapat yang menopang saluran udara serta mekanisme",
+      "detail": "Plastik tahan benturan membentuk sasis lebar dan rendah di sekeliling motor, filter, penggulung kabel, dan saluran internal. Bagian cetakan yang saling bertumpang tindih menutup sisi bertekanan, sedangkan dudukan depan menyangga tabung debu tanpa menutup pandangan."
+    },
+    "carry_handle": {
+      "name": "Pegangan Angkat",
+      "short": "Jembatan kaku yang tertambat pada dua bahu bodi",
+      "detail": "Dua kaki lebar meneruskan berat alat ke bodi tabung. Genggaman mendatar menyatu dengan siluet rendah sehingga tidak tampak seperti lingkaran yang melayang."
+    },
+    "hose_inlet": {
+      "name": "Saluran Masuk Selang Tangensial",
+      "short": "Soket selang yang mengarahkan udara kotor mengitari dinding siklon",
+      "detail": "Soket melengkung masuk dari posisi tinggi dan tidak tepat di tengah, melainkan menyinggung lingkar pemisah. Arah ini memberi gerak berputar pada udara tanpa menembakkan debu langsung ke tengah tabung."
+    },
+    "dust_bin": {
+      "name": "Tabung Debu Bening",
+      "short": "Wadah transparan yang dapat dilepas untuk menampung kotoran",
+      "detail": "Polikarbonat bening yang kuat memperlihatkan tingkat isi sekaligus pemisah di dalamnya. Tabung mengelilingi siklon, tetapi dapat dilepas untuk dikosongkan tanpa membuka ruang motor."
+    },
+    "cyclone_cone": {
+      "name": "Kerucut Siklon",
+      "short": "Bagian meruncing yang memperketat pusaran turun",
+      "detail": "Udara berputar turun mengikuti kerucut yang makin sempit. Debu memiliki kelembaman lebih besar daripada udara yang berbelok, sehingga partikel bergerak ke dinding, kehilangan kecepatan, lalu jatuh ke tabung."
+    },
+    "cyclone_shroud": {
+      "name": "Selubung Siklon Berlubang",
+      "short": "Saringan terbuka untuk keluaran udara bersih di dalam pemisah",
+      "detail": "Celah yang benar-benar terbuka menerima inti pusaran yang lebih bersih sambil menahan kotoran besar. Leher di bagian atas berbelok ke belakang menuju filter pertama."
+    },
+    "bin_seal": {
+      "name": "Paking Tabung",
+      "short": "Cincin lentur yang merapatkan sambungan pemisah",
+      "detail": "Cincin karet terjepit di antara bibir tabung dan flensa siklon. Kebocoran di sini membuat udara melewati jalur tangensial, menurunkan pemisahan, dan membawa debu ke dalam bodi."
+    },
+    "pre_motor_filter": {
+      "name": "Filter Pra-motor",
+      "short": "Penghalang berlipat tepat sebelum kipas",
+      "detail": "Partikel halus yang lolos dari pemisahan siklon melewati seluruh bidang filter berlipat ini. Bingkainya menutup penampang saluran agar udara tidak dapat memintas media lalu langsung menuju impeler."
+    },
+    "motor_stator": {
+      "name": "Stator Motor",
+      "short": "Kutub baja dan kumparan tembaga yang diam mengelilingi rotor",
+      "detail": "Arus terkendali pada kumparan tembaga menghasilkan medan magnet berputar. Celah udara yang sempit membuat medan bekerja efisien pada rotor sesumbu, sementara aliran udara ikut membuang panas."
+    },
+    "motor_rotor": {
+      "name": "Rotor Motor",
+      "short": "Rotor magnet berkecepatan tinggi beserta poros bersama",
+      "detail": "Magnet permanen mengikuti medan stator dan memutar poros baja. Rotor dan impeler berada pada satu sumbu serta terkunci fasenya, sehingga torsi motor sampai ke kipas tanpa sabuk atau roda gigi."
+    },
+    "impeller": {
+      "name": "Impeler Sentrifugal",
+      "short": "Kipas pada poros yang mempercepat udara ke arah luar",
+      "detail": "Sudu melengkung mempercepat udara dari pusat kipas ke tepinya. Saluran sesudah kipas mengubah sebagian kecepatan menjadi kenaikan tekanan, sehingga kipas yang berputar mempertahankan tekanan statis lebih rendah pada saluran masuk."
+    },
+    "motor_mount": {
+      "name": "Dudukan Motor",
+      "short": "Dua penyangga cincin yang mengikat motor ke sasis",
+      "detail": "Cincin memusatkan stator terhadap poros dan empat kakinya meneruskan reaksi torsi ke bodi. Lapisan lentur meredam getaran tanpa membiarkan motor melayang di dalam cangkang."
+    },
+    "exhaust_filter": {
+      "name": "Filter Pembuangan",
+      "short": "Filter akhir di antara keluaran motor dan udara ruangan",
+      "detail": "Seluruh udara keluaran motor melewati media berlipat kedua sebelum mencapai kisi. Filter ini menangkap partikel halus serta serpihan dari sikat atau bantalan agar tidak kembali ke ruangan."
+    },
+    "exhaust_vent": {
+      "name": "Kisi Pembuangan Belakang",
+      "short": "Keluaran terlindung yang menyebarkan udara tersaring ke belakang",
+      "detail": "Ruang keluaran tertutup menghubungkan filter pembuangan langsung ke bilah kisi mendatar. Luas bukaan gabungannya membatasi tekanan balik dan menjauhkan udara bersih dari tabung debu serta lantai."
+    },
+    "cord_reel": {
+      "name": "Penggulung Kabel",
+      "short": "Drum berpegas yang menyimpan kabel listrik",
+      "detail": "Kabel melilit drum rendah di bawah motor. Pegas spiral menarik kabel kembali ketika kunci dilepas, sementara flensa lebar menjaga gulungan agar tidak masuk ke jalur udara atau roda."
+    },
+    "power_control": {
+      "name": "Tombol Daya dan Penggulung",
+      "short": "Tombol besar yang dapat diinjak pada dek belakang",
+      "detail": "Satu tombol menghidupkan motor dan satu lagi melepas kunci penggulung kabel. Permukaannya lebar dan beralur agar dapat ditekan tanpa mengangkat bodi dari lantai."
+    },
+    "main_wheels": {
+      "name": "Roda Utama",
+      "short": "Dua roda besar berlapis karet pada satu poros melintang",
+      "detail": "Roda utama menanggung sebagian besar massa alat dan menyentuh bidang lantai paling bawah. Hub baja masuk ke poros pada bodi, sehingga keduanya tampak sebagai komponen yang benar-benar ditopang."
+    },
+    "caster_wheel": {
+      "name": "Roda Kastor Depan",
+      "short": "Roda kecil berpenyangga yang menstabilkan bagian depan",
+      "detail": "Kastor menyentuh bidang lantai yang sama dengan roda utama dan berada jauh di depan porosnya. Garpu serta batang putar tersambung ke dudukan tabung agar bagian depan dapat berbelok tanpa menggesek lantai."
+    }
+  },
+  "steps": [
+    {
+      "title": "Membentuk aliran karena perbedaan tekanan",
+      "body": "Kipas mempercepat aliran udara dan mempertahankan tekanan statis lebih rendah di saluran masuk daripada di ruangan. Perbedaan tekanan mendorong udara beserta debu masuk ke selang; istilah daya isap menggambarkan efek ini, bukan zat yang diciptakan mesin."
+    },
+    {
+      "title": "Memasukkan udara secara tangensial",
+      "body": "Udara kotor masuk dari posisi tinggi dan tidak tepat di tengah. Saluran tangensial membelokkan aliran mengitari dinding siklon, bukan langsung menuju keluaran udara bersih."
+    },
+    {
+      "title": "Memisahkan debu di dalam pusaran",
+      "body": "Kerucut yang menyempit mempertahankan pusaran cepat. Partikel berat sulit mengikuti belokan rapat, bergerak ke dinding, lalu jatuh ke tabung sementara udara yang lebih bersih berada dekat pusat."
+    },
+    {
+      "title": "Melindungi kipas dari debu halus",
+      "body": "Udara berbelok melewati selubung berlubang dan leher udara bersih, kemudian menembus filter pra-motor. Seluruh bidang berlipat menangkap partikel halus yang lolos dari pemisahan kelembaman."
+    },
+    {
+      "title": "Mengubah daya listrik menjadi aliran udara",
+      "body": "Medan magnet berputar dari stator menggerakkan rotor sesumbu. Poros bersama memutar impeler dengan kecepatan dan arah yang sama sehingga energi terus ditambahkan ke aliran udara."
+    },
+    {
+      "title": "Menyaring dan membuang udara",
+      "body": "Udara keluaran motor melewati filter pembuangan sebelum masuk ke ruang belakang. Kisi lebar melepaskan udara bersih dengan tekanan balik rendah dan mengarahkannya menjauhi debu yang terkumpul."
+    },
+    {
+      "title": "Menggerakkan, mengosongkan, dan menyimpan",
+      "body": "Roda utama besar dan kastor depan membuat bodi rendah mudah bergerak. Tabung bening dapat diangkat dari paking untuk dikosongkan, sedangkan penggulung berpegas menyimpan kabel di sasis belakang."
+    }
+  ],
+  "quiz": [
+    {
+      "prompt": "Ketuk bagian yang memasukkan udara kotor secara tangensial."
+    },
+    {
+      "prompt": "Apa yang mendorong udara ruangan masuk ke selang saat kipas berputar?",
+      "choices": ["Perbedaan tekanan", "Aliran zat isap", "Pegas penggulung kabel", "Muatan statis di tabung"],
+      "explain": "Kipas mempertahankan tekanan statis lebih rendah di saluran masuk, sehingga tekanan ruangan yang lebih tinggi mendorong udara ke arahnya."
+    },
+    {
+      "prompt": "Ketuk bagian meruncing yang memperketat pusaran turun."
+    },
+    {
+      "prompt": "Mengapa banyak partikel debu bergerak ke dinding siklon?",
+      "choices": ["Kelembamannya menahan perubahan arah aliran yang cepat", "Plastik bening menarik semua partikel", "Motor membalik massa partikel", "Filter pembuangan meniupnya ke samping"],
+      "explain": "Partikel dengan kelembaman lebih besar tidak mudah mengikuti garis aliran yang melengkung rapat, sehingga bergerak keluar dan kehilangan energi di dinding."
+    },
+    {
+      "prompt": "Ketuk penghalang berlipat yang melindungi impeler dan motor."
+    },
+    {
+      "prompt": "Mengapa rotor dan impeler harus berbagi poros sesumbu?",
+      "choices": ["Untuk meneruskan torsi motor langsung ke kipas", "Untuk menggulung kabel", "Untuk membelokkan kastor", "Untuk membuat tabung transparan"],
+      "explain": "Poros bersama membuat keduanya berputar pada satu sumbu dengan kecepatan serta arah yang sama tanpa transmisi tambahan."
+    },
+    {
+      "prompt": "Ketuk filter akhir tepat sebelum kisi belakang."
+    },
+    {
+      "prompt": "Apa akibat yang mungkin terjadi jika paking tabung bocor?",
+      "choices": ["Udara memintas jalur siklon yang semestinya", "Torsi motor bertambah", "Roda membesar", "Kabel tergulung lebih cepat"],
+      "explain": "Kebocoran mengurangi kendali atas aliran udara akibat perbedaan tekanan dan memungkinkan udara kotor melewati sebagian pemisah."
+    }
+  ]
+}
