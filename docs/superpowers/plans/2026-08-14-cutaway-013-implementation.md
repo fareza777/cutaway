@@ -72,7 +72,7 @@ Add:
 "test:catalog": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/catalog-quality-test.mts"
 ```
 
-Keep `npm run test:catalog` out of `npm run check` until Task 5 completes every overlay. This preserves a green baseline for the three model tasks while the focused catalog contract remains intentionally red.
+Keep the full `npm run test:catalog` out of `npm run check` until Task 6 completes both localization and icon deliverables. Task 5 adds a localization-only mode to the same contract and gates the default check on that narrower mode, preserving a green baseline without weakening either final requirement.
 
 - [ ] **Step 4: Re-run to preserve the red state for missing deliverables**
 
@@ -249,6 +249,7 @@ git commit -m "Add cyclonic vacuum cleaner"
 - Rewrite: all 15 existing files under `content/id/*.json`
 - Modify: `src/content/registry.ts`
 - Modify: `src/i18n/strings.ts`
+- Modify: `tools/catalog-quality-test.mts`
 - Modify: `tools/validate-content.mjs`
 - Modify: `package.json`
 
@@ -272,24 +273,25 @@ Complete and rewrite: piston engine, differential, lock, turbofan, rocket engine
 
 Add `translations: { id: require('../../content/id/<id>.json') }` to every registry entry.
 
-Change translation incompleteness in `tools/validate-content.mjs` from warnings to errors. Validate top-level fields, every part field, exact step/quiz length, translated choice counts, and required explanations when the English question has one. Append `npm run test:catalog` to `npm run check` now that the full overlay set exists.
+Change translation incompleteness in `tools/validate-content.mjs` from warnings to errors. Validate top-level fields, every part field, exact step/quiz length, translated choice counts, and required explanations when the English question has one. Add a `--localization-only` mode to `tools/catalog-quality-test.mts`, expose it as `npm run test:localization`, and append that passing localization gate to `npm run check`. Keep the full icon-aware `npm run test:catalog` outside the default check until Task 6 supplies every icon.
 
 Run:
 
 ```bash
 npm run validate
+npm run test:localization
 npm run test:catalog
 npm run typecheck
 ```
 
-Expected: translation coverage passes; icon checks remain the only catalog failures until Task 6.
+Expected: validation and `test:localization` pass; full `test:catalog` fails only for icon files/registrations/metrics until Task 6.
 
 - [ ] **Step 5: Audit English leakage and commit**
 
 Search Indonesian files for repeated English sentences, untranslated quiz choices, malformed punctuation, literal `it/its` pronoun patterns, and inconsistent terms. Review the full refrigerator overlay manually.
 
 ```bash
-git add content/id package.json src/content/registry.ts src/i18n/strings.ts tools/validate-content.mjs
+git add content/id package.json src/content/registry.ts src/i18n/strings.ts tools/catalog-quality-test.mts tools/validate-content.mjs
 git commit -m "Complete Indonesian localization"
 ```
 
@@ -299,6 +301,7 @@ git commit -m "Complete Indonesian localization"
 - Create: `tools/capture-icons.mjs`
 - Modify: `tools/preview.html`
 - Create: `assets/object-icons/*.png` (26 generated files)
+- Modify: `package.json`
 - Modify: `src/content/registry.ts`
 - Modify: `src/content/types.ts`
 - Modify: `app/index.tsx`
@@ -342,12 +345,12 @@ Return `{ ...summarise(resolve(entry, locale)), icon: entry.icon }` from `getLib
 
 - [ ] **Step 4: Run automated and visual icon review**
 
-Run `npm run test:catalog`, create a contact sheet from all 26 icons, and inspect it. Re-capture individual icons whose subject coverage falls outside 62–88%, clips a protruding part, faces backwards, or is materially darker/brighter than neighbors.
+Run `npm run test:catalog`, create a contact sheet from all 26 icons, and inspect it. Re-capture individual icons whose subject coverage falls outside 62–88%, clips a protruding part, faces backwards, or is materially darker/brighter than neighbors. Once the full contract passes, replace the localization-only gate in `npm run check` with `npm run test:catalog` so every future default check enforces both overlays and icons.
 
 - [ ] **Step 5: Commit the icon system**
 
 ```bash
-git add app/index.tsx assets/object-icons src/content/registry.ts src/content/types.ts tools/capture-icons.mjs tools/preview.html
+git add app/index.tsx assets/object-icons package.json src/content/registry.ts src/content/types.ts tools/capture-icons.mjs tools/object-icon-metrics.json tools/preview.html
 git rm src/ui/ObjectGlyph.tsx
 git commit -m "Add unique catalog icons"
 ```
