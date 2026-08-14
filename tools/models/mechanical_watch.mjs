@@ -34,6 +34,20 @@ const GLASS = () => {
   return material;
 };
 
+// Each engaged pair shares a tooth module: pitch-radius ratio equals tooth-
+// count ratio. The centre wheel is the 1/60 reference and the fourth wheel is
+// 1:1 with seconds, so the two compound stages multiply speed by 8 × 7.5 = 60.
+const TRAIN = {
+  barrelWheel: { radius: 0.309063, teeth: 54 },
+  centrePinion: { radius: 0.103021, teeth: 18 },
+  centreWheel: { radius: 0.239759, teeth: 64 },
+  thirdPinion: { radius: 0.02997, teeth: 8 },
+  thirdWheel: { radius: 0.194378, teeth: 60 },
+  fourthPinion: { radius: 0.025917, teeth: 8 },
+  fourthWheel: { radius: 0.15836, teeth: 36 },
+  escapePinion: { radius: 0.035191, teeth: 8 },
+};
+
 function toothedGear(radius, teeth, thickness, x, y, z, { hub = 0.09, spokes = 5 } = {}) {
   const toothWidth = Math.max(0.025, (TAU * radius / teeth) * 0.55);
   const geometry = [
@@ -89,9 +103,9 @@ function crescentRotor() {
     geometry,
     cylinder(0.15, 0.15, 0.06, 40, { pos: [0, -0.17, 0] }),
     torus(0.15, 0.014, 32, 10, { pos: [0, -0.2, 0], rot: [Math.PI / 2, 0, 0] }),
-    // The rotor's coaxial pinion turns about the same authored arbor. Three
-    // fixed reversing wheels on the bridge carry its motion toward the barrel.
-    toothedGear(0.07, 12, 0.032, 0, -0.13, 0, { hub: 0.026, spokes: 0 }),
+    // The small pickup turns with the rotor but stops short of the fixed train:
+    // the visible gap represents the one-way clutch that is abstracted here.
+    toothedGear(0.035, 10, 0.032, 0, -0.13, 0, { hub: 0.014, spokes: 0 }),
   ]);
 }
 
@@ -185,26 +199,26 @@ export default function mechanicalWatch() {
     part('automatic_rotor', crescentRotor(), named(pbr('#b6bec5', { metalness: 0.94, roughness: 0.24 }), 'rotor steel')),
 
     part('mainspring_barrel', merge([
-      toothedGear(0.3, 54, 0.032, -0.42, -0.07, 0.24, { hub: 0.06, spokes: 0 }),
+      toothedGear(TRAIN.barrelWheel.radius, TRAIN.barrelWheel.teeth, 0.032, -0.42, -0.07, 0.24, { hub: 0.06, spokes: 0 }),
       cylinder(0.235, 0.235, 0.05, 56, { pos: [-0.42, -0.04, 0.24] }),
       spiral(-0.42, -0.005, 0.24, 0.045, 0.195, 4.2, 0.008, 140),
       toothedGear(0.075, 14, 0.032, -0.42, -0.13, 0.24, { hub: 0.025, spokes: 0 }),
     ]), BRASS()),
 
     part('centre_wheel', merge([
-      toothedGear(0.105, 12, 0.032, -0.05, -0.07, 0.1, { hub: 0.03, spokes: 0 }),
-      toothedGear(0.205, 48, 0.032, -0.05, -0.025, 0.1, { hub: 0.045, spokes: 5 }),
+      toothedGear(TRAIN.centrePinion.radius, TRAIN.centrePinion.teeth, 0.032, -0.05, -0.07, 0.1, { hub: 0.03, spokes: 0 }),
+      toothedGear(TRAIN.centreWheel.radius, TRAIN.centreWheel.teeth, 0.032, -0.05, -0.025, 0.1, { hub: 0.045, spokes: 5 }),
     ]), BRASS()),
     part('third_wheel', merge([
-      toothedGear(0.06, 10, 0.032, 0.205, -0.025, 0.055, { hub: 0.024, spokes: 0 }),
-      toothedGear(0.155, 40, 0.032, 0.205, 0.015, 0.055, { hub: 0.036, spokes: 5 }),
+      toothedGear(TRAIN.thirdPinion.radius, TRAIN.thirdPinion.teeth, 0.032, 0.205, -0.025, 0.055, { hub: 0.012, spokes: 0 }),
+      toothedGear(TRAIN.thirdWheel.radius, TRAIN.thirdWheel.teeth, 0.032, 0.205, 0.015, 0.055, { hub: 0.036, spokes: 5 }),
     ]), BRASS()),
     part('fourth_wheel', merge([
-      toothedGear(0.065, 10, 0.032, 0.18, 0.015, -0.155, { hub: 0.024, spokes: 0 }),
-      toothedGear(0.138, 36, 0.032, 0.18, 0.055, -0.155, { hub: 0.032, spokes: 5 }),
+      toothedGear(TRAIN.fourthPinion.radius, TRAIN.fourthPinion.teeth, 0.032, 0.18, 0.015, -0.155, { hub: 0.011, spokes: 0 }),
+      toothedGear(TRAIN.fourthWheel.radius, TRAIN.fourthWheel.teeth, 0.032, 0.18, 0.055, -0.155, { hub: 0.032, spokes: 5 }),
     ]), BRASS()),
     part('escape_wheel', merge([
-      toothedGear(0.055, 8, 0.032, 0.01, 0.055, -0.23, { hub: 0.022, spokes: 0 }),
+      toothedGear(TRAIN.escapePinion.radius, TRAIN.escapePinion.teeth, 0.032, 0.01, 0.055, -0.23, { hub: 0.014, spokes: 0 }),
       toothedGear(0.11, 18, 0.032, 0.01, 0.095, -0.23, { hub: 0.028, spokes: 6 }),
     ]), BRASS()),
 

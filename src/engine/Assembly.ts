@@ -25,6 +25,8 @@ const AXES: Record<'x' | 'y' | 'z', THREE.Vector3> = {
   z: new THREE.Vector3(0, 0, 1),
 };
 
+const hasMotionDriver = (part: Part) => Boolean(part.motion?.spin || part.motion?.swing || part.motion?.slide);
+
 export type PartHandle = {
   def: Part;
   group: THREE.Group;
@@ -120,7 +122,7 @@ export class Assembly {
 
     this.solveExplode();
     this.maxLayer = this.parts.reduce((max, part) => Math.max(max, part.def.layer), 0);
-    this.hasMotion = this.parts.some((part) => part.def.motion && Object.keys(part.def.motion).length > 0);
+    this.hasMotion = this.parts.some((part) => hasMotionDriver(part.def));
     this.parts.forEach((part) => this.byId.set(part.def.id, part));
     this.refreshWorld();
   }

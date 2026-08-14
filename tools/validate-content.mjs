@@ -64,6 +64,9 @@ function validate(doc, meshNames, errors, warnings) {
     )) {
       at(`part "${part.id}" motion pivot must be three finite numbers`);
     }
+    if ('pivot' in motion && !motion.spin && !motion.swing && !motion.slide) {
+      at(`part "${part.id}" motion pivot requires spin, swing, or slide`);
+    }
     for (const [key, spec] of Object.entries(motion)) {
       if (key === 'pivot') continue;
       if (!['spin', 'slide', 'swing'].includes(key)) at(`part "${part.id}" has unknown motion "${key}"`);

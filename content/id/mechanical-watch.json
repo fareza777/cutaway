@@ -57,7 +57,7 @@
     "automatic_rotor": {
       "name": "Rotor Otomatis",
       "short": "Beban tidak seimbang yang memutar pegas saat pergelangan bergerak",
-      "detail": "Beban berbentuk sabit bebas berayun pada bantalan di belakang mesin. Perubahan posisi pergelangan membuat gravitasi dan inersia memutarnya; roda gigi pembalik meneruskan gerak yang berguna dari kedua arah ke tong pegas utama. Kopling selip mencegah pegas utama dikencangkan melampaui batas aman."
+      "detail": "Beban berbentuk sabit bebas berayun pada bantalan di belakang mesin. Perubahan posisi pergelangan membuat gravitasi dan inersia memutarnya; kopling satu arah dan roda gigi pembalik meneruskan gerak yang berguna dari kedua arah ke tong pegas utama. Animasi pembelajaran ini hanya mengayunkan rotor dan menyisakan celah kopling kecil sebelum rangkaian pembalik yang diam, sehingga jalur pemutaran terlihat tanpa seolah-olah menyimulasikan setiap kait dan gigi. Kopling selip mencegah pegas dikencangkan berlebihan."
     },
     "mainspring_barrel": {
       "name": "Tong Pegas Utama",
@@ -118,7 +118,7 @@
   "steps": [
     {
       "title": "Tangkap gerakan pergelangan",
-      "body": "Saat pergelangan berubah arah, rotor yang berat sebelah berayun. Roda gigi pembalik meneruskan putaran dari kedua arah ke sistem pemutar, sedangkan kopling selip melindungi pegas utama yang sudah penuh."
+      "body": "Saat pergelangan berubah arah, rotor yang berat sebelah berayun. Kopling satu arah dan roda gigi pembalik meneruskan putaran ke sistem pemutar. Animasi menyisakan celah kopling kecil dan menahan roda-roda itu tetap diam agar jalurnya jelas, bukan untuk meniru pertautan setiap gigi; kopling selip melindungi pegas utama yang sudah penuh."
     },
     {
       "title": "Simpan energi pada pegas utama",

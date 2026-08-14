@@ -16,10 +16,13 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { Assembly, FIT_SIZE } from '../src/engine/Assembly.ts';
 import { OrbitCamera } from '../src/engine/OrbitCamera.ts';
 import { ATTENTION, GHOST, partOpacity, type VisibilityState } from '../src/engine/visibility.ts';
-import type { ObjectDoc } from '../src/content/types.ts';
+import { hasMotionDriver, type Motion, type ObjectDoc } from '../src/content/types.ts';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const loader = new GLTFLoader();
+
+// @ts-expect-error A pivot locates a real driver; it is not motion by itself.
+const pivotOnlyMotion: Motion = { pivot: [0, 0, 0] };
 
 let failures = 0;
 const warnings: string[] = [];
@@ -108,6 +111,31 @@ function checkRules() {
   check('a see-through part still peels away', partOpacity(sac, state({ peel: 1 })) === 0);
   check('an ordinary part is unaffected', partOpacity({ id: 'plain', layer: 0 }, state()) === 1);
 
+  const pivotScene = new THREE.Group();
+  const pivotMesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshStandardMaterial());
+  pivotMesh.name = 'pivot_fixture';
+  pivotScene.add(pivotMesh);
+  const pivotDoc = {
+    schema: 1,
+    id: 'pivot-fixture',
+    title: 'Pivot fixture',
+    subtitle: 'No driver',
+    category: 'Test',
+    accent: '#ffffff',
+    summary: 'Runtime regression fixture.',
+    model: 'pivot_fixture',
+    cutAxis: 'y',
+    parts: [{
+      id: 'fixture', nodes: ['pivot_fixture'], name: 'Fixture', short: 'Fixture', detail: 'Fixture', layer: 0,
+      motion: pivotOnlyMotion,
+    }],
+    steps: [],
+    quiz: [],
+  } satisfies ObjectDoc;
+  const pivotAssembly = new Assembly(pivotScene, pivotDoc);
+  check('a pivot without a driver does not advertise runtime motion', !pivotAssembly.hasMotion);
+  pivotAssembly.dispose();
+
   if (!failures) console.log('  ✓ camera and visibility rules hold');
 }
 
@@ -181,7 +209,7 @@ async function run() {
     check('collapsing returns parts to rest', back);
 
     // --- motion ---------------------------------------------------------
-    const movers = assembly.parts.filter((part) => part.def.motion && Object.keys(part.def.motion).length);
+    const movers = assembly.parts.filter((part) => hasMotionDriver(part.def.motion));
     check('hasMotion agrees with the content', assembly.hasMotion === movers.length > 0);
 
     if (movers.length) {

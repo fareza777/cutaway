@@ -110,7 +110,7 @@
       "nodes": ["automatic_rotor"],
       "name": "Automatic Rotor",
       "short": "An off-centre mass that winds as the wrist moves",
-      "detail": "The crescent mass is free to swing around the movement bearing. Changes in wrist orientation make gravity and inertia rotate it; reversing gears route useful motion in either direction toward the barrel. A slipping bridle prevents the mainspring from being tightened beyond its safe working range.",
+      "detail": "The crescent mass is free to swing around the movement bearing. Changes in wrist orientation make gravity and inertia rotate it; a one-way clutch and reversing gears route useful motion in either direction toward the barrel. This teaching animation swings the rotor alone and leaves a small clutch gap before the stationary reversing train, tracing the winding path without pretending to simulate each pawl and tooth. A slipping bridle prevents overwinding.",
       "layer": 1,
       "explode": [0, -1.15, 0],
       "motion": { "pivot": [0, -0.17, 0], "swing": { "axis": "y", "amplitude": 0.85 } }
@@ -123,7 +123,7 @@
       "detail": "A long spring is coiled inside the toothed barrel. Winding tightens the coil and stores elastic energy; the barrel then turns slowly as the spring relaxes, feeding torque into the centre wheel. The spring's shape and the barrel diameter are chosen to keep torque reasonably even across the useful power reserve.",
       "layer": 3,
       "explode": [-0.85, 0, 0.65],
-      "motion": { "pivot": [-0.42, -0.07, 0.24], "spin": { "axis": "y", "ratio": 0.006 } }
+      "motion": { "pivot": [-0.42, -0.07, 0.24], "spin": { "axis": "y", "ratio": -0.005556 } }
     },
     {
       "id": "centre_wheel",
@@ -143,7 +143,7 @@
       "detail": "The third wheel is not named for a third unit of time. It simply carries power through another large-wheel-to-small-pinion pair, raising rotational speed while lowering torque. Its position lets the train route around the barrel and reach the fourth wheel without oversized gears.",
       "layer": 3,
       "explode": [0.55, 0.35, 0.2],
-      "motion": { "pivot": [0.205, 0.015, 0.055], "spin": { "axis": "y", "ratio": -0.22 } }
+      "motion": { "pivot": [0.205, 0.015, 0.055], "spin": { "axis": "y", "ratio": -0.133333 } }
     },
     {
       "id": "fourth_wheel",
@@ -163,7 +163,7 @@
       "detail": "Torque from the gear train continually urges the escape wheel forward, but the pallet stones alternately lock its teeth. At each balance swing one tooth is released and a tooth face gives a small impulse back through the pallet fork. This stop-and-go exchange both counts oscillations and sustains them.",
       "layer": 4,
       "explode": [0.15, 0.55, -0.75],
-      "motion": { "pivot": [0.01, 0.095, -0.23], "spin": { "axis": "y", "ratio": -6.5 } }
+      "motion": { "pivot": [0.01, 0.095, -0.23], "spin": { "axis": "y", "ratio": -4.5 } }
     },
     {
       "id": "pallet_fork",
@@ -226,7 +226,7 @@
   "steps": [
     {
       "title": "Harvest motion",
-      "body": "As the wrist changes direction, the off-centre rotor swings. Reversing gears pass useful rotation to the winding train, while a slipping bridle prevents an already wound spring from being overloaded.",
+      "body": "As the wrist changes direction, the off-centre rotor swings. A one-way clutch and reversing gears pass useful rotation to the winding train. The animation leaves a small clutch gap and keeps those wheels still to trace this route clearly rather than imitate tooth-by-tooth engagement; a slipping bridle prevents overload.",
       "focus": ["automatic_rotor", "mainspring_barrel"]
     },
     {

@@ -1,6 +1,8 @@
-import { existsSync, readFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
+import { spawnSync } from 'node:child_process';
 import { dirname, resolve } from 'node:path';
+import { tmpdir } from 'node:os';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -66,6 +68,18 @@ const radialExtentAt = (mesh: THREE.Mesh, cx: number, cz: number, sampleY: numbe
   return radius;
 };
 
+const localRadialEnvelopeAt = (mesh: THREE.Mesh, cx: number, cz: number, sampleY: number, limit: number) => {
+  const position = mesh.geometry.getAttribute('position');
+  const radii: number[] = [];
+  for (let index = 0; index < position.count; index += 1) {
+    if (Math.abs(position.getY(index) - sampleY) > 0.004) continue;
+    const distance = Math.hypot(position.getX(index) - cx, position.getZ(index) - cz);
+    if (distance <= limit) radii.push(distance);
+  }
+  radii.sort((a, b) => a - b);
+  return radii[Math.floor((radii.length - 1) * 0.75)] ?? Number.NEGATIVE_INFINITY;
+};
+
 const annularVertexCountAt = (mesh: THREE.Mesh, cx: number, cz: number, sampleY: number, radius: number) => {
   const position = mesh.geometry.getAttribute('position');
   let count = 0;
@@ -93,6 +107,8 @@ async function run() {
     console.error('\nAutomatic mechanical watch feature is incomplete.');
     process.exit(1);
   }
+
+  const doc = JSON.parse(readFileSync(contentFile, 'utf8'));
 
   const module = await import(`${pathToFileURL(recipeFile).href}?quality=${Date.now()}`);
   const recipeRoot = module.default();
@@ -163,10 +179,10 @@ async function run() {
   );
 
   const gearStages = [
-    { label: 'barrel to centre pinion', a: 'mainspring_barrel', ac: [-0.42, 0.24], b: 'centre_wheel', bc: [-0.05, 0.1], y: -0.054 },
-    { label: 'centre wheel to third pinion', a: 'centre_wheel', ac: [-0.05, 0.1], b: 'third_wheel', bc: [0.205, 0.055], y: -0.009 },
-    { label: 'third wheel to fourth pinion', a: 'third_wheel', ac: [0.205, 0.055], b: 'fourth_wheel', bc: [0.18, -0.155], y: 0.031 },
-    { label: 'fourth wheel to escape pinion', a: 'fourth_wheel', ac: [0.18, -0.155], b: 'escape_wheel', bc: [0.01, -0.23], y: 0.071 },
+    { label: 'barrel to centre pinion', a: 'mainspring_barrel', ac: [-0.42, 0.24], aPitch: 0.309063, aTeeth: 54, b: 'centre_wheel', bc: [-0.05, 0.1], bPitch: 0.103021, bTeeth: 18, y: -0.054 },
+    { label: 'centre wheel to third pinion', a: 'centre_wheel', ac: [-0.05, 0.1], aPitch: 0.239759, aTeeth: 64, b: 'third_wheel', bc: [0.205, 0.055], bPitch: 0.02997, bTeeth: 8, y: -0.009 },
+    { label: 'third wheel to fourth pinion', a: 'third_wheel', ac: [0.205, 0.055], aPitch: 0.194378, aTeeth: 60, b: 'fourth_wheel', bc: [0.18, -0.155], bPitch: 0.025917, bTeeth: 8, y: 0.031 },
+    { label: 'fourth wheel to escape pinion', a: 'fourth_wheel', ac: [0.18, -0.155], aPitch: 0.15836, aTeeth: 36, b: 'escape_wheel', bc: [0.01, -0.23], bPitch: 0.035191, bTeeth: 8, y: 0.071 },
   ];
   for (const stage of gearStages) {
     const [ax, az] = stage.ac;
@@ -180,10 +196,46 @@ async function run() {
       Number.isFinite(meshDepth) && meshDepth >= -0.012 && meshDepth <= 0.025,
       `engagement ${meshDepth.toFixed(3)}`,
     );
+    check(
+      `${stage.label} uses the authored external pitch radii`,
+      Math.abs(aRadius / 0.97 - stage.aPitch) <= 0.008 && Math.abs(bRadius / 0.97 - stage.bPitch) <= 0.008,
+      `pitch ${(aRadius / 0.97).toFixed(4)} / ${(bRadius / 0.97).toFixed(4)}`,
+    );
+    check(
+      `${stage.label} pitch radii agree with tooth-count ratio`,
+      Math.abs(stage.aPitch / stage.aTeeth - stage.bPitch / stage.bTeeth) <= 0.00008,
+      `module ${(stage.aPitch / stage.aTeeth).toFixed(6)} / ${(stage.bPitch / stage.bTeeth).toFixed(6)}`,
+    );
+    const aRatio = doc.parts.find((part: { id: string }) => part.id === stage.a)?.motion?.spin?.ratio;
+    const bRatio = doc.parts.find((part: { id: string }) => part.id === stage.b)?.motion?.spin?.ratio;
+    check(
+      `${stage.label} counter-rotates at runtime`,
+      typeof aRatio === 'number' && typeof bRatio === 'number' && Math.sign(aRatio) === -Math.sign(bRatio),
+      `ratios ${aRatio} / ${bRatio}`,
+    );
+    const tangentialMismatch = Math.abs(Math.abs(aRatio ?? 0) * stage.aPitch - Math.abs(bRatio ?? 0) * stage.bPitch);
+    check(
+      `${stage.label} has equal pitch-line speed`,
+      tangentialMismatch <= 0.000002,
+      `mismatch ${tangentialMismatch.toFixed(7)}`,
+    );
   }
+  const centreRatio = doc.parts.find((part: { id: string }) => part.id === 'centre_wheel')?.motion?.spin?.ratio;
+  const fourthRatio = doc.parts.find((part: { id: string }) => part.id === 'fourth_wheel')?.motion?.spin?.ratio;
+  check('centre wheel remains the one-per-hour train reference', Math.abs(centreRatio - 1 / 60) <= 0.000001, `${centreRatio}`);
+  check('fourth wheel remains directly synchronized with seconds', Math.abs(fourthRatio - 1) <= 0.000001, `${fourthRatio}`);
+
+  const rotorPinionExtent = localRadialEnvelopeAt(byName.get('automatic_rotor')!, 0, 0, -0.146, 0.08);
+  const reversingWheelExtent = localRadialEnvelopeAt(byName.get('movement_bridges')!, -0.13, -0.02, -0.146, 0.1);
+  const clutchGap = Math.hypot(0.13, 0.02) - rotorPinionExtent - reversingWheelExtent;
+  check(
+    'swinging rotor pickup has a visible clutch gap from the stationary reversing train',
+    clutchGap >= 0.025,
+    `${clutchGap.toFixed(3)} model units`,
+  );
 
   const transmissionChecks = [
-    { mesh: 'automatic_rotor', x: 0, z: 0, radius: 0.07 },
+    { mesh: 'automatic_rotor', x: 0, z: 0, radius: 0.035 },
     { mesh: 'movement_bridges', x: -0.13, z: -0.02, radius: 0.065 },
     { mesh: 'movement_bridges', x: -0.255, z: 0.035, radius: 0.075 },
     { mesh: 'movement_bridges', x: -0.36, z: 0.13, radius: 0.07 },
@@ -225,12 +277,48 @@ async function run() {
     return !material.map && !material.normalMap && !material.roughnessMap && !material.metalnessMap;
   }));
 
-  const doc = JSON.parse(readFileSync(contentFile, 'utf8'));
   const claimed = doc.parts.flatMap((item: { nodes: string[] }) => item.nodes).sort();
   check('content id and Android-safe model name agree', doc.id === 'mechanical-watch' && doc.model === 'mechanical_watch');
   check('content claims every mesh exactly once', JSON.stringify(claimed) === JSON.stringify(names));
   check('walkthrough explains a complete automatic movement', doc.steps.length >= 6);
   check('quiz covers enough of the mechanism', doc.quiz.length >= 8);
+
+  const validatorFixture = mkdtempSync(resolve(tmpdir(), 'cutaway-pivot-only-'));
+  try {
+    mkdirSync(resolve(validatorFixture, 'tools'));
+    mkdirSync(resolve(validatorFixture, 'content'));
+    mkdirSync(resolve(validatorFixture, 'assets/models'), { recursive: true });
+    cpSync(resolve(ROOT, 'tools/validate-content.mjs'), resolve(validatorFixture, 'tools/validate-content.mjs'));
+    cpSync(modelFile, resolve(validatorFixture, 'assets/models/mechanical_watch.glb'));
+    writeFileSync(resolve(validatorFixture, 'content/pivot-only.json'), JSON.stringify({
+      schema: 1,
+      id: 'pivot-only',
+      title: 'Pivot only',
+      subtitle: 'Invalid motion fixture',
+      category: 'Test',
+      accent: '#ffffff',
+      summary: 'A validator fixture.',
+      model: 'mechanical_watch',
+      cutAxis: 'y',
+      parts: [{
+        id: 'case', nodes: ['case'], name: 'Case', short: 'Case', detail: 'Case', layer: 0,
+        motion: { pivot: [0, 0, 0] },
+      }],
+      steps: [],
+      quiz: [],
+    }));
+    const validation = spawnSync(process.execPath, ['tools/validate-content.mjs'], {
+      cwd: validatorFixture,
+      encoding: 'utf8',
+    });
+    check(
+      'content validator rejects a pivot without a motion driver',
+      validation.status === 1 && validation.stderr.includes('motion pivot requires spin, swing, or slide'),
+      `exit ${validation.status}`,
+    );
+  } finally {
+    rmSync(validatorFixture, { recursive: true, force: true });
+  }
 
   const expectedPivots: Record<string, [number, number, number]> = {
     hour_hand: [0, 0.208, 0],
