@@ -83,7 +83,7 @@
       "detail": "A pipe beneath the hand fits the hour wheel. The motion works reduce the minute arbor by 12:1, so the hour hand completes one revolution while the minute hand completes twelve. Its short, broad shape separates it instantly from the longer minute hand.",
       "layer": 1,
       "explode": [-0.45, 1.05, 0],
-      "motion": { "spin": { "axis": "y", "ratio": 0.001389 } }
+      "motion": { "pivot": [0, 0.208, 0], "spin": { "axis": "y", "ratio": 0.001389 } }
     },
     {
       "id": "minute_hand",
@@ -93,7 +93,7 @@
       "detail": "The minute hand is friction-fitted to the cannon pinion around the centre arbor. That friction lets the crown set the hands while still allowing the gear train to drive them during normal running. Its 12:1 relationship with the hour hand is fixed by gears, not software or sensing.",
       "layer": 1,
       "explode": [0, 1.2, 0],
-      "motion": { "spin": { "axis": "y", "ratio": 0.016667 } }
+      "motion": { "pivot": [0, 0.22, 0], "spin": { "axis": "y", "ratio": 0.016667 } }
     },
     {
       "id": "seconds_hand",
@@ -103,7 +103,7 @@
       "detail": "The seconds hand is mounted on, or geared from, the fourth wheel, which turns once per minute. It advances in tiny jumps at the balance frequency; the apparent sweep is a sequence of closely spaced ticks. Keeping it light reduces the inertia the escapement must repeatedly accelerate.",
       "layer": 1,
       "explode": [0.45, 1.35, 0],
-      "motion": { "spin": { "axis": "y", "ratio": 1 } }
+      "motion": { "pivot": [0, 0.232, 0], "spin": { "axis": "y", "ratio": 1 } }
     },
     {
       "id": "automatic_rotor",
@@ -113,7 +113,7 @@
       "detail": "The crescent mass is free to swing around the movement bearing. Changes in wrist orientation make gravity and inertia rotate it; reversing gears route useful motion in either direction toward the barrel. A slipping bridle prevents the mainspring from being tightened beyond its safe working range.",
       "layer": 1,
       "explode": [0, -1.15, 0],
-      "motion": { "swing": { "axis": "y", "amplitude": 0.85 } }
+      "motion": { "pivot": [0, -0.17, 0], "swing": { "axis": "y", "amplitude": 0.85 } }
     },
     {
       "id": "mainspring_barrel",
@@ -123,7 +123,7 @@
       "detail": "A long spring is coiled inside the toothed barrel. Winding tightens the coil and stores elastic energy; the barrel then turns slowly as the spring relaxes, feeding torque into the centre wheel. The spring's shape and the barrel diameter are chosen to keep torque reasonably even across the useful power reserve.",
       "layer": 3,
       "explode": [-0.85, 0, 0.65],
-      "motion": { "spin": { "axis": "y", "ratio": 0.006 } }
+      "motion": { "pivot": [-0.42, -0.07, 0.24], "spin": { "axis": "y", "ratio": 0.006 } }
     },
     {
       "id": "centre_wheel",
@@ -133,7 +133,7 @@
       "detail": "Driven by the barrel, the centre wheel begins the chain of alternating large wheels and small pinions. In a conventional layout it turns once per hour and provides the reference used by the motion works for the minute hand. Its ratio trades the barrel's slow, strong rotation for greater speed downstream.",
       "layer": 3,
       "explode": [0, 0.5, 0],
-      "motion": { "spin": { "axis": "y", "ratio": 0.016667 } }
+      "motion": { "pivot": [-0.05, -0.025, 0.1], "spin": { "axis": "y", "ratio": 0.016667 } }
     },
     {
       "id": "third_wheel",
@@ -143,7 +143,7 @@
       "detail": "The third wheel is not named for a third unit of time. It simply carries power through another large-wheel-to-small-pinion pair, raising rotational speed while lowering torque. Its position lets the train route around the barrel and reach the fourth wheel without oversized gears.",
       "layer": 3,
       "explode": [0.55, 0.35, 0.2],
-      "motion": { "spin": { "axis": "y", "ratio": -0.22 } }
+      "motion": { "pivot": [0.205, 0.015, 0.055], "spin": { "axis": "y", "ratio": -0.22 } }
     },
     {
       "id": "fourth_wheel",
@@ -153,7 +153,7 @@
       "detail": "The fourth wheel receives the third wheel's faster motion and usually turns once each minute. That convenient speed makes its arbor a natural place for a direct seconds hand. Its pinion also drives the escape wheel, so every visible second depends on the escapement releasing this wheel in equal increments.",
       "layer": 3,
       "explode": [0.55, 0.35, -0.45],
-      "motion": { "spin": { "axis": "y", "ratio": 1 } }
+      "motion": { "pivot": [0.18, 0.055, -0.155], "spin": { "axis": "y", "ratio": 1 } }
     },
     {
       "id": "escape_wheel",
@@ -163,7 +163,7 @@
       "detail": "Torque from the gear train continually urges the escape wheel forward, but the pallet stones alternately lock its teeth. At each balance swing one tooth is released and a tooth face gives a small impulse back through the pallet fork. This stop-and-go exchange both counts oscillations and sustains them.",
       "layer": 4,
       "explode": [0.15, 0.55, -0.75],
-      "motion": { "spin": { "axis": "y", "ratio": -6.5 } }
+      "motion": { "pivot": [0.01, 0.095, -0.23], "spin": { "axis": "y", "ratio": -6.5 } }
     },
     {
       "id": "pallet_fork",
@@ -173,7 +173,7 @@
       "detail": "Two ruby pallet faces alternately stop and release the escape-wheel teeth. The fork's other end engages the balance roller, so each passage through centre unlocks one tooth and receives a measured impulse. The lever moves only a few degrees; large swings would waste power and upset timing.",
       "layer": 4,
       "explode": [0.45, 0.65, -0.75],
-      "motion": { "swing": { "axis": "y", "amplitude": 0.12 } }
+      "motion": { "pivot": [0.28, 0.11, -0.31], "swing": { "axis": "y", "amplitude": 0.12 } }
     },
     {
       "id": "balance_wheel",
@@ -183,7 +183,7 @@
       "detail": "The balance wheel rotates back and forth rather than continuously. Its inertia works with the hairspring's restoring force to set a natural frequency, commonly six or eight beats per second. Poising the rim and limiting pivot friction make successive half-swings as equal as possible in different watch positions.",
       "layer": 4,
       "explode": [0.85, 0.65, -0.8],
-      "motion": { "swing": { "axis": "y", "amplitude": 0.7 } }
+      "motion": { "pivot": [0.46, 0.105, -0.4], "swing": { "axis": "y", "amplitude": 0.7 } }
     },
     {
       "id": "hairspring",
@@ -193,7 +193,7 @@
       "detail": "This flat spiral tightens and opens as the balance oscillates. Its elasticity supplies the restoring torque; its effective length and the balance's inertia set the rate. A regulator or adjustable inertia makes tiny corrections, while magnetism, impact, or a bent coil can change the frequency enough to gain or lose time.",
       "layer": 4,
       "explode": [0.85, 0.85, -0.8],
-      "motion": { "swing": { "axis": "y", "amplitude": 0.55 } }
+      "motion": { "pivot": [0.46, 0.14, -0.4], "swing": { "axis": "y", "amplitude": 0.55 } }
     },
     {
       "id": "movement_bridges",

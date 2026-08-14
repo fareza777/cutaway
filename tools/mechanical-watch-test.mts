@@ -1,8 +1,10 @@
 import { existsSync, readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { Assembly, FIT_SIZE } from '../src/engine/Assembly.ts';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const recipeFile = resolve(ROOT, 'tools/models/mechanical_watch.mjs');
@@ -34,6 +36,46 @@ const triangleCount = (meshes: THREE.Mesh[]) => meshes.reduce((sum, mesh) => {
   const index = mesh.geometry.getIndex();
   return sum + (index ? index.count : mesh.geometry.getAttribute('position').count) / 3;
 }, 0);
+
+const fingerprint = (mesh: THREE.Mesh) => {
+  const hash = createHash('sha256');
+  const position = mesh.geometry.getAttribute('position');
+  const index = mesh.geometry.getIndex();
+  hash.update(mesh.name);
+  hash.update(Array.from(position.array as ArrayLike<number>, (value) => Number(value).toFixed(6)).join(','));
+  hash.update(index ? Array.from(index.array as ArrayLike<number>, Number).join(',') : 'non-indexed');
+  const material = mesh.material as THREE.MeshStandardMaterial;
+  hash.update([
+    material.name,
+    material.color.getHexString(),
+    material.metalness.toFixed(4),
+    material.roughness.toFixed(4),
+    material.opacity.toFixed(4),
+    material.transparent ? 'transparent' : 'opaque',
+  ].join(':'));
+  return hash.digest('hex');
+};
+
+const radialExtentAt = (mesh: THREE.Mesh, cx: number, cz: number, sampleY: number) => {
+  const position = mesh.geometry.getAttribute('position');
+  let radius = Number.NEGATIVE_INFINITY;
+  for (let index = 0; index < position.count; index += 1) {
+    if (Math.abs(position.getY(index) - sampleY) > 0.004) continue;
+    radius = Math.max(radius, Math.hypot(position.getX(index) - cx, position.getZ(index) - cz));
+  }
+  return radius;
+};
+
+const annularVertexCountAt = (mesh: THREE.Mesh, cx: number, cz: number, sampleY: number, radius: number) => {
+  const position = mesh.geometry.getAttribute('position');
+  let count = 0;
+  for (let index = 0; index < position.count; index += 1) {
+    if (Math.abs(position.getY(index) - sampleY) > 0.004) continue;
+    const distance = Math.hypot(position.getX(index) - cx, position.getZ(index) - cz);
+    if (distance >= radius * 0.7 && distance <= radius * 1.15) count += 1;
+  }
+  return count;
+};
 
 async function run() {
   console.log('\nAutomatic mechanical watch quality contract');
@@ -74,11 +116,20 @@ async function run() {
   check('production GLB has the exact stable teaching mesh list', JSON.stringify(names) === JSON.stringify(expectedMeshes), names.join(', '));
   check('mesh names are unique', new Set(names).size === names.length);
   check('shipped GLB matches the current procedural recipe', JSON.stringify(names) === JSON.stringify(recipeNames));
+  const productionFingerprints = new Map(meshes.map((mesh) => [mesh.name, fingerprint(mesh)]));
+  const recipeFingerprints = new Map(recipeMeshes.map((mesh) => [mesh.name, fingerprint(mesh)]));
+  const fingerprintMismatches = names.filter((name) => productionFingerprints.get(name) !== recipeFingerprints.get(name));
+  check('production geometry and materials fingerprint-match the recipe', fingerprintMismatches.length === 0, fingerprintMismatches.join(', '));
 
   const byName = new Map(meshes.map((mesh) => [mesh.name, mesh]));
   const caseSize = bounds(byName.get('case')!).getSize(new THREE.Vector3());
   check('40 mm case is round in plan', Math.abs(caseSize.x - caseSize.z) / Math.max(caseSize.x, caseSize.z) <= 0.08, `x/z ${(caseSize.x / caseSize.z).toFixed(2)}`);
   check('case is shallow rather than cylindrical', caseSize.y / caseSize.x >= 0.14 && caseSize.y / caseSize.x <= 0.38, `depth/diameter ${(caseSize.y / caseSize.x).toFixed(2)}`);
+  const shellBox = new THREE.Box3();
+  for (const name of ['case', 'bezel', 'crystal', 'caseback']) shellBox.union(bounds(byName.get(name)!));
+  const shellSize = shellBox.getSize(new THREE.Vector3());
+  const physicalThickness = (shellSize.y / caseSize.x) * 40;
+  check('closed 40 mm shell is realistically about 11 mm thick', physicalThickness >= 10.4 && physicalThickness <= 11.6, `${physicalThickness.toFixed(1)} mm`);
 
   const dialY = centre(byName.get('dial')!).y;
   const crystalY = centre(byName.get('crystal')!).y;
@@ -87,11 +138,69 @@ async function run() {
   check('dial sits above the movement', dialY > bridgeY + 0.08, `dial ${dialY.toFixed(2)}, bridges ${bridgeY.toFixed(2)}`);
   check('crystal protects the dial from above', crystalY > dialY + 0.08, `crystal ${crystalY.toFixed(2)}, dial ${dialY.toFixed(2)}`);
   check('automatic rotor sits behind the movement', rotorY < bridgeY - 0.06, `rotor ${rotorY.toFixed(2)}, bridges ${bridgeY.toFixed(2)}`);
+  const rotorBox = bounds(byName.get('automatic_rotor')!);
+  const casebackBox = bounds(byName.get('caseback')!);
+  const rotorClearance = rotorBox.min.y - casebackBox.max.y;
+  check('automatic rotor clears the inside of the caseback', rotorClearance >= 0.012, `${rotorClearance.toFixed(3)} model units`);
 
   const balance = centre(byName.get('balance_wheel')!);
   const escape = centre(byName.get('escape_wheel')!);
   const escapementDistance = Math.hypot(balance.x - escape.x, balance.z - escape.z);
   check('balance wheel and escape wheel form an adjacent escapement', escapementDistance >= 0.25 && escapementDistance <= 0.72, `${escapementDistance.toFixed(2)} radii`);
+  const expectedBalancePivot = new THREE.Vector3(0.46, 0.105, -0.4);
+  const balanceBox = bounds(byName.get('balance_wheel')!);
+  const balanceCentre = balanceBox.getCenter(new THREE.Vector3());
+  const balanceSize = balanceBox.getSize(new THREE.Vector3());
+  check(
+    'balance rim and weights are concentric with the balance arbor',
+    Math.hypot(balanceCentre.x - expectedBalancePivot.x, balanceCentre.z - expectedBalancePivot.z) <= 0.012,
+    `centre ${balanceCentre.x.toFixed(3)}, ${balanceCentre.z.toFixed(3)}`,
+  );
+  check(
+    'balance wheel has one coherent roughly 0.54-diameter rim',
+    balanceSize.x >= 0.5 && balanceSize.x <= 0.57 && balanceSize.z >= 0.5 && balanceSize.z <= 0.57 && Math.abs(balanceSize.x - balanceSize.z) <= 0.015,
+    `x ${balanceSize.x.toFixed(3)}, z ${balanceSize.z.toFixed(3)}`,
+  );
+
+  const gearStages = [
+    { label: 'barrel to centre pinion', a: 'mainspring_barrel', ac: [-0.42, 0.24], b: 'centre_wheel', bc: [-0.05, 0.1], y: -0.054 },
+    { label: 'centre wheel to third pinion', a: 'centre_wheel', ac: [-0.05, 0.1], b: 'third_wheel', bc: [0.205, 0.055], y: -0.009 },
+    { label: 'third wheel to fourth pinion', a: 'third_wheel', ac: [0.205, 0.055], b: 'fourth_wheel', bc: [0.18, -0.155], y: 0.031 },
+    { label: 'fourth wheel to escape pinion', a: 'fourth_wheel', ac: [0.18, -0.155], b: 'escape_wheel', bc: [0.01, -0.23], y: 0.071 },
+  ];
+  for (const stage of gearStages) {
+    const [ax, az] = stage.ac;
+    const [bx, bz] = stage.bc;
+    const aRadius = radialExtentAt(byName.get(stage.a)!, ax, az, stage.y);
+    const bRadius = radialExtentAt(byName.get(stage.b)!, bx, bz, stage.y);
+    const centreDistance = Math.hypot(ax - bx, az - bz);
+    const meshDepth = aRadius + bRadius - centreDistance;
+    check(
+      `${stage.label} teeth visibly engage on a shared plane`,
+      Number.isFinite(meshDepth) && meshDepth >= -0.012 && meshDepth <= 0.025,
+      `engagement ${meshDepth.toFixed(3)}`,
+    );
+  }
+
+  const transmissionChecks = [
+    { mesh: 'automatic_rotor', x: 0, z: 0, radius: 0.07 },
+    { mesh: 'movement_bridges', x: -0.13, z: -0.02, radius: 0.065 },
+    { mesh: 'movement_bridges', x: -0.255, z: 0.035, radius: 0.075 },
+    { mesh: 'movement_bridges', x: -0.36, z: 0.13, radius: 0.07 },
+    { mesh: 'winding_stem', x: 0.3, z: 0.1, radius: 0.11 },
+    { mesh: 'winding_stem', x: 0.12, z: 0.19, radius: 0.1 },
+    { mesh: 'winding_stem', x: -0.06, z: 0.27, radius: 0.1 },
+    { mesh: 'winding_stem', x: -0.25, z: 0.29, radius: 0.1 },
+    { mesh: 'mainspring_barrel', x: -0.42, z: 0.24, radius: 0.075 },
+  ];
+  for (const transmission of transmissionChecks) {
+    const annularVertices = annularVertexCountAt(byName.get(transmission.mesh)!, transmission.x, transmission.z, -0.114, transmission.radius);
+    check(
+      `${transmission.mesh} carries visible winding transmission at ${transmission.x}, ${transmission.z}`,
+      annularVertices >= 12,
+      `${annularVertices} annular vertices`,
+    );
+  }
 
   const triangles = triangleCount(meshes);
   const recipeTriangles = triangleCount(recipeMeshes);
@@ -122,6 +231,49 @@ async function run() {
   check('content claims every mesh exactly once', JSON.stringify(claimed) === JSON.stringify(names));
   check('walkthrough explains a complete automatic movement', doc.steps.length >= 6);
   check('quiz covers enough of the mechanism', doc.quiz.length >= 8);
+
+  const expectedPivots: Record<string, [number, number, number]> = {
+    hour_hand: [0, 0.208, 0],
+    minute_hand: [0, 0.22, 0],
+    seconds_hand: [0, 0.232, 0],
+    automatic_rotor: [0, -0.17, 0],
+    mainspring_barrel: [-0.42, -0.07, 0.24],
+    centre_wheel: [-0.05, -0.025, 0.1],
+    third_wheel: [0.205, 0.015, 0.055],
+    fourth_wheel: [0.18, 0.055, -0.155],
+    escape_wheel: [0.01, 0.095, -0.23],
+    pallet_fork: [0.28, 0.11, -0.31],
+    balance_wheel: [0.46, 0.105, -0.4],
+    hairspring: [0.46, 0.14, -0.4],
+  };
+  for (const [id, pivot] of Object.entries(expectedPivots)) {
+    check(`${id} declares its real arbor as the motion pivot`, JSON.stringify(doc.parts.find((item: { id: string }) => item.id === id)?.motion?.pivot) === JSON.stringify(pivot));
+  }
+
+  const runtimeRoot = (await new GLTFLoader().parseAsync(buffer as ArrayBuffer, '')).scene;
+  const rawBox = new THREE.Box3().setFromObject(runtimeRoot);
+  const rawSize = rawBox.getSize(new THREE.Vector3());
+  const rawCentre = rawBox.getCenter(new THREE.Vector3());
+  const runtimeScale = FIT_SIZE / Math.max(rawSize.x, rawSize.y, rawSize.z, 1e-4);
+  const assembly = new Assembly(runtimeRoot, doc);
+  for (const [id, authored] of Object.entries(expectedPivots)) {
+    const handle = assembly.byId.get(id)!;
+    const expectedBase = new THREE.Vector3(...authored).sub(rawCentre).multiplyScalar(runtimeScale);
+    check(`${id} runtime group is centred on its authored arbor`, handle.base.distanceTo(expectedBase) <= 1e-5, `${handle.base.distanceTo(expectedBase).toFixed(6)} units`);
+    assembly.setExplode(0);
+    assembly.setCycle(0);
+    assembly.refreshWorld();
+    const restArbor = handle.group.getWorldPosition(new THREE.Vector3());
+    let maxDrift = 0;
+    for (const angle of [0.37, 1.23, 2.61, 4.4]) {
+      assembly.setExplode(0);
+      assembly.setCycle(angle);
+      assembly.refreshWorld();
+      maxDrift = Math.max(maxDrift, handle.group.getWorldPosition(new THREE.Vector3()).distanceTo(restArbor));
+    }
+    check(`${id} arbor world position stays invariant through motion`, maxDrift <= 1e-6, `${maxDrift.toFixed(6)} units`);
+  }
+  assembly.dispose();
 
   const overlay = JSON.parse(readFileSync(translationFile, 'utf8'));
   check('Indonesian overlay covers every teaching part', doc.parts.every((item: { id: string }) => {

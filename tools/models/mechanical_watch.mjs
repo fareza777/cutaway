@@ -84,11 +84,14 @@ function crescentRotor() {
   });
   geometry.translate(0, 0, -0.0275);
   geometry.rotateX(-Math.PI / 2);
-  geometry.translate(0, -0.235, 0);
+  geometry.translate(0, -0.17, 0);
   return merge([
     geometry,
-    cylinder(0.15, 0.15, 0.075, 40, { pos: [0, -0.235, 0] }),
-    torus(0.15, 0.018, 32, 10, { pos: [0, -0.275, 0], rot: [Math.PI / 2, 0, 0] }),
+    cylinder(0.15, 0.15, 0.06, 40, { pos: [0, -0.17, 0] }),
+    torus(0.15, 0.014, 32, 10, { pos: [0, -0.2, 0], rot: [Math.PI / 2, 0, 0] }),
+    // The rotor's coaxial pinion turns about the same authored arbor. Three
+    // fixed reversing wheels on the bridge carry its motion toward the barrel.
+    toothedGear(0.07, 12, 0.032, 0, -0.13, 0, { hub: 0.026, spokes: 0 }),
   ]);
 }
 
@@ -112,115 +115,142 @@ export default function mechanicalWatch() {
   const group = new THREE.Group();
 
   const caseProfile = [
-    [0.9, -0.21], [0.985, -0.2], [1.035, -0.13], [1.05, -0.02],
-    [1.045, 0.1], [1.005, 0.17], [0.91, 0.2], [0.9, -0.21],
+    [0.9, -0.17], [0.985, -0.17], [1.035, -0.12], [1.05, -0.02],
+    [1.045, 0.09], [1.005, 0.15], [0.91, 0.17], [0.9, -0.17],
   ];
   const bezelProfile = [
-    [0.875, 0.19], [0.99, 0.18], [1.035, 0.215], [1.01, 0.27],
-    [0.91, 0.305], [0.875, 0.28], [0.875, 0.19],
+    [0.875, 0.16], [0.99, 0.155], [1.035, 0.185], [1.01, 0.235],
+    [0.91, 0.265], [0.875, 0.245], [0.875, 0.16],
   ];
 
   group.add(
     part('case', merge([
       lathe(caseProfile, 96),
-      torus(0.995, 0.035, 96, 12, { pos: [0, -0.13, 0], rot: [Math.PI / 2, 0, 0] }),
+      torus(0.995, 0.028, 96, 12, { pos: [0, -0.11, 0], rot: [Math.PI / 2, 0, 0] }),
     ]), STEEL()),
 
     part('bezel', merge([
       lathe(bezelProfile, 96),
-      torus(0.91, 0.018, 96, 10, { pos: [0, 0.285, 0], rot: [Math.PI / 2, 0, 0] }),
+      torus(0.91, 0.015, 96, 10, { pos: [0, 0.25, 0], rot: [Math.PI / 2, 0, 0] }),
     ]), POLISHED_STEEL()),
 
     part('crystal', merge([
-      cylinder(0.89, 0.89, 0.052, 96, { pos: [0, 0.315, 0] }),
-      torus(0.86, 0.025, 96, 12, { pos: [0, 0.335, 0], rot: [Math.PI / 2, 0, 0] }),
+      cylinder(0.89, 0.89, 0.036, 96, { pos: [0, 0.268, 0] }),
+      torus(0.86, 0.015, 96, 12, { pos: [0, 0.278, 0], rot: [Math.PI / 2, 0, 0] }),
     ]), GLASS()),
 
     part('caseback', merge([
-      cylinder(0.91, 0.91, 0.065, 96, { pos: [0, -0.305, 0] }),
-      torus(0.83, 0.045, 96, 12, { pos: [0, -0.34, 0], rot: [Math.PI / 2, 0, 0] }),
-      ring(8, () => roundedBox(0.08, 0.018, 0.025, 0.004, 2, { pos: [0.84, -0.342, 0] })),
+      cylinder(0.91, 0.91, 0.046, 96, { pos: [0, -0.258, 0] }),
+      torus(0.83, 0.027, 96, 12, { pos: [0, -0.268, 0], rot: [Math.PI / 2, 0, 0] }),
+      ring(8, () => roundedBox(0.08, 0.014, 0.025, 0.004, 2, { pos: [0.84, -0.282, 0] })),
     ]), STEEL()),
 
     part('crown', crownGeometry(), POLISHED_STEEL()),
 
     part('winding_stem', merge([
-      cylinder(0.028, 0.028, 0.72, 20, { pos: [0.82, -0.04, 0], rot: [0, 0, Math.PI / 2] }),
-      toothedGear(0.12, 18, 0.045, 0.48, -0.04, 0, { hub: 0.035, spokes: 0 }),
+      cylinder(0.028, 0.028, 0.72, 20, { pos: [0.82, -0.02, 0], rot: [0, 0, Math.PI / 2] }),
+      toothedGear(0.1, 16, 0.032, 0.48, -0.13, 0, { hub: 0.03, spokes: 0 }),
+      toothedGear(0.11, 18, 0.032, 0.3, -0.13, 0.1, { hub: 0.03, spokes: 0 }),
+      toothedGear(0.1, 16, 0.032, 0.12, -0.13, 0.19, { hub: 0.028, spokes: 0 }),
+      toothedGear(0.1, 16, 0.032, -0.06, -0.13, 0.27, { hub: 0.028, spokes: 0 }),
+      toothedGear(0.1, 16, 0.032, -0.25, -0.13, 0.29, { hub: 0.028, spokes: 0 }),
+      cylinder(0.055, 0.035, 0.09, 20, { pos: [0.48, -0.055, 0] }),
     ]), STEEL()),
 
     part('dial', merge([
-      cylinder(0.855, 0.855, 0.034, 96, { pos: [0, 0.205, 0] }),
+      cylinder(0.855, 0.855, 0.028, 96, { pos: [0, 0.175, 0] }),
       ring(12, (_, angle) => roundedBox(angle % (Math.PI / 2) < 0.01 ? 0.075 : 0.05, 0.026, 0.135, 0.012, 2, {
-        pos: [0, 0.231, 0.7],
+        pos: [0, 0.198, 0.7],
       })),
-      ring(60, (index) => index % 5 ? cylinder(0.008, 0.008, 0.02, 8, { pos: [0, 0.23, 0.785] }) : null),
-      torus(0.08, 0.012, 36, 8, { pos: [0, 0.234, 0], rot: [Math.PI / 2, 0, 0] }),
+      ring(60, (index) => index % 5 ? cylinder(0.008, 0.008, 0.016, 8, { pos: [0, 0.197, 0.785] }) : null),
+      torus(0.08, 0.012, 36, 8, { pos: [0, 0.2, 0], rot: [Math.PI / 2, 0, 0] }),
     ]), DIAL()),
 
     part('hour_hand', place(merge([
-      roundedBox(0.075, 0.022, 0.47, 0.018, 3, { pos: [0, 0.258, 0.22] }),
-      cylinder(0.075, 0.075, 0.024, 28, { pos: [0, 0.258, 0] }),
+      roundedBox(0.075, 0.018, 0.47, 0.018, 3, { pos: [0, 0.208, 0.22] }),
+      cylinder(0.075, 0.075, 0.02, 28, { pos: [0, 0.208, 0] }),
     ]), { rot: [0, -0.92, 0] }), DARK_STEEL()),
 
     part('minute_hand', place(merge([
-      roundedBox(0.05, 0.018, 0.67, 0.012, 3, { pos: [0, 0.272, 0.31] }),
-      cylinder(0.055, 0.055, 0.02, 24, { pos: [0, 0.272, 0] }),
+      roundedBox(0.05, 0.016, 0.67, 0.012, 3, { pos: [0, 0.22, 0.31] }),
+      cylinder(0.055, 0.055, 0.018, 24, { pos: [0, 0.22, 0] }),
     ]), { rot: [0, 0.88, 0] }), DARK_STEEL()),
 
     part('seconds_hand', place(merge([
-      roundedBox(0.014, 0.012, 0.79, 0.004, 2, { pos: [0, 0.287, 0.29] }),
-      cylinder(0.035, 0.035, 0.016, 20, { pos: [0, 0.287, 0] }),
-      sphere(0.035, 18, { pos: [0, 0.287, -0.24], scale: [1, 0.25, 1] }),
+      roundedBox(0.014, 0.01, 0.79, 0.004, 2, { pos: [0, 0.232, 0.29] }),
+      cylinder(0.035, 0.035, 0.014, 20, { pos: [0, 0.232, 0] }),
+      sphere(0.035, 18, { pos: [0, 0.232, -0.24], scale: [1, 0.22, 1] }),
     ]), { rot: [0, Math.PI, 0] }), named(pbr('#a33b35', { metalness: 0.72, roughness: 0.25 }), 'lacquered steel')),
 
     part('automatic_rotor', crescentRotor(), named(pbr('#b6bec5', { metalness: 0.94, roughness: 0.24 }), 'rotor steel')),
 
     part('mainspring_barrel', merge([
-      toothedGear(0.3, 54, 0.075, -0.4, -0.035, 0.25, { hub: 0.065, spokes: 0 }),
-      cylinder(0.235, 0.235, 0.085, 56, { pos: [-0.4, -0.045, 0.25] }),
-      spiral(-0.4, 0.008, 0.25, 0.045, 0.195, 4.2, 0.008, 140),
+      toothedGear(0.3, 54, 0.032, -0.42, -0.07, 0.24, { hub: 0.06, spokes: 0 }),
+      cylinder(0.235, 0.235, 0.05, 56, { pos: [-0.42, -0.04, 0.24] }),
+      spiral(-0.42, -0.005, 0.24, 0.045, 0.195, 4.2, 0.008, 140),
+      toothedGear(0.075, 14, 0.032, -0.42, -0.13, 0.24, { hub: 0.025, spokes: 0 }),
     ]), BRASS()),
 
-    part('centre_wheel', toothedGear(0.18, 48, 0.048, 0, 0.005, 0.08, { hub: 0.045, spokes: 5 }), BRASS()),
-    part('third_wheel', toothedGear(0.135, 40, 0.043, 0.31, -0.012, 0.04, { hub: 0.036, spokes: 5 }), BRASS()),
-    part('fourth_wheel', toothedGear(0.13, 36, 0.038, 0.27, 0.005, -0.24, { hub: 0.034, spokes: 5 }), BRASS()),
-    part('escape_wheel', toothedGear(0.105, 18, 0.032, 0.04, -0.005, -0.32, { hub: 0.028, spokes: 6 }), BRASS()),
+    part('centre_wheel', merge([
+      toothedGear(0.105, 12, 0.032, -0.05, -0.07, 0.1, { hub: 0.03, spokes: 0 }),
+      toothedGear(0.205, 48, 0.032, -0.05, -0.025, 0.1, { hub: 0.045, spokes: 5 }),
+    ]), BRASS()),
+    part('third_wheel', merge([
+      toothedGear(0.06, 10, 0.032, 0.205, -0.025, 0.055, { hub: 0.024, spokes: 0 }),
+      toothedGear(0.155, 40, 0.032, 0.205, 0.015, 0.055, { hub: 0.036, spokes: 5 }),
+    ]), BRASS()),
+    part('fourth_wheel', merge([
+      toothedGear(0.065, 10, 0.032, 0.18, 0.015, -0.155, { hub: 0.024, spokes: 0 }),
+      toothedGear(0.138, 36, 0.032, 0.18, 0.055, -0.155, { hub: 0.032, spokes: 5 }),
+    ]), BRASS()),
+    part('escape_wheel', merge([
+      toothedGear(0.055, 8, 0.032, 0.01, 0.055, -0.23, { hub: 0.022, spokes: 0 }),
+      toothedGear(0.11, 18, 0.032, 0.01, 0.095, -0.23, { hub: 0.028, spokes: 6 }),
+    ]), BRASS()),
 
     part('pallet_fork', merge([
-      roundedBox(0.31, 0.035, 0.045, 0.012, 3, { pos: [0.22, 0.02, -0.34], rot: [0, -0.12, 0] }),
-      roundedBox(0.12, 0.038, 0.045, 0.01, 2, { pos: [0.09, 0.02, -0.25], rot: [0, 0.78, 0] }),
-      roundedBox(0.12, 0.038, 0.045, 0.01, 2, { pos: [0.1, 0.02, -0.43], rot: [0, -0.78, 0] }),
-      cylinder(0.035, 0.035, 0.05, 20, { pos: [0.34, 0.02, -0.35] }),
+      roundedBox(0.28, 0.032, 0.045, 0.012, 3, { pos: [0.18, 0.11, -0.28], rot: [0, -0.22, 0] }),
+      roundedBox(0.14, 0.034, 0.042, 0.01, 2, { pos: [0.075, 0.11, -0.22], rot: [0, 0.72, 0] }),
+      roundedBox(0.16, 0.034, 0.042, 0.01, 2, { pos: [0.39, 0.11, -0.35], rot: [0, -0.52, 0] }),
+      cylinder(0.035, 0.035, 0.045, 20, { pos: [0.28, 0.11, -0.31] }),
     ]), STEEL()),
 
     part('balance_wheel', merge([
-      torus(0.245, 0.025, 72, 10, { pos: [0.48, 0.002, -0.44], rot: [Math.PI / 2, 0, 0] }),
-      cylinder(0.045, 0.045, 0.05, 24, { pos: [0.48, 0.002, -0.44] }),
-      place(ring(4, () => roundedBox(0.39, 0.03, 0.025, 0.008, 2, { pos: [0.195, 0, 0] })), { pos: [0.48, 0.002, -0.44] }),
-      ring(12, (_, angle) => sphere(0.018, 12, { pos: [0.48 + Math.cos(angle) * 0.245, 0.002, -0.44 + Math.sin(angle) * 0.245], scale: [1, 0.65, 1] })),
+      torus(0.245, 0.025, 72, 10, { pos: [0.46, 0.105, -0.4], rot: [Math.PI / 2, 0, 0] }),
+      cylinder(0.045, 0.045, 0.045, 24, { pos: [0.46, 0.105, -0.4] }),
+      place(ring(4, () => roundedBox(0.22, 0.027, 0.025, 0.008, 2, { pos: [0.11, 0, 0] })), { pos: [0.46, 0.105, -0.4] }),
+      ...Array.from({ length: 12 }, (_, index) => {
+        const angle = (index / 12) * TAU;
+        return sphere(0.018, 12, {
+          pos: [0.46 + Math.cos(angle) * 0.245, 0.105, -0.4 + Math.sin(angle) * 0.245],
+          scale: [1, 0.65, 1],
+        });
+      }),
     ]), POLISHED_STEEL()),
 
     part('hairspring', merge([
-      spiral(0.48, 0.035, -0.44, 0.035, 0.205, 5.2, 0.0065, 180),
-      cylinder(0.018, 0.018, 0.045, 16, { pos: [0.48, 0.035, -0.44] }),
+      spiral(0.46, 0.14, -0.4, 0.035, 0.205, 5.2, 0.0065, 180),
+      cylinder(0.018, 0.018, 0.04, 16, { pos: [0.46, 0.14, -0.4] }),
     ]), DARK_STEEL()),
 
     part('movement_bridges', merge([
-      roundedBox(0.72, 0.045, 0.16, 0.055, 4, { pos: [-0.2, -0.105, 0.47], rot: [0, -0.12, 0] }),
-      roundedBox(0.54, 0.045, 0.14, 0.05, 4, { pos: [0.13, -0.105, 0.23], rot: [0, 0.55, 0] }),
-      roundedBox(0.45, 0.045, 0.13, 0.045, 4, { pos: [0.04, -0.105, -0.08], rot: [0, -0.48, 0] }),
-      torus(0.29, 0.045, 64, 10, { pos: [0.48, -0.105, -0.44], rot: [Math.PI / 2, 0, 0] }),
-      tube(0.88, 0.82, 0.04, 96, { pos: [0, -0.13, 0] }),
+      roundedBox(0.72, 0.038, 0.16, 0.05, 4, { pos: [-0.2, -0.065, 0.47], rot: [0, -0.12, 0] }),
+      roundedBox(0.54, 0.038, 0.14, 0.045, 4, { pos: [0.13, -0.065, 0.23], rot: [0, 0.55, 0] }),
+      roundedBox(0.45, 0.038, 0.13, 0.042, 4, { pos: [0.04, -0.065, -0.08], rot: [0, -0.48, 0] }),
+      torus(0.29, 0.038, 64, 10, { pos: [0.46, -0.065, -0.4], rot: [Math.PI / 2, 0, 0] }),
+      tube(0.88, 0.82, 0.032, 96, { pos: [0, -0.1, 0] }),
+      toothedGear(0.065, 12, 0.032, -0.13, -0.13, -0.02, { hub: 0.024, spokes: 0 }),
+      toothedGear(0.075, 14, 0.032, -0.255, -0.13, 0.035, { hub: 0.025, spokes: 0 }),
+      toothedGear(0.07, 12, 0.032, -0.36, -0.13, 0.13, { hub: 0.024, spokes: 0 }),
       ...[[-0.55, 0.48], [-0.04, 0.35], [0.15, -0.02], [0.67, -0.48], [-0.62, -0.37]].map(([x, z]) =>
-        cylinder(0.035, 0.035, 0.055, 18, { pos: [x, -0.105, z] })),
+        cylinder(0.035, 0.035, 0.045, 18, { pos: [x, -0.065, z] })),
     ]), named(pbr('#c7c2b4', { metalness: 0.86, roughness: 0.4 }), 'satin steel bridges')),
 
     part('jewels', merge([
-      ...[[-0.4, 0.25], [0, 0.08], [0.31, 0.04], [0.27, -0.24], [0.04, -0.32], [0.48, -0.44]].map(([x, z]) =>
-        sphere(0.045, 22, { pos: [x, 0.047, z], scale: [1, 0.32, 1] })),
-      sphere(0.025, 18, { pos: [0.2, 0.045, -0.35], scale: [1, 0.36, 1] }),
-      sphere(0.025, 18, { pos: [0.12, 0.045, -0.26], scale: [1, 0.36, 1] }),
+      ...[[-0.42, 0.24], [-0.05, 0.1], [0.205, 0.055], [0.18, -0.155], [0.01, -0.23], [0.46, -0.4]].map(([x, z]) =>
+        sphere(0.04, 22, { pos: [x, 0.13, z], scale: [1, 0.28, 1] })),
+      sphere(0.023, 18, { pos: [0.18, 0.135, -0.28], scale: [1, 0.32, 1] }),
+      sphere(0.023, 18, { pos: [0.07, 0.135, -0.22], scale: [1, 0.32, 1] }),
     ]), RUBY()),
 
     part('strap_lugs', merge([

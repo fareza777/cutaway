@@ -56,7 +56,16 @@ function validate(doc, meshNames, errors, warnings) {
     }
     if (!part.nodes?.length) at(`part "${part.id}" lists no nodes`);
 
-    for (const [key, spec] of Object.entries(part.motion ?? {})) {
+    const motion = part.motion ?? {};
+    if ('pivot' in motion && (
+      !Array.isArray(motion.pivot)
+      || motion.pivot.length !== 3
+      || motion.pivot.some((value) => typeof value !== 'number' || !Number.isFinite(value))
+    )) {
+      at(`part "${part.id}" motion pivot must be three finite numbers`);
+    }
+    for (const [key, spec] of Object.entries(motion)) {
+      if (key === 'pivot') continue;
       if (!['spin', 'slide', 'swing'].includes(key)) at(`part "${part.id}" has unknown motion "${key}"`);
       if (!AXES.includes(spec.axis)) at(`part "${part.id}" motion "${key}" has bad axis`);
     }

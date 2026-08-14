@@ -13,6 +13,8 @@ export type Axis = 'x' | 'y' | 'z';
 
 /** Composable rigid motion, evaluated against a shared cycle angle. */
 export type Motion = {
+  /** Optional rotation origin in the source model's local coordinates. */
+  pivot?: Vec3;
   /** Continuous rotation about `axis`, in cycles per crank revolution. */
   spin?: { axis: Axis; ratio: number };
   /** Sinusoidal travel along `axis`, in normalised model units. */

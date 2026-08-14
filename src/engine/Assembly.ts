@@ -8,8 +8,9 @@
  * a new object is therefore naming meshes and writing prose, with no numbers to
  * tune by hand.
  *
- * Each part is re-parented into its own group centred on its bounding box, so a
- * rotation is about the part's own axis and an offset is about its own centre.
+ * Each part is re-parented into its own group. The default origin is its
+ * bounding-box centre; mechanisms may author an explicit pivot where a real
+ * arbor or hinge is offset from that box centre.
  */
 
 import * as THREE from 'three';
@@ -111,7 +112,10 @@ export class Assembly {
     for (const def of doc.parts) {
       const meshes = def.nodes.map((name) => meshesByName.get(name)).filter(Boolean) as THREE.Mesh[];
       if (!meshes.length) continue; // validate-content guards this; skip rather than crash a release build.
-      this.parts.push(this.buildPart(def, meshes));
+      const motionPivot = def.motion?.pivot
+        ? this.root.worldToLocal(scene.localToWorld(new THREE.Vector3(...def.motion.pivot)))
+        : undefined;
+      this.parts.push(this.buildPart(def, meshes, motionPivot));
     }
 
     this.solveExplode();
@@ -121,7 +125,7 @@ export class Assembly {
     this.refreshWorld();
   }
 
-  private buildPart(def: Part, meshes: THREE.Mesh[]): PartHandle {
+  private buildPart(def: Part, meshes: THREE.Mesh[], motionPivot?: THREE.Vector3): PartHandle {
     const bounds = new THREE.Box3();
     for (const mesh of meshes) {
       mesh.updateWorldMatrix(true, false);
@@ -133,9 +137,10 @@ export class Assembly {
     const centre = this.root.worldToLocal(bounds.getCenter(new THREE.Vector3()));
     const radius = bounds.getSize(new THREE.Vector3()).length() / 2;
 
+    const origin = motionPivot ?? centre;
     const group = new THREE.Group();
     group.name = `part:${def.id}`;
-    group.position.copy(centre);
+    group.position.copy(origin);
     this.root.add(group);
     group.updateMatrixWorld(true);
     // attach() preserves each mesh's world transform while re-parenting, so
@@ -180,7 +185,7 @@ export class Assembly {
       group,
       meshes,
       materials,
-      base: centre.clone(),
+      base: origin.clone(),
       radius,
       explode: this.explodeVector(def, centre),
       restBox,
