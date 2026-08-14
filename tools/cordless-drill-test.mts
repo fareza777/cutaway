@@ -79,6 +79,61 @@ function radialExtentInSlab(mesh: THREE.Mesh, sampleX: number, halfWidth: number
 
 const angleDistance = (a: number, b: number) => Math.abs(Math.atan2(Math.sin(a - b), Math.cos(a - b)));
 
+type ComponentStats = {
+  box: THREE.Box3;
+  vertexCount: number;
+};
+
+function geometryComponents(mesh: THREE.Mesh): ComponentStats[] {
+  const position = mesh.geometry.getAttribute('position');
+  const index = mesh.geometry.getIndex();
+  const parent = Array.from({ length: position.count }, (_, value) => value);
+  const find = (value: number): number => {
+    let root = value;
+    while (parent[root] !== root) root = parent[root];
+    while (parent[value] !== value) {
+      const next = parent[value];
+      parent[value] = root;
+      value = next;
+    }
+    return root;
+  };
+  const union = (a: number, b: number) => {
+    const ar = find(a);
+    const br = find(b);
+    if (ar !== br) parent[br] = ar;
+  };
+  const indices = index ? Array.from(index.array as ArrayLike<number>, Number) : Array.from({ length: position.count }, (_, value) => value);
+  for (let offset = 0; offset < indices.length; offset += 3) {
+    union(indices[offset], indices[offset + 1]);
+    union(indices[offset], indices[offset + 2]);
+  }
+  // glTF preserves hard-edge vertices separately because their normals differ.
+  // Connectivity is geometric, so weld coincident positions for this analysis
+  // without mutating the production geometry under test.
+  const coincident = new Map<string, number>();
+  for (let vertex = 0; vertex < position.count; vertex += 1) {
+    const key = `${position.getX(vertex).toFixed(4)},${position.getY(vertex).toFixed(4)},${position.getZ(vertex).toFixed(4)}`;
+    const existing = coincident.get(key);
+    if (existing === undefined) coincident.set(key, vertex);
+    else union(existing, vertex);
+  }
+  const components = new Map<number, ComponentStats>();
+  const point = new THREE.Vector3();
+  for (let vertex = 0; vertex < position.count; vertex += 1) {
+    const root = find(vertex);
+    let stats = components.get(root);
+    if (!stats) {
+      stats = { box: new THREE.Box3(), vertexCount: 0 };
+      components.set(root, stats);
+    }
+    point.fromBufferAttribute(position, vertex);
+    stats.box.expandByPoint(point);
+    stats.vertexCount += 1;
+  }
+  return [...components.values()].filter((component) => component.vertexCount >= 4);
+}
+
 async function run() {
   console.log('\nCordless drill quality contract');
 
@@ -157,6 +212,14 @@ async function run() {
   const jawsBox = bounds(byName.get('chuck_jaws')!);
   const chuckBox = bounds(byName.get('chuck_body')!);
   check('three jaws emerge from the chuck nose without floating', jawsBox.max.x <= chuckBox.max.x && jawsBox.min.x < chuckBox.min.x && chuckBox.min.x - jawsBox.max.x <= 0.72);
+  const jawComponents = geometryComponents(byName.get('chuck_jaws')!);
+  check('each chuck jaw is one continuous production-GLB component', jawComponents.length === 3, `${jawComponents.length} components`);
+  check('every continuous jaw is seated through the chuck nose', jawComponents.length === 3 && jawComponents.every((component) => {
+    const jawLength = component.box.max.x - component.box.min.x;
+    return jawLength >= 0.34 && jawLength <= 0.52
+      && component.box.max.x >= chuckBox.min.x + 0.06
+      && component.box.min.x <= chuckBox.min.x - 0.12;
+  }));
   const jawPositions = byName.get('chuck_jaws')!.geometry.getAttribute('position');
   for (let jaw = 0; jaw < 3; jaw += 1) {
     const expectedAngle = jaw * Math.PI * 2 / 3;
@@ -172,11 +235,21 @@ async function run() {
   const spindleClutchOverlap = intervalOverlap(bounds(byName.get('output_spindle')!), bounds(byName.get('torque_clutch')!), 'x');
   check('chuck seats on the spindle without floating or gross intersection', chuckSpindleOverlap >= 0.04 && chuckSpindleOverlap <= 0.24, `axial overlap ${chuckSpindleOverlap.toFixed(3)}`);
   check('spindle seats in the clutch without floating or gross intersection', spindleClutchOverlap >= 0.04 && spindleClutchOverlap <= 0.2, `axial overlap ${spindleClutchOverlap.toFixed(3)}`);
+  const clutchBox = bounds(byName.get('torque_clutch')!);
+  const clutchSize = clutchBox.getSize(new THREE.Vector3());
+  const exposedClutchLength = shellBox.min.x - clutchBox.min.x;
+  const clutchToChuckGap = clutchBox.min.x - chuckBox.max.x;
+  check('substantial clutch collar is exposed ahead of the housing nose', exposedClutchLength >= 0.22 && clutchSize.x >= 0.3 && clutchSize.x <= 0.46 && clutchSize.y / shellSize.z >= 0.62, `exposed ${exposedClutchLength.toFixed(3)}, size ${clutchSize.x.toFixed(3)} x ${clutchSize.y.toFixed(3)}`);
+  check('exposed clutch collar sits immediately behind the chuck', clutchToChuckGap >= -0.035 && clutchToChuckGap <= 0.09, `gap ${clutchToChuckGap.toFixed(3)}`);
 
   const grip = bounds(byName.get('rubber_grip')!);
   const battery = bounds(byName.get('battery_shell')!);
   const trigger = centre(byName.get('trigger')!);
   check('battery sits below and directly supports the grip', battery.max.y <= grip.min.y + 0.09 && battery.max.y >= grip.min.y - 0.14 && intervalOverlap(battery, grip, 'x') >= 0.28);
+  const batterySize = battery.getSize(new THREE.Vector3());
+  const gripSize = grip.getSize(new THREE.Vector3());
+  check('battery pack has enough volume for two realistic cell rows', batterySize.y >= 0.6 && batterySize.y <= 0.82 && batterySize.x / batterySize.y >= 1.8 && batterySize.x / batterySize.y <= 2.7, `${batterySize.x.toFixed(2)} x ${batterySize.y.toFixed(2)} x ${batterySize.z.toFixed(2)}`);
+  check('ergonomic grip is materially narrower than the motor barrel', gripSize.z / shellSize.z >= 0.58 && gripSize.z / shellSize.z <= 0.82 && gripSize.x / gripSize.y <= 0.62, `depth ratio ${(gripSize.z / shellSize.z).toFixed(2)}, x/y ${(gripSize.x / gripSize.y).toFixed(2)}`);
   check('trigger is in front of the handle and below the motor barrel', trigger.x < centre(byName.get('rubber_grip')!).x - 0.28 && trigger.y < axis.y - 0.32 && trigger.y > grip.max.y - 0.45);
   check('direction switch is directly above the trigger', centre(byName.get('direction_switch')!).y > trigger.y + 0.12 && Math.abs(centre(byName.get('direction_switch')!).x - trigger.x) <= 0.18);
   check('two-speed selector is on top of the transmission housing', centre(byName.get('speed_selector')!).y > shellBox.max.y - 0.08 && centre(byName.get('speed_selector')!).x < axis.x);
@@ -187,24 +260,57 @@ async function run() {
   const boardBox = bounds(byName.get('battery_management_board')!);
   check('battery cell grid is contained within the pack', cellsBox.min.x > battery.min.x && cellsBox.max.x < battery.max.x && cellsBox.min.z > battery.min.z && cellsBox.max.z < battery.max.z && cellsBox.min.y > battery.min.y && cellsBox.max.y < battery.max.y);
   check('BMS sits above the cell grid under the contacts', boardBox.min.y >= cellsBox.max.y - 0.03 && centre(byName.get('contacts')!).y > boardBox.max.y - 0.03);
-  const cellPositions = byName.get('battery_cells')!.geometry.getAttribute('position');
-  for (let column = 0; column < 5; column += 1) {
-    for (const row of [-1, 1]) {
-      const cx = 0.45 + column * 0.19;
-      const cz = row * 0.18;
-      let vertices = 0;
-      for (let index = 0; index < cellPositions.count; index += 1) {
-        if (Math.abs(cellPositions.getX(index) - cx) <= 0.09 && Math.abs(cellPositions.getZ(index) - cz) <= 0.09) vertices += 1;
-      }
-      check(`battery has cell ${column + 1}${row < 0 ? 'A' : 'B'} in its 5s2p grid`, vertices >= 40, `${vertices} vertices`);
-    }
-  }
+  const cellComponents = geometryComponents(byName.get('battery_cells')!);
+  const cylindricalCells = cellComponents.filter((component) => {
+    const componentSize = component.box.getSize(new THREE.Vector3());
+    const diameter = Math.max(componentSize.x, componentSize.y);
+    return componentSize.z >= 0.45 && componentSize.z / diameter >= 3.2 && componentSize.z / diameter <= 4.4;
+  });
+  check('5s2p pack contains ten realistically slender cylindrical cells', cylindricalCells.length === 10, `${cylindricalCells.length} slender cell cans`);
+  const cellCentres = cylindricalCells.map((component) => component.box.getCenter(new THREE.Vector3()));
+  const cluster = (values: number[], tolerance: number) => values.sort((a, b) => a - b).reduce<number[]>((groups, value) => {
+    if (!groups.length || Math.abs(value - groups[groups.length - 1]) > tolerance) groups.push(value);
+    return groups;
+  }, []);
+  check('ten cells form five columns and two parallel rows', cluster(cellCentres.map((point) => point.x), 0.08).length === 5 && cluster(cellCentres.map((point) => point.y), 0.08).length === 2 && cellCentres.every((point) => Math.abs(point.z) <= 0.025));
 
   const gearbox = byName.get('planetary_gearbox')!;
   const firstStageRadius = radialExtentInSlab(gearbox, 0.08, 0.115, axis.y, axis.z);
   const secondStageRadius = radialExtentInSlab(gearbox, -0.2, 0.115, axis.y, axis.z);
   check('first planetary stage has its authored compact ring radius', firstStageRadius >= 0.275 && firstStageRadius <= 0.305, `${firstStageRadius.toFixed(3)}`);
   check('second planetary stage is visibly smaller', secondStageRadius >= 0.24 && secondStageRadius <= 0.27 && firstStageRadius - secondStageRadius >= 0.025, `${secondStageRadius.toFixed(3)}`);
+  const gearboxComponents = geometryComponents(gearbox);
+  const carrierPlates = gearboxComponents.filter((component) => {
+    const componentSize = component.box.getSize(new THREE.Vector3());
+    return componentSize.x <= 0.065
+      && componentSize.y >= 0.28
+      && componentSize.z >= 0.28
+      && component.box.min.y < axis.y && component.box.max.y > axis.y
+      && component.box.min.z < axis.z && component.box.max.z > axis.z;
+  });
+  check('both planetary stages have physically connected carrier plates', carrierPlates.length >= 2, `${carrierPlates.length} carrier plates`);
+  const axialLinks = gearboxComponents.filter((component) => {
+    const componentSize = component.box.getSize(new THREE.Vector3());
+    return componentSize.x >= 0.24 && componentSize.y <= 0.16 && componentSize.z <= 0.16
+      && component.box.min.y <= axis.y && component.box.max.y >= axis.y
+      && component.box.min.z <= axis.z && component.box.max.z >= axis.z;
+  });
+  check('gearbox has separate first-carrier and second-carrier output links', axialLinks.length >= 2 && axialLinks.some((link) => link.box.max.x > 0 && link.box.min.x < -0.15) && axialLinks.some((link) => link.box.max.x < -0.12 && link.box.min.x < -0.48), `${axialLinks.length} axial links`);
+
+  const ventMeshes = [byName.get('left_housing')!, byName.get('right_housing')!];
+  ventMeshes.forEach((mesh) => mesh.updateMatrixWorld(true));
+  let openVentRays = 0;
+  for (let index = 0; index < 6; index += 1) {
+    const raycaster = new THREE.Raycaster(
+      new THREE.Vector3(1.08 + index * 0.05, 0.83 + index * 0.025, 1.2),
+      new THREE.Vector3(0, 0, -1),
+      0,
+      2.4,
+    );
+    if (raycaster.intersectObjects(ventMeshes, false).length === 0) openVentRays += 1;
+  }
+  const solidRearRay = new THREE.Raycaster(new THREE.Vector3(1.02, 1.12, 1.2), new THREE.Vector3(0, 0, -1), 0, 2.4);
+  check('rear fan vents are true perforations through both shell halves', openVentRays >= 5 && solidRearRay.intersectObjects(ventMeshes, false).length >= 2, `${openVentRays}/6 open rays`);
 
   const triangles = triangleCount(productionMeshes);
   const recipeTriangles = triangleCount(recipeMeshes);
@@ -243,9 +349,9 @@ async function run() {
   const expectedPivots: Record<string, [number, number, number]> = {
     motor_rotor: [0.68, 0.88, 0],
     cooling_fan: [1.18, 0.88, 0],
-    output_spindle: [-1.05, 0.88, 0],
-    chuck_body: [-1.47, 0.88, 0],
-    chuck_jaws: [-1.72, 0.88, 0],
+    output_spindle: [-1.28, 0.88, 0],
+    chuck_body: [-1.62, 0.88, 0],
+    chuck_jaws: [-1.93, 0.88, 0],
   };
   for (const [id, pivot] of Object.entries(expectedPivots)) {
     check(`${id} declares its real shaft axis as the motion pivot`, JSON.stringify(doc.parts.find((item: { id: string }) => item.id === id)?.motion?.pivot) === JSON.stringify(pivot));
@@ -326,6 +432,7 @@ async function run() {
   for (const term of ['bor', 'kumparan', 'poros', 'roda gigi planet', 'papan kontrol', 'pengatur kecepatan elektronik', 'pwm', 'bukan sekadar sakelar hidup-mati']) {
     check(`Indonesian terminology includes "${term}"`, indonesianText.includes(term));
   }
+  check('Indonesian selector copy uses precise natural damage wording', indonesianText.includes('tersumbing atau rusak') && !indonesianText.includes('terkelupas'));
 
   if (failures) {
     console.error(`\n${failures} cordless drill quality check(s) failed.`);

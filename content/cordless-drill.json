@@ -102,7 +102,7 @@
       "nodes": ["planetary_gearbox"],
       "name": "Two-Stage Planetary Gearbox",
       "short": "Two compact reduction stages sharing the motor axis",
-      "detail": "Each stage places three planet gears between a central sun and an outer ring. The planets share load around the axis, allowing high torque in a short barrel. The two visible stages use different diameters to show separate reductions; their teaching geometry exposes the sun, planets, carrier, and ring without pretending that smooth display surfaces are literal production tooth profiles.",
+      "detail": "Each stage places three planet gears between a central sun and an outer ring. Steel pins support the planets on a carrier plate, so the first carrier feeds the second-stage sun and the second carrier feeds the clutch output shaft. The two visible stages use different diameters to show separate reductions; smooth display surfaces simplify the literal production tooth profiles without breaking the real power path.",
       "layer": 3,
       "explode": [-0.25, 0.45, 0]
     },
@@ -111,7 +111,7 @@
       "nodes": ["torque_clutch"],
       "name": "Adjustable Torque Clutch",
       "short": "A spring-loaded limiter behind the chuck",
-      "detail": "Turning the numbered collar changes spring preload on detent faces in the drive path. Below the chosen torque they remain engaged and pass rotation to the spindle. When a screw seats and reaction torque exceeds the setting, the faces ratchet apart repeatedly, limiting fastener torque while the motor can keep turning.",
+      "detail": "The substantial ribbed collar is exposed between the housing nose and chuck so the operator can turn it; raised setting marks show the selected preload. Turning it changes spring force on detent faces in the drive path. Below the chosen torque they pass rotation to the spindle, but when a seated screw raises reaction torque above the setting, the faces ratchet apart repeatedly.",
       "layer": 3,
       "explode": [-0.55, 0.2, 0]
     },
@@ -123,7 +123,7 @@
       "detail": "The spindle is coaxial with the motor and gearbox but rotates much more slowly after the two reductions. Bearings in the housing resist radial drilling loads, while a shoulder carries thrust generated as the bit advances. Its front thread or taper secures the chuck body.",
       "layer": 4,
       "explode": [-0.75, 0, 0],
-      "motion": { "pivot": [-1.05, 0.88, 0], "spin": { "axis": "x", "ratio": 1 } }
+      "motion": { "pivot": [-1.28, 0.88, 0], "spin": { "axis": "x", "ratio": 1 } }
     },
     {
       "id": "chuck_body",
@@ -133,7 +133,7 @@
       "detail": "Twisting the knurled sleeve rotates an internal nut around the three inclined jaw threads. The steel body stays aligned on the spindle and provides a hand-sized gripping surface without an oversized toy-like nose. Tightening converts sleeve rotation into equal axial jaw travel.",
       "layer": 4,
       "explode": [-1, 0, 0],
-      "motion": { "pivot": [-1.47, 0.88, 0], "spin": { "axis": "x", "ratio": 1 } }
+      "motion": { "pivot": [-1.62, 0.88, 0], "spin": { "axis": "x", "ratio": 1 } }
     },
     {
       "id": "chuck_jaws",
@@ -143,7 +143,7 @@
       "detail": "Three jaws spaced 120 degrees apart slide on inclined guides. Because one nut drives them together, their gripping faces remain centred on the spindle axis as they close. Hardened steel resists wear from repeated bit changes, while the narrow tips can grip small drill shanks.",
       "layer": 4,
       "explode": [-1.25, 0, 0],
-      "motion": { "pivot": [-1.72, 0.88, 0], "spin": { "axis": "x", "ratio": 1 } }
+      "motion": { "pivot": [-1.93, 0.88, 0], "spin": { "axis": "x", "ratio": 1 } }
     },
     {
       "id": "work_light",
@@ -168,7 +168,7 @@
       "nodes": ["battery_cells"],
       "name": "Lithium-Ion Cell Grid",
       "short": "Ten cylindrical cells arranged as five series groups",
-      "detail": "A typical 18 V nominal pack uses five cell groups in series; this grid shows two cells in parallel within each group for added current and capacity. Series connections add voltage, while parallel partners share load. The cells must remain matched because the weakest group limits the safe pack range.",
+      "detail": "A typical 18 V nominal pack uses five cell groups in series; this grid shows two long cylindrical cells in parallel within each group, laid transversely inside the enlarged base. Series connections add voltage, while parallel partners share current and capacity. The cells must remain matched because the weakest group limits the safe pack range.",
       "layer": 2,
       "explode": [0.15, -0.8, 0.55]
     },
@@ -214,12 +214,12 @@
     },
     {
       "title": "Reduce speed and multiply torque",
-      "body": "Two planetary stages share load among three planets each. The top selector chooses the ratio range; output speed falls while available spindle torque rises.",
+      "body": "Two planetary stages share load among three pinned planets each. The first carrier drives the second sun, and the second carrier drives the clutch shaft. The top selector chooses the ratio range; output speed falls while available spindle torque rises.",
       "focus": ["speed_selector", "planetary_gearbox", "output_spindle"]
     },
     {
       "title": "Limit fastening torque",
-      "body": "The adjustable clutch passes normal drive but ratchets when reaction torque exceeds its spring setting. This helps stop a screw near the chosen depth instead of continuing to twist it or damage the work.",
+      "body": "Turn the exposed marked collar ahead of the housing to choose spring preload. The clutch passes normal drive but ratchets when reaction torque exceeds that setting, helping stop a screw near the chosen depth instead of damaging the fastener or work.",
       "focus": ["torque_clutch", "output_spindle"]
     },
     {

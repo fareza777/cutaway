@@ -32,7 +32,7 @@
     "speed_selector": {
       "name": "Pemilih Dua Kecepatan",
       "short": "Penggeser atas untuk memilih rentang rasio roda gigi",
-      "detail": "Pemilih mekanis ini menggeser selongsong di dalam rangkaian roda gigi planet. Rentang rendah memberi reduksi lebih besar untuk torsi pengencangan tinggi, sedangkan rentang tinggi memberi putaran lebih cepat untuk mengebor. Posisi sebaiknya diubah setelah semua bagian berhenti agar kait penghubung dapat masuk tanpa terkelupas."
+      "detail": "Pemilih mekanis ini menggeser selongsong di dalam rangkaian roda gigi planet. Rentang rendah memberi reduksi lebih besar untuk torsi pengencangan tinggi, sedangkan rentang tinggi memberi putaran lebih cepat untuk mengebor. Posisi sebaiknya diubah setelah semua bagian berhenti agar gigi pengait dapat masuk tanpa tersumbing atau rusak."
     },
     "motor_stator": {
       "name": "Stator Motor Brushless",
@@ -52,12 +52,12 @@
     "planetary_gearbox": {
       "name": "Roda Gigi Planet Dua Tahap",
       "short": "Dua tahap reduksi ringkas pada satu sumbu motor",
-      "detail": "Setiap tahap menempatkan tiga roda gigi planet di antara roda matahari di tengah dan roda cincin di luar. Ketiga planet membagi beban di sekeliling poros sehingga torsi besar dapat ditangani dalam tabung pendek. Dua tahap pada model memakai diameter berbeda untuk menunjukkan reduksi terpisah; permukaan halusnya adalah penyederhanaan tampilan, bukan profil gigi produksi."
+      "detail": "Setiap tahap menempatkan tiga roda gigi planet di antara roda matahari di tengah dan roda cincin di luar. Pin baja menyangga planet pada pelat pembawa; pembawa tahap pertama memutar roda matahari tahap kedua, lalu pembawa kedua meneruskan tenaga ke poros kopling. Diameter kedua tahap berbeda agar jalur reduksi terpisah terlihat jelas, sedangkan permukaan halus hanya menyederhanakan profil gigi produksi."
     },
     "torque_clutch": {
       "name": "Kopling Torsi yang Dapat Diatur",
       "short": "Pembatas berpegas di belakang cekam",
-      "detail": "Memutar cincin pengatur mengubah tekanan pegas pada permukaan pengunci di jalur daya. Selama torsinya di bawah pilihan, permukaan tetap menyatu dan meneruskan putaran ke poros. Setelah sekrup duduk dan torsi reaksi melewati batas, pengunci melompat berulang kali sehingga gaya pada sekrup dibatasi walaupun motor masih berputar."
+      "detail": "Cincin besar berusuk tampak di antara hidung cangkang dan cekam sehingga mudah diputar; tanda timbul menunjukkan pilihan tekanan pegas. Selama torsi masih di bawah setelan, permukaan pengunci tetap menyatu dan meneruskan putaran ke poros. Setelah sekrup duduk dan torsi reaksi melewati batas, pengunci melompat berulang kali untuk membatasi gaya pengencangan."
     },
     "output_spindle": {
       "name": "Poros Keluaran",
@@ -87,7 +87,7 @@
     "battery_cells": {
       "name": "Susunan Sel Litium-Ion",
       "short": "Sepuluh sel silinder dalam lima kelompok seri",
-      "detail": "Baterai 18 V nominal umumnya memakai lima kelompok sel yang disusun seri. Model ini menunjukkan dua sel paralel pada setiap kelompok untuk menambah arus dan kapasitas. Hubungan seri menambah tegangan, sedangkan pasangan paralel berbagi beban. Kondisi sel harus seimbang karena kelompok terlemah membatasi rentang aman seluruh baterai."
+      "detail": "Baterai 18 V nominal umumnya memakai lima kelompok sel yang disusun seri. Model ini menunjukkan dua sel silinder panjang yang dipasang melintang dan paralel pada setiap kelompok untuk menambah arus serta kapasitas. Hubungan seri menambah tegangan, sedangkan pasangan paralel berbagi beban. Kondisi sel harus seimbang karena kelompok terlemah membatasi rentang aman seluruh baterai."
     },
     "battery_management_board": {
       "name": "Papan Kontrol Baterai",
@@ -119,11 +119,11 @@
     },
     {
       "title": "Turunkan kecepatan dan perbesar torsi",
-      "body": "Dua tahap roda gigi planet membagi beban pada tiga planet. Pemilih di atas menentukan rentang rasio; kecepatan keluaran turun sementara torsi yang tersedia pada poros naik."
+      "body": "Dua tahap roda gigi planet membagi beban pada tiga planet berpin. Pembawa pertama memutar roda matahari tahap kedua, lalu pembawa kedua menggerakkan poros kopling. Pemilih di atas menentukan rentang rasio; kecepatan keluaran turun sementara torsi poros naik."
     },
     {
       "title": "Batasi torsi pengencangan",
-      "body": "Kopling yang dapat diatur meneruskan putaran normal, lalu melompat saat torsi reaksi melewati tekanan pegas. Cara ini membantu menghentikan sekrup di kedalaman yang dipilih tanpa terus memuntir atau merusak benda kerja."
+      "body": "Putar cincin bertanda yang terlihat di depan cangkang untuk memilih tekanan pegas. Kopling meneruskan putaran normal, lalu melompat saat torsi reaksi melewati setelan sehingga sekrup berhenti dekat kedalaman yang dipilih tanpa merusak pengikat atau benda kerja."
     },
     {
       "title": "Jepit dan putar mata bor",

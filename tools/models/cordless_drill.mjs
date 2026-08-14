@@ -34,8 +34,8 @@ const coloured = (geometry, hex) => paint(geometry, () => srgb(hex));
 
 function housingProfile() {
   const shape = new THREE.Shape();
-  shape.moveTo(-1.02, 0.62);
-  shape.quadraticCurveTo(-1.08, 0.88, -0.82, 1.12);
+  shape.moveTo(-1, 0.62);
+  shape.quadraticCurveTo(-1.04, 0.88, -0.79, 1.12);
   shape.quadraticCurveTo(-0.6, 1.31, -0.22, 1.32);
   shape.lineTo(0.93, 1.32);
   shape.quadraticCurveTo(1.31, 1.28, 1.42, 1.02);
@@ -49,9 +49,24 @@ function housingProfile() {
   shape.lineTo(0.42, -0.23);
   shape.quadraticCurveTo(0.47, 0.08, 0.28, 0.35);
   shape.quadraticCurveTo(0.12, 0.55, -0.18, 0.56);
-  shape.lineTo(-0.83, 0.56);
-  shape.quadraticCurveTo(-0.98, 0.56, -1.02, 0.62);
+  shape.lineTo(-0.8, 0.56);
+  shape.quadraticCurveTo(-0.96, 0.56, -1, 0.62);
   shape.closePath();
+
+  // Six actual through-slots flank the shaft-mounted fan. Their staggered
+  // centres follow the barrel curve; keeping these as profile holes makes the
+  // dark interior visible instead of painting fake black bars on the surface.
+  for (let index = 0; index < 6; index += 1) {
+    const x = 1.08 + index * 0.05;
+    const y = 0.83 + index * 0.025;
+    const vent = new THREE.Path();
+    vent.moveTo(x - 0.019, y - 0.09);
+    vent.lineTo(x - 0.019, y + 0.09);
+    vent.lineTo(x + 0.019, y + 0.09);
+    vent.lineTo(x + 0.019, y - 0.09);
+    vent.closePath();
+    shape.holes.push(vent);
+  }
   return shape;
 }
 
@@ -66,6 +81,18 @@ function shellHalf(side) {
     curveSegments: 18,
   });
   geometry.translate(0, 0, side < 0 ? -depth - 0.025 : 0.025);
+
+  // A real drill grip is notably slimmer than its motor barrel. Taper the
+  // molded shell progressively below the trigger while preserving the centre
+  // seam and full bearing width around the power train.
+  const positions = geometry.getAttribute('position');
+  for (let index = 0; index < positions.count; index += 1) {
+    const y = positions.getY(index);
+    const taper = y >= 0.45 ? 1 : y <= -0.05 ? 0.72 : 0.72 + ((y + 0.05) / 0.5) * 0.28;
+    positions.setZ(index, positions.getZ(index) * taper);
+  }
+  positions.needsUpdate = true;
+  geometry.computeVertexNormals();
 
   const outerZ = side * (depth + 0.042);
   const panelZ = side * (depth + 0.039);
@@ -89,23 +116,17 @@ function shellHalf(side) {
     rot: [0, 0, 0.06],
   }), '#294957'));
 
-  // Vents are located immediately around the real rear cooling fan.
-  for (let index = 0; index < 6; index += 1) {
-    parts.push(coloured(roundedBox(0.055, 0.22, 0.024, 0.012, 2, {
-      pos: [1.08 + index * 0.05, 0.83 + index * 0.025, outerZ],
-      rot: [0, 0, -0.3],
-    }), '#11191d'));
-  }
-
   // Six plausible clamping screws follow structural bosses and the grip foot.
   const screws = [[-0.7, 0.73], [-0.28, 1.16], [0.75, 1.14], [1.23, 0.82], [0.53, -0.12], [0.78, -1.05]];
   for (const [x, y] of screws) {
+    const taper = y >= 0.45 ? 1 : y <= -0.05 ? 0.72 : 0.72 + ((y + 0.05) / 0.5) * 0.28;
+    const screwZ = outerZ * taper;
     parts.push(coloured(cylinder(0.038, 0.038, 0.022, 20, {
-      pos: [x, y, outerZ],
+      pos: [x, y, screwZ],
       rot: [Math.PI / 2, 0, 0],
     }), '#88939a'));
     parts.push(coloured(roundedBox(0.045, 0.009, 0.008, 0.002, 1, {
-      pos: [x, y, outerZ + side * 0.013],
+      pos: [x, y, screwZ + side * 0.013],
       rot: [0, 0, side * 0.3],
     }), '#293238'));
   }
@@ -115,20 +136,20 @@ function shellHalf(side) {
 function overgrip() {
   const parts = [];
   for (const side of [-1, 1]) {
-    parts.push(roundedBox(0.5, 1.02, 0.038, 0.016, 3, {
-      pos: [0.72, -0.59, side * 0.46],
-      rot: [0, 0, -0.22],
+    parts.push(roundedBox(0.37, 1.02, 0.038, 0.016, 3, {
+      pos: [0.72, -0.59, side * 0.335],
+      rot: [0, 0, -0.18],
     }));
     for (let index = 0; index < 7; index += 1) {
-      parts.push(roundedBox(0.4, 0.018, 0.022, 0.006, 2, {
-        pos: [0.72 + (index - 3) * 0.035, -0.61 + (index - 3) * 0.12, side * 0.487],
-        rot: [0, 0, -0.22],
+      parts.push(roundedBox(0.3, 0.018, 0.022, 0.006, 2, {
+        pos: [0.72 + (index - 3) * 0.028, -0.61 + (index - 3) * 0.12, side * 0.36],
+        rot: [0, 0, -0.18],
       }));
     }
   }
-  parts.push(roundedBox(0.19, 0.98, 0.32, 0.055, 4, {
+  parts.push(roundedBox(0.18, 0.98, 0.23, 0.05, 4, {
     pos: [0.94, -0.59, 0],
-    rot: [0, 0, -0.22],
+    rot: [0, 0, -0.18],
   }));
   return merge(parts);
 }
@@ -185,7 +206,28 @@ function fanGeometry() {
   return merge(parts);
 }
 
-function planetaryStage(x, ringRadius, planetRadius, colour) {
+function carrierPlate(x, radius, orbit) {
+  const profile = new THREE.Shape();
+  profile.absarc(0, 0, radius, 0, TAU, false);
+  for (let index = 0; index < 3; index += 1) {
+    const angle = (index / 3) * TAU;
+    const hole = new THREE.Path();
+    // Slight interference with the 0.022-radius steel pin makes the pin visibly
+    // supported by the carrier rather than hovering inside an oversized hole.
+    hole.absarc(Math.cos(angle) * orbit, Math.sin(angle) * orbit, 0.016, 0, TAU, true);
+    profile.holes.push(hole);
+  }
+  const geometry = new THREE.ExtrudeGeometry(profile, {
+    depth: 0.035,
+    bevelEnabled: false,
+    curveSegments: 20,
+  });
+  geometry.rotateY(Math.PI / 2);
+  geometry.translate(x - 0.0175, 0.88, 0);
+  return geometry;
+}
+
+function planetaryStage(x, ringRadius, planetRadius, colour, carrierX) {
   const ringProfile = [
     [ringRadius - 0.055, -0.11],
     [ringRadius, -0.11],
@@ -209,34 +251,45 @@ function planetaryStage(x, ringRadius, planetRadius, colour) {
       pos: [x, 0.88 + Math.cos(angle) * orbit, Math.sin(angle) * orbit],
       rot: [0, 0, Math.PI / 2],
     }), '#9da7ad'));
-    parts.push(coloured(cylinder(0.022, 0.022, 0.15, 14, {
-      pos: [x, 0.88 + Math.cos(angle) * orbit, Math.sin(angle) * orbit],
+    parts.push(coloured(cylinder(0.022, 0.022, Math.abs(x - carrierX) + 0.09, 14, {
+      pos: [(x + carrierX) * 0.5, 0.88 + Math.cos(angle) * orbit, Math.sin(angle) * orbit],
       rot: [0, 0, Math.PI / 2],
     }), '#2e373c'));
   }
+  parts.push(coloured(carrierPlate(carrierX, ringRadius - 0.055, orbit), '#aeb8bd'));
   return parts;
 }
 
 function gearboxGeometry() {
   return merge([
-    ...planetaryStage(0.08, 0.29, 0.078, '#9ba7ad'),
-    ...planetaryStage(-0.2, 0.255, 0.062, '#7f8c93'),
-    coloured(cylinder(0.19, 0.19, 0.045, 36, { pos: [-0.34, 0.88, 0], rot: [0, 0, Math.PI / 2] }), '#89949a'),
-    coloured(cylinder(0.055, 0.055, 0.72, 20, { pos: [-0.02, 0.88, 0], rot: [0, 0, Math.PI / 2] }), '#c1c9cd'),
+    ...planetaryStage(0.08, 0.29, 0.078, '#9ba7ad', 0.015),
+    ...planetaryStage(-0.2, 0.255, 0.062, '#7f8c93', -0.285),
+    // The first carrier becomes the second-stage sun input; the second carrier
+    // then carries the reduced-speed output into the clutch. Both links overlap
+    // their plates and hubs so the peeled mechanism shows one continuous path.
+    coloured(cylinder(0.045, 0.045, 0.285, 20, { pos: [-0.125, 0.88, 0], rot: [0, 0, Math.PI / 2] }), '#c1c9cd'),
+    coloured(cylinder(0.052, 0.052, 0.62, 20, { pos: [-0.59, 0.88, 0], rot: [0, 0, Math.PI / 2] }), '#d0d7da'),
   ]);
 }
 
 function clutchGeometry() {
   const parts = [
-    cylinder(0.31, 0.31, 0.4, 56, { pos: [-0.69, 0.88, 0], rot: [0, 0, Math.PI / 2] }),
-    torus(0.285, 0.018, 56, 10, { pos: [-0.52, 0.88, 0], rot: [0, Math.PI / 2, 0] }),
-    torus(0.285, 0.018, 56, 10, { pos: [-0.86, 0.88, 0], rot: [0, Math.PI / 2, 0] }),
+    cylinder(0.32, 0.32, 0.4, 56, { pos: [-1.08, 0.88, 0], rot: [0, 0, Math.PI / 2] }),
+    torus(0.305, 0.018, 56, 10, { pos: [-0.9, 0.88, 0], rot: [0, Math.PI / 2, 0] }),
+    torus(0.305, 0.018, 56, 10, { pos: [-1.26, 0.88, 0], rot: [0, Math.PI / 2, 0] }),
   ];
-  for (let index = 0; index < 18; index += 1) {
-    const angle = (index / 18) * TAU;
-    parts.push(box(0.24, 0.035, 0.055, {
-      pos: [-0.69, 0.88 + Math.cos(angle) * 0.295, Math.sin(angle) * 0.295],
+  for (let index = 0; index < 20; index += 1) {
+    const angle = (index / 20) * TAU;
+    parts.push(box(0.27, 0.032, 0.052, {
+      pos: [-1.08, 0.88 + Math.cos(angle) * 0.32, Math.sin(angle) * 0.32],
       rot: [angle, 0, 0],
+    }));
+  }
+  // Seven raised setting ticks make the external selector legible without a
+  // text texture. Their unequal lengths establish a clear adjustment scale.
+  for (let index = 0; index < 7; index += 1) {
+    parts.push(box(index % 3 === 0 ? 0.055 : 0.035, 0.018, 0.012, {
+      pos: [-1.22 + index * 0.045, 1.218, 0],
     }));
   }
   return merge(parts);
@@ -244,14 +297,14 @@ function clutchGeometry() {
 
 function chuckGeometry() {
   const parts = [
-    cylinder(0.27, 0.29, 0.3, 56, { pos: [-1.23, 0.88, 0], rot: [0, 0, Math.PI / 2] }),
-    cylinder(0.21, 0.27, 0.36, 56, { pos: [-1.56, 0.88, 0], rot: [0, 0, Math.PI / 2] }),
-    torus(0.272, 0.018, 56, 10, { pos: [-1.38, 0.88, 0], rot: [0, Math.PI / 2, 0] }),
+    cylinder(0.27, 0.29, 0.3, 56, { pos: [-1.43, 0.88, 0], rot: [0, 0, Math.PI / 2] }),
+    cylinder(0.2, 0.27, 0.36, 56, { pos: [-1.76, 0.88, 0], rot: [0, 0, Math.PI / 2] }),
+    torus(0.272, 0.018, 56, 10, { pos: [-1.58, 0.88, 0], rot: [0, Math.PI / 2, 0] }),
   ];
   for (let index = 0; index < 24; index += 1) {
     const angle = (index / 24) * TAU;
     parts.push(box(0.42, 0.025, 0.035, {
-      pos: [-1.42, 0.88 + Math.cos(angle) * 0.275, Math.sin(angle) * 0.275],
+      pos: [-1.62, 0.88 + Math.cos(angle) * 0.275, Math.sin(angle) * 0.275],
       rot: [angle, 0, 0],
     }));
   }
@@ -262,26 +315,39 @@ function jawGeometry() {
   const parts = [];
   for (let index = 0; index < 3; index += 1) {
     const angle = (index / 3) * TAU;
-    parts.push(roundedBox(0.32, 0.075, 0.11, 0.012, 2, {
-      pos: [-1.79, 0.88 + Math.cos(angle) * 0.1, Math.sin(angle) * 0.1],
-      rot: [angle, 0, 0],
-    }));
-    parts.push(roundedBox(0.16, 0.05, 0.075, 0.008, 2, {
-      pos: [-2.08, 0.88 + Math.cos(angle) * 0.06, Math.sin(angle) * 0.06],
-      rot: [angle, 0, 0],
-    }));
+    const profile = new THREE.Shape();
+    profile.moveTo(-2.17, 0.025);
+    profile.lineTo(-2.11, 0.066);
+    profile.lineTo(-1.72, 0.135);
+    profile.lineTo(-1.68, 0.105);
+    profile.lineTo(-1.72, 0.052);
+    profile.lineTo(-2.11, 0.012);
+    profile.closePath();
+    const jaw = new THREE.ExtrudeGeometry(profile, {
+      depth: 0.09,
+      steps: 1,
+      bevelEnabled: true,
+      bevelSegments: 3,
+      bevelSize: 0.009,
+      bevelThickness: 0.008,
+      curveSegments: 3,
+    });
+    jaw.translate(0, 0, -0.045);
+    jaw.rotateX(angle);
+    jaw.translate(0, 0.88, 0);
+    parts.push(jaw);
   }
   return merge(parts);
 }
 
 function batteryShellGeometry() {
   return merge([
-    roundedBox(1.36, 0.49, 0.84, 0.09, 5, { pos: [0.82, -1.49, 0] }),
-    roundedBox(0.78, 0.16, 0.62, 0.04, 3, { pos: [0.77, -1.2, 0] }),
+    roundedBox(1.5, 0.66, 0.86, 0.1, 5, { pos: [0.8, -1.48, 0] }),
+    roundedBox(0.78, 0.16, 0.56, 0.04, 3, { pos: [0.77, -1.15, 0] }),
     roundedBox(0.82, 0.05, 0.08, 0.012, 2, { pos: [0.77, -1.105, -0.24] }),
     roundedBox(0.82, 0.05, 0.08, 0.012, 2, { pos: [0.77, -1.105, 0.24] }),
     ...Array.from({ length: 7 }, (_, index) => roundedBox(0.08, 0.025, 0.28, 0.008, 2, {
-      pos: [0.5 + index * 0.095, -1.745, 0],
+      pos: [0.48 + index * 0.105, -1.81, 0],
     })),
   ]);
 }
@@ -289,12 +355,9 @@ function batteryShellGeometry() {
 function batteryCellsGeometry() {
   const parts = [];
   for (let column = 0; column < 5; column += 1) {
-    for (const row of [-1, 1]) {
-      parts.push(cylinder(0.085, 0.085, 0.27, 28, {
-        pos: [0.45 + column * 0.19, -1.51, row * 0.18],
-      }));
-      parts.push(torus(0.065, 0.008, 24, 7, {
-        pos: [0.45 + column * 0.19, -1.37, row * 0.18],
+    for (const y of [-1.45, -1.65]) {
+      parts.push(cylinder(0.07, 0.07, 0.52, 28, {
+        pos: [0.4 + column * 0.2, y, 0],
         rot: [Math.PI / 2, 0, 0],
       }));
     }
@@ -330,8 +393,8 @@ export default function cordlessDrill() {
     part('planetary_gearbox', gearboxGeometry(), GEARBOX()),
     part('torque_clutch', clutchGeometry(), CLUTCH()),
     part('output_spindle', merge([
-      cylinder(0.07, 0.07, 0.52, 28, { pos: [-1.05, 0.88, 0], rot: [0, 0, Math.PI / 2] }),
-      cylinder(0.12, 0.12, 0.12, 32, { pos: [-1.22, 0.88, 0], rot: [0, 0, Math.PI / 2] }),
+      cylinder(0.07, 0.07, 0.34, 28, { pos: [-1.28, 0.88, 0], rot: [0, 0, Math.PI / 2] }),
+      cylinder(0.11, 0.11, 0.1, 32, { pos: [-1.38, 0.88, 0], rot: [0, 0, Math.PI / 2] }),
     ]), SPINDLE()),
     part('chuck_body', chuckGeometry(), CHUCK()),
     part('chuck_jaws', jawGeometry(), JAWS()),
@@ -349,4 +412,4 @@ export default function cordlessDrill() {
   return group;
 }
 
-export const meta = { width: 3.52, height: 3.2, depth: 0.98 };
+export const meta = { width: 3.7, height: 3.35, depth: 0.98 };
