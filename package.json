@@ -42,6 +42,7 @@
     "check": "npm run typecheck && npm run validate && npm run smoke && npm run test:rice-cooker",
     "smoke": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/smoke-test.mts",
     "test:rice-cooker": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/rice-cooker-test.mts",
+    "test:catalog": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/catalog-quality-test.mts",
     "build:brand": "node tools/build-brand.mjs",
     "preview": "node tools/preview-server.mjs",
     "verify:apk": "node tools/verify-apk.mjs",
