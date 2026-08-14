@@ -1,0 +1,153 @@
+{
+  "schema": 1,
+  "id": "smartphone",
+  "title": "Smartphone",
+  "subtitle": "Layered slab of glass, silicon and lithium",
+  "category": "Electronics",
+  "accent": "#5AC8FA",
+  "scale": "≈ 150 mm tall",
+  "summary": "A modern phone is a sandwich. Every millimetre of depth is fought over, so components are stacked in flat layers between two sheets of glass, held apart by a machined metal frame that doubles as the antenna.",
+  "model": "smartphone",
+  "cutAxis": "x",
+  "restRotation": [0.12, -0.5, 0],
+  "parts": [
+    {
+      "id": "display",
+      "nodes": ["display", "display_flex"],
+      "name": "OLED Display",
+      "short": "Emits its own light, one pixel at a time",
+      "detail": "Each pixel is a microscopic organic diode that makes its own light, so there is no backlight to leak through. That is why an OLED phone can show true black — those pixels are simply switched off — and why the whole panel can be thinner than a credit card. The ribbon cable folds under the panel and plugs into the logic board.",
+      "layer": 0,
+      "explode": [0, 0, 1.1],
+      "motion": {}
+    },
+    {
+      "id": "frame",
+      "nodes": ["frame"],
+      "name": "Structural Frame",
+      "short": "Chassis, heatsink and antenna in one",
+      "detail": "The band around the edge is machined from a single billet of aluminium or stainless steel. It carries every drop the phone will ever take, spreads heat away from the processor, and the plastic gaps you can see splitting it are deliberate: they turn each segment into a separate radio antenna.",
+      "layer": 0,
+      "explode": [0, 1.0, 0]
+    },
+    {
+      "id": "back_glass",
+      "nodes": ["back_glass"],
+      "name": "Back Cover",
+      "short": "Glass, because radio waves cannot pass through metal",
+      "detail": "The back is glass rather than metal for one unglamorous reason: wireless charging and cellular antennas need a window. Chemically strengthened glass is also stiff and scratch-resistant, though it trades that for being the first thing to break in a fall.",
+      "layer": 0,
+      "explode": [0, 0, -1.2]
+    },
+    {
+      "id": "camera_module",
+      "nodes": ["camera_module"],
+      "name": "Camera Module",
+      "short": "A stack of lenses over a fingernail-sized sensor",
+      "detail": "Each camera is a column of five to seven plastic lens elements sitting above an image sensor a few millimetres across. The bump exists because that column cannot be made shorter without losing light — optics do not shrink the way transistors do. Tiny electromagnets nudge the whole lens stack sideways to cancel out your hand shaking.",
+      "layer": 1,
+      "explode": [-0.7, 0.6, -0.9]
+    },
+    {
+      "id": "logic_board",
+      "nodes": ["logic_board"],
+      "name": "Logic Board",
+      "short": "The whole computer, folded into a postage stamp",
+      "detail": "Processor, memory, modem and storage all live on a board smaller than a business card, built from a dozen laminated layers of copper. The largest chip is a package-on-package stack: the RAM is soldered directly on top of the processor to keep the wires between them as short as physically possible.",
+      "layer": 2,
+      "explode": [0, 0.8, -0.4]
+    },
+    {
+      "id": "shield_can",
+      "nodes": ["shield_can"],
+      "name": "EMI Shield",
+      "short": "A metal lid that stops chips shouting at each other",
+      "detail": "Fast digital chips radiate noise. The stamped metal can soldered over them is a Faraday cage: it keeps the processor's switching noise out of the radio receiver sitting centimetres away, which would otherwise drown out a cell tower kilometres off.",
+      "layer": 1,
+      "explode": [0.6, 0.9, 0.5]
+    },
+    {
+      "id": "battery",
+      "nodes": ["battery"],
+      "name": "Lithium-Ion Battery",
+      "short": "A rolled-up sandwich of foil and electrolyte",
+      "detail": "Inside the pouch is a long ribbon — copper foil, graphite, separator, lithium-cobalt-oxide, aluminium foil — wound like a swiss roll. Charging pushes lithium ions into the graphite; discharging lets them travel back. The pouch is soft because the whole assembly swells slightly every cycle, and it takes up more volume than everything else combined.",
+      "layer": 2,
+      "explode": [0, -0.9, -0.5]
+    },
+    {
+      "id": "battery_connector",
+      "nodes": ["battery_connector"],
+      "name": "Board Connector",
+      "short": "Gold fingers, mated by friction",
+      "detail": "Board-to-board connectors carry power and data on contacts a fraction of a millimetre apart, plated in gold so they will not oxidise. They click together by spring force alone — no solder — which is what makes a battery or screen replaceable at all.",
+      "layer": 2,
+      "hidden": true,
+      "explode": [0.8, 0.5, 0.3]
+    },
+    {
+      "id": "haptic_engine",
+      "nodes": ["haptic_engine"],
+      "name": "Haptic Motor",
+      "short": "A weight on a spring, slammed by a magnet",
+      "detail": "A linear resonant actuator: a mass suspended on springs between two magnets, driven by a coil. Because it moves in a straight line rather than spinning an off-centre weight, it can start and stop within a single cycle — which is what turns a buzz into a tap you can feel the shape of.",
+      "layer": 2,
+      "explode": [-0.9, -0.9, 0.2]
+    },
+    {
+      "id": "speaker",
+      "nodes": ["speaker"],
+      "name": "Speaker Module",
+      "short": "A sealed box tuned like a tiny instrument",
+      "detail": "The driver itself is smaller than a shirt button, so the plastic enclosure around it does most of the work — its internal volume is tuned to push the resonance low enough to suggest bass that the driver cannot really produce. Some are filled with zeolite powder to make the box behave as if it were larger.",
+      "layer": 2,
+      "explode": [0.9, -0.9, 0.2]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Everything is a layer",
+      "body": "Depth is the scarcest resource in a phone. Components are not arranged for convenience but stacked flat, thinnest first, so the finished slab lands under 8 mm. Peel the layers to see the order they go in.",
+      "focus": ["display", "back_glass", "frame"]
+    },
+    {
+      "title": "Power dominates the volume",
+      "body": "The battery is the single largest object inside, and it is the reason phones stopped getting thinner. Every other component is arranged around whatever space it does not need.",
+      "focus": ["battery"]
+    },
+    {
+      "title": "The computer is the small part",
+      "body": "The logic board holds the processor, memory, storage and modem in less space than the camera bump. Shrinking it further buys nothing — the battery and screen set the size.",
+      "focus": ["logic_board", "shield_can"]
+    },
+    {
+      "title": "Radio needs a window",
+      "body": "Metal blocks radio. The glass back and the plastic slots interrupting the metal frame exist so that cellular, Wi-Fi, NFC and wireless charging can get in and out.",
+      "focus": ["back_glass", "frame"]
+    }
+  ],
+  "quiz": [
+    { "type": "identify", "prompt": "Tap the component that takes up the most internal volume.", "partId": "battery" },
+    { "type": "identify", "prompt": "Tap the part that acts as both chassis and antenna.", "partId": "frame" },
+    {
+      "type": "choice",
+      "prompt": "Why is the back of most phones made of glass rather than metal?",
+      "choices": ["It is cheaper", "Radio waves pass through it", "It is stronger", "It conducts heat better"],
+      "answer": 1,
+      "explain": "Metal blocks radio. Glass lets cellular, Wi-Fi, NFC and wireless charging work through the back."
+    },
+    {
+      "type": "choice",
+      "prompt": "What makes an OLED display able to show true black?",
+      "choices": [
+        "A very dark backlight filter",
+        "Individual pixels switch off completely",
+        "Polarised glass",
+        "A higher refresh rate"
+      ],
+      "answer": 1,
+      "explain": "Each pixel makes its own light, so a black pixel is simply an unpowered one — there is no backlight to leak."
+    },
+    { "type": "identify", "prompt": "Tap the part that makes a tap feel like a click.", "partId": "haptic_engine" }
+  ]
+}

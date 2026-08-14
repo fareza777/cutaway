@@ -1,0 +1,35 @@
+{
+  "title": "Otak",
+  "subtitle": "Komputer berkerut yang berjalan dengan gula",
+  "scale": "≈ 15 cm panjang",
+  "summary": "Otak adalah lembar sel saraf, dikerutkan supaya muat, duduk di tangkai yang sudah tahu cara menjaga Anda bernapas sebelum apa pun di lembar itu punya pikiran. Kerutan bukan hiasan: itulah cara satu meter persegi korteks masuk ke tengkorak. Dua belahan bicara lewat jembatan kabel putih. Kamar berisi cairan di dalam adalah peredam kejut dan saluran pembuangan.",
+  "parts": {
+    "left_hemisphere": { "name": "Belahan Kiri", "short": "Bahasa, bagi kebanyakan orang, tinggal di sini", "detail": "Lembar korteks abu-abu yang dikerutkan di atas inti kabel putih. Pada kebanyakan orang kidal kanan, wilayah yang mengubah pikiran menjadi kata duduk di sisi ini. Kerusakan di sini bisa mengambil bicara dan meninggalkan orangnya utuh, itulah cara kita tahu kerutan tidak semua mengerjakan pekerjaan yang sama." },
+    "right_hemisphere": { "name": "Belahan Kanan", "short": "Setengah lain dari lembar yang sama", "detail": "Bukan 'sisi kreatif' dalam cara apa pun yang masih pantas dikatakan buku teks. Ia menangani lapangan pandang kiri, banyak atensi, dan banyak dari apa yang membuat wajah sebuah wajah. Potong jembatan antara keduanya dan Anda mendapat dua pikiran dalam satu tengkorak, itulah cara kita tahu mereka sedang bicara." },
+    "cerebellum": { "name": "Serebelum", "short": "Kerutan lebih halus, dan alasan Anda bisa menangkap bola", "detail": "Terselip di bawah belakang, dengan folia alih-alih girus — trik yang sama pada skala lebih kecil. Ia tidak memulai gerakan; ia mengatur waktunya. Orang tanpa banyak darinya masih bisa memutuskan bergerak, lalu meleset." },
+    "brainstem": { "name": "Batang Otak", "short": "Bagian yang tidak akan membiarkan Anda berhenti bernapas", "detail": "Otak tengah, pons, medula: tangkai mesin yang lebih tua. Denyut jantung, tekanan darah, sakelar kesadaran. Belahan bisa hancur dan orangnya masih hidup; ini tidak." },
+    "corpus_callosum": { "name": "Korpus Kalosum", "short": "Kabel antara belahan", "detail": "Dua ratus juta serat dalam berkas berbentuk C. Setiap kali tangan kiri tahu apa yang dikerjakan kanan, ini sebabnya. Potong untuk mengobati epilepsi dan kedua belahan berjalan sebagai tetangga yang tidak lagi bicara." },
+    "ventricles": { "name": "Ventrikel", "short": "Kamar penuh air laut, di dalam otak", "detail": "Empat rongga yang membuat dan mengedarkan cairan serebrospinal. Cairan itu bantal, bak kimia, dan saluran. Jika saluran tersumbat, kamar membengkak dan otak dihancurkan dari dalam — hidrosefalus." },
+    "thalamus": { "name": "Talamus", "short": "Relai: hampir semua berhenti di sini dulu", "detail": "Dua inti berbentuk telur di atas batang otak. Informasi indra, kecuali penciuman, berhenti di sini sebelum korteks. Kesadaran sendiri tampaknya butuh loop ini. Itulah alasan stroke kecil di sini bisa mengambil seluruh satu sisi dunia." },
+    "meninges": { "name": "Meningen", "short": "Tiga kulit, dan alasan pukulan tengkorak masih bisa memar", "detail": "Dura, araknoid, pia: kantong luar yang liat, jaring, cling-film di kerutan. Di antara mereka mengalir cairan. Meningitis adalah kulit ini meradang. Mereka menyelubungi seluruh organ, jadi digambar tembus pandang." },
+    "cerebral_arteries": { "name": "Arteri Serebral", "short": "Lingkaran darah di bawah otak", "detail": "Lingkaran Willis dan pohon yang memanjat darinya. Otak dua persen tubuh dan mengambil dua puluh persen darah. Gumpalan di salah satu cabang ini adalah stroke, dan wilayah cabang itu adalah defisitnya." },
+    "pituitary": { "name": "Hipofisis", "short": "Kacang polong yang menjalankan kelenjar", "detail": "Menggantung dari hipotalamus di tangkai, dalam pelana tulang. Ia tidak berpikir. Ia kantong hormon yang memberitahu tiroid, adrenal, dan gonad apa yang harus dikerjakan. Tumor di sini bisa mencuri lapangan pandang dari bawah karena kiasma optik duduk di atasnya." },
+    "olfactory_bulbs": { "name": "Bulbus Olfaktorius", "short": "Penciuman satu-satunya indra yang melewati talamus", "detail": "Dua tangkai di bawah lobus frontal, tertancap langsung ke korteks. Itulah alasan bau bisa menjadi ingatan sebelum Anda punya kata untuknya. Mereka otak, bukan hidung: reseptor di hidung satu-satunya neuron yang hidup di cuaca." },
+    "spinal_cord": { "name": "Sumsum Tulang Belakang", "short": "Kabel yang pergi", "detail": "Batang otak dilanjutkan, kini dengan tulang di sekelilingnya. Semua yang tubuh bisa beritahu otak, dan semua yang otak bisa beritahu tubuh, menyempit lewat ini. Potong dan orang di atas potongan utuh, dan orang di bawahnya tidak." }
+  },
+  "steps": [
+    { "title": "Keram lembar supaya muat tengkorak", "body": "Korteks adalah lembar. Sulkus adalah cara satu meter persegi darinya masuk. Dua belahan adalah lembar itu dilipat dua kali, dengan celah di tengah." },
+    { "title": "Kabel antara belahan", "body": "Korpus kalosum adalah alasan belahan adalah satu pikiran. Potong dan mereka dua." },
+    { "title": "Mesin yang lebih tua di bawah", "body": "Serebelum mengatur waktu gerakan. Batang otak menjaga Anda bernapas entah Anda pikirkan atau tidak. Talamus adalah relai tempat lembar berpikir duduk." },
+    { "title": "Kamar cairan, kantong kulit", "body": "Ventrikel meredam dan mengalirkan. Meningen menyelubungi. Bersama mereka alasan otak bisa duduk di kotak keras tanpa menghancurkan diri setiap anggukan." },
+    { "title": "Bahan bakar dan jalan keluar", "body": "Arteri memberi makan organ yang rakus. Sumsum tulang belakang adalah cara apa pun yang bukan kepala masih terhitung sebagai Anda." }
+  ],
+  "quiz": [
+    { "prompt": "Ketuk kabel yang membiarkan dua belahan bicara." },
+    { "prompt": "Mengapa korteks berkerut?", "choices": ["Supaya kelihatan seperti kenari", "Untuk memasukkan lembar sel saraf yang luas ke tengkorak kecil", "Kerutan menyimpan ingatan", "Pembuluh darah butuh alur"], "explain": "Luas permukaan. Otak licin akan butuh tengkorak jauh lebih besar untuk lembar yang sama." },
+    { "prompt": "Ketuk bagian yang tidak akan membiarkan Anda berhenti bernapas." },
+    { "prompt": "Ketuk struktur berkerut lebih halus yang mengatur waktu gerakan." },
+    { "prompt": "Indra mana yang melewati talamus?", "choices": ["Penglihatan", "Pendengaran", "Penciuman", "Sentuhan"], "explain": "Bulbus olfaktorius tertancap langsung ke korteks. Itulah alasan bau bisa menjadi ingatan sebelum menjadi kata." },
+    { "prompt": "Ketuk kulit yang menyelubungi seluruh organ." }
+  ]
+}

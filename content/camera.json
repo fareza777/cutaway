@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "id": "camera",
+  "title": "Camera",
+  "subtitle": "A dark box with a clock in it",
+  "category": "Electronics",
+  "accent": "#5AC8FA",
+  "scale": "≈ 140 mm wide",
+  "summary": "A camera is a room that is dark except for a hole, and a clock that opens that hole for a fraction of a second. The lens does the focusing; the aperture does the depth; the shutter does the time; the sensor does the remembering. The pentaprism on top is why you can look through the same lens the film — or the sensor — is looking through.",
+  "model": "camera",
+  "cutAxis": "x",
+  "restRotation": [0.12, -0.55, 0],
+  "parts": [
+    { "id": "body", "nodes": ["body"], "name": "Body", "short": "A light-tight box with a grip", "detail": "The chassis is a dark room. Every other part exists to let a controlled amount of light into it, for a controlled amount of time, focused on a controlled plane. The grip is there because cameras are held in one hand while the other works the lens.", "layer": 0, "explode": [0, 0, -0.8] },
+    { "id": "lens_barrel", "nodes": ["lens_barrel"], "name": "Lens Barrel", "short": "Helicoid, hood, and the thing you twist", "detail": "A tube of aluminium rings. Turning the focus ring unscrews a helicoid and the glass group moves. Turning the aperture ring closes the iris. The filter thread on the front is where people screw on things the designer already accounted for.", "layer": 0, "explode": [0, 0, 1.3] },
+    { "id": "front_element", "nodes": ["front_element"], "name": "Front Element", "short": "The first glass the light hits", "detail": "A convex crown, coated so it does not reflect a ghost of the sun into the picture. It is the most exposed and the most expensive to replace, which is why lens caps exist and why a UV filter is a cheap window.", "layer": 1, "opacity": 0.62, "explode": [0, 0, 1.7] },
+    { "id": "lens_group", "nodes": ["lens_group"], "name": "Focusing Group", "short": "The glass that actually moves", "detail": "Several elements, some cemented, some air-spaced, whose job is to put a sharp image on the sensor. Focusing is moving this group along the axis. Zoom is moving more than one group at different rates — a mechanical argument in a tube.", "layer": 2, "opacity": 0.35, "explode": [0, 0, 0.9] },
+    { "id": "aperture", "nodes": ["aperture"], "name": "Aperture", "short": "The iris: how wide the hole is", "detail": "A ring of blades that close to a smaller polygon. Wide open is more light and a thin slice of focus. Stopped down is less light, more of the world sharp, and eventually the diffraction that no amount of megapixels will beat.", "layer": 2, "explode": [0, 0, 0.7] },
+    { "id": "mirror", "nodes": ["mirror"], "name": "Reflex Mirror", "short": "The reason you can look through the taking lens", "detail": "A front-silvered flap at forty-five degrees. It sends the image up into the pentaprism so the viewfinder shows what the sensor will see. At the moment of exposure it slaps up out of the way — that is the clack — and the shutter can open onto a clear path.", "layer": 2, "explode": [0, 0.6, 0.3] },
+    { "id": "shutter", "nodes": ["shutter"], "name": "Focal-Plane Shutter", "short": "Two curtains and a slit", "detail": "Two cloth or metal blinds in front of the sensor. The first opens; the second chases it. At high speeds they form a moving slit; the whole frame is never open at once. That is why a fast spinning propeller can look bent, and why flash has a maximum sync speed.", "layer": 3, "explode": [0, 0, -0.3] },
+    { "id": "sensor", "nodes": ["sensor"], "name": "Image Sensor", "short": "The film that is also a spreadsheet", "detail": "A silicon chip divided into millions of wells that count photons. A Bayer filter on top pretends they can see colour. Everything after this is arithmetic. The size of this rectangle is the reason lenses are the size they are.", "layer": 3, "explode": [0, 0, -1.1] },
+    { "id": "pentaprism", "nodes": ["pentaprism"], "name": "Pentaprism", "short": "The hump that turns the image the right way up", "detail": "A five-sided block of glass. The mirror's image is upside down and reversed; this roofed prism corrects both so you can compose without standing on your head. The silhouette of an SLR is this hump. A mirrorless camera has none, and looks like a brick.", "layer": 1, "explode": [0, 1.2, -0.2] },
+    { "id": "viewfinder", "nodes": ["viewfinder"], "name": "Viewfinder", "short": "The eyepiece you put your face on", "detail": "A small lens looking into the pentaprism. Dioptre adjustment is this lens moving, so people who wear glasses can still focus the screen. What you see here is not a screen: it is the world, via the taking lens, via a mirror, via a prism.", "layer": 1, "explode": [0, 0.8, -0.9] },
+    { "id": "mount", "nodes": ["mount"], "name": "Lens Mount", "short": "The bayonet that is also a contract", "detail": "A three-lug ring and a row of electrical contacts. The lugs take the torque of a heavy lens; the contacts tell the body the focal length and let it stop the aperture down. Change this ring and you change systems.", "layer": 1, "explode": [0, 0, 0.5] },
+    { "id": "shutter_dial", "nodes": ["shutter_dial"], "name": "Shutter Dial", "short": "The clock: how long the hole stays open", "detail": "A click-stop ring of times, from a second to a thousandth and beyond. Together with the aperture it is the exposure. One stop more time is the same light as one stop more hole, which is why photographers talk in stops instead of in milliseconds.", "layer": 0, "explode": [0.7, 0.9, 0] }
+  ],
+  "steps": [
+    { "title": "Bend the light", "body": "The front element and the focusing group put a sharp picture on a plane a few centimetres behind the mount. Focusing is moving glass, not moving the sensor.", "focus": ["front_element", "lens_group", "lens_barrel"] },
+    { "title": "Stop it down", "body": "The iris closes. Less light, more of the picture in focus, and eventually a softness that is physics, not a dirty lens.", "focus": ["aperture"] },
+    { "title": "Look through the same hole", "body": "The mirror sends the image up into a pentaprism so the eyepiece shows what the sensor will get. That is the whole point of an SLR, and the reason for the hump.", "focus": ["mirror", "pentaprism", "viewfinder"] },
+    { "title": "Get the mirror out of the way", "body": "At the moment of exposure the mirror slaps up. For a fraction of a second you are blind in the finder and the path to the sensor is clear.", "focus": ["mirror", "shutter"] },
+    { "title": "Count the photons", "body": "Two curtains run across the sensor. The wells count light. After that it is a file.", "focus": ["shutter", "sensor"] }
+  ],
+  "quiz": [
+    { "type": "identify", "prompt": "Tap the hump that turns the viewfinder image the right way up.", "partId": "pentaprism" },
+    { "type": "choice", "prompt": "Why does an SLR viewfinder show exactly what the sensor will see?", "choices": ["It is a computer overlay", "A mirror sends the taking lens's image up through a pentaprism to the eyepiece", "The sensor is in the pentaprism", "It guesses"], "answer": 1, "explain": "That is what 'single-lens reflex' means. One lens, a mirror, a prism." },
+    { "type": "identify", "prompt": "Tap the flap that has to slap up before the picture is taken.", "partId": "mirror" },
+    { "type": "identify", "prompt": "Tap the two curtains that control how long the sensor sees light.", "partId": "shutter" },
+    { "type": "choice", "prompt": "At a fast shutter speed the frame is exposed by:", "choices": ["Opening the whole shutter at once", "A moving slit formed by two curtains chasing each other", "The aperture blinking", "The sensor turning off"], "answer": 1, "explain": "That is why flash has a sync speed, and why a propeller blade can look bent." },
+    { "type": "identify", "prompt": "Tap the silicon that counts the photons.", "partId": "sensor" }
+  ]
+}

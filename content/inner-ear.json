@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "id": "inner-ear",
+  "title": "Inner Ear",
+  "subtitle": "A snail, three hoops, and three tiny bones",
+  "category": "Anatomy",
+  "accent": "#E8DCC8",
+  "scale": "≈ 20 mm across",
+  "summary": "Hearing is a chain. A drum moves three bones; the last bone kicks a window on a fluid-filled snail; a travelling wave in that snail tickles hair cells that are already neurons. Balance is three hoops, one in each plane, that notice when the fluid inside them doesn't keep up with your head.",
+  "model": "inner_ear",
+  "cutAxis": "y",
+  "restRotation": [0.28, -0.72, 0],
+  "parts": [
+    { "id": "tympanic_membrane", "nodes": ["tympanic_membrane"], "name": "Eardrum", "short": "A drum skin the size of a fingernail", "detail": "A thin cone, pulled in at the centre by the malleus. Air pressure changes on the outside become motion of this skin. A hole in it is a perforation; a scarred one is a hearing loss that surgery sometimes undoes.", "layer": 0, "explode": [-1.2, 0.3, 0.6] },
+    { "id": "malleus", "nodes": ["malleus"], "name": "Malleus", "short": "The hammer, glued to the drum", "detail": "The first ossicle. Its handle is embedded in the eardrum; its head articulates with the incus. It is a lever already. The three bones together are a transformer: a large, floppy drum into a small, stiff window.", "layer": 1, "explode": [-0.9, 0.4, 0.4] },
+    { "id": "incus", "nodes": ["incus"], "name": "Incus", "short": "The anvil, the middle of the chain", "detail": "It takes motion from the malleus and hands it to the stapes. The joint is a real synovial joint, the smallest you have. Arthritis here is a hearing loss that does not involve the nerve at all.", "layer": 1, "explode": [-0.7, 0.3, 0.3] },
+    { "id": "stapes", "nodes": ["stapes"], "name": "Stapes", "short": "The stirrup that kicks the inner ear", "detail": "The smallest bone in the body. Its footplate sits in the oval window. When it stiffens in place — otosclerosis — the snail never gets the kick, and hearing falls, conductive, until someone replaces this bone with a piston.", "layer": 1, "explode": [-0.5, 0.2, 0.2] },
+    { "id": "oval_window", "nodes": ["oval_window"], "name": "Oval Window", "short": "Where the chain knocks on the snail", "detail": "A membrane-covered opening into the vestibule, occupied by the stapes footplate. In goes the pressure wave. The round window, below, is how the incompressible fluid is allowed to bulge back out.", "layer": 2, "explode": [-0.4, 0.1, 0.15] },
+    { "id": "round_window", "nodes": ["round_window"], "name": "Round Window", "short": "The pressure relief", "detail": "A second membrane. Fluid cannot be compressed, so if the oval window moves in, this one must move out. Block it and the travelling wave in the cochlea has nowhere to go.", "layer": 2, "explode": [-0.35, -0.15, 0.2] },
+    { "id": "cochlea", "nodes": ["cochlea"], "name": "Cochlea", "short": "A snail that is a frequency analyser", "detail": "Two and a half turns of a fluid-filled tube, wide at the base (high notes) and narrow at the apex (low notes). A travelling wave peaks at the place that matches the frequency, and hair cells there fire. That is why we have a map of pitch, and why a hearing aid cannot put the high notes back once those cells are gone.", "layer": 2, "explode": [0.8, 0, 0] },
+    { "id": "vestibule", "nodes": ["vestibule"], "name": "Vestibule", "short": "The lobby the canals and the snail share", "detail": "A bony chamber between the windows and the canals. Utricle and saccule live here: two patches of hair cells with stones on them, which is how you know which way is up when you are not spinning.", "layer": 2, "explode": [0.3, 0.2, 0] },
+    { "id": "anterior_canal", "nodes": ["anterior_canal"], "name": "Anterior Canal", "short": "Nods: the hoop for pitching the head", "detail": "One of three semicircular canals, roughly vertical, in the plane of a nod. Fluid in the hoop lags when the head starts to move; hair cells in a swelling at the base notice the lag. That is angular acceleration, in one plane.", "layer": 2, "explode": [0.2, 0.9, 0.2] },
+    { "id": "posterior_canal", "nodes": ["posterior_canal"], "name": "Posterior Canal", "short": "The hoop for rolling toward the shoulder", "detail": "The third plane. Together the three canals are a three-axis gyro. Benign spinning vertigo is usually a crystal that has fallen out of the vestibule into this canal and is pretending to be a turn.", "layer": 2, "explode": [-0.2, 0.5, -0.7] },
+    { "id": "lateral_canal", "nodes": ["lateral_canal"], "name": "Lateral Canal", "short": "Shakes: the hoop for looking left and right", "detail": "The horizontal canal. Shaking your head 'no' is this one. Caloric testing in clinic — warm water in the ear — tricks this canal into thinking you are turning, which is how a doctor asks it a question without moving you.", "layer": 2, "explode": [0.5, 0.4, 0.5] },
+    { "id": "auditory_nerve", "nodes": ["auditory_nerve"], "name": "Vestibulocochlear Nerve", "short": "Hearing and balance, one cable", "detail": "Cranial nerve VIII. The cochlear part carries the pitch map; the vestibular part carries the three canals and the two otolith organs. A tumour on this nerve is why an MRI for one-sided hearing loss looks at the internal auditory canal.", "layer": 3, "explode": [1.1, -0.6, -0.4] },
+    { "id": "eustachian_tube", "nodes": ["eustachian_tube"], "name": "Eustachian Tube", "short": "Why your ears pop in a plane", "detail": "A passage from the middle-ear cavity to the throat. Swallowing opens it and equalises the drum. When it will not open, the drum is sucked in and you hear the ocean. Children get ear infections because theirs is shorter and more horizontal.", "layer": 1, "explode": [-0.8, -0.9, 0.5] }
+  ],
+  "steps": [
+    { "title": "A drum, then three bones", "body": "Air moves the eardrum. The drum moves a hammer, an anvil and a stirrup. The stirrup is a piston on a small window. That is impedance matching: air to fluid.", "focus": ["tympanic_membrane", "malleus", "incus", "stapes"] },
+    { "title": "Kick the snail", "body": "The oval window takes the piston. The round window bulges the other way. Fluid in the cochlea now has a wave.", "focus": ["oval_window", "round_window", "cochlea"] },
+    { "title": "A map of pitch along a spiral", "body": "High notes peak at the base, low notes at the apex. Hair cells at the peak fire. That is hearing, and those cells do not grow back.", "focus": ["cochlea", "auditory_nerve"] },
+    { "title": "Three hoops for three axes", "body": "Nod, shake, roll: each canal is a gyro in one plane. The vestibule's stones add which way is up.", "focus": ["anterior_canal", "posterior_canal", "lateral_canal", "vestibule"] },
+    { "title": "A tube to the throat", "body": "The eustachian tube is why a cabin change does not burst the drum — if you swallow in time.", "focus": ["eustachian_tube"] }
+  ],
+  "quiz": [
+    { "type": "identify", "prompt": "Tap the snail that splits sound into frequencies.", "partId": "cochlea" },
+    { "type": "choice", "prompt": "Why are there three ossicles instead of one rod?", "choices": ["They look like tools", "They are a lever transformer: a large drum into a small stiff window", "They amplify like a microphone", "They are leftover gills"], "answer": 1, "explain": "Area ratio plus lever ratio. Fluid is harder to move than air; the chain is the gearbox." },
+    { "type": "identify", "prompt": "Tap the smallest bone in the body.", "partId": "stapes" },
+    { "type": "identify", "prompt": "Tap the hoop that notices you shaking your head 'no'.", "partId": "lateral_canal" },
+    { "type": "choice", "prompt": "If the oval window moves in, what must the round window do?", "choices": ["Move in as well", "Move out — the fluid cannot be compressed", "Close", "Nothing; it is a spare"], "answer": 1, "explain": "Incompressible fluid in a rigid snail needs a second window or there is no travelling wave." },
+    { "type": "identify", "prompt": "Tap the drum skin.", "partId": "tympanic_membrane" }
+  ]
+}

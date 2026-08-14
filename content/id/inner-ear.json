@@ -1,0 +1,36 @@
+{
+  "title": "Telinga Dalam",
+  "subtitle": "Siput, tiga hoop, dan tiga tulang kecil",
+  "scale": "≈ 20 mm lebar",
+  "summary": "Pendengaran adalah rantai. Drum menggerakkan tiga tulang; tulang terakhir menendang jendela di siput berisi cairan; gelombang berjalan di siput itu menggelitik sel rambut yang sudah neuron. Keseimbangan adalah tiga hoop, satu di tiap bidang, yang menyadari ketika cairan di dalamnya tidak mengikuti kepala Anda.",
+  "parts": {
+    "tympanic_membrane": { "name": "Gendang Telinga", "short": "Kulit drum seukuran kuku", "detail": "Kerucut tipis, ditarik ke dalam di tengah oleh maleus. Perubahan tekanan udara di luar menjadi gerak kulit ini. Lubang di situ adalah perforasi; yang berparut adalah gangguan dengar yang kadang diurungkan operasi." },
+    "malleus": { "name": "Maleus", "short": "Palu, tertempel di drum", "detail": "Osikel pertama. Gagangnya tertanam di gendang; kepalanya berartikulasi dengan inkus. Ia sudah tuas. Tiga tulang bersama adalah transformer: drum besar dan lembek menjadi jendela kecil dan kaku." },
+    "incus": { "name": "Inkus", "short": "Landasan, tengah rantai", "detail": "Mengambil gerak dari maleus dan menyerahkannya ke stapes. Sendinya sendi sinovial sungguhan, yang paling kecil yang Anda punya. Arthritis di sini adalah gangguan dengar yang sama sekali tidak melibatkan saraf." },
+    "stapes": { "name": "Stapes", "short": "Sanggurdi yang menendang telinga dalam", "detail": "Tulang terkecil di tubuh. Pelat kakinya duduk di jendela oval. Ketika kaku di tempat — otosklerosis — siput tidak pernah mendapat tendangan, dan pendengaran jatuh, konduktif, sampai seseorang mengganti tulang ini dengan piston." },
+    "oval_window": { "name": "Jendela Oval", "short": "Tempat rantai mengetuk siput", "detail": "Lubang berlapis membran ke vestibulum, diisi pelat kaki stapes. Masuk gelombang tekanan. Jendela bundar di bawah adalah cara cairan yang tidak bisa dimampatkan diizinkan menggembung keluar." },
+    "round_window": { "name": "Jendela Bundar", "short": "Pelepas tekanan", "detail": "Membran kedua. Cairan tidak bisa dimampatkan, jadi jika jendela oval masuk, yang ini harus keluar. Tutup dan gelombang berjalan di koklea tidak punya tempat pergi." },
+    "cochlea": { "name": "Koklea", "short": "Siput yang adalah penganalisis frekuensi", "detail": "Dua setengah putaran tabung berisi cairan, lebar di pangkal (nada tinggi) dan sempit di puncak (nada rendah). Gelombang berjalan memuncak di tempat yang cocok dengan frekuensi, dan sel rambut di situ menembak. Itulah alasan kita punya peta nada, dan alasan alat bantu dengar tidak bisa mengembalikan nada tinggi setelah sel itu hilang." },
+    "vestibule": { "name": "Vestibulum", "short": "Lobi yang dibagi kanal dan siput", "detail": "Kamar tulang antara jendela dan kanal. Utrikulus dan sakulus tinggal di sini: dua patch sel rambut dengan batu di atasnya, itulah cara Anda tahu mana atas ketika tidak berputar." },
+    "anterior_canal": { "name": "Kanal Anterior", "short": "Angguk: hoop untuk menundukkan kepala", "detail": "Salah satu dari tiga kanal semisirkular, kira-kira vertikal, di bidang anggukan. Cairan di hoop tertinggal ketika kepala mulai bergerak; sel rambut di bengkak di pangkal menyadari ketertinggalan. Itu percepatan sudut, di satu bidang." },
+    "posterior_canal": { "name": "Kanal Posterior", "short": "Hoop untuk berguling ke bahu", "detail": "Bidang ketiga. Bersama ketiga kanal adalah giro tiga-sumbu. Vertigo berputar jinak biasanya kristal yang jatuh dari vestibulum ke kanal ini dan berpura-pura menjadi putaran." },
+    "lateral_canal": { "name": "Kanal Lateral", "short": "Geleng: hoop untuk melihat kiri-kanan", "detail": "Kanal horizontal. Menggeleng 'tidak' adalah yang ini. Tes kalori di klinik — air hangat di telinga — menipu kanal ini berpikir Anda berputar, itulah cara dokter bertanya tanpa menggerakkan Anda." },
+    "auditory_nerve": { "name": "Saraf Vestibulokoklear", "short": "Dengar dan seimbang, satu kabel", "detail": "Saraf kranial VIII. Bagian koklea membawa peta nada; bagian vestibular membawa tiga kanal dan dua organ otolit. Tumor di saraf ini alasan MRI untuk gangguan dengar satu sisi melihat kanal auditorius interna." },
+    "eustachian_tube": { "name": "Tuba Eustachius", "short": "Alasan telinga Anda pop di pesawat", "detail": "Jalur dari rongga telinga tengah ke tenggorokan. Menelan membukanya dan menyamakan drum. Ketika tidak mau terbuka, drum tersedot masuk dan Anda mendengar laut. Anak kena infeksi telinga karena milik mereka lebih pendek dan lebih mendatar." }
+  },
+  "steps": [
+    { "title": "Drum, lalu tiga tulang", "body": "Udara menggerakkan gendang. Gendang menggerakkan palu, landasan, dan sanggurdi. Sanggurdi adalah piston di jendela kecil. Itu pencocokan impedansi: udara ke cairan." },
+    { "title": "Tendang siput", "body": "Jendela oval menerima piston. Jendela bundar menggembung ke arah lain. Cairan di koklea kini punya gelombang." },
+    { "title": "Peta nada sepanjang spiral", "body": "Nada tinggi memuncak di pangkal, nada rendah di puncak. Sel rambut di puncak menembak. Itulah pendengaran, dan sel itu tidak tumbuh kembali." },
+    { "title": "Tiga hoop untuk tiga sumbu", "body": "Angguk, geleng, guling: tiap kanal adalah giro di satu bidang. Batu vestibulum menambah mana yang atas." },
+    { "title": "Tabung ke tenggorokan", "body": "Tuba eustachius adalah alasan perubahan kabin tidak meledakkan gendang — jika Anda menelan tepat waktu." }
+  ],
+  "quiz": [
+    { "prompt": "Ketuk siput yang membagi bunyi menjadi frekuensi." },
+    { "prompt": "Mengapa ada tiga osikel, bukan satu batang?", "choices": ["Mereka kelihatan seperti alat", "Mereka transformer tuas: drum besar menjadi jendela kecil yang kaku", "Mereka memperkuat seperti mikrofon", "Mereka insang sisa"], "explain": "Rasio luas plus rasio tuas. Cairan lebih sulit digerakkan daripada udara; rantai adalah gearbox." },
+    { "prompt": "Ketuk tulang terkecil di tubuh." },
+    { "prompt": "Ketuk hoop yang menyadari Anda menggeleng 'tidak'." },
+    { "prompt": "Jika jendela oval masuk, apa yang harus dilakukan jendela bundar?", "choices": ["Masuk juga", "Keluar — cairan tidak bisa dimampatkan", "Menutup", "Tidak apa-apa; ia cadangan"], "explain": "Cairan yang tidak bisa dimampatkan dalam siput kaku butuh jendela kedua atau tidak ada gelombang berjalan." },
+    { "prompt": "Ketuk kulit drum." }
+  ]
+}

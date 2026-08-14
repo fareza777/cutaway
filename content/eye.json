@@ -1,0 +1,350 @@
+{
+  "schema": 1,
+  "id": "eye",
+  "title": "Eye",
+  "subtitle": "A camera that is wired in backwards",
+  "category": "Anatomy",
+  "accent": "#6FA8C7",
+  "scale": "≈ 24 mm across",
+  "summary": "An eye is a camera with a lens, an aperture and a film, and it is built wrong in almost every way an engineer would care about. The film is installed backwards, so light passes through the wiring and the blood supply before reaching the cells that detect it. There is a hole in it where the cable leaves. Only a patch the size of this full stop sees in any detail at all. None of that matters, because the real seeing happens afterwards: the eye delivers a small, upside-down, patchy, blurred-at-the-edges image, and the brain builds the steady, sharp, complete world you think you are looking at.",
+  "model": "eye",
+  "cutAxis": "y",
+  "restRotation": [
+    0.08,
+    -0.5,
+    0
+  ],
+  "parts": [
+    {
+      "id": "cornea",
+      "nodes": [
+        "cornea"
+      ],
+      "name": "Cornea",
+      "short": "Clear, and does two thirds of the focusing",
+      "detail": "The only tissue in the body that is genuinely transparent, and it manages it by stacking its collagen in a lattice regular enough that light passes without scattering. It has no blood vessels at all — vessels would ruin the view — so it takes its oxygen straight from the air. Most people assume the lens does the focusing, but the cornea does around two thirds of it. That is why reshaping it by a fraction of a millimetre corrects a lifetime of short sight, and why a scratch on it hurts out of all proportion to its size.",
+      "layer": 0,
+      "opacity": 0.16
+    },
+    {
+      "id": "sclera",
+      "nodes": [
+        "sclera"
+      ],
+      "name": "Sclera",
+      "short": "The white: a pressure vessel made of collagen",
+      "detail": "Tough, opaque and about half a millimetre thick, crossed in every direction so it holds its shape against the pressure inside. That pressure is what keeps the eye spherical and the retina pressed smoothly against the back wall. Humans are unusual in showing so much of it: almost every other primate has a dark sclera, and the theory is that ours went white so that others can follow our gaze.",
+      "layer": 0
+    },
+    {
+      "id": "conjunctiva",
+      "nodes": [
+        "conjunctiva"
+      ],
+      "name": "Conjunctiva",
+      "short": "The membrane that makes an eye look bloodshot",
+      "detail": "A thin transparent skin over the white, carrying the fine vessels that dilate and turn the eye red when it is tired or irritated. It folds back onto the inside of the eyelid, which forms a closed pocket — and that pocket is the reason a contact lens or a stray eyelash cannot disappear behind your eyeball, however much it feels like it has.",
+      "layer": 0,
+      "opacity": 0.1
+    },
+    {
+      "id": "limbus",
+      "nodes": [
+        "limbus"
+      ],
+      "name": "Limbus",
+      "short": "Where clear meets white — and where the stem cells live",
+      "detail": "The narrow ring joining cornea to sclera. It looks like a boundary and is actually a nursery: the stem cells that continually resurface the cornea live in this band and nowhere else. Destroy it — a chemical splash is the usual way — and the cornea loses the ability to repair itself permanently, no matter how healthy the rest of the eye is.",
+      "layer": 0
+    },
+    {
+      "id": "iris",
+      "nodes": [
+        "iris"
+      ],
+      "name": "Iris",
+      "short": "The aperture, and no two are alike",
+      "detail": "A ring of muscle that opens and closes the pupil, working over a range of about sixteen to one. Its structure is what you actually recognise in a face: fibres running outward like spokes, a raised ridge about a third of the way out called the collarette, pits between the fibres called crypts, and a dark ring at the outer edge. Brown eyes and blue eyes contain the same pigment; blue ones simply have less of it, and the colour you see is scattered light rather than anything blue being there.",
+      "layer": 1
+    },
+    {
+      "id": "sphincter_pupillae",
+      "nodes": [
+        "sphincter_pupillae"
+      ],
+      "name": "Sphincter Pupillae",
+      "short": "The ring that closes the pupil, working like a drawstring",
+      "detail": "A circular muscle right at the pupil margin. It has an opposite number — a set of radial fibres that pull the pupil open — and the two are driven by different halves of the autonomic nervous system, which is why fright widens your pupils and a bright light narrows them. Its response to light travels through the brainstem and back, so a torch shone in one eye narrows both. When only one responds, that tells a doctor precisely where the fault is.",
+      "layer": 1
+    },
+    {
+      "id": "canal_of_schlemm",
+      "nodes": [
+        "canal_of_schlemm"
+      ],
+      "name": "Canal of Schlemm",
+      "short": "The drain — and the whole reason eye pressure is what it is",
+      "detail": "A ring-shaped channel buried in the angle where iris meets cornea, collecting aqueous humour and returning it to the bloodstream. Production runs at a steady rate whatever happens, so the pressure inside the eye is set almost entirely by how freely this drain flows. Narrow it and the pressure climbs; that is glaucoma, and nearly every drop and every operation for it is aimed at this ring.",
+      "layer": 1
+    },
+    {
+      "id": "pupil",
+      "nodes": [
+        "pupil"
+      ],
+      "name": "Pupil",
+      "short": "Not a thing — a hole",
+      "detail": "There is nothing there. It looks black because almost no light that goes in comes back out, the same reason an open window across the street looks black on a bright day. It narrows in light, but it also narrows for close focus and widens with interest, fear and pain, which is why a doctor's torch tells them about the brainstem and not only about the eye.",
+      "layer": 1
+    },
+    {
+      "id": "aqueous_humour",
+      "nodes": [
+        "aqueous_humour"
+      ],
+      "name": "Aqueous Humour",
+      "short": "Watery fluid, made and drained continuously",
+      "detail": "Fills the space between cornea and lens, feeds both — neither has a blood supply — and is replaced completely every couple of hours. The balance between how fast it is made and how fast it drains sets the pressure of the whole eye. Block the drain and the pressure climbs and quietly kills the optic nerve from the edges inward. That is glaucoma, and it is painless until a great deal of sight is already gone.",
+      "layer": 1,
+      "opacity": 0.08
+    },
+    {
+      "id": "lens",
+      "nodes": [
+        "lens"
+      ],
+      "name": "Lens",
+      "short": "Focuses by changing shape, not by moving",
+      "detail": "Built in layers like an onion, completely transparent, and with no blood supply or nerves whatsoever. A camera focuses by sliding its lens; this one focuses by changing its own shape, which is a far more elegant solution and has one flaw — it stiffens throughout life. By your forties it can no longer round up enough for close work, and reading glasses arrive regardless of how good your eyes ever were. Later, its proteins clump and cloud, which is a cataract.",
+      "layer": 2,
+      "opacity": 0.3
+    },
+    {
+      "id": "ciliary_body",
+      "nodes": [
+        "ciliary_body"
+      ],
+      "name": "Ciliary Body",
+      "short": "The muscle that focuses — and it works backwards",
+      "detail": "A ring of muscle around the lens, and nearly everyone guesses its action the wrong way round. Relaxed, the ring is wide, the threads holding the lens are taut, and the lens is pulled flat for distance. Contracted, the ring narrows, the threads slacken, and the lens rounds up for close work. So staring into the distance is the resting state, and reading is the effort. This body also makes the aqueous humour.",
+      "layer": 2
+    },
+    {
+      "id": "zonules",
+      "nodes": [
+        "zonules"
+      ],
+      "name": "Zonules",
+      "short": "Hundreds of threads slinging the lens in place",
+      "detail": "Fine fibres running from the ciliary body to the rim of the lens, holding it centred on the optical axis like the spokes of a bicycle wheel. The muscle never touches the lens; it only changes the tension in these. When they weaken — in Marfan syndrome, or after a heavy blow — the lens slips off centre and vision goes double in one eye.",
+      "layer": 2
+    },
+    {
+      "id": "vitreous",
+      "nodes": [
+        "vitreous"
+      ],
+      "name": "Vitreous Humour",
+      "short": "A clear gel filling four fifths of the eye",
+      "detail": "Almost entirely water, held in a fine mesh of collagen, and never replaced — the gel you were born with is the gel you die with. It shrinks with age and peels away from the retina, and the specks and threads that drift across your vision when you look at a blank wall are its debris casting shadows. A sudden shower of them with flashes of light is that peeling tugging on the retina, and is worth seeing someone about the same day.",
+      "layer": 2,
+      "opacity": 0.06
+    },
+    {
+      "id": "retina",
+      "nodes": [
+        "retina"
+      ],
+      "name": "Retina",
+      "short": "The film — installed backwards",
+      "detail": "A sheet of nerve tissue about as thick as a sheet of paper, and it is built the wrong way round: light has to pass through the wiring, the supporting cells and the blood vessels before it reaches the rods and cones that actually detect it. No designer would do that. Evolution arrived at it early in the vertebrate line and could not flip it afterwards, so every improvement since has been a workaround — including the pit at the fovea, where the wiring is simply shoved aside.",
+      "layer": 3
+    },
+    {
+      "id": "macula",
+      "nodes": [
+        "macula"
+      ],
+      "name": "Macula",
+      "short": "A few millimetres that do all your detailed seeing",
+      "detail": "Everything you have ever read has passed through a patch about five millimetres across. Away from it, resolution collapses fast — the vision you think you have across your whole field is an illusion assembled by the brain from wherever your eyes darted last. This is also the patch that fails in macular degeneration, which is why it takes central vision and leaves the edges, the opposite of glaucoma.",
+      "layer": 3
+    },
+    {
+      "id": "fovea",
+      "nodes": [
+        "fovea"
+      ],
+      "name": "Fovea",
+      "short": "A pit with no rods at all",
+      "detail": "At the very centre of the macula the retina's own wiring is pushed aside so light reaches the cones directly — the workaround for a retina that faces backwards. It is packed with cones and contains no rods whatsoever, which has a consequence you can test tonight: a faint star disappears when you look straight at it and reappears when you look slightly to one side, because at the centre you have no rods to see it with.",
+      "layer": 3
+    },
+    {
+      "id": "optic_disc",
+      "nodes": [
+        "optic_disc"
+      ],
+      "name": "Optic Disc",
+      "short": "The blind spot, and it is real",
+      "detail": "Where a million nerve fibres gather and leave through the back wall together. There are no receptors here at all, so there is a genuine hole in the visual field of each eye, about the size of your thumbnail at arm's length. You never notice it, partly because the other eye covers it, but mostly because the brain simply fills the gap with whatever surrounds it — and is entirely confident about the result.",
+      "layer": 3
+    },
+    {
+      "id": "choroid",
+      "nodes": [
+        "choroid"
+      ],
+      "name": "Choroid",
+      "short": "Blood supply and matte black paint",
+      "detail": "A dark layer packed with vessels between retina and sclera, doing two jobs at once. It feeds the outer retina, which is too metabolically hungry to be supplied any other way, and its pigment absorbs stray light so it cannot bounce around inside and wash out the image. The inside of a camera is painted matte black for exactly the same reason. Animals with night vision replace this layer with a mirror, which is why their eyes shine in headlights and yours do not.",
+      "layer": 3
+    },
+    {
+      "id": "retinal_vessels",
+      "nodes": [
+        "retinal_vessels"
+      ],
+      "name": "Retinal Vessels",
+      "short": "The only blood vessels a doctor can see without cutting",
+      "detail": "They fan out from the optic disc across the inner face of the retina — in front of the photoreceptors, another consequence of the backwards build. This is the one place in the body where arteries and veins can be looked at directly, with nothing more than a light and a lens. Because of that, an eye examination routinely finds diabetes and high blood pressure before the person has any symptoms at all.",
+      "layer": 4
+    },
+    {
+      "id": "optic_nerve",
+      "nodes": [
+        "optic_nerve"
+      ],
+      "name": "Optic Nerve",
+      "short": "Not a nerve — a piece of brain",
+      "detail": "Strictly it is a tract of the central nervous system that grew outward during development to meet the light, which is why it does not regenerate the way a nerve in your arm does. It carries something like a million fibres, and it leaves the back of the eye slightly toward the nose. That offset is why the blind spot in your right eye sits to the right of centre and the left one's sits to the left.",
+      "layer": 4
+    },
+    {
+      "id": "extraocular_muscles",
+      "nodes": [
+        "extraocular_muscles"
+      ],
+      "name": "Extraocular Muscles",
+      "short": "Six of the fastest muscles you own",
+      "detail": "They move the eye in ballistic jumps three or four times a second, faster than any other muscle in the body, and they never really rest. Between jumps the brain blanks your vision so the world does not smear — which means you are briefly blind several times a second and have never once noticed. Watch someone else's eyes flick as they read: what you cannot do is watch your own do it in a mirror.",
+      "layer": 1
+    }
+  ],
+  "steps": [
+    {
+      "title": "Bend the light",
+      "body": "Two thirds of the focusing happens the instant light crosses the cornea, before it has entered the eye proper. The cornea is fixed and cannot adjust — it is the coarse setting, and it is the one laser surgery reshapes.",
+      "focus": [
+        "cornea",
+        "limbus"
+      ]
+    },
+    {
+      "title": "Set the aperture",
+      "body": "The iris opens and closes the pupil over a range of about sixteen to one, trading light against depth of field exactly as a camera does. It also narrows when you focus close, which sharpens the image at the cost of brightness.",
+      "focus": [
+        "iris",
+        "pupil"
+      ]
+    },
+    {
+      "title": "Fine-tune by changing shape",
+      "body": "The ciliary muscle contracts, the threads holding the lens slacken, and the lens rounds up. Relaxed muscle means a flat lens and distant focus, so looking into the distance is rest and reading is work — the opposite of what most people assume.",
+      "focus": [
+        "ciliary_body",
+        "zonules",
+        "lens"
+      ]
+    },
+    {
+      "title": "Cross the gel and land upside down",
+      "body": "Light crosses the vitreous and lands on the retina inverted and reversed, as it must through any single lens. Nothing ever turns it back the right way up: the brain simply reads it as it is and always has.",
+      "focus": [
+        "vitreous",
+        "retina"
+      ]
+    },
+    {
+      "title": "Through the wiring, then out to the brain",
+      "body": "The retina faces backwards, so light passes through nerves and blood vessels before reaching the rods and cones; only at the fovea is the wiring pushed aside. A million fibres then gather and leave together through the optic disc, punching a real hole in the visual field on the way out. What reaches the brain is small, inverted, patchy and sharp in one spot only — everything steady and complete about your vision is built after this point.",
+      "focus": [
+        "retina",
+        "macula",
+        "fovea",
+        "optic_disc",
+        "optic_nerve"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "type": "identify",
+      "prompt": "Tap the part that does most of the eye's focusing.",
+      "partId": "cornea"
+    },
+    {
+      "type": "choice",
+      "prompt": "How does the lens focus on something close?",
+      "choices": [
+        "It slides forward, like a camera lens",
+        "The muscle relaxes and pulls it flat",
+        "The muscle contracts, the threads slacken, and the lens rounds up",
+        "The pupil closes and the lens follows"
+      ],
+      "answer": 2,
+      "explain": "Contracting the ciliary ring makes it smaller, which slackens the threads and lets the lens spring rounder. Relaxed muscle means a flat lens focused far away — so distance is the resting state and reading is the effort."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the hole in your visual field that you have never noticed.",
+      "partId": "optic_disc"
+    },
+    {
+      "type": "choice",
+      "prompt": "What is odd about how the retina is built?",
+      "choices": [
+        "It is thicker at the edges than the centre",
+        "Light passes through the wiring and blood vessels before reaching the detectors",
+        "It has no blood supply",
+        "It renews itself completely every year"
+      ],
+      "answer": 1,
+      "explain": "The retina faces backwards. Every workaround since — the pit at the fovea, the blind spot where the cable leaves — exists because evolution could not flip it afterwards."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the patch that does all your detailed seeing.",
+      "partId": "macula"
+    },
+    {
+      "type": "choice",
+      "prompt": "Why does a faint star vanish when you look straight at it?",
+      "choices": [
+        "The pupil narrows when you concentrate",
+        "The fovea has no rods, and rods are what see in dim light",
+        "The lens cannot focus on something that far away",
+        "The blind spot is at the centre of vision"
+      ],
+      "answer": 1,
+      "explain": "The fovea is packed with cones and has no rods at all. Looking slightly to one side puts the star onto retina that does have rods, and it reappears."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the dark layer that stops light bouncing around inside.",
+      "partId": "choroid"
+    },
+    {
+      "type": "choice",
+      "prompt": "Why is the pupil black?",
+      "choices": [
+        "It is filled with dark pigment",
+        "It is a hole, and almost no light that enters comes back out",
+        "The lens behind it is tinted",
+        "The iris casts a shadow on it"
+      ],
+      "answer": 1,
+      "explain": "There is nothing there to be black. The same effect makes an open window across the street look black on a bright day."
+    }
+  ]
+}

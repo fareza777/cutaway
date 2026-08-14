@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "id": "differential",
+  "title": "Differential",
+  "subtitle": "One input, two wheels, a corner",
+  "category": "Mechanical",
+  "accent": "#9AA3AD",
+  "scale": "≈ 250 mm ring gear",
+  "summary": "A differential lets two wheels on one axle turn at different speeds without fighting the engine. The trick is a cross of bevel gears inside a carrier: the carrier is driven by the ring gear; the spider gears on the cross can idle, which is how the inside wheel is allowed to slow down in a corner while the outside speeds up.",
+  "model": "differential",
+  "cutAxis": "y",
+  "restRotation": [0.25, 0.85, 0],
+  "parts": [
+    { "id": "housing", "nodes": ["housing"], "name": "Axle Housing", "short": "The banjo that holds oil and bearings", "detail": "A cast iron or aluminium case, traditionally a 'banjo' with tubes for the axles. It is a gearbox, a reservoir and a beam. The oil in it is what keeps hypoid teeth alive.", "layer": 0, "opacity": 0.22, "explode": [0, 0, -1.0] },
+    { "id": "ring_gear", "nodes": ["ring_gear"], "name": "Ring Gear", "short": "The big crown the pinion drives", "detail": "A hypoid or spiral-bevel crown bolted to the carrier. It is how a longitudinal driveshaft turns a transverse axle, and how a small pinion gets a large torque multiplication. The whine you hear on an old van is this mesh.", "layer": 1, "explode": [0, 0.4, 0.3], "motion": { "spin": { "axis": "x", "ratio": 1 } } },
+    { "id": "pinion", "nodes": ["pinion"], "name": "Drive Pinion", "short": "The small gear on the end of the propshaft", "detail": "A handful of teeth driving many. That ratio is why a car can climb a hill without a huge engine. The pinion is offset on a hypoid pair so the propshaft can sit lower than the axle centreline.", "layer": 1, "explode": [0, 0, 1.3], "motion": { "spin": { "axis": "z", "ratio": 3.5 } } },
+    { "id": "carrier", "nodes": ["carrier"], "name": "Carrier", "short": "The cage the spider lives in", "detail": "A box that turns with the ring gear. The cross-pin is fixed in it. If both wheels have the same grip, the whole carrier, spiders and side gears rotate as one lump and the spiders do not spin on their pin. That is driving straight.", "layer": 2, "explode": [0, 0.6, 0], "motion": { "spin": { "axis": "x", "ratio": 1 } } },
+    { "id": "spider_gears", "nodes": ["spider_gears"], "name": "Spider Gears", "short": "The bevels that idle when the wheels disagree", "detail": "Two (sometimes four) bevels on the cross-pin. They mesh with both side gears. When the wheels want different speeds, these rotate on the pin and let one side gear run faster than the carrier, the other slower, by the same amount. That is a corner.", "layer": 3, "explode": [0, 0.9, 0] },
+    { "id": "side_gears", "nodes": ["side_gears"], "name": "Side Gears", "short": "Splined to the axles, meshed with the spiders", "detail": "One per wheel. They take whatever speed the spiders give them and send it down the axle shafts. A limited-slip differential is this pair with extra clutches, because open spiders will send all the torque to the wheel that is spinning in mud.", "layer": 3, "explode": [0.7, 0, 0], "motion": { "spin": { "axis": "x", "ratio": 1 } } },
+    { "id": "left_axle", "nodes": ["left_axle"], "name": "Left Axle Shaft", "short": "Half the width of the car, one wheel", "detail": "A shaft splined into the left side gear and, at the other end, into the hub. It only knows what the side gear tells it. In a corner that is slower than the ring gear.", "layer": 2, "explode": [1.4, 0, 0], "motion": { "spin": { "axis": "x", "ratio": 1 } } },
+    { "id": "right_axle", "nodes": ["right_axle"], "name": "Right Axle Shaft", "short": "The other half", "detail": "Same part, other way. In a left turn this one is the faster shaft. The differential's entire personality is that these two are allowed to disagree.", "layer": 2, "explode": [-1.4, 0, 0], "motion": { "spin": { "axis": "x", "ratio": 1 } } },
+    { "id": "pinion_shaft", "nodes": ["pinion_shaft"], "name": "Pinion Shaft", "short": "The input, from the gearbox", "detail": "The last thing the gearbox sees. A flange at the back of this shaft is where the propshaft bolts on. Everything downstream is slower and stronger.", "layer": 1, "explode": [0, 0, 1.6], "motion": { "spin": { "axis": "z", "ratio": 3.5 } } },
+    { "id": "bearings", "nodes": ["bearings"], "name": "Bearings", "short": "What keeps the mesh from walking away", "detail": "Tapered rollers on the pinion, more on the carrier. Hypoid gears produce thrust along the pinion axis; these bearings exist to eat that thrust so the teeth stay in mesh instead of unscrewing the gearbox.", "layer": 2, "explode": [0.4, 0.5, 0.5] }
+  ],
+  "steps": [
+    { "title": "Turn the corner into the axle", "body": "The pinion on the propshaft drives a much larger ring gear. Direction changes ninety degrees; torque multiplies. That is the easy part.", "focus": ["pinion", "ring_gear"] },
+    { "title": "The carrier is the average", "body": "The ring gear is bolted to a cage. If both wheels agree, this cage, the spiders and both side gears turn as one piece. Straight road, one speed.", "focus": ["carrier", "ring_gear"] },
+    { "title": "Spiders idle in a corner", "body": "When one wheel must slow and the other speed up, the bevels on the cross-pin rotate. They add speed to one side gear and subtract it from the other. The engine still sees one input.", "focus": ["spider_gears", "side_gears"] },
+    { "title": "Two shafts, two minds", "body": "Each side gear has its own axle. That is why a car does not hop around a roundabout, and why an open differential will spin one wheel in the snow and leave you there.", "focus": ["left_axle", "right_axle"] },
+    { "title": "Bearings eat the thrust", "body": "Hypoid teeth try to shove the pinion out of the case. Tapered bearings are the only reason the mesh survives.", "focus": ["bearings", "housing"] }
+  ],
+  "quiz": [
+    { "type": "identify", "prompt": "Tap the small gear that turns the big crown.", "partId": "pinion" },
+    { "type": "choice", "prompt": "What do the spider gears do in a corner?", "choices": ["Lock both wheels together", "Idle on the cross-pin so one axle can run faster than the other", "Disconnect the engine", "Turn the steering"], "answer": 1, "explain": "They rotate relative to the carrier, adding speed to one side and subtracting it from the other." },
+    { "type": "identify", "prompt": "Tap the bevels that idle when the wheels disagree.", "partId": "spider_gears" },
+    { "type": "identify", "prompt": "Tap the big crown bolted to the carrier.", "partId": "ring_gear" },
+    { "type": "choice", "prompt": "Why can an open differential leave you stuck with one wheel spinning?", "choices": ["It is underpowered", "Torque follows the path of least resistance — the spinning wheel — and the spiders happily allow it", "The ring gear slips", "The axles are too thin"], "answer": 1, "explain": "The open spider is impartial. A limited-slip adds clutches because mud is not a corner." },
+    { "type": "identify", "prompt": "Tap the cage the spider lives in.", "partId": "carrier" }
+  ]
+}

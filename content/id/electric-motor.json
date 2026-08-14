@@ -1,0 +1,35 @@
+{
+  "title": "Motor Listrik",
+  "subtitle": "DC sikat: koil yang terus mengejar medan",
+  "scale": "≈ diameter 80 mm",
+  "summary": "Motor DC bersikat adalah elektromagnet putar yang tidak pernah sempat menyusul. Arus di jangkar membuat medan; medan itu mencoba sejajar dengan stator; tepat saat hampir sejajar, komutator membalik arus sehingga kejar-kejaran dimulai lagi. Poros adalah yang Anda cari. Komutator adalah alasan ia berputar, bukan mengunci.",
+  "parts": {
+    "housing": { "name": "Rumah", "short": "Kaleng yang sekaligus jalur balik magnet", "detail": "Tabung baja. Menahan tutup ujung dan menutup rangkaian magnet di sekitar lilitan medan. Baut tembus adalah cara seluruh tumpukan dijepit supaya celah udara tetap celah udara." },
+    "end_cap": { "name": "Tutup Ujung", "short": "Menahan bantalan dan rakitan sikat", "detail": "Pelat yang menutup kaleng, menempatkan bantalan, dan di ujung ini juga membawa pemegang sikat. Lepaskan dan jangkar keluar — begitulah motor ini diservis, dan begitulah sikat diganti." },
+    "stator": { "name": "Stator", "short": "Dua kutub, besi, medan yang tidak berputar", "detail": "Kutub menonjol di dalam kaleng. Pada motor DC kecil mereka hanya besi berbentuk dengan koil di sekeliling masing-masing. Medannya tetap di rangka. Jangkar yang berputar, selalu mencoba sejajar, tidak pernah diizinkan." },
+    "field_windings": { "name": "Lilitan Medan", "short": "Elektromagnet yang membuat stator jadi magnet", "detail": "Tembaga di sekitar sepatu kutub. Arus searah di sini membuat medan tetap. Sebagian motor memakai magnet permanen dan melewatkan bagian ini; fisika kejar-kejarannya sama." },
+    "armature": { "name": "Inti Jangkar", "short": "Besi yang berputar, beralur untuk lilitan", "detail": "Tumpukan laminasi supaya arus eddy tidak memasaknya. Alur di sekeliling tepi menahan lilitan jangkar. Besi ini rangkaian magnet rotor; tanpanya medan koil hanya loop lemah di udara." },
+    "armature_windings": { "name": "Lilitan Jangkar", "short": "Koil yang selalu hampir sejajar", "detail": "Loop tembaga dimasukkan ke alur dan dihubungkan ke batang komutator. Arus di sini, dalam medan stator, adalah torsi. Balikkan arus dan torsi berbalik — tepat itulah yang dilakukan komutator setiap setengah putaran." },
+    "commutator": { "name": "Komutator", "short": "Sakelar putar yang membalik arus tepat waktu", "detail": "Cincin batang tembaga, terisolasi satu sama lain, masing-masing terhubung ke koil jangkar. Sikat duduk di cincin ini. Saat poros berputar, tiap koil diserahkan dari satu polaritas sikat ke yang lain tepat saat selesai sejajar — jadi ia didorong maju, bukan diam." },
+    "brushes": { "name": "Sikat", "short": "Balok karbon yang mengusap komutator", "detail": "Mereka bergeser. Itu seluruh triknya dan seluruh barang ausnya. Karbon dipakai karena menghantar, sedikit melumas, dan aus alih-alih mengauskan tembaga. Percikan di sini adalah arus yang terputus; terlalu banyak percikan adalah motor yang minta sikat baru." },
+    "shaft": { "name": "Poros", "short": "Yang sebenarnya Anda inginkan", "detail": "Batang baja menembus jangkar, komutator, kedua bantalan, dan kipas. Segala yang lain ada untuk memutar ini. Keyway dan dataran di ujung adalah cara beban menempel." },
+    "bearings": { "name": "Bantalan", "short": "Dua cincin yang membiarkan poros berputar dalam kaleng", "detail": "Biasanya bantalan bola, kadang sleeve pada motor murah. Mereka menahan beban radial dari sabuk atau gigi, dan sedikit aksial. Motor yang meraung sering ini, bukan lilitannya." },
+    "fan": { "name": "Kipas Pendingin", "short": "Satu-satunya AC untuk lilitan", "detail": "Impeler stempel di poros. Tembaga punya hambatan; hambatan adalah panas. Kipas ini alasan motor bisa diberi rating kerja kontinu, bukan beberapa menit. Tutup ventilasi dan pernis lepas." },
+    "terminals": { "name": "Terminal", "short": "Tempat baterai tiba", "detail": "Dua tiang di tutup ujung. Tukar dan medan — atau jangkar — berbalik relatif terhadap yang lain, dan poros berjalan ke arah lain. Itulah membalik motor DC: dua kawat." }
+  },
+  "steps": [
+    { "title": "Medan yang tidak berputar", "body": "Arus di lilitan medan membuat stator jadi magnet. Kutubnya tetap di kaleng. Inilah yang akan dikejar rotor." },
+    { "title": "Medan yang berputar", "body": "Arus di lilitan jangkar membuat magnet kedua, yang bebas berputar. Magnet sejajar. Jika itu akhirnya, poros akan berbunyi klik lalu berhenti." },
+    { "title": "Balikkan tepat waktu", "body": "Komutator adalah sakelar putar. Saat tiap koil selesai sejajar, sikat memberinya polaritas berlawanan. Kejar-kejaran tidak pernah selesai. Itulah rotasi." },
+    { "title": "Poros adalah intinya", "body": "Segala yang lain ada untuk memutar batang baja di dua bantalan. Gantung beban di situ dan arus yang sama kini mengerjakan kerja." },
+    { "title": "Buang panas", "body": "Lilitan adalah resistor. Kipas di poros adalah sistem pendingin. Tanpa kipas, tidak ada kerja kontinu." }
+  ],
+  "quiz": [
+    { "prompt": "Ketuk sakelar putar yang mencegah motor mengunci pada penjajaran pertama." },
+    { "prompt": "Mengapa motor DC tidak langsung berhenti seperti dua magnet?", "choices": ["Poros terlalu berat", "Komutator membalik arus jangkar setiap setengah putaran, jadi penjajaran selalu di masa depan", "Sikat adalah pegas", "Kipas menjaganya bergerak"], "explain": "Tanpa komutasi Anda punya elektromagnet yang menemukan utara dan diam. Dengannya, utara terus bergerak." },
+    { "prompt": "Ketuk balok karbon yang mengusap komutator." },
+    { "prompt": "Ketuk besi yang berputar." },
+    { "prompt": "Bagaimana cara membalik motor DC sederhana?", "choices": ["Pasang gearbox", "Tukar dua kawat suplai", "Putar kipas", "Tambah sikat"], "explain": "Balikkan jangkar relatif terhadap medan dan torsi berbalik. Dua kawat." },
+    { "prompt": "Ketuk yang sebenarnya Anda inginkan — tempat beban menempel." }
+  ]
+}

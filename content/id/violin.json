@@ -1,0 +1,36 @@
+{
+  "title": "Biola",
+  "subtitle": "Kotak kayu yang bernyanyi ketika Anda menggeseknya",
+  "scale": "≈ badan 356 mm",
+  "summary": "Biola adalah kotak yang dibentuk hati-hati. Empat senar, jembatan yang menyodok getarannya ke perut, soundpost yang menggabungkan perut ke punggung, dan dua lubang-f yang membiarkan kotak bernapas. Gulungan adalah pegangan. Bunyinya adalah kayu.",
+  "parts": {
+    "belly": { "name": "Perut", "short": "Spruce, berlengkung, pelat yang memancar", "detail": "Pelat depan, diukir dari spruce karena spruce kaku sepanjang serat dan ringan. Lengkungannya struktural dan akustik. Lubang-f bukan hiasan: itulah cara udara di kotak diizinkan bergerak, dan mereka melemahkan pelat tepat di tempat pembuat ingin ia lentur." },
+    "back": { "name": "Punggung", "short": "Maple, setengah lain dari kotak", "detail": "Biasanya dua potong maple, disambung di tengah, diukir ke lengkung yang bukan lengkung perut. Ia memantulkan dan mewarnai apa yang dimulai perut. Biola tanpa punggung adalah pelat. Biola dengan punggung adalah alat musik." },
+    "ribs": { "name": "Rusuk", "short": "Dinding yang menetapkan volume udara", "detail": "Lembaran maple tipis, dilengkungkan di setrika panas, mengikuti garis luar. Tingginya adalah kedalaman kotak, dan kedalaman itu pilihan penyetelan: terlalu dangkal dan resonansi udara naik keluar dari jangkauan berguna; terlalu dalam dan instrumen menjadi kembung." },
+    "neck": { "name": "Leher", "short": "Pegangan, dipasang pada sudut yang tidak boleh ditawar", "detail": "Maple, dipasang mortise ke blok di puncak badan. Sudut sambungan ini menetapkan tinggi senar di atas jembatan. Satu milimeter di sini adalah beda antara instrumen yang berbicara dan yang melawan." },
+    "scroll": { "name": "Gulungan", "short": "Spiral yang sekaligus kartu nama", "detail": "Diukir dari blok yang sama dengan kotak pasak. Hampir tidak mengerjakan apa pun secara akustik. Inilah cara Anda mengenali pembuat dari seberang ruangan, dan cara menggantung instrumen di pasak." },
+    "fingerboard": { "name": "Papan Jari", "short": "Eboni, tempat nada dipilih", "detail": "Batang hitam dilem ke leher, tanpa fret. Setiap nada adalah posisi. Rongga di bawah papan adalah alasan leher biola terasa lebih tipis daripada kelihatannya, dan alasan tangan bisa bergerak cepat." },
+    "bridge": { "name": "Jembatan", "short": "Baji yang menggerakkan perut", "detail": "Pas maple tipis, ditahan hanya oleh tegangan senar, kaki dibentuk ke lengkung. Ia transformer mekanis: senar bergerak milimeter, perut sepersekian itu di atas luas jauh lebih besar. Jembatan di tempat salah, atau dipotong terlalu berat, dan biola bisu." },
+    "strings": { "name": "Senar", "short": "Empat panjang tegangan", "detail": "G, D, A, E, distel dalam kuint. Inti usus, baja, atau sintetis dibungkus logam. Mereka satu-satunya bagian yang disentuh busur. Segala yang lain adalah pengeras suara untuk empat kawat ini." },
+    "tailpiece": { "name": "Ekor", "short": "Menambatkan senar di ujung lain", "detail": "Eboni atau komposit, ditahan loop usus ke tombol ujung. Fine tuner hidup di sini pada E, kadang keempatnya. Massanya bagian dari afterlength, yang bagian dari bunyi." },
+    "pegs": { "name": "Pasak", "short": "Tongkat tirus yang sekaligus rem", "detail": "Kerucut eboni atau rosewood di lubang tirus. Gesekan menahan nada; pasak yang selip atau macet adalah masalah kelembapan, bukan sifat watak. Memutar satu adalah cara biola distel, pelan, beberapa sen per kali." },
+    "soundpost": { "name": "Soundpost", "short": "Tongkat yang tidak dilem, dan tidak boleh jatuh", "detail": "Dowel spruce terjepit antara perut dan punggung, tepat di belakang kaki treble jembatan. Ia tulang punggung bunyi: menggabungkan dua pelat dan menetapkan bagaimana treble berbicara. Ditahan hanya oleh pas. Biarkan jatuh dan instrumen adalah kotak kayu sampai seseorang yang tahu menegakkannya lagi." },
+    "bass_bar": { "name": "Bass Bar", "short": "Rusuk di bawah kaki bass jembatan", "detail": "Batang spruce dilem sepanjang perut, di bawah sisi senar G jembatan. Ia mengaku sisi bass supaya senar rendah bisa menggerakkan luas pelat besar. Tanpanya G adalah dentuman." },
+    "chinrest": { "name": "Tumpuan Dagu", "short": "Tempat rahang, supaya tangan bebas", "detail": "Penemuan kemudian. Pemain barok memegang instrumen berbeda. Tumpuan menjepit rusuk dan membiarkan tangan kiri bergeser tanpa menopang leher. Ini kenyamanan, bukan akustik, dan orang tetap berdebat." }
+  },
+  "steps": [
+    { "title": "Gesek empat kawat", "body": "Busur adalah tongkat rambut kuda dan damar. Senar mendesis, lalu mengunci ke siklus stick-slip, dan siklus itu adalah nadanya." },
+    { "title": "Sodok ke kayu", "body": "Jembatan berdiri hanya karena senar menekannya. Gerak kiri-kanan mereka menjadi dorongan naik-turun ke perut, lewat dua kaki yang tidak mengerjakan tugas yang sama." },
+    { "title": "Gabungkan kotak", "body": "Tongkat spruce longgar, soundpost, terjepit antara perut dan punggung di bawah kaki treble. Batang yang dilem, bass bar, mengaku sisi lain. Bersama mereka membuat dua pelat menjadi satu instrumen." },
+    { "title": "Biarkan kotak bernapas", "body": "Lubang-f adalah ventilasi. Udara di badan punya resonansi sendiri, sekitar C di senar G, dan lubang berukuran untuk itu, bukan supaya kelihatan seperti f." },
+    { "title": "Pilih nada dengan ujung jari", "body": "Tanpa fret. Papan jari adalah panjang. Tangan kiri adalah nut yang bergerak. Pasak di ujung lain adalah cara senar terbuka masuk ke ruangan yang sama dengan tangan." }
+  ],
+  "quiz": [
+    { "prompt": "Ketuk satu-satunya bagian yang menahan jembatan berdiri." },
+    { "prompt": "Soundpost ditahan oleh apa?", "choices": ["Lem", "Sekrup", "Pas dan tegangan senar pada perut — ia tidak dilem", "Magnet"], "explain": "Ia baji. Itulah alasan menjatuhkan biola bisa 'menjatuhkan post', dan alasan lutier menegakkannya lagi lewat lubang-f." },
+    { "prompt": "Ketuk tongkat antara pelat yang tidak boleh jatuh." },
+    { "prompt": "Ketuk pelat tempat jembatan berdiri." },
+    { "prompt": "Mengapa biola punya lubang-f, bukan lubang bunyi bundar?", "choices": ["Mode", "Mereka membiarkan pelat lentur di tempat yang tepat dan menyetel resonansi udara kotak", "Supaya kelihatan seperti huruf f", "Tempat soundpost dilem"], "explain": "Bentuk lubang adalah kekakuan pelat plus resonansi Helmholtz udara. Keduanya penting." },
+    { "prompt": "Ketuk batang yang dilem di bawah sisi bass perut." }
+  ]
+}

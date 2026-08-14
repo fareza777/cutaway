@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "id": "tooth",
+  "title": "Tooth",
+  "subtitle": "A rock that lives in a socket, with a nerve inside",
+  "category": "Anatomy",
+  "accent": "#E0C078",
+  "scale": "≈ 20 mm crown to root",
+  "summary": "A tooth is a layered tool. Enamel is the hardest tissue you make; dentin is living bone-like stuff that can feel; pulp is the room with the nerve and the blood. Cementum and a ligament hang the whole thing in a socket so a bite does not crack the jaw. When the enamel is gone, everything underneath is on a clock.",
+  "model": "tooth",
+  "cutAxis": "x",
+  "restRotation": [0.12, -0.4, 0],
+  "parts": [
+    { "id": "enamel", "nodes": ["enamel"], "name": "Enamel", "short": "The hardest thing in the body, and it does not grow back", "detail": "A mineral cap, mostly hydroxyapatite, with no cells and no feeling. Once it is formed, that is all you get. A cavity is bacteria dissolving this. Fluoride makes the crystal a little harder to dissolve. A chip is forever, which is why crowns exist.", "layer": 0, "explode": [0, 1.1, 0] },
+    { "id": "dentin", "nodes": ["dentin"], "name": "Dentin", "short": "Living, yellow, and it can ache", "detail": "A bone-like tissue full of tiny tubules that run to the pulp. Fluid in those tubules moving is what you feel as sensitivity. Dentin can lay down more of itself, slowly, which is why an old tooth has a smaller pulp chamber than a young one.", "layer": 1, "explode": [0.4, 0.3, 0] },
+    { "id": "pulp", "nodes": ["pulp"], "name": "Pulp", "short": "The room: nerve, blood, and the reason a toothache exists", "detail": "A soft tissue in the chamber and down the canals. Inflame it and there is nowhere for the swelling to go — dentin does not yield — so the pain is out of proportion to the size of the room. A root canal is this tissue removed and the room filled, after which the tooth is a mineral post in a socket.", "layer": 2, "explode": [0, 0, 0.5] },
+    { "id": "cementum", "nodes": ["cementum"], "name": "Cementum", "short": "The bark on the root", "detail": "A thin mineral skin on the root, where the ligament fibres insert. It can be laid down through life, which is how a tooth can slowly erupt to meet its neighbour as we wear. Scrape it off and the ligament has nothing to hold.", "layer": 1, "explode": [0.5, -0.4, 0] },
+    { "id": "periodontal_ligament", "nodes": ["periodontal_ligament"], "name": "Periodontal Ligament", "short": "A hammock, not a glue", "detail": "Collagen fibres from cementum to socket bone. A tooth is not cemented in; it is hung. That is why a tap on a tooth sounds different from a tap on an implant, and why orthodontics can move teeth: the ligament remodels the bone if you pull steadily.", "layer": 2, "explode": [0.7, -0.2, 0] },
+    { "id": "gingiva", "nodes": ["gingiva"], "name": "Gingiva", "short": "The seal at the collar", "detail": "Gum. A cuff that should sit tight at the enamel-cementum junction. When it inflames and peels, a pocket forms, bacteria go south, and the ligament and bone follow. Most lost teeth are lost this way, not to cavities.", "layer": 0, "explode": [0.6, 0.5, 0.4] },
+    { "id": "alveolar_bone", "nodes": ["alveolar_bone"], "name": "Alveolar Bone", "short": "The socket, which only exists because the tooth does", "detail": "A ridge of jawbone that holds the sockets. Extract the tooth and this bone resorbs — there is no reason for it to stay. That is why missing teeth shrink faces, and why implants are also a way of keeping bone.", "layer": 1, "opacity": 0.38, "explode": [0, -0.9, 0] },
+    { "id": "nerves", "nodes": ["nerves"], "name": "Nerves", "short": "The reason you know it is this tooth", "detail": "Branches of the trigeminal nerve entering at the root tip and fanning in the pulp. Cold, heat, and the special misery of inflammation all travel here. After a root canal they are gone, and the tooth can still sit in the mouth, numb and useful.", "layer": 3, "explode": [0, -1.2, 0.3] },
+    { "id": "vessels", "nodes": ["vessels"], "name": "Vessels", "short": "The pulp's blood, through a hole at the tip", "detail": "An artery and a vein through the apical foramen. The entire blood supply of the pulp is this straw. That is why inflammation in a closed chamber is a crisis: inflow continues, outflow cannot, pressure climbs, cells die.", "layer": 3, "explode": [0.2, -1.2, -0.2] }
+  ],
+  "steps": [
+    { "title": "A cap that will not grow back", "body": "Enamel is finished before the tooth erupts. After that it can only be lost. Everything we do with fluoride, fillings and crowns is a negotiation with that fact.", "focus": ["enamel"] },
+    { "title": "Living yellow under it", "body": "Dentin feels, because tubules run to the pulp. It can also add more of itself. Sensitivity is this tissue talking.", "focus": ["dentin"] },
+    { "title": "A room that cannot swell", "body": "Pulp sits in a box. Inflame it and pressure has nowhere to go. That is a toothache, and that is why a root canal is an evacuation.", "focus": ["pulp", "nerves", "vessels"] },
+    { "title": "Hung, not glued", "body": "Cementum and a ligament sling the root in a socket. A bite is a bounce. Orthodontics is this sling remodelling bone on purpose.", "focus": ["cementum", "periodontal_ligament", "alveolar_bone"] },
+    { "title": "The seal at the collar", "body": "Gum should cuff the tooth. Lose the seal and you lose the socket, slowly, which is how most teeth actually leave.", "focus": ["gingiva"] }
+  ],
+  "quiz": [
+    { "type": "identify", "prompt": "Tap the hardest tissue in the body.", "partId": "enamel" },
+    { "type": "choice", "prompt": "Why is a toothache so out of proportion to the size of the pulp?", "choices": ["The nerve is special", "The pulp is in a rigid box, so inflammation raises pressure with nowhere to swell", "Teeth are close to the brain", "Enamel conducts pain"], "answer": 1, "explain": "Dentin does not yield. Pressure in a closed chamber is the pain." },
+    { "type": "identify", "prompt": "Tap the hammock that hangs the tooth in its socket.", "partId": "periodontal_ligament" },
+    { "type": "identify", "prompt": "Tap the living yellow layer under the enamel.", "partId": "dentin" },
+    { "type": "choice", "prompt": "After a root canal, what is the tooth?", "choices": ["Dead and useless", "A mineral post still hung in a socket, numb, often crowned, still able to bite", "Replaced by an implant automatically", "Unable to stay in the mouth"], "answer": 1, "explain": "The pulp is gone. The ligament and bone do not care, as long as the seal at the top holds." },
+    { "type": "identify", "prompt": "Tap the socket bone that shrinks if the tooth is lost.", "partId": "alveolar_bone" }
+  ]
+}

@@ -1,0 +1,511 @@
+{
+  "schema": 1,
+  "id": "heart",
+  "title": "Human Heart",
+  "subtitle": "Two pumps, side by side, in one muscle",
+  "category": "Anatomy",
+  "accent": "#FF7A8A",
+  "scale": "≈ 12 cm tall",
+  "summary": "The heart is not one pump but two, bolted together and beating as one. The right side takes exhausted blood from the body and pushes it a short distance to the lungs; the left side takes it back, freshly loaded with oxygen, and drives it round everything else. They hold the same volume and beat the same number of times — but one works against a trip to the next organ and the other against the whole body, which is why the left wall is three times thicker.",
+  "model": "heart",
+  "cutAxis": "z",
+  "restRotation": [
+    0.06,
+    -0.35,
+    0
+  ],
+  "parts": [
+    {
+      "id": "left_ventricle",
+      "nodes": [
+        "left_ventricle"
+      ],
+      "name": "Left Ventricle",
+      "short": "The pump that supplies the entire body",
+      "detail": "A cone of muscle with walls a centimetre and a half thick, three times the right ventricle's. It has to generate around 120 mmHg to drive blood through every tissue you have, against the resistance of billions of capillaries. Its fibres are arranged in crossing helices, so it does not simply squeeze — it wrings, twisting like a cloth being wrung out, which empties it far more completely than a concentric squeeze could.",
+      "layer": 2,
+      "explode": [
+        1.4,
+        -0.4,
+        0
+      ]
+    },
+    {
+      "id": "right_ventricle",
+      "nodes": [
+        "right_ventricle"
+      ],
+      "name": "Right Ventricle",
+      "short": "Same volume, a fifth of the pressure",
+      "detail": "Wrapped around the front of the left ventricle as a crescent rather than a cone, with walls only three or four millimetres thick. It moves exactly the same amount of blood per beat as the left — it must, or blood would pile up on one side — but only as far as the lungs, against about a fifth of the pressure. It is a bellows where the left ventricle is a hydraulic ram.",
+      "layer": 2,
+      "explode": [
+        -1.3,
+        -0.3,
+        0.5
+      ]
+    },
+    {
+      "id": "interventricular_septum",
+      "nodes": [
+        "interventricular_septum"
+      ],
+      "name": "Interventricular Septum",
+      "short": "A shared wall that belongs to the left",
+      "detail": "The muscular partition between the ventricles. Functionally it is part of the left ventricle: it is thick, it contracts with the left, and it bulges into the right chamber. It also carries the conduction system down its two faces. A hole in it — the commonest congenital heart defect — lets high-pressure left blood shunt into the right side and flood the lungs.",
+      "layer": 3,
+      "explode": [
+        0.2,
+        -0.2,
+        -1.4
+      ]
+    },
+    {
+      "id": "left_atrium",
+      "nodes": [
+        "left_atrium"
+      ],
+      "name": "Left Atrium",
+      "short": "A holding chamber, not really a pump",
+      "detail": "Receives oxygenated blood from the lungs and passes it to the left ventricle. Most of that transfer is passive — blood simply falls through the open mitral valve — and the atrium's own contraction adds only the last twenty percent or so. That is why atrial fibrillation, in which the atria stop contracting and merely quiver, is survivable when ventricular fibrillation is fatal within minutes.",
+      "layer": 2,
+      "explode": [
+        1.0,
+        1.2,
+        -0.6
+      ]
+    },
+    {
+      "id": "right_atrium",
+      "nodes": [
+        "right_atrium"
+      ],
+      "name": "Right Atrium",
+      "short": "Where every drop of used blood returns",
+      "detail": "The collecting chamber for the whole body: the superior vena cava from above, the inferior from below, and the coronary sinus from the heart's own muscle all empty here. Its wall is the thinnest in the heart, because it never has to push blood further than the next chamber. It also holds the pacemaker.",
+      "layer": 2,
+      "explode": [
+        -1.3,
+        1.1,
+        0.2
+      ]
+    },
+    {
+      "id": "myocardium",
+      "nodes": [
+        "myocardium"
+      ],
+      "name": "Myocardium",
+      "short": "Muscle that cannot rest and cannot be replaced",
+      "detail": "Cardiac muscle is its own tissue type: cells branched and physically joined end to end, so an electrical signal spreads through the whole sheet as if it were one cell. It is packed with mitochondria — around a third of its volume — because it never gets a recovery break in a lifetime. It also barely regenerates, which is why a heart attack leaves a permanent scar rather than healing.",
+      "layer": 1,
+      "explode": [
+        -0.4,
+        0.3,
+        1.5
+      ]
+    },
+    {
+      "id": "pericardium",
+      "nodes": [
+        "pericardium"
+      ],
+      "name": "Pericardium",
+      "short": "A slippery bag that also sets a hard limit",
+      "detail": "A double-layered sac with a few millilitres of fluid between the layers, letting the heart slide freely as it beats and as the lungs move around it. It is tough and does not stretch quickly — which matters enormously: if blood or fluid collects inside it, there is nowhere for the heart to expand, and it is squeezed until it cannot fill. That is cardiac tamponade, and it kills through a heart that is beating perfectly well but empty. It encloses the heart completely, so it is drawn see-through here; tap it and it comes up solid enough to read.",
+      "layer": 0,
+      "explode": [
+        0,
+        0.5,
+        1.9
+      ],
+      "opacity": 0.15
+    },
+    {
+      "id": "tricuspid_valve",
+      "nodes": [
+        "tricuspid_valve"
+      ],
+      "name": "Tricuspid Valve",
+      "short": "Three flaps between right atrium and ventricle",
+      "detail": "Opens to let the right atrium fill the right ventricle, and slams shut when the ventricle contracts so blood cannot go backwards into the veins. Its three leaflets are wide and floppy, held from inverting by tendon cords rather than by their own stiffness — the same principle as a parachute, which cannot hold its shape without lines.",
+      "layer": 3,
+      "explode": [
+        -1.5,
+        0.5,
+        0.3
+      ]
+    },
+    {
+      "id": "mitral_valve",
+      "nodes": [
+        "mitral_valve"
+      ],
+      "name": "Mitral Valve",
+      "short": "The only valve with two leaflets, and the hardest worked",
+      "detail": "Sits between the left atrium and left ventricle and holds back the highest pressure in the heart every single beat. It was named for a bishop's mitre, which its two leaflets resemble. Because it takes the greatest load it is also the valve most often found leaking or stiffened, and the one that most often needs repairing.",
+      "layer": 3,
+      "explode": [
+        1.4,
+        0.7,
+        -0.5
+      ]
+    },
+    {
+      "id": "aortic_valve",
+      "nodes": [
+        "aortic_valve"
+      ],
+      "name": "Aortic Valve",
+      "short": "Three pockets that catch blood trying to fall back",
+      "detail": "Three half-moon cusps at the mouth of the aorta. Nothing holds them — they need no cords. When the ventricle relaxes, the column of blood in the aorta starts to fall back, fills the three pockets like sails, and they billow together and seal. That backflow is not wasted: it is exactly what pushes blood into the coronary arteries, whose openings sit just behind two of the cusps.",
+      "layer": 3,
+      "explode": [
+        0.9,
+        1.5,
+        0.1
+      ]
+    },
+    {
+      "id": "pulmonary_valve",
+      "nodes": [
+        "pulmonary_valve"
+      ],
+      "name": "Pulmonary Valve",
+      "short": "The aortic valve's low-pressure twin",
+      "detail": "Three cusps guarding the exit from the right ventricle into the lungs, built exactly like the aortic valve but thinner, because it never sees more than a fifth of the pressure. It is the valve least likely to give trouble in an adult life, and it is the one surgeons will sometimes take and move into the aortic position, since a patient's own living valve outlasts any artificial one.",
+      "layer": 3,
+      "explode": [
+        -1.1,
+        1.5,
+        0.7
+      ]
+    },
+    {
+      "id": "papillary_muscles",
+      "nodes": [
+        "papillary_muscles"
+      ],
+      "name": "Papillary Muscles",
+      "short": "They pull the valve cords tight, not the valve shut",
+      "detail": "Cones of muscle rising from the ventricle floor, anchoring the tendon cords. They contract slightly before the main ventricular squeeze — not to close the valve, which pressure does on its own, but to take up slack so the leaflets cannot be blown inside out. If one tears during a heart attack, the valve turns instantly and catastrophically incompetent.",
+      "layer": 4,
+      "explode": [
+        0.5,
+        -1.5,
+        0.4
+      ]
+    },
+    {
+      "id": "chordae_tendineae",
+      "nodes": [
+        "chordae_tendineae"
+      ],
+      "name": "Chordae Tendineae",
+      "short": "Heart strings — and the term is literal",
+      "detail": "Fine collagen cords running from the papillary muscles to the free edges and undersides of the valve leaflets. They do not pull the valve closed; they stop it from opening the wrong way when the ventricle generates its full pressure. Without them the leaflets would evert into the atrium on the first strong beat, exactly as an umbrella inverts in a gust.",
+      "layer": 4,
+      "explode": [
+        0.3,
+        -1.1,
+        0.9
+      ]
+    },
+    {
+      "id": "aorta",
+      "nodes": [
+        "aorta"
+      ],
+      "name": "Aorta",
+      "short": "Not just a pipe — it stores energy",
+      "detail": "The body's main artery, thumb-thick and remarkably elastic. Each ejection stretches it, and it recoils during the pause, pushing blood onward — so flow at your fingertips is continuous even though the pump is intermittent. That elastic buffer is what stiffens with age, and its loss is much of why blood pressure rises over a lifetime. The three branches from its arch feed the head and both arms.",
+      "layer": 1,
+      "explode": [
+        -0.8,
+        1.8,
+        -0.4
+      ]
+    },
+    {
+      "id": "pulmonary_artery",
+      "nodes": [
+        "pulmonary_artery"
+      ],
+      "name": "Pulmonary Arteries",
+      "short": "The only arteries carrying blue blood",
+      "detail": "Leaves the right ventricle and forks to both lungs. It breaks the rule people are taught — arteries carry oxygenated blood — because the definition is about direction, not content: an artery leads away from the heart. Its walls are noticeably thinner than the aorta's, because the lungs are a low-pressure circuit sitting right next door.",
+      "layer": 1,
+      "explode": [
+        -1.5,
+        1.6,
+        0.6
+      ]
+    },
+    {
+      "id": "superior_vena_cava",
+      "nodes": [
+        "superior_vena_cava"
+      ],
+      "name": "Superior Vena Cava",
+      "short": "Everything above the diaphragm drains here",
+      "detail": "Returns blood from the head, neck, and arms to the right atrium. It is a wide, thin, low-pressure vessel — which is why it can be compressed by a tumour or a clot, and why the pressure inside it, visible as a pulsing vein in the neck, is one of the oldest bedside measures of how well the right heart is coping.",
+      "layer": 1,
+      "explode": [
+        -1.4,
+        1.6,
+        -0.2
+      ]
+    },
+    {
+      "id": "inferior_vena_cava",
+      "nodes": [
+        "inferior_vena_cava"
+      ],
+      "name": "Inferior Vena Cava",
+      "short": "The largest vein in the body",
+      "detail": "Brings blood back from everything below the diaphragm. Blood has to travel up it against gravity with almost no pressure behind it, so it relies on one-way valves in the leg veins and on the squeeze of walking muscles — which is precisely why standing still for hours makes ankles swell and long-haul flights carry a clot risk.",
+      "layer": 1,
+      "explode": [
+        -1.2,
+        -1.5,
+        -0.4
+      ]
+    },
+    {
+      "id": "pulmonary_veins",
+      "nodes": [
+        "pulmonary_veins"
+      ],
+      "name": "Pulmonary Veins",
+      "short": "Four of them, and they carry red blood",
+      "detail": "Two from each lung, delivering freshly oxygenated blood into the left atrium — the only veins in the body that do. Their muscular sleeves where they join the atrium are the usual origin of atrial fibrillation, which is why the standard treatment is to burn or freeze a ring around each opening to electrically isolate it.",
+      "layer": 1,
+      "explode": [
+        1.5,
+        1.1,
+        -1.4
+      ]
+    },
+    {
+      "id": "coronary_sinus",
+      "nodes": [
+        "coronary_sinus"
+      ],
+      "name": "Coronary Sinus",
+      "short": "The heart's own drain",
+      "detail": "Blood that has fed the heart muscle itself collects in this wide vein at the back and empties directly into the right atrium. It is a convenient road as well as a drain: pacing leads for the left ventricle are threaded through it, because it is the only route to the outside of that chamber that does not involve puncturing anything.",
+      "layer": 2,
+      "explode": [
+        1.2,
+        0.6,
+        -1.6
+      ]
+    },
+    {
+      "id": "left_coronary_artery",
+      "nodes": [
+        "left_coronary_artery"
+      ],
+      "name": "Left Coronary Artery",
+      "short": "Feeds most of the pump — and blocks catastrophically",
+      "detail": "Arises from the aorta just above the valve and divides almost immediately into the left anterior descending, which runs down the front toward the apex, and the circumflex, which curls round the left side. Between them they supply most of the left ventricle. A blockage where it divides threatens so much muscle at once that it has a nickname among cardiologists: the widowmaker.",
+      "layer": 1,
+      "explode": [
+        1.6,
+        0.2,
+        1.2
+      ]
+    },
+    {
+      "id": "right_coronary_artery",
+      "nodes": [
+        "right_coronary_artery"
+      ],
+      "name": "Right Coronary Artery",
+      "short": "Supplies the right side — and usually the pacemaker",
+      "detail": "Runs round the groove between the right atrium and ventricle. In most people it also gives the branches that feed the SA and AV nodes, which is why a right-sided heart attack so often shows up as a sudden slow heart rate or heart block rather than as pump failure. Coronary arteries fill during the pause between beats, not during the squeeze — a fast heart rate shortens their own supply.",
+      "layer": 1,
+      "explode": [
+        -1.6,
+        0.1,
+        1.0
+      ]
+    },
+    {
+      "id": "sa_node",
+      "nodes": [
+        "sa_node"
+      ],
+      "name": "Sinoatrial Node",
+      "short": "The pacemaker: cells that refuse to sit still",
+      "detail": "A patch of specialised cells in the wall of the right atrium that cannot hold a stable resting voltage — they leak steadily toward their firing threshold, so they discharge rhythmically without any instruction. Around a hundred times a minute if left alone; slowed to sixty or seventy by the vagus nerve. Every heartbeat you have ever had started here.",
+      "layer": 4,
+      "explode": [
+        -1.7,
+        1.1,
+        0.5
+      ]
+    },
+    {
+      "id": "av_node",
+      "nodes": [
+        "av_node"
+      ],
+      "name": "Atrioventricular Node",
+      "short": "A deliberate delay, and a safety valve",
+      "detail": "The only electrical connection between atria and ventricles — everywhere else they are insulated from each other by fibrous tissue. It conducts slowly on purpose, holding the signal for about a tenth of a second so the atria finish emptying before the ventricles squeeze. It also refuses to pass signals faster than a certain rate, which is what protects the ventricles when the atria go haywire.",
+      "layer": 4,
+      "explode": [
+        -0.6,
+        0.6,
+        -1.5
+      ]
+    },
+    {
+      "id": "bundle_of_his",
+      "nodes": [
+        "bundle_of_his"
+      ],
+      "name": "His–Purkinje System",
+      "short": "Wiring that fires the apex first, so the heart empties upward",
+      "detail": "From the AV node the signal runs down the septum and splits into left and right bundle branches, fraying into Purkinje fibres that spread through the ventricle walls. These conduct several times faster than muscle, so the whole ventricle contracts almost at once — and crucially, from the bottom up, wringing blood toward the outflow valves at the top instead of trapping it at the apex.",
+      "layer": 4,
+      "explode": [
+        0.4,
+        -1.7,
+        -0.5
+      ]
+    },
+    {
+      "id": "apex",
+      "nodes": [
+        "apex"
+      ],
+      "name": "Apex",
+      "short": "The tip you can feel through the chest wall",
+      "detail": "The pointed bottom of the left ventricle, sitting forward and to the left, where the twisting contraction taps against the chest wall — the beat a doctor palpates and where a stethoscope hears the mitral valve best. Its position moves when the heart enlarges, which made it a diagnostic sign long before any machine could image the organ.",
+      "layer": 2,
+      "explode": [
+        0,
+        -1.9,
+        0.4
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Blood comes back used",
+      "body": "Oxygen-poor blood arrives from the whole body through the two venae cavae and fills the right atrium. It carries almost no pressure by this point — it has been through every capillary in the body.",
+      "focus": [
+        "superior_vena_cava",
+        "inferior_vena_cava",
+        "right_atrium"
+      ]
+    },
+    {
+      "title": "The spark, and a deliberate pause",
+      "body": "The SA node fires on its own, and the atria contract. The signal reaches the AV node and is deliberately held for a tenth of a second — the only reason the atria finish emptying before the ventricles start squeezing.",
+      "focus": [
+        "sa_node",
+        "av_node"
+      ]
+    },
+    {
+      "title": "Both ventricles squeeze at once",
+      "body": "The His–Purkinje wiring fires the apex first, so each ventricle wrings upward toward its outflow valve. The tricuspid and mitral valves slam shut — that is the first heart sound — and the cords stop them inverting.",
+      "focus": [
+        "bundle_of_his",
+        "left_ventricle",
+        "right_ventricle",
+        "chordae_tendineae"
+      ]
+    },
+    {
+      "title": "Two destinations, one beat",
+      "body": "The right ventricle sends its load a few centimetres to the lungs; the left drives an identical volume around the entire body at five times the pressure. Same beat, same volume, wildly different work — which is the whole reason one wall is three times thicker.",
+      "focus": [
+        "pulmonary_artery",
+        "aorta"
+      ]
+    },
+    {
+      "title": "Then it feeds itself",
+      "body": "As the ventricles relax, blood falls back against the aortic valve, billows its three cusps shut — the second heart sound — and that backflow presses into the coronary arteries just behind them. The heart is supplied during the pause, not the squeeze.",
+      "focus": [
+        "aortic_valve",
+        "left_coronary_artery",
+        "right_coronary_artery"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "type": "identify",
+      "prompt": "Tap the chamber that pumps blood to the entire body.",
+      "partId": "left_ventricle"
+    },
+    {
+      "type": "choice",
+      "prompt": "Why is the left ventricle wall about three times thicker than the right?",
+      "choices": [
+        "It holds much more blood",
+        "It pumps against the whole body's resistance, not just the lungs",
+        "It beats more often",
+        "It contains the conduction system"
+      ],
+      "answer": 1,
+      "explain": "Both ventricles move the same volume per beat. The left does it against roughly five times the pressure, and wall thickness follows pressure, not volume."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap where every heartbeat starts.",
+      "partId": "sa_node"
+    },
+    {
+      "type": "choice",
+      "prompt": "What do the chordae tendineae actually do?",
+      "choices": [
+        "Pull the valves closed",
+        "Stop the valve leaflets from inverting under pressure",
+        "Carry the electrical signal to the valves",
+        "Supply blood to the valve leaflets"
+      ],
+      "answer": 1,
+      "explain": "Pressure closes the valves on its own. The cords hold the leaflets against turning inside out, like the lines of a parachute or the ribs of an umbrella."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the part that delays the signal so the atria can finish emptying.",
+      "partId": "av_node"
+    },
+    {
+      "type": "choice",
+      "prompt": "When do the coronary arteries actually fill?",
+      "choices": [
+        "During the squeeze, at peak pressure",
+        "During the pause between beats, driven by backflow onto the aortic valve",
+        "Continuously and evenly",
+        "Only during exercise"
+      ],
+      "answer": 1,
+      "explain": "The squeeze compresses the vessels running through the muscle. Filling happens in the relaxation phase — which is why a very fast heart rate cuts the heart's own blood supply."
+    },
+    {
+      "type": "choice",
+      "prompt": "Which vessels break the usual rule about arteries and veins?",
+      "choices": [
+        "The venae cavae",
+        "The pulmonary artery and pulmonary veins",
+        "The coronary arteries",
+        "The aorta"
+      ],
+      "answer": 1,
+      "explain": "The pulmonary artery carries oxygen-poor blood and the pulmonary veins carry oxygen-rich blood. The words describe direction relative to the heart, not content."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the sac whose stiffness makes bleeding around the heart so dangerous.",
+      "partId": "pericardium"
+    }
+  ]
+}

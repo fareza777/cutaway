@@ -1,0 +1,209 @@
+{
+  "title": "Jantung Manusia",
+  "subtitle": "Dua pompa berdampingan dalam satu otot",
+  "scale": "≈ 12 cm tinggi",
+  "summary": "Jantung bukan satu pompa, tapi dua yang menyatu dan berdenyut bersamaan. Sisi kanan menampung darah yang sudah terpakai dari seluruh tubuh, lalu mendorongnya sebentar saja ke paru-paru. Sisi kiri menerimanya kembali dalam keadaan sudah bermuatan oksigen, lalu mengedarkannya ke mana-mana. Volume yang dipindahkan kedua sisi sama persis dan denyutnya pun sama seringnya. Bedanya cuma satu: yang kanan cukup melawan organ di sebelahnya, yang kiri melawan seluruh tubuh. Itu saja yang membuat dinding kiri tiga kali lebih tebal.",
+  "parts": {
+    "left_ventricle": {
+      "name": "Bilik Kiri",
+      "short": "Pompa yang memasok seluruh tubuh",
+      "detail": "Kerucut otot berdinding satu setengah sentimeter, tiga kali lebih tebal daripada bilik kanan. Untuk mendorong darah menembus tiap jaringan di tubuh Anda, melawan hambatan miliaran kapiler, bilik ini harus menghasilkan sekitar 120 mmHg. Serat ototnya tersusun sebagai heliks bersilangan, jadi gerakannya bukan sekadar meremas. Bilik kiri memelintir, seperti kain diperas, dan itu mengosongkannya jauh lebih tuntas daripada remasan melingkar biasa."
+    },
+    "right_ventricle": {
+      "name": "Bilik Kanan",
+      "short": "Volume sama, tekanan seperlimanya",
+      "detail": "Bentuknya bulan sabit yang melingkupi bagian depan bilik kiri, bukan kerucut, dan dindingnya cuma tiga sampai empat milimeter. Tiap denyut, bilik kanan memindahkan darah persis sebanyak bilik kiri. Memang harus begitu, kalau tidak darah akan menumpuk di satu sisi. Bedanya, jaraknya cuma sampai paru-paru dan tekanannya sekitar seperlima. Yang kanan sebuah embusan; yang kiri sebuah pendorong hidrolik."
+    },
+    "interventricular_septum": {
+      "name": "Sekat Antarbilik",
+      "short": "Dinding bersama yang sebenarnya milik sisi kiri",
+      "detail": "Sekat otot yang memisahkan kedua bilik. Secara fungsi sekat ini bagian dari bilik kiri: tebal, berkontraksi bersama sisi kiri, dan menonjol masuk ke ruang kanan. Kedua permukaannya juga membawa sistem hantaran listrik. Lubang di sekat ini adalah cacat jantung bawaan yang paling sering ditemukan, dan akibatnya darah bertekanan tinggi dari kiri menyeberang ke kanan lalu membanjiri paru-paru."
+    },
+    "left_atrium": {
+      "name": "Serambi Kiri",
+      "short": "Ruang penampung, bukan benar-benar pompa",
+      "detail": "Menerima darah beroksigen dari paru-paru lalu meneruskannya ke bilik kiri. Sebagian besar perpindahan itu berlangsung pasif: darah sekadar jatuh melewati katup mitral yang terbuka, dan kontraksi serambi cuma menambahkan sekitar dua puluh persen terakhir. Karena itulah fibrilasi atrium, saat serambi berhenti berkontraksi dan tinggal bergetar, masih bisa dijalani bertahun-tahun. Bandingkan dengan fibrilasi bilik, yang mematikan dalam hitungan menit."
+    },
+    "right_atrium": {
+      "name": "Serambi Kanan",
+      "short": "Tempat semua darah terpakai kembali pulang",
+      "detail": "Ruang pengumpul untuk seluruh tubuh. Vena kava superior dari atas, vena kava inferior dari bawah, dan sinus koroner dari otot jantung sendiri semuanya bermuara di sini. Dindingnya paling tipis di antara empat ruang, sebab tugasnya tidak pernah lebih jauh daripada mendorong darah ke ruang di sebelahnya. Pemacu jantung juga berada di dinding ini."
+    },
+    "myocardium": {
+      "name": "Miokardium",
+      "short": "Otot yang tak boleh istirahat dan tak bisa diganti",
+      "detail": "Otot jantung adalah jenis jaringan tersendiri. Selnya bercabang dan menyatu ujung ke ujung, sehingga sinyal listrik menjalar ke seluruh lembar seolah-olah semuanya satu sel. Sekitar sepertiga volumenya berupa mitokondria, sebab seumur hidup otot ini tidak pernah mendapat jeda pemulihan. Kemampuan regenerasinya juga nyaris nol, dan itulah sebabnya serangan jantung meninggalkan parut permanen, bukan sembuh."
+    },
+    "pericardium": {
+      "name": "Perikardium",
+      "short": "Kantong licin yang sekaligus memberi batas keras",
+      "detail": "Kantong berlapis ganda dengan beberapa mililiter cairan di antara kedua lapisnya, supaya jantung bisa meluncur bebas saat berdenyut dan saat paru-paru bergerak di sekitarnya. Bahannya liat dan tidak gampang meregang, dan justru di situ letak bahayanya: kalau darah atau cairan terkumpul di dalam kantong, jantung tidak punya ruang mengembang lalu terhimpit sampai tidak bisa terisi. Itulah tamponade jantung, yang membunuh lewat jantung yang sebenarnya berdenyut baik-baik saja tapi kosong. Kantong ini menyelubungi jantung sepenuhnya, jadi di sini digambar tembus pandang. Ketuk saja, nanti memekat supaya terbaca."
+    },
+    "tricuspid_valve": {
+      "name": "Katup Trikuspid",
+      "short": "Tiga daun antara serambi dan bilik kanan",
+      "detail": "Terbuka supaya serambi kanan bisa mengisi bilik kanan, lalu menutup keras begitu bilik berkontraksi agar darah tidak berbalik ke vena. Ketiga daunnya lebar dan lemas. Yang menahannya supaya tidak terbalik adalah tali tendon, bukan kekakuan daunnya sendiri, persis seperti parasut yang tidak bisa mempertahankan bentuk tanpa talinya."
+    },
+    "mitral_valve": {
+      "name": "Katup Mitral",
+      "short": "Satu-satunya katup berdaun dua, dan yang paling berat kerjanya",
+      "detail": "Terletak antara serambi dan bilik kiri, dan menahan tekanan tertinggi di jantung pada setiap denyut. Namanya diambil dari mitra, topi uskup, yang bentuknya mirip kedua daun katup ini. Karena bebannya paling besar, katup mitral juga yang paling sering ditemukan bocor atau menyempit, dan paling sering perlu diperbaiki."
+    },
+    "aortic_valve": {
+      "name": "Katup Aorta",
+      "short": "Tiga kantong yang menangkap darah yang hendak jatuh balik",
+      "detail": "Tiga daun berbentuk bulan sabit di mulut aorta, dan tidak ada satu pun tali yang menahannya. Katup ini memang tidak membutuhkannya. Begitu bilik mengendur, kolom darah di aorta mulai jatuh kembali, mengisi ketiga kantong seperti layar, dan ketiganya mengembang lalu saling merapat. Aliran balik itu tidak terbuang sia-sia: justru aliran itulah yang mendorong darah masuk ke arteri koroner, yang mulutnya berada tepat di belakang dua daun tersebut."
+    },
+    "pulmonary_valve": {
+      "name": "Katup Pulmonal",
+      "short": "Kembaran katup aorta versi tekanan rendah",
+      "detail": "Tiga daun yang menjaga jalan keluar dari bilik kanan menuju paru-paru. Bangunannya persis katup aorta, hanya lebih tipis, sebab tekanan yang diterimanya tidak pernah lebih dari seperlima. Sepanjang usia dewasa, inilah katup yang paling kecil kemungkinannya bermasalah. Menariknya, katup inilah yang kadang diambil ahli bedah lalu dipindah ke posisi aorta, karena katup hidup milik pasien sendiri bertahan lebih lama daripada katup buatan mana pun."
+    },
+    "papillary_muscles": {
+      "name": "Otot Papilaris",
+      "short": "Tugasnya menegangkan tali katup, bukan menutup katupnya",
+      "detail": "Kerucut otot yang menjulang dari lantai bilik, dan di situlah tali tendon berlabuh. Otot ini berkontraksi sedikit lebih dulu daripada remasan utama bilik. Tujuannya bukan menutup katup, sebab tekanan sudah mengurus itu sendiri, melainkan menghilangkan kendur supaya daun katup tidak bisa terbalik. Kalau salah satunya robek saat serangan jantung, katup langsung bocor parah."
+    },
+    "chordae_tendineae": {
+      "name": "Korda Tendinea",
+      "short": "Tali jantung — dan istilah itu memang harfiah",
+      "detail": "Tali kolagen halus yang menghubungkan otot papilaris ke tepi bebas dan sisi bawah daun katup. Tali ini tidak menarik katup sampai tertutup. Kerjanya mencegah katup membuka ke arah yang salah waktu bilik mengeluarkan tekanan penuhnya. Tanpa tali itu, daun katup akan terbalik ke serambi pada denyut kuat yang pertama, persis payung yang terbalik diterjang angin."
+    },
+    "aorta": {
+      "name": "Aorta",
+      "short": "Bukan sekadar pipa — di sini energi disimpan",
+      "detail": "Arteri utama tubuh, setebal ibu jari dan sangat elastis. Tiap semburan darah meregangkannya, lalu pada jeda antardenyut dinding itu mengerut kembali dan mendorong darah maju. Karena itulah aliran di ujung jari Anda terasa terus-menerus padahal pompanya bekerja terputus-putus. Bantalan elastis inilah yang mengeras seiring usia, dan hilangnya sebagian besar menjelaskan kenapa tekanan darah naik sepanjang hidup. Tiga cabang di lengkungnya memasok kepala dan kedua lengan."
+    },
+    "pulmonary_artery": {
+      "name": "Arteri Pulmonalis",
+      "short": "Satu-satunya arteri yang membawa darah biru",
+      "detail": "Keluar dari bilik kanan lalu bercabang ke kedua paru. Pembuluh ini melanggar aturan yang biasa diajarkan di sekolah, bahwa arteri membawa darah beroksigen, karena definisi arteri sebenarnya soal arah dan bukan soal isi: arteri adalah pembuluh yang menjauhi jantung. Dindingnya jelas lebih tipis daripada aorta, sebab paru-paru adalah sirkuit bertekanan rendah yang letaknya tepat di sebelah."
+    },
+    "superior_vena_cava": {
+      "name": "Vena Kava Superior",
+      "short": "Semua yang di atas diafragma bermuara ke sini",
+      "detail": "Mengembalikan darah dari kepala, leher, dan kedua lengan ke serambi kanan. Pembuluhnya lebar, tipis, dan bertekanan rendah, jadi gampang tertekan oleh tumor atau bekuan. Tekanan di dalamnya bisa dilihat langsung sebagai denyut vena di leher, dan itu termasuk cara tertua di sisi ranjang untuk menilai seberapa baik jantung kanan masih bertahan."
+    },
+    "inferior_vena_cava": {
+      "name": "Vena Kava Inferior",
+      "short": "Vena terbesar di tubuh",
+      "detail": "Membawa pulang darah dari semua bagian di bawah diafragma. Darahnya harus naik melawan gravitasi dengan tekanan pendorong yang nyaris nol, jadi yang diandalkan adalah katup searah di vena tungkai dan remasan otot ketika Anda berjalan. Itu juga alasan berdiri diam berjam-jam membuat pergelangan kaki bengkak, dan kenapa penerbangan jauh membawa risiko bekuan darah."
+    },
+    "pulmonary_veins": {
+      "name": "Vena Pulmonalis",
+      "short": "Ada empat, dan semuanya membawa darah merah",
+      "detail": "Dua dari tiap paru, mengantar darah yang baru saja mendapat oksigen ke serambi kiri. Inilah satu-satunya vena di tubuh yang begitu. Di tempat pembuluh ini bergabung dengan serambi ada selubung otot yang jadi asal-usul lazim fibrilasi atrium, dan karena itu penanganan bakunya adalah membakar atau membekukan lingkaran di sekeliling tiap mulutnya supaya terisolasi secara listrik."
+    },
+    "coronary_sinus": {
+      "name": "Sinus Koroner",
+      "short": "Saluran buang milik jantung sendiri",
+      "detail": "Darah yang sudah memberi makan otot jantung berkumpul di vena lebar ini di sisi belakang, lalu langsung bermuara ke serambi kanan. Selain saluran buang, tempat ini juga jalan yang praktis: kabel pacu jantung untuk bilik kiri dilewatkan melaluinya, sebab cuma rute inilah yang bisa mencapai sisi luar ruang tersebut tanpa perlu menusuk apa pun."
+    },
+    "left_coronary_artery": {
+      "name": "Arteri Koroner Kiri",
+      "short": "Memasok sebagian besar pompa — dan bila tersumbat, fatal",
+      "detail": "Muncul dari aorta tepat di atas katup, lalu hampir seketika bercabang dua: arteri desendens anterior kiri yang turun di sisi depan menuju ujung jantung, dan sirkumfleks yang melingkar ke sisi kiri. Keduanya memasok sebagian besar bilik kiri. Sumbatan tepat di titik percabangan itu mengancam begitu banyak otot sekaligus sampai para kardiolog menjulukinya widowmaker, si pembuat janda."
+    },
+    "right_coronary_artery": {
+      "name": "Arteri Koroner Kanan",
+      "short": "Memasok sisi kanan — dan biasanya pemacu jantungnya",
+      "detail": "Melingkar di alur antara serambi dan bilik kanan. Pada kebanyakan orang, arteri ini juga memberi cabang yang memasok nodus SA dan AV. Itu sebabnya serangan jantung di sisi kanan sering muncul sebagai denyut yang tiba-tiba melambat atau blok jantung, bukan sebagai gagal pompa. Perlu diingat, arteri koroner terisi pada jeda antardenyut, bukan saat meremas, sehingga denyut yang terlalu cepat justru memperpendek pasokannya sendiri."
+    },
+    "sa_node": {
+      "name": "Nodus Sinoatrial",
+      "short": "Sang pemacu: sel yang menolak diam",
+      "detail": "Sekelompok sel khusus di dinding serambi kanan yang tidak sanggup mempertahankan tegangan istirahat yang stabil. Muatannya bocor perlahan sampai menyentuh ambang letup, lalu melepas sinyal berirama tanpa perlu perintah dari siapa pun. Kalau dibiarkan sendiri, iramanya sekitar seratus kali per menit; saraf vagus yang memperlambatnya jadi enam puluh atau tujuh puluh. Setiap denyut jantung yang pernah Anda punya bermula di sini."
+    },
+    "av_node": {
+      "name": "Nodus Atrioventrikular",
+      "short": "Penundaan yang disengaja, sekaligus katup pengaman",
+      "detail": "Satu-satunya sambungan listrik antara serambi dan bilik. Di semua tempat lain keduanya disekat jaringan ikat. Hantarannya sengaja dibuat lambat, menahan sinyal sekitar sepersepuluh detik supaya serambi sempat selesai mengosongkan diri sebelum bilik meremas. Bagian ini juga menolak meneruskan sinyal yang lebih cepat dari laju tertentu, dan itulah yang melindungi bilik ketika irama serambi kacau."
+    },
+    "bundle_of_his": {
+      "name": "Sistem His–Purkinje",
+      "short": "Kabel yang menyalakan ujung bawah lebih dulu, agar darah diperas ke atas",
+      "detail": "Dari nodus AV, sinyal turun menyusuri sekat lalu terbelah jadi berkas cabang kiri dan kanan, kemudian mengurai menjadi serat Purkinje yang menyebar ke dinding bilik. Serat ini menghantar beberapa kali lebih cepat daripada otot biasa, jadi seluruh bilik berkontraksi hampir serentak. Yang penting, urutannya dari bawah ke atas, sehingga darah diperas menuju katup keluar di puncak dan tidak terperangkap di ujung bawah."
+    },
+    "apex": {
+      "name": "Apeks",
+      "short": "Ujung yang bisa Anda rasakan menepuk dinding dada",
+      "detail": "Ujung runcing bilik kiri, letaknya agak ke depan dan ke kiri. Di situlah kontraksi memelintir tadi menepuk dinding dada, menghasilkan denyut yang diraba dokter sekaligus titik terbaik untuk mendengar katup mitral lewat stetoskop. Kalau jantung membesar, posisi apeks ikut bergeser, dan tanda itu sudah dipakai untuk diagnosis jauh sebelum ada mesin yang bisa memotret organ ini."
+    }
+  },
+  "steps": [
+    {
+      "title": "Darah pulang dalam keadaan terpakai",
+      "body": "Darah miskin oksigen tiba dari seluruh tubuh lewat kedua vena kava lalu mengisi serambi kanan. Sampai di sini tekanannya nyaris habis, sebab darah itu sudah melewati setiap kapiler di tubuh Anda."
+    },
+    {
+      "title": "Percikan, lalu jeda yang disengaja",
+      "body": "Nodus SA melepas muatan dengan sendirinya, dan serambi pun berkontraksi. Sinyalnya sampai ke nodus AV lalu ditahan sepersepuluh detik. Cuma karena penundaan itulah serambi sempat selesai mengosongkan diri sebelum bilik mulai meremas."
+    },
+    {
+      "title": "Kedua bilik meremas serentak",
+      "body": "Kabel His–Purkinje menyalakan ujung bawah lebih dulu, jadi tiap bilik memeras ke atas menuju katup keluarnya. Katup trikuspid dan mitral menutup keras — itulah bunyi jantung yang pertama — dan tali tendon menahan daunnya supaya tidak terbalik."
+    },
+    {
+      "title": "Dua tujuan, satu denyut",
+      "body": "Bilik kanan mengirim muatannya beberapa sentimeter saja ke paru-paru. Bilik kiri mendorong volume yang persis sama ke seluruh tubuh, pada tekanan lima kali lipat. Denyutnya sama, volumenya sama, bebannya jauh berbeda, dan cuma itu alasan salah satu dindingnya tiga kali lebih tebal."
+    },
+    {
+      "title": "Lalu jantung memberi makan dirinya sendiri",
+      "body": "Waktu bilik mengendur, darah jatuh balik menekan katup aorta dan mengembangkan ketiga daunnya sampai rapat. Itu bunyi jantung yang kedua. Aliran balik yang sama menekan masuk ke arteri koroner yang mulutnya tepat di belakang daun-daun itu. Jadi jantung dipasok pada jeda, bukan saat meremas."
+    }
+  ],
+  "quiz": [
+    {
+      "prompt": "Ketuk ruang yang memompa darah ke seluruh tubuh."
+    },
+    {
+      "prompt": "Kenapa dinding bilik kiri kira-kira tiga kali lebih tebal daripada bilik kanan?",
+      "choices": [
+        "Karena menampung darah jauh lebih banyak",
+        "Karena memompa melawan hambatan seluruh tubuh, bukan cuma paru-paru",
+        "Karena berdenyut lebih sering",
+        "Karena berisi sistem hantaran listrik"
+      ],
+      "explain": "Kedua bilik memindahkan volume yang sama tiap denyut. Bedanya, yang kiri melakukannya melawan tekanan sekitar lima kali lipat, dan ketebalan dinding mengikuti tekanan, bukan volume."
+    },
+    {
+      "prompt": "Ketuk tempat setiap denyut jantung bermula."
+    },
+    {
+      "prompt": "Apa sebenarnya fungsi korda tendinea?",
+      "choices": [
+        "Menarik katup sampai tertutup",
+        "Mencegah daun katup terbalik saat menerima tekanan",
+        "Menghantarkan sinyal listrik ke katup",
+        "Memasok darah ke daun katup"
+      ],
+      "explain": "Tekanan sudah menutup katup dengan sendirinya. Tali itu tugasnya menahan daun katup supaya tidak terbalik, seperti tali parasut atau jari-jari payung."
+    },
+    {
+      "prompt": "Ketuk bagian yang menunda sinyal agar serambi sempat mengosongkan diri."
+    },
+    {
+      "prompt": "Kapan sebenarnya arteri koroner terisi?",
+      "choices": [
+        "Saat meremas, pada puncak tekanan",
+        "Saat jeda antardenyut, didorong aliran balik ke katup aorta",
+        "Terus-menerus dan merata",
+        "Hanya saat berolahraga"
+      ],
+      "explain": "Remasan justru menekan pembuluh yang menembus otot. Pengisian terjadi pada fase mengendur, dan itulah sebabnya denyut yang sangat cepat memotong pasokan jantung sendiri."
+    },
+    {
+      "prompt": "Pembuluh mana yang melanggar aturan umum soal arteri dan vena?",
+      "choices": [
+        "Vena kava",
+        "Arteri pulmonalis dan vena pulmonalis",
+        "Arteri koroner",
+        "Aorta"
+      ],
+      "explain": "Arteri pulmonalis membawa darah miskin oksigen, dan vena pulmonalis membawa darah kaya oksigen. Istilah arteri dan vena menjelaskan arah terhadap jantung, bukan isinya."
+    },
+    {
+      "prompt": "Ketuk kantong yang kekakuannya membuat perdarahan di sekitar jantung begitu berbahaya."
+    }
+  ]
+}

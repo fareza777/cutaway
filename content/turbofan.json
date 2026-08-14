@@ -1,0 +1,191 @@
+{
+  "schema": 1,
+  "id": "turbofan",
+  "title": "Jet Engine",
+  "subtitle": "High-bypass turbofan",
+  "category": "Aerospace",
+  "accent": "#FF9F45",
+  "scale": "≈ 3 m fan diameter",
+  "summary": "A turbofan is a fan with a very complicated motor. The core burns fuel to spin turbines, the turbines spin the fan, and it is the fan — not the exhaust — that produces most of the thrust. Around ninety percent of the air that enters never reaches the flame.",
+  "model": "turbofan",
+  "cutAxis": "y",
+  "restRotation": [0.1, -0.55, 0],
+  "parts": [
+    {
+      "id": "fan",
+      "nodes": ["fan"],
+      "name": "Fan",
+      "short": "Produces about 80% of the thrust",
+      "detail": "Twenty titanium or carbon-composite blades, each carrying tonnes of centrifugal load. Most of the air they move goes straight around the outside of the engine and out the back — the bypass stream. Moving a very large mass of air slightly faster is far more efficient than moving a small mass very fast, which is why modern fans keep getting bigger.",
+      "layer": 1,
+      "explode": [0, 1.5, 0],
+      "motion": { "spin": { "axis": "y", "ratio": 1 } }
+    },
+    {
+      "id": "spinner",
+      "nodes": ["spinner"],
+      "name": "Nose Spinner",
+      "short": "Sheds ice and steers air into the blades",
+      "detail": "The cone smooths incoming air onto the blade roots and, because it rotates, throws off ice before it can build into a chunk large enough to damage the fan. The spiral painted on many spinners is a ground-crew warning: if it is a blur, the engine is running.",
+      "layer": 0,
+      "explode": [0, 2.3, 0],
+      "motion": { "spin": { "axis": "y", "ratio": 1 } }
+    },
+    {
+      "id": "nacelle",
+      "nodes": ["nacelle"],
+      "name": "Nacelle",
+      "short": "Aerodynamic cowl and bypass duct",
+      "detail": "The cowling is not just a cover. Its inner surface forms the duct that the bypass air flows through, its lip is shaped so the engine still breathes at high angles of attack, and its inner walls are lined with acoustic honeycomb that absorbs fan noise.",
+      "layer": 0,
+      "explode": [0, 0.4, 1.7]
+    },
+    {
+      "id": "fan_case",
+      "nodes": ["fan_case"],
+      "name": "Containment Case",
+      "short": "Designed to catch a blade that lets go",
+      "detail": "If a fan blade fails at full speed it leaves with the energy of a small car at motorway speed. The case — Kevlar-wrapped or machined titanium — must absorb that and keep it inside the engine. Every engine type is certified by deliberately detonating a blade off a running engine and proving nothing escapes.",
+      "layer": 1,
+      "explode": [0, 1.1, 1.0]
+    },
+    {
+      "id": "lp_compressor",
+      "nodes": ["lp_compressor"],
+      "name": "Low-Pressure Compressor",
+      "short": "First squeeze, on the slow spool",
+      "detail": "The booster stages sit on the same shaft as the fan and turn at the same speed. Each stage raises pressure a little; stacking them multiplies the effect. The annulus narrows front to back because the air is getting denser and needs less room.",
+      "layer": 2,
+      "explode": [0, 0.85, 0],
+      "motion": { "spin": { "axis": "y", "ratio": 1 } }
+    },
+    {
+      "id": "hp_compressor",
+      "nodes": ["hp_compressor"],
+      "name": "High-Pressure Compressor",
+      "short": "Squeezes air to ~40× atmospheric pressure",
+      "detail": "The high-pressure spool spins independently and far faster than the fan — the two shafts are concentric, one inside the other. By the last stage the air has been compressed enough that it is over 600 °C before a single drop of fuel is added.",
+      "layer": 3,
+      "explode": [0, 0.3, 0],
+      "motion": { "spin": { "axis": "y", "ratio": 2.6 } }
+    },
+    {
+      "id": "combustor",
+      "nodes": ["combustor"],
+      "name": "Combustor",
+      "short": "Continuous flame at ~2000 °C",
+      "detail": "Fuel is atomised into a ring-shaped chamber and burns continuously — unlike a piston engine, nothing here is intermittent. Only a fraction of the incoming air actually feeds the flame; the rest is threaded along the liner walls as a film of cooling air, because the flame is hotter than the metal's melting point.",
+      "layer": 3,
+      "explode": [0, -0.3, 0]
+    },
+    {
+      "id": "hp_turbine",
+      "nodes": ["hp_turbine"],
+      "name": "High-Pressure Turbine",
+      "short": "Drives the compressor it sits behind",
+      "detail": "The first turbine stage takes the full force of the combustor exit. Its blades are single crystals of nickel superalloy — grown as one grain so there are no boundaries to creep along — riddled with internal cooling passages and coated in ceramic. They run hotter than their own melting point and survive on a film of cool air bleeding through their surface.",
+      "layer": 3,
+      "explode": [0, -0.8, 0],
+      "motion": { "spin": { "axis": "y", "ratio": 2.6 } }
+    },
+    {
+      "id": "lp_turbine",
+      "nodes": ["lp_turbine"],
+      "name": "Low-Pressure Turbine",
+      "short": "Extracts what is left, to turn the fan",
+      "detail": "By this point the gas has given up most of its pressure, so the blades grow larger to keep extracting work from it. These stages drive the long inner shaft that runs the whole length of the engine back to the fan.",
+      "layer": 3,
+      "explode": [0, -1.3, 0],
+      "motion": { "spin": { "axis": "y", "ratio": 1 } }
+    },
+    {
+      "id": "shaft",
+      "nodes": ["shaft"],
+      "name": "Low-Pressure Shaft",
+      "short": "Connects the rear turbine to the front fan",
+      "detail": "A single shaft running the whole length of the engine, passing straight through the middle of the high-pressure spool that surrounds it. Two shafts, two speeds, one axis — that concentric arrangement is what lets the fan turn slowly for efficiency while the core turns fast for pressure.",
+      "layer": 4,
+      "explode": [0, 0, -1.8],
+      "motion": { "spin": { "axis": "y", "ratio": 1 } }
+    },
+    {
+      "id": "core_casing",
+      "nodes": ["core_casing"],
+      "name": "Core Casing",
+      "short": "Pressure vessel around the hot section",
+      "detail": "The core is a pressure vessel holding forty atmospheres of very hot gas. Its casing also carries the bearing loads, mounts the accessory gearbox, and provides the bleed ports that supply cabin air and wing anti-icing.",
+      "layer": 2,
+      "explode": [0, -0.5, -1.5]
+    },
+    {
+      "id": "nozzle",
+      "nodes": ["nozzle"],
+      "name": "Exhaust Nozzle",
+      "short": "Last of the thrust, and the noise problem",
+      "detail": "The core exhaust leaves through a converging nozzle that accelerates it one final time. The centre plug smooths the flow behind the turbine. The zigzag chevrons on many modern nozzles exist to blend the fast core jet into the slower bypass air more gently — most jet noise comes from that shear layer.",
+      "layer": 2,
+      "explode": [0, -2.1, 0]
+    },
+    {
+      "id": "pylon",
+      "nodes": ["pylon"],
+      "name": "Pylon",
+      "short": "Carries thrust into the wing — and can let go",
+      "detail": "Everything the engine produces reaches the aircraft through this strut: thrust, weight, and all the plumbing and wiring. It is deliberately built with fuse pins that shear under extreme load, so a seized engine departs the wing cleanly rather than tearing the fuel tank open.",
+      "layer": 0,
+      "explode": [0, 0, 2.4]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Most air never burns",
+      "body": "The fan pulls in a huge column of air. Roughly nine parts out of ten bypass the core entirely and exit at the back having simply been pushed. That bypass stream is where most of the thrust comes from.",
+      "focus": ["fan", "nacelle"]
+    },
+    {
+      "title": "Squeeze",
+      "body": "The tenth that enters the core passes through compressor stage after compressor stage, each raising pressure slightly. By the end the air is at around forty atmospheres and over 600 °C from compression alone.",
+      "focus": ["lp_compressor", "hp_compressor"]
+    },
+    {
+      "title": "Burn",
+      "body": "Fuel is sprayed into a ring chamber and burns continuously at around 2000 °C — hotter than the metal around it, which survives only behind a moving film of cooler air.",
+      "focus": ["combustor"]
+    },
+    {
+      "title": "Extract",
+      "body": "The expanding gas spins the turbines on its way out. The turbines exist to drive the compressor and the fan; whatever energy is left over leaves through the nozzle. The engine is, in effect, a machine that burns fuel to turn a fan.",
+      "focus": ["hp_turbine", "lp_turbine", "shaft"]
+    },
+    {
+      "title": "Two shafts, two speeds",
+      "body": "The fan wants to turn slowly and the core wants to turn fast. Two concentric shafts let both happen at once — the long inner shaft drives the fan, the short outer one drives the high-pressure compressor.",
+      "focus": ["shaft", "hp_compressor", "fan"]
+    }
+  ],
+  "quiz": [
+    { "type": "identify", "prompt": "Tap the component that produces most of the engine's thrust.", "partId": "fan" },
+    { "type": "identify", "prompt": "Tap where fuel is burned.", "partId": "combustor" },
+    {
+      "type": "choice",
+      "prompt": "In a high-bypass turbofan, roughly how much of the intake air passes through the combustor?",
+      "choices": ["About 10%", "About half", "About 90%", "All of it"],
+      "answer": 0,
+      "explain": "Around nine tenths of the air bypasses the core. Moving a large mass of air gently is more efficient than moving a small mass violently."
+    },
+    { "type": "identify", "prompt": "Tap the case designed to contain a failed fan blade.", "partId": "fan_case" },
+    {
+      "type": "choice",
+      "prompt": "Why are high-pressure turbine blades grown as single crystals?",
+      "choices": [
+        "It makes them lighter",
+        "Grain boundaries would creep and fail at those temperatures",
+        "It improves their colour",
+        "It makes them cheaper to cast"
+      ],
+      "answer": 1,
+      "explain": "Above about 1000 °C metal slowly stretches along grain boundaries. Remove the boundaries and there is nothing to creep along."
+    },
+    { "type": "identify", "prompt": "Tap the part that lets the fan turn slowly while the core turns fast.", "partId": "shaft" }
+  ]
+}

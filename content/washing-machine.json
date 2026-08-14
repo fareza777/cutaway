@@ -1,0 +1,197 @@
+{
+  "schema": 1,
+  "id": "washing-machine",
+  "title": "Washing Machine",
+  "subtitle": "Front-loading drum washer",
+  "category": "Appliances",
+  "accent": "#7FA8FF",
+  "scale": "≈ 850 mm tall",
+  "summary": "Almost everything inside a washing machine is there to deal with one problem: a drum full of wet laundry, spun at 1400 rpm, is violently out of balance. The washing itself needs a tub, water and a motor. The concrete block, the springs and the dampers are all there to stop the machine walking across the room.",
+  "model": "washing_machine",
+  "cutAxis": "x",
+  "restRotation": [0.08, -0.5, 0],
+  "parts": [
+    {
+      "id": "drum",
+      "nodes": ["drum"],
+      "name": "Inner Drum",
+      "short": "The only part that turns",
+      "detail": "Stainless steel, perforated, and carrying three moulded paddles. The paddles do the actual washing: they lift clothes up the rising side and drop them back into the water, which is a gentler version of beating laundry on a rock. Tumbling is why a front-loader needs only a third of the water of a top-loading agitator machine — the clothes fall through the water rather than swimming in it.",
+      "layer": 3,
+      "explode": [0, 0.2, 1.3],
+      "motion": { "spin": { "axis": "z", "ratio": 1 } }
+    },
+    {
+      "id": "outer_tub",
+      "nodes": ["outer_tub"],
+      "name": "Outer Tub",
+      "short": "Holds the water; never moves with the drum",
+      "detail": "A sealed plastic tub that holds the water while the perforated drum spins inside it. It is plastic rather than steel because it does not need the strength, it will never rust, and it is moulded in one piece with the mountings for the heater, the pump outlet and the pressure sensor. On most modern machines it cannot be opened — a failed drum bearing means replacing the whole tub.",
+      "layer": 2,
+      "explode": [0, 0.1, 1.0]
+    },
+    {
+      "id": "counterweight",
+      "nodes": ["counterweight"],
+      "name": "Concrete Counterweight",
+      "short": "Twenty-five kilos of dead weight, on purpose",
+      "detail": "Blocks of cast concrete bolted to the outer tub, and the reason a washing machine is so absurdly heavy for its size. Wet laundry never distributes evenly, so at spin speed the tub is being thrown in a circle by a load that may be several kilos heavier on one side. Adding mass does not remove that force, but it hugely reduces how far the tub moves in response to it.",
+      "layer": 2,
+      "explode": [0, 1.4, 0]
+    },
+    {
+      "id": "suspension",
+      "nodes": ["suspension"],
+      "name": "Springs and Dampers",
+      "short": "Lets the tub move so the cabinet does not",
+      "detail": "The tub hangs from springs at the top and rests on friction dampers at the bottom — the same arrangement as a car suspension, and for the same reason. The springs let the tub swing instead of transmitting shock to the cabinet; the dampers bleed that energy away as heat so it does not build into a resonance. A machine that suddenly starts walking across the floor has usually lost a damper, not a bearing.",
+      "layer": 2,
+      "explode": [-1.4, 0.3, 0]
+    },
+    {
+      "id": "motor",
+      "nodes": ["motor"],
+      "name": "Drive Motor",
+      "short": "One motor, two completely different jobs",
+      "detail": "The same motor has to turn the drum at around 50 rpm to tumble clothes and at 1400 rpm to spin them dry — a range of nearly thirty to one, under wildly varying load. That is why washing machine motors are speed-controlled rather than simply switched on, and why a modern one is often coupled straight to the drum with no belt at all.",
+      "layer": 3,
+      "explode": [1.3, -0.5, -0.6],
+      "motion": { "spin": { "axis": "x", "ratio": 3 } }
+    },
+    {
+      "id": "drive_belt",
+      "nodes": ["drive_belt"],
+      "name": "Drive Belt and Pulley",
+      "short": "Gears the motor down to the drum",
+      "detail": "A small pulley on the motor drives a very large one on the drum shaft, which multiplies torque and divides speed. The belt is also a deliberate weak link: it is the cheapest part in the drive train, so if something jams, the belt slips or breaks rather than the motor burning out or the shaft shearing.",
+      "layer": 3,
+      "explode": [1.3, -1.0, -0.9]
+    },
+    {
+      "id": "heater",
+      "nodes": ["heater"],
+      "name": "Heating Element",
+      "short": "Where nearly all the energy goes",
+      "detail": "A sheathed element lying in the bottom of the outer tub, under the drum, heating the water directly rather than taking it hot from a tap. It uses more energy than everything else in the machine combined — which is the entire reason a cold or 30 °C wash is so much cheaper to run, and why limescale forms here first in hard-water areas.",
+      "layer": 3,
+      "explode": [0, -1.3, 0]
+    },
+    {
+      "id": "pump",
+      "nodes": ["pump"],
+      "name": "Drain Pump",
+      "short": "With a filter that catches coins",
+      "detail": "A small impeller pump that empties the tub between cycles and before every spin. In front of it sits a filter trap, reachable behind a flap at the bottom of the machine, which catches the coins, buttons and hairpins that would otherwise jam the impeller. A machine that fills and washes but will not drain has almost always simply got a blocked trap.",
+      "layer": 3,
+      "explode": [-1.3, -1.0, 0.5]
+    },
+    {
+      "id": "door_seal",
+      "nodes": ["door_seal"],
+      "name": "Door Bellows",
+      "short": "Flexible, because the tub moves and the door does not",
+      "detail": "A thick rubber concertina bridging the moving tub and the fixed front panel. It has to be watertight while allowing the tub behind it to shake through several centimetres, so it cannot be a simple gasket. Its folds trap water and detergent residue, which is why the seal is where a front-loader goes mouldy and smells first.",
+      "layer": 1,
+      "explode": [1.0, 0.9, 1.1]
+    },
+    {
+      "id": "door",
+      "nodes": ["door"],
+      "name": "Door",
+      "short": "Locked shut, and it cannot be otherwise",
+      "detail": "The deep glass bowl pushes laundry back off the seal. It is held by an interlock that does not release for a minute or two after the cycle ends — partly because the drum is still turning, and partly because at the start of a hot wash the tub is full of scalding water sitting well above the level of the door opening.",
+      "layer": 0,
+      "explode": [0, 0, 2.1]
+    },
+    {
+      "id": "detergent_drawer",
+      "nodes": ["detergent_drawer"],
+      "name": "Detergent Drawer",
+      "short": "Three compartments, flushed at different moments",
+      "detail": "Detergent for the main wash, a separate compartment for prewash, and one for softener. The softener compartment has a siphon in it: it fills with water and holds the contents until the level rises past a bend, then dumps the lot at once. That is how a machine adds softener during the final rinse rather than washing it straight down the drain at the start.",
+      "layer": 1,
+      "explode": [-1.5, 1.0, 0.6]
+    },
+    {
+      "id": "front_panel",
+      "nodes": ["front_panel"],
+      "name": "Front Panel",
+      "short": "Fixed, while everything behind it moves",
+      "detail": "The face carries the door hinge, the controls and the filter flap, and is rigidly part of the cabinet. Nothing behind it is: the tub, drum and counterweights are a single swinging mass hung on springs. The gap you can feel around the bellows is the clearance that assembly needs.",
+      "layer": 0,
+      "explode": [0, 0, 1.8]
+    },
+    {
+      "id": "cabinet",
+      "nodes": ["cabinet"],
+      "name": "Cabinet",
+      "short": "Thin steel, held rigid by the machine inside it",
+      "detail": "The outer shell is surprisingly light gauge, because it is not what resists the spin forces — the suspended assembly deals with those. Its real job is to stay square, which is also why levelling the feet matters so much: a machine standing on three of its four feet has a cabinet that can twist, and a twisting cabinet lets the tub touch it.",
+      "layer": 0,
+      "explode": [0, 0, -1.7]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Fill and heat",
+      "body": "Water enters through the detergent drawer, washing the powder in with it, and collects in the bottom of the outer tub. The element heats it there. This step uses more energy than the whole rest of the cycle.",
+      "focus": ["detergent_drawer", "heater", "outer_tub"]
+    },
+    {
+      "title": "Tumble",
+      "body": "The drum turns slowly, one way then the other. Paddles lift the laundry up the side and drop it back into the water. The falling is the washing — the clothes are not swimming, they are being repeatedly dropped through detergent.",
+      "focus": ["drum"]
+    },
+    {
+      "title": "Drain",
+      "body": "The pump empties the tub through a filter trap that catches whatever was in your pockets. Rinsing repeats the fill-tumble-drain sequence with clean water.",
+      "focus": ["pump"]
+    },
+    {
+      "title": "Spin",
+      "body": "The drum accelerates to well over a thousand rpm and water is thrown out through the perforations. The load is never balanced, so the whole tub assembly is now being flung in a circle several times a second.",
+      "focus": ["drum", "motor"]
+    },
+    {
+      "title": "Why it does not walk away",
+      "body": "The tub is not bolted to anything. It hangs on springs, rests on friction dampers, and carries twenty-five kilos of concrete. The springs allow it to move, the dampers turn that movement into heat, and the mass keeps the movement small. Take any of the three away and the machine crosses the room.",
+      "focus": ["counterweight", "suspension"]
+    }
+  ],
+  "quiz": [
+    { "type": "identify", "prompt": "Tap the part that uses the most electricity.", "partId": "heater" },
+    {
+      "type": "choice",
+      "prompt": "Why is there a large block of concrete inside a washing machine?",
+      "choices": [
+        "To hold the motor still",
+        "To insulate against noise",
+        "Mass keeps the unbalanced spinning tub from moving far",
+        "To stop the machine tipping when the door is open"
+      ],
+      "answer": 2,
+      "explain": "Wet laundry never distributes evenly. Adding mass does not remove the out-of-balance force, but it drastically reduces how far the tub travels in response to it."
+    },
+    { "type": "identify", "prompt": "Tap what actually washes the clothes.", "partId": "drum" },
+    { "type": "identify", "prompt": "Tap the part that lets the tub shake without shaking the cabinet.", "partId": "suspension" },
+    {
+      "type": "choice",
+      "prompt": "A machine fills and washes but will not empty. What is the most likely cause?",
+      "choices": ["A failed motor", "A blocked pump filter", "A broken door interlock", "A failed heating element"],
+      "answer": 1,
+      "explain": "The filter trap in front of the drain pump catches coins and buttons, and blocks. It is reachable behind a flap at the bottom of the machine."
+    },
+    {
+      "type": "choice",
+      "prompt": "Why does a front-loader use far less water than a top-loading agitator?",
+      "choices": [
+        "Its pump is more efficient",
+        "Clothes tumble through a shallow pool instead of swimming in a full tub",
+        "It reuses the rinse water",
+        "The drum is smaller"
+      ],
+      "answer": 1,
+      "explain": "Paddles lift the laundry and drop it back through the water. Only the bottom of the drum needs to be wet, so the tub is never filled."
+    }
+  ]
+}

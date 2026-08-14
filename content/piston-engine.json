@@ -1,0 +1,201 @@
+{
+  "schema": 1,
+  "id": "piston-engine",
+  "title": "Petrol Engine",
+  "subtitle": "Single-cylinder four-stroke",
+  "category": "Mechanical",
+  "accent": "#FF6B6B",
+  "scale": "≈ 300 mm tall",
+  "summary": "A four-stroke engine turns a series of small explosions into steady rotation. The trick is the crankshaft: it converts the piston's straight-line hammering into a turning shaft, and it also feeds the piston back up for the next stroke using the momentum it just stored.",
+  "model": "piston_engine",
+  "cutAxis": "z",
+  "restRotation": [0.08, -0.45, 0],
+  "parts": [
+    {
+      "id": "piston",
+      "nodes": ["piston"],
+      "name": "Piston",
+      "short": "The moving wall of the combustion chamber",
+      "detail": "A hollow aluminium slug that takes the full force of the burn on its crown and passes it down through a wrist pin. It is not round when cold — pistons are machined slightly oval and tapered, so they expand into a true cylinder at operating temperature. At 6000 rpm it stops and reverses direction a hundred times a second.",
+      "layer": 3,
+      "explode": [0, 0.9, 0],
+      "motion": { "slide": { "axis": "y", "amplitude": 0.31 } }
+    },
+    {
+      "id": "piston_rings",
+      "nodes": ["piston_rings"],
+      "name": "Piston Rings",
+      "short": "Seal the pressure and scrape the oil",
+      "detail": "Three split rings do three jobs. The top two seal combustion pressure — the gas itself gets behind them and presses them harder against the bore, so they seal better the harder the engine works. The bottom one scrapes oil back down. Rings are also the main path for heat to escape the piston into the block.",
+      "layer": 3,
+      "explode": [0, 1.5, 0],
+      "motion": { "slide": { "axis": "y", "amplitude": 0.31 } }
+    },
+    {
+      "id": "connecting_rod",
+      "nodes": ["connecting_rod"],
+      "name": "Connecting Rod",
+      "short": "Turns straight-line push into rotation",
+      "detail": "The rod does not simply push down — it swings, because its bottom end travels in a circle while its top end travels in a line. That is why an I-beam section is used: the rod is loaded in compression on the power stroke and stretched hard at the top of the exhaust stroke, when it has to yank the piston back from full speed.",
+      "layer": 3,
+      "explode": [0, 0.3, 0.9],
+      "motion": {
+        "slide": { "axis": "y", "amplitude": 0.17 },
+        "swing": { "axis": "z", "amplitude": 0.3 }
+      }
+    },
+    {
+      "id": "crankshaft",
+      "nodes": ["crankshaft"],
+      "name": "Crankshaft",
+      "short": "The offset that makes the whole thing work",
+      "detail": "The big-end journal is offset from the main axis by half the stroke. That offset is the entire mechanism: it converts linear force into torque, and it sets how far the piston travels. The heavy lobes are counterweights — without them the engine would try to shake itself off its mounts.",
+      "layer": 4,
+      "explode": [0, -1.0, 0],
+      "motion": { "spin": { "axis": "x", "ratio": 1 } }
+    },
+    {
+      "id": "flywheel",
+      "nodes": ["flywheel"],
+      "name": "Flywheel",
+      "short": "Stores the one stroke that pays for the other three",
+      "detail": "Only one stroke in four produces power; the other three consume it. The flywheel banks energy from the power stroke and gives it back to push the piston through intake, compression and exhaust. It is why a single-cylinder engine idles with a lumpy beat and a four-cylinder does not. The teeth around the rim are what the starter motor grabs.",
+      "layer": 4,
+      "explode": [1.5, -0.8, 0],
+      "motion": { "spin": { "axis": "x", "ratio": 1 } }
+    },
+    {
+      "id": "cylinder_block",
+      "nodes": ["cylinder_block"],
+      "name": "Cylinder Block",
+      "short": "Structure, guide and heatsink",
+      "detail": "The block holds the bore true under combustion loads that try to lift the head off. The fins are for air cooling — more surface area for the same volume of metal. A water-cooled engine replaces them with internal galleries, which is quieter and more even but adds a pump, a radiator and a failure mode.",
+      "layer": 1,
+      "explode": [0, 0.2, -1.4]
+    },
+    {
+      "id": "cylinder_liner",
+      "nodes": ["cylinder_liner"],
+      "name": "Cylinder Liner",
+      "short": "The hard, replaceable running surface",
+      "detail": "A steel or coated sleeve pressed into the softer alloy block. Its bore is deliberately cross-hatched with fine honing scratches: they hold a film of oil that the rings ride on. Polish that pattern away and the engine starts burning oil.",
+      "layer": 2,
+      "explode": [0, 0.6, -1.4]
+    },
+    {
+      "id": "cylinder_head",
+      "nodes": ["cylinder_head"],
+      "name": "Cylinder Head",
+      "short": "Roof of the chamber; holds the valves",
+      "detail": "The head closes the top of the cylinder and contains the combustion chamber's shape, which matters enormously — chamber geometry controls how the flame front travels and how much compression the engine can run before it detonates. It also carries the intake and exhaust ports and everything that opens and closes them.",
+      "layer": 1,
+      "explode": [0, 1.6, 0]
+    },
+    {
+      "id": "intake_valve",
+      "nodes": ["intake_valve"],
+      "name": "Intake Valve",
+      "short": "Lets the air and fuel in",
+      "detail": "Opens as the piston starts down, drawing in air. It is usually the larger of the two valves, because getting air in against nothing but atmospheric pressure is harder than pushing exhaust out under pressure. It stays open slightly past the bottom of the stroke — incoming air has momentum and keeps filling the cylinder on its own.",
+      "layer": 2,
+      "explode": [-1.0, 1.3, 0],
+      "motion": { "slide": { "axis": "y", "amplitude": 0.07, "phase": 3.1416 } }
+    },
+    {
+      "id": "exhaust_valve",
+      "nodes": ["exhaust_valve"],
+      "name": "Exhaust Valve",
+      "short": "Lets the burnt gas out, while glowing",
+      "detail": "It runs far hotter than the intake valve — there is no cool incoming charge to wash over it, only exhaust gas at 800 °C. Many are hollow and part-filled with sodium, which melts and sloshes as the valve moves, carrying heat from the head down the stem into the guide.",
+      "layer": 2,
+      "explode": [1.0, 1.3, 0],
+      "motion": { "slide": { "axis": "y", "amplitude": 0.07 } }
+    },
+    {
+      "id": "camshaft",
+      "nodes": ["camshaft"],
+      "name": "Camshaft",
+      "short": "Turns at exactly half engine speed",
+      "detail": "Each lobe is an eccentric that pushes its valve open once per revolution. Because a four-stroke cycle takes two crankshaft turns, the camshaft must run at half crank speed — that ratio is fixed by a belt or chain, and if it slips, valves and piston try to occupy the same space. The shape of each lobe alone determines when a valve opens, how far, and for how long.",
+      "layer": 2,
+      "explode": [0, 2.2, 0],
+      "motion": { "spin": { "axis": "x", "ratio": 0.5 } }
+    },
+    {
+      "id": "spark_plug",
+      "nodes": ["spark_plug"],
+      "name": "Spark Plug",
+      "short": "Fires before the piston reaches the top",
+      "detail": "Around 20,000 volts jump a gap under 40 atmospheres of pressure. It fires early — typically 20 to 30 degrees before top dead centre — because the flame takes real time to cross the chamber, and peak pressure needs to arrive just after the piston starts back down. Firing at the top itself would be too late.",
+      "layer": 2,
+      "explode": [0, 2.8, 0.5]
+    },
+    {
+      "id": "crankcase",
+      "nodes": ["crankcase"],
+      "name": "Crankcase",
+      "short": "Bearing housing and oil reservoir",
+      "detail": "Carries the main bearings that the crankshaft turns in, and collects the oil that drains back off everything above it. It is also a pressure vessel of sorts: the piston moving down pressurises it, so engines need a breather to let that pulsing air escape without pushing oil out with it.",
+      "layer": 0,
+      "explode": [0, -1.9, 0]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Intake",
+      "body": "The piston travels down while the intake valve is open, drawing air and fuel into the cylinder. The engine is running on stored momentum — this stroke costs energy.",
+      "focus": ["intake_valve", "piston"]
+    },
+    {
+      "title": "Compression",
+      "body": "Both valves shut and the piston comes back up, squeezing the mixture into a tenth of its volume. Compressing it makes it hot and packs the molecules close, so the burn is fast and complete.",
+      "focus": ["piston", "cylinder_liner"]
+    },
+    {
+      "title": "Power",
+      "body": "The plug fires just before the top. The flame spreads, pressure spikes, and the piston is driven down hard. This is the only stroke of the four that produces work.",
+      "focus": ["spark_plug", "piston", "connecting_rod"]
+    },
+    {
+      "title": "Exhaust",
+      "body": "The exhaust valve opens and the piston sweeps the burnt gas out. Then the cycle repeats — two full crankshaft turns for one power stroke.",
+      "focus": ["exhaust_valve", "piston"]
+    },
+    {
+      "title": "Why the flywheel exists",
+      "body": "Three of the four strokes take energy and only one gives it back. The flywheel stores that single push and doles it out over the rest of the cycle, which is what turns a series of bangs into smooth rotation.",
+      "focus": ["flywheel", "crankshaft"]
+    }
+  ],
+  "quiz": [
+    { "type": "identify", "prompt": "Tap the part that converts up-and-down motion into rotation.", "partId": "crankshaft" },
+    {
+      "type": "choice",
+      "prompt": "How fast does the camshaft turn relative to the crankshaft?",
+      "choices": ["Twice as fast", "The same speed", "Half as fast", "It varies with load"],
+      "answer": 2,
+      "explain": "A four-stroke cycle takes two crankshaft revolutions, and each valve opens once per cycle — so the camshaft must turn once for every two crank turns."
+    },
+    { "type": "identify", "prompt": "Tap the part that stores energy between power strokes.", "partId": "flywheel" },
+    {
+      "type": "choice",
+      "prompt": "Why does the spark plug fire before the piston reaches the top?",
+      "choices": [
+        "To reduce fuel consumption",
+        "The flame needs time to spread, so peak pressure arrives just after top dead centre",
+        "To cool the valves",
+        "It fires exactly at the top"
+      ],
+      "answer": 1,
+      "explain": "Combustion is not instant. Igniting early means peak pressure lands just after the piston starts back down, where it does the most work."
+    },
+    { "type": "identify", "prompt": "Tap the part that seals combustion pressure against the bore.", "partId": "piston_rings" },
+    {
+      "type": "choice",
+      "prompt": "Which stroke actually produces power?",
+      "choices": ["Intake", "Compression", "Power", "Exhaust"],
+      "answer": 2,
+      "explain": "Only one stroke in four produces work. The other three are paid for out of the flywheel's stored energy."
+    }
+  ]
+}

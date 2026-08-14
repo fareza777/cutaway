@@ -1,0 +1,34 @@
+{
+  "title": "Hard Disk",
+  "subtitle": "Gramofon untuk angka, disegel dalam kotak",
+  "scale": "≈ 3,5 inci",
+  "summary": "Hard disk menyimpan bit sebagai magnet kecil pada piringan yang berputar, dan membacanya dengan kepala yang terbang di bantal udara beberapa nanometer tebalnya. Lengan yang membawa kepala adalah motor koil-suara putar. Seluruh mesin adalah ruang bersih dengan tutup.",
+  "parts": {
+    "base": { "name": "Coran Dasar", "short": "Sasis, dan setengah lain dari ruang bersih", "detail": "Bak aluminium yang dikerjakan mesin. Setiap bantalan, setiap magnet, setiap filter menonjol dari satu potong ini supaya geometri tidak bisa bergeser. Ia juga heatsink: motor spindel membuang panasnya ke sini." },
+    "cover": { "name": "Tutup", "short": "Penutup ruang bersih", "detail": "Drive dirakit di ruang bersih lalu tutup ini dipasang seumur hidup. Filter napas menyamakan tekanan tanpa memasukkan debu. Opacity di sini sama seperti perikardium: tutupnya nyata, dan Anda tetap bisa melihat tembus." },
+    "platters": { "name": "Piringan", "short": "Cakram kaca atau aluminium, dilapisi film magnetik", "detail": "Tiap muka adalah permukaan rekam. Lapisannya beberapa nanometer bahan magnetik; bit adalah wilayah film itu yang dimagnetisasi ke satu arah atau yang lain. Mereka berputar 5.400 atau 7.200 rpm, di drive enterprise 15.000. Kilap cermin bukan kesombongan — kekasaran pada skala ini adalah tabrakan." },
+    "spindle": { "name": "Motor Spindel", "short": "Satu-satunya motor yang boleh berputar bertahun-tahun", "detail": "Motor bantalan fluida-dinamik di hub. Harus senyap, tahan satu dekade, dan menahan piringan dalam runout beberapa mikron sementara mereka terbang. Bantalan bola dulu mengerjakan ini lalu tidak, sebab itu drive lama mendengung." },
+    "actuator": { "name": "Lengan Aktuator", "short": "Lengan gramofon, kaku dan cepat", "detail": "Lengan putar berporos di sudut kotak. Membawa kepala di satu ujung dan koil di ujung lain. Waktu seek beberapa milidetik adalah lengan ini berakselerasi, berhenti, dan mendarat di trek selebar sepersepuluh rambut." },
+    "voice_coil": { "name": "Koil Suara", "short": "Motor yang mengarahkan kepala", "detail": "Koil dalam celah magnet, fisika yang sama dengan pengeras suara, dipakai di sini untuk memutar lengan. Arus adalah posisi. Servo yang menggerakkannya membaca trek itu sendiri untuk tahu di mana ia — disk adalah penggarisnya sendiri." },
+    "magnet": { "name": "Magnet Koil-Suara", "short": "Medan yang didorong lengan", "detail": "Dua pelat magnet tanah jarang, satu di atas dan satu di bawah koil. Mereka tidak bergerak. Bersama-sama itulah alasan seek yang kelihatan malas di grafik adalah akselerasi keras di logam." },
+    "heads": { "name": "Kepala Baca/Tulis", "short": "Terbang di udara beberapa nanometer dari disk", "detail": "Tiap slider adalah sayap kecil. Pada kecepatan ia lepas landas di udara yang diseret piringan, dan terbang lebih dekat daripada panjang gelombang cahaya biru. Benjolan, sidik jari, listrik padam yang menjatuhkan lengan ke disk yang berputar: itu head crash, dan seburuk bunyinya." },
+    "flex_cable": { "name": "Kabel Lentur", "short": "Satu-satunya kawat yang harus bertahan dari seek", "detail": "Pita cetak dari lengan ke papan logika. Harus menekuk jutaan kali tanpa retak. Sinyalnya yang paling lemah di kotak: milivolt dari kepala yang membaca magnet seukuran virus." },
+    "filter": { "name": "Filter Napas", "short": "Membiarkan kotak bernapas tanpa memasukkan debu", "detail": "Jendela sinter. Tekanan udara di dalam harus cocok dengan ruangan atau tutup akan menggembung, tetapi satu partikel asap adalah batu besar pada ketinggian terbang. Filter adalah komprominya." },
+    "ramp": { "name": "Ramp Parkir", "short": "Tempat kepala parkir saat disk berhenti", "detail": "Lereng plastik di tepi. Ketika piringan berhenti, lengan mengangkat kepala ke ramp ini supaya tidak mendarat di permukaan magnetik. Tanpanya, setiap shutdown adalah tabrakan." }
+  },
+  "steps": [
+    { "title": "Cermin yang ingat", "body": "Bit hidup sebagai magnet kecil di film pada piringan. Piringan berputar; film tidak perlu bergerak. Rotasi adalah pengalamatan." },
+    { "title": "Kepala yang terbang", "body": "Slider adalah sayap. Udara yang diseret disk adalah landasannya. Celahnya nanometer. Tidak ada kesempatan kedua jika menyentuh." },
+    { "title": "Arahkan dengan koil", "body": "Lengan adalah pengeras suara yang dibaringkan. Arus di koil suara adalah posisi di disk. Trek itu sendiri memberitahu di mana ia mendarat." },
+    { "title": "Parkir di luar media", "body": "Ketika disk berhenti, lengan menaiki ramp di tepi. Kepala di piringan yang diam adalah goresan yang menunggu terjadi." },
+    { "title": "Ruang bersih dengan tutup", "body": "Tutup bukan hiasan. Drive dibangun di ruang bersih dan tutup ini menjaganya begitu selama satu dekade, dengan satu lubang tersaring supaya kotak bisa bernapas." }
+  ],
+  "quiz": [
+    { "prompt": "Ketuk cakram tempat bit dimagnetisasi." },
+    { "prompt": "Apa yang mencegah kepala menggerus piringan?", "choices": ["Lapisan minyak", "Bantal udara yang diseret cakram yang berputar", "Levitasi magnetik", "Tekanan tutup"], "explain": "Slider adalah sayap. Pada kecepatan ia terbang. Saat diam ia harus diparkir di ramp." },
+    { "prompt": "Ketuk motor yang mengarahkan kepala menyeberangi disk." },
+    { "prompt": "Ketuk tempat kepala pergi ketika drive berhenti berputar." },
+    { "prompt": "Mengapa tutup adalah penutup nyata dengan opacity, bukan dinding yang dihilangkan?", "choices": ["Lebih bagus dilihat", "Drive adalah ruang bersih tersegel; melepas tutup adalah dusta tentang cara kerjanya", "Ia kaca", "Ia menahan piringan"], "explain": "Aturan yang sama dengan perikardium jantung. Bagian yang menyelubungi tetap ada. Anda melihat tembus." },
+    { "prompt": "Ketuk satu-satunya motor yang berputar bertahun-tahun tanpa diminta mencari." }
+  ]
+}
