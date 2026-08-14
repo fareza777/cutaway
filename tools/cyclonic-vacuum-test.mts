@@ -241,7 +241,8 @@ async function run() {
 
   const totalBox = bounds(root);
   const totalSize = totalBox.getSize(new THREE.Vector3());
-  const bodyBox = bounds(byName.get('outer_body')!);
+  const bodyMesh = byName.get('outer_body')!;
+  const bodyBox = bounds(bodyMesh);
   const bodySize = bodyBox.getSize(new THREE.Vector3());
   check('closed machine is a low horizontal canister, not an upright or kettle', totalSize.x / totalSize.y >= 1.65 && totalSize.x / totalSize.y <= 2.65 && totalSize.y / totalSize.z <= 1.12, `${totalSize.x.toFixed(2)} x ${totalSize.y.toFixed(2)} x ${totalSize.z.toFixed(2)}`);
   check('body shell has broad low canister proportions', bodySize.x / bodySize.y >= 1.7 && bodySize.x / bodySize.y <= 2.65 && bodySize.z / bodySize.y >= 0.9, `${bodySize.x.toFixed(2)} x ${bodySize.y.toFixed(2)} x ${bodySize.z.toFixed(2)}`);
@@ -253,6 +254,81 @@ async function run() {
     return [front, back];
   });
   check('closed outer shell has opposing front and rear boundaries at three stations', shellRays.every(([front, back]) => front >= 1 && back >= 1), shellRays.map((pair) => pair.join('/')).join(', '));
+
+  const bodyComponents = geometryComponents(bodyMesh);
+  const mainShell = bodyComponents.reduce((largest, component) => {
+    const componentPartSize = componentSize(component);
+    const largestSize = componentSize(largest);
+    return componentPartSize.x * componentPartSize.y * componentPartSize.z > largestSize.x * largestSize.y * largestSize.z
+      ? component : largest;
+  });
+  const mainShellSize = componentSize(mainShell);
+  const mainShellCentre = componentCentre(mainShell);
+  const rearBroadParts = bodyComponents.filter((component) => {
+    const componentPartSize = componentSize(component);
+    const componentPartCentre = componentCentre(component);
+    return componentPartCentre.x > mainShellCentre.x + mainShellSize.x * 0.55
+      && componentPartSize.x >= mainShellSize.x * 0.2
+      && componentPartSize.z >= mainShellSize.z * 0.55;
+  });
+  check('rear perimeter remains a subordinate tapered molding rather than a giant annex', rearBroadParts.length >= 2 && rearBroadParts.every((component) => {
+    const componentPartSize = componentSize(component);
+    return componentPartSize.x <= mainShellSize.x * 0.42
+      && componentPartSize.y <= mainShellSize.y * 0.22
+      && componentPartSize.z <= mainShellSize.z * 0.88;
+  }), rearBroadParts.map((component) => {
+    const componentPartSize = componentSize(component);
+    return `${componentPartSize.x.toFixed(2)}x${componentPartSize.y.toFixed(2)}x${componentPartSize.z.toFixed(2)}`;
+  }).join(', '));
+
+  const sideTransitionPairs = [-1, 1].map((side) => {
+    const candidates = bodyComponents.filter((component) => {
+      const componentPartSize = componentSize(component);
+      const componentPartCentre = componentCentre(component);
+      return Math.sign(componentPartCentre.z) === side
+        && componentPartCentre.x > mainShellCentre.x + mainShellSize.x * 0.35
+        && componentPartSize.x >= mainShellSize.x * 0.45 && componentPartSize.x <= mainShellSize.x * 0.8
+        && componentPartSize.y <= mainShellSize.y * 0.3 && componentPartSize.z <= mainShellSize.z * 0.3
+        && component.box.min.x <= mainShell.box.max.x + 0.04;
+    });
+    const rearRails = bodyComponents.filter((component) => {
+      const componentPartSize = componentSize(component);
+      const componentPartCentre = componentCentre(component);
+      return Math.sign(componentPartCentre.z) === side
+        && componentPartCentre.x > mainShell.box.max.x + mainShellSize.x * 0.25
+        && componentPartSize.x <= mainShellSize.x * 0.4
+        && componentPartSize.y >= mainShellSize.y * 0.4 && componentPartSize.z <= mainShellSize.z * 0.18;
+    });
+    return candidates.some((transition) => rearRails.some((rail) => boxClearance(transition.box, rail.box) <= 0.035
+      && componentSize(rail).x < componentSize(transition).x
+      && componentSize(rail).z < componentSize(transition).z));
+  });
+  check('both rear side rails overlap the main shell through smaller rounded transition moldings', sideTransitionPairs.every(Boolean), sideTransitionPairs.join(', '));
+
+  const topTransitionParts = bodyComponents.filter((component) => {
+    const componentPartSize = componentSize(component);
+    const componentPartCentre = componentCentre(component);
+    return componentPartCentre.y > mainShellCentre.y + mainShellSize.y * 0.3
+      && componentPartCentre.x > mainShellCentre.x + mainShellSize.x * 0.35
+      && componentPartSize.x >= mainShellSize.x * 0.2 && componentPartSize.x <= mainShellSize.x * 0.45
+      && componentPartSize.y <= mainShellSize.y * 0.24 && componentPartSize.z >= mainShellSize.z * 0.62;
+  });
+  const topBridgeParts = bodyComponents.filter((component) => {
+    const componentPartSize = componentSize(component);
+    const componentPartCentre = componentCentre(component);
+    return componentPartCentre.y > mainShellCentre.y + mainShellSize.y * 0.3
+      && Math.abs(componentPartCentre.z) >= mainShellSize.z * 0.22
+      && componentPartSize.x >= mainShellSize.x * 0.35
+      && componentPartSize.y <= mainShellSize.y * 0.2 && componentPartSize.z <= mainShellSize.z * 0.22;
+  });
+  const topFlowingTransition = topTransitionParts.some((front) => topTransitionParts.some((rear) => front !== rear
+    && componentCentre(rear).x > componentCentre(front).x
+    && front.box.min.x <= mainShell.box.max.x + 0.04
+    && componentSize(rear).y < componentSize(front).y
+    && componentSize(rear).z < componentSize(front).z
+    && [-1, 1].every((side) => topBridgeParts.some((bridge) => Math.sign(componentCentre(bridge).z) === side
+      && boxClearance(front.box, bridge.box) <= 0.035 && boxClearance(bridge.box, rear.box) <= 0.035))));
+  check('upper rear rail tapers through overlapping rounded stages instead of one hard vertical step', topFlowingTransition, `${topTransitionParts.length} top transition parts`);
 
   const bin = byName.get('dust_bin')!;
   const binBox = bounds(bin);
@@ -427,7 +503,6 @@ async function run() {
   check('main wheels and caster are attached beneath the closed shell', nearestVertexDistance(mainWheels, byName.get('outer_body')!) <= 0.09 && nearestVertexDistance(caster, byName.get('outer_body')!) <= 0.09);
   check('animated caster mesh contains rolling wheel and hub only', Math.abs(size(caster).x - size(caster).y) <= 0.025 && size(caster).z <= 0.2 && centre(caster).distanceTo(new THREE.Vector3(-1.42, -0.94, 0)) <= 0.01, `${size(caster).x.toFixed(3)} x ${size(caster).y.toFixed(3)} x ${size(caster).z.toFixed(3)}`);
 
-  const bodyComponents = geometryComponents(byName.get('outer_body')!);
   const stationaryForks = bodyComponents.filter((component) => {
     const componentBox = component.box;
     const componentPartSize = componentSize(component);
@@ -448,6 +523,39 @@ async function run() {
       && componentPartSize.y <= 0.22 && componentPartSize.z <= 0.12;
   });
   check('fixed cable tail and anchor live in stationary body geometry', fixedCableComponents.length === 1 && boxClearance(fixedCableComponents[0].box, bounds(reel)) <= 0.04, `${fixedCableComponents.length} fixed cable components`);
+
+  const bayFloors = bodyComponents.filter((component) => {
+    const componentPartSize = componentSize(component);
+    const componentPartCentre = componentCentre(component);
+    return Math.abs(componentPartCentre.x - reelCentre.x) <= mainShellSize.x * 0.12
+      && componentPartCentre.y < reelCentre.y - reelSize.y * 0.35
+      && componentPartSize.x >= reelSize.x * 1.8 && componentPartSize.z >= reelSize.z
+      && componentPartSize.y <= mainShellSize.y * 0.08;
+  });
+  const baySupportSkirts = bodyComponents.filter((component) => {
+    const componentPartSize = componentSize(component);
+    const componentPartCentre = componentCentre(component);
+    return Math.abs(componentPartCentre.x - reelCentre.x) <= mainShellSize.x * 0.22
+      && Math.abs(componentPartCentre.z) >= reelSize.z * 0.5
+      && componentPartCentre.y < reelCentre.y
+      && componentPartSize.y >= mainShellSize.y * 0.12
+      && componentPartSize.z <= mainShellSize.z * 0.18;
+  });
+  const lowerTransitionRails = bodyComponents.filter((component) => {
+    const componentPartSize = componentSize(component);
+    const componentPartCentre = componentCentre(component);
+    return component.box.min.x <= mainShell.box.max.x + 0.04
+      && componentPartCentre.x > mainShellCentre.x + mainShellSize.x * 0.42
+      && componentPartCentre.y < mainShellCentre.y - mainShellSize.y * 0.25
+      && Math.abs(componentPartCentre.z) >= mainShellSize.z * 0.3
+      && componentPartSize.x >= mainShellSize.x * 0.2 && componentPartSize.x <= mainShellSize.x * 0.8
+      && componentPartSize.y >= mainShellSize.y * 0.1
+      && componentPartSize.z <= mainShellSize.z * 0.2;
+  });
+  const supportedSkirts = bayFloors.length === 1 ? baySupportSkirts.filter((skirt) => boxClearance(skirt.box, bayFloors[0].box) <= 0.035
+    && lowerTransitionRails.some((rail) => boxClearance(skirt.box, rail.box) <= 0.035)) : [];
+  check('recessed cord bay has two local skirts flowing from the lower chassis to its floor', bayFloors.length === 1 && lowerTransitionRails.length >= 2 && supportedSkirts.length >= 2, `${bayFloors.length} floor, ${lowerTransitionRails.length} lower transitions, ${supportedSkirts.length} supported skirts`);
+  check('cord bay floor is locally bounded rather than a large hanging coplanar slab', bayFloors.length === 1 && componentSize(bayFloors[0]).x <= mainShellSize.x * 0.42, bayFloors.map((floor) => componentSize(floor).x.toFixed(3)).join(', '));
 
   const triangles = triangleCount(productionMeshes);
   const recipeTriangles = triangleCount(recipeMeshes);
