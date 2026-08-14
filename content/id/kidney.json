@@ -1,0 +1,183 @@
+{
+  "title": "Ginjal",
+  "subtitle": "Sejuta penyaring yang bekerja sejajar",
+  "scale": "panjang sekitar 11 cm",
+  "summary": "Ginjal bukan sekadar saringan. Saringan biasa menahan benda besar dan meloloskan yang kecil, padahal hampir semua zat berguna dalam darah berukuran kecil. Ginjal justru membuang hampir semuanya terlebih dahulu—sekitar 180 liter filtrat per hari—lalu memakai sebagian besar energinya untuk mengambil kembali 99% yang masih diperlukan. Dengan memilih zat yang diserap kembali, tubuh dapat mengatur dari menit ke menit berapa banyak air, garam, asam, dan kalium yang dipertahankan serta berapa banyak yang dibuang.",
+  "parts": {
+    "renal_capsule": {
+      "name": "Kapsul Ginjal",
+      "short": "Selubung kuat yang membuat pembengkakan terasa nyeri",
+      "detail": "Lapisan tipis jaringan fibrosa membungkus organ dengan rapat dan permukaannya begitu licin hingga mudah dikupas pada ginjal hidup. Lapisan ini hampir tidak dapat meregang. Saat ginjal membengkak akibat infeksi atau aliran urine yang tersumbat batu, tekanan di dalam meningkat dan kapsul tertarik. Tarikan pada kapsul inilah yang menimbulkan nyeri; pada model, kapsul ditampilkan terkelupas seperti pada spesimen anatomi."
+    },
+    "renal_cortex": {
+      "name": "Korteks Ginjal",
+      "short": "Lapisan luar tempat penyaringan berlangsung",
+      "detail": "Sekitar satu juta penyaring ginjal berada di lapisan luar ini. Karena itu korteks menerima aliran darah yang sangat besar dibanding ukurannya: sekitar seperempat keluaran jantung mencapai ginjal. Di bawah pembesaran, tampilannya berbutir karena setiap butir merupakan glomerulus. Korteks juga menyusup di antara piramida sebagai kolom ginjal, sehingga batasnya dengan medula saling mengunci."
+    },
+    "renal_medulla": {
+      "name": "Medula Ginjal (Piramida)",
+      "short": "Deretan kerucut yang mengarah ke saluran pembuangan",
+      "detail": "Corak bergaris pada piramida berasal dari ribuan saluran sejajar yang membentang dari korteks ke ujungnya. Penyaringan tidak terjadi di sini; medula bertugas memekatkan urine. Lingkungannya sengaja dibuat makin asin ke arah dalam, sehingga air keluar dari urine yang melintas. Mekanisme ini memungkinkan tubuh menghasilkan sedikit urine pekat saat kekurangan air."
+    },
+    "renal_columns": {
+      "name": "Kolom Ginjal",
+      "short": "Korteks yang memanjang di antara piramida",
+      "detail": "Irisan korteks ini masuk di antara piramida yang bersebelahan dan membagi medula menjadi lobus-lobus. Kolom bukan sekadar pengisi: pembuluh yang bergerak antara hilum dan korteks luar naik melaluinya agar tidak memotong gradien garam berlapis di dalam piramida."
+    },
+    "renal_papillae": {
+      "name": "Papila Ginjal",
+      "short": "Ujung piramida tempat urine akhirnya menetes keluar",
+      "detail": "Ujung tumpul setiap piramida dipenuhi muara duktus pengumpul. Di sinilah urine keluar dari saluran yang dibentuk sel dan masuk ke ruang penampung. Seluruh jalur sebelum papila merupakan pipa mikroskopis yang rumit; setelahnya tinggal sistem pembuangan. Kerusakan akibat pemakaian obat pereda nyeri jangka panjang juga sering pertama kali tampak di papila."
+    },
+    "minor_calyces": {
+      "name": "Kaliks Minor",
+      "short": "Cawan yang menangkap tetesan dari setiap papila",
+      "detail": "Satu corong kecil memeluk tiap papila seperti cawan di bawah keran. Dinding berototnya berkontraksi berurutan untuk mendorong urine ke pelvis, bukan sekadar membiarkannya menetes. Batu yang diam di kaliks dapat tidak bergejala selama bertahun-tahun, tetapi batu yang sama di ureter dapat menimbulkan nyeri luar biasa."
+    },
+    "major_calyces": {
+      "name": "Kaliks Mayor",
+      "short": "Dua atau tiga saluran besar hasil penggabungan kaliks",
+      "detail": "Kaliks minor bergabung menjadi dua atau tiga saluran yang lebih besar sebelum bermuara ke pelvis. Sistem pengumpul ini menyerupai pola sungai yang berjalan terbalik. Bentuknya penting pada pencitraan: sumbatan membuat kaliks yang semula tajam melebar dan membulat."
+    },
+    "renal_pelvis": {
+      "name": "Pelvis Ginjal",
+      "short": "Corong tempat semua aliran berkumpul",
+      "detail": "Corong pipih di lekukan ginjal ini menyatukan seluruh kaliks ke satu saluran keluar. Pelvis hanya memuat beberapa mililiter karena urine tidak disimpan di sini, melainkan langsung diteruskan. Sambungan yang menyempit menuju ureter merupakan titik tersempit sistem pembuangan dan tempat batu paling sering tersangkut."
+    },
+    "ureter": {
+      "name": "Ureter",
+      "short": "Saluran berotot yang mendorong urine",
+      "detail": "Urine tidak mengalir ke kandung kemih hanya karena gravitasi. Ureter berkontraksi dalam gelombang beberapa kali per menit dan mendorong urine pada posisi tubuh apa pun. Gelombang yang sama menjelaskan nyeri batu ginjal: otot terus berusaha mendorong melewati sumbatan yang tidak bergerak, sehingga nyeri datang dan reda mengikuti kontraksi."
+    },
+    "renal_artery": {
+      "name": "Arteri Ginjal",
+      "short": "Membawa sekitar seperlima aliran darah tubuh ke organ kecil ini",
+      "detail": "Arteri ini pendek, lebar, dan langsung bercabang dari aorta karena ginjal memerlukan aliran besar bertekanan tinggi. Sekitar seperlima keluaran setiap denyut jantung masuk melalui kedua arteri ginjal, jauh melebihi kebutuhan metabolisme jaringannya. Darah tersebut bukan hanya memasok ginjal, melainkan bahan yang sedang diproses."
+    },
+    "renal_vein": {
+      "name": "Vena Ginjal",
+      "short": "Lebih lebar daripada arteri dan terletak di depannya",
+      "detail": "Vena membawa volume darah yang sama keluar pada tekanan jauh lebih rendah, sehingga diameternya lebih besar. Posisinya di depan arteri pada hilum cukup konsisten untuk menjadi patokan operasi. Air, garam, glukosa, dan asam amino yang diserap kembali meninggalkan ginjal melalui vena ini."
+    },
+    "segmental_arteries": {
+      "name": "Arteri Segmental",
+      "short": "Cabang pertama yang membagi ginjal menjadi wilayah tersendiri",
+      "detail": "Arteri ginjal terbagi menjadi sekitar lima cabang, masing-masing memasok wilayah tanpa hubungan darah dengan tetangganya. Karena merupakan arteri terminal, penyumbatan satu cabang mematikan seluruh segmennya tanpa bantuan aliran dari tepi. Sifat yang sama memungkinkan ahli bedah mengangkat satu segmen sambil mempertahankan bagian lain."
+    },
+    "interlobar_arteries": {
+      "name": "Arteri Interlobar",
+      "short": "Naik melalui kolom di antara piramida",
+      "detail": "Cabang ini bergerak keluar dari hilum melalui kolom ginjal, yakni jalur yang tidak memotong piramida. Susunannya menegaskan bahwa lobus ginjal bukan bentuk hiasan; setiap lobus memiliki jalur pembuluh yang mengikuti batas strukturnya."
+    },
+    "arcuate_arteries": {
+      "name": "Arteri Arkuata",
+      "short": "Melengkung di perbatasan korteks dan medula",
+      "detail": "Saat arteri interlobar mencapai dasar piramida, pembuluh berbelok dan mengikuti batas korteks–medula sebagai lengkungan yang jelas. Cabang-cabang kecil lalu naik ke korteks dan berakhir pada glomerulus. Lengkungan ini menjadi penanda mudah untuk mengenali bagian irisan ginjal."
+    },
+    "glomerulus": {
+      "name": "Glomerulus",
+      "short": "Gumpalan kapiler berpori yang ditampilkan sangat diperbesar",
+      "detail": "Anyaman kapiler ini begitu halus dan berpori sehingga tekanan mendorong air serta molekul kecil keluar dari darah. Pembuluh keluar lebih sempit daripada pembuluh masuk, sehingga tekanan di dalam anyaman tetap tinggi dan penyaringan berlanjut. Nefron pada model diperbesar sekitar lima puluh kali; ukuran aslinya hanya sekitar satu sentimeter dan jumlahnya kira-kira sejuta per ginjal."
+    },
+    "bowmans_capsule": {
+      "name": "Kapsul Bowman",
+      "short": "Cawan yang menampung cairan hasil penyaringan",
+      "detail": "Kantong berdinding ganda ini membungkus glomerulus dan menangkap cairan yang terdorong keluar. Isinya menyerupai plasma darah tanpa sel dan protein: air, garam, glukosa, urea, asam amino, dan semua molekul kecil. Sekitar 180 liter terbentuk setiap hari, lalu hampir seluruhnya diambil kembali."
+    },
+    "proximal_tubule": {
+      "name": "Tubulus Proksimal",
+      "short": "Tempat sebagian besar filtrat diserap kembali",
+      "detail": "Saluran berkelok ini menempel dekat kapsul. Permukaan dalamnya dipenuhi lipatan mikroskopis dan selnya kaya mitokondria karena memindahkan zat melawan gradien memerlukan energi. Seluruh glukosa dan asam amino serta sekitar dua pertiga air dan garam diserap kembali di sini. Urine penderita diabetes mengandung gula ketika kadar darah melampaui kemampuan maksimum penyerapan tersebut."
+    },
+    "loop_of_henle": {
+      "name": "Lengkung Henle",
+      "short": "Belokan tajam ke medula yang memungkinkan urine pekat",
+      "detail": "Saluran turun jauh ke dalam piramida lalu berbalik naik. Bagian turun dapat dilewati air tetapi tidak garam, sedangkan bagian naik memompa garam keluar tetapi menahan air. Kedua jalur yang berdampingan saling memperkuat dan membangun gradien garam yang makin tinggi ke dalam medula. Hewan yang harus menghemat air memiliki lengkung sangat panjang; struktur ini pula yang memungkinkan manusia bertahan lama tanpa minum."
+    },
+    "collecting_duct": {
+      "name": "Duktus Pengumpul",
+      "short": "Kesempatan terakhir menyerap air di bawah kendali hormon",
+      "detail": "Banyak nefron bermuara ke satu duktus yang melintasi seluruh kedalaman piramida menuju papila, tepat melalui gradien garam. Hormon antidiuretik menentukan apakah salurannya membuka kanal air. Saat tubuh kekurangan cairan, hormon meningkat, dinding menjadi mudah dilewati air, dan urine menjadi sedikit serta pekat. Setelah banyak minum, hormon turun, dinding tetap tertutup, dan lebih banyak air dibuang."
+    }
+  },
+  "steps": [
+    {
+      "title": "Alirkan darah",
+      "body": "Sekitar seperlima keluaran jantung tiba melalui arteri ginjal pada tekanan penuh. Aliran besar ini bukan sekadar memberi makan jaringan; darah adalah bahan yang diproses dan tekanannya ikut menjalankan penyaringan."
+    },
+    {
+      "title": "Saring hampir semuanya",
+      "body": "Di setiap glomerulus, tekanan memaksa air dan semua molekul kecil keluar dari darah menuju kapsul Bowman. Sel dan protein terlalu besar sehingga tetap berada di pembuluh. Sekitar 180 liter filtrat terbentuk per hari, setara seluruh plasma darah yang disaring berulang kali."
+    },
+    {
+      "title": "Ambil kembali yang diperlukan",
+      "body": "Tubulus proksimal segera menyerap kembali seluruh glukosa dan asam amino serta sebagian besar air dan garam dengan memakai energi. Menyaring dahulu lalu memilih yang diambil kembali membuat kerja ginjal dapat disesuaikan."
+    },
+    {
+      "title": "Bangun gradien garam",
+      "body": "Lengkung Henle turun ke piramida lalu kembali naik, melepaskan air pada jalur turun dan memompa garam pada jalur naik. Keduanya saling memperkuat hingga medula bagian dalam menjadi sangat asin. Tahap ini membangun alat untuk memekatkan urine, bukan langsung membuang zat."
+    },
+    {
+      "title": "Tentukan banyaknya air yang dipertahankan",
+      "body": "Duktus pengumpul melintasi gradien menuju papila. Hormon menentukan apakah air dapat keluar melalui dindingnya. Keputusan yang terus diperbarui ini membedakan urine yang sedikit dan pekat dari urine yang banyak dan pucat."
+    },
+    {
+      "title": "Salurkan urine",
+      "body": "Urine menetes dari papila ke kaliks minor, bergabung melalui kaliks mayor ke pelvis, lalu didorong dalam gelombang melalui ureter menuju kandung kemih. Setelah meninggalkan papila, komposisinya tidak lagi diubah."
+    }
+  ],
+  "quiz": [
+    {
+      "prompt": "Ketuk bagian tempat darah benar-benar disaring."
+    },
+    {
+      "prompt": "Kira-kira berapa banyak cairan yang disaring dari darah setiap hari?",
+      "choices": [
+        "Sekitar 2 liter",
+        "Sekitar 20 liter",
+        "Sekitar 180 liter",
+        "Sekitar 1.000 liter"
+      ],
+      "explain": "Sekitar 180 liter disaring dan kira-kira 99% diserap kembali sebelum mencapai kandung kemih. Cara ini memungkinkan ginjal menyesuaikan komposisi cairan tubuh dari menit ke menit."
+    },
+    {
+      "prompt": "Ketuk saluran berbentuk belokan tajam yang memungkinkan urine dipekatkan."
+    },
+    {
+      "prompt": "Mengapa nyeri akibat batu ginjal datang bergelombang, bukan terus-menerus?",
+      "choices": [
+        "Batu bergerak bolak-balik",
+        "Ureter berkontraksi berirama melawan sumbatan",
+        "Tekanan darah naik dan turun",
+        "Kapsul robek sedikit demi sedikit"
+      ],
+      "explain": "Ureter mendorong urine dengan kontraksi bergelombang. Saat ada batu, otot terus mencoba melewati sumbatan dan nyeri naik-turun mengikuti setiap kontraksi."
+    },
+    {
+      "prompt": "Ketuk bagian yang menentukan banyaknya air yang dipertahankan tubuh."
+    },
+    {
+      "prompt": "Mengapa sekitar seperlima keluaran jantung dialirkan ke ginjal?",
+      "choices": [
+        "Jaringan ginjal memerlukan oksigen dalam jumlah luar biasa besar",
+        "Darah merupakan bahan yang diproses, bukan sekadar bahan bakar jaringan",
+        "Untuk menjaga ginjal tetap hangat",
+        "Untuk menaikkan tekanan darah di perut"
+      ],
+      "explain": "Kebutuhan metabolisme jaringan ginjal tidak sebesar itu. Volume darah yang tinggi tiba karena darah sendiri merupakan bahan yang harus diolah."
+    },
+    {
+      "prompt": "Ketuk selubung luar kuat yang membuat ginjal bengkak terasa nyeri."
+    },
+    {
+      "prompt": "Mengapa urine penderita diabetes dapat mengandung gula?",
+      "choices": [
+        "Ginjal mulai menghasilkan gula",
+        "Glukosa terlalu besar untuk disaring lalu bocor keluar",
+        "Tubulus proksimal memiliki batas kecepatan penyerapan glukosa dan kadar gula darah telah melampauinya",
+        "Gula ditambahkan di kandung kemih"
+      ],
+      "explain": "Glukosa disaring di glomerulus seperti molekul kecil lain dan biasanya diserap kembali seluruhnya di tubulus proksimal. Ketika kapasitas penyerapan terlampaui, sisanya terus terbawa ke urine."
+    }
+  ]
+}

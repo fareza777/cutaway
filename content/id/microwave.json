@@ -1,0 +1,146 @@
+{
+  "title": "Oven Microwave",
+  "subtitle": "Pemancar radio yang diarahkan ke makanan",
+  "scale": "lebar sekitar 500 mm",
+  "summary": "Microwave bukan memanaskan makanan dari dalam ke luar, dan bukan pula memasak dengan radiasi seperti yang sering dikhawatirkan. Alat ini pada dasarnya pemancar radio berdaya sekitar satu kilowatt pada 2,45 GHz yang menembakkan gelombang ke kotak logam tertutup. Molekul air dalam makanan terus berputar mengikuti medan listrik miliaran kali per detik. Gerakan itu menimbulkan gesekan, dan gesekan menghasilkan panas.",
+  "parts": {
+    "magnetron": {
+      "name": "Magnetron",
+      "short": "Pemancar gelombang yang berasal dari teknologi radar masa perang",
+      "detail": "Tabung vakum ini memiliki katode panas di tengah, rongga-rongga resonan dari tembaga di sekelilingnya, dan medan magnet kuat. Elektron yang lepas dari katode dibelokkan ke lintasan melengkung. Saat melewati rongga, elektron membangkitkan osilasi tepat pada 2,45 GHz. Perangkat yang ikut memungkinkan radar udara pada 1940 ini masih diproduksi jutaan unit karena belum ada pengganti yang lebih murah untuk tugas tersebut."
+    },
+    "waveguide": {
+      "name": "Pemandu Gelombang",
+      "short": "Saluran logam berongga yang membawa gelombang radio",
+      "detail": "Energi microwave tidak dibawa melalui kabel. Antena magnetron meluncurkannya ke saluran logam persegi panjang, lalu gelombang memantul sepanjang saluran hingga masuk ke rongga masak. Ukurannya ditentukan oleh fisika: pemandu hanya meloloskan frekuensi di atas batas yang bergantung pada lebarnya, sehingga saluran ini disesuaikan dengan panjang gelombang sekitar 12 cm."
+    },
+    "waveguide_cover": {
+      "name": "Penutup Pemandu Gelombang",
+      "short": "Lembaran mika yang sering disangka potongan kemasan",
+      "detail": "Lembaran mika tipis menutup bukaan tempat gelombang masuk ke oven. Gelombang dapat melewatinya, sedangkan uap dan cipratan makanan tertahan agar tidak masuk ke pemandu. Sisa makanan yang hangus di dalam saluran dapat memercikkan busur listrik dan akhirnya merusak magnetron. Karena tampak seperti karton, penutup ini kadang dibuang; menjalankan oven tanpanya dapat merusak komponen termahal."
+    },
+    "cavity": {
+      "name": "Rongga Masak",
+      "short": "Kotak logam yang memerangkap gelombang berdiri",
+      "detail": "Ruang masak merupakan rongga resonan. Gelombang memantul dari semua dinding lalu saling menguatkan dan meniadakan, membentuk pola tetap berupa titik panas dan dingin yang berjarak sekitar 6 cm, yakni setengah panjang gelombang. Pola ini membuat pemanasan tidak merata, sehingga oven harus menggerakkan makanan atau mengubah medan gelombangnya."
+    },
+    "turntable": {
+      "name": "Meja Putar",
+      "short": "Solusi untuk pola gelombang, bukan sekadar kemudahan",
+      "detail": "Pola gelombang berdiri di dalam rongga tidak bergerak, sehingga makanan yang diam akan matang belang-belang. Meja putar membawa makanan melewati daerah panas dan dingin agar pemanasan rata secara keseluruhan. Kaca dan keramik dipilih karena hanya sedikit menyerap gelombang: piringnya relatif tetap dingin sementara makanan memanas."
+    },
+    "turntable_motor": {
+      "name": "Motor Meja Putar",
+      "short": "Sengaja dibuat sangat lambat",
+      "detail": "Motor sinkron kecil ini diperlambat oleh roda gigi hingga sekitar enam putaran per menit, cukup lambat agar semangkuk sup tidak tumpah. Motor tidak perlu mengetahui posisinya ataupun arah putarnya. Banyak motor dapat mulai ke salah satu arah, bergantung pada posisi terakhir saat berhenti."
+    },
+    "stirrer": {
+      "name": "Pengaduk Moda",
+      "short": "Kipas logam yang mengaduk gelombang, bukan udara",
+      "detail": "Bilah pemantul yang berputar lambat di atap rongga, biasanya tersembunyi di balik panel plastik, menyebarkan berkas masuk ke arah yang terus berubah. Dengan demikian pola gelombang berdiri tidak sempat menetap. Oven dengan pengaduk yang baik bahkan tidak memerlukan meja putar; prinsip inilah yang dipakai microwave berlantai datar."
+    },
+    "door_screen": {
+      "name": "Jaring Pintu",
+      "short": "Lubangnya besar bagi cahaya, tetapi kecil bagi microwave",
+      "detail": "Lembaran logam berlubang pada pintu berfungsi sebagai sangkar Faraday. Gelombang tidak dapat melewati bukaan yang jauh lebih kecil daripada panjang gelombangnya. Microwave dengan panjang 12 cm tertahan oleh lubang beberapa milimeter, sedangkan cahaya tampak yang panjang gelombangnya kurang dari seperseribu milimeter lewat dengan mudah. Karena itu makanan tetap terlihat tanpa gelombangnya keluar."
+    },
+    "door_interlocks": {
+      "name": "Sakelar Pengaman Pintu",
+      "short": "Tiga sakelar, salah satunya sengaja memutus sekring",
+      "detail": "Magnetron harus mati seketika saat pintu dibuka, sehingga digunakan beberapa sakelar yang saling mencadangkan. Sakelar pemantau ketiga sengaja menghubung-singkatkan catu dan memutus sekring jika sakelar lain gagal membuka dalam urutan yang benar. Rancangannya memilih merusak diri daripada memancar dengan pintu terbuka. Komponen ini juga sering menyebabkan microwave mati total setelah pintunya dibanting."
+    },
+    "transformer": {
+      "name": "Transformator Tegangan Tinggi",
+      "short": "Menaikkan tegangan listrik menjadi sekitar 2.000 volt",
+      "detail": "Transformator berat berinti besi ini menaikkan tegangan jaringan menjadi beberapa ribu volt bagi magnetron, sekaligus menurunkannya secara terpisah menjadi beberapa volt bagi pemanas katode. Inilah komponen terberat dan alasan microwave terasa berat. Model inverter modern menggantinya dengan rangkaian pensaklaran sehingga unit dapat dibuat lebih ringan."
+    },
+    "capacitor_diode": {
+      "name": "Kapasitor dan Dioda",
+      "short": "Menggandakan tegangan dan tetap berbahaya setelah dicabut",
+      "detail": "Kapasitor dan dioda tegangan tinggi disusun sebagai pengganda tegangan, menaikkan keluaran transformator menjadi sekitar 4.000 volt pada magnetron. Kapasitor dapat menyimpan muatan mematikan dan belum tentu langsung kosong setelah steker dicabut. Karena itulah panduan perbaikan microwave selalu diawali peringatan keselamatan."
+    },
+    "cooling_fan": {
+      "name": "Kipas Pendingin",
+      "short": "Mendinginkan magnetron sekaligus membuang uap",
+      "detail": "Magnetron hanya mengubah sekitar dua pertiga daya yang dipakainya menjadi gelombang; sisanya menjadi panas yang harus dibuang melalui sirip agar tabung tidak rusak dalam hitungan menit. Kipas yang sama mengalirkan sebagian udara melalui rongga untuk membawa uap keluar. Pada beberapa model, kipas tetap bersuara sesaat setelah memasak karena sedang melakukan pendinginan, bukan karena rusak."
+    },
+    "door": {
+      "name": "Pintu",
+      "short": "Disegel oleh perangkap gelombang, bukan tekanan kontak",
+      "detail": "Pintu tidak harus menekan logam langsung ke rangka. Di sekeliling tepinya terdapat perangkap gelombang seperempat panjang gelombang (choke). Gelombang yang mencoba lolos dipantulkan kembali dengan fase berlawanan sehingga saling meniadakan. Geometri, bukan tekanan, membentuk segelnya; pintu yang sedikit longgar masih dapat aman, sedangkan pintu yang bengkok tidak."
+    },
+    "control_panel": {
+      "name": "Panel Kontrol",
+      "short": "Tingkat daya biasa sebenarnya pola hidup-mati",
+      "detail": "Kecuali pada model inverter, magnetron hanya memiliki satu keluaran: penuh. Pengaturan daya 50% bukan melemahkan gelombang, melainkan menyalakan magnetron penuh selama separuh siklus lalu mematikannya pada separuh berikutnya. Saat mencairkan makanan beku, jeda mati memberi waktu bagi panas untuk merambat ke bagian dalam tanpa memasak tepinya."
+    },
+    "cabinet": {
+      "name": "Kabinet",
+      "short": "Bagian dari pelindung gelombang",
+      "detail": "Casing luar dari baja yang dibumikan melengkapi sangkar Faraday di sekitar rongga. Karena itu bagian penting selubung microwave tidak dibuat dari plastik. Lubang ventilasi di sisi mengikuti prinsip yang sama dengan jaring pintu: cukup besar untuk udara, tetapi jauh terlalu kecil untuk gelombang sepanjang 12 cm."
+    }
+  },
+  "steps": [
+    {
+      "title": "Bangkitkan gelombang",
+      "body": "Transformator dan pengganda tegangan memberi magnetron sekitar 4.000 volt. Elektron berputar dalam medan magnet, beresonansi di dalam rongga-rongganya, lalu tabung memancarkan gelombang radio sekitar satu kilowatt pada 2,45 GHz."
+    },
+    {
+      "title": "Masukkan ke dalam kotak",
+      "body": "Pemandu gelombang membawa energi dari antena magnetron ke rongga masak. Bukaannya dilindungi lembaran mika yang meloloskan gelombang tetapi menahan uap dan cipratan."
+    },
+    {
+      "title": "Perangkap gelombangnya",
+      "body": "Rongga logam memantulkan semua gelombang. Gelombang saling berinterferensi dan membentuk pola tetap berupa titik panas dan dingin berjarak sekitar enam sentimeter, yang dapat memasak makanan secara belang."
+    },
+    {
+      "title": "Gerakkan makanan melewati pola",
+      "body": "Meja putar membawa makanan melintasi pola, sedangkan pengaduk moda terus mengubah pola itu sendiri. Keduanya meratakan pengaruh titik panas."
+    },
+    {
+      "title": "Jaga agar gelombang tetap di dalam",
+      "body": "Kotak baja yang dibumikan, jaring pintu dengan lubang jauh lebih kecil daripada panjang gelombang, perangkap seperempat gelombang di tepi pintu, dan tiga sakelar pengaman menahan energi di dalam serta memutus daya seketika saat pintu dibuka."
+    }
+  ],
+  "quiz": [
+    {
+      "prompt": "Ketuk bagian yang benar-benar menghasilkan gelombang microwave."
+    },
+    {
+      "prompt": "Mengapa makanan dapat dilihat melalui pintu tanpa membuat kita terpapar?",
+      "choices": [
+        "Kaca menyaring gelombang microwave",
+        "Lubang jaring jauh lebih kecil daripada panjang gelombang 12 cm, tetapi jauh lebih besar daripada panjang gelombang cahaya",
+        "Gelombang hanya bergerak ke bawah",
+        "Lapisan pada kaca menyerap gelombang"
+      ],
+      "explain": "Gelombang tidak dapat melewati bukaan yang jauh lebih kecil daripada panjang gelombangnya. Lubang berukuran milimeter menahan microwave, sedangkan cahaya tampak yang ribuan kali lebih pendek dapat lewat."
+    },
+    {
+      "prompt": "Ketuk bagian yang diperlukan karena pola gelombang di dalam rongga tidak bergerak."
+    },
+    {
+      "prompt": "Apa yang sebenarnya terjadi saat microwave biasa diatur ke daya 50%?",
+      "choices": [
+        "Keluaran magnetron dibagi dua",
+        "Magnetron bekerja dengan daya penuh selama separuh waktu",
+        "Frekuensi gelombang diturunkan",
+        "Tegangan magnetron dikurangi"
+      ],
+      "explain": "Magnetron hanya memiliki keluaran penuh. Tingkat daya diatur melalui perbandingan waktu hidup dan mati; jeda mati juga memberi waktu bagi panas untuk merambat ke dalam saat mencairkan makanan."
+    },
+    {
+      "prompt": "Ketuk bagian yang masih dapat menyimpan muatan mematikan setelah steker dicabut."
+    },
+    {
+      "prompt": "Apa fungsi lembaran mika tipis di depan bukaan pemandu gelombang?",
+      "choices": [
+        "Memusatkan gelombang microwave",
+        "Mencegah uap dan cipratan masuk ke pemandu gelombang",
+        "Melindungi makanan dari panas",
+        "Sebagai kemasan yang harus dilepas"
+      ],
+      "explain": "Mika meloloskan gelombang tetapi menahan sisa makanan. Endapan yang hangus di dalam pemandu dapat membentuk busur listrik dan merusak magnetron."
+    }
+  ]
+}

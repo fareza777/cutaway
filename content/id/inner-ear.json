@@ -1,36 +1,129 @@
 {
   "title": "Telinga Dalam",
-  "subtitle": "Siput, tiga hoop, dan tiga tulang kecil",
-  "scale": "≈ 20 mm lebar",
-  "summary": "Pendengaran adalah rantai. Drum menggerakkan tiga tulang; tulang terakhir menendang jendela di siput berisi cairan; gelombang berjalan di siput itu menggelitik sel rambut yang sudah neuron. Keseimbangan adalah tiga hoop, satu di tiap bidang, yang menyadari ketika cairan di dalamnya tidak mengikuti kepala Anda.",
+  "subtitle": "Koklea, tiga kanal keseimbangan, dan tiga tulang pendengaran",
+  "scale": "lebar sekitar 20 mm",
+  "summary": "Pendengaran bekerja sebagai rangkaian mekanis. Gendang telinga menggerakkan tiga tulang kecil; tulang terakhir menekan jendela menuju koklea berisi cairan. Gelombang yang merambat di dalam koklea membengkokkan sel rambut dan diubah menjadi sinyal saraf. Keseimbangan dipantau oleh tiga kanal setengah lingkaran pada bidang berbeda, yang mendeteksi keterlambatan gerak cairan saat kepala berubah arah.",
   "parts": {
-    "tympanic_membrane": { "name": "Gendang Telinga", "short": "Kulit drum seukuran kuku", "detail": "Kerucut tipis, ditarik ke dalam di tengah oleh maleus. Perubahan tekanan udara di luar menjadi gerak kulit ini. Lubang di situ adalah perforasi; yang berparut adalah gangguan dengar yang kadang diurungkan operasi." },
-    "malleus": { "name": "Maleus", "short": "Palu, tertempel di drum", "detail": "Osikel pertama. Gagangnya tertanam di gendang; kepalanya berartikulasi dengan inkus. Ia sudah tuas. Tiga tulang bersama adalah transformer: drum besar dan lembek menjadi jendela kecil dan kaku." },
-    "incus": { "name": "Inkus", "short": "Landasan, tengah rantai", "detail": "Mengambil gerak dari maleus dan menyerahkannya ke stapes. Sendinya sendi sinovial sungguhan, yang paling kecil yang Anda punya. Arthritis di sini adalah gangguan dengar yang sama sekali tidak melibatkan saraf." },
-    "stapes": { "name": "Stapes", "short": "Sanggurdi yang menendang telinga dalam", "detail": "Tulang terkecil di tubuh. Pelat kakinya duduk di jendela oval. Ketika kaku di tempat — otosklerosis — siput tidak pernah mendapat tendangan, dan pendengaran jatuh, konduktif, sampai seseorang mengganti tulang ini dengan piston." },
-    "oval_window": { "name": "Jendela Oval", "short": "Tempat rantai mengetuk siput", "detail": "Lubang berlapis membran ke vestibulum, diisi pelat kaki stapes. Masuk gelombang tekanan. Jendela bundar di bawah adalah cara cairan yang tidak bisa dimampatkan diizinkan menggembung keluar." },
-    "round_window": { "name": "Jendela Bundar", "short": "Pelepas tekanan", "detail": "Membran kedua. Cairan tidak bisa dimampatkan, jadi jika jendela oval masuk, yang ini harus keluar. Tutup dan gelombang berjalan di koklea tidak punya tempat pergi." },
-    "cochlea": { "name": "Koklea", "short": "Siput yang adalah penganalisis frekuensi", "detail": "Dua setengah putaran tabung berisi cairan, lebar di pangkal (nada tinggi) dan sempit di puncak (nada rendah). Gelombang berjalan memuncak di tempat yang cocok dengan frekuensi, dan sel rambut di situ menembak. Itulah alasan kita punya peta nada, dan alasan alat bantu dengar tidak bisa mengembalikan nada tinggi setelah sel itu hilang." },
-    "vestibule": { "name": "Vestibulum", "short": "Lobi yang dibagi kanal dan siput", "detail": "Kamar tulang antara jendela dan kanal. Utrikulus dan sakulus tinggal di sini: dua patch sel rambut dengan batu di atasnya, itulah cara Anda tahu mana atas ketika tidak berputar." },
-    "anterior_canal": { "name": "Kanal Anterior", "short": "Angguk: hoop untuk menundukkan kepala", "detail": "Salah satu dari tiga kanal semisirkular, kira-kira vertikal, di bidang anggukan. Cairan di hoop tertinggal ketika kepala mulai bergerak; sel rambut di bengkak di pangkal menyadari ketertinggalan. Itu percepatan sudut, di satu bidang." },
-    "posterior_canal": { "name": "Kanal Posterior", "short": "Hoop untuk berguling ke bahu", "detail": "Bidang ketiga. Bersama ketiga kanal adalah giro tiga-sumbu. Vertigo berputar jinak biasanya kristal yang jatuh dari vestibulum ke kanal ini dan berpura-pura menjadi putaran." },
-    "lateral_canal": { "name": "Kanal Lateral", "short": "Geleng: hoop untuk melihat kiri-kanan", "detail": "Kanal horizontal. Menggeleng 'tidak' adalah yang ini. Tes kalori di klinik — air hangat di telinga — menipu kanal ini berpikir Anda berputar, itulah cara dokter bertanya tanpa menggerakkan Anda." },
-    "auditory_nerve": { "name": "Saraf Vestibulokoklear", "short": "Dengar dan seimbang, satu kabel", "detail": "Saraf kranial VIII. Bagian koklea membawa peta nada; bagian vestibular membawa tiga kanal dan dua organ otolit. Tumor di saraf ini alasan MRI untuk gangguan dengar satu sisi melihat kanal auditorius interna." },
-    "eustachian_tube": { "name": "Tuba Eustachius", "short": "Alasan telinga Anda pop di pesawat", "detail": "Jalur dari rongga telinga tengah ke tenggorokan. Menelan membukanya dan menyamakan drum. Ketika tidak mau terbuka, drum tersedot masuk dan Anda mendengar laut. Anak kena infeksi telinga karena milik mereka lebih pendek dan lebih mendatar." }
+    "tympanic_membrane": {
+      "name": "Gendang Telinga",
+      "short": "Selaput tipis seukuran kuku",
+      "detail": "Selaput berbentuk kerucut ini ditarik ke dalam pada pusatnya oleh maleus. Perubahan tekanan udara membuatnya bergetar dan memulai rantai pendengaran. Lubang pada selaput disebut perforasi, sedangkan jaringan parut dapat mengurangi kepekaan dan kadang dapat diperbaiki melalui operasi."
+    },
+    "malleus": {
+      "name": "Maleus",
+      "short": "Tulang martil yang melekat pada gendang",
+      "detail": "Gagang tulang pendengaran pertama tertanam pada gendang, sementara kepalanya bersendi dengan inkus. Bentuknya mulai memberikan keuntungan tuas. Bersama tiga tulang lain, maleus mencocokkan getaran pada selaput udara yang luas dengan jendela cairan yang kecil dan lebih sulit digerakkan."
+    },
+    "incus": {
+      "name": "Inkus",
+      "short": "Tulang landasan di tengah rantai",
+      "detail": "Inkus menerima gerak dari maleus lalu meneruskannya ke stapes. Persendiannya merupakan sendi sinovial sejati dan termasuk yang terkecil dalam tubuh. Radang atau kekakuan pada sendi ini dapat menyebabkan gangguan pendengaran meski saraf tetap sehat."
+    },
+    "stapes": {
+      "name": "Stapes",
+      "short": "Tulang sanggurdi yang mendorong cairan telinga dalam",
+      "detail": "Stapes adalah tulang terkecil dalam tubuh. Pelat dasarnya menutup jendela oval dan bergerak seperti piston. Pada otosklerosis, stapes menjadi kaku sehingga getaran tidak mencapai koklea. Pendengaran konduktif dapat dipulihkan dengan mengganti bagian ini memakai prostesis piston kecil."
+    },
+    "oval_window": {
+      "name": "Jendela Oval",
+      "short": "Membran tempat stapes memasukkan tekanan ke koklea",
+      "detail": "Bukaan berlapis membran ini menghubungkan telinga tengah dengan vestibulum dan ditempati pelat dasar stapes. Dorongan stapes membangkitkan gelombang tekanan dalam cairan. Jendela bundar di sisi lain harus menonjol keluar karena cairan tidak dapat dimampatkan."
+    },
+    "round_window": {
+      "name": "Jendela Bundar",
+      "short": "Pelepas tekanan bagi cairan koklea",
+      "detail": "Membran kedua ini bergerak berlawanan dengan jendela oval. Ketika stapes menekan cairan ke dalam, jendela bundar menonjol ke luar. Jika geraknya terhalang, cairan di dalam koklea tidak memiliki ruang untuk bergeser dan gelombang berjalan tidak dapat terbentuk dengan baik."
+    },
+    "cochlea": {
+      "name": "Koklea",
+      "short": "Spiral yang memisahkan bunyi menurut frekuensi",
+      "detail": "Saluran berisi cairan ini melingkar sekitar dua setengah putaran. Gelombang frekuensi tinggi memuncak di dekat pangkal, sedangkan frekuensi rendah mencapai puncak spiral. Sel rambut pada lokasi puncak gelombang membangkitkan sinyal saraf, membentuk peta nada. Sel yang rusak tidak tumbuh kembali sehingga kehilangan frekuensi tertentu sulit dipulihkan."
+    },
+    "vestibule": {
+      "name": "Vestibulum",
+      "short": "Ruang penghubung koklea dengan kanal keseimbangan",
+      "detail": "Ruang tulang di antara jendela, koklea, dan kanal ini memuat utrikulus serta sakulus. Keduanya memiliki lapisan sel rambut yang dibebani kristal kecil. Pergeseran kristal akibat gravitasi atau gerak lurus memberi tahu otak arah atas dan percepatan tubuh ketika kepala tidak sedang berputar."
+    },
+    "anterior_canal": {
+      "name": "Kanal Anterior",
+      "short": "Mendeteksi gerak mengangguk",
+      "detail": "Salah satu dari tiga kanal setengah lingkaran ini berada hampir vertikal pada bidang anggukan. Saat kepala mulai bergerak, inersia membuat cairan tertinggal dan membengkokkan sel rambut pada bagian dasar yang melebar. Sinyal tersebut menyatakan percepatan sudut pada satu bidang."
+    },
+    "posterior_canal": {
+      "name": "Kanal Posterior",
+      "short": "Mendeteksi gerak memiringkan kepala ke bahu",
+      "detail": "Kanal ini menempati bidang ketiga sehingga bersama dua kanal lain membentuk sensor rotasi tiga sumbu. Vertigo posisi jinak sering terjadi ketika kristal dari vestibulum masuk ke kanal posterior dan bergerak di dalam cairan, seolah-olah kepala terus berputar."
+    },
+    "lateral_canal": {
+      "name": "Kanal Lateral",
+      "short": "Mendeteksi gerak menggeleng ke kiri dan kanan",
+      "detail": "Kanal ini tersusun hampir mendatar. Pada pemeriksaan kalori, air hangat atau dingin di liang telinga menggerakkan cairannya melalui perubahan suhu dan menimbulkan kesan berputar. Respons mata yang dihasilkan membantu dokter menguji fungsi jalur keseimbangan tanpa memutar pasien."
+    },
+    "auditory_nerve": {
+      "name": "Saraf Vestibulokoklear",
+      "short": "Satu jalur untuk pendengaran dan keseimbangan",
+      "detail": "Saraf kranial kedelapan membawa peta frekuensi dari koklea serta sinyal dari tiga kanal dan dua organ otolit. Gangguan pendengaran pada satu sisi dapat mendorong pemeriksaan MRI pada kanal auditorius interna untuk mencari tumor yang tumbuh di sepanjang saraf ini."
+    },
+    "eustachian_tube": {
+      "name": "Tuba Eustachius",
+      "short": "Saluran penyama tekanan menuju tenggorokan",
+      "detail": "Saluran ini menghubungkan rongga telinga tengah dengan tenggorokan. Menelan membukanya sehingga tekanan di kedua sisi gendang menjadi sama, seperti saat pesawat naik atau turun. Pada anak, saluran lebih pendek dan mendatar sehingga cairan serta infeksi lebih mudah mencapai telinga tengah."
+    }
   },
   "steps": [
-    { "title": "Drum, lalu tiga tulang", "body": "Udara menggerakkan gendang. Gendang menggerakkan palu, landasan, dan sanggurdi. Sanggurdi adalah piston di jendela kecil. Itu pencocokan impedansi: udara ke cairan." },
-    { "title": "Tendang siput", "body": "Jendela oval menerima piston. Jendela bundar menggembung ke arah lain. Cairan di koklea kini punya gelombang." },
-    { "title": "Peta nada sepanjang spiral", "body": "Nada tinggi memuncak di pangkal, nada rendah di puncak. Sel rambut di puncak menembak. Itulah pendengaran, dan sel itu tidak tumbuh kembali." },
-    { "title": "Tiga hoop untuk tiga sumbu", "body": "Angguk, geleng, guling: tiap kanal adalah giro di satu bidang. Batu vestibulum menambah mana yang atas." },
-    { "title": "Tabung ke tenggorokan", "body": "Tuba eustachius adalah alasan perubahan kabin tidak meledakkan gendang — jika Anda menelan tepat waktu." }
+    {
+      "title": "Gerakkan gendang dan tiga tulang",
+      "body": "Tekanan udara menggetarkan gendang, lalu maleus, inkus, dan stapes meneruskan gerak. Rangkaian tuas memusatkan gaya dari selaput besar ke jendela kecil agar getaran udara dapat masuk ke cairan."
+    },
+    {
+      "title": "Dorong cairan koklea",
+      "body": "Stapes menekan jendela oval sementara jendela bundar menonjol ke arah berlawanan. Pergeseran ini membentuk gelombang yang berjalan di dalam cairan koklea."
+    },
+    {
+      "title": "Petakan tinggi nada",
+      "body": "Frekuensi tinggi memuncak di pangkal koklea dan frekuensi rendah di puncaknya. Sel rambut pada titik tersebut mengubah gerak menjadi sinyal saraf."
+    },
+    {
+      "title": "Ukur putaran pada tiga sumbu",
+      "body": "Tiga kanal setengah lingkaran mendeteksi anggukan, gelengan, dan kemiringan kepala. Organ di vestibulum menambahkan informasi gravitasi dan percepatan lurus."
+    },
+    {
+      "title": "Samakan tekanan dengan tenggorokan",
+      "body": "Tuba Eustachius terbuka saat menelan dan menyamakan tekanan telinga tengah dengan lingkungan, terutama ketika tekanan kabin berubah."
+    }
   ],
   "quiz": [
-    { "prompt": "Ketuk siput yang membagi bunyi menjadi frekuensi." },
-    { "prompt": "Mengapa ada tiga osikel, bukan satu batang?", "choices": ["Mereka kelihatan seperti alat", "Mereka transformer tuas: drum besar menjadi jendela kecil yang kaku", "Mereka memperkuat seperti mikrofon", "Mereka insang sisa"], "explain": "Rasio luas plus rasio tuas. Cairan lebih sulit digerakkan daripada udara; rantai adalah gearbox." },
-    { "prompt": "Ketuk tulang terkecil di tubuh." },
-    { "prompt": "Ketuk hoop yang menyadari Anda menggeleng 'tidak'." },
-    { "prompt": "Jika jendela oval masuk, apa yang harus dilakukan jendela bundar?", "choices": ["Masuk juga", "Keluar — cairan tidak bisa dimampatkan", "Menutup", "Tidak apa-apa; ia cadangan"], "explain": "Cairan yang tidak bisa dimampatkan dalam siput kaku butuh jendela kedua atau tidak ada gelombang berjalan." },
-    { "prompt": "Ketuk kulit drum." }
+    {
+      "prompt": "Ketuk struktur spiral yang memisahkan bunyi menurut frekuensi."
+    },
+    {
+      "prompt": "Mengapa telinga memakai tiga tulang pendengaran, bukan satu batang?",
+      "choices": [
+        "Agar bentuknya menyerupai perkakas",
+        "Rangkaian itu bekerja sebagai tuas yang mencocokkan gendang besar dengan jendela kecil dan kaku",
+        "Tulang memperkuat suara seperti mikrofon",
+        "Tulang merupakan sisa insang"
+      ],
+      "explain": "Perbandingan luas dan keuntungan tuas meningkatkan tekanan. Cairan lebih sulit digerakkan daripada udara, sehingga rangkaian tulang mencocokkan keduanya."
+    },
+    {
+      "prompt": "Ketuk tulang terkecil dalam tubuh."
+    },
+    {
+      "prompt": "Ketuk kanal yang mendeteksi gerakan menggeleng 'tidak'."
+    },
+    {
+      "prompt": "Saat jendela oval terdorong masuk, apa yang harus dilakukan jendela bundar?",
+      "choices": [
+        "Ikut masuk",
+        "Menonjol keluar karena cairan tidak dapat dimampatkan",
+        "Menutup rapat",
+        "Tidak melakukan apa-apa karena hanya cadangan"
+      ],
+      "explain": "Cairan di dalam koklea yang kaku memerlukan jendela kedua untuk bergerak; tanpa itu gelombang tekanan tidak dapat merambat."
+    },
+    {
+      "prompt": "Ketuk selaput tipis yang pertama kali bergetar akibat bunyi."
+    }
   ]
 }

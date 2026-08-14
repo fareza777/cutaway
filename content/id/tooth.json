@@ -1,32 +1,109 @@
 {
   "title": "Gigi",
-  "subtitle": "Batu yang hidup di soket, dengan saraf di dalam",
-  "scale": "≈ 20 mm mahkota ke akar",
-  "summary": "Gigi adalah alat berlapis. Email adalah jaringan terkeras yang Anda buat; dentin adalah bahan mirip tulang yang hidup dan bisa merasakan; pulpa adalah kamar dengan saraf dan darah. Semen dan ligamen menggantung seluruhnya di soket supaya gigitan tidak meretakkan rahang. Ketika email habis, semua di bawahnya ada di jam.",
+  "subtitle": "Struktur mineral hidup dengan saraf di dalamnya",
+  "scale": "sekitar 20 mm dari mahkota ke akar",
+  "summary": "Gigi merupakan alat berlapis. Email adalah jaringan paling keras yang dibentuk tubuh; dentin merupakan jaringan hidup mirip tulang yang dapat menghantarkan rasa; pulpa memuat saraf dan pembuluh darah. Sementum dan ligamen periodontal menggantung akar di dalam soket agar gaya gigitan tidak langsung memecahkan rahang. Ketika email rusak, lapisan di bawahnya menjadi jauh lebih rentan.",
   "parts": {
-    "enamel": { "name": "Email", "short": "Yang terkeras di tubuh, dan tidak tumbuh kembali", "detail": "Tudung mineral, sebagian besar hidroksiapatit, tanpa sel dan tanpa rasa. Begitu terbentuk, itu semua yang Anda dapat. Gigi berlubang adalah bakteri melarutkan ini. Fluorida membuat kristal sedikit lebih sulit larut. Tersayat selamanya, sebab itu mahkota ada." },
-    "dentin": { "name": "Dentin", "short": "Hidup, kuning, dan bisa nyeri", "detail": "Jaringan mirip tulang penuh tubulus kecil yang menuju pulpa. Cairan di tubulus itu bergerak adalah apa yang Anda rasakan sebagai sensitivitas. Dentin bisa menaruh lebih banyak dirinya, pelan, sebab itu gigi tua punya kamar pulpa lebih kecil daripada yang muda." },
-    "pulp": { "name": "Pulpa", "short": "Kamar: saraf, darah, dan alasan sakit gigi ada", "detail": "Jaringan lunak di kamar dan turun ke kanal. Radangkan dan tidak ada tempat untuk bengkak — dentin tidak menyerah — jadi nyeri tidak sebanding dengan ukuran kamar. Perawatan saluran akar adalah jaringan ini dikeluarkan dan kamar diisi, setelah itu gigi adalah tiang mineral di soket." },
-    "cementum": { "name": "Semen", "short": "Kulit kayu di akar", "detail": "Kulit mineral tipis di akar, tempat serat ligamen menancap. Bisa diletakkan sepanjang hidup, itulah cara gigi bisa erupsi pelan untuk bertemu tetangganya saat kita aus. Kerok dan ligamen tidak punya apa-apa untuk dipegang." },
-    "periodontal_ligament": { "name": "Ligamen Periodontal", "short": "Hammock, bukan lem", "detail": "Serat kolagen dari semen ke tulang soket. Gigi tidak dilem; ia digantung. Itulah alasan ketukan di gigi bunyinya berbeda dari ketukan di implan, dan alasan ortodonti bisa menggerakkan gigi: ligamen merombak tulang jika Anda tarik terus-menerus." },
-    "gingiva": { "name": "Gingiva", "short": "Segel di leher", "detail": "Gusi. Manset yang harus duduk rapat di persambungan email-semen. Ketika meradang dan terkelupas, kantong terbentuk, bakteri ke selatan, dan ligamen serta tulang mengikuti. Kebanyakan gigi hilang dengan cara ini, bukan karena lubang." },
-    "alveolar_bone": { "name": "Tulang Alveolar", "short": "Soket, yang hanya ada karena giginya ada", "detail": "Punggung tulang rahang yang menahan soket. Cabut gigi dan tulang ini resorpsi — tidak ada alasan untuk tetap. Itulah alasan gigi hilang mengecilkan wajah, dan alasan implan juga cara menjaga tulang." },
-    "nerves": { "name": "Saraf", "short": "Alasan Anda tahu ini gigi yang ini", "detail": "Cabang saraf trigeminal masuk di ujung akar dan mengembang di pulpa. Dingin, panas, dan nestapa khusus peradangan semua berjalan di sini. Setelah saluran akar mereka hilang, dan gigi masih bisa duduk di mulut, kebas dan berguna." },
-    "vessels": { "name": "Pembuluh", "short": "Darah pulpa, lewat lubang di ujung", "detail": "Arteri dan vena lewat foramen apikal. Seluruh suplai darah pulpa adalah sedotan ini. Itulah alasan peradangan di kamar tertutup adalah krisis: aliran masuk berlanjut, keluar tidak bisa, tekanan naik, sel mati." }
+    "enamel": {
+      "name": "Email",
+      "short": "Jaringan terkeras tubuh yang tidak tumbuh kembali",
+      "detail": "Tudung mineral ini sebagian besar tersusun dari hidroksiapatit serta tidak memiliki sel maupun saraf. Setelah mahkota terbentuk, tubuh tidak dapat membuat email baru. Karies terjadi ketika asam dari bakteri melarutkan mineralnya, sedangkan fluorida membuat kristal sedikit lebih tahan larut. Kerusakan permanen diperbaiki dengan tambalan atau mahkota buatan."
+    },
+    "dentin": {
+      "name": "Dentin",
+      "short": "Lapisan hidup kekuningan yang dapat terasa nyeri",
+      "detail": "Jaringan mirip tulang ini dipenuhi tubulus kecil yang mengarah ke pulpa. Gerakan cairan di dalam tubulus memicu sensitivitas terhadap dingin, panas, atau sentuhan. Sel pembentuk dentin dapat menambah lapisan secara perlahan sepanjang hidup, sehingga ruang pulpa pada gigi tua biasanya lebih kecil."
+    },
+    "pulp": {
+      "name": "Pulpa",
+      "short": "Ruang saraf dan pembuluh darah di pusat gigi",
+      "detail": "Jaringan lunak memenuhi ruang mahkota dan berlanjut ke saluran akar. Saat meradang, jaringan membengkak di dalam dinding dentin yang kaku sehingga tekanan meningkat dan nyeri dapat sangat kuat. Perawatan saluran akar mengangkat pulpa yang sakit lalu mengisi ruangnya; gigi mineral tetap dapat berfungsi jika struktur luarnya dipulihkan."
+    },
+    "cementum": {
+      "name": "Sementum",
+      "short": "Lapisan mineral tempat ligamen melekat pada akar",
+      "detail": "Lapisan tipis ini menutupi akar dan menjadi tempat serabut ligamen periodontal menancap. Sementum dapat terus dibentuk sepanjang hidup dan membantu gigi menyesuaikan posisi perlahan ketika permukaan kunyah aus. Jika lapisan ini rusak, perlekatan ligamen ikut terganggu."
+    },
+    "periodontal_ligament": {
+      "name": "Ligamen Periodontal",
+      "short": "Serabut penyangga lentur, bukan perekat",
+      "detail": "Serabut kolagen menghubungkan sementum dengan tulang soket sehingga gigi tergantung pada bantalan tipis, bukan melekat kaku. Suspensi ini meredam beban gigitan. Tekanan ortodontik yang dipertahankan membuat ligamen mengarahkan pembentukan dan pengikisan tulang, sehingga gigi dapat dipindahkan secara bertahap."
+    },
+    "gingiva": {
+      "name": "Gingiva",
+      "short": "Segel jaringan lunak di leher gigi",
+      "detail": "Gusi membentuk manset rapat di pertemuan email dan sementum. Peradangan dapat melepaskan segel ini, membentuk kantong tempat bakteri masuk lebih dalam. Kerusakan berlanjut pada ligamen dan tulang penyangga merupakan penyebab utama banyak gigi dewasa akhirnya tanggal."
+    },
+    "alveolar_bone": {
+      "name": "Tulang Alveolar",
+      "short": "Tulang rahang yang membentuk soket gigi",
+      "detail": "Bagian rahang ini terbentuk dan dipertahankan karena menerima beban dari gigi. Setelah gigi dicabut, tulang perlahan diserap kembali karena tidak lagi digunakan. Penyusutan itu mengubah bentuk wajah; implan dapat meneruskan beban dan membantu mempertahankan tulang."
+    },
+    "nerves": {
+      "name": "Saraf",
+      "short": "Jalur rasa dari pulpa menuju saraf trigeminal",
+      "detail": "Cabang saraf trigeminal masuk melalui ujung akar dan menyebar di pulpa. Rangsangan dingin, panas, serta tekanan akibat peradangan dibawa melalui serabut ini. Setelah perawatan saluran akar, saraf pulpa diangkat, tetapi gigi masih dapat ditahan oleh ligamen dan dipakai menggigit."
+    },
+    "vessels": {
+      "name": "Pembuluh Darah",
+      "short": "Pasokan pulpa melalui lubang di ujung akar",
+      "detail": "Arteri dan vena kecil melewati foramen apikal sebagai satu-satunya jalur darah ke pulpa. Saat jaringan meradang di ruang tertutup, aliran keluar mudah terjepit sementara darah terus masuk. Tekanan meningkat, sirkulasi gagal, dan sel pulpa dapat mati."
+    }
   },
   "steps": [
-    { "title": "Tudung yang tidak tumbuh kembali", "body": "Email selesai sebelum gigi erupsi. Setelah itu ia hanya bisa hilang. Semua yang kita kerjakan dengan fluorida, tambalan, dan mahkota adalah negosiasi dengan fakta itu." },
-    { "title": "Kuning hidup di bawahnya", "body": "Dentin merasakan, karena tubulus menuju pulpa. Ia juga bisa menambah lebih banyak dirinya. Sensitivitas adalah jaringan ini bicara." },
-    { "title": "Kamar yang tidak bisa membengkak", "body": "Pulpa duduk di kotak. Radangkan dan tekanan tidak punya tempat pergi. Itulah sakit gigi, dan itulah alasan saluran akar adalah evakuasi." },
-    { "title": "Digantung, bukan dilem", "body": "Semen dan ligamen mengayun akar di soket. Gigitan adalah pantulan. Ortodonti adalah ayunan ini merombak tulang dengan sengaja." },
-    { "title": "Segel di leher", "body": "Gusi harus memanset gigi. Hilangkan segel dan Anda kehilangan soket, pelan, itulah cara kebanyakan gigi benar-benar pergi." }
+    {
+      "title": "Lindungi dengan email",
+      "body": "Email selesai dibentuk sebelum gigi tumbuh ke mulut dan tidak dapat dibuat ulang. Fluorida, tambalan, dan mahkota hanya melindungi atau mengganti bahan yang hilang."
+    },
+    {
+      "title": "Rasakan melalui dentin",
+      "body": "Dentin hidup di bawah email dan tubulusnya terhubung ke pulpa. Gerak cairan di dalam saluran kecil ini menimbulkan sensitivitas."
+    },
+    {
+      "title": "Batasi pulpa di ruang kaku",
+      "body": "Saraf dan pembuluh berada di dalam ruang yang tidak dapat mengembang. Peradangan cepat menaikkan tekanan, menimbulkan sakit gigi, dan dapat memerlukan perawatan saluran akar."
+    },
+    {
+      "title": "Gantung akar di dalam soket",
+      "body": "Sementum dan ligamen periodontal menahan akar secara lentur di tulang. Sistem ini meredam gigitan dan memungkinkan ortodonti menggeser gigi melalui perombakan tulang."
+    },
+    {
+      "title": "Pertahankan segel gusi",
+      "body": "Gingiva harus menutup rapat leher gigi. Jika segel hilang, bakteri merusak ligamen dan tulang secara perlahan hingga gigi kehilangan penyangga."
+    }
   ],
   "quiz": [
-    { "prompt": "Ketuk jaringan terkeras di tubuh." },
-    { "prompt": "Mengapa sakit gigi begitu tidak sebanding dengan ukuran pulpa?", "choices": ["Sarafnya istimewa", "Pulpa di kotak kaku, jadi peradangan menaikkan tekanan tanpa tempat membengkak", "Gigi dekat otak", "Email menghantar nyeri"], "explain": "Dentin tidak menyerah. Tekanan di kamar tertutup adalah nyerinya." },
-    { "prompt": "Ketuk hammock yang menggantung gigi di soketnya." },
-    { "prompt": "Ketuk lapisan kuning hidup di bawah email." },
-    { "prompt": "Setelah saluran akar, gigi itu apa?", "choices": ["Mati dan tidak berguna", "Tiang mineral yang masih digantung di soket, kebas, sering dimahkotai, masih bisa menggigit", "Otomatis diganti implan", "Tidak bisa tinggal di mulut"], "explain": "Pulpa hilang. Ligamen dan tulang tidak peduli, selama segel di atas menahan." },
-    { "prompt": "Ketuk tulang soket yang menyusut jika gigi hilang." }
+    {
+      "prompt": "Ketuk jaringan terkeras di dalam tubuh."
+    },
+    {
+      "prompt": "Mengapa sakit gigi dapat sangat kuat meski ruang pulpanya kecil?",
+      "choices": [
+        "Karena saraf gigi berbeda dari semua saraf lain",
+        "Pulpa berada di ruang kaku sehingga peradangan menaikkan tekanan tanpa tempat untuk membengkak",
+        "Karena gigi dekat dengan otak",
+        "Karena email menghantarkan nyeri"
+      ],
+      "explain": "Dinding dentin tidak dapat mengembang. Tekanan yang meningkat di dalam ruang tertutup menekan pembuluh dan saraf."
+    },
+    {
+      "prompt": "Ketuk serabut lentur yang menggantung gigi di dalam soket."
+    },
+    {
+      "prompt": "Ketuk lapisan hidup kekuningan di bawah email."
+    },
+    {
+      "prompt": "Bagaimana keadaan gigi setelah perawatan saluran akar?",
+      "choices": [
+        "Mati dan tidak lagi berguna",
+        "Struktur mineral tanpa saraf pulpa yang tetap ditahan di soket dan masih dapat menggigit",
+        "Otomatis diganti dengan implan",
+        "Tidak dapat dipertahankan di dalam mulut"
+      ],
+      "explain": "Pulpa telah diangkat, tetapi ligamen dan tulang masih menopang gigi. Restorasi yang baik dapat membuatnya tetap berguna."
+    },
+    {
+      "prompt": "Ketuk tulang soket yang menyusut ketika gigi hilang."
+    }
   ]
 }

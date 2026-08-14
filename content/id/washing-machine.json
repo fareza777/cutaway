@@ -1,0 +1,136 @@
+{
+  "title": "Mesin Cuci Bukaan Depan",
+  "subtitle": "Tabung putar dengan pengendali getaran",
+  "scale": "tinggi sekitar 850 mm",
+  "summary": "Hampir semua komponen besar di dalam mesin cuci mengatasi satu masalah: cucian basah di dalam drum tidak pernah terbagi seimbang ketika diputar hingga 1.400 rpm. Proses mencuci hanya memerlukan tabung, air, dan motor. Balok beton, pegas, serta peredam menjaga rakitan yang berguncang agar tidak menyeret seluruh mesin melintasi lantai.",
+  "parts": {
+    "drum": {
+      "name": "Drum Dalam",
+      "short": "Satu-satunya tabung yang berputar",
+      "detail": "Drum baja tahan karat ini berlubang dan memiliki tiga bilah pengangkat. Bilah mengangkat pakaian di sisi drum lalu menjatuhkannya kembali ke genangan air; gerak jatuh itulah yang membersihkan. Mesin bukaan depan memakai jauh lebih sedikit air daripada mesin bukaan atas dengan agitator karena pakaian berulang kali melewati air, bukan terendam dalam tabung penuh."
+    },
+    "outer_tub": {
+      "name": "Tabung Luar",
+      "short": "Menahan air di sekeliling drum yang berputar",
+      "detail": "Tabung plastik tertutup ini menampung air sementara drum berlubang berputar di dalamnya. Plastik tidak berkarat dan mudah dicetak sekaligus dengan dudukan pemanas, saluran pompa, serta sensor tekanan. Pada banyak mesin modern, kedua belahannya disatukan permanen sehingga bantalan drum yang rusak mengharuskan penggantian seluruh tabung."
+    },
+    "counterweight": {
+      "name": "Pemberat Beton",
+      "short": "Puluhan kilogram massa yang dipasang dengan sengaja",
+      "detail": "Balok beton dicetak lalu dibaut pada tabung luar. Cucian basah tidak pernah menyebar sempurna, sehingga pada putaran tinggi satu sisi drum dapat jauh lebih berat. Pemberat tidak menghilangkan gaya tak seimbang, tetapi massa tambahan membuat jarak gerak tabung akibat gaya itu jauh lebih kecil. Inilah alasan mesin cuci sangat berat dibandingkan ukurannya."
+    },
+    "suspension": {
+      "name": "Pegas dan Peredam",
+      "short": "Membiarkan tabung bergerak tanpa mengguncang casing",
+      "detail": "Tabung digantung pada pegas di atas dan ditopang peredam gesek di bawah, serupa suspensi kendaraan. Pegas memberi ruang bagi tabung untuk berayun sehingga kejutan tidak langsung diteruskan ke casing. Peredam mengubah gerak itu menjadi panas agar tidak membesar pada frekuensi resonansi. Mesin yang tiba-tiba bergeser di lantai sering mengalami kerusakan peredam."
+    },
+    "motor": {
+      "name": "Motor Penggerak",
+      "short": "Satu motor untuk mengaduk perlahan dan memeras cepat",
+      "detail": "Motor yang sama harus memutar drum sekitar 50 rpm saat mencuci dan hingga 1.400 rpm saat memeras, dengan beban yang terus berubah. Karena itu kecepatannya dikendalikan secara elektronik, bukan sekadar dinyalakan dan dimatikan. Pada mesin penggerak langsung, rotor motor terpasang pada poros drum tanpa sabuk."
+    },
+    "drive_belt": {
+      "name": "Sabuk dan Puli Penggerak",
+      "short": "Menurunkan kecepatan motor sebelum mencapai drum",
+      "detail": "Puli kecil pada motor menggerakkan puli besar pada poros drum. Perbandingan diameter menurunkan kecepatan sekaligus memperbesar torsi. Sabuk juga menjadi titik lemah yang murah: jika drum macet, sabuk dapat selip atau putus lebih dahulu daripada motor terbakar atau poros patah."
+    },
+    "heater": {
+      "name": "Elemen Pemanas",
+      "short": "Komponen yang memakai sebagian besar energi",
+      "detail": "Elemen berselubung ini berada di dasar tabung luar dan memanaskan air secara langsung. Pemanas memakai lebih banyak energi daripada seluruh komponen lain digabungkan. Karena itu program dingin atau 30 °C jauh lebih hemat daripada pencucian panas, dan daerah berair sadah paling cepat membentuk kerak pada bagian ini."
+    },
+    "pump": {
+      "name": "Pompa Pembuangan",
+      "short": "Mengosongkan air melalui saringan benda kecil",
+      "detail": "Pompa impeler kecil mengosongkan tabung di antara tahap pencucian dan sebelum pemerasan. Saringan di depannya menangkap koin, kancing, dan jepit rambut agar tidak menyumbat impeler. Jika mesin dapat mengisi dan mencuci tetapi tidak membuang air, penyebab paling umum adalah saringan ini tersumbat."
+    },
+    "door_seal": {
+      "name": "Karet Lipat Pintu",
+      "short": "Sambungan lentur antara tabung bergerak dan panel tetap",
+      "detail": "Karet tebal berlipat ini menghubungkan tabung yang berguncang dengan panel depan yang tidak bergerak. Bentuknya harus kedap air tetapi tetap memberi ruang gerak beberapa sentimeter, sehingga gasket datar biasa tidak cukup. Lipatan dapat menahan air dan sisa deterjen; karena itu bagian inilah yang paling cepat berjamur dan berbau jika tidak dikeringkan."
+    },
+    "door": {
+      "name": "Pintu",
+      "short": "Terkunci selama drum atau air panas masih berbahaya",
+      "detail": "Kaca cekung mendorong cucian menjauh dari karet pintu. Pengunci listrik menahan pintu dan baru melepasnya beberapa saat setelah program berakhir. Penundaan ini memberi waktu drum berhenti dan mencegah pintu dibuka ketika tabung masih berisi air sangat panas yang permukaannya dapat berada di atas bibir pintu."
+    },
+    "detergent_drawer": {
+      "name": "Laci Deterjen",
+      "short": "Tiga ruang yang dibilas pada waktu berbeda",
+      "detail": "Laci menyediakan ruang untuk pencucian utama, prapencucian, dan pelembut. Ruang pelembut memakai sifon: air mengisinya sampai melewati lengkungan, lalu seluruh isi tersedot sekaligus. Mekanisme ini menambahkan pelembut saat bilasan terakhir, bukan membuangnya ke saluran sejak awal."
+    },
+    "front_panel": {
+      "name": "Panel Depan",
+      "short": "Bagian tetap di depan rakitan yang bergerak",
+      "detail": "Panel membawa engsel pintu, kontrol, dan tutup saringan, lalu terikat kaku pada casing. Di belakangnya, tabung, drum, serta pemberat membentuk satu massa yang bergantung pada pegas. Celah di sekitar karet pintu menyediakan ruang agar rakitan itu dapat bergerak tanpa menyentuh panel."
+    },
+    "cabinet": {
+      "name": "Casing",
+      "short": "Cangkang baja tipis yang harus tetap siku",
+      "detail": "Casing lebih tipis daripada yang disangka karena gaya putar ditangani oleh rakitan tersuspensi. Tugas utamanya menjaga bentuk mesin tetap siku. Keempat kaki harus menapak dan rata; jika hanya tiga kaki yang menahan beban, casing dapat terpelintir dan memberi kesempatan tabung bergerak menyentuh dindingnya."
+    }
+  },
+  "steps": [
+    {
+      "title": "Isi dan panaskan air",
+      "body": "Air masuk melalui laci deterjen dan membawa bahan pencuci ke dasar tabung luar. Elemen kemudian memanaskannya. Tahap pemanasan memakai lebih banyak energi daripada seluruh sisa program."
+    },
+    {
+      "title": "Jatuhkan cucian berulang kali",
+      "body": "Drum berputar perlahan bergantian arah. Bilah mengangkat pakaian lalu menjatuhkannya kembali melewati air berdeterjen. Pakaian tidak berenang di tabung penuh; gerak jatuh berulang itulah proses mencucinya."
+    },
+    {
+      "title": "Buang air",
+      "body": "Pompa mengosongkan tabung melalui saringan yang menangkap benda dari saku. Tahap bilas mengulangi urutan isi, putar, dan buang dengan air bersih."
+    },
+    {
+      "title": "Peras dengan putaran tinggi",
+      "body": "Drum dipercepat hingga lebih dari seribu putaran per menit dan air terlempar keluar melalui lubang-lubangnya. Beban tetap tidak seimbang, sehingga seluruh rakitan tabung bergerak melingkar beberapa kali setiap detik."
+    },
+    {
+      "title": "Kendalikan guncangan",
+      "body": "Tabung tidak dibaut langsung ke casing. Pegas membiarkannya bergerak, peredam menyerap energi gerak, dan pemberat beton membatasi jaraknya. Tanpa salah satu dari ketiganya, mesin mudah bergeser di lantai."
+    }
+  ],
+  "quiz": [
+    {
+      "prompt": "Ketuk bagian yang memakai listrik paling banyak."
+    },
+    {
+      "prompt": "Mengapa ada balok beton besar di dalam mesin cuci?",
+      "choices": [
+        "Untuk menahan motor agar tidak bergerak",
+        "Untuk meredam suara",
+        "Massanya membatasi gerak tabung yang berputar tidak seimbang",
+        "Untuk mencegah mesin terjungkal saat pintu dibuka"
+      ],
+      "explain": "Cucian basah tidak pernah terbagi merata. Massa tambahan tidak menghilangkan gaya tak seimbang, tetapi sangat mengurangi jarak gerak tabung sebagai tanggapannya."
+    },
+    {
+      "prompt": "Ketuk bagian yang benar-benar mencuci pakaian."
+    },
+    {
+      "prompt": "Ketuk bagian yang membiarkan tabung berguncang tanpa mengguncang casing."
+    },
+    {
+      "prompt": "Mesin dapat mengisi dan mencuci, tetapi tidak dapat membuang air. Apa penyebab yang paling mungkin?",
+      "choices": [
+        "Motor rusak",
+        "Saringan pompa tersumbat",
+        "Pengunci pintu rusak",
+        "Elemen pemanas rusak"
+      ],
+      "explain": "Saringan di depan pompa pembuangan menangkap koin dan kancing lalu mudah tersumbat. Saringan ini biasanya dapat dijangkau melalui tutup kecil di bagian bawah mesin."
+    },
+    {
+      "prompt": "Mengapa mesin bukaan depan memakai jauh lebih sedikit air daripada mesin bukaan atas dengan agitator?",
+      "choices": [
+        "Pompanya lebih efisien",
+        "Pakaian dijatuhkan melalui genangan dangkal, bukan direndam dalam tabung penuh",
+        "Air bilasan dipakai kembali",
+        "Drumnya lebih kecil"
+      ],
+      "explain": "Bilah mengangkat cucian lalu menjatuhkannya kembali melewati air. Hanya dasar drum yang perlu terendam, sehingga tabung tidak harus diisi penuh."
+    }
+  ]
+}

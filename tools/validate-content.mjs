@@ -1,10 +1,7 @@
-// Checks every content JSON against the .glb it points at.
+// Checks every content JSON against its GLB and validates complete prose-only
+// Indonesian overlays.
 //
 //   npm run validate
-//
-// The one failure mode this project is genuinely exposed to is a JSON that
-// names a mesh the model does not have — the part would silently never appear.
-// Everything here is cheap enough to run on every commit.
 
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { resolve, dirname, basename } from 'node:path';
@@ -15,6 +12,10 @@ const CONTENT = resolve(ROOT, 'content');
 const MODELS = resolve(ROOT, 'assets/models');
 
 const AXES = ['x', 'y', 'z'];
+const TRANSLATION_FIELDS = new Set(['title', 'subtitle', 'summary', 'scale', 'parts', 'steps', 'quiz']);
+const PART_TRANSLATION_FIELDS = new Set(['name', 'short', 'detail']);
+const STEP_TRANSLATION_FIELDS = new Set(['title', 'body']);
+const QUIZ_TRANSLATION_FIELDS = new Set(['prompt', 'choices', 'explain']);
 
 /** Reads the node names straight out of the GLB's JSON chunk. */
 function glbMeshNames(file) {
@@ -25,8 +26,23 @@ function glbMeshNames(file) {
   return new Set((json.nodes ?? []).filter((node) => node.mesh !== undefined).map((node) => node.name));
 }
 
+function nonEmptyString(value) {
+  return typeof value === 'string' && value.trim().length > 0;
+}
+
+function isRecord(value) {
+  return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
+}
+
+function rejectUnknownFields(value, allowed, at, path) {
+  if (!isRecord(value)) return;
+  for (const field of Object.keys(value)) {
+    if (!allowed.has(field)) at(`${path} contains non-prose field "${field}"`);
+  }
+}
+
 function validate(doc, meshNames, errors, warnings) {
-  const at = (msg) => errors.push(`${doc.id}: ${msg}`);
+  const at = (message) => errors.push(`${doc.id}: ${message}`);
 
   if (doc.schema !== 1) at(`unknown schema ${doc.schema}`);
   for (const field of ['title', 'subtitle', 'category', 'accent', 'summary', 'model']) {
@@ -36,7 +52,9 @@ function validate(doc, meshNames, errors, warnings) {
   // The model file is embedded as an Android raw resource, and those names may
   // only be lowercase letters, digits and underscores. A hyphen here fails at
   // prebuild time with a message that does not obviously point back to here.
-  if (!/^[a-z0-9_]+$/.test(doc.model ?? '')) at(`model "${doc.model}" must be lowercase a-z, 0-9 or _ (Android resource name)`);
+  if (!/^[a-z0-9_]+$/.test(doc.model ?? '')) {
+    at(`model "${doc.model}" must be lowercase a-z, 0-9 or _ (Android resource name)`);
+  }
   if (!Array.isArray(doc.parts) || doc.parts.length === 0) return at('no parts');
 
   const ids = new Set();
@@ -89,7 +107,7 @@ function validate(doc, meshNames, errors, warnings) {
   doc.quiz?.forEach((question, index) => {
     if (question.type === 'identify') {
       if (!ids.has(question.partId)) at(`quiz #${index + 1} targets unknown part "${question.partId}"`);
-      const part = doc.parts.find((p) => p.id === question.partId);
+      const part = doc.parts.find((candidate) => candidate.id === question.partId);
       if (part?.hidden) at(`quiz #${index + 1} targets hidden part "${question.partId}"`);
     } else if (question.type === 'choice') {
       if (!Array.isArray(question.choices) || question.choices.length < 2) at(`quiz #${index + 1} needs choices`);
@@ -100,9 +118,103 @@ function validate(doc, meshNames, errors, warnings) {
   });
 }
 
+function validateTranslation(base, overlay, file, errors) {
+  const at = (message) => errors.push(`id/${file}: ${message}`);
+  if (!isRecord(overlay)) {
+    at('overlay must be an object');
+    return;
+  }
+  rejectUnknownFields(overlay, TRANSLATION_FIELDS, at, 'overlay');
+
+  for (const field of ['title', 'subtitle', 'summary']) {
+    if (!nonEmptyString(overlay[field])) at(`missing translated "${field}"`);
+  }
+  if (base.scale && !nonEmptyString(overlay.scale)) at('missing translated "scale"');
+  if (!base.scale && 'scale' in overlay) at('translates "scale" but the English document has none');
+
+  const basePartIds = base.parts.map((part) => part.id);
+  if (!isRecord(overlay.parts)) {
+    at('missing translated "parts" object');
+  } else {
+    for (const partId of Object.keys(overlay.parts)) {
+      if (!basePartIds.includes(partId)) at(`translates unknown part "${partId}"`);
+    }
+    for (const part of base.parts) {
+      const translated = overlay.parts[part.id];
+      if (!isRecord(translated)) {
+        at(`missing translation for part "${part.id}"`);
+        continue;
+      }
+      rejectUnknownFields(translated, PART_TRANSLATION_FIELDS, at, `part "${part.id}"`);
+      for (const field of PART_TRANSLATION_FIELDS) {
+        if (!nonEmptyString(translated[field])) at(`part "${part.id}" is missing translated "${field}"`);
+      }
+    }
+  }
+
+  if (!Array.isArray(overlay.steps)) {
+    at('missing translated "steps" array');
+  } else {
+    if (overlay.steps.length !== base.steps.length) {
+      at(`${overlay.steps.length} translated steps, English document has ${base.steps.length}`);
+    }
+    base.steps.forEach((_, index) => {
+      const translated = overlay.steps[index];
+      if (!isRecord(translated)) {
+        at(`step #${index + 1} is missing`);
+        return;
+      }
+      rejectUnknownFields(translated, STEP_TRANSLATION_FIELDS, at, `step #${index + 1}`);
+      for (const field of STEP_TRANSLATION_FIELDS) {
+        if (!nonEmptyString(translated[field])) at(`step #${index + 1} is missing translated "${field}"`);
+      }
+    });
+  }
+
+  if (!Array.isArray(overlay.quiz)) {
+    at('missing translated "quiz" array');
+  } else {
+    if (overlay.quiz.length !== base.quiz.length) {
+      at(`${overlay.quiz.length} translated quiz items, English document has ${base.quiz.length}`);
+    }
+    base.quiz.forEach((original, index) => {
+      const translated = overlay.quiz[index];
+      if (!isRecord(translated)) {
+        at(`quiz #${index + 1} is missing`);
+        return;
+      }
+      rejectUnknownFields(translated, QUIZ_TRANSLATION_FIELDS, at, `quiz #${index + 1}`);
+      if (!nonEmptyString(translated.prompt)) at(`quiz #${index + 1} is missing translated "prompt"`);
+
+      if (original.type === 'identify') {
+        if ('choices' in translated) at(`quiz #${index + 1} adds choices to an identify question`);
+        if ('explain' in translated) at(`quiz #${index + 1} adds an explanation with no English original`);
+        return;
+      }
+
+      if (!Array.isArray(translated.choices)) {
+        at(`quiz #${index + 1} is missing translated choices`);
+      } else {
+        if (translated.choices.length !== original.choices.length) {
+          at(`quiz #${index + 1} has ${translated.choices.length} choices, English document has ${original.choices.length}`);
+        }
+        translated.choices.forEach((choice, choiceIndex) => {
+          if (!nonEmptyString(choice)) at(`quiz #${index + 1} choice #${choiceIndex + 1} is empty`);
+        });
+      }
+      if (original.explain && !nonEmptyString(translated.explain)) {
+        at(`quiz #${index + 1} is missing translated "explain"`);
+      }
+      if (!original.explain && 'explain' in translated) {
+        at(`quiz #${index + 1} adds an explanation with no English original`);
+      }
+    });
+  }
+}
+
 const errors = [];
 const warnings = [];
-const files = readdirSync(CONTENT).filter((name) => name.endsWith('.json'));
+const files = readdirSync(CONTENT).filter((name) => name.endsWith('.json')).sort();
 
 if (!files.length) {
   console.error('no content found in content/');
@@ -119,40 +231,31 @@ for (const file of files) {
     continue;
   }
   validate(doc, glbMeshNames(model), errors, warnings);
-  if (!errors.length) console.log(`✓ ${doc.id.padEnd(14)} ${doc.parts.length} parts, ${doc.steps.length} steps, ${doc.quiz.length} questions`);
+  console.log(`✓ ${doc.id.padEnd(18)} ${doc.parts.length} parts, ${doc.steps.length} steps, ${doc.quiz.length} questions`);
 }
 
-// Translations are overlays keyed by part id and question index. A typo in an
-// id silently leaves that part in English, and a choice list of the wrong
-// length would move the correct answer — so both are checked here.
+// A typo or omission in an overlay silently falls back to English at runtime.
+// Validate every English document, not merely whichever translation files
+// happen to exist, so filename and field coverage are strict one-to-one gates.
 const localeDir = resolve(CONTENT, 'id');
-if (existsSync(localeDir)) {
-  for (const file of readdirSync(localeDir).filter((name) => name.endsWith('.json'))) {
-    const id = basename(file, '.json');
-    const base = files.includes(file) ? JSON.parse(readFileSync(resolve(CONTENT, file), 'utf8')) : null;
-    if (!base) {
-      errors.push(`id/${file}: no English original to overlay`);
-      continue;
-    }
-    const overlay = JSON.parse(readFileSync(resolve(localeDir, file), 'utf8'));
-    const ids = new Set(base.parts.map((part) => part.id));
-    for (const partId of Object.keys(overlay.parts ?? {})) {
-      if (!ids.has(partId)) errors.push(`id/${file}: translates unknown part "${partId}"`);
-    }
-    const missing = base.parts.filter((part) => !overlay.parts?.[part.id]).map((part) => part.id);
-    if (missing.length) warnings.push(`id/${file}: ${missing.length} part(s) untranslated — ${missing.slice(0, 4).join(', ')}`);
-    (overlay.quiz ?? []).forEach((question, index) => {
-      const original = base.quiz[index];
-      if (!original) return errors.push(`id/${file}: quiz #${index + 1} has no original`);
-      if (question.choices && original.type === 'choice' && question.choices.length !== original.choices.length) {
-        errors.push(`id/${file}: quiz #${index + 1} has ${question.choices.length} choices, original has ${original.choices.length}`);
-      }
-    });
-    if ((overlay.steps ?? []).length && overlay.steps.length !== base.steps.length) {
-      errors.push(`id/${file}: ${overlay.steps.length} steps, original has ${base.steps.length}`);
-    }
-    console.log(`✓ id/${id.padEnd(11)} translation`);
+const localeFiles = existsSync(localeDir)
+  ? readdirSync(localeDir).filter((name) => name.endsWith('.json')).sort()
+  : [];
+
+for (const file of localeFiles) {
+  if (!files.includes(file)) errors.push(`id/${file}: no English original to overlay`);
+}
+
+for (const file of files) {
+  const id = basename(file, '.json');
+  if (!localeFiles.includes(file)) {
+    errors.push(`id/${file}: missing Indonesian overlay`);
+    continue;
   }
+  const base = JSON.parse(readFileSync(resolve(CONTENT, file), 'utf8'));
+  const overlay = JSON.parse(readFileSync(resolve(localeDir, file), 'utf8'));
+  validateTranslation(base, overlay, file, errors);
+  console.log(`✓ id/${id.padEnd(18)} translation`);
 }
 
 warnings.forEach((warning) => console.warn(`⚠ ${warning}`));

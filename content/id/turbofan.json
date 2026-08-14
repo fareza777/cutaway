@@ -1,0 +1,129 @@
+{
+  "title": "Mesin Jet",
+  "subtitle": "Turbofan rasio pintas tinggi (high-bypass)",
+  "scale": "diameter kipas sekitar 3 m",
+  "summary": "Turbofan pada dasarnya adalah kipas dengan motor yang sangat rumit. Inti mesin membakar bahan bakar untuk memutar turbin, turbin memutar kipas, dan kipas—bukan semburan gas buang—menghasilkan sebagian besar gaya dorong. Sekitar sembilan puluh persen udara yang masuk tidak pernah mencapai nyala api.",
+  "parts": {
+    "fan": {
+      "name": "Kipas",
+      "short": "Menghasilkan sekitar 80% gaya dorong",
+      "detail": "Sekitar dua puluh bilah titanium atau komposit karbon masing-masing menahan beban sentrifugal berton-ton. Sebagian besar udara yang digerakkan langsung melewati sisi luar inti lalu keluar di belakang sebagai aliran pintas. Menggerakkan massa udara yang sangat besar sedikit lebih cepat jauh lebih efisien daripada mempercepat sedikit udara secara ekstrem; karena itu kipas modern terus membesar."
+    },
+    "spinner": {
+      "name": "Kerucut Pemintal (Spinner)",
+      "short": "Membuang es dan mengarahkan udara ke bilah",
+      "detail": "Kerucut ini merapikan aliran udara masuk menuju pangkal bilah. Karena ikut berputar, komponen melempar es sebelum menumpuk menjadi bongkahan yang dapat merusak kipas. Spiral yang sering dicat pada permukaannya menjadi peringatan bagi petugas darat: jika spiral tampak kabur, mesin sedang berputar."
+    },
+    "nacelle": {
+      "name": "Selubung Mesin (Nacelle)",
+      "short": "Selubung aerodinamis sekaligus saluran aliran pintas",
+      "detail": "Selubung ini bukan sekadar penutup. Permukaan dalamnya membentuk saluran aliran pintas, bibir masuknya menjaga mesin tetap menerima udara pada sudut serang tinggi, dan dinding bagian dalam berisi struktur sarang lebah akustik yang menyerap suara kipas."
+    },
+    "fan_case": {
+      "name": "Casing Penahan Bilah",
+      "short": "Dirancang menangkap bilah kipas yang terlepas",
+      "detail": "Bilah kipas yang patah pada putaran penuh dapat membawa energi setara mobil kecil yang melaju di jalan tol. Casing berlapis Kevlar atau dari titanium ini harus menyerap energi tersebut dan menahannya di dalam mesin. Sertifikasi setiap jenis mesin mencakup pengujian dengan sengaja melepaskan bilah saat mesin hidup dan membuktikan tidak ada pecahan yang lolos."
+    },
+    "lp_compressor": {
+      "name": "Kompresor Tekanan Rendah",
+      "short": "Tahap pemampatan awal pada poros berkecepatan rendah",
+      "detail": "Tahap pemampat awal (booster) terpasang pada poros yang sama dengan kipas dan berputar pada kecepatan yang sama. Setiap tahap menaikkan tekanan sedikit, lalu pengaruhnya berlipat ketika banyak tahap disusun. Jalur aliran menyempit dari depan ke belakang karena udara makin rapat dan memerlukan ruang lebih kecil."
+    },
+    "hp_compressor": {
+      "name": "Kompresor Tekanan Tinggi",
+      "short": "Memampatkan udara hingga sekitar 40 kali tekanan atmosfer",
+      "detail": "Poros tekanan tinggi berputar mandiri dan jauh lebih cepat daripada kipas. Kedua poros dipasang sesumbu, satu di dalam yang lain. Pada tahap terakhir, pemampatan telah menaikkan tekanan udara hingga sekitar 40 atmosfer dan suhunya melampaui 600 °C sebelum bahan bakar ditambahkan."
+    },
+    "combustor": {
+      "name": "Ruang Bakar",
+      "short": "Nyala berkesinambungan sekitar 2.000 °C",
+      "detail": "Bahan bakar dikabutkan ke dalam ruang berbentuk cincin dan terbakar terus-menerus, tidak terputus-putus seperti pada mesin piston. Hanya sebagian udara masuk yang memberi oksigen bagi nyala. Sisanya dialirkan di sepanjang dinding pelapis sebagai lapisan pendingin karena suhu nyala lebih tinggi daripada titik leleh logam di sekitarnya."
+    },
+    "hp_turbine": {
+      "name": "Turbin Tekanan Tinggi",
+      "short": "Menggerakkan kompresor yang terhubung dengannya",
+      "detail": "Tahap turbin pertama menerima langsung gas keluar dari ruang bakar. Bilahnya dibuat sebagai kristal tunggal dari superpaduan nikel agar tidak memiliki batas butir tempat logam dapat merayap pada suhu tinggi. Saluran pendingin internal dan lapisan keramik memungkinkan bilah bekerja di lingkungan yang lebih panas daripada titik lelehnya sendiri."
+    },
+    "lp_turbine": {
+      "name": "Turbin Tekanan Rendah",
+      "short": "Mengambil sisa energi untuk memutar kipas",
+      "detail": "Pada tahap ini gas telah kehilangan sebagian besar tekanannya, sehingga bilah dibuat makin besar untuk tetap mengambil kerja. Deretan turbin ini menggerakkan poros panjang di bagian dalam yang membentang ke depan hingga kipas."
+    },
+    "shaft": {
+      "name": "Poros Tekanan Rendah",
+      "short": "Menghubungkan turbin belakang dengan kipas depan",
+      "detail": "Satu poros membentang sepanjang mesin dan melewati bagian tengah poros tekanan tinggi yang mengelilinginya. Dua poros, dua kecepatan, dan satu sumbu memungkinkan kipas berputar lambat demi efisiensi, sementara inti berputar cepat untuk menghasilkan tekanan."
+    },
+    "core_casing": {
+      "name": "Casing Inti",
+      "short": "Bejana tekan di sekeliling bagian panas",
+      "detail": "Inti mesin merupakan bejana tekan yang menahan gas sangat panas hingga sekitar 40 atmosfer. Casing juga memikul beban bantalan, menjadi dudukan kotak roda gigi aksesori, serta menyediakan saluran pengambilan udara untuk kabin dan sistem pencegah es pada sayap."
+    },
+    "nozzle": {
+      "name": "Nosel Buang",
+      "short": "Sumber dorong terakhir sekaligus tantangan kebisingan",
+      "detail": "Gas inti keluar melalui nosel yang menyempit sehingga dipercepat untuk terakhir kali. Kerucut tengah merapikan aliran di belakang turbin. Gerigi berbentuk V (chevron) pada banyak nosel modern mencampur semburan inti yang cepat dengan aliran pintas yang lebih lambat secara bertahap; lapisan geser di antara keduanya merupakan sumber utama kebisingan jet."
+    },
+    "pylon": {
+      "name": "Pilon",
+      "short": "Meneruskan gaya ke sayap dan dapat melepaskan mesin",
+      "detail": "Semua beban mesin diteruskan ke pesawat melalui penyangga ini: gaya dorong, berat, serta seluruh pipa dan kabel. Pilon sengaja memakai pin pengaman yang patah pada beban ekstrem, sehingga mesin yang macet dapat terlepas dengan bersih alih-alih merobek tangki bahan bakar di sayap."
+    }
+  },
+  "steps": [
+    {
+      "title": "Sebagian besar udara tidak dibakar",
+      "body": "Kipas menarik kolom udara yang sangat besar. Sekitar sembilan dari sepuluh bagian udara melewati inti dan keluar di belakang setelah didorong. Aliran pintas inilah yang menghasilkan sebagian besar gaya dorong."
+    },
+    {
+      "title": "Mampatkan udara",
+      "body": "Sepersepuluh udara yang masuk ke inti melewati tahap kompresor berulang kali, dengan sedikit kenaikan tekanan pada tiap tahap. Di ujung kompresor, tekanannya sekitar 40 atmosfer dan suhunya melampaui 600 °C hanya akibat pemampatan."
+    },
+    {
+      "title": "Bakar bahan bakar",
+      "body": "Bahan bakar disemprotkan ke ruang berbentuk cincin dan terbakar terus-menerus pada sekitar 2.000 °C. Logam di sekelilingnya hanya dapat bertahan karena terlindung oleh lapisan udara pendingin yang terus bergerak."
+    },
+    {
+      "title": "Ambil kembali energinya",
+      "body": "Gas yang mengembang memutar turbin saat bergerak keluar. Turbin menggerakkan kompresor dan kipas; energi yang tersisa keluar melalui nosel. Pada dasarnya, mesin ini membakar bahan bakar untuk memutar kipas."
+    },
+    {
+      "title": "Dua poros, dua kecepatan",
+      "body": "Kipas perlu berputar lambat, sedangkan inti perlu berputar cepat. Dua poros sesumbu memungkinkan keduanya berlangsung sekaligus: poros dalam yang panjang menggerakkan kipas, sementara poros luar yang pendek menggerakkan kompresor tekanan tinggi."
+    }
+  ],
+  "quiz": [
+    {
+      "prompt": "Ketuk komponen yang menghasilkan sebagian besar gaya dorong mesin."
+    },
+    {
+      "prompt": "Ketuk tempat bahan bakar dibakar."
+    },
+    {
+      "prompt": "Pada turbofan rasio pintas tinggi, kira-kira berapa banyak udara masuk yang melewati ruang bakar?",
+      "choices": [
+        "Sekitar 10%",
+        "Sekitar setengahnya",
+        "Sekitar 90%",
+        "Semuanya"
+      ],
+      "explain": "Sekitar sembilan per sepuluh udara melewati inti. Menggerakkan massa udara besar dengan kenaikan kecepatan kecil lebih efisien daripada mempercepat massa kecil secara ekstrem."
+    },
+    {
+      "prompt": "Ketuk casing yang dirancang menahan bilah kipas yang patah."
+    },
+    {
+      "prompt": "Mengapa bilah turbin tekanan tinggi dibuat sebagai kristal tunggal?",
+      "choices": [
+        "Agar lebih ringan",
+        "Batas butir akan merayap dan gagal pada suhu tersebut",
+        "Agar warnanya lebih baik",
+        "Agar lebih murah dicetak"
+      ],
+      "explain": "Di atas sekitar 1.000 °C, logam perlahan berubah bentuk di sepanjang batas butir. Kristal tunggal menghilangkan batas yang menjadi jalur perayapan tersebut."
+    },
+    {
+      "prompt": "Ketuk bagian yang memungkinkan kipas berputar lambat saat inti berputar cepat."
+    }
+  ]
+}
