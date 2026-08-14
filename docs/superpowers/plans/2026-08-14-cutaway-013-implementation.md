@@ -27,7 +27,6 @@
 **Files:**
 - Create: `tools/catalog-quality-test.mts`
 - Create: `tools/object-icon-metrics.json` (generated later by Task 6)
-- Modify: `tools/validate-content.mjs`
 - Modify: `package.json`
 
 **Interfaces:**
@@ -65,9 +64,7 @@ Run: `node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/catalog-quality-
 
 Expected: FAIL listing the eight missing current overlays and all missing `assets/object-icons/*.png` registrations.
 
-- [ ] **Step 3: Tighten the validator and register the script**
-
-Change translation incompleteness in `tools/validate-content.mjs` from warnings to errors. Validate top-level fields, every part field, exact step/quiz length, translated choice counts, and required explanations when the English question has one.
+- [ ] **Step 3: Register the focused contract without breaking intermediate builds**
 
 Add:
 
@@ -75,7 +72,7 @@ Add:
 "test:catalog": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/catalog-quality-test.mts"
 ```
 
-Append `npm run test:catalog` to `npm run check`.
+Keep `npm run test:catalog` out of `npm run check` until Task 5 completes every overlay. This preserves a green baseline for the three model tasks while the focused catalog contract remains intentionally red.
 
 - [ ] **Step 4: Re-run to preserve the red state for missing deliverables**
 
@@ -86,7 +83,7 @@ Expected: FAIL only for content/icons not implemented by later tasks, not for te
 - [ ] **Step 5: Commit the contract**
 
 ```bash
-git add package.json tools/catalog-quality-test.mts tools/validate-content.mjs
+git add package.json tools/catalog-quality-test.mts
 git commit -m "Enforce complete catalog localization"
 ```
 
@@ -252,6 +249,8 @@ git commit -m "Add cyclonic vacuum cleaner"
 - Rewrite: all 15 existing files under `content/id/*.json`
 - Modify: `src/content/registry.ts`
 - Modify: `src/i18n/strings.ts`
+- Modify: `tools/validate-content.mjs`
+- Modify: `package.json`
 
 **Interfaces:**
 - Consumes every field from the 23 existing English documents.
@@ -269,9 +268,11 @@ Complete and rewrite: air conditioner, refrigerator, washing machine, microwave,
 
 Complete and rewrite: piston engine, differential, lock, turbofan, rocket engine, violin, heart, kidney, lung, eye, brain, inner ear, and tooth. Use common Indonesian anatomical terms, retain a parenthetical technical term only when it improves recognition, and keep quiz choice order unchanged.
 
-- [ ] **Step 4: Register every overlay and run strict coverage**
+- [ ] **Step 4: Register every overlay and enable strict coverage**
 
 Add `translations: { id: require('../../content/id/<id>.json') }` to every registry entry.
+
+Change translation incompleteness in `tools/validate-content.mjs` from warnings to errors. Validate top-level fields, every part field, exact step/quiz length, translated choice counts, and required explanations when the English question has one. Append `npm run test:catalog` to `npm run check` now that the full overlay set exists.
 
 Run:
 
@@ -288,7 +289,7 @@ Expected: translation coverage passes; icon checks remain the only catalog failu
 Search Indonesian files for repeated English sentences, untranslated quiz choices, malformed punctuation, literal `it/its` pronoun patterns, and inconsistent terms. Review the full refrigerator overlay manually.
 
 ```bash
-git add content/id src/content/registry.ts src/i18n/strings.ts
+git add content/id package.json src/content/registry.ts src/i18n/strings.ts tools/validate-content.mjs
 git commit -m "Complete Indonesian localization"
 ```
 
