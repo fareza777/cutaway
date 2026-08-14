@@ -101,7 +101,7 @@
       "choices": [
         "Lem",
         "Sekrup",
-        "Kesesuaian pas dan tekanan tegangan senar pada papan atas; tiang tidak dilem",
+        "Tiang terjepit rapat oleh tekanan senar pada papan atas; tiang ini tidak dilem.",
         "Magnet"
       ],
       "explain": "Tiang suara dijepit di antara kedua pelat. Karena itu benturan dapat menjatuhkannya dan ahli reparasi harus memasangnya kembali melalui lubang f."

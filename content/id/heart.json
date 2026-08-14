@@ -82,7 +82,7 @@
     "superior_vena_cava": {
       "name": "Vena Kava Superior",
       "short": "Semua yang di atas diafragma bermuara ke sini",
-      "detail": "Mengembalikan darah dari kepala, leher, dan kedua lengan ke serambi kanan. Pembuluh ini lebar, berdinding tipis, dan bertekanan rendah sehingga mudah tertekan oleh tumor atau bekuan. Tekanan di dalamnya terlihat sebagai denyut vena leher dan merupakan salah satu penilaian klinis tertua untuk menilai fungsi jantung kanan."
+      "detail": "Mengembalikan darah dari kepala, leher, dan kedua lengan ke serambi kanan. Pembuluh ini lebar, berdinding tipis, dan bertekanan rendah sehingga mudah tertekan oleh tumor atau bekuan. Tekanan di dalamnya dapat diperkirakan dari denyut vena leher; pemeriksaan ini merupakan salah satu cara klinis tertua untuk menilai fungsi jantung kanan."
     },
     "inferior_vena_cava": {
       "name": "Vena Kava Inferior",

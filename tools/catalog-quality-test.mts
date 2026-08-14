@@ -109,15 +109,24 @@ const EXACT_SOURCE_ALLOWLIST = new Map<string, string>([
   ['tooth.parts.gingiva.name', 'Gingiva'],
   ['violin.quiz.1.choices.3', 'Magnet'],
 ]);
+const TECHNICAL_PHRASE_ALLOWLIST = new Map<string, readonly string[]>([
+  ['camera.steps.2.body', ['single lens reflex']],
+  ['hard-disk.parts.heads.detail', ['head crash']],
+  ['smartphone.parts.logic_board.detail', ['package on package']],
+  ['turbofan.subtitle', ['high bypass']],
+  ['violin.steps.0.body', ['stick slip']],
+]);
 const ENGLISH_FUNCTION_WORDS = new Set([
   'a', 'an', 'and', 'are', 'as', 'at', 'because', 'by', 'for', 'from', 'in', 'into', 'is', 'it', 'its',
   'of', 'on', 'or', 'that', 'the', 'this', 'through', 'to', 'when', 'where', 'which', 'while', 'with', 'without',
 ]);
 const ENGLISH_ONLY_WORDS = new Set([
-  'after', 'before', 'between', 'captures', 'changes', 'during', 'exposure', 'faster', 'flows', 'inside', 'outside',
-  'images', 'moves', 'never', 'only', 'pressure', 'produces', 'pushes', 'reaches', 'returns', 'slower', 'stores',
-  'throughout', 'toward', 'turns', 'wherever', 'works',
+  'after', 'before', 'between', 'bypass', 'captures', 'changes', 'crash', 'during', 'exposure', 'faster', 'flows',
+  'head', 'high', 'image', 'images', 'inside', 'lens', 'moves', 'never', 'only', 'outside', 'package', 'pressure',
+  'produces', 'pushes', 'reaches', 'reflex', 'returns', 'single', 'slip', 'slower', 'stick', 'stores', 'throughout',
+  'toward', 'turns', 'wherever', 'works',
 ]);
+const ENGLISH_RUN_WORDS = new Set([...ENGLISH_FUNCTION_WORDS, ...ENGLISH_ONLY_WORDS]);
 
 let failures = 0;
 
@@ -398,6 +407,19 @@ function proseWords(value: string) {
   return value.normalize('NFKC').toLocaleLowerCase('en').replace(/[^\p{L}\p{N}]+/gu, ' ').trim().split(/\s+/).filter(Boolean);
 }
 
+function maskAllowlistedTechnicalPhrases(path: string, words: string[]) {
+  const masked = [...words];
+  for (const phrase of TECHNICAL_PHRASE_ALLOWLIST.get(path) ?? []) {
+    const phraseWords = proseWords(phrase);
+    for (let index = 0; index <= words.length - phraseWords.length; index += 1) {
+      if (phraseWords.every((word, offset) => words[index + offset] === word)) {
+        masked.fill('', index, index + phraseWords.length);
+      }
+    }
+  }
+  return masked;
+}
+
 function containsRun(words: string[], candidates: Set<string>, minimum: number) {
   let run = 0;
   for (const word of words) {
@@ -428,7 +450,7 @@ function likelyEnglishLeak({ path, english, indonesian }: ProsePair) {
     return !(allowlisted === english.trim() && allowlisted === indonesian.trim());
   }
 
-  if (containsRun(words, ENGLISH_ONLY_WORDS, 3)) return true;
+  if (containsRun(maskAllowlistedTechnicalPhrases(path, words), ENGLISH_RUN_WORDS, 2)) return true;
   if (containsSharedSourceRun(englishWords, words, 4)) return true;
 
   const indonesianFunctionWords = new Set([
@@ -459,6 +481,42 @@ function runMutationFixtureChecks(registry: string) {
     const registration = registryRequirementsAppear(sourceText, expectation);
     return registration.doc && registration.model && registration.translation;
   });
+  const camera = readJson<ObjectDoc>(resolve(CONTENT, 'camera.json'), {
+    id: '',
+    title: '',
+    subtitle: '',
+    category: '',
+    accent: '',
+    summary: '',
+    model: '',
+    parts: [],
+    steps: [],
+    quiz: [],
+  });
+  const cameraOverlay = readJson<Overlay>(resolve(CONTENT, 'id', 'camera.json'), {});
+  const hardDisk = readJson<ObjectDoc>(resolve(CONTENT, 'hard-disk.json'), {
+    id: '',
+    title: '',
+    subtitle: '',
+    category: '',
+    accent: '',
+    summary: '',
+    model: '',
+    parts: [],
+    steps: [],
+    quiz: [],
+  });
+  const hardDiskOverlay = readJson<Overlay>(resolve(CONTENT, 'id', 'hard-disk.json'), {});
+  const withSensorDetail = (detail: string): Overlay => ({
+    ...cameraOverlay,
+    parts: {
+      ...cameraOverlay.parts,
+      sensor: { ...cameraOverlay.parts?.sensor, detail },
+    },
+  });
+  const collectedLeakPaths = (overlay: Overlay) => collectProsePairs(camera, overlay)
+    .filter(likelyEnglishLeak)
+    .map((pair) => pair.path);
 
   check('mutation: swapped registry model tuples are rejected', !requirementsPass(swappedModels));
   check('mutation: swapped registry translation tuples are rejected', !requirementsPass(swappedTranslations));
@@ -467,11 +525,25 @@ function runMutationFixtureChecks(registry: string) {
     english: 'All of it',
     indonesian: 'All of it',
   }));
-  check('mutation: mixed English prose is rejected', likelyEnglishLeak({
-    path: 'camera.parts.sensor.detail',
-    english: 'Stores images after exposure.',
-    indonesian: 'Komponen ini stores images after exposure sebelum dikirim ke prosesor.',
-  }));
+  check(
+    'mutation: two consecutive English content words are rejected through prose collection',
+    collectedLeakPaths(withSensorDetail('Sensor stores images setelah pencahayaan.'))
+      .includes('camera.parts.sensor.detail'),
+  );
+  check(
+    'mutation: an English verb and function word are rejected through prose collection',
+    collectedLeakPaths(withSensorDetail('Komponen ini stores the image setelah pencahayaan.'))
+      .includes('camera.parts.sensor.detail'),
+  );
+  const legitimateTechnicalPhrase = collectProsePairs(hardDisk, hardDiskOverlay)
+    .find((pair) => pair.path === 'hard-disk.parts.heads.detail');
+  check(
+    'mutation: a legitimate two-word technical phrase remains valid through prose collection',
+    Boolean(
+      legitimateTechnicalPhrase?.indonesian.includes('(head crash)')
+      && !likelyEnglishLeak(legitimateTechnicalPhrase)
+    ),
+  );
   check('mutation: allowlisted technical terms remain valid', !likelyEnglishLeak({
     path: 'microwave.parts.magnetron.name',
     english: 'Magnetron',
