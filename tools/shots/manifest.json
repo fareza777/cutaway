@@ -12,6 +12,7 @@
   "lock": { "restRotation": [0.12, -0.95, 0], "opacity": { "housing": 0.22 } },
   "loudspeaker": { "restRotation": [0.38, 1.02, 0], "opacity": {} },
   "lung": { "restRotation": [0.05, -0.25, 0], "opacity": { "pleura": 0.14 } },
+  "mechanical_watch": { "restRotation": [1.38, -0.18, -0.12], "opacity": { "crystal": 0.24 } },
   "microwave": { "restRotation": [0.1, -0.55, 0], "opacity": {} },
   "piston_engine": { "restRotation": [0.08, -0.45, 0], "opacity": {} },
   "refrigerator": { "restRotation": [0.06, -0.62, 0], "opacity": {} },

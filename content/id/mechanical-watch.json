@@ -1,0 +1,182 @@
+{
+  "title": "Jam Tangan Mekanis Otomatis",
+  "subtitle": "Pegas, escapement, dan waktu yang dibagi menjadi detak",
+  "scale": "casing 40 mm · tebal sekitar 11 mm",
+  "summary": "Jam otomatis menyimpan gerakan pergelangan sebagai energi pada pegas utama, lalu melepaskannya sedikit demi sedikit. Rangkaian roda gigi meneruskan putaran lambat itu ke escapement. Roda pelepas, garpu palet, dan roda keseimbangan mengubah tarikan terus-menerus menjadi impuls yang teratur. Rasio roda gigi yang tetap kemudian menggerakkan jarum jam, menit, dan detik tanpa baterai.",
+  "parts": {
+    "case": {
+      "name": "Casing Jam",
+      "short": "Cangkang baja 40 mm yang melindungi dan menyelaraskan mesin",
+      "detail": "Bagian tengah casing berupa cincin dangkal yang kaku, dengan dudukan presisi untuk bezel, kaca, mesin, tabung kenop, dan penutup belakang. Bentuk bundarnya menjaga tekanan gasket merata, sedangkan sisi yang melengkung membuat jam tampak seperti produk jadi, bukan tumpukan piringan. Baja juga menjadi acuan yang stabil bagi semua poros di dalamnya."
+    },
+    "bezel": {
+      "name": "Bezel",
+      "short": "Cincin poles yang menahan kaca pada casing",
+      "detail": "Bezel yang landai menekan kaca dan gasket-nya ke casing. Tepi atasnya dibuat sempit agar sebagian besar diameter tetap tersedia untuk dial, sementara bahu luarnya menyatu halus dengan sisi casing. Saat servis, bezel dapat dilepas dan dipasang kembali memakai alat pres yang tepat."
+    },
+    "crystal": {
+      "name": "Kaca Safir",
+      "short": "Jendela transparan tahan gores di atas dial",
+      "detail": "Safir sintetis sangat keras sehingga melindungi jarum dari goresan sehari-hari. Kaca ini bertumpu pada gasket yang dijepit bezel, bukan menahan mesin secara langsung. Celah udara tipis di bawahnya memberi ruang bagi ketiga jarum agar tidak bersentuhan saat jam terkena benturan ringan."
+    },
+    "caseback": {
+      "name": "Penutup Belakang",
+      "short": "Tutup tersegel yang dibuka saat mesin diservis",
+      "detail": "Penutup baja berulir atau berjepit menutup sisi belakang dan menekan gasket tahan air. Ketika dibuka, komponen pertama yang terlihat adalah rotor otomatis. Cekungan dangkal di bagian dalam memberi rotor ruang untuk berayun tanpa bergesekan dengan penutup."
+    },
+    "crown": {
+      "name": "Kenop Pemutar",
+      "short": "Kontrol bergerigi untuk memutar pegas dan mengatur waktu",
+      "detail": "Memutar kenop mengencangkan pegas utama melalui kopling dan roda gigi pemutar. Saat kenop ditarik, mekanisme pengalih menghubungkan putaran yang sama ke roda gigi pengatur jarum. Gerigi memberi cengkeraman pada jari, sedangkan tabung dan seal menahan debu serta air di lubang samping casing."
+    },
+    "winding_stem": {
+      "name": "Batang Pemutar",
+      "short": "Poros ramping yang membawa putaran kenop ke mesin",
+      "detail": "Batang ini melewati dinding casing lalu masuk ke mekanisme pemutar dan pengatur. Pada posisi normal, putarannya diteruskan menuju pegas utama. Setelah ditarik, batang menggerakkan rangkaian pengatur yang memindahkan jarum. Titik patah yang dirancang khusus membuat batang gagal lebih dahulu sebelum benturan merusak mesin."
+    },
+    "dial": {
+      "name": "Dial",
+      "short": "Bidang berindeks yang mengubah sudut jarum menjadi waktu",
+      "detail": "Dial adalah pelat tipis yang dipasang di atas mesin. Penanda jam dan skala menit membuat posisi sudut jarum mudah dibaca. Lubang tengahnya harus benar-benar sepusat dengan poros jarum; sedikit gesekan antarkomponen dapat menghabiskan energi yang cukup untuk menghentikan jam."
+    },
+    "hour_hand": {
+      "name": "Jarum Jam",
+      "short": "Jarum terpendek yang berputar sekali setiap dua belas jam",
+      "detail": "Pipa kecil di bawah jarum terpasang pada roda jam. Rangkaian pengatur menurunkan putaran jarum menit dengan rasio 12:1, sehingga jarum jam menyelesaikan satu putaran saat jarum menit berputar dua belas kali. Bentuknya yang pendek dan lebar membedakannya dengan cepat."
+    },
+    "minute_hand": {
+      "name": "Jarum Menit",
+      "short": "Jarum panjang yang berputar sekali setiap jam",
+      "detail": "Jarum menit dipasang dengan gesekan pada pinion meriam di poros tengah. Gesekan itu memungkinkan kenop mengatur jarum, tetapi tetap cukup kuat agar rangkaian roda gigi menggerakkannya saat jam berjalan. Hubungan 12:1 terhadap jarum jam ditentukan oleh jumlah gigi, bukan sensor atau perangkat lunak."
+    },
+    "seconds_hand": {
+      "name": "Jarum Detik",
+      "short": "Penunjuk ringan yang mengikuti putaran roda keempat",
+      "detail": "Jarum detik dipasang langsung pada roda keempat atau dihubungkan kepadanya, sehingga berputar sekali per menit. Gerak yang terlihat halus sebenarnya terdiri atas lompatan kecil sesuai frekuensi roda keseimbangan. Massa jarum dibuat rendah agar escapement tidak membuang banyak energi untuk mempercepatnya berulang kali."
+    },
+    "automatic_rotor": {
+      "name": "Rotor Otomatis",
+      "short": "Beban tidak seimbang yang memutar pegas saat pergelangan bergerak",
+      "detail": "Beban berbentuk sabit bebas berayun pada bantalan di belakang mesin. Perubahan posisi pergelangan membuat gravitasi dan inersia memutarnya; roda gigi pembalik meneruskan gerak yang berguna dari kedua arah ke barrel. Kopling selip mencegah pegas utama dikencangkan melampaui batas aman."
+    },
+    "mainspring_barrel": {
+      "name": "Barrel Pegas Utama",
+      "short": "Penyimpan energi berbentuk gulungan sekaligus drum penggerak",
+      "detail": "Pegas utama yang panjang digulung di dalam barrel bergigi. Pemutaran menyimpan energi elastis pada gulungan, lalu barrel berputar perlahan saat pegas mengendur dan memberi torsi ke roda tengah. Bentuk pegas serta diameter barrel dipilih agar torsinya cukup merata selama cadangan daya yang berguna."
+    },
+    "centre_wheel": {
+      "name": "Roda Tengah",
+      "short": "Roda gigi besar pertama pada rangkaian penggerak",
+      "detail": "Roda tengah menerima tenaga dari barrel dan memulai urutan roda besar serta pinion kecil. Pada susunan konvensional, roda ini berputar sekali per jam dan menjadi acuan bagi jarum menit. Rasionya menukar putaran barrel yang lambat dan kuat menjadi gerak lebih cepat pada tahap berikutnya."
+    },
+    "third_wheel": {
+      "name": "Roda Ketiga",
+      "short": "Rasio perantara antara roda tengah dan roda keempat",
+      "detail": "Nama roda ketiga tidak mengacu pada satuan waktu. Komponen ini hanya meneruskan daya melalui pasangan roda besar dan pinion kecil berikutnya, sehingga kecepatan naik dan torsi turun. Penempatannya membawa jalur tenaga mengitari barrel tanpa memerlukan roda gigi yang terlalu besar."
+    },
+    "fourth_wheel": {
+      "name": "Roda Keempat",
+      "short": "Roda sekali per menit yang terkait dengan tampilan detik",
+      "detail": "Roda keempat menerima putaran yang sudah dipercepat oleh roda ketiga dan umumnya menyelesaikan satu putaran per menit. Kecepatan itu cocok untuk poros jarum detik. Pinion-nya juga menggerakkan roda pelepas, sehingga tiap detik yang terlihat bergantung pada escapement yang melepas rangkaian dalam langkah seragam."
+    },
+    "escape_wheel": {
+      "name": "Roda Pelepas",
+      "short": "Gerbang bergigi yang melepas rangkaian satu langkah setiap kali",
+      "detail": "Torsi roda gigi terus mendorong roda pelepas maju, tetapi batu palet mengunci giginya secara bergantian. Pada setiap ayunan roda keseimbangan, satu gigi dilepas dan permukaan gigi memberi impuls kecil kembali melalui garpu palet. Pertukaran ini menghitung osilasi sekaligus mempertahankannya."
+    },
+    "pallet_fork": {
+      "name": "Garpu Palet",
+      "short": "Tuas yang berayun di antara roda pelepas dan roda keseimbangan",
+      "detail": "Dua permukaan palet dari ruby menghentikan dan melepas gigi roda pelepas secara bergantian. Ujung lain garpu berhubungan dengan rol roda keseimbangan, sehingga setiap lintasan melalui titik tengah membuka satu gigi dan menerima impuls terukur. Sudut geraknya kecil agar energi tidak terbuang."
+    },
+    "balance_wheel": {
+      "name": "Roda Keseimbangan",
+      "short": "Osilator yang membagi waktu menjadi selang yang sama",
+      "detail": "Roda keseimbangan berputar bolak-balik, bukan terus dalam satu arah. Inersianya bekerja bersama gaya balik hairspring untuk menentukan frekuensi alami, biasanya enam atau delapan detak per detik. Keseimbangan massa pada rim dan gesekan poros yang rendah membantu setiap setengah ayunan tetap seragam di berbagai posisi jam."
+    },
+    "hairspring": {
+      "name": "Hairspring",
+      "short": "Pegas spiral halus yang menarik roda keseimbangan kembali ke tengah",
+      "detail": "Spiral datar ini mengencang dan membuka saat roda keseimbangan berosilasi. Elastisitasnya menghasilkan gaya balik; panjang efektifnya bersama inersia roda menentukan laju jam. Regulator atau bobot penyetel memberi koreksi kecil, sedangkan magnet, benturan, atau gulungan bengkok dapat mengubah ketepatan secara nyata."
+    },
+    "movement_bridges": {
+      "name": "Bridge Mesin",
+      "short": "Pelat kaku yang menjaga poros roda gigi tetap sejajar",
+      "detail": "Bridge menjepit ujung atas arbor, sedangkan pelat utama menopang ujung lainnya. Posisi lubang bantalan menentukan kedalaman pertautan gigi: terlalu longgar membuat gigi lolos, terlalu rapat menambah gesekan hingga mesin berhenti. Bukaan pada bridge memperlihatkan rangkaian tanpa melemahkan area di sekitar sekrup dan jewel."
+    },
+    "jewels": {
+      "name": "Jewel Ruby",
+      "short": "Bantalan keras dan halus pada poros serta palet penting",
+      "detail": "Lubang ruby sintetis menopang poros baja yang sangat kecil dengan permukaan stabil dan tahan aus. Lapisan oli yang sangat tipis mengurangi gesekan geser. Banyaknya jewel bukan tujuan tersendiri; setiap jewel yang berguna harus mengendalikan gesekan atau gerak aksial di tempat bantalan logam akan cepat aus atau menyerap terlalu banyak daya."
+    },
+    "strap_lugs": {
+      "name": "Lug dan Tali Karet",
+      "short": "Sambungan lentur yang menahan casing pada pergelangan",
+      "detail": "Empat lug pendek menyelaraskan tali dengan casing, sedangkan pin pegas menjadi poros yang dapat dilepas. Tali karet menyebarkan beban, tahan keringat, dan melentur sebelum benturan diteruskan ke mesin. Bentuk yang mengecil dan bahu melengkung membuat casing bundar terbaca sebagai jam yang dapat dikenakan."
+    }
+  },
+  "steps": [
+    {
+      "title": "Tangkap gerakan pergelangan",
+      "body": "Saat pergelangan berubah arah, rotor yang berat sebelah berayun. Roda gigi pembalik meneruskan putaran dari kedua arah ke sistem pemutar, sedangkan kopling selip melindungi pegas utama yang sudah penuh."
+    },
+    {
+      "title": "Simpan energi pada pegas utama",
+      "body": "Gerak rotor atau kenop menggulung pegas utama di dalam barrel. Pegas kemudian berusaha membuka dan memutar barrel perlahan selama berjam-jam, bukan melepas seluruh energi sekaligus."
+    },
+    {
+      "title": "Naikkan kecepatan melalui roda gigi",
+      "body": "Barrel menggerakkan roda tengah, roda ketiga, dan roda keempat lewat pasangan roda besar serta pinion kecil. Setiap rasio menaikkan kecepatan dan menurunkan torsi hingga roda keempat dapat berputar sekali per menit."
+    },
+    {
+      "title": "Lepaskan satu gigi per impuls",
+      "body": "Garpu palet mengunci roda pelepas. Setiap roda keseimbangan melewati titik tengah, satu gigi terbuka; gigi itu memajukan rangkaian dan memberi impuls kecil untuk mengganti energi yang hilang akibat gesekan."
+    },
+    {
+      "title": "Atur irama detak",
+      "body": "Roda keseimbangan dan hairspring berosilasi pada frekuensi alami yang berulang. Ayunan bolak-balik ini membagi tarikan pegas utama menjadi detak yang sama, lalu penyetelan halus mengubah detak tersebut menjadi waktu yang akurat."
+    },
+    {
+      "title": "Tampilkan jam, menit, dan detik",
+      "body": "Roda keempat memasok gerak detik, rangkaian tengah memasok menit, dan roda gigi pengatur menurunkannya 12:1 untuk jam. Jumlah gigi yang tetap menjaga ketiga jarum bergerak selaras di atas dial."
+    },
+    {
+      "title": "Atur waktu melalui kenop",
+      "body": "Menarik kenop memindahkan hubungan batang dari pemutar pegas ke pengatur jarum. Putarannya kini menggerakkan roda gigi pengatur dan jarum melalui sambungan gesek tanpa memaksa escapement atau membuka gulungan pegas utama."
+    }
+  ],
+  "quiz": [
+    {
+      "prompt": "Ketuk beban berbentuk sabit yang menangkap gerakan pergelangan."
+    },
+    {
+      "prompt": "Di mana energi yang dipakai jam disimpan?",
+      "choices": ["Di dalam kaca", "Sebagai regangan elastis pada pegas utama", "Di dalam jewel ruby", "Sebagai panas pada casing"],
+      "explain": "Pemutaran menggulung pegas utama. Saat mengendur secara terkendali, pegas memutar barrel dan memberi tenaga pada mesin."
+    },
+    {
+      "prompt": "Ketuk roda yang giginya dikunci dan dilepas secara bergantian."
+    },
+    {
+      "prompt": "Mengapa roda keseimbangan terus berosilasi dan tidak segera berhenti?",
+      "choices": ["Dial mendorongnya", "Setiap gigi roda pelepas memberi impuls kecil melalui garpu palet", "Kenop terus berputar", "Casing bersifat magnetis"],
+      "explain": "Impuls escapement mengganti sedikit energi yang hilang pada tiap ayunan, sedangkan hairspring menghasilkan gaya balik."
+    },
+    {
+      "prompt": "Ketuk spiral yang menarik roda keseimbangan kembali ke tengah."
+    },
+    {
+      "prompt": "Seberapa cepat jarum jam berputar dibandingkan jarum menit?",
+      "choices": ["Dua belas kali lebih cepat", "Sama cepat", "Seperdua belas kecepatannya", "Sekali per detik"],
+      "explain": "Roda gigi pengatur menurunkan putaran menit dengan rasio 12:1, sesuai dua belas jam pada dial."
+    },
+    {
+      "prompt": "Ketuk bantalan merah keras yang mengurangi keausan poros."
+    },
+    {
+      "prompt": "Apa yang berubah saat kenop ditarik ke posisi pengaturan?",
+      "choices": ["Rotor dikunci", "Batang menghubungkan kenop ke roda gigi yang menggerakkan jarum", "Kaca menjadi longgar", "Hairspring dipendekkan satu putaran"],
+      "explain": "Mekanisme pengalih memindahkan putaran kenop dari pemutar pegas ke rangkaian roda gigi pengatur waktu."
+    }
+  ]
+}
