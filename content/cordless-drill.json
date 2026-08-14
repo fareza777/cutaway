@@ -168,7 +168,7 @@
       "nodes": ["battery_cells"],
       "name": "Lithium-Ion Cell Grid",
       "short": "Ten cylindrical cells arranged as five series groups",
-      "detail": "A typical 18 V nominal pack uses five cell groups in series; this grid shows two long cylindrical cells in parallel within each group, laid transversely inside the enlarged base. Series connections add voltage, while parallel partners share current and capacity. The cells must remain matched because the weakest group limits the safe pack range.",
+      "detail": "A typical 18 V nominal pack uses five cell groups in series; this grid shows two 18650-class cylindrical cells in parallel within each group, laid transversely inside the sculpted base. At the stated roughly 20 cm tool scale, each can is about 18 mm in diameter and 64 mm long. Series connections add voltage, while parallel partners share current and capacity.",
       "layer": 2,
       "explode": [0.15, -0.8, 0.55]
     },

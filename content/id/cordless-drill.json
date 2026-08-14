@@ -87,7 +87,7 @@
     "battery_cells": {
       "name": "Susunan Sel Litium-Ion",
       "short": "Sepuluh sel silinder dalam lima kelompok seri",
-      "detail": "Baterai 18 V nominal umumnya memakai lima kelompok sel yang disusun seri. Model ini menunjukkan dua sel silinder panjang yang dipasang melintang dan paralel pada setiap kelompok untuk menambah arus serta kapasitas. Hubungan seri menambah tegangan, sedangkan pasangan paralel berbagi beban. Kondisi sel harus seimbang karena kelompok terlemah membatasi rentang aman seluruh baterai."
+      "detail": "Baterai 18 V nominal umumnya memakai lima kelompok sel yang disusun seri. Model ini menunjukkan dua sel silinder kelas 18650 yang dipasang melintang dan paralel pada setiap kelompok. Pada skala bor sekitar 20 cm, setiap sel berdiameter sekitar 18 mm dan panjang 64 mm. Hubungan seri menambah tegangan, sedangkan pasangan paralel berbagi arus serta kapasitas."
     },
     "battery_management_board": {
       "name": "Papan Kontrol Baterai",

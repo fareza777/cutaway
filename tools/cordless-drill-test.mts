@@ -82,6 +82,7 @@ const angleDistance = (a: number, b: number) => Math.abs(Math.atan2(Math.sin(a -
 type ComponentStats = {
   box: THREE.Box3;
   vertexCount: number;
+  points: THREE.Vector3[];
 };
 
 function geometryComponents(mesh: THREE.Mesh): ComponentStats[] {
@@ -124,14 +125,66 @@ function geometryComponents(mesh: THREE.Mesh): ComponentStats[] {
     const root = find(vertex);
     let stats = components.get(root);
     if (!stats) {
-      stats = { box: new THREE.Box3(), vertexCount: 0 };
+      stats = { box: new THREE.Box3(), vertexCount: 0, points: [] };
       components.set(root, stats);
     }
     point.fromBufferAttribute(position, vertex);
     stats.box.expandByPoint(point);
     stats.vertexCount += 1;
+    stats.points.push(point.clone());
   }
   return [...components.values()].filter((component) => component.vertexCount >= 4);
+}
+
+const componentSize = (component: ComponentStats) => component.box.getSize(new THREE.Vector3());
+const componentCentre = (component: ComponentStats) => component.box.getCenter(new THREE.Vector3());
+
+function boxesOverlap3D(a: THREE.Box3, b: THREE.Box3, tolerance = 0) {
+  return intervalOverlap(a, b, 'x') >= -tolerance
+    && intervalOverlap(a, b, 'y') >= -tolerance
+    && intervalOverlap(a, b, 'z') >= -tolerance;
+}
+
+function minimumRadialVertexDistance(a: ComponentStats, b: ComponentStats, limit: number) {
+  let closest = Number.POSITIVE_INFINITY;
+  for (const ap of a.points) {
+    for (const bp of b.points) {
+      const distance = Math.hypot(ap.y - bp.y, ap.z - bp.z);
+      if (distance < closest) closest = distance;
+      if (closest <= limit) return closest;
+    }
+  }
+  return closest;
+}
+
+function pinContactsPlanet(pin: ComponentStats, planet: ComponentStats) {
+  const pinPoint = componentCentre(pin);
+  const planetPoint = componentCentre(planet);
+  return Math.hypot(pinPoint.y - planetPoint.y, pinPoint.z - planetPoint.z) <= 0.012
+    && intervalOverlap(pin.box, planet.box, 'x') >= 0.04
+    && intervalOverlap(pin.box, planet.box, 'y') >= 0.03
+    && intervalOverlap(pin.box, planet.box, 'z') >= 0.03;
+}
+
+function pinContactsCarrier(pin: ComponentStats, carrier: ComponentStats) {
+  return intervalOverlap(pin.box, carrier.box, 'x') >= 0.008
+    && minimumRadialVertexDistance(pin, carrier, 0.012) <= 0.012;
+}
+
+function linkContactsCarrier(link: ComponentStats, carrier: ComponentStats, cy: number, cz: number) {
+  const linkPoint = componentCentre(link);
+  return intervalOverlap(link.box, carrier.box, 'x') >= 0.008
+    && Math.hypot(linkPoint.y - cy, linkPoint.z - cz) <= 0.015
+    && carrier.box.min.y < cy && carrier.box.max.y > cy
+    && carrier.box.min.z < cz && carrier.box.max.z > cz;
+}
+
+function translatedComponent(component: ComponentStats, translation: THREE.Vector3): ComponentStats {
+  return {
+    box: component.box.clone().translate(translation),
+    vertexCount: component.vertexCount,
+    points: component.points.map((point) => point.clone().add(translation)),
+  };
 }
 
 async function run() {
@@ -248,7 +301,7 @@ async function run() {
   check('battery sits below and directly supports the grip', battery.max.y <= grip.min.y + 0.09 && battery.max.y >= grip.min.y - 0.14 && intervalOverlap(battery, grip, 'x') >= 0.28);
   const batterySize = battery.getSize(new THREE.Vector3());
   const gripSize = grip.getSize(new THREE.Vector3());
-  check('battery pack has enough volume for two realistic cell rows', batterySize.y >= 0.6 && batterySize.y <= 0.82 && batterySize.x / batterySize.y >= 1.8 && batterySize.x / batterySize.y <= 2.7, `${batterySize.x.toFixed(2)} x ${batterySize.y.toFixed(2)} x ${batterySize.z.toFixed(2)}`);
+  check('battery pack has enough volume for two realistic cell rows', batterySize.y >= 0.78 && batterySize.y <= 0.98 && batterySize.x / batterySize.y >= 1.8 && batterySize.x / batterySize.y <= 2.7, `${batterySize.x.toFixed(2)} x ${batterySize.y.toFixed(2)} x ${batterySize.z.toFixed(2)}`);
   check('ergonomic grip is materially narrower than the motor barrel', gripSize.z / shellSize.z >= 0.58 && gripSize.z / shellSize.z <= 0.82 && gripSize.x / gripSize.y <= 0.62, `depth ratio ${(gripSize.z / shellSize.z).toFixed(2)}, x/y ${(gripSize.x / gripSize.y).toFixed(2)}`);
   check('trigger is in front of the handle and below the motor barrel', trigger.x < centre(byName.get('rubber_grip')!).x - 0.28 && trigger.y < axis.y - 0.32 && trigger.y > grip.max.y - 0.45);
   check('direction switch is directly above the trigger', centre(byName.get('direction_switch')!).y > trigger.y + 0.12 && Math.abs(centre(byName.get('direction_switch')!).x - trigger.x) <= 0.18);
@@ -262,11 +315,44 @@ async function run() {
   check('BMS sits above the cell grid under the contacts', boardBox.min.y >= cellsBox.max.y - 0.03 && centre(byName.get('contacts')!).y > boardBox.max.y - 0.03);
   const cellComponents = geometryComponents(byName.get('battery_cells')!);
   const cylindricalCells = cellComponents.filter((component) => {
-    const componentSize = component.box.getSize(new THREE.Vector3());
-    const diameter = Math.max(componentSize.x, componentSize.y);
-    return componentSize.z >= 0.45 && componentSize.z / diameter >= 3.2 && componentSize.z / diameter <= 4.4;
+    const cellSize = componentSize(component);
+    const diameter = Math.max(cellSize.x, cellSize.y);
+    return cellSize.z >= 0.45 && cellSize.z / diameter >= 3.2 && cellSize.z / diameter <= 4.4;
   });
   check('5s2p pack contains ten realistically slender cylindrical cells', cylindricalCells.length === 10, `${cylindricalCells.length} slender cell cans`);
+  const cellDiameters = cylindricalCells.map((component) => {
+    const cellSize = componentSize(component);
+    return Math.max(cellSize.x, cellSize.y);
+  });
+  const cellLengths = cylindricalCells.map((component) => componentSize(component).z);
+  check('cell diameter has credible 18 V high-current scale relative to tool length', cylindricalCells.length === 10 && cellDiameters.every((diameter) => diameter / totalSize.x >= 0.078 && diameter / totalSize.x <= 0.105), cellDiameters.map((diameter) => (diameter / totalSize.x).toFixed(3)).join(', '));
+  check('cell length has credible 18650-class scale relative to tool length', cylindricalCells.length === 10 && cellLengths.every((length) => length / totalSize.x >= 0.29 && length / totalSize.x <= 0.35), cellLengths.map((length) => (length / totalSize.x).toFixed(3)).join(', '));
+  const packClearances = [
+    cellsBox.min.x - battery.min.x,
+    battery.max.x - cellsBox.max.x,
+    cellsBox.min.y - battery.min.y,
+    battery.max.y - cellsBox.max.y,
+    cellsBox.min.z - battery.min.z,
+    battery.max.z - cellsBox.max.z,
+  ];
+  const transverseCellLength = Math.max(...cellLengths, 0);
+  check('battery shell clears every face of the full-size cell envelope', packClearances.every((clearance) => clearance >= 0.035), packClearances.map((clearance) => clearance.toFixed(3)).join(', '));
+  const batteryMesh = byName.get('battery_shell')!;
+  batteryMesh.updateMatrixWorld(true);
+  const localCellClearances: number[] = [];
+  for (const component of cylindricalCells) {
+    const cellPoint = componentCentre(component);
+    for (const sampleY of [component.box.min.y + 0.02, cellPoint.y, component.box.max.y - 0.02]) {
+      const positiveRay = new THREE.Raycaster(new THREE.Vector3(cellPoint.x, sampleY, 2), new THREE.Vector3(0, 0, -1), 0, 4);
+      const negativeRay = new THREE.Raycaster(new THREE.Vector3(cellPoint.x, sampleY, -2), new THREE.Vector3(0, 0, 1), 0, 4);
+      const positiveHit = positiveRay.intersectObject(batteryMesh, false)[0];
+      const negativeHit = negativeRay.intersectObject(batteryMesh, false)[0];
+      localCellClearances.push(positiveHit ? positiveHit.point.z - component.box.max.z : Number.NEGATIVE_INFINITY);
+      localCellClearances.push(negativeHit ? component.box.min.z - negativeHit.point.z : Number.NEGATIVE_INFINITY);
+    }
+  }
+  check('sculpted pack locally encloses both ends of every transverse cell', localCellClearances.length === 60 && localCellClearances.every((clearance) => clearance >= 0.025), `minimum local clearance ${Math.min(...localCellClearances).toFixed(3)}`);
+  check('pack depth follows transverse cell length without wafer-thin or hollow proportions', cylindricalCells.length === 10 && batterySize.z - transverseCellLength >= 0.08 && batterySize.z - transverseCellLength <= 0.18, `pack ${batterySize.z.toFixed(3)}, cells ${transverseCellLength.toFixed(3)}`);
   const cellCentres = cylindricalCells.map((component) => component.box.getCenter(new THREE.Vector3()));
   const cluster = (values: number[], tolerance: number) => values.sort((a, b) => a - b).reduce<number[]>((groups, value) => {
     if (!groups.length || Math.abs(value - groups[groups.length - 1]) > tolerance) groups.push(value);
@@ -296,6 +382,85 @@ async function run() {
       && component.box.min.z <= axis.z && component.box.max.z >= axis.z;
   });
   check('gearbox has separate first-carrier and second-carrier output links', axialLinks.length >= 2 && axialLinks.some((link) => link.box.max.x > 0 && link.box.min.x < -0.15) && axialLinks.some((link) => link.box.max.x < -0.12 && link.box.min.x < -0.48), `${axialLinks.length} axial links`);
+
+  // Infer the two real production stages from component proportions and radial
+  // placement, not from recipe coordinates. A stage must contain three planet
+  // bodies, three coaxial pins, one carrier, and the same physical link must
+  // touch both its input carrier and the next member of the power path.
+  const radialOffset = (component: ComponentStats) => {
+    const point = componentCentre(component);
+    return Math.hypot(point.y - axis.y, point.z - axis.z);
+  };
+  const planetComponents = gearboxComponents.filter((component) => {
+    const partSize = componentSize(component);
+    return partSize.x >= 0.08 && partSize.x <= 0.13
+      && partSize.y >= 0.1 && partSize.y <= 0.18
+      && partSize.z >= 0.1 && partSize.z <= 0.18
+      && radialOffset(component) >= 0.08 && radialOffset(component) <= 0.25;
+  }).sort((a, b) => componentCentre(b).x - componentCentre(a).x);
+  const pinComponents = gearboxComponents.filter((component) => {
+    const partSize = componentSize(component);
+    return partSize.x >= 0.12 && partSize.x <= 0.21
+      && partSize.y >= 0.035 && partSize.y <= 0.055
+      && partSize.z >= 0.035 && partSize.z <= 0.055
+      && radialOffset(component) >= 0.08 && radialOffset(component) <= 0.25;
+  }).sort((a, b) => componentCentre(b).x - componentCentre(a).x);
+  const sunComponents = gearboxComponents.filter((component) => {
+    const partSize = componentSize(component);
+    return partSize.x >= 0.08 && partSize.x <= 0.13
+      && partSize.y >= 0.075 && partSize.y <= 0.14
+      && partSize.z >= 0.075 && partSize.z <= 0.14
+      && radialOffset(component) <= 0.015;
+  }).sort((a, b) => componentCentre(b).x - componentCentre(a).x);
+  const orderedCarriers = [...carrierPlates].sort((a, b) => componentCentre(b).x - componentCentre(a).x);
+  const orderedLinks = [...axialLinks].sort((a, b) => b.box.max.x - a.box.max.x);
+  const stageContacts = [0, 1].map((stage) => {
+    const planets = planetComponents.slice(stage * 3, stage * 3 + 3);
+    const pins = pinComponents.slice(stage * 3, stage * 3 + 3);
+    const carrier = orderedCarriers[stage];
+    if (planets.length !== 3 || pins.length !== 3 || !carrier) return { planets: 0, carriers: 0, both: 0, carrierDistances: [] as number[] };
+    const contacts = pins.map((pin) => {
+      const planet = planets.reduce((closest, candidate) => {
+        const pinPoint = componentCentre(pin);
+        const closestPoint = componentCentre(closest);
+        const candidatePoint = componentCentre(candidate);
+        return Math.hypot(candidatePoint.y - pinPoint.y, candidatePoint.z - pinPoint.z)
+          < Math.hypot(closestPoint.y - pinPoint.y, closestPoint.z - pinPoint.z) ? candidate : closest;
+      });
+      return { planet: pinContactsPlanet(pin, planet), carrier: pinContactsCarrier(pin, carrier) };
+    });
+    return {
+      planets: contacts.filter((contact) => contact.planet).length,
+      carriers: contacts.filter((contact) => contact.carrier).length,
+      both: contacts.filter((contact) => contact.planet && contact.carrier).length,
+      carrierDistances: pins.map((pin) => minimumRadialVertexDistance(pin, carrier, Number.POSITIVE_INFINITY)),
+    };
+  });
+  check('production gearbox classifies exactly three supported planet pins per stage', planetComponents.length === 6 && pinComponents.length === 6 && orderedCarriers.length === 2 && stageContacts.every((contacts) => contacts.both === 3), `${planetComponents.length} planets, ${pinComponents.length} pins, planet/carrier/both ${stageContacts.map((contacts) => `${contacts.planets}/${contacts.carriers}/${contacts.both} @ ${contacts.carrierDistances.map((distance) => distance.toFixed(3)).join(',')}`).join(' | ')}`);
+
+  const firstLink = orderedLinks[0];
+  const secondLink = orderedLinks[1];
+  const secondSun = sunComponents[1];
+  const clutchComponents = geometryComponents(byName.get('torque_clutch')!);
+  const spindleComponents = geometryComponents(byName.get('output_spindle')!);
+  const firstPathContinuous = !!firstLink && !!orderedCarriers[0] && !!secondSun
+    && linkContactsCarrier(firstLink, orderedCarriers[0], axis.y, axis.z)
+    && boxesOverlap3D(firstLink.box, secondSun.box);
+  const secondPathContinuous = !!secondLink && !!orderedCarriers[1]
+    && linkContactsCarrier(secondLink, orderedCarriers[1], axis.y, axis.z)
+    && [...clutchComponents, ...spindleComponents].some((component) => boxesOverlap3D(secondLink.box, component.box));
+  check('first carrier link physically enters the second-stage sun input', firstPathContinuous, `${sunComponents.length} sun inputs classified`);
+  check('second carrier link physically enters the clutch or spindle output', secondPathContinuous);
+
+  const floatingCarrier = orderedCarriers[0] && translatedComponent(orderedCarriers[0], new THREE.Vector3(0.2, 0, 0));
+  const floatingLink = secondLink && translatedComponent(secondLink, new THREE.Vector3(0, 0, 0.5));
+  const floatingCarrierRejected = !!floatingCarrier && !!firstLink
+    && !linkContactsCarrier(firstLink, floatingCarrier, axis.y, axis.z)
+    && pinComponents.slice(0, 3).every((pin) => !pinContactsCarrier(pin, floatingCarrier));
+  const floatingLinkRejected = !!floatingLink && !!orderedCarriers[1]
+    && !linkContactsCarrier(floatingLink, orderedCarriers[1], axis.y, axis.z)
+    && ![...clutchComponents, ...spindleComponents].some((component) => boxesOverlap3D(floatingLink.box, component.box));
+  check('topology classifier rejects floating carrier and shaft fixtures', floatingCarrierRejected && floatingLinkRejected);
 
   const ventMeshes = [byName.get('left_housing')!, byName.get('right_housing')!];
   ventMeshes.forEach((mesh) => mesh.updateMatrixWorld(true));

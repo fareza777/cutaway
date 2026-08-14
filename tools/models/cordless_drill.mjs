@@ -214,7 +214,9 @@ function carrierPlate(x, radius, orbit) {
     const hole = new THREE.Path();
     // Slight interference with the 0.022-radius steel pin makes the pin visibly
     // supported by the carrier rather than hovering inside an oversized hole.
-    hole.absarc(Math.cos(angle) * orbit, Math.sin(angle) * orbit, 0.016, 0, TAU, true);
+    // Extrusion maps profile Y to world Y and negative profile X to world Z.
+    // Place each hole in that basis so it is truly coaxial with its planet pin.
+    hole.absarc(-Math.sin(angle) * orbit, Math.cos(angle) * orbit, 0.016, 0, TAU, true);
     profile.holes.push(hole);
   }
   const geometry = new THREE.ExtrudeGeometry(profile, {
@@ -342,12 +344,15 @@ function jawGeometry() {
 
 function batteryShellGeometry() {
   return merge([
-    roundedBox(1.5, 0.66, 0.86, 0.1, 5, { pos: [0.8, -1.48, 0] }),
+    // A broad lower tray and narrower shoulder wrap full-length transverse
+    // 18650-class cells without turning the base into one toy-like brick.
+    roundedBox(2, 0.64, 1.36, 0.12, 5, { pos: [0.75, -1.67, 0] }),
+    roundedBox(1.72, 0.34, 1.32, 0.1, 5, { pos: [0.75, -1.29, 0] }),
     roundedBox(0.78, 0.16, 0.56, 0.04, 3, { pos: [0.77, -1.15, 0] }),
     roundedBox(0.82, 0.05, 0.08, 0.012, 2, { pos: [0.77, -1.105, -0.24] }),
     roundedBox(0.82, 0.05, 0.08, 0.012, 2, { pos: [0.77, -1.105, 0.24] }),
-    ...Array.from({ length: 7 }, (_, index) => roundedBox(0.08, 0.025, 0.28, 0.008, 2, {
-      pos: [0.48 + index * 0.105, -1.81, 0],
+    ...Array.from({ length: 10 }, (_, index) => roundedBox(0.09, 0.025, 0.42, 0.008, 2, {
+      pos: [-0.02 + index * 0.17, -1.997, 0],
     })),
   ]);
 }
@@ -355,9 +360,9 @@ function batteryShellGeometry() {
 function batteryCellsGeometry() {
   const parts = [];
   for (let column = 0; column < 5; column += 1) {
-    for (const y of [-1.45, -1.65]) {
-      parts.push(cylinder(0.07, 0.07, 0.52, 28, {
-        pos: [0.4 + column * 0.2, y, 0],
+    for (const y of [-1.4, -1.78]) {
+      parts.push(cylinder(0.17, 0.17, 1.25, 32, {
+        pos: [column * 0.36, y, 0],
         rot: [Math.PI / 2, 0, 0],
       }));
     }
@@ -366,11 +371,11 @@ function batteryCellsGeometry() {
 }
 
 function bmsGeometry() {
-  const parts = [coloured(roundedBox(1.02, 0.035, 0.52, 0.018, 2, { pos: [0.82, -1.31, 0] }), '#176341')];
-  parts.push(coloured(roundedBox(0.22, 0.045, 0.18, 0.012, 2, { pos: [0.68, -1.275, 0] }), '#20282c'));
-  parts.push(coloured(roundedBox(0.16, 0.05, 0.11, 0.01, 2, { pos: [1.02, -1.27, 0.1] }), '#20282c'));
-  for (let index = 0; index < 8; index += 1) {
-    parts.push(coloured(box(0.035, 0.045, 0.04, { pos: [0.4 + index * 0.12, -1.275, -0.19] }), '#c6d0d5'));
+  const parts = [coloured(roundedBox(1.68, 0.035, 0.9, 0.018, 2, { pos: [0.75, -1.23, 0] }), '#176341')];
+  parts.push(coloured(roundedBox(0.28, 0.045, 0.24, 0.012, 2, { pos: [0.62, -1.195, 0] }), '#20282c'));
+  parts.push(coloured(roundedBox(0.2, 0.05, 0.14, 0.01, 2, { pos: [1.08, -1.19, 0.18] }), '#20282c'));
+  for (let index = 0; index < 10; index += 1) {
+    parts.push(coloured(box(0.04, 0.045, 0.05, { pos: [0.02 + index * 0.16, -1.195, -0.33] }), '#c6d0d5'));
   }
   return merge(parts);
 }
@@ -412,4 +417,4 @@ export default function cordlessDrill() {
   return group;
 }
 
-export const meta = { width: 3.7, height: 3.35, depth: 0.98 };
+export const meta = { width: 3.94, height: 3.42, depth: 1.36 };
