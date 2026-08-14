@@ -145,7 +145,7 @@ function ObjectCard({
         <Text variant="title" style={{ marginTop: 5 }}>
           {item.title}
         </Text>
-        <Text variant="caption" color={colors.textMuted} numberOfLines={2} style={{ marginTop: 3 }}>
+        <Text variant="caption" color={colors.textMuted} style={{ marginTop: 3 }}>
           {item.subtitle}
         </Text>
 
@@ -175,7 +175,7 @@ function Meta({ icon, text, color }: { icon: React.ComponentProps<typeof Ionicon
   return (
     <View style={styles.metaItem}>
       <Ionicons name={icon} size={tint === colors.textFaint ? 12 : 12} color={tint} />
-      <Text variant="caption" color={tint}>
+      <Text variant="caption" color={tint} style={styles.metaText}>
         {text}
       </Text>
     </View>
@@ -214,7 +214,8 @@ const styles = StyleSheet.create({
   },
   objectIcon: { width: '100%', height: '100%' },
   meta: { flexDirection: 'row', flexWrap: 'wrap', gap: space.md, marginTop: space.md },
-  metaItem: { flexDirection: 'row', alignItems: 'center', gap: 5 },
+  metaItem: { flexDirection: 'row', alignItems: 'center', gap: 5, maxWidth: '100%', flexShrink: 1 },
+  metaText: { flexShrink: 1 },
   visitedDot: {
     position: 'absolute',
     top: space.md,

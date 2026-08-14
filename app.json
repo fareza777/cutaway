@@ -2,7 +2,7 @@
   "expo": {
     "name": "Cutaway",
     "slug": "cutaway",
-    "version": "0.12.0",
+    "version": "0.13.0",
     "orientation": "portrait",
     "scheme": "cutaway",
     "userInterfaceStyle": "dark",
@@ -13,7 +13,7 @@
     ],
     "android": {
       "package": "com.cutaway.explorer",
-      "versionCode": 16,
+      "versionCode": 17,
       "adaptiveIcon": {
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
