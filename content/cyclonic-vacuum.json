@@ -68,9 +68,9 @@
     {
       "id": "bin_seal",
       "nodes": ["bin_seal"],
-      "name": "Bin Seal",
-      "short": "A compressible ring closing the removable separator joint",
-      "detail": "The rubber ring is squeezed between the bin rim and cyclone flange. Leaks here would bypass the intended tangential path, weaken separation, and release dusty air into the body.",
+      "name": "Bin and Filter Seals",
+      "short": "Compressible gaskets closing the separator and both filter frames",
+      "detail": "Rubber seals are squeezed around the bin rim, pre-motor filter, and exhaust filter. They force the air through each filter medium instead of letting it leak around an edge into the body cavity.",
       "layer": 1,
       "explode": [0, 0.75, 0]
     },
@@ -154,7 +154,7 @@
       "layer": 2,
       "explode": [0, -0.7, 0],
       "motion": {
-        "pivot": [1.55, -0.5, 0],
+        "pivot": [1.55, -0.78, 0],
         "spin": { "axis": "z", "ratio": 0.55 }
       }
     },

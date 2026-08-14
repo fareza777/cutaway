@@ -35,9 +35,9 @@
       "detail": "Celah yang benar-benar terbuka menerima inti pusaran yang lebih bersih sambil menahan kotoran besar. Leher di bagian atas berbelok ke belakang menuju filter pertama."
     },
     "bin_seal": {
-      "name": "Paking Tabung",
-      "short": "Cincin lentur yang merapatkan sambungan pemisah",
-      "detail": "Cincin karet terjepit di antara bibir tabung dan flensa siklon. Kebocoran di sini membuat udara melewati jalur tangensial, menurunkan pemisahan, dan membawa debu ke dalam bodi."
+      "name": "Paking Tabung dan Filter",
+      "short": "Paking lentur yang merapatkan pemisah dan kedua bingkai filter",
+      "detail": "Paking karet terjepit di sekeliling bibir tabung, filter pra-motor, dan filter pembuangan. Paking memaksa udara melewati media setiap filter agar tidak bocor lewat tepi ke rongga bodi."
     },
     "pre_motor_filter": {
       "name": "Filter Pra-motor",

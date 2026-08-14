@@ -57,9 +57,17 @@ function bodyGeometry() {
     coloured(cylinder(0.08, 0.08, 0.24, 20, { pos: [0.18, 0.58, 0] }), '#263f48'),
     coloured(cylinder(0.08, 0.08, 0.24, 20, { pos: [1.48, 0.58, 0] }), '#263f48'),
     coloured(cylinder(0.09, 0.09, 0.28, 24, { pos: [-1.42, -0.5, 0] }), '#263f48'),
+    coloured(roundedBox(0.12, 0.35, 0.12, 0.03, 2, { pos: [-1.42, -0.66, -0.13] }), '#263f48'),
+    coloured(roundedBox(0.12, 0.35, 0.12, 0.03, 2, { pos: [-1.42, -0.66, 0.13] }), '#263f48'),
     ...[0.42, 1.03].flatMap((x) => [-0.29, 0.29].map((z) => coloured(roundedBox(0.2, 0.18, 0.18, 0.035, 2, {
       pos: [x, -0.69, z],
     }), '#263f48'))),
+    coloured(curve([
+      [1.55, -0.78, 0.3],
+      [1.72, -0.74, 0.3],
+      [1.95, -0.72, 0.3],
+      [2.18, -0.64, 0.3],
+    ], 0.025, { segments: 24, radial: 6 }), '#151a1d'),
     // Two long shoulder highlights break up the mass without branding or texture.
     ...[-1, 1].map((side) => coloured(roundedBox(1.58, 0.055, 0.025, 0.012, 2, {
       pos: [0.9, 0.54, side * 0.895],
@@ -136,6 +144,18 @@ function shroudGeometry() {
       [-0.34, 0.25, 0],
       [-0.14, 0.08, 0],
     ], 0.14, { segments: 36, radial: 12 }),
+    // A hollow converging neck joins the round cyclone outlet to the rectangular
+    // pre-filter frame.  Both inner and outer profile walls are authored, so the
+    // clean-air stream cannot spill into the surrounding canister cavity.
+    lathe([
+      [0.16, -0.28], [0.4, -0.08], [0.4, 0.02],
+      [0.34, 0.04], [0.12, -0.22], [0.16, -0.28],
+    ], 56, { pos: [0.1, 0.02, 0], rot: [0, 0, -Math.PI / 2] }),
+    // Rectangular neck flange lands continuously on all four gasket sides.
+    roundedBox(0.08, 0.055, 0.86, 0.014, 2, { pos: [-0.08, 0.405, 0] }),
+    roundedBox(0.08, 0.055, 0.86, 0.014, 2, { pos: [-0.08, -0.365, 0] }),
+    roundedBox(0.08, 0.82, 0.055, 0.014, 2, { pos: [-0.08, 0.02, 0.405] }),
+    roundedBox(0.08, 0.82, 0.055, 0.014, 2, { pos: [-0.08, 0.02, -0.405] }),
   ];
   // Open cage rings and narrow uprights make the perforations actual voids.
   for (let index = 0; index < 7; index += 1) {
@@ -155,6 +175,8 @@ function shroudGeometry() {
 
 function pleatedFilter(x, height, depth, count, along = 'y') {
   const parts = [
+    // Continuous porous backing closes the corners behind the visible pleats.
+    box(0.035, height * 0.94, depth * 0.94, { pos: [x, 0.02, 0] }),
     roundedBox(0.1, height + 0.08, 0.055, 0.015, 2, { pos: [x, 0.02, -depth / 2] }),
     roundedBox(0.1, height + 0.08, 0.055, 0.015, 2, { pos: [x, 0.02, depth / 2] }),
     roundedBox(0.1, 0.055, depth, 0.015, 2, { pos: [x, 0.02 - height / 2, 0] }),
@@ -163,18 +185,34 @@ function pleatedFilter(x, height, depth, count, along = 'y') {
   for (let index = 0; index < count; index += 1) {
     const t = index / (count - 1) - 0.5;
     if (along === 'y') {
-      parts.push(box(0.055, height * 0.94, 0.035, {
+      parts.push(box(0.055, height * 0.94, 0.06, {
         pos: [x, 0.02, t * depth * 0.9],
         rot: [index % 2 ? 0.28 : -0.28, 0, 0],
       }));
     } else {
-      parts.push(box(0.055, 0.035, depth * 0.94, {
+      parts.push(box(0.055, 0.06, depth * 0.94, {
         pos: [x, 0.02 + t * height * 0.9, 0],
         rot: [0, 0, index % 2 ? 0.28 : -0.28],
       }));
     }
   }
   return merge(parts);
+}
+
+function sealGeometry() {
+  return merge([
+    torus(0.6, 0.045, 64, 12, { pos: [-0.95, 0.61, 0], rot: [Math.PI / 2, 0, 0] }),
+    // Four-sided pre-motor filter gasket.
+    roundedBox(0.16, 0.055, 0.86, 0.014, 2, { pos: [-0.04, 0.405, 0] }),
+    roundedBox(0.16, 0.055, 0.86, 0.014, 2, { pos: [-0.04, -0.365, 0] }),
+    roundedBox(0.16, 0.82, 0.055, 0.014, 2, { pos: [-0.04, 0.02, 0.405] }),
+    roundedBox(0.16, 0.82, 0.055, 0.014, 2, { pos: [-0.04, 0.02, -0.405] }),
+    // Four-sided final-filter gasket between the motor casing and plenum.
+    roundedBox(0.16, 0.055, 0.96, 0.014, 2, { pos: [1.25, 0.445, 0] }),
+    roundedBox(0.16, 0.055, 0.96, 0.014, 2, { pos: [1.25, -0.405, 0] }),
+    roundedBox(0.16, 0.9, 0.055, 0.014, 2, { pos: [1.25, 0.02, 0.45] }),
+    roundedBox(0.16, 0.9, 0.055, 0.014, 2, { pos: [1.25, 0.02, -0.45] }),
+  ]);
 }
 
 function statorGeometry() {
@@ -228,6 +266,14 @@ function impellerGeometry() {
 
 function mountGeometry() {
   return merge([
+    // Closed annular motor casing: the only forward-to-rear free volume is
+    // inside this duct, through the impeller and motor.
+    tube(0.47, 0.44, 1.18, 56, { pos: [0.63, 0.02, 0], rot: [0, 0, Math.PI / 2] }),
+    // Matching front flange compresses the pre-filter gasket against the neck.
+    roundedBox(0.08, 0.055, 0.86, 0.014, 2, { pos: [0, 0.405, 0] }),
+    roundedBox(0.08, 0.055, 0.86, 0.014, 2, { pos: [0, -0.365, 0] }),
+    roundedBox(0.08, 0.82, 0.055, 0.014, 2, { pos: [0, 0.02, 0.405] }),
+    roundedBox(0.08, 0.82, 0.055, 0.014, 2, { pos: [0, 0.02, -0.405] }),
     torus(0.44, 0.035, 42, 8, { pos: [0.42, 0.02, 0], rot: [0, Math.PI / 2, 0] }),
     torus(0.44, 0.035, 42, 8, { pos: [1.03, 0.02, 0], rot: [0, Math.PI / 2, 0] }),
     roundedBox(0.18, 0.47, 0.16, 0.045, 2, { pos: [0.42, -0.51, -0.29] }),
@@ -240,13 +286,16 @@ function mountGeometry() {
 
 function ventGeometry() {
   const parts = [
-    roundedBox(0.42, 0.92, 1.18, 0.16, 3, { pos: [2.13, 0.02, 0] }),
-    roundedBox(0.28, 0.82, 1.08, 0.12, 3, { pos: [1.48, 0.02, 0] }),
+    // Four connected walls form a real hollow plenum from the final filter to
+    // the rear grille.  Its lower wall stays clear of the isolated cord bay.
+    roundedBox(1.2, 0.07, 1.02, 0.025, 2, { pos: [1.82, 0.455, 0] }),
+    roundedBox(1.2, 0.07, 1.02, 0.025, 2, { pos: [1.82, -0.415, 0] }),
+    roundedBox(1.2, 0.94, 0.07, 0.025, 2, { pos: [1.82, 0.02, 0.475] }),
+    roundedBox(1.2, 0.94, 0.07, 0.025, 2, { pos: [1.82, 0.02, -0.475] }),
   ];
-  for (let index = 0; index < 9; index += 1) {
+  for (const y of [-0.3, -0.18, -0.06, 0.06, 0.18, 0.3]) {
     parts.push(roundedBox(0.08, 0.045, 0.9, 0.014, 2, {
-      pos: [2.37, -0.3 + index * 0.08, 0],
-      rot: [0, 0, -0.08],
+      pos: [2.4, y, 0],
     }));
   }
   return merge(parts);
@@ -254,11 +303,10 @@ function ventGeometry() {
 
 function reelGeometry() {
   return merge([
-    cylinder(0.25, 0.25, 0.58, 48, { pos: [1.55, -0.5, 0], rot: [Math.PI / 2, 0, 0] }),
-    cylinder(0.12, 0.12, 0.7, 32, { pos: [1.55, -0.5, 0], rot: [Math.PI / 2, 0, 0] }),
-    torus(0.23, 0.028, 40, 8, { pos: [1.55, -0.5, -0.3] }),
-    torus(0.23, 0.028, 40, 8, { pos: [1.55, -0.5, 0.3] }),
-    curve([[1.55, -0.27, 0.25], [1.78, -0.32, 0.25], [2.0, -0.48, 0.25]], 0.025, { segments: 22, radial: 6 }),
+    cylinder(0.2, 0.2, 0.58, 48, { pos: [1.55, -0.78, 0], rot: [Math.PI / 2, 0, 0] }),
+    cylinder(0.1, 0.1, 0.7, 32, { pos: [1.55, -0.78, 0], rot: [Math.PI / 2, 0, 0] }),
+    torus(0.18, 0.028, 40, 8, { pos: [1.55, -0.78, -0.3] }),
+    torus(0.18, 0.028, 40, 8, { pos: [1.55, -0.78, 0.3] }),
   ]);
 }
 
@@ -278,9 +326,6 @@ function casterGeometry() {
   return merge([
     torus(0.25, 0.09, 40, 10, { pos: [-1.42, -0.94, 0] }),
     cylinder(0.17, 0.17, 0.13, 32, { pos: [-1.42, -0.94, 0], rot: [Math.PI / 2, 0, 0] }),
-    roundedBox(0.12, 0.35, 0.09, 0.03, 2, { pos: [-1.42, -0.66, -0.19], rot: [0.18, 0, 0] }),
-    roundedBox(0.12, 0.35, 0.09, 0.03, 2, { pos: [-1.42, -0.66, 0.19], rot: [-0.18, 0, 0] }),
-    cylinder(0.08, 0.08, 0.23, 28, { pos: [-1.42, -0.49, 0] }),
   ]);
 }
 
@@ -293,7 +338,7 @@ export default function cyclonicVacuum() {
     part('dust_bin', binGeometry(), CLEAR()),
     part('cyclone_cone', coneGeometry(), CYCLONE()),
     part('cyclone_shroud', shroudGeometry(), SHROUD()),
-    part('bin_seal', torus(0.6, 0.045, 64, 12, { pos: [-0.95, 0.61, 0], rot: [Math.PI / 2, 0, 0] }), RUBBER()),
+    part('bin_seal', sealGeometry(), RUBBER()),
     part('pre_motor_filter', pleatedFilter(-0.04, 0.72, 0.72, 17, 'y'), FILTER()),
     part('motor_stator', statorGeometry(), STATOR()),
     part('motor_rotor', rotorGeometry(), ROTOR()),

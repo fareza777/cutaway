@@ -109,6 +109,89 @@ function raysThrough(mesh: THREE.Mesh, origins: THREE.Vector3[], direction: THRE
   return origins.map((origin) => new THREE.Raycaster(origin, direction, 0, 4).intersectObject(mesh, false).length);
 }
 
+type ComponentStats = {
+  box: THREE.Box3;
+  vertexCount: number;
+  points: THREE.Vector3[];
+};
+
+function geometryComponents(mesh: THREE.Mesh): ComponentStats[] {
+  const position = mesh.geometry.getAttribute('position');
+  const index = mesh.geometry.getIndex();
+  const parent = Array.from({ length: position.count }, (_, value) => value);
+  const find = (value: number): number => {
+    let root = value;
+    while (parent[root] !== root) root = parent[root];
+    while (parent[value] !== value) {
+      const next = parent[value];
+      parent[value] = root;
+      value = next;
+    }
+    return root;
+  };
+  const union = (a: number, b: number) => {
+    const ar = find(a);
+    const br = find(b);
+    if (ar !== br) parent[br] = ar;
+  };
+  const indices = index
+    ? Array.from(index.array as ArrayLike<number>, Number)
+    : Array.from({ length: position.count }, (_, value) => value);
+  for (let offset = 0; offset < indices.length; offset += 3) {
+    union(indices[offset], indices[offset + 1]);
+    union(indices[offset], indices[offset + 2]);
+  }
+  const coincident = new Map<string, number>();
+  for (let vertex = 0; vertex < position.count; vertex += 1) {
+    const key = `${position.getX(vertex).toFixed(4)},${position.getY(vertex).toFixed(4)},${position.getZ(vertex).toFixed(4)}`;
+    const existing = coincident.get(key);
+    if (existing === undefined) coincident.set(key, vertex);
+    else union(existing, vertex);
+  }
+  const components = new Map<number, ComponentStats>();
+  const point = new THREE.Vector3();
+  for (let vertex = 0; vertex < position.count; vertex += 1) {
+    const root = find(vertex);
+    let component = components.get(root);
+    if (!component) {
+      component = { box: new THREE.Box3(), vertexCount: 0, points: [] };
+      components.set(root, component);
+    }
+    point.fromBufferAttribute(position, vertex);
+    component.box.expandByPoint(point);
+    component.vertexCount += 1;
+    component.points.push(point.clone());
+  }
+  return [...components.values()].filter((component) => component.vertexCount >= 4);
+}
+
+const componentSize = (component: ComponentStats) => component.box.getSize(new THREE.Vector3());
+const componentCentre = (component: ComponentStats) => component.box.getCenter(new THREE.Vector3());
+
+function boxClearance(a: THREE.Box3, b: THREE.Box3) {
+  const dx = Math.max(a.min.x - b.max.x, b.min.x - a.max.x, 0);
+  const dy = Math.max(a.min.y - b.max.y, b.min.y - a.max.y, 0);
+  const dz = Math.max(a.min.z - b.max.z, b.min.z - a.max.z, 0);
+  return Math.hypot(dx, dy, dz);
+}
+
+function componentsFormConnectedAssembly(components: ComponentStats[], tolerance = 0.015) {
+  if (!components.length) return false;
+  const reached = new Set([0]);
+  const pending = [0];
+  while (pending.length) {
+    const current = pending.pop()!;
+    for (let candidate = 0; candidate < components.length; candidate += 1) {
+      if (reached.has(candidate)) continue;
+      if (boxClearance(components[current].box, components[candidate].box) <= tolerance) {
+        reached.add(candidate);
+        pending.push(candidate);
+      }
+    }
+  }
+  return reached.size === components.length;
+}
+
 async function run() {
   console.log('\nCyclonic vacuum cleaner quality contract');
 
@@ -227,6 +310,60 @@ async function run() {
   check('exhaust filter spans the motor discharge before the vent', size(exhaustFilter).y >= size(stator).y * 0.72 && size(exhaustFilter).z >= size(stator).z * 0.72 && centre(exhaustFilter).x > bounds(stator).max.x - 0.08);
   check('both filters have real repeated pleat geometry', verticesIn(prefilter, (point) => Math.abs(point.y - centre(prefilter).y) > size(prefilter).y * 0.35) >= 120 && verticesIn(exhaustFilter, (point) => Math.abs(point.z - centre(exhaustFilter).z) > size(exhaustFilter).z * 0.35) >= 120);
 
+  const filterStreamOffsets = [-0.22, 0, 0.22].flatMap((y) => [-0.22, 0, 0.22].map((z) => [y, z]));
+  const prefilterStreamHits = filterStreamOffsets.map(([y, z]) => new THREE.Raycaster(
+    new THREE.Vector3(-0.28, 0.02 + y, z), new THREE.Vector3(1, 0, 0), 0, 0.5,
+  ).intersectObject(prefilter, false).length);
+  const exhaustStreamHits = filterStreamOffsets.map(([y, z]) => new THREE.Raycaster(
+    new THREE.Vector3(1.02, 0.02 + y, z), new THREE.Vector3(1, 0, 0), 0, 0.5,
+  ).intersectObject(exhaustFilter, false).length);
+  check('every sampled inlet-duct stream crosses pre-motor filter medium', prefilterStreamHits.every((hits) => hits >= 1), prefilterStreamHits.join(', '));
+  check('every sampled motor-discharge stream crosses exhaust filter medium', exhaustStreamHits.every((hits) => hits >= 1), exhaustStreamHits.join(', '));
+
+  const prefilterSealPoints = [
+    ...[-0.28, 0, 0.28].flatMap((z) => [[0.405, z], [-0.365, z]]),
+    ...[-0.24, 0.02, 0.28].flatMap((y) => [[y, 0.405], [y, -0.405]]),
+  ];
+  const exhaustSealPoints = [
+    ...[-0.32, 0, 0.32].flatMap((z) => [[0.445, z], [-0.405, z]]),
+    ...[-0.26, 0.02, 0.3].flatMap((y) => [[y, 0.45], [y, -0.45]]),
+  ];
+  const prefilterSealHits = prefilterSealPoints.map(([y, z]) => new THREE.Raycaster(
+    new THREE.Vector3(-0.25, y, z), new THREE.Vector3(1, 0, 0), 0, 0.42,
+  ).intersectObject(seal, false).length);
+  const exhaustSealHits = exhaustSealPoints.map(([y, z]) => new THREE.Raycaster(
+    new THREE.Vector3(1.02, y, z), new THREE.Vector3(1, 0, 0), 0, 0.46,
+  ).intersectObject(seal, false).length);
+  check('pre-motor filter has a four-sided compressible perimeter seal', prefilterSealHits.every((hits) => hits >= 1), prefilterSealHits.join(', '));
+  check('exhaust filter has a four-sided compressible perimeter seal', exhaustSealHits.every((hits) => hits >= 1), exhaustSealHits.join(', '));
+
+  const mount = byName.get('motor_mount')!;
+  const shroudSealDistance = nearestVertexDistance(shroud, seal);
+  const mountSealDistance = nearestVertexDistance(mount, seal);
+  check('cyclone neck and motor duct walls close onto the prefilter seal', shroudSealDistance <= 0.04 && mountSealDistance <= 0.04, `neck ${shroudSealDistance.toFixed(3)}, motor duct ${mountSealDistance.toFixed(3)}`);
+  const mountFilterDistance = nearestVertexDistance(mount, exhaustFilter);
+  const ventSealDistance = nearestVertexDistance(vent, seal);
+  check('motor discharge housing and exhaust plenum close onto the final seal', mountFilterDistance <= 0.04 && ventSealDistance <= 0.04, `motor duct ${mountFilterDistance.toFixed(3)}, plenum ${ventSealDistance.toFixed(3)}`);
+
+  const openVentY = [-0.24, -0.12, 0, 0.12, 0.24];
+  const openVentRays = openVentY.map((y) => new THREE.Raycaster(
+    new THREE.Vector3(2.58, y, 0), new THREE.Vector3(-1, 0, 0), 0, 1.45,
+  ).intersectObject(vent, false).length);
+  const louverRays = [-0.3, -0.18, -0.06, 0.06, 0.18, 0.3].map((y) => new THREE.Raycaster(
+    new THREE.Vector3(2.58, y, 0), new THREE.Vector3(-1, 0, 0), 0, 0.35,
+  ).intersectObject(vent, false).length);
+  check('rear exhaust has multiple true through-slots into the hollow plenum', openVentRays.every((hits) => hits === 0), openVentRays.join(', '));
+  check('solid louvers alternate with the real exhaust openings', louverRays.every((hits) => hits >= 1), louverRays.join(', '));
+  const plenumBoundaryHits = [1.35, 1.8, 2.25].flatMap((x) => [
+    new THREE.Raycaster(new THREE.Vector3(x, 0.02, 0), new THREE.Vector3(0, 1, 0), 0, 0.7).intersectObject(vent, false).length,
+    new THREE.Raycaster(new THREE.Vector3(x, 0.02, 0), new THREE.Vector3(0, -1, 0), 0, 0.7).intersectObject(vent, false).length,
+    new THREE.Raycaster(new THREE.Vector3(x, 0.02, 0), new THREE.Vector3(0, 0, 1), 0, 0.7).intersectObject(vent, false).length,
+    new THREE.Raycaster(new THREE.Vector3(x, 0.02, 0), new THREE.Vector3(0, 0, -1), 0, 0.7).intersectObject(vent, false).length,
+  ]);
+  check('exhaust plenum has four sealed duct walls along its full length', plenumBoundaryHits.every((hits) => hits >= 1), plenumBoundaryHits.join(', '));
+  const ventComponents = geometryComponents(vent);
+  check('plenum walls and louvers form one physically connected vent assembly', ventComponents.length >= 7 && componentsFormConnectedAssembly(ventComponents), `${ventComponents.length} components`);
+
   const motorAxis = centre(rotor);
   const impellerCentre = centre(impeller);
   const statorCentre = centre(stator);
@@ -234,10 +371,14 @@ async function run() {
   check('rotor is contained by the stator with running clearance', size(rotor).y < size(stator).y && size(rotor).z < size(stator).z && size(stator).y - size(rotor).y >= 0.1 && size(stator).y - size(rotor).y <= 0.42);
   check('impeller is broad and thin on the motor shaft', size(impeller).x <= size(impeller).y * 0.42 && Math.abs(size(impeller).y - size(impeller).z) <= 0.03);
 
-  const mount = byName.get('motor_mount')!;
   check('motor mount supports the stator and ties it to the body', nearestVertexDistance(mount, stator) <= 0.08 && nearestVertexDistance(mount, byName.get('outer_body')!) <= 0.16);
   const reel = byName.get('cord_reel')!;
   check('cord reel is enclosed low in the rear body without colliding with the motor', bounds(reel).min.x > bodyBox.min.x && bounds(reel).max.x < bodyBox.max.x && bounds(reel).min.y > bodyBox.min.y && bounds(reel).max.y < bodyBox.max.y && nearestVertexDistance(reel, stator) >= 0.09);
+  const reelPlenumClearance = boxClearance(bounds(reel), bounds(vent));
+  check('cord reel has explicit noncollision clearance below the exhaust plenum', reelPlenumClearance >= 0.075, `${reelPlenumClearance.toFixed(3)} units`);
+  const reelCentre = centre(reel);
+  const reelSize = size(reel);
+  check('animated cord reel contains only a balanced coaxial rotating drum', Math.hypot(reelCentre.x - 1.55, reelCentre.y + 0.78) <= 0.012 && Math.abs(reelSize.x - reelSize.y) <= 0.025 && reelSize.x <= 0.46 && reelSize.z <= 0.72, `centre ${reelCentre.x.toFixed(3)}, ${reelCentre.y.toFixed(3)}; size ${reelSize.x.toFixed(3)} x ${reelSize.y.toFixed(3)} x ${reelSize.z.toFixed(3)}`);
 
   const handle = byName.get('carry_handle')!;
   const handleBox = bounds(handle);
@@ -253,6 +394,29 @@ async function run() {
   check('substantial main wheels touch the same ground plane', size(mainWheels).y >= bodySize.y * 0.42 && Math.abs(mainBox.min.y - ground) <= 0.025 && verticesIn(mainWheels, (point) => point.y <= ground + 0.035) >= 12);
   check('front caster shares ground contact and sits ahead of the main axle', Math.abs(casterBox.min.y - ground) <= 0.025 && centre(caster).x < centre(mainWheels).x - 1.2 && verticesIn(caster, (point) => point.y <= ground + 0.035) >= 6);
   check('main wheels and caster are attached beneath the closed shell', nearestVertexDistance(mainWheels, byName.get('outer_body')!) <= 0.09 && nearestVertexDistance(caster, byName.get('outer_body')!) <= 0.09);
+  check('animated caster mesh contains rolling wheel and hub only', Math.abs(size(caster).x - size(caster).y) <= 0.025 && size(caster).z <= 0.2 && centre(caster).distanceTo(new THREE.Vector3(-1.42, -0.94, 0)) <= 0.01, `${size(caster).x.toFixed(3)} x ${size(caster).y.toFixed(3)} x ${size(caster).z.toFixed(3)}`);
+
+  const bodyComponents = geometryComponents(byName.get('outer_body')!);
+  const stationaryForks = bodyComponents.filter((component) => {
+    const componentBox = component.box;
+    const componentPartSize = componentSize(component);
+    const componentPartCentre = componentCentre(component);
+    return Math.abs(componentPartCentre.x + 1.42) <= 0.08
+      && componentPartCentre.y >= -0.72 && componentPartCentre.y <= -0.58
+      && Math.abs(Math.abs(componentPartCentre.z) - 0.13) <= 0.06
+      && componentPartSize.y >= 0.28 && componentPartSize.y <= 0.42
+      && componentPartSize.z >= 0.09 && componentPartSize.z <= 0.17
+      && componentBox.min.y < -0.8;
+  });
+  check('stationary body owns two caster fork legs attached around the axle', stationaryForks.length === 2 && stationaryForks.every((component) => boxClearance(component.box, casterBox) <= 0.03), `${stationaryForks.length} fork components`);
+  const fixedCableComponents = bodyComponents.filter((component) => {
+    const componentPartSize = componentSize(component);
+    const componentPartCentre = componentCentre(component);
+    return componentPartCentre.x > 1.65 && componentPartCentre.y < -0.58
+      && componentPartSize.x >= 0.42 && componentPartSize.x <= 0.85
+      && componentPartSize.y <= 0.22 && componentPartSize.z <= 0.12;
+  });
+  check('fixed cable tail and anchor live in stationary body geometry', fixedCableComponents.length === 1 && boxClearance(fixedCableComponents[0].box, bounds(reel)) <= 0.04, `${fixedCableComponents.length} fixed cable components`);
 
   const triangles = triangleCount(productionMeshes);
   const recipeTriangles = triangleCount(recipeMeshes);
@@ -279,7 +443,7 @@ async function run() {
   const expectedPivots: Record<string, { pivot: [number, number, number]; axis: string; ratio: number }> = {
     motor_rotor: { pivot: [0.72, 0.02, 0], axis: 'x', ratio: 10 },
     impeller: { pivot: [0.24, 0.02, 0], axis: 'x', ratio: 10 },
-    cord_reel: { pivot: [1.55, -0.5, 0], axis: 'z', ratio: 0.55 },
+    cord_reel: { pivot: [1.55, -0.78, 0], axis: 'z', ratio: 0.55 },
     main_wheels: { pivot: [0.86, -0.76, 0], axis: 'z', ratio: 0.8 },
     caster_wheel: { pivot: [-1.42, -0.94, 0], axis: 'z', ratio: 1.2 },
   };
@@ -320,6 +484,17 @@ async function run() {
   const rotorQuaternion = assembly.byId.get('motor_rotor')!.group.quaternion;
   const impellerQuaternion = assembly.byId.get('impeller')!.group.quaternion;
   check('runtime rotor and impeller remain phase-locked', rotorQuaternion.angleTo(impellerQuaternion) <= 1e-6);
+  const stationaryBody = assembly.byId.get('outer_body')!;
+  assembly.setCycle(0);
+  assembly.refreshWorld();
+  const bodyMatrixAtRest = stationaryBody.group.matrixWorld.clone();
+  let stationaryMatrixDrift = 0;
+  for (const cycle of [0.41, 1.37, 2.79]) {
+    assembly.setCycle(cycle);
+    assembly.refreshWorld();
+    stationaryMatrixDrift = Math.max(stationaryMatrixDrift, ...stationaryBody.group.matrixWorld.elements.map((value, index) => Math.abs(value - bodyMatrixAtRest.elements[index])));
+  }
+  check('caster fork and cable anchor remain stationary while wheel and drum rotate', stationaryMatrixDrift <= 1e-8, `${stationaryMatrixDrift.toFixed(9)} matrix drift`);
   assembly.dispose();
 
   check('Indonesian overlay translates all top-level prose', Boolean(overlay.title && overlay.subtitle && overlay.summary && overlay.scale));
