@@ -41,9 +41,14 @@ const coloured = (geometry, hex) => paint(geometry, () => srgb(hex));
 
 function bodyGeometry() {
   return merge([
-    coloured(roundedBox(2.72, 1.38, 1.78, 0.32, 4, { pos: [0.88, -0.05, 0] }), '#345b68'),
-    coloured(roundedBox(0.92, 1.2, 1.66, 0.28, 4, { pos: [1.92, -0.09, 0] }), '#2b4d59'),
-    coloured(roundedBox(2.8, 0.34, 1.66, 0.14, 3, { pos: [0.88, -0.72, 0] }), '#203943'),
+    coloured(roundedBox(1.68, 1.38, 1.78, 0.32, 4, { pos: [0.36, -0.05, 0] }), '#345b68'),
+    // The rear shell is a frame around the grille, not a solid block behind it.
+    // These upper and side shoulders preserve the closed canister silhouette
+    // while leaving the plenum's central outlet paths genuinely open.
+    coloured(roundedBox(1.25, 0.38, 1.66, 0.14, 3, { pos: [1.8, 0.5, 0] }), '#2b4d59'),
+    coloured(roundedBox(1.25, 1.22, 0.26, 0.1, 3, { pos: [1.8, -0.08, -0.75] }), '#2b4d59'),
+    coloured(roundedBox(1.25, 1.22, 0.26, 0.1, 3, { pos: [1.8, -0.08, 0.75] }), '#2b4d59'),
+    coloured(roundedBox(1.7, 0.34, 1.66, 0.14, 3, { pos: [0.33, -0.72, 0] }), '#203943'),
     // The front saddle receives the removable bin and leaves its clear wall visible.
     coloured(torus(0.68, 0.075, 64, 14, { pos: [-0.43, -0.08, 0], rot: [0, Math.PI / 2, 0] }), '#466e79'),
     coloured(roundedBox(0.48, 0.54, 1.5, 0.12, 3, { pos: [-0.35, -0.47, 0] }), '#315560'),
@@ -63,11 +68,20 @@ function bodyGeometry() {
       pos: [x, -0.69, z],
     }), '#263f48'))),
     coloured(curve([
-      [1.55, -0.78, 0.3],
-      [1.72, -0.74, 0.3],
-      [1.95, -0.72, 0.3],
-      [2.18, -0.64, 0.3],
+      [1.55, -0.69, 0.3],
+      [1.72, -0.68, 0.3],
+      [1.95, -0.67, 0.3],
+      [2.18, -0.62, 0.3],
     ], 0.025, { segments: 24, radial: 6 }), '#151a1d'),
+    // Six thin stationary walls form a local cord bay.  Unlike the former
+    // global-AABB containment, these surfaces enclose the drum at its station
+    // with clearance on every side and isolate it below the exhaust plenum.
+    coloured(roundedBox(0.74, 0.04, 0.79, 0.014, 2, { pos: [1.55, -0.495, 0] }), '#203943'),
+    coloured(roundedBox(0.74, 0.05, 0.79, 0.014, 2, { pos: [1.55, -0.9, 0] }), '#203943'),
+    coloured(roundedBox(0.74, 0.43, 0.05, 0.014, 2, { pos: [1.55, -0.7, -0.39] }), '#203943'),
+    coloured(roundedBox(0.74, 0.43, 0.05, 0.014, 2, { pos: [1.55, -0.7, 0.39] }), '#203943'),
+    coloured(roundedBox(0.05, 0.43, 0.79, 0.014, 2, { pos: [1.27, -0.7, 0] }), '#203943'),
+    coloured(roundedBox(0.05, 0.43, 0.79, 0.014, 2, { pos: [1.83, -0.7, 0] }), '#203943'),
     // Two long shoulder highlights break up the mass without branding or texture.
     ...[-1, 1].map((side) => coloured(roundedBox(1.58, 0.055, 0.025, 0.012, 2, {
       pos: [0.9, 0.54, side * 0.895],
@@ -303,10 +317,10 @@ function ventGeometry() {
 
 function reelGeometry() {
   return merge([
-    cylinder(0.2, 0.2, 0.58, 48, { pos: [1.55, -0.78, 0], rot: [Math.PI / 2, 0, 0] }),
-    cylinder(0.1, 0.1, 0.7, 32, { pos: [1.55, -0.78, 0], rot: [Math.PI / 2, 0, 0] }),
-    torus(0.18, 0.028, 40, 8, { pos: [1.55, -0.78, -0.3] }),
-    torus(0.18, 0.028, 40, 8, { pos: [1.55, -0.78, 0.3] }),
+    cylinder(0.13, 0.13, 0.58, 48, { pos: [1.55, -0.69, 0], rot: [Math.PI / 2, 0, 0] }),
+    cylinder(0.07, 0.07, 0.7, 32, { pos: [1.55, -0.69, 0], rot: [Math.PI / 2, 0, 0] }),
+    torus(0.12, 0.025, 40, 8, { pos: [1.55, -0.69, -0.3] }),
+    torus(0.12, 0.025, 40, 8, { pos: [1.55, -0.69, 0.3] }),
   ]);
 }
 

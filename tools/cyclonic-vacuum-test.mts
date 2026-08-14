@@ -354,6 +354,13 @@ async function run() {
   ).intersectObject(vent, false).length);
   check('rear exhaust has multiple true through-slots into the hollow plenum', openVentRays.every((hits) => hits === 0), openVentRays.join(', '));
   check('solid louvers alternate with the real exhaust openings', louverRays.every((hits) => hits >= 1), louverRays.join(', '));
+  const nonPorousOutletMeshes = productionMeshes.filter((mesh) => ![
+    'pre_motor_filter', 'exhaust_filter', 'cyclone_shroud',
+  ].includes(mesh.name));
+  const outletBlockers = openVentY.flatMap((y) => [-0.25, 0, 0.25].map((z) => new THREE.Raycaster(
+    new THREE.Vector3(2.58, y, z), new THREE.Vector3(-1, 0, 0), 0, 1.2,
+  ).intersectObjects(nonPorousOutletMeshes, false).map((hit) => hit.object.name)));
+  check('every rear slot opens from the plenum through the complete closed assembly', outletBlockers.every((names) => names.length === 0), outletBlockers.map((names) => names.join('+') || 'open').join(', '));
   const plenumBoundaryHits = [1.35, 1.8, 2.25].flatMap((x) => [
     new THREE.Raycaster(new THREE.Vector3(x, 0.02, 0), new THREE.Vector3(0, 1, 0), 0, 0.7).intersectObject(vent, false).length,
     new THREE.Raycaster(new THREE.Vector3(x, 0.02, 0), new THREE.Vector3(0, -1, 0), 0, 0.7).intersectObject(vent, false).length,
@@ -373,12 +380,36 @@ async function run() {
 
   check('motor mount supports the stator and ties it to the body', nearestVertexDistance(mount, stator) <= 0.08 && nearestVertexDistance(mount, byName.get('outer_body')!) <= 0.16);
   const reel = byName.get('cord_reel')!;
-  check('cord reel is enclosed low in the rear body without colliding with the motor', bounds(reel).min.x > bodyBox.min.x && bounds(reel).max.x < bodyBox.max.x && bounds(reel).min.y > bodyBox.min.y && bounds(reel).max.y < bodyBox.max.y && nearestVertexDistance(reel, stator) >= 0.09);
-  const reelPlenumClearance = boxClearance(bounds(reel), bounds(vent));
+  const reelBox = bounds(reel);
+  check('cord reel is enclosed low in the rear body without colliding with the motor', reelBox.min.x > bodyBox.min.x && reelBox.max.x < bodyBox.max.x && reelBox.min.y > bodyBox.min.y && reelBox.max.y < bodyBox.max.y && nearestVertexDistance(reel, stator) >= 0.09);
+  const reelPlenumClearance = boxClearance(reelBox, bounds(vent));
   check('cord reel has explicit noncollision clearance below the exhaust plenum', reelPlenumClearance >= 0.075, `${reelPlenumClearance.toFixed(3)} units`);
   const reelCentre = centre(reel);
   const reelSize = size(reel);
-  check('animated cord reel contains only a balanced coaxial rotating drum', Math.hypot(reelCentre.x - 1.55, reelCentre.y + 0.78) <= 0.012 && Math.abs(reelSize.x - reelSize.y) <= 0.025 && reelSize.x <= 0.46 && reelSize.z <= 0.72, `centre ${reelCentre.x.toFixed(3)}, ${reelCentre.y.toFixed(3)}; size ${reelSize.x.toFixed(3)} x ${reelSize.y.toFixed(3)} x ${reelSize.z.toFixed(3)}`);
+  check('animated cord reel contains only a balanced coaxial rotating drum', Math.hypot(reelCentre.x - 1.55, reelCentre.y + 0.69) <= 0.012 && Math.abs(reelSize.x - reelSize.y) <= 0.025 && reelSize.x <= 0.34 && reelSize.z <= 0.72, `centre ${reelCentre.x.toFixed(3)}, ${reelCentre.y.toFixed(3)}; size ${reelSize.x.toFixed(3)} x ${reelSize.y.toFixed(3)} x ${reelSize.z.toFixed(3)}`);
+  const body = byName.get('outer_body')!;
+  const bodyMaterial = body.material as THREE.Material;
+  const originalBodySide = bodyMaterial.side;
+  bodyMaterial.side = THREE.DoubleSide;
+  const reelRadii = [
+    reelBox.max.x - reelCentre.x, reelCentre.x - reelBox.min.x,
+    reelBox.max.y - reelCentre.y, reelCentre.y - reelBox.min.y,
+    reelBox.max.z - reelCentre.z, reelCentre.z - reelBox.min.z,
+  ];
+  const enclosureDirections = [
+    new THREE.Vector3(1, 0, 0), new THREE.Vector3(-1, 0, 0),
+    new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, -1, 0),
+    new THREE.Vector3(0, 0, 1), new THREE.Vector3(0, 0, -1),
+  ];
+  const enclosureOrigins = enclosureDirections.map((_, index) => index >= 4
+    ? new THREE.Vector3(reelCentre.x - 0.12, reelCentre.y, reelCentre.z)
+    : reelCentre);
+  const localBayClearances = enclosureDirections.map((direction, index) => {
+    const hit = new THREE.Raycaster(enclosureOrigins[index], direction, 0.001, 0.55).intersectObject(body, false)[0];
+    return hit ? hit.distance - reelRadii[index] : Number.POSITIVE_INFINITY;
+  });
+  bodyMaterial.side = originalBodySide;
+  check('a local six-sided stationary cord bay encloses the reel with running clearance', localBayClearances.every((clearance) => clearance >= 0.012 && clearance <= 0.12), localBayClearances.map((clearance) => Number.isFinite(clearance) ? clearance.toFixed(3) : 'open').join(', '));
 
   const handle = byName.get('carry_handle')!;
   const handleBox = bounds(handle);
@@ -443,7 +474,7 @@ async function run() {
   const expectedPivots: Record<string, { pivot: [number, number, number]; axis: string; ratio: number }> = {
     motor_rotor: { pivot: [0.72, 0.02, 0], axis: 'x', ratio: 10 },
     impeller: { pivot: [0.24, 0.02, 0], axis: 'x', ratio: 10 },
-    cord_reel: { pivot: [1.55, -0.78, 0], axis: 'z', ratio: 0.55 },
+    cord_reel: { pivot: [1.55, -0.69, 0], axis: 'z', ratio: 0.55 },
     main_wheels: { pivot: [0.86, -0.76, 0], axis: 'z', ratio: 0.8 },
     caster_wheel: { pivot: [-1.42, -0.94, 0], axis: 'z', ratio: 1.2 },
   };
