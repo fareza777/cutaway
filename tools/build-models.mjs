@@ -38,6 +38,7 @@ import washingMachine from './models/washing_machine.mjs';
 import microwave from './models/microwave.mjs';
 import riceCooker from './models/rice_cooker.mjs';
 import mechanicalWatch from './models/mechanical_watch.mjs';
+import cordlessDrill from './models/cordless_drill.mjs';
 import airConditioner from './models/air_conditioner.mjs';
 import heart from './models/heart.mjs';
 import rocketEngine from './models/rocket_engine.mjs';
@@ -67,6 +68,7 @@ const RECIPES = {
   microwave,
   rice_cooker: riceCooker,
   mechanical_watch: mechanicalWatch,
+  cordless_drill: cordlessDrill,
   air_conditioner: airConditioner,
   heart,
   rocket_engine: rocketEngine,
