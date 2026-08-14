@@ -169,7 +169,7 @@ const id: Record<Key, string> = {
   'welcome.start': 'Mulai menjelajah',
 
   'explorer.back': 'Kembali ke pustaka',
-  'explorer.autoRotate': 'Aktifkan atau matikan putar otomatis',
+  'explorer.autoRotate': 'Aktifkan atau nonaktifkan rotasi otomatis',
   'explorer.reset': 'Atur ulang tampilan',
   'explorer.loading': 'Memuat {name}…',
   'explorer.notFound': 'Objek ini tidak ditemukan di pustaka.',
@@ -227,8 +227,8 @@ const id: Record<Key, string> = {
   'quiz.leave': 'Keluar dari kuis',
   'quiz.none': 'Belum ada kuis untuk objek ini.',
   'quiz.perfect': 'Semua jawaban benar. Anda memahami objek ini.',
-  'quiz.good': 'Bagus. Tinjau kembali bagian yang masih terlewat.',
-  'quiz.poor': 'Pelajari lagi cara kerjanya, lalu coba kembali.',
+  'quiz.good': 'Bagus. Tinjau kembali bagian yang belum dikuasai.',
+  'quiz.poor': 'Pelajari lagi cara kerjanya, lalu coba lagi.',
 
   'saved.title': 'Tersimpan',
   'saved.empty': 'Belum ada bagian tersimpan. Ketuk ikon penanda pada suatu bagian untuk menyimpannya di sini.',

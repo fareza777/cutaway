@@ -1,4 +1,5 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import ts from 'typescript';
@@ -31,10 +32,12 @@ type ObjectDoc = {
   id: string;
   title: string;
   subtitle: string;
+  category: string;
+  accent: string;
   summary: string;
   scale?: string;
   model: string;
-  parts: Array<{ id: string; name: string; short: string; detail: string }>;
+  parts: Array<{ id: string; name: string; short: string; detail: string; hidden?: boolean }>;
   steps: Array<{ title: string; body: string }>;
   quiz: Array<ChoiceQuestion | IdentifyQuestion>;
 };
@@ -44,6 +47,32 @@ type IconMetric = {
 };
 
 type ProsePair = { path: string; english: string; indonesian: string };
+
+type RegistryExpectation = {
+  id: string;
+  model: string;
+};
+
+type RegistryTuple = {
+  docPath: string | null;
+  modelPath: string | null;
+  idTranslationPath: string | null;
+};
+
+type RuntimeSummary = {
+  id: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  accent: string;
+  summary: string;
+  scale?: string;
+  partCount: number;
+};
+
+type RuntimeRegistry = {
+  getLibrary(locale: 'id'): RuntimeSummary[];
+};
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const CONTENT = resolve(ROOT, 'content');
@@ -57,6 +86,38 @@ const TOP_LEVEL_OVERLAY_FIELDS = ['parts', 'quiz', 'scale', 'steps', 'subtitle',
 const PART_OVERLAY_FIELDS = ['detail', 'name', 'short'];
 const STEP_OVERLAY_FIELDS = ['body', 'title'];
 const QUIZ_OVERLAY_FIELDS = ['choices', 'explain', 'prompt'];
+const EXACT_SOURCE_ALLOWLIST = new Map<string, string>([
+  ['electric-motor.parts.stator.name', 'Stator'],
+  ['eye.parts.limbus.name', 'Limbus'],
+  ['eye.parts.iris.name', 'Iris'],
+  ['eye.parts.pupil.name', 'Pupil'],
+  ['eye.parts.retina.name', 'Retina'],
+  ['eye.parts.fovea.name', 'Fovea'],
+  ['hard-disk.title', 'Hard Disk'],
+  ['heart.parts.aorta.name', 'Aorta'],
+  ['inner-ear.parts.stapes.name', 'Stapes'],
+  ['kidney.parts.ureter.name', 'Ureter'],
+  ['kidney.parts.glomerulus.name', 'Glomerulus'],
+  ['loudspeaker.parts.magnet.name', 'Magnet'],
+  ['lung.parts.pleura.name', 'Pleura'],
+  ['lung.parts.alveoli.name', 'Alveoli'],
+  ['mechanical-watch.parts.bezel.name', 'Bezel'],
+  ['microwave.parts.magnetron.name', 'Magnetron'],
+  ['piston-engine.parts.piston.name', 'Piston'],
+  ['rocket-engine.parts.gimbal.name', 'Gimbal'],
+  ['tooth.parts.dentin.name', 'Dentin'],
+  ['tooth.parts.gingiva.name', 'Gingiva'],
+  ['violin.quiz.1.choices.3', 'Magnet'],
+]);
+const ENGLISH_FUNCTION_WORDS = new Set([
+  'a', 'an', 'and', 'are', 'as', 'at', 'because', 'by', 'for', 'from', 'in', 'into', 'is', 'it', 'its',
+  'of', 'on', 'or', 'that', 'the', 'this', 'through', 'to', 'when', 'where', 'which', 'while', 'with', 'without',
+]);
+const ENGLISH_ONLY_WORDS = new Set([
+  'after', 'before', 'between', 'captures', 'changes', 'during', 'exposure', 'faster', 'flows', 'inside', 'outside',
+  'images', 'moves', 'never', 'only', 'pressure', 'produces', 'pushes', 'reaches', 'returns', 'slower', 'stores',
+  'throughout', 'toward', 'turns', 'wherever', 'works',
+]);
 
 let failures = 0;
 
@@ -85,6 +146,96 @@ function exactKeys(value: unknown, allowed: string[], required: string[] = allow
 
 function sameSet(actual: string[], expected: string[]) {
   return JSON.stringify([...actual].sort()) === JSON.stringify([...expected].sort());
+}
+
+function unwrapExpression(expression: ts.Expression): ts.Expression {
+  let current = expression;
+  while (
+    ts.isAsExpression(current)
+    || ts.isTypeAssertionExpression(current)
+    || ts.isParenthesizedExpression(current)
+    || ts.isSatisfiesExpression(current)
+  ) {
+    current = current.expression;
+  }
+  return current;
+}
+
+function propertyName(name: ts.PropertyName) {
+  return ts.isIdentifier(name) || ts.isStringLiteral(name) || ts.isNoSubstitutionTemplateLiteral(name)
+    ? name.text
+    : null;
+}
+
+function propertyInitializer(object: ts.ObjectLiteralExpression, name: string) {
+  for (const property of object.properties) {
+    if (ts.isPropertyAssignment(property) && propertyName(property.name) === name) return property.initializer;
+  }
+  return null;
+}
+
+function staticRequirePath(expression: ts.Expression | null) {
+  if (!expression) return null;
+  const value = unwrapExpression(expression);
+  if (!ts.isCallExpression(value) || !ts.isIdentifier(value.expression) || value.expression.text !== 'require') return null;
+  if (value.arguments.length !== 1) return null;
+  const argument = value.arguments[0];
+  return ts.isStringLiteral(argument) || ts.isNoSubstitutionTemplateLiteral(argument) ? argument.text : null;
+}
+
+function parseRegistryTuples(sourceText: string): RegistryTuple[] {
+  const source = ts.createSourceFile(REGISTRY, sourceText, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
+  let entries: ts.ArrayLiteralExpression | null = null;
+
+  for (const statement of source.statements) {
+    if (!ts.isVariableStatement(statement)) continue;
+    for (const declaration of statement.declarationList.declarations) {
+      if (!ts.isIdentifier(declaration.name) || declaration.name.text !== 'ENTRIES' || !declaration.initializer) continue;
+      const initializer = unwrapExpression(declaration.initializer);
+      if (ts.isArrayLiteralExpression(initializer)) entries = initializer;
+    }
+  }
+
+  if (!entries) return [];
+  return entries.elements.map((element) => {
+    const value = unwrapExpression(element);
+    if (!ts.isObjectLiteralExpression(value)) {
+      return { docPath: null, modelPath: null, idTranslationPath: null };
+    }
+    const translationsValue = propertyInitializer(value, 'translations');
+    const translations = translationsValue ? unwrapExpression(translationsValue) : null;
+    const idTranslation = translations && ts.isObjectLiteralExpression(translations)
+      ? propertyInitializer(translations, 'id')
+      : null;
+    return {
+      docPath: staticRequirePath(propertyInitializer(value, 'doc')),
+      modelPath: staticRequirePath(propertyInitializer(value, 'model')),
+      idTranslationPath: staticRequirePath(idTranslation),
+    };
+  });
+}
+
+function registryTupleStatus(tuples: RegistryTuple[], expectation: RegistryExpectation) {
+  const file = `${expectation.id}.json`;
+  const docPath = `../../content/${file}`;
+  const tuple = tuples.find((candidate) => candidate.docPath === docPath);
+  return {
+    doc: Boolean(tuple),
+    model: tuple?.modelPath === `../../assets/models/${expectation.model}.glb`,
+    translation: tuple?.idTranslationPath === `../../content/id/${file}`,
+  };
+}
+
+function registryRequirementsAppear(sourceText: string, expectation: RegistryExpectation) {
+  return registryTupleStatus(parseRegistryTuples(sourceText), expectation);
+}
+
+function swapUniqueLiterals(sourceText: string, first: string, second: string) {
+  const marker = '__catalog_quality_swap_marker__';
+  if (sourceText.split(first).length !== 2 || sourceText.split(second).length !== 2 || sourceText.includes(marker)) {
+    throw new Error(`Mutation fixture requires unique literals: ${first}, ${second}`);
+  }
+  return sourceText.replace(first, marker).replace(second, first).replace(marker, second);
 }
 
 function readPngHeader(file: string) {
@@ -134,6 +285,77 @@ function readStringDictionary(sourceText: string, variableName: string) {
   return values;
 }
 
+function loadRuntimeRegistry(): RuntimeRegistry {
+  type CompilableModule = { exports: unknown; _compile(sourceText: string, filename: string): void };
+  type ExtensionLoader = (module: CompilableModule, filename: string) => void;
+
+  const runtimeRequire = createRequire(import.meta.url);
+  const extensions = runtimeRequire.extensions as Record<string, ExtensionLoader | undefined>;
+  const previousTs = extensions['.ts'];
+  const previousGlb = extensions['.glb'];
+
+  extensions['.ts'] = (module, filename) => {
+    const transpiled = ts.transpileModule(readFileSync(filename, 'utf8'), {
+      compilerOptions: {
+        esModuleInterop: true,
+        module: ts.ModuleKind.CommonJS,
+        target: ts.ScriptTarget.ES2022,
+      },
+      fileName: filename,
+      reportDiagnostics: true,
+    });
+    const errors = transpiled.diagnostics?.filter((diagnostic) => diagnostic.category === ts.DiagnosticCategory.Error) ?? [];
+    if (errors.length) {
+      throw new Error(ts.formatDiagnostics(errors, {
+        getCanonicalFileName: (name) => name,
+        getCurrentDirectory: () => ROOT,
+        getNewLine: () => '\n',
+      }));
+    }
+    module._compile(transpiled.outputText, filename);
+  };
+  extensions['.glb'] = (module, filename) => {
+    module.exports = filename;
+  };
+
+  try {
+    return runtimeRequire(REGISTRY) as RuntimeRegistry;
+  } finally {
+    if (previousTs) extensions['.ts'] = previousTs;
+    else delete extensions['.ts'];
+    if (previousGlb) extensions['.glb'] = previousGlb;
+    else delete extensions['.glb'];
+  }
+}
+
+function runtimeLibraryIsCorrect(library: RuntimeSummary[], files: string[]) {
+  if (library.length !== 26 || new Set(library.map((summary) => summary.id)).size !== 26) return false;
+  const summaries = new Map(library.map((summary) => [summary.id, summary]));
+  return files.every((file) => {
+    const base = readJson<ObjectDoc>(resolve(CONTENT, file), {
+      id: '',
+      title: '',
+      subtitle: '',
+      category: '',
+      accent: '',
+      summary: '',
+      model: '',
+      parts: [],
+      steps: [],
+      quiz: [],
+    });
+    const overlay = readJson<Overlay>(resolve(CONTENT, 'id', file), {});
+    const summary = summaries.get(base.id);
+    return summary?.title === overlay.title
+      && summary.subtitle === overlay.subtitle
+      && summary.summary === overlay.summary
+      && summary.scale === (overlay.scale ?? base.scale)
+      && summary.category === base.category
+      && summary.accent === base.accent
+      && summary.partCount === base.parts.filter((part) => !part.hidden).length;
+  });
+}
+
 function placeholders(value: string) {
   return [...value.matchAll(/\{(\w+)\}/g)].map((match) => match[1]).sort();
 }
@@ -144,10 +366,13 @@ function collectProsePairs(base: ObjectDoc, overlay: Overlay) {
     if (nonEmpty(english) && nonEmpty(indonesian)) pairs.push({ path: `${base.id}.${path}`, english, indonesian });
   };
 
+  add('title', base.title, overlay.title);
   add('subtitle', base.subtitle, overlay.subtitle);
   add('summary', base.summary, overlay.summary);
+  add('scale', base.scale, overlay.scale);
   base.parts.forEach((part) => {
     const translated = overlay.parts?.[part.id];
+    add(`parts.${part.id}.name`, part.name, translated?.name);
     add(`parts.${part.id}.short`, part.short, translated?.short);
     add(`parts.${part.id}.detail`, part.detail, translated?.detail);
   });
@@ -169,22 +394,89 @@ function collectProsePairs(base: ObjectDoc, overlay: Overlay) {
   return pairs;
 }
 
-function likelyEnglishLeak({ english, indonesian }: ProsePair) {
-  const normalise = (value: string) => value.toLocaleLowerCase('en').replace(/[^a-z0-9]+/g, ' ').trim();
-  const words = normalise(indonesian).split(/\s+/).filter(Boolean);
-  if (words.length >= 4 && normalise(english) === normalise(indonesian)) return true;
+function proseWords(value: string) {
+  return value.normalize('NFKC').toLocaleLowerCase('en').replace(/[^\p{L}\p{N}]+/gu, ' ').trim().split(/\s+/).filter(Boolean);
+}
 
-  const englishFunctionWords = new Set([
-    'a', 'an', 'and', 'are', 'as', 'at', 'because', 'by', 'for', 'from', 'in', 'into', 'is', 'it', 'its',
-    'of', 'on', 'or', 'that', 'the', 'this', 'through', 'to', 'when', 'where', 'which', 'while', 'with', 'without',
-  ]);
+function containsRun(words: string[], candidates: Set<string>, minimum: number) {
+  let run = 0;
+  for (const word of words) {
+    run = candidates.has(word) ? run + 1 : 0;
+    if (run >= minimum) return true;
+  }
+  return false;
+}
+
+function containsSharedSourceRun(english: string[], indonesian: string[], minimum: number) {
+  if (english.length < minimum || indonesian.length < minimum) return false;
+  const sourceRuns = new Set<string>();
+  for (let index = 0; index <= english.length - minimum; index += 1) {
+    sourceRuns.add(english.slice(index, index + minimum).join('\u0000'));
+  }
+  for (let index = 0; index <= indonesian.length - minimum; index += 1) {
+    if (sourceRuns.has(indonesian.slice(index, index + minimum).join('\u0000'))) return true;
+  }
+  return false;
+}
+
+function likelyEnglishLeak({ path, english, indonesian }: ProsePair) {
+  const englishWords = proseWords(english);
+  const words = proseWords(indonesian);
+  const exactSource = englishWords.join(' ') === words.join(' ');
+  if (exactSource) {
+    const allowlisted = EXACT_SOURCE_ALLOWLIST.get(path);
+    return !(allowlisted === english.trim() && allowlisted === indonesian.trim());
+  }
+
+  if (containsRun(words, ENGLISH_ONLY_WORDS, 3)) return true;
+  if (containsSharedSourceRun(englishWords, words, 4)) return true;
+
   const indonesianFunctionWords = new Set([
     'agar', 'atau', 'dalam', 'dan', 'dari', 'dengan', 'di', 'ini', 'itu', 'karena', 'ke', 'ketika', 'pada',
     'sebagai', 'sehingga', 'tanpa', 'untuk', 'yang',
   ]);
-  const englishScore = words.filter((word) => englishFunctionWords.has(word)).length;
+  const englishScore = words.filter((word) => ENGLISH_FUNCTION_WORDS.has(word)).length;
   const indonesianScore = words.filter((word) => indonesianFunctionWords.has(word)).length;
   return words.length >= 8 && englishScore >= 3 && englishScore > indonesianScore;
+}
+
+function runMutationFixtureChecks(registry: string) {
+  const expectations: RegistryExpectation[] = [
+    { id: 'smartphone', model: 'smartphone' },
+    { id: 'turbofan', model: 'turbofan' },
+  ];
+  const swappedModels = swapUniqueLiterals(
+    registry,
+    '../../assets/models/smartphone.glb',
+    '../../assets/models/turbofan.glb',
+  );
+  const swappedTranslations = swapUniqueLiterals(
+    registry,
+    '../../content/id/smartphone.json',
+    '../../content/id/turbofan.json',
+  );
+  const requirementsPass = (sourceText: string) => expectations.every((expectation) => {
+    const registration = registryRequirementsAppear(sourceText, expectation);
+    return registration.doc && registration.model && registration.translation;
+  });
+
+  check('mutation: swapped registry model tuples are rejected', !requirementsPass(swappedModels));
+  check('mutation: swapped registry translation tuples are rejected', !requirementsPass(swappedTranslations));
+  check('mutation: exact short English choices are rejected', likelyEnglishLeak({
+    path: 'turbofan.quiz.2.choices.3',
+    english: 'All of it',
+    indonesian: 'All of it',
+  }));
+  check('mutation: mixed English prose is rejected', likelyEnglishLeak({
+    path: 'camera.parts.sensor.detail',
+    english: 'Stores images after exposure.',
+    indonesian: 'Komponen ini stores images after exposure sebelum dikirim ke prosesor.',
+  }));
+  check('mutation: allowlisted technical terms remain valid', !likelyEnglishLeak({
+    path: 'microwave.parts.magnetron.name',
+    english: 'Magnetron',
+    indonesian: 'Magnetron',
+  }));
 }
 
 function validateOverlay(base: ObjectDoc, overlay: Overlay) {
@@ -225,9 +517,16 @@ function run() {
   const uiSource = readFileSync(UI_STRINGS, 'utf8');
   const englishUi = readStringDictionary(uiSource, 'en');
   const indonesianUi = readStringDictionary(uiSource, 'id');
-  const registeredDocs = [...registry.matchAll(/doc:\s*require\('\.\.\/\.\.\/content\/([^']+\.json)'\)/g)]
-    .map((match) => match[1]);
+  const registryTuples = parseRegistryTuples(registry);
+  const registeredDocs = registryTuples.flatMap((tuple) => {
+    const prefix = '../../content/';
+    return tuple.docPath?.startsWith(prefix) && tuple.docPath.endsWith('.json')
+      ? [tuple.docPath.slice(prefix.length)]
+      : [];
+  });
   const leaks: ProsePair[] = [];
+
+  runMutationFixtureChecks(registry);
 
   check('English and Indonesian filenames match exactly', JSON.stringify(indonesian) === JSON.stringify(english));
   check('registry contains exactly 26 unique documents', registeredDocs.length === 26 && new Set(registeredDocs).size === 26);
@@ -241,6 +540,18 @@ function run() {
     placeholderMismatches.length === 0,
     placeholderMismatches.map(([key]) => key).join(', '),
   );
+  let runtimeLibraryPasses = false;
+  let runtimeLibraryDetail = '';
+  try {
+    runtimeLibraryPasses = runtimeLibraryIsCorrect(loadRuntimeRegistry().getLibrary('id'), english);
+  } catch (error) {
+    runtimeLibraryDetail = error instanceof Error ? error.message : String(error);
+  }
+  check(
+    "runtime getLibrary('id') returns 26 unique correctly localized entries",
+    runtimeLibraryPasses,
+    runtimeLibraryDetail,
+  );
   if (!LOCALIZATION_ONLY) check('object icon metrics exist', metrics !== null);
 
   for (const file of english) {
@@ -248,6 +559,8 @@ function run() {
       id: file,
       title: '',
       subtitle: '',
+      category: '',
+      accent: '',
       summary: '',
       model: '',
       parts: [],
@@ -265,9 +578,10 @@ function run() {
     check(`${base.id} parts have exact coverage and fields`, result.partsComplete);
     check(`${base.id} steps have exact coverage and fields`, result.stepsComplete);
     check(`${base.id} quiz choices and explanations are complete`, result.quizComplete);
-    check(`${base.id} English document is registered`, registry.includes(`require('../../content/${file}')`));
-    check(`${base.id} production model is registered`, registry.includes(`require('../../assets/models/${base.model}.glb')`));
-    check(`${base.id} Indonesian translation is registered`, registry.includes(`require('../../content/id/${file}')`));
+    const registration = registryTupleStatus(registryTuples, { id: base.id, model: base.model });
+    check(`${base.id} English document is registered`, registration.doc);
+    check(`${base.id} production model is registered`, registration.model);
+    check(`${base.id} Indonesian translation is registered`, registration.translation);
     leaks.push(...collectProsePairs(base, overlay).filter(likelyEnglishLeak));
 
     if (LOCALIZATION_ONLY) continue;

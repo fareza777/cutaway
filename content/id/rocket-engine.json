@@ -77,7 +77,7 @@
     "fuel_feed": {
       "name": "Saluran Bahan Bakar",
       "short": "Jalur dari tangki melalui pompa menuju katup",
-      "detail": "Pipa bertekanan rendah membawa bahan bakar dari tangki ke pompa, lalu pipa bertekanan tinggi menghubungkan keluaran pompa dengan katup dan sistem pendingin. Perubahan diameter mencerminkan kenaikan tekanan dari beberapa bar di tangki menjadi puluhan atmosfer di ruang bakar. Flens bagian atas menjadi batas antara mesin dan tingkat kendaraan."
+      "detail": "Saluran bertekanan rendah membawa bahan bakar dari tangki, kemudian saluran bertekanan tinggi menghubungkan keluaran pompa ke katup. Penyusutan diameter menunjukkan seluruh prosesnya: tekanan tangki kurang dari satu bar, sedangkan ruang bakar mencapai puluhan bar. Pompa menaikkan tekanan di antara keduanya. Flens atas menandai batas mesin dengan tingkat kendaraan."
     },
     "ox_feed": {
       "name": "Saluran Oksidator",
@@ -100,7 +100,7 @@
     },
     {
       "title": "Capai Mach 1 lalu kembangkan gas",
-      "body": "Ukuran leher membuat aliran tersumbat pada Mach 1. Di hilir, lonceng yang melebar menurunkan tekanan dan mempercepat gas hingga supersonik; sebagian besar gaya dorong dihasilkan selama ekspansi ini."
+      "body": "Ukuran leher membuat aliran tercekik (choked) pada Mach 1. Di hilir, lonceng yang melebar menurunkan tekanan dan mempercepat gas hingga supersonik; sebagian besar gaya dorong dihasilkan selama ekspansi ini."
     },
     {
       "title": "Arahkan semburan",
@@ -148,10 +148,10 @@
       "choices": [
         "Diam",
         "Subsonik",
-        "Mach 1 dan tersumbat",
+        "Mach 1 — aliran tercekik (choked)",
         "Sudah supersonik"
       ],
-      "explain": "Setelah aliran tersumbat di leher, kenaikan tekanan ruang menambah laju massa tetapi tidak menaikkan bilangan Mach di titik itu. Percepatan menjadi supersonik terjadi di lonceng sesudah leher."
+      "explain": "Setelah aliran tercekik di leher, kenaikan tekanan ruang menambah laju massa tetapi tidak menaikkan bilangan Mach di titik itu. Percepatan menjadi supersonik terjadi di lonceng sesudah leher."
     }
   ]
 }

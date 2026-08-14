@@ -62,7 +62,7 @@
     "front_panel": {
       "name": "Panel Depan",
       "short": "Bagian tetap di depan rakitan yang bergerak",
-      "detail": "Panel membawa engsel pintu, kontrol, dan tutup saringan, lalu terikat kaku pada casing. Di belakangnya, tabung, drum, serta pemberat membentuk satu massa yang bergantung pada pegas. Celah di sekitar karet pintu menyediakan ruang agar rakitan itu dapat bergerak tanpa menyentuh panel."
+      "detail": "Panel membawa engsel pintu, kontrol, dan tutup saringan, lalu terikat kaku pada casing. Di belakangnya, tabung, drum, serta pemberat membentuk massa yang digantung pada pegas. Celah di sekitar karet pintu menyediakan ruang agar rakitan itu dapat bergerak tanpa menyentuh panel."
     },
     "cabinet": {
       "name": "Casing",
@@ -104,7 +104,7 @@
         "Massanya membatasi gerak tabung yang berputar tidak seimbang",
         "Untuk mencegah mesin terjungkal saat pintu dibuka"
       ],
-      "explain": "Cucian basah tidak pernah terbagi merata. Massa tambahan tidak menghilangkan gaya tak seimbang, tetapi sangat mengurangi jarak gerak tabung sebagai tanggapannya."
+      "explain": "Cucian basah tidak pernah terbagi merata. Massa tambahan tidak menghilangkan gaya tak seimbang, tetapi sangat mengurangi simpangan tabung akibat gaya tersebut."
     },
     {
       "prompt": "Ketuk bagian yang benar-benar mencuci pakaian."

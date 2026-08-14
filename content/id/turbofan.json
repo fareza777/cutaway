@@ -7,7 +7,7 @@
     "fan": {
       "name": "Kipas",
       "short": "Menghasilkan sekitar 80% gaya dorong",
-      "detail": "Sekitar dua puluh bilah titanium atau komposit karbon masing-masing menahan beban sentrifugal berton-ton. Sebagian besar udara yang digerakkan langsung melewati sisi luar inti lalu keluar di belakang sebagai aliran pintas. Menggerakkan massa udara yang sangat besar sedikit lebih cepat jauh lebih efisien daripada mempercepat sedikit udara secara ekstrem; karena itu kipas modern terus membesar."
+      "detail": "Sekitar dua puluh bilah titanium atau komposit karbon masing-masing menahan beban sentrifugal berton-ton. Sebagian besar udara yang digerakkan mengalir di luar inti melalui saluran pintas, lalu keluar di belakang. Menggerakkan massa udara yang sangat besar sedikit lebih cepat jauh lebih efisien daripada mempercepat sedikit udara secara ekstrem; karena itu kipas modern terus membesar."
     },
     "spinner": {
       "name": "Kerucut Pemintal (Spinner)",
@@ -73,7 +73,7 @@
   "steps": [
     {
       "title": "Sebagian besar udara tidak dibakar",
-      "body": "Kipas menarik kolom udara yang sangat besar. Sekitar sembilan dari sepuluh bagian udara melewati inti dan keluar di belakang setelah didorong. Aliran pintas inilah yang menghasilkan sebagian besar gaya dorong."
+      "body": "Kipas menarik kolom udara yang sangat besar. Sekitar sembilan dari sepuluh bagian udara memintas inti sepenuhnya dan keluar di belakang setelah didorong. Aliran pintas inilah yang menghasilkan sebagian besar gaya dorong."
     },
     {
       "title": "Mampatkan udara",
@@ -107,7 +107,7 @@
         "Sekitar 90%",
         "Semuanya"
       ],
-      "explain": "Sekitar sembilan per sepuluh udara melewati inti. Menggerakkan massa udara besar dengan kenaikan kecepatan kecil lebih efisien daripada mempercepat massa kecil secara ekstrem."
+      "explain": "Sekitar sembilan per sepuluh udara memintas inti. Menggerakkan massa udara besar dengan kenaikan kecepatan kecil lebih efisien daripada mempercepat massa kecil secara ekstrem."
     },
     {
       "prompt": "Ketuk casing yang dirancang menahan bilah kipas yang patah."

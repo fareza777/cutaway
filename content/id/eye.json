@@ -12,7 +12,7 @@
     "sclera": {
       "name": "Sklera",
       "short": "Cangkang putih yang mempertahankan bentuk mata",
-      "detail": "Lapisan fibrosa kuat ini lebih tebal di belakang dan menipis ke depan. Warnanya putih karena susunan kolagen tidak seragam sehingga cahaya tersebar. Otot penggerak mata melekat pada sklera dan saraf optik menembus bagian belakangnya. Sklera menahan tekanan bola mata normal sekitar 10–21 mmHg; tekanan tinggi berkepanjangan dapat merusak serabut saraf pada jalan keluar tersebut."
+      "detail": "Lapisan buram yang liat ini tebalnya sekitar setengah milimeter. Serat-seratnya bersilangan ke segala arah sehingga mampu mempertahankan bentuk terhadap tekanan dari dalam. Tekanan tersebut menjaga mata tetap bulat dan retina tetap menempel rata pada dinding belakang. Manusia merupakan pengecualian karena begitu banyak sklera kita terlihat: hampir semua primata lain memiliki sklera gelap. Menurut salah satu teori, sklera manusia menjadi putih agar orang lain dapat mengikuti arah pandangan kita."
     },
     "conjunctiva": {
       "name": "Konjungtiva",
@@ -42,7 +42,7 @@
     "lens": {
       "name": "Lensa",
       "short": "Penyempurna fokus yang terus bertambah sepanjang hidup",
-      "detail": "Kantong bikonveks ini berisi sel yang dipadatkan dengan protein kristalin dan kehilangan organelnya agar tetap bening. Serat baru terus ditambahkan seperti lapisan bawang, sehingga lensa menebal, menguning, dan makin kaku seiring usia. Katarak terjadi ketika serat mengeruh. Lensa yang keruh dapat diganti dengan implan bening melalui operasi."
+      "detail": "Lensa tersusun berlapis seperti bawang, sepenuhnya bening, serta sama sekali tidak memiliki pembuluh darah atau saraf. Kamera memfokuskan gambar dengan menggeser lensa, sedangkan lensa mata mengubah bentuknya sendiri. Cara yang lebih elegan ini memiliki satu kelemahan: lensa terus mengeras sepanjang hidup. Memasuki usia empat puluhan, lensa tidak lagi cukup membulat untuk melihat dekat—kondisi yang disebut presbiopia—sehingga kacamata baca diperlukan sekalipun sebelumnya penglihatan sangat baik. Kemudian proteinnya dapat menggumpal dan mengeruh, membentuk katarak."
     },
     "zonules": {
       "name": "Zonula",
@@ -87,12 +87,12 @@
     "optic_nerve": {
       "name": "Saraf Optik",
       "short": "Sekitar sejuta akson dari retina menuju otak",
-      "detail": "Secara perkembangan, saraf ini merupakan traktus otak yang diselubungi mielin oleh oligodendrosit dan tidak tumbuh kembali setelah rusak. Serabut keluar melalui lamina kribrosa dan menuju kiasma, tempat sebagian jalur menyilang sehingga otak kiri memproses sisi kanan dunia. Radang saraf dapat menimbulkan nyeri saat mata bergerak dan kehilangan penglihatan sementara."
+      "detail": "Tepatnya, saraf optik merupakan traktus sistem saraf pusat yang tumbuh keluar selama perkembangan untuk menemui cahaya. Karena itu, tidak seperti saraf di lengan, jalur ini tidak dapat beregenerasi. Jalur ini membawa sekitar satu juta serabut dan keluar dari belakang bola mata sedikit ke arah hidung. Posisi tersebut membuat bintik buta mata kanan berada di kanan pusat pandangan, sedangkan bintik buta mata kiri berada di kiri."
     },
     "extraocular_muscles": {
       "name": "Otot Ekstraokular",
       "short": "Enam otot yang mengarahkan bola mata dengan cepat",
-      "detail": "Empat otot rektus berasal dari cincin di puncak rongga mata dan dua otot oblik melengkapinya. Keduanya mengarahkan dua mata agar tetap terkunci pada sasaran bergerak. Tendon oblik superior melewati katrol yang disebut troklea sebelum melekat, mengubah arah tarikannya. Kelemahan satu otot dapat menyebabkan pandangan ganda dan membuat kepala dimiringkan sebagai kompensasi."
+      "detail": "Otot-otot ini menggerakkan mata dalam lompatan balistik tiga sampai empat kali per detik, lebih cepat daripada otot lain di tubuh, dan nyaris tidak pernah beristirahat. Di antara lompatan itu, otak menekan penglihatan agar dunia tidak tampak kabur. Artinya, kita sejenak buta beberapa kali setiap detik tanpa pernah menyadarinya. Amati sentakan mata orang lain saat membaca; yang tidak dapat kita lakukan adalah menyaksikan mata sendiri bergerak seperti itu di cermin."
     },
     "pupil": {
       "name": "Pupil",

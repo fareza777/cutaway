@@ -8,10 +8,14 @@
 
 import type { ObjectDoc, ObjectSummary } from './types';
 import { summarise } from './types';
-import { localiseDoc, type Translations } from './localise';
+import { localiseDoc, type ObjectTranslation } from './localise';
 import type { Locale } from '@/i18n/strings';
 
-type Entry = { doc: ObjectDoc; model: number; translations: Translations };
+type Entry = {
+  doc: ObjectDoc;
+  model: number;
+  translations: Record<Exclude<Locale, 'en'>, ObjectTranslation>;
+};
 
 const ENTRIES: Entry[] = [
   {

@@ -11,7 +11,7 @@
     },
     "upper_lobe_right": {
       "name": "Lobus Atas Kanan",
-      "short": "Bagian atas yang sering menjadi tempat gangguan dari udara masuk",
+      "short": "Bagian atas tempat gangguan akibat bahan yang terhirup sering terjadi",
       "detail": "Lobus bukan sekadar pembagian bentuk. Setiap lobus merupakan bagian paru yang dapat dipisahkan dan memiliki bronkus serta arterinya sendiri, sehingga satu lobus dapat diangkat tanpa menghentikan bagian lain. Tuberkulosis paling sering menetap di lobus kanan atas karena puncak paru menerima banyak udara tetapi lebih sedikit darah, kondisi yang disukai bakterinya."
     },
     "middle_lobe_right": {
@@ -169,7 +169,7 @@
       "choices": [
         "Cincin tulang rawan mengencang",
         "Saluran terkecil tidak memiliki tulang rawan sehingga otot pada dindingnya dapat menyempitkannya",
-        "Alveolus terisi cairan",
+        "Alveoli terisi cairan",
         "Diafragma melemah"
       ],
       "explain": "Di bawah diameter sekitar satu milimeter, saluran napas tidak memiliki tulang rawan dan hanya ditahan terbuka oleh jaringan sekitarnya. Otot polos pada dindingnya dapat berkontraksi hingga saluran menyempit."

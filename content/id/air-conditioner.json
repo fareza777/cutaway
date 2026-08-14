@@ -41,7 +41,7 @@
     },
     "compressor": {
       "name": "Kompresor",
-      "short": "Pompa panas dan berisik yang ditempatkan di luar",
+      "short": "Pompa yang menjadi panas dan bising sehingga ditempatkan di luar",
       "detail": "Pompa rotari atau scroll yang tertutup rapat ini menaikkan tekanan dan suhu uap refrigeran hingga lebih panas daripada udara luar. Barulah panas dapat mengalir dari refrigeran ke lingkungan. Kompresor memakai sebagian besar daya listrik dan menghasilkan hampir seluruh suara mekanis. Pada AC inverter, kecepatannya dapat berubah terus-menerus agar kapasitas mengikuti kebutuhan kamar tanpa sering hidup-mati."
     },
     "condenser_coil": {

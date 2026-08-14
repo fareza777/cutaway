@@ -2,7 +2,7 @@
   "title": "Kulkas",
   "subtitle": "Pompa panas di dalam kotak berinsulasi",
   "scale": "tinggi sekitar 1,7 m",
-  "summary": "Kulkas tidak menghasilkan dingin, melainkan memindahkan panas dari ruang penyimpanan ke udara di sekitarnya. Pemindahan panas ke tempat yang lebih hangat memerlukan energi, dan kompresor menyediakan energi tersebut. Komponen lain membuat satu refrigeran menjalani siklus yang sama berulang kali: menguap di tempat panas perlu diserap, lalu mengembun di tempat panas dapat dilepaskan.",
+  "summary": "Kulkas tidak menghasilkan dingin; alat ini memindahkan panas dari dalam kabinet ke ruangan di belakangnya. Memindahkan panas ke tempat yang lebih hangat memerlukan kerja, dan kompresor menyediakannya. Semua komponen lain dalam rangkaian memungkinkan refrigeran yang sama mengulangi proses tersebut: menguap di bagian yang perlu didinginkan, lalu mengembun di bagian yang digunakan untuk melepaskan panas.",
   "parts": {
     "compressor": {
       "name": "Kompresor",

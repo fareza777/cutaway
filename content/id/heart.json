@@ -82,7 +82,7 @@
     "superior_vena_cava": {
       "name": "Vena Kava Superior",
       "short": "Semua yang di atas diafragma bermuara ke sini",
-      "detail": "Mengembalikan darah dari kepala, leher, dan kedua lengan ke serambi kanan. Pembuluhnya lebar, tipis, dan bertekanan rendah, jadi gampang tertekan oleh tumor atau bekuan. Tekanan di dalamnya bisa dilihat langsung sebagai denyut vena di leher, dan itu termasuk cara tertua di sisi ranjang untuk menilai seberapa baik jantung kanan masih bertahan."
+      "detail": "Mengembalikan darah dari kepala, leher, dan kedua lengan ke serambi kanan. Pembuluh ini lebar, berdinding tipis, dan bertekanan rendah sehingga mudah tertekan oleh tumor atau bekuan. Tekanan di dalamnya terlihat sebagai denyut vena leher dan merupakan salah satu penilaian klinis tertua untuk menilai fungsi jantung kanan."
     },
     "inferior_vena_cava": {
       "name": "Vena Kava Inferior",
@@ -190,7 +190,7 @@
         "Terus-menerus dan merata",
         "Hanya saat berolahraga"
       ],
-      "explain": "Remasan justru menekan pembuluh yang menembus otot. Pengisian terjadi pada fase mengendur, dan itulah sebabnya denyut yang sangat cepat memotong pasokan jantung sendiri."
+      "explain": "Kontraksi justru menekan pembuluh yang menembus otot jantung. Pengisian berlangsung pada fase relaksasi; karena itu denyut yang sangat cepat memperpendek fase tersebut dan mengurangi pasokan darah ke jantung."
     },
     {
       "prompt": "Pembuluh mana yang melanggar aturan umum soal arteri dan vena?",

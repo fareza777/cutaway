@@ -52,12 +52,12 @@
     "inner_lid": {
       "name": "Tutup Dalam",
       "short": "Permukaan logam yang dapat dicuci dan menghadap makanan",
-      "detail": "Pelat stainless lepas-pasang ini adalah langit-langit sebenarnya dari ruang masak. Ia menangkap cipratan pati, membawa bukaan ventilasi, dan menyebarkan tekanan tutup luar ke sekeliling gasket. Kemampuan melepasnya penting karena pati yang mengering dapat menyempitkan jalur uap dan menyimpan bau."
+      "detail": "Pelat baja tahan karat lepas-pasang ini adalah langit-langit sebenarnya dari ruang masak. Pelat ini menangkap cipratan pati, membawa bukaan ventilasi, dan menyebarkan tekanan tutup luar ke sekeliling gasket. Kemampuan melepasnya penting karena pati yang mengering dapat menyempitkan jalur uap dan menyimpan bau."
     },
     "lid_gasket": {
       "name": "Gasket Tutup",
       "short": "Cincin silikon yang menjaga uap tetap di jalurnya",
-      "detail": "Cincin lunak menyesuaikan diri dengan bibir panci saat tutup terkunci. Ia tidak menciptakan tekanan masak; tugasnya mencegah uap dan air berpati bocor di seluruh tepi serta mengarahkannya ke ventilasi. Gasket yang terpelintir, kotor, atau mengeras menyebabkan aliran basah di sekitar bibir dan hilangnya kelembapan secara tidak merata."
+      "detail": "Cincin lunak menyesuaikan diri dengan bibir panci saat tutup terkunci. Cincin ini tidak menciptakan tekanan masak; tugasnya mencegah uap dan air berpati bocor di seluruh tepi serta mengarahkannya ke ventilasi. Gasket yang terpelintir, kotor, atau mengeras menyebabkan aliran basah di sekitar bibir dan hilangnya kelembapan secara tidak merata."
     },
     "heating_plate": {
       "name": "Pelat Pemanas Cor",
