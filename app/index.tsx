@@ -1,16 +1,14 @@
 import { useMemo, useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-import { categories, getLibrary } from '@/content/registry';
+import { categories, getLibrary, type LibraryItem } from '@/content/registry';
 import { useProgress } from '@/state/progress';
-import { ObjectGlyph } from '@/ui/ObjectGlyph';
 import { Chip, Label, Text, Touchable } from '@/ui/primitives';
 import { useCategoryLabel, useColors, useLocale, useSettings, useT, useThemeMode } from '@/state/settings';
 import { alpha, radius, space } from '@/ui/theme';
-import type { ObjectSummary } from '@/content/types';
 
 const ALL = 'All';
 
@@ -117,7 +115,7 @@ function ObjectCard({
   onPress,
   t,
 }: {
-  item: ObjectSummary;
+  item: LibraryItem;
   visited: boolean;
   score?: { correct: number; total: number };
   onPress: () => void;
@@ -130,9 +128,17 @@ function ObjectCard({
       onPress={onPress}
       style={[styles.card, { borderColor: alpha(item.accent, 0.2), backgroundColor: colors.surface }]}
       accessibilityRole="button"
-      accessibilityLabel={`${item.title}. ${item.subtitle}. ${item.partCount} parts.`}
+      accessibilityLabel={`${item.title}. ${item.subtitle}. ${t('library.parts', { count: item.partCount })}.`}
     >
-      <ObjectGlyph category={item.category} accent={item.accent} />
+      <View style={[styles.iconFrame, { backgroundColor: alpha(item.accent, 0.07), borderColor: alpha(item.accent, 0.16) }]}>
+        <Image
+          source={item.icon}
+          style={styles.objectIcon}
+          resizeMode="contain"
+          accessibilityRole="image"
+          accessibilityLabel={t('library.icon', { title: item.title })}
+        />
+      </View>
 
       <View style={styles.cardBody}>
         <Label color={alpha(item.accent, 0.85)}>{categoryLabel(item.category)}</Label>
@@ -197,6 +203,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   cardBody: { flex: 1 },
+  iconFrame: {
+    width: 100,
+    height: 100,
+    borderRadius: 20,
+    borderWidth: StyleSheet.hairlineWidth,
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
+  },
+  objectIcon: { width: '100%', height: '100%' },
   meta: { flexDirection: 'row', flexWrap: 'wrap', gap: space.md, marginTop: space.md },
   metaItem: { flexDirection: 'row', alignItems: 'center', gap: 5 },
   visitedDot: {

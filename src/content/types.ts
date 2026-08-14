@@ -100,6 +100,9 @@ export type ObjectSummary = Pick<
   'id' | 'title' | 'subtitle' | 'category' | 'accent' | 'summary' | 'scale'
 > & { partCount: number };
 
+/** Localized catalog metadata plus the statically bundled object render. */
+export type LibraryItem = ObjectSummary & { icon: number };
+
 export function summarise(doc: ObjectDoc): ObjectSummary {
   return {
     id: doc.id,

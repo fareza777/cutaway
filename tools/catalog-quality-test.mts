@@ -1,7 +1,9 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { createRequire } from 'node:module';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { inflateSync } from 'node:zlib';
 import ts from 'typescript';
 
 type Overlay = {
@@ -42,8 +44,19 @@ type ObjectDoc = {
   quiz: Array<ChoiceQuestion | IdentifyQuestion>;
 };
 
+type IconBounds = {
+  minX: number;
+  minY: number;
+  maxX: number;
+  maxY: number;
+  width: number;
+  height: number;
+};
+
 type IconMetric = {
-  bounds?: { width?: number; height?: number };
+  width?: number;
+  height?: number;
+  bounds?: Partial<IconBounds>;
 };
 
 type ProsePair = { path: string; english: string; indonesian: string };
@@ -56,6 +69,7 @@ type RegistryExpectation = {
 type RegistryTuple = {
   docPath: string | null;
   modelPath: string | null;
+  iconPath: string | null;
   idTranslationPath: string | null;
 };
 
@@ -68,10 +82,11 @@ type RuntimeSummary = {
   summary: string;
   scale?: string;
   partCount: number;
+  icon?: string;
 };
 
 type RuntimeRegistry = {
-  getLibrary(locale: 'id'): RuntimeSummary[];
+  getLibrary(locale: 'en' | 'id'): RuntimeSummary[];
 };
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -209,7 +224,7 @@ function parseRegistryTuples(sourceText: string): RegistryTuple[] {
   return entries.elements.map((element) => {
     const value = unwrapExpression(element);
     if (!ts.isObjectLiteralExpression(value)) {
-      return { docPath: null, modelPath: null, idTranslationPath: null };
+      return { docPath: null, modelPath: null, iconPath: null, idTranslationPath: null };
     }
     const translationsValue = propertyInitializer(value, 'translations');
     const translations = translationsValue ? unwrapExpression(translationsValue) : null;
@@ -219,6 +234,7 @@ function parseRegistryTuples(sourceText: string): RegistryTuple[] {
     return {
       docPath: staticRequirePath(propertyInitializer(value, 'doc')),
       modelPath: staticRequirePath(propertyInitializer(value, 'model')),
+      iconPath: staticRequirePath(propertyInitializer(value, 'icon')),
       idTranslationPath: staticRequirePath(idTranslation),
     };
   });
@@ -231,6 +247,7 @@ function registryTupleStatus(tuples: RegistryTuple[], expectation: RegistryExpec
   return {
     doc: Boolean(tuple),
     model: tuple?.modelPath === `../../assets/models/${expectation.model}.glb`,
+    icon: tuple?.iconPath === `../../assets/object-icons/${expectation.id}.png`,
     translation: tuple?.idTranslationPath === `../../content/id/${file}`,
   };
 }
@@ -247,17 +264,106 @@ function swapUniqueLiterals(sourceText: string, first: string, second: string) {
   return sourceText.replace(first, marker).replace(second, first).replace(marker, second);
 }
 
-function readPngHeader(file: string) {
+function paeth(left: number, above: number, upperLeft: number) {
+  const estimate = left + above - upperLeft;
+  const leftDistance = Math.abs(estimate - left);
+  const aboveDistance = Math.abs(estimate - above);
+  const upperLeftDistance = Math.abs(estimate - upperLeft);
+  if (leftDistance <= aboveDistance && leftDistance <= upperLeftDistance) return left;
+  if (aboveDistance <= upperLeftDistance) return above;
+  return upperLeft;
+}
+
+/** Decode the browser-generated 8-bit alpha PNG rather than trusting its header. */
+function readPng(file: string) {
   if (!existsSync(file)) return null;
   const bytes = readFileSync(file);
   const validSignature = bytes.subarray(0, PNG_SIGNATURE.length).equals(PNG_SIGNATURE);
-  const validIhdr = bytes.length >= 33 && bytes.subarray(12, 16).toString('ascii') === 'IHDR';
-  if (!validSignature || !validIhdr) return null;
-  return {
-    width: bytes.readUInt32BE(16),
-    height: bytes.readUInt32BE(20),
-    colourType: bytes[25],
-  };
+  if (!validSignature) return null;
+
+  let offset = PNG_SIGNATURE.length;
+  let ihdr: Buffer | null = null;
+  const idat: Buffer[] = [];
+  let ended = false;
+  while (offset + 12 <= bytes.length) {
+    const length = bytes.readUInt32BE(offset);
+    const type = bytes.subarray(offset + 4, offset + 8).toString('ascii');
+    const dataStart = offset + 8;
+    const dataEnd = dataStart + length;
+    if (dataEnd + 4 > bytes.length) return null;
+    const data = bytes.subarray(dataStart, dataEnd);
+    if (type === 'IHDR') ihdr = data;
+    if (type === 'IDAT') idat.push(data);
+    if (type === 'IEND') {
+      ended = true;
+      break;
+    }
+    offset = dataEnd + 4;
+  }
+  if (!ihdr || ihdr.length !== 13 || !idat.length || !ended) return null;
+
+  const width = ihdr.readUInt32BE(0);
+  const height = ihdr.readUInt32BE(4);
+  const bitDepth = ihdr[8];
+  const colourType = ihdr[9];
+  const compression = ihdr[10];
+  const filtering = ihdr[11];
+  const interlace = ihdr[12];
+  const channels = colourType === 6 ? 4 : colourType === 4 ? 2 : 0;
+  if (!width || !height || bitDepth !== 8 || !channels || compression !== 0 || filtering !== 0 || interlace !== 0) {
+    return null;
+  }
+
+  let encoded: Buffer;
+  try {
+    encoded = inflateSync(Buffer.concat(idat));
+  } catch {
+    return null;
+  }
+  const stride = width * channels;
+  if (encoded.length !== height * (stride + 1)) return null;
+  const pixels = Buffer.alloc(width * height * channels);
+  for (let y = 0; y < height; y += 1) {
+    const sourceRow = y * (stride + 1);
+    const filter = encoded[sourceRow];
+    if (filter > 4) return null;
+    const targetRow = y * stride;
+    for (let x = 0; x < stride; x += 1) {
+      const raw = encoded[sourceRow + x + 1];
+      const left = x >= channels ? pixels[targetRow + x - channels] : 0;
+      const above = y > 0 ? pixels[targetRow + x - stride] : 0;
+      const upperLeft = y > 0 && x >= channels ? pixels[targetRow + x - stride - channels] : 0;
+      const predictor = filter === 0
+        ? 0
+        : filter === 1
+          ? left
+          : filter === 2
+            ? above
+            : filter === 3
+              ? Math.floor((left + above) / 2)
+              : paeth(left, above, upperLeft);
+      pixels[targetRow + x] = (raw + predictor) & 0xff;
+    }
+  }
+
+  let minX = width;
+  let minY = height;
+  let maxX = -1;
+  let maxY = -1;
+  for (let y = 0; y < height; y += 1) {
+    for (let x = 0; x < width; x += 1) {
+      const alpha = pixels[(y * width + x) * channels + channels - 1];
+      if (alpha === 0) continue;
+      minX = Math.min(minX, x);
+      minY = Math.min(minY, y);
+      maxX = Math.max(maxX, x);
+      maxY = Math.max(maxY, y);
+    }
+  }
+  const bounds: IconBounds | null = maxX < minX || maxY < minY
+    ? null
+    : { minX, minY, maxX, maxY, width: maxX - minX + 1, height: maxY - minY + 1 };
+  return { width, height, bitDepth, colourType, pixels, bounds };
 }
 
 function iconCoverage(metric: IconMetric | undefined) {
@@ -302,6 +408,7 @@ function loadRuntimeRegistry(): RuntimeRegistry {
   const extensions = runtimeRequire.extensions as Record<string, ExtensionLoader | undefined>;
   const previousTs = extensions['.ts'];
   const previousGlb = extensions['.glb'];
+  const previousPng = extensions['.png'];
 
   extensions['.ts'] = (module, filename) => {
     const transpiled = ts.transpileModule(readFileSync(filename, 'utf8'), {
@@ -326,6 +433,9 @@ function loadRuntimeRegistry(): RuntimeRegistry {
   extensions['.glb'] = (module, filename) => {
     module.exports = filename;
   };
+  extensions['.png'] = (module, filename) => {
+    module.exports = filename;
+  };
 
   try {
     return runtimeRequire(REGISTRY) as RuntimeRegistry;
@@ -334,6 +444,8 @@ function loadRuntimeRegistry(): RuntimeRegistry {
     else delete extensions['.ts'];
     if (previousGlb) extensions['.glb'] = previousGlb;
     else delete extensions['.glb'];
+    if (previousPng) extensions['.png'] = previousPng;
+    else delete extensions['.png'];
   }
 }
 
@@ -362,6 +474,26 @@ function runtimeLibraryIsCorrect(library: RuntimeSummary[], files: string[]) {
       && summary.category === base.category
       && summary.accent === base.accent
       && summary.partCount === base.parts.filter((part) => !part.hidden).length;
+  });
+}
+
+function runtimeLibraryIconsAreCorrect(library: RuntimeSummary[], files: string[]) {
+  if (library.length !== 26 || new Set(library.map((summary) => summary.id)).size !== 26) return false;
+  const summaries = new Map(library.map((summary) => [summary.id, summary]));
+  return files.every((file) => {
+    const base = readJson<ObjectDoc>(resolve(CONTENT, file), {
+      id: '',
+      title: '',
+      subtitle: '',
+      category: '',
+      accent: '',
+      summary: '',
+      model: '',
+      parts: [],
+      steps: [],
+      quiz: [],
+    });
+    return summaries.get(base.id)?.icon === resolve(ICONS, `${base.id}.png`);
   });
 }
 
@@ -467,19 +599,35 @@ function runMutationFixtureChecks(registry: string) {
     { id: 'smartphone', model: 'smartphone' },
     { id: 'turbofan', model: 'turbofan' },
   ];
+  const registryWithIconFixture = registry.includes('../../assets/object-icons/smartphone.png')
+    ? registry
+    : registry
+      .replace(
+        "model: require('../../assets/models/smartphone.glb'),",
+        "model: require('../../assets/models/smartphone.glb'),\n    icon: require('../../assets/object-icons/smartphone.png'),",
+      )
+      .replace(
+        "model: require('../../assets/models/turbofan.glb'),",
+        "model: require('../../assets/models/turbofan.glb'),\n    icon: require('../../assets/object-icons/turbofan.png'),",
+      );
   const swappedModels = swapUniqueLiterals(
-    registry,
+    registryWithIconFixture,
     '../../assets/models/smartphone.glb',
     '../../assets/models/turbofan.glb',
   );
   const swappedTranslations = swapUniqueLiterals(
-    registry,
+    registryWithIconFixture,
     '../../content/id/smartphone.json',
     '../../content/id/turbofan.json',
   );
+  const swappedIcons = swapUniqueLiterals(
+    registryWithIconFixture,
+    '../../assets/object-icons/smartphone.png',
+    '../../assets/object-icons/turbofan.png',
+  );
   const requirementsPass = (sourceText: string) => expectations.every((expectation) => {
     const registration = registryRequirementsAppear(sourceText, expectation);
-    return registration.doc && registration.model && registration.translation;
+    return registration.doc && registration.model && registration.icon && registration.translation;
   });
   const camera = readJson<ObjectDoc>(resolve(CONTENT, 'camera.json'), {
     id: '',
@@ -520,6 +668,7 @@ function runMutationFixtureChecks(registry: string) {
 
   check('mutation: swapped registry model tuples are rejected', !requirementsPass(swappedModels));
   check('mutation: swapped registry translation tuples are rejected', !requirementsPass(swappedTranslations));
+  check('mutation: swapped registry icon tuples are rejected', !requirementsPass(swappedIcons));
   check('mutation: exact short English choices are rejected', likelyEnglishLeak({
     path: 'turbofan.quiz.2.choices.3',
     english: 'All of it',
@@ -597,6 +746,8 @@ function run() {
       : [];
   });
   const leaks: ProsePair[] = [];
+  const objectIds: string[] = [];
+  const iconPixelHashes: string[] = [];
 
   runMutationFixtureChecks(registry);
 
@@ -613,9 +764,14 @@ function run() {
     placeholderMismatches.map(([key]) => key).join(', '),
   );
   let runtimeLibraryPasses = false;
+  let runtimeEnglishIconsPass = false;
+  let runtimeIndonesianIconsPass = false;
   let runtimeLibraryDetail = '';
   try {
-    runtimeLibraryPasses = runtimeLibraryIsCorrect(loadRuntimeRegistry().getLibrary('id'), english);
+    const runtime = loadRuntimeRegistry();
+    runtimeLibraryPasses = runtimeLibraryIsCorrect(runtime.getLibrary('id'), english);
+    runtimeEnglishIconsPass = runtimeLibraryIconsAreCorrect(runtime.getLibrary('en'), english);
+    runtimeIndonesianIconsPass = runtimeLibraryIconsAreCorrect(runtime.getLibrary('id'), english);
   } catch (error) {
     runtimeLibraryDetail = error instanceof Error ? error.message : String(error);
   }
@@ -624,7 +780,11 @@ function run() {
     runtimeLibraryPasses,
     runtimeLibraryDetail,
   );
-  if (!LOCALIZATION_ONLY) check('object icon metrics exist', metrics !== null);
+  if (!LOCALIZATION_ONLY) {
+    check("runtime getLibrary('en') retains the exact object-specific icon tuple", runtimeEnglishIconsPass);
+    check("runtime getLibrary('id') retains the exact object-specific icon tuple", runtimeIndonesianIconsPass);
+    check('object icon metrics exist', metrics !== null);
+  }
 
   for (const file of english) {
     const base = readJson<ObjectDoc>(resolve(CONTENT, file), {
@@ -642,6 +802,7 @@ function run() {
     const overlayFile = resolve(CONTENT, 'id', file);
     const overlay = readJson<Overlay>(overlayFile, {});
     const result = validateOverlay(base, overlay);
+    objectIds.push(base.id);
 
     check(`${base.id} Indonesian overlay exists`, existsSync(overlayFile));
     check(`${base.id} overlay contains prose fields only`, exactKeys(overlay, TOP_LEVEL_OVERLAY_FIELDS, ['parts', 'quiz', 'steps', 'subtitle', 'summary', 'title']));
@@ -659,21 +820,45 @@ function run() {
     if (LOCALIZATION_ONLY) continue;
 
     const iconFile = resolve(ICONS, `${base.id}.png`);
-    const header = readPngHeader(iconFile);
+    const png = readPng(iconFile);
     const coverage = iconCoverage(metrics?.[base.id]);
     check(
       `${base.id} icon is registered`,
-      registry.includes(`require('../../assets/object-icons/${base.id}.png')`),
+      registration.icon,
     );
     check(`${base.id} icon exists`, existsSync(iconFile));
-    check(`${base.id} icon has a valid PNG header`, header !== null);
-    check(`${base.id} icon is 256×256`, header?.width === 256 && header?.height === 256);
-    check(`${base.id} icon has an alpha channel`, header?.colourType === 4 || header?.colourType === 6);
+    check(`${base.id} icon has a valid decodable PNG payload`, png !== null);
+    check(`${base.id} icon is 256×256`, png?.width === 256 && png?.height === 256);
+    check(`${base.id} icon has an 8-bit alpha channel`, png?.bitDepth === 8 && (png.colourType === 4 || png.colourType === 6));
+    check(`${base.id} icon contains visible pixels`, Boolean(png?.bounds));
+    check(
+      `${base.id} icon alpha bounds stay inside the canvas`,
+      Boolean(png?.bounds && png.bounds.minX >= 0 && png.bounds.minY >= 0 && png.bounds.maxX < 256 && png.bounds.maxY < 256),
+    );
+    check(`${base.id} icon canvas size is recorded`, metrics?.[base.id]?.width === 256 && metrics?.[base.id]?.height === 256);
     check(`${base.id} icon alpha bounds are recorded`, coverage !== null);
+    check(
+      `${base.id} recorded alpha bounds match the decoded PNG`,
+      Boolean(png?.bounds && JSON.stringify(metrics?.[base.id]?.bounds) === JSON.stringify(png.bounds)),
+    );
     check(
       `${base.id} icon alpha coverage is 62–88%`,
       coverage !== null && coverage.width >= 0.62 && coverage.width <= 0.88 && coverage.height >= 0.62 && coverage.height <= 0.88,
       coverage ? `${Math.round(coverage.width * 100)}×${Math.round(coverage.height * 100)}%` : '',
+    );
+    if (png) iconPixelHashes.push(createHash('sha256').update(png.pixels).digest('hex'));
+  }
+
+  if (!LOCALIZATION_ONLY) {
+    const iconFiles = existsSync(ICONS)
+      ? readdirSync(ICONS).filter((name) => name.endsWith('.png')).sort()
+      : [];
+    const expectedIconFiles = objectIds.map((id) => `${id}.png`).sort();
+    check('object icon directory contains exactly the 26 catalog PNGs', JSON.stringify(iconFiles) === JSON.stringify(expectedIconFiles));
+    check('object icon metrics contain exactly the 26 catalog IDs', metrics !== null && sameSet(Object.keys(metrics), objectIds));
+    check(
+      'all 26 object icons have unique decoded pixel payloads',
+      iconPixelHashes.length === 26 && new Set(iconPixelHashes).size === 26,
     );
   }
 

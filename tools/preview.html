@@ -2,7 +2,10 @@
 <meta charset="utf-8" />
 <title>Cutaway model preview</title>
 <style>
-  body { margin: 0; background: #07090d; font: 13px/1.4 system-ui, sans-serif; color: #9aa4b2; }
+  html, body { margin: 0; min-width: 100%; min-height: 100%; }
+  body { background: #07090d; font: 13px/1.4 system-ui, sans-serif; color: #9aa4b2; }
+  body.icon { background: transparent; overflow: hidden; }
+  body.icon #hud { display: none; }
   #hud { position: fixed; left: 12px; top: 10px; z-index: 2; }
   button { background: #171b22; color: #cbd3de; border: 1px solid #2a313c; border-radius: 6px; padding: 5px 10px; margin-right: 4px; }
   canvas { display: block; }
@@ -30,18 +33,29 @@
     dark: { background: 0x07090d, ambient: 0.16, hemisphere: 0.42, key: 1.5, fill: 0.5, rim: 0.9 },
     light: { background: 0xf4f5f8, ambient: 0.5, hemisphere: 0.75, key: 1.15, fill: 0.4, rim: 0.55 },
   };
-  const ACCENT = new URLSearchParams(location.search).get('accent') ?? '#FF7A8A';
-  const MODEL = new URLSearchParams(location.search).get('model') ?? 'heart';
+  const PARAMS = new URLSearchParams(location.search);
+  const ACCENT = PARAMS.get('accent') ?? '#FF7A8A';
+  const MODEL = PARAMS.get('model') ?? 'heart';
+  const CONTENT_ID = PARAMS.get('id') ?? MODEL.replaceAll('_', '-');
+  const ICON_MODE = PARAMS.get('icon') === '1';
+  if (ICON_MODE) document.body.classList.add('icon');
 
-  const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+  const renderer = new THREE.WebGLRenderer({
+    alpha: ICON_MODE,
+    antialias: true,
+    powerPreference: 'high-performance',
+    premultipliedAlpha: true,
+    preserveDrawingBuffer: true,
+  });
   // A fixed size, not the window's. When the browser pane is not on screen the
   // window reports zero and every captured frame comes back empty.
-  const W = 1000;
-  const H = 760;
+  const W = ICON_MODE ? 768 : 1000;
+  const H = ICON_MODE ? 768 : 760;
   renderer.setPixelRatio(1);
   renderer.setSize(W, H);
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1;
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
   document.body.append(renderer.domElement);
 
   const scene = new THREE.Scene();
@@ -91,7 +105,7 @@
   let mode = 'dark';
   function applyStage() {
     const stage = STAGE[mode];
-    renderer.setClearColor(stage.background, 1);
+    renderer.setClearColor(ICON_MODE ? 0x000000 : stage.background, ICON_MODE ? 0 : 1);
     ambient.intensity = stage.ambient;
     hemisphere.intensity = stage.hemisphere;
     key.intensity = stage.key;
@@ -109,6 +123,7 @@
   // front on the phone, and this is why.
   const docs = await fetch('/tools/shots/manifest.json').then((r) => r.json()).catch(() => ({}));
   const rest = docs[MODEL]?.restRotation ?? [0, 0, 0];
+  const iconView = docs[MODEL]?.icon ?? {};
 
   const gltf = await new GLTFLoader().loadAsync(`/assets/models/${MODEL}.glb`);
   const root = gltf.scene;
@@ -118,7 +133,8 @@
   root.position.sub(centre);
   root.scale.setScalar(3.2 / size);
   const pivot = new THREE.Group();
-  pivot.rotation.set(rest[0], rest[1], rest[2]);
+  const iconRotation = iconView.rotation ?? rest;
+  pivot.rotation.set(iconRotation[0], iconRotation[1], iconRotation[2]);
   pivot.add(root);
   scene.add(pivot);
 
@@ -141,11 +157,15 @@
 
   // `app` is the orbit the explorer actually opens on: OrbitCamera's home of
   // theta -0.6, phi 1.32. Every other view is for inspection only.
+  const orbitDirection = (theta, phi) => (
+    [Math.sin(phi) * Math.sin(theta), Math.cos(phi), Math.sin(phi) * Math.cos(theta)]
+  );
   const APP_DIR = (() => {
     const theta = -0.6;
     const phi = 1.32;
-    return [Math.sin(phi) * Math.sin(theta), Math.cos(phi), Math.sin(phi) * Math.cos(theta)];
+    return orbitDirection(theta, phi);
   })();
+  const ICON_DIR = orbitDirection(iconView.theta ?? -0.6, iconView.phi ?? 1.32);
   const VIEWS = {
     app: APP_DIR.map((v) => v * 4.6),
     behind: APP_DIR.map((v) => -v * 4.6),
@@ -154,9 +174,14 @@
     back: [-1.2, 0.3, -4.4],
     close: [0.6, -0.2, 2.3],
   };
-  function look(view) {
-    camera.position.set(...VIEWS[view]);
+  function look(view, distance) {
+    const position = ICON_MODE
+      ? ICON_DIR.map((value) => value * (distance ?? iconView.distance ?? 4.6))
+      : VIEWS[view];
+    camera.up.set(0, 1, 0);
+    camera.position.set(...position);
     camera.lookAt(0, 0, 0);
+    if (ICON_MODE && iconView.roll) camera.rotateZ(iconView.roll);
     renderer.render(scene, camera);
   }
   look('app');
@@ -192,9 +217,88 @@ ${renderer.domElement.toDataURL('image/png')}` });
     return views.length;
   };
 
+  const ICON_SIZE = 256;
+  const iconCanvas = document.createElement('canvas');
+  iconCanvas.width = ICON_SIZE;
+  iconCanvas.height = ICON_SIZE;
+  const iconContext = iconCanvas.getContext('2d', { alpha: true, willReadFrequently: true });
+  if (!iconContext) throw new Error('2D canvas is unavailable for icon export');
+  iconContext.imageSmoothingEnabled = true;
+  iconContext.imageSmoothingQuality = 'high';
+
+  function alphaBounds() {
+    const pixels = iconContext.getImageData(0, 0, ICON_SIZE, ICON_SIZE).data;
+    let minX = ICON_SIZE;
+    let minY = ICON_SIZE;
+    let maxX = -1;
+    let maxY = -1;
+    for (let y = 0; y < ICON_SIZE; y += 1) {
+      for (let x = 0; x < ICON_SIZE; x += 1) {
+        if (pixels[(y * ICON_SIZE + x) * 4 + 3] === 0) continue;
+        minX = Math.min(minX, x);
+        minY = Math.min(minY, y);
+        maxX = Math.max(maxX, x);
+        maxY = Math.max(maxY, y);
+      }
+    }
+    if (maxX < minX || maxY < minY) return null;
+    return { minX, minY, maxX, maxY, width: maxX - minX + 1, height: maxY - minY + 1 };
+  }
+
+  function drawIcon(distance, shiftX = 0, shiftY = 0) {
+    look('app', distance);
+    iconContext.clearRect(0, 0, ICON_SIZE, ICON_SIZE);
+    iconContext.drawImage(renderer.domElement, shiftX, shiftY, ICON_SIZE, ICON_SIZE);
+    return alphaBounds();
+  }
+
+  window.captureIcon = async () => {
+    if (!ICON_MODE) throw new Error('captureIcon requires ?icon=1');
+    const targetPixels = THREE.MathUtils.clamp(iconView.coverage ?? 0.82, 0.7, 0.86) * ICON_SIZE;
+    let distance = iconView.distance ?? 4.6;
+    let bounds = null;
+    for (let pass = 0; pass < 6; pass += 1) {
+      bounds = drawIcon(distance);
+      if (!bounds) throw new Error(`${MODEL} rendered no visible icon pixels`);
+      const occupied = Math.max(bounds.width, bounds.height);
+      if (Math.abs(occupied - targetPixels) <= 1) break;
+      const correction = THREE.MathUtils.clamp(occupied / targetPixels, 0.65, 1.5);
+      distance = THREE.MathUtils.clamp(distance * correction, 1.2, 18);
+    }
+
+    bounds = drawIcon(distance);
+    const shiftX = Math.round(ICON_SIZE / 2 - (bounds.minX + bounds.maxX + 1) / 2);
+    const shiftY = Math.round(ICON_SIZE / 2 - (bounds.minY + bounds.maxY + 1) / 2);
+    bounds = drawIcon(distance, shiftX, shiftY);
+    if (!bounds) throw new Error(`${MODEL} disappeared while centering its icon`);
+
+    const response = await fetch('/icon', {
+      method: 'POST',
+      body: `${CONTENT_ID}\n${iconCanvas.toDataURL('image/png')}`,
+    });
+    if (!response.ok) throw new Error(`icon write failed: ${response.status} ${await response.text()}`);
+    return {
+      width: ICON_SIZE,
+      height: ICON_SIZE,
+      bounds,
+      distance: Number(distance.toFixed(5)),
+      view: {
+        rotation: [...iconRotation],
+        theta: iconView.theta ?? -0.6,
+        phi: iconView.phi ?? 1.32,
+        roll: iconView.roll ?? 0,
+      },
+    };
+  };
+
   document.getElementById('theme').onclick = () => {
     mode = mode === 'dark' ? 'light' : 'dark';
     applyStage();
     renderer.render(scene, camera);
   };
+
+  if (renderer.compileAsync) await renderer.compileAsync(scene, camera);
+  look('app');
+  await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+  window.previewReady = true;
 </script>
