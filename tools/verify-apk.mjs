@@ -5,13 +5,16 @@
 //   node tools/verify-apk.mjs dist/cutaway-0.13.0-arm64.apk
 
 import { createHash } from 'node:crypto';
-import { execFileSync } from 'node:child_process';
-import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { execFileSync, spawnSync } from 'node:child_process';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import { basename, dirname, extname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { inflateRawSync, inflateSync } from 'node:zlib';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const require = createRequire(import.meta.url);
+const imageUtils = require('@expo/image-utils');
 const apkArgument = process.argv[2];
 
 if (!apkArgument) {
@@ -28,6 +31,7 @@ if (!existsSync(apk)) {
 const sha256 = (buffer) => createHash('sha256').update(buffer).digest('hex');
 const problems = [];
 const problem = (message) => problems.push(message);
+const appConfig = JSON.parse(readFileSync(resolve(ROOT, 'app.json'), 'utf8')).expo;
 
 function findEndOfCentralDirectory(bytes) {
   const minimum = Math.max(0, bytes.length - 65_557);
@@ -38,6 +42,8 @@ function findEndOfCentralDirectory(bytes) {
 }
 
 function readZip(file) {
+  const fileSize = statSync(file).size;
+  if (fileSize > 512 * 1024 * 1024) throw new Error(`APK is ${fileSize} bytes, above the 512 MiB verification limit`);
   const bytes = readFileSync(file);
   const eocd = findEndOfCentralDirectory(bytes);
   const disk = bytes.readUInt16LE(eocd + 4);
@@ -49,11 +55,13 @@ function readZip(file) {
   if (count === 0xffff || centralSize === 0xffffffff || centralOffset === 0xffffffff) {
     throw new Error('ZIP64 APKs are unsupported');
   }
+  if (count > 50_000) throw new Error(`APK has an unreasonable ZIP entry count: ${count}`);
   if (centralOffset + centralSize > bytes.length) throw new Error('ZIP central directory exceeds the APK bounds');
 
   const entries = new Map();
   let offset = centralOffset;
   for (let index = 0; index < count; index += 1) {
+    if (offset + 46 > centralOffset + centralSize) throw new Error(`truncated ZIP central-directory entry ${index}`);
     if (bytes.readUInt32LE(offset) !== 0x02014b50) {
       throw new Error(`invalid ZIP central-directory entry ${index}`);
     }
@@ -65,14 +73,17 @@ function readZip(file) {
     const extraLength = bytes.readUInt16LE(offset + 30);
     const commentLength = bytes.readUInt16LE(offset + 32);
     const localOffset = bytes.readUInt32LE(offset + 42);
+    const nextOffset = offset + 46 + nameLength + extraLength + commentLength;
+    if (nextOffset > centralOffset + centralSize) throw new Error(`ZIP central-directory entry ${index} exceeds its bounds`);
     const nameBytes = bytes.subarray(offset + 46, offset + 46 + nameLength);
     const name = nameBytes.toString(flags & 0x0800 ? 'utf8' : 'latin1');
     if (entries.has(name)) throw new Error(`duplicate ZIP entry: ${name}`);
     entries.set(name, { name, method, compressedSize, uncompressedSize, localOffset });
-    offset += 46 + nameLength + extraLength + commentLength;
+    offset = nextOffset;
   }
+  if (offset !== centralOffset + centralSize) throw new Error('ZIP central-directory size does not match its entries');
 
-  function extract(name) {
+  function extract(name, maxOutputLength = 64 * 1024 * 1024) {
     const entry = entries.get(name);
     if (!entry) throw new Error(`APK archive entry is missing: ${name}`);
     const { localOffset, compressedSize, uncompressedSize, method } = entry;
@@ -80,10 +91,14 @@ function readZip(file) {
     const nameLength = bytes.readUInt16LE(localOffset + 26);
     const extraLength = bytes.readUInt16LE(localOffset + 28);
     const start = localOffset + 30 + nameLength + extraLength;
+    if (start + compressedSize > bytes.length) throw new Error(`compressed ZIP data exceeds APK bounds: ${name}`);
+    if (uncompressedSize > maxOutputLength) {
+      throw new Error(`${name} expands to ${uncompressedSize} bytes, above the ${maxOutputLength}-byte verification limit`);
+    }
     const compressed = bytes.subarray(start, start + compressedSize);
     let output;
     if (method === 0) output = Buffer.from(compressed);
-    else if (method === 8) output = inflateRawSync(compressed);
+    else if (method === 8) output = inflateRawSync(compressed, { maxOutputLength });
     else throw new Error(`unsupported ZIP compression method ${method}: ${name}`);
     if (output.length !== uncompressedSize) {
       throw new Error(`uncompressed size mismatch for ${name}: ${output.length} != ${uncompressedSize}`);
@@ -116,9 +131,11 @@ function compareVersions(left, right) {
   return left.localeCompare(right);
 }
 
-function findAapt2() {
-  const executable = process.platform === 'win32' ? 'aapt2.exe' : 'aapt2';
-  const direct = [process.env.AAPT2].filter(Boolean);
+function findAndroidBuildTool(name, override) {
+  const executable = process.platform === 'win32'
+    ? `${name}.${name === 'apksigner' ? 'bat' : 'exe'}`
+    : name;
+  const direct = [override].filter(Boolean);
   const sdkRoots = [process.env.ANDROID_SDK_ROOT, process.env.ANDROID_HOME].filter(Boolean);
   const localProperties = resolve(ROOT, 'android/local.properties');
   if (existsSync(localProperties)) {
@@ -140,7 +157,15 @@ function findAapt2() {
       if (existsSync(candidate)) return candidate;
     }
   }
-  throw new Error('aapt2 was not found; set AAPT2, ANDROID_SDK_ROOT, or sdk.dir in android/local.properties');
+  throw new Error(`${name} was not found; configure ANDROID_SDK_ROOT, ANDROID_HOME, or sdk.dir in android/local.properties`);
+}
+
+function runCaptured(command, args) {
+  const options = { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 };
+  if (process.platform === 'win32' && /\.(?:bat|cmd)$/i.test(command)) {
+    return spawnSync(process.env.ComSpec ?? 'cmd.exe', ['/d', '/c', 'call', command, ...args], options);
+  }
+  return spawnSync(command, args, options);
 }
 
 function parseResourceFiles(output) {
@@ -209,10 +234,14 @@ function decodedPng(fileBytes, label) {
     throw new Error(`${label} uses unsupported PNG encoding (depth=${bitDepth}, type=${colourType}, interlace=${interlace})`);
   }
   if (colourType === 3 && (!palette || palette.length % 3 !== 0)) throw new Error(`${label} has an invalid PNG palette`);
+  if (width * height > 16_777_216) throw new Error(`${label} exceeds the 16-megapixel verification limit`);
+  const compressedLength = compressed.reduce((total, chunk) => total + chunk.length, 0);
+  if (compressedLength > 32 * 1024 * 1024) throw new Error(`${label} has more than 32 MiB of compressed pixels`);
 
-  const encoded = inflateSync(Buffer.concat(compressed));
   const stride = width * channels;
-  if (encoded.length !== height * (stride + 1)) throw new Error(`${label} has an invalid decoded PNG length`);
+  const expectedEncodedLength = height * (stride + 1);
+  const encoded = inflateSync(Buffer.concat(compressed), { maxOutputLength: expectedEncodedLength });
+  if (encoded.length !== expectedEncodedLength) throw new Error(`${label} has an invalid decoded PNG length`);
   const scanlines = Buffer.alloc(width * height * channels);
   for (let y = 0; y < height; y += 1) {
     const sourceRow = y * (stride + 1);
@@ -294,21 +323,137 @@ function singleArchivePath(resources, resourceName) {
   return paths[0];
 }
 
+const densityScales = new Map([
+  ['mdpi', 1],
+  ['hdpi', 1.5],
+  ['xhdpi', 2],
+  ['xxhdpi', 3],
+  ['xxxhdpi', 4],
+]);
+
+function configAsset(value, label) {
+  if (typeof value !== 'string' || !value) throw new Error(`${label} is missing from app.json`);
+  const file = resolve(ROOT, value);
+  if (!existsSync(file)) throw new Error(`${label} does not exist: ${file}`);
+  return file;
+}
+
+function splashConfig() {
+  const plugin = appConfig.plugins?.find((entry) => Array.isArray(entry) && entry[0] === 'expo-splash-screen');
+  const options = plugin?.[1];
+  if (!options || typeof options.imageWidth !== 'number') throw new Error('expo-splash-screen image/imageWidth is missing from app.json');
+  return { source: configAsset(options.image, 'splash image'), width: options.imageWidth };
+}
+
+async function generateCurrentBrand(kind, scale) {
+  const adaptive = appConfig.android?.adaptiveIcon ?? {};
+  const createImage = async (src, size, extra = {}) => (await imageUtils.generateImageAsync(
+    { projectRoot: ROOT },
+    { src, width: size, height: size, resizeMode: 'cover', ...extra },
+  )).source;
+
+  if (kind === 'launcher') return createImage(configAsset(appConfig.icon, 'Expo icon'), 48 * scale);
+  if (kind === 'round') {
+    const size = 48 * scale;
+    return createImage(configAsset(appConfig.icon, 'Expo icon'), size, { borderRadius: size / 2 });
+  }
+  if (kind === 'foreground') {
+    return createImage(configAsset(adaptive.foregroundImage, 'adaptive foreground'), 108 * scale, { backgroundColor: 'transparent' });
+  }
+  if (kind === 'monochrome') {
+    return createImage(configAsset(adaptive.monochromeImage, 'adaptive monochrome'), 108 * scale, { backgroundColor: 'transparent' });
+  }
+  if (kind === 'background') {
+    if (adaptive.backgroundImage) {
+      return createImage(configAsset(adaptive.backgroundImage, 'adaptive background'), 108 * scale, { backgroundColor: 'transparent' });
+    }
+    return imageUtils.generateImageBackgroundAsync({
+      width: 108 * scale,
+      height: 108 * scale,
+      backgroundColor: adaptive.backgroundColor ?? '#ffffff',
+    });
+  }
+  if (kind === 'splash') {
+    const splash = splashConfig();
+    const canvasSize = 288 * scale;
+    const imageSize = splash.width * scale;
+    const background = await imageUtils.generateImageBackgroundAsync({
+      width: canvasSize,
+      height: canvasSize,
+      backgroundColor: 'transparent',
+    });
+    const foreground = (await imageUtils.generateImageAsync(
+      { projectRoot: ROOT },
+      { src: splash.source, width: imageSize, height: imageSize, resizeMode: 'contain' },
+    )).source;
+    return imageUtils.compositeImagesAsync({
+      background,
+      foreground,
+      x: (canvasSize - imageSize) / 2,
+      y: (canvasSize - imageSize) / 2,
+    });
+  }
+  throw new Error(`unknown brand image kind: ${kind}`);
+}
+
 let zip;
 let aapt2;
 let resources;
+let badging;
+let signature;
 try {
   zip = readZip(apk);
-  aapt2 = findAapt2();
+  aapt2 = findAndroidBuildTool('aapt2', process.env.AAPT2);
   const dump = execFileSync(aapt2, ['dump', 'resources', apk], {
     encoding: 'utf8',
     maxBuffer: 128 * 1024 * 1024,
   });
   resources = parseResourceFiles(dump);
+  badging = execFileSync(aapt2, ['dump', 'badging', apk], {
+    encoding: 'utf8',
+    maxBuffer: 16 * 1024 * 1024,
+  });
+  const apksigner = findAndroidBuildTool('apksigner', process.env.APKSIGNER);
+  signature = runCaptured(apksigner, ['verify', '--verbose', '--print-certs', apk]);
+  if (signature.error) throw signature.error;
 } catch (error) {
   console.error(`Could not inspect ${apk}: ${error.message}`);
   process.exit(1);
 }
+
+const packageMatch = badging.match(/^package:\s+name='([^']+)'\s+versionCode='([^']+)'\s+versionName='([^']+)'/m);
+const actualPackage = packageMatch?.[1];
+const actualVersionCode = packageMatch?.[2];
+const actualVersionName = packageMatch?.[3];
+const expectedPackage = appConfig?.android?.package;
+const expectedVersionCode = String(appConfig?.android?.versionCode ?? '');
+const expectedVersionName = appConfig?.version;
+if (!packageMatch) problem('aapt2 badging did not contain package/version metadata');
+if (actualPackage !== expectedPackage) problem(`package is ${actualPackage}, expected ${expectedPackage}`);
+if (actualVersionName !== expectedVersionName) problem(`versionName is ${actualVersionName}, expected ${expectedVersionName}`);
+if (actualVersionCode !== expectedVersionCode) problem(`versionCode is ${actualVersionCode}, expected ${expectedVersionCode}`);
+
+const packagedAbis = new Set(
+  [...zip.entries.keys()]
+    .map((name) => name.match(/^lib\/([^/]+)\/[^/]+\.so$/)?.[1])
+    .filter(Boolean),
+);
+if (packagedAbis.size !== 1 || !packagedAbis.has('arm64-v8a')) {
+  problem(`native ABI set is ${[...packagedAbis].sort().join(', ') || '(empty)'}, expected only arm64-v8a`);
+}
+const badgingAbis = badging.match(/^native-code:\s+(.+)$/m)?.[1]
+  ?.match(/'([^']+)'/g)
+  ?.map((value) => value.slice(1, -1)) ?? [];
+if (badgingAbis.length !== 1 || badgingAbis[0] !== 'arm64-v8a') {
+  problem(`aapt2 native-code is ${badgingAbis.join(', ') || '(empty)'}, expected only arm64-v8a`);
+}
+
+const signatureOutput = `${signature.stdout ?? ''}\n${signature.stderr ?? ''}`;
+const signatureValid = signature.status === 0;
+if (!signatureValid) {
+  problem(`APK signature verification failed (apksigner exit ${signature.status}): ${signatureOutput.replace(/\s+/g, ' ').trim().slice(0, 500)}`);
+}
+const debugCertificate = /CN=Android Debug/i.test(signatureOutput);
 
 const modelFiles = readdirSync(resolve(ROOT, 'assets/models')).filter((name) => name.endsWith('.glb')).sort();
 const iconFiles = readdirSync(resolve(ROOT, 'assets/object-icons')).filter((name) => name.endsWith('.png')).sort();
@@ -321,10 +466,12 @@ for (const extra of packagedModelResources.filter((name) => !expectedModelResour
   problem(`unexpected packaged model resource: ${extra}`);
 }
 let matchingModels = 0;
+const expectedAaptModelPaths = new Set();
 for (const file of modelFiles) {
   const resourceName = resourceNameForModel(file);
   const archivePath = singleArchivePath(resources, resourceName);
   if (!archivePath) continue;
+  expectedAaptModelPaths.add(archivePath);
   try {
     const sourceHash = sha256(readFileSync(resolve(ROOT, 'assets/models', file)));
     const packagedHash = sha256(zip.extract(archivePath));
@@ -333,6 +480,31 @@ for (const file of modelFiles) {
   } catch (error) {
     problem(`${file}: ${error.message}`);
   }
+}
+
+let matchingMetroModels = 0;
+const expectedMetroModelPaths = new Set(modelFiles.map((file) => `assets/${file}`));
+for (const file of modelFiles) {
+  const archivePath = `assets/${file}`;
+  if (!zip.entries.has(archivePath)) {
+    problem(`missing Metro model archive entry: ${archivePath}`);
+    continue;
+  }
+  try {
+    const sourceHash = sha256(readFileSync(resolve(ROOT, 'assets/models', file)));
+    const packagedHash = sha256(zip.extract(archivePath));
+    if (sourceHash !== packagedHash) {
+      problem(`${file}: packaged Metro model bytes do not match the current source (${archivePath})`);
+    } else matchingMetroModels += 1;
+  } catch (error) {
+    problem(`${file}: ${error.message}`);
+  }
+}
+
+const expectedGlbPaths = new Set([...expectedMetroModelPaths, ...expectedAaptModelPaths]);
+const packagedGlbPaths = [...zip.entries.keys()].filter((name) => name.endsWith('.glb'));
+for (const archivePath of packagedGlbPaths) {
+  if (!expectedGlbPaths.has(archivePath)) problem(`unexpected GLB archive entry: ${archivePath}`);
 }
 
 const expectedIconResources = new Set(iconFiles.map(resourceNameForIcon));
@@ -363,9 +535,65 @@ for (const file of iconFiles) {
 if (sourceIconHashes.size !== iconFiles.length) problem(`source object icons have only ${sourceIconHashes.size}/${iconFiles.length} unique decoded-pixel hashes`);
 if (packagedIconHashes.size !== matchingIcons) problem(`packaged object icons have only ${packagedIconHashes.size}/${matchingIcons} unique decoded-pixel hashes`);
 
+const brandResources = [
+  { resource: 'mipmap/ic_launcher', folder: 'mipmap', file: 'ic_launcher.webp', kind: 'launcher', adaptiveXml: true },
+  { resource: 'mipmap/ic_launcher_background', folder: 'mipmap', file: 'ic_launcher_background.webp', kind: 'background' },
+  { resource: 'mipmap/ic_launcher_foreground', folder: 'mipmap', file: 'ic_launcher_foreground.webp', kind: 'foreground' },
+  { resource: 'mipmap/ic_launcher_monochrome', folder: 'mipmap', file: 'ic_launcher_monochrome.webp', kind: 'monochrome' },
+  { resource: 'mipmap/ic_launcher_round', folder: 'mipmap', file: 'ic_launcher_round.webp', kind: 'round', adaptiveXml: true },
+  { resource: 'drawable/splashscreen_logo', folder: 'drawable', file: 'splashscreen_logo.png', kind: 'splash' },
+];
+let matchingBrand = 0;
+for (const definition of brandResources) {
+  const files = resources.get(definition.resource) ?? [];
+  const allowedQualifiers = new Set([
+    ...densityScales.keys(),
+    ...(definition.adaptiveXml ? ['anydpi-v26'] : []),
+  ]);
+  for (const entry of files) {
+    if (!allowedQualifiers.has(entry.qualifier)) {
+      problem(`${definition.resource}: unexpected packaged qualifier ${entry.qualifier || '(default)'}`);
+    }
+  }
+  if (definition.adaptiveXml) {
+    const xml = files.filter((entry) => entry.qualifier === 'anydpi-v26');
+    if (xml.length !== 1) problem(`${definition.resource}: expected one anydpi-v26 adaptive-icon resource, found ${xml.length}`);
+  }
+
+  for (const [density, scale] of densityScales) {
+    const candidates = files.filter((entry) => entry.qualifier === density);
+    if (candidates.length !== 1) {
+      problem(`${definition.resource} (${density}): expected one APK resource file, found ${candidates.length}`);
+      continue;
+    }
+    const archivePath = candidates[0].archivePath;
+    const localPath = resolve(ROOT, `android/app/src/main/res/${definition.folder}-${density}/${definition.file}`);
+    try {
+      if (!existsSync(localPath)) throw new Error(`generated native resource is missing: ${localPath}`);
+      const expected = decodedPng(await generateCurrentBrand(definition.kind, scale), `${definition.resource} (${density}) expected source`);
+      const native = decodedPng(readFileSync(localPath), `${definition.resource} (${density}) generated native resource`);
+      const packaged = decodedPng(zip.extract(archivePath, 32 * 1024 * 1024), `${definition.resource} (${density}) in ${archivePath}`);
+      if (native.width !== expected.width || native.height !== expected.height || native.hash !== expected.hash) {
+        problem(`${definition.resource} (${density}): generated native pixels do not match the current app.json brand source`);
+      }
+      if (packaged.width !== expected.width || packaged.height !== expected.height || packaged.hash !== expected.hash) {
+        problem(`${definition.resource} (${density}): packaged brand pixels do not match the current app.json source (${archivePath})`);
+      } else matchingBrand += 1;
+    } catch (error) {
+      problem(`${definition.resource} (${density}): ${error.message}`);
+    }
+  }
+}
+
 console.log(`${basename(apk)}: ${zip.entries.size} archive entries inspected with ${basename(aapt2)}`);
-console.log(`Models: ${matchingModels}/${modelFiles.length} exact named resource-byte matches (${packagedModelResources.length} packaged model resources)`);
+console.log(`Package: ${actualPackage}; versionName=${actualVersionName}; versionCode=${actualVersionCode}`);
+console.log(`Native ABI: ${[...packagedAbis].sort().join(', ') || '(none)'}${packagedAbis.size === 1 && packagedAbis.has('arm64-v8a') ? ' (only)' : ''}`);
+console.log(`Signature: ${signatureValid ? 'valid' : 'INVALID'}${debugCertificate ? ' (Android Debug certificate warning)' : ''}`);
+console.log(`Models (Metro): ${matchingMetroModels}/${modelFiles.length} exact assets/*.glb byte matches`);
+console.log(`Models (AAPT): ${matchingModels}/${modelFiles.length} exact named resource-byte matches (${packagedModelResources.length} packaged model resources)`);
+console.log(`GLB archive set: ${packagedGlbPaths.length}/${expectedGlbPaths.size} entries across the exact Metro + AAPT families`);
 console.log(`Object icons: ${matchingIcons}/${iconFiles.length} exact named decoded-pixel matches (${packagedIconResources.length} packaged icon resources)`);
+console.log(`Brand: ${matchingBrand}/${brandResources.length * densityScales.size} current source-pixel matches`);
 
 if (problems.length) {
   console.error(`\nAPK asset verification failed with ${problems.length} problem(s):`);
@@ -373,4 +601,4 @@ if (problems.length) {
   process.exit(1);
 }
 
-console.log('OK: all 26 current models and all 26 unique object icons are present in the APK');
+console.log('OK: both exact 26-model families and all 26 unique object icons are present in the APK');

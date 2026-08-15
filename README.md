@@ -290,13 +290,22 @@ and not the artefact.
 Always build with:
 
 ```bash
-npm run build:apk 0.9.0
+npm run build:apk -- 0.13.0
 ```
 
-which rebuilds the models, deletes `android/app/build/generated/{assets,res}/react`,
-assembles, and then runs `tools/verify-apk.mjs` — which hashes every `.glb` on
-disk and every `.glb` inside the APK and fails if any of them differ. A newer
-timestamp on the APK proves nothing; the stale one had that too.
+The optional argument must match `expo.version` in `app.json`; omitting it uses
+that version. The command rebuilds the models and brand, runs the full source
+contract, synchronizes the ignored native project with Expo prebuild, and then
+forces an ARM64 release bundle with Gradle's task and build caches disabled. It
+does not delete generated directories or run a native clean.
+
+The result is always `dist/cutaway-<app-version>-arm64.apk`. Before accepting
+it, `tools/verify-apk.mjs` proves the current package/version/code, valid APK
+signature, arm64-only native libraries, the exact 26 Metro model assets plus
+the exact 26 AAPT model resources, all 26 unique object icons, and every current
+launcher/adaptive/splash density derived from `app.json`. Configure an Android
+SDK through `ANDROID_SDK_ROOT`, `ANDROID_HOME`, or `android/local.properties`.
+A newer timestamp on the APK proves nothing; the stale one had that too.
 
 ### Looking at a model before it ships
 
