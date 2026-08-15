@@ -177,6 +177,12 @@ try {
     expected: /unexpected GLB archive entry: assets\/unexpected-review-fixture\.glb/i,
   });
   mutationCase({
+    name: 'rejects an uppercase extra GLB archive entry outside the exact two-family set',
+    action: 'extra',
+    entryName: 'assets/unexpected-uppercase-review-fixture.GLB',
+    expected: /unexpected GLB archive entry: assets\/unexpected-uppercase-review-fixture\.GLB/i,
+  });
+  mutationCase({
     name: 'rejects a stale packaged launcher while current native resources remain unchanged',
     action: 'stale',
     entryName: resourceArchivePath(acceptedApk, 'mipmap/ic_launcher', 'mdpi'),

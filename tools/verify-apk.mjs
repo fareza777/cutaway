@@ -502,7 +502,7 @@ for (const file of modelFiles) {
 }
 
 const expectedGlbPaths = new Set([...expectedMetroModelPaths, ...expectedAaptModelPaths]);
-const packagedGlbPaths = [...zip.entries.keys()].filter((name) => name.endsWith('.glb'));
+const packagedGlbPaths = [...zip.entries.keys()].filter((name) => name.toLowerCase().endsWith('.glb'));
 for (const archivePath of packagedGlbPaths) {
   if (!expectedGlbPaths.has(archivePath)) problem(`unexpected GLB archive entry: ${archivePath}`);
 }

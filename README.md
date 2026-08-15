@@ -99,12 +99,13 @@ npm run android        # debug build onto a connected device or emulator
 `npm run web` also works and is the fastest way to preview a model change
 without a native rebuild.
 
-For a release APK — bundled JS, embedded assets, no Metro — the production path:
+For a release APK — bundled JS, embedded assets, no Metro — use the canonical version-checked production path:
 
 ```bash
-npx expo prebuild --platform android --clean
-cd android && ./gradlew assembleRelease
+npm run build:apk -- 0.13.0
 ```
+
+That command rebuilds generated assets, synchronizes the ignored Android project, assembles only ARM64, and runs the complete release verifier. See "Building a production APK" below for its guarantees and output path.
 
 Two Windows-specific notes, both of which cost time here:
 
