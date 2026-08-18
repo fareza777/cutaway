@@ -144,8 +144,8 @@ try {
   const pristine = runVerifier(acceptedApk);
   const pristineOutput = `${pristine.stdout}\n${pristine.stderr}`;
   check(
-    'accepted 26-object APK is rejected as incompatible with the exact-28 source contract',
-    pristine.status !== 0,
+    'accepted 28-object APK satisfies the exact source and package contract',
+    pristine.status === 0,
     `exit ${pristine.status}`,
   );
   check(
@@ -167,23 +167,23 @@ try {
     !/source object-icon count is 28, expected \d+/i.test(pristineOutput),
   );
   check(
-    'verifier reports the stale artifact as 26/28 Metro models',
-    /Models \(Metro\): 26\/28 exact assets\/\*\.glb byte matches/i.test(pristineOutput),
+    'verifier proves all 28 Metro models match current source bytes',
+    /Models \(Metro\): 28\/28 exact assets\/\*\.glb byte matches/i.test(pristineOutput),
   );
   check(
-    'verifier reports the stale artifact as 26/28 AAPT models',
-    /Models \(AAPT\): 26\/28 exact named resource-byte matches \(26 packaged model resources\)/i.test(pristineOutput),
+    'verifier proves all 28 AAPT models match current source bytes',
+    /Models \(AAPT\): 28\/28 exact named resource-byte matches \(28 packaged model resources\)/i.test(pristineOutput),
   );
   check(
-    'verifier requires exactly 56 GLB entries across both 28-model families',
-    /GLB archive set: 52\/56 entries across the exact Metro \+ AAPT families/i.test(pristineOutput),
+    'verifier proves exactly 56 GLB entries across both 28-model families',
+    /GLB archive set: 56\/56 entries across the exact Metro \+ AAPT families/i.test(pristineOutput),
   );
   check(
-    'verifier reports the stale artifact as 26/28 unique object icons',
-    /Object icons: 26\/28 exact named decoded-pixel matches \(26 packaged icon resources\)/i.test(pristineOutput),
+    'verifier proves all 28 unique object icons match current source pixels',
+    /Object icons: 28\/28 exact named decoded-pixel matches \(28 packaged icon resources\)/i.test(pristineOutput),
   );
   check(
-    'verifier proves all 28 current source icons are uniquely decodable independently of the stale APK',
+    'verifier proves all 28 current source icons are uniquely decodable',
     /Source object icons: 28\/28 unique decoded-pixel hashes/i.test(pristineOutput)
       && !/source object icons have only/i.test(pristineOutput),
   );
