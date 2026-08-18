@@ -307,6 +307,7 @@ run('Assemble a fresh ARM64 release', gradle, [
   '-q',
   '--console=plain',
   '-PreactNativeArchitectures=arm64-v8a',
+  '-Pkotlin.compiler.execution.strategy=in-process',
 ], {
   cwd: android,
   env: { ...process.env, NODE_ENV: 'production' },

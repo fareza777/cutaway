@@ -221,7 +221,7 @@ try {
       'npm run build:brand',
       'npm run check',
       'expo prebuild --platform android --no-install --no-clean',
-      'gradle assembleRelease --rerun-tasks --no-build-cache --no-daemon -q --console=plain -PreactNativeArchitectures=arm64-v8a',
+      'gradle assembleRelease --rerun-tasks --no-build-cache --no-daemon -q --console=plain -PreactNativeArchitectures=arm64-v8a -Pkotlin.compiler.execution.strategy=in-process',
       `verify ${resolve(clean.root, 'dist/cutaway-0.13.0-arm64.apk')}`,
     ]),
     commands.join(' | '),
