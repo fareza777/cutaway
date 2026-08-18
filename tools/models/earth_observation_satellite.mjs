@@ -12,7 +12,7 @@ function named(material, name) {
 }
 
 const BUS = () => named(pbr('#2a343d', { metalness: 0.22, roughness: 0.5 }), 'graphite composite spacecraft structure');
-const MLI = () => named(pbr('#c19a3c', { metalness: 0.68, roughness: 0.4 }), 'gold multi-layer insulation');
+const MLI = () => named(pbr('#ffffff', { metalness: 0.68, roughness: 0.4, vertexColors: true }), 'gold multi-layer insulation');
 const ALUMINIUM = () => named(pbr('#aeb8c0', { metalness: 0.88, roughness: 0.3 }), 'structural aluminium');
 const SOLAR = () => named(pbr('#ffffff', { metalness: 0.24, roughness: 0.3, vertexColors: true }), 'blue solar cell laminate');
 const SUN_SENSOR = () => named(pbr('#205c8f', { metalness: 0.2, roughness: 0.28 }), 'blue solar sensor glass');
@@ -55,16 +55,18 @@ function frameBar(from, to, radius = 0.022, radial = 10) {
   return geometry;
 }
 
-function quiltPillow(pos) {
+function quiltPillow(pos, width = 0.18, height = 0.18, depth = 0.026) {
   const [x, y, z] = pos;
-  const back = 0.09;
-  const face = 0.067;
-  const halfDepth = 0.013;
+  const backX = width / 2;
+  const backY = height / 2;
+  const faceX = backX * 0.74;
+  const faceY = backY * 0.74;
+  const halfDepth = depth / 2;
   const positions = [
-    x - face, y - face, z + halfDepth, x + face, y - face, z + halfDepth,
-    x + face, y + face, z + halfDepth, x - face, y + face, z + halfDepth,
-    x - back, y - back, z - halfDepth, x + back, y - back, z - halfDepth,
-    x + back, y + back, z - halfDepth, x - back, y + back, z - halfDepth,
+    x - faceX, y - faceY, z + halfDepth, x + faceX, y - faceY, z + halfDepth,
+    x + faceX, y + faceY, z + halfDepth, x - faceX, y + faceY, z + halfDepth,
+    x - backX, y - backY, z - halfDepth, x + backX, y - backY, z - halfDepth,
+    x + backX, y + backY, z - halfDepth, x - backX, y + backY, z - halfDepth,
   ];
   const indices = [
     0, 1, 2, 0, 2, 3, 4, 6, 5, 4, 7, 6,
@@ -118,59 +120,77 @@ function solarWing(sign) {
 
 function busFrame() {
   const bars = [];
-  for (const x of [-0.66, 0.66]) {
-    for (const z of [-0.66, 0.66]) bars.push(box(0.085, 1.56, 0.085, { pos: [x, 0, z] }));
+  // A broad lower service cage and a narrower, port-offset instrument cage
+  // give the blanket volumes real load paths instead of hiding one cuboid.
+  for (const x of [-0.6, 0.6]) {
+    for (const z of [-0.56, 0.56]) bars.push(box(0.085, 1.08, 0.085, { pos: [x, -0.27, z] }));
   }
-  for (const y of [-0.78, 0.78]) {
-    for (const z of [-0.66, 0.66]) bars.push(box(1.32, 0.085, 0.085, { pos: [0, y, z] }));
-    for (const x of [-0.66, 0.66]) bars.push(box(0.085, 0.085, 1.32, { pos: [x, y, 0] }));
+  for (const y of [-0.81, 0.27]) {
+    for (const z of [-0.56, 0.56]) bars.push(box(1.2, 0.085, 0.085, { pos: [0, y, z] }));
+    for (const x of [-0.6, 0.6]) bars.push(box(0.085, 0.085, 1.12, { pos: [x, y, 0] }));
+  }
+  for (const x of [-0.48, 0.36]) {
+    for (const z of [-0.44, 0.44]) bars.push(box(0.075, 0.66, 0.075, { pos: [x, 0.6, z] }));
+  }
+  for (const y of [0.27, 0.93]) {
+    for (const z of [-0.44, 0.44]) bars.push(box(0.84, 0.075, 0.075, { pos: [-0.06, y, z] }));
+    for (const x of [-0.48, 0.36]) bars.push(box(0.075, 0.075, 0.88, { pos: [x, y, 0] }));
   }
   bars.push(
-    box(1.22, 0.07, 0.07, { pos: [0, 0.3, -0.66] }),
-    box(1.22, 0.07, 0.07, { pos: [0, 0.3, 0.66] }),
-    box(0.07, 0.07, 1.22, { pos: [0, 0.3, 0] }),
+    box(1.12, 0.07, 0.07, { pos: [0, 0.28, -0.56] }),
+    box(1.12, 0.07, 0.07, { pos: [0, 0.28, 0.56] }),
+    box(0.07, 0.07, 1.08, { pos: [0, 0.28, 0] }),
+    frameBar([-0.6, 0.27, -0.56], [-0.48, 0.93, -0.44], 0.035, 10),
+    frameBar([0.6, 0.27, -0.56], [0.36, 0.93, -0.44], 0.035, 10),
+    frameBar([-0.6, 0.27, 0.56], [-0.48, 0.93, 0.44], 0.035, 10),
+    frameBar([0.6, 0.27, 0.56], [0.36, 0.93, 0.44], 0.035, 10),
   );
   return merge(bars);
 }
 
 function blanketGeometry() {
   const pieces = [
-    box(1.43, 0.05, 1.43, { pos: [0, 0.835, 0] }),
-    box(1.43, 0.05, 1.43, { pos: [0, -0.835, 0] }),
-    box(0.05, 1.67, 1.43, { pos: [-0.715, 0, 0] }),
-    box(0.05, 1.67, 1.43, { pos: [0.715, 0, 0] }),
-    box(1.43, 1.67, 0.05, { pos: [0, 0, -0.715] }),
-    // A closed service wall carries the antenna penetration and paired
-    // thrusters. Cutaway visibility comes from runtime peeling, not an
-    // unflightworthy permanent opening in the pressureless equipment bay.
-    box(1.43, 1.67, 0.05, { pos: [0, 0, 0.715] }),
-    cylinder(0.48, 0.64, 0.26, 4, { pos: [0, 0.97, 0], rot: [0, Math.PI / 4, 0] }),
+    // Five overlapping flight volumes: propulsion/service, avionics,
+    // starboard utility pod, payload shoulder, and sensor crown. Their differing
+    // centres, widths and depths create purposeful steps in every closed view.
+    tint(cylinder(0.65, 0.825, 0.72, 8, { pos: [0, -0.49, 0], rot: [0, Math.PI / 8, 0] }), '#a9792b'),
+    tint(roundedBox(1.02, 0.52, 1.24, 0.11, 4, { pos: [-0.18, 0.1, 0.02] }), '#bd9038'),
+    tint(roundedBox(0.42, 0.68, 1.16, 0.085, 4, { pos: [0.48, 0.14, 0.08] }), '#8f6724'),
+    tint(cylinder(0.39, 0.52, 0.48, 6, { pos: [0.06, 0.62, -0.04], rot: [0, Math.PI / 6, 0], scale: [1, 1, 0.9] }), '#c99b40'),
+    tint(cylinder(0.34, 0.41, 0.28, 6, { pos: [0.16, 0.98, -0.05], rot: [0, Math.PI / 6, 0], scale: [1, 1, 1.05] }), '#d4ae5a'),
+
+    // Separate forward access blankets close each bay, but no single panel
+    // recreates the old full-height rectangular facade.
+    tint(roundedBox(1.18, 0.62, 0.045, 0.065, 3, { pos: [-0.06, -0.5, 0.71] }), '#b98632'),
+    tint(roundedBox(0.78, 0.5, 0.045, 0.06, 3, { pos: [-0.25, 0.08, 0.73] }), '#c69a42'),
+    tint(roundedBox(0.42, 0.66, 0.045, 0.055, 3, { pos: [0.48, 0.13, 0.79] }), '#9d7029'),
+    tint(roundedBox(0.84, 0.42, 0.045, 0.06, 3, { pos: [0.08, 0.64, 0.72] }), '#d1a64d'),
   ];
-  for (const face of [-1, 1]) {
-    for (const y of [-0.56, -0.28, 0, 0.28, 0.56]) {
-      pieces.push(box(0.028, 0.022, 1.3, { pos: [face * 0.744, y, 0] }));
-    }
-    for (const z of [-0.48, -0.24, 0, 0.24, 0.48]) {
-      pieces.push(box(0.028, 1.5, 0.022, { pos: [face * 0.744, 0, z] }));
-    }
+  const seamTapes = [
+    [-0.06, -0.2, 1.08, 0.024], [-0.06, -0.8, 1.08, 0.022],
+    [-0.44, 0.08, 0.024, 0.38], [0.14, 0.08, 0.024, 0.38],
+    [0.48, -0.12, 0.34, 0.022], [0.48, 0.37, 0.34, 0.022],
+    [0.08, 0.46, 0.68, 0.022], [0.08, 0.82, 0.56, 0.022],
+  ];
+  for (const [x, y, width, height] of seamTapes) {
+    pieces.push(tint(roundedBox(width, height, 0.022, 0.008, 2, { pos: [x, y, 0.818] }), '#e0bb68'));
   }
-  for (const y of [-0.56, -0.28, 0, 0.28, 0.56]) {
-    pieces.push(box(1.3, 0.022, 0.028, { pos: [0, y, 0.744] }));
+  const quiltPads = [
+    [-0.45, -0.64, 0.75, 0.18, 0.13], [-0.16, -0.59, 0.76, 0.13, 0.17],
+    [0.12, -0.54, 0.76, 0.22, 0.14], [0.36, -0.43, 0.78, 0.16, 0.2],
+    [-0.48, -0.09, 0.77, 0.14, 0.18], [-0.2, 0.08, 0.78, 0.2, 0.14],
+    [0.1, 0.16, 0.78, 0.16, 0.18], [0.5, 0.2, 0.83, 0.13, 0.21],
+    [-0.17, 0.56, 0.77, 0.22, 0.14], [0.2, 0.68, 0.78, 0.15, 0.18],
+  ];
+  for (const [x, y, z, width, height] of quiltPads) {
+    pieces.push(tint(quiltPillow([x, y, z], width, height), '#d6ad58'));
   }
-  for (const x of [-0.48, -0.24, 0, 0.24, 0.48]) {
-    pieces.push(box(0.022, 1.5, 0.028, { pos: [x, 0, 0.744] }));
-  }
-  for (const x of [-0.55, -0.33, -0.11, 0.11, 0.33, 0.55]) {
-    for (const y of [-0.58, -0.29, 0, 0.29, 0.58]) {
-      pieces.push(quiltPillow([x, y, 0.76]));
-    }
-  }
-  for (let index = 0; index < 24; index += 1) {
-    const angle = (index / 24) * TAU;
-    pieces.push(sphere(0.018, 10, {
-      pos: [Math.cos(angle) * 0.57, index % 2 ? 0.86 : -0.86, Math.sin(angle) * 0.57],
+  for (let index = 0; index < 18; index += 1) {
+    const angle = (index / 18) * TAU;
+    pieces.push(tint(sphere(0.016, 10, {
+      pos: [-0.04 + Math.cos(angle) * 0.6, -0.84 + Math.sin(angle) * 0.02, Math.sin(angle) * 0.54],
       scale: [1, 0.42, 1],
-    }));
+    }), '#e3c278'));
   }
   return merge(pieces);
 }
@@ -241,25 +261,25 @@ function paraboloid(radius, depth, radial = 96, rings = 20, centre = [0, 0, 0]) 
 
 function highGainDish() {
   return merge([
-    paraboloid(0.38, 0.16, 96, 20, [0.32, 0.92, 0.84]),
-    torus(0.38, 0.018, 80, 14, { pos: [0.32, 0.92, 1.0] }),
-    cylinderZ(0.045, 0.07, 0.18, 48, [0.32, 0.92, 1.22], true),
-    torus(0.072, 0.014, 48, 10, { pos: [0.32, 0.92, 1.13] }),
+    paraboloid(0.46, 0.18, 80, 16, [0.55, 0.97, 0.85]),
+    torus(0.46, 0.02, 64, 12, { pos: [0.55, 0.97, 1.03] }),
+    cylinderZ(0.052, 0.08, 0.2, 40, [0.55, 0.97, 1.3], true),
+    torus(0.082, 0.015, 40, 8, { pos: [0.55, 0.97, 1.2] }),
     ...Array.from({ length: 3 }, (_, index) => {
       const angle = (index / 3) * TAU;
       return frameBar([
-        0.32 + Math.cos(angle) * 0.36,
-        0.92 + Math.sin(angle) * 0.36,
-        1.0,
-      ], [0.32, 0.92, 1.13], 0.012, 8);
+        0.55 + Math.cos(angle) * 0.44,
+        0.97 + Math.sin(angle) * 0.44,
+        1.03,
+      ], [0.55, 0.97, 1.2], 0.013, 6);
     }),
     ...Array.from({ length: 6 }, (_, index) => {
       const angle = (index / 6) * TAU;
       return frameBar(
-        [0.32 + Math.cos(angle) * 0.08, 0.92 + Math.sin(angle) * 0.08, 0.825],
-        [0.32 + Math.cos(angle) * 0.35, 0.92 + Math.sin(angle) * 0.35, 0.965],
+        [0.55 + Math.cos(angle) * 0.09, 0.97 + Math.sin(angle) * 0.09, 0.83],
+        [0.55 + Math.cos(angle) * 0.43, 0.97 + Math.sin(angle) * 0.43, 0.99],
         0.014,
-        8,
+        6,
       );
     }),
   ]);
@@ -267,17 +287,19 @@ function highGainDish() {
 
 function antennaGimbalGeometry() {
   return merge([
-    roundedBox(0.42, 0.12, 0.16, 0.045, 4, { pos: [0.32, 0.58, 0.68] }),
-    cylinder(0.09, 0.09, 0.32, 48, { pos: [0.32, 0.72, 0.7] }),
-    torus(0.105, 0.02, 48, 12, { pos: [0.32, 0.72, 0.7], rot: [Math.PI / 2, 0, 0] }),
-    roundedBox(0.1, 0.34, 0.12, 0.035, 3, { pos: [0.13, 0.74, 0.76] }),
-    roundedBox(0.1, 0.34, 0.12, 0.035, 3, { pos: [0.51, 0.74, 0.76] }),
-    cylinderX(0.065, 0.065, 0.48, 40, [0.32, 0.88, 0.82]),
-    torus(0.078, 0.018, 40, 10, { pos: [0.08, 0.88, 0.82], rot: [0, Math.PI / 2, 0] }),
-    torus(0.078, 0.018, 40, 10, { pos: [0.56, 0.88, 0.82], rot: [0, Math.PI / 2, 0] }),
-    roundedBox(0.11, 0.15, 0.13, 0.032, 3, { pos: [0.07, 0.78, 0.82] }),
-    roundedBox(0.11, 0.15, 0.13, 0.032, 3, { pos: [0.57, 0.78, 0.82] }),
-    curve([[0.1, 0.7, 0.72], [0.02, 0.84, 0.77], [0.08, 0.98, 0.82], [0.2, 1.02, 0.84]], 0.012, { segments: 28, radial: 8 }),
+    roundedBox(0.42, 0.12, 0.18, 0.045, 3, { pos: [0.32, 0.58, 0.67] }),
+    cylinder(0.09, 0.09, 0.32, 40, { pos: [0.32, 0.72, 0.7] }),
+    torus(0.105, 0.02, 40, 10, { pos: [0.32, 0.72, 0.7], rot: [Math.PI / 2, 0, 0] }),
+    frameBar([0.18, 0.68, 0.72], [0.2, 0.9, 0.84], 0.045, 8),
+    frameBar([0.46, 0.68, 0.72], [0.88, 0.9, 0.84], 0.045, 8),
+    roundedBox(0.11, 0.38, 0.13, 0.035, 3, { pos: [0.2, 0.78, 0.78], rot: [0, 0, -0.08] }),
+    roundedBox(0.11, 0.38, 0.13, 0.035, 3, { pos: [0.88, 0.78, 0.78], rot: [0, 0, 0.2] }),
+    cylinderX(0.068, 0.068, 0.78, 40, [0.54, 0.91, 0.84]),
+    torus(0.08, 0.018, 40, 10, { pos: [0.15, 0.91, 0.84], rot: [0, Math.PI / 2, 0] }),
+    torus(0.08, 0.018, 40, 10, { pos: [0.93, 0.91, 0.84], rot: [0, Math.PI / 2, 0] }),
+    roundedBox(0.12, 0.16, 0.14, 0.032, 3, { pos: [0.14, 0.8, 0.84] }),
+    roundedBox(0.12, 0.16, 0.14, 0.032, 3, { pos: [0.94, 0.8, 0.84] }),
+    curve([[0.1, 0.7, 0.72], [0.0, 0.86, 0.78], [0.18, 1.04, 0.85], [0.4, 1.08, 0.88]], 0.012, { segments: 28, radial: 8 }),
   ]);
 }
 
@@ -311,6 +333,11 @@ export default function earthObservationSatellite() {
       roundedBox(1.18, 0.055, 1.18, 0.018, 2, { pos: [0, 0.1, 0] }),
       roundedBox(1.18, 0.055, 1.18, 0.018, 2, { pos: [0, 0.58, 0] }),
       ...[-0.48, 0.48].flatMap((x) => [-0.48, 0.48].map((z) => roundedBox(0.06, 1.02, 0.06, 0.018, 2, { pos: [x, 0.08, z] }))),
+      torus(0.5, 0.026, 64, 10, { pos: [0, -1.53, 0], rot: [Math.PI / 2, 0, 0] }),
+      frameBar([-0.48, -0.42, 0.42], [-0.36, -1.49, 0.36], 0.018, 8),
+      frameBar([-0.48, -0.42, -0.42], [-0.36, -1.49, -0.36], 0.018, 8),
+      frameBar([0.48, -0.42, 0.42], [0.36, -1.49, 0.36], 0.018, 8),
+      frameBar([0.48, -0.42, -0.42], [0.36, -1.49, -0.36], 0.018, 8),
     ]), ALUMINIUM()),
 
     part('solar_array_port', solarWing(-1), SOLAR()),
@@ -341,22 +368,30 @@ export default function earthObservationSatellite() {
     ]), ELECTRONICS()),
 
     part('telescope_baffle', merge([
-      tube(0.35, 0.29, 1.0, 72, { pos: [0, -0.8, 0] }),
-      torus(0.35, 0.025, 72, 12, { pos: [0, -1.3, 0], rot: [Math.PI / 2, 0, 0] }),
-      torus(0.35, 0.025, 72, 12, { pos: [0, -0.3, 0], rot: [Math.PI / 2, 0, 0] }),
-      cylinder(0.35, 0.42, 0.18, 64, { pos: [0, -1.22, 0] }, true),
-      torus(0.42, 0.02, 72, 12, { pos: [0, -1.31, 0], rot: [Math.PI / 2, 0, 0] }),
+      tube(0.35, 0.29, 1.1, 48, { pos: [0, -0.84, 0] }),
+      torus(0.35, 0.025, 48, 10, { pos: [0, -1.39, 0], rot: [Math.PI / 2, 0, 0] }),
+      torus(0.35, 0.025, 48, 10, { pos: [0, -0.29, 0], rot: [Math.PI / 2, 0, 0] }),
+      cylinder(0.4, 0.48, 0.2, 48, { pos: [0, -1.3, 0] }, true),
+      torus(0.48, 0.022, 48, 10, { pos: [0, -1.4, 0], rot: [Math.PI / 2, 0, 0] }),
       ...Array.from({ length: 8 }, (_, index) => {
         const angle = (index / 8) * TAU;
-        return roundedBox(0.12, 0.16, 0.035, 0.012, 2, {
-          pos: [Math.cos(angle) * 0.39, -1.21, Math.sin(angle) * 0.39],
+        return roundedBox(0.14, 0.18, 0.035, 0.012, 1, {
+          pos: [Math.cos(angle) * 0.45, -1.3, Math.sin(angle) * 0.45],
           rot: [0, -angle, 0],
         });
       }),
       ...Array.from({ length: 12 }, (_, index) => {
         const angle = (index / 12) * TAU;
-        return frameBar([Math.cos(angle) * 0.34, -1.27, Math.sin(angle) * 0.34], [Math.cos(angle) * 0.34, -0.33, Math.sin(angle) * 0.34], 0.014, 8);
+        return frameBar([Math.cos(angle) * 0.36, -1.36, Math.sin(angle) * 0.36], [Math.cos(angle) * 0.34, -0.32, Math.sin(angle) * 0.34], 0.014, 6);
       }),
+      // An offset rectangular pushbroom sunshade gives the nadir instrument a
+      // distinct lower-left silhouette while leaving the optical axis centred.
+      roundedBox(0.92, 0.18, 0.11, 0.025, 2, { pos: [-0.32, -1.43, 0.37] }),
+      roundedBox(0.92, 0.18, 0.11, 0.025, 2, { pos: [-0.32, -1.43, -0.37] }),
+      roundedBox(0.11, 0.18, 0.74, 0.025, 2, { pos: [-0.8, -1.43, 0] }),
+      roundedBox(0.11, 0.18, 0.74, 0.025, 2, { pos: [0.14, -1.43, 0] }),
+      frameBar([-0.42, -1.37, 0.34], [-0.18, -1.18, 0.28], 0.018, 6),
+      frameBar([-0.42, -1.37, -0.34], [-0.18, -1.18, -0.28], 0.018, 6),
     ]), OPTICAL_BLACK()),
 
     part('primary_mirror', merge([
@@ -430,14 +465,17 @@ export default function earthObservationSatellite() {
     part('antenna_gimbal', antennaGimbalGeometry(), ALUMINIUM()),
 
     part('radiator_panels', merge([
-      roundedBox(0.54, 0.78, 0.045, 0.014, 2, { pos: [-0.34, 0.18, -1.3] }),
-      roundedBox(0.54, 0.78, 0.045, 0.014, 2, { pos: [0.34, 0.18, -1.3] }),
-      ...[-0.34, 0.34].flatMap((x) => [-0.12, 0.08, 0.28, 0.48].map((y) => roundedBox(0.48, 0.018, 0.012, 0.006, 2, { pos: [x, y, -1.326] }))),
-      ...[-0.34, 0.34].flatMap((panelX) => [-0.2, -0.12, -0.04, 0.04, 0.12, 0.2].map((offset) => box(0.018, 0.68, 0.014, {
-        pos: [panelX + offset, 0.18, -1.33],
+      roundedBox(0.5, 0.82, 0.045, 0.014, 2, { pos: [-1.12, -0.28, -1.3] }),
+      roundedBox(0.5, 0.82, 0.045, 0.014, 2, { pos: [1.12, -0.28, -1.3] }),
+      ...[-1.12, 1.12].flatMap((x) => [-0.58, -0.38, -0.18, 0.02].map((y) => roundedBox(0.44, 0.018, 0.012, 0.006, 2, { pos: [x, y, -1.326] }))),
+      ...[-1.12, 1.12].flatMap((panelX) => [-0.18, -0.1, -0.02, 0.06, 0.14, 0.22].map((offset) => box(0.016, 0.72, 0.014, {
+        pos: [panelX + offset, -0.28, -1.33],
       }))),
-      ...[-0.34, 0.34].flatMap((panelX) => [-0.18, 0.54].map((y) => cylinderX(0.025, 0.025, 0.48, 24, [panelX, y, -1.342]))),
-      ...[-0.52, -0.16, 0.16, 0.52].map((x) => frameBar([x, 0, -0.72], [x, 0.18, -1.27], 0.018, 8)),
+      ...[-1.12, 1.12].flatMap((panelX) => [-0.64, 0.08].map((y) => cylinderX(0.024, 0.024, 0.44, 24, [panelX, y, -1.342]))),
+      frameBar([-0.54, -0.08, -0.5], [-0.87, -0.12, -1.27], 0.02, 8),
+      frameBar([-0.54, -0.48, -0.5], [-0.87, -0.5, -1.27], 0.02, 8),
+      frameBar([0.54, -0.08, -0.5], [0.87, -0.12, -1.27], 0.02, 8),
+      frameBar([0.54, -0.48, -0.5], [0.87, -0.5, -1.27], 0.02, 8),
     ]), RADIATOR()),
   );
 

@@ -237,14 +237,33 @@ async function run() {
   check('authored bounds stay centred on the model origin for app framing', totalCentre.length() <= 0.06, totalCentre.toArray().map((value) => value.toFixed(3)).join(', '));
   check('spacecraft bus is a compact three-axis-stabilized load frame', size(bus).x >= 1.2 && size(bus).x <= 1.55 && size(bus).y >= 1.45 && size(bus).y <= 1.85 && size(bus).z >= 1.2 && size(bus).z <= 1.55);
   check('MLI blankets wrap the bus without swallowing its deployed silhouette', blanketBox.containsBox(busBox) && size(byName.get('thermal_blankets')!).x <= 1.55);
-  const forwardMliArea = geometryComponents(byName.get('thermal_blankets')!)
-    .filter((component) => component.box.min.z >= 0.68 && component.box.getSize(new THREE.Vector3()).z <= 0.08)
-    .reduce((area, component) => {
+  const blanketComponents = geometryComponents(byName.get('thermal_blankets')!);
+  const forwardShellPanels = blanketComponents
+    .filter((component) => component.box.min.z >= 0.68 && component.box.getSize(new THREE.Vector3()).z <= 0.08);
+  const forwardMliArea = forwardShellPanels.reduce((area, component) => {
       const componentSize = component.box.getSize(new THREE.Vector3());
       return area + componentSize.x * componentSize.y;
     }, 0);
   check('camera-facing MLI wall closes the flight-ready bus around service penetrations', forwardMliArea >= 1.9, `${forwardMliArea.toFixed(2)} m² projected coverage`);
-  const blanketComponents = geometryComponents(byName.get('thermal_blankets')!);
+  const largestForwardPanelArea = Math.max(0, ...forwardShellPanels.map((component) => {
+    const componentSize = component.box.getSize(new THREE.Vector3());
+    return componentSize.x * componentSize.y;
+  }));
+  check('no single MLI panel recreates a generic full-height cuboid facade', largestForwardPanelArea <= 1.05, `${largestForwardPanelArea.toFixed(2)} m² largest panel`);
+  const majorBlanketVolumes = blanketComponents.filter((component) => {
+    const componentSize = component.box.getSize(new THREE.Vector3());
+    return componentSize.x >= 0.34 && componentSize.y >= 0.24 && componentSize.z >= 0.34;
+  });
+  const majorVolumeCentres = majorBlanketVolumes.map((component) => component.box.getCenter(new THREE.Vector3()));
+  const majorVolumeWidths = majorBlanketVolumes.map((component) => component.box.getSize(new THREE.Vector3()).x);
+  const majorVolumeOffset = majorVolumeCentres.length
+    ? Math.max(...majorVolumeCentres.map((point) => point.x)) - Math.min(...majorVolumeCentres.map((point) => point.x))
+    : 0;
+  const majorVolumeHeightRange = majorVolumeCentres.length
+    ? Math.max(...majorVolumeCentres.map((point) => point.y)) - Math.min(...majorVolumeCentres.map((point) => point.y))
+    : 0;
+  const majorVolumeWidthRange = majorVolumeWidths.length ? Math.max(...majorVolumeWidths) - Math.min(...majorVolumeWidths) : 0;
+  check('MLI exterior separates instrument and service bays into offset stepped volumes', majorBlanketVolumes.length >= 4 && majorVolumeOffset >= 0.24 && majorVolumeHeightRange >= 0.9 && majorVolumeWidthRange >= 0.28, `${majorBlanketVolumes.length} volumes, ${majorVolumeOffset.toFixed(2)} m offset, ${majorVolumeWidthRange.toFixed(2)} m width range`);
   const upperShoulders = blanketComponents.filter((component) => {
     const componentSize = component.box.getSize(new THREE.Vector3());
     const componentCentre = component.box.getCenter(new THREE.Vector3());
@@ -255,12 +274,14 @@ async function run() {
   check('MLI silhouette includes a tapered upper equipment shoulder instead of one plain cuboid', upperShoulders.length >= 1, `${upperShoulders.length} shoulder components`);
   const forwardQuiltPads = blanketComponents.filter((component) => {
     const componentSize = component.box.getSize(new THREE.Vector3());
-    return component.box.min.z >= 0.73
-      && componentSize.x >= 0.12 && componentSize.x <= 0.24
-      && componentSize.y >= 0.12 && componentSize.y <= 0.24
+    return component.box.min.z >= 0.68
+      && componentSize.x >= 0.1 && componentSize.x <= 0.28
+      && componentSize.y >= 0.1 && componentSize.y <= 0.28
       && componentSize.z >= 0.025 && componentSize.z <= 0.09;
   });
-  check('forward MLI uses restrained geometric quilt relief rather than a planar painted wall', forwardQuiltPads.length >= 24, `${forwardQuiltPads.length} quilt pads`);
+  check('forward MLI uses restrained geometric quilt relief rather than a planar painted wall', forwardQuiltPads.length >= 8, `${forwardQuiltPads.length} quilt pads`);
+  const quiltWidths = new Set(forwardQuiltPads.map((component) => component.box.getSize(new THREE.Vector3()).x.toFixed(2)));
+  check('MLI quilting stays subordinate and irregular across the differentiated bays', forwardQuiltPads.length <= 16 && quiltWidths.size >= 3, `${forwardQuiltPads.length} pads in ${quiltWidths.size} widths`);
   const deepestQuiltRelief = Math.max(0, ...forwardQuiltPads.map((component) => component.box.getSize(new THREE.Vector3()).z));
   check('MLI quilt relief stays shallow enough to avoid a bulbous toy surface', deepestQuiltRelief <= 0.032, `${deepestQuiltRelief.toFixed(3)} m maximum relief`);
 
@@ -291,6 +312,15 @@ async function run() {
   check('deployed solar wings clear the insulated bus outside their hinge contacts', bounds(portArray).max.x <= blanketBox.min.x + 0.08 && bounds(starboardArray).min.x >= blanketBox.max.x - 0.08);
 
   const deck = bounds(byName.get('structural_deck')!);
+  const externalTelescopeMounts = geometryComponents(byName.get('structural_deck')!).filter((component) => component.box.max.y <= blanketBox.min.y - 0.55);
+  const telescopeMountBox = externalTelescopeMounts.reduce((result, component) => result.union(component.box), new THREE.Box3());
+  const telescopeMountSize = telescopeMountBox.isEmpty() ? new THREE.Vector3() : telescopeMountBox.getSize(new THREE.Vector3());
+  check('an external aluminium foreoptics rim keeps the dark telescope readable at app scale', externalTelescopeMounts.length >= 1 && telescopeMountSize.x >= 0.95 && telescopeMountSize.z >= 0.78, `${externalTelescopeMounts.length} rim components, ${telescopeMountSize.x.toFixed(2)} x ${telescopeMountSize.z.toFixed(2)} m`);
+  const radialTelescopeRims = externalTelescopeMounts.filter((component) => {
+    const componentSize = component.box.getSize(new THREE.Vector3());
+    return componentSize.x >= 0.95 && componentSize.z >= 0.95 && componentSize.y <= 0.12 && Math.abs(componentSize.x - componentSize.z) <= 0.08;
+  });
+  check('the external foreoptics rim reads as a circular flight aperture rather than landing gear', radialTelescopeRims.length >= 1, `${radialTelescopeRims.length} radial rim components`);
   for (const moduleName of ['battery_module', 'power_distribution_unit', 'flight_computer', 'focal_plane'] as const) {
     const moduleBox = bounds(byName.get(moduleName)!);
     check(`${moduleName} is supported by an internal structural deck`, boxClearance(moduleBox, deck) <= 0.035 && blanketBox.containsBox(moduleBox), `${boxClearance(moduleBox, deck).toFixed(3)} clearance`);
@@ -299,13 +329,15 @@ async function run() {
   check('visible power harnesses connect both solar gimbals to the PDU', boxClearance(pduBox, bounds(portGimbal)) <= 0.05 && boxClearance(pduBox, bounds(starboardGimbal)) <= 0.05 && size(byName.get('power_distribution_unit')!).x >= 1.4);
 
   const baffle = byName.get('telescope_baffle')!;
+  const baffleBox = bounds(baffle);
   const primary = byName.get('primary_mirror')!;
   const secondary = byName.get('secondary_mirror')!;
   const scan = byName.get('scan_mirror')!;
   const focal = byName.get('focal_plane')!;
   const optical = [baffle, primary, secondary, scan, focal].map(centre);
-  check('nadir telescope extends below the bus on the -Y axis', bounds(baffle).min.y <= blanketBox.min.y - 0.42 && Math.abs(optical[0].x) <= 0.08 && Math.abs(optical[0].z) <= 0.08);
+  check('nadir telescope extends below the bus on the -Y axis', bounds(baffle).min.y <= blanketBox.min.y - 0.42 && Math.abs(optical[1].x) <= 0.08 && Math.abs(optical[1].z) <= 0.08);
   check('nadir telescope terminates in a substantial flared aperture collar', size(baffle).x >= 0.82 && size(baffle).z >= 0.82, `${size(baffle).x.toFixed(2)} x ${size(baffle).z.toFixed(2)} m aperture envelope`);
+  check('nadir telescope breaks the lower-left bus silhouette as a distinct instrument volume', blanketBox.min.y - baffleBox.min.y >= 0.56 && blanketBox.min.x - baffleBox.min.x >= 0.08, `${(blanketBox.min.y - baffleBox.min.y).toFixed(2)} m drop, ${(blanketBox.min.x - baffleBox.min.x).toFixed(2)} m side overhang`);
   check('primary, secondary, scan mirror, and focal plane share one optical axis', optical.slice(1).every((point) => Math.abs(point.x) <= 0.08 && Math.abs(point.z) <= 0.08));
   check('Cassegrain optical path advances from aperture to secondary, primary, scan, and focal plane', optical[2].y < optical[1].y && optical[1].y < optical[3].y && optical[3].y < optical[4].y, optical.slice(1).map((point) => point.y.toFixed(2)).join(' < '));
   check('mirrors are mounted inside a connected telescope barrel', boxClearance(bounds(baffle), bounds(primary)) <= 0.04 && boxClearance(bounds(baffle), bounds(secondary)) <= 0.04 && boxClearance(bounds(baffle), busBox) <= 0.04);
@@ -348,6 +380,7 @@ async function run() {
   check('high-gain dish carries a detailed feed and rear stiffening structure', geometryComponents(dish).length >= 9, `${geometryComponents(dish).length} reflector/feed components`);
   check('antenna gimbal includes paired bearings, yoke arms, cross shaft, and drive hardware', geometryComponents(antennaGimbal).length >= 9, `${geometryComponents(antennaGimbal).length} gimbal components`);
   check('high-gain dish projects beyond the insulated bus', bounds(dish).max.z >= blanketBox.max.z + 0.34);
+  check('high-gain dish breaks the upper-right bus silhouette in the app pose', bounds(dish).max.x - blanketBox.max.x >= 0.18 && bounds(dish).max.y - blanketBox.max.y >= 0.28, `${(bounds(dish).max.x - blanketBox.max.x).toFixed(2)} m right, ${(bounds(dish).max.y - blanketBox.max.y).toFixed(2)} m above`);
   const dishClearances = [-0.22, 0, 0.22].map((angle) => boxClearance(rotatedBounds(dish, antennaPivot, new THREE.Vector3(0, 1, 0), angle), busBox));
   check('high-gain antenna clears the bus through its authored swing', dishClearances.every((value) => value >= 0.055), dishClearances.map((value) => value.toFixed(3)).join(', '));
 
@@ -355,6 +388,14 @@ async function run() {
   const radiatorComponents = geometryComponents(radiators);
   check('paired radiator faces remain external and unobstructed', bounds(radiators).min.z <= blanketBox.min.z - 0.34 && radiatorComponents.length >= 2 && boxClearance(bounds(radiators), bounds(dish)) >= 0.08);
   check('radiators include visible capillary channels, manifolds, and supported panels', radiatorComponents.length >= 24, `${radiatorComponents.length} radiator components`);
+  check('radiator wings break both lateral bus silhouettes below the solar-array plane', blanketBox.min.x - bounds(radiators).min.x >= 0.22 && bounds(radiators).max.x - blanketBox.max.x >= 0.22 && bounds(radiators).max.y <= Math.min(bounds(portArray).min.y, bounds(starboardArray).min.y) - 0.04, `${(blanketBox.min.x - bounds(radiators).min.x).toFixed(2)} m port, ${(bounds(radiators).max.x - blanketBox.max.x).toFixed(2)} m starboard`);
+  const majorRadiatorFaces = radiatorComponents.filter((component) => {
+    const componentSize = component.box.getSize(new THREE.Vector3());
+    return componentSize.x >= 0.45 && componentSize.y >= 0.75 && componentSize.z <= 0.08;
+  });
+  const portRadiatorClearsBus = majorRadiatorFaces.some((component) => component.box.max.x <= blanketBox.min.x - 0.06);
+  const starboardRadiatorClearsBus = majorRadiatorFaces.some((component) => component.box.min.x >= blanketBox.max.x + 0.06);
+  check('each major radiator face clears the bus projection in the app silhouette', portRadiatorClearsBus && starboardRadiatorClearsBus, `${majorRadiatorFaces.length} major faces, port ${portRadiatorClearsBus}, starboard ${starboardRadiatorClearsBus}`);
 
   const triangles = triangleCount(productionMeshes);
   const recipeTriangles = triangleCount(recipeMeshes);
