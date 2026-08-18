@@ -3,7 +3,7 @@
 
 import {
   THREE, TAU, part, pbr, box, roundedBox, cylinder, tube, torus, sphere, blob,
-  curve, merge, place,
+  curve, merge, place, paint, srgb,
 } from '../lib/geo.mjs';
 
 function named(material, name) {
@@ -12,10 +12,11 @@ function named(material, name) {
 }
 
 const COMPOSITE = () => named(pbr('#d65b32', { metalness: 0.08, roughness: 0.46 }), 'orange painted composite');
+const AIRFRAME = () => named(pbr('#ffffff', { metalness: 0.08, roughness: 0.46, vertexColors: true }), 'orange painted composite airframe');
 const GLASS = () => {
-  const material = named(pbr('#8bc9dc', { metalness: 0, roughness: 0.08 }), 'smoke blue cockpit glazing');
+  const material = named(pbr('#4f91aa', { metalness: 0, roughness: 0.1 }), 'smoke blue cockpit glazing');
   material.transparent = true;
-  material.opacity = 0.3;
+  material.opacity = 0.38;
   material.depthWrite = false;
   material.side = THREE.DoubleSide;
   return material;
@@ -46,6 +47,74 @@ function ringAroundX(count, factory) {
     geometries.push(factory(index, angle).rotateX(angle));
   }
   return merge(geometries);
+}
+
+const FUSELAGE_PROFILE = [
+  [0.82, -0.38], [0.74, -0.62], [0.58, -0.82], [0.32, -0.96], [0, -1],
+  [-0.3, -0.96], [-0.56, -0.82], [-0.75, -0.58], [-0.86, -0.3], [-0.9, 0],
+  [-0.86, 0.3], [-0.75, 0.58], [-0.56, 0.82], [-0.3, 0.96], [0, 1],
+  [0.32, 0.96], [0.58, 0.82], [0.74, 0.62], [0.82, 0.38],
+];
+
+function loft(sections, profile = FUSELAGE_PROFILE) {
+  const positions = [];
+  const indices = [];
+  for (const section of sections) {
+    for (const [py, pz] of profile) positions.push(section.x, section.cy + py * section.ry, pz * section.rz);
+  }
+  const ringSize = profile.length;
+  for (let section = 0; section < sections.length - 1; section += 1) {
+    const a = section * ringSize;
+    const b = (section + 1) * ringSize;
+    for (let index = 0; index < ringSize; index += 1) {
+      const next = (index + 1) % ringSize;
+      indices.push(a + index, b + index, b + next, a + index, b + next, a + next);
+    }
+  }
+  for (let index = 1; index < ringSize - 1; index += 1) {
+    indices.push(0, index + 1, index);
+    const last = (sections.length - 1) * ringSize;
+    indices.push(last, last + index, last + index + 1);
+  }
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geometry.setIndex(indices);
+  geometry.computeVertexNormals();
+  return geometry;
+}
+
+function thickPanel(points, thickness = 0.035) {
+  const vertices = points.map((point) => new THREE.Vector3(...point));
+  const normal = new THREE.Vector3().subVectors(vertices[1], vertices[0])
+    .cross(new THREE.Vector3().subVectors(vertices[2], vertices[0])).normalize();
+  const half = normal.clone().multiplyScalar(thickness / 2);
+  const positions = [];
+  for (const point of vertices) positions.push(...point.clone().add(half).toArray());
+  for (const point of vertices) positions.push(...point.clone().sub(half).toArray());
+  const count = vertices.length;
+  const indices = [];
+  for (let index = 1; index < count - 1; index += 1) {
+    indices.push(0, index, index + 1);
+    indices.push(count, count + index + 1, count + index);
+  }
+  for (let index = 0; index < count; index += 1) {
+    const next = (index + 1) % count;
+    indices.push(index, next, count + next, index, count + next, count + index);
+  }
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geometry.setIndex(indices);
+  geometry.computeVertexNormals();
+  return geometry;
+}
+
+function tint(geometry, hex) {
+  const colour = srgb(hex);
+  return paint(geometry, () => colour);
+}
+
+function frameBar(from, to, radius = 0.035) {
+  return curve([from, to], radius, { segments: 18, radial: 8 });
 }
 
 function compressorStage(x, blades, radius) {
@@ -121,50 +190,131 @@ function tailBlade() {
 }
 
 function airframeGeometry() {
-  const details = [];
-  // Reinforcing bands make the tapered boom read as load-bearing structure.
-  for (let index = 0; index < 11; index += 1) {
-    const x = 0.86 + index * 0.32;
-    const radius = 0.45 - index * 0.027;
-    details.push(torus(radius, 0.018, 36, 6, { pos: [x, 1.9, 0], rot: [0, Math.PI / 2, 0] }));
-  }
-  // Flush fasteners around the engine deck add scale without separate meshes.
-  for (let row = 0; row < 3; row += 1) {
-    for (let index = 0; index < 16; index += 1) {
-      details.push(sphere(0.018, 8, {
-        pos: [-0.28 + index * 0.1, 2.43 - row * 0.14, row === 1 ? -0.73 : 0.73],
-        scale: [0.55, 0.55, 0.35],
-      }));
+  const lowerCabin = tint(loft([
+    { x: -3.02, cy: 1.12, ry: 0.34, rz: 0.28 },
+    { x: -2.62, cy: 1.03, ry: 0.54, rz: 0.74 },
+    { x: -1.65, cy: 0.98, ry: 0.66, rz: 1.0 },
+    { x: -0.62, cy: 1.0, ry: 0.62, rz: 0.93 },
+    { x: 0.38, cy: 1.25, ry: 0.5, rz: 0.76 },
+  ]), '#c64b2b');
+  const bellyFairing = tint(loft([
+    { x: -0.85, cy: 1.0, ry: 0.64, rz: 0.96 },
+    { x: -0.55, cy: 1.01, ry: 0.64, rz: 0.95 },
+    { x: -0.2, cy: 1.07, ry: 0.61, rz: 0.9 },
+    { x: 0.15, cy: 1.2, ry: 0.56, rz: 0.84 },
+    { x: 0.45, cy: 1.34, ry: 0.5, rz: 0.78 },
+    { x: 0.68, cy: 1.49, ry: 0.41, rz: 0.66 },
+    { x: 0.88, cy: 1.61, ry: 0.32, rz: 0.52 },
+    { x: 1.05, cy: 1.7, ry: 0.24, rz: 0.4 },
+  ]), '#a93624');
+  const roof = tint(loft([
+    { x: -2.55, cy: 2.0, ry: 0.18, rz: 0.58 },
+    { x: -1.58, cy: 2.12, ry: 0.2, rz: 0.84 },
+    { x: -0.58, cy: 2.04, ry: 0.18, rz: 0.7 },
+  ]), '#303941');
+  const aftCabinTransition = tint(loft([
+    { x: -0.72, cy: 1.5, ry: 0.45, rz: 0.86 },
+    { x: -0.22, cy: 1.62, ry: 0.48, rz: 0.78 },
+    { x: 0.28, cy: 1.72, ry: 0.4, rz: 0.64 },
+  ]), '#b93d25');
+  const engineCowling = tint(loft([
+    { x: -0.38, cy: 2.02, ry: 0.43, rz: 0.72 },
+    { x: 0.2, cy: 2.08, ry: 0.44, rz: 0.75 },
+    { x: 0.82, cy: 2.02, ry: 0.37, rz: 0.56 },
+    { x: 1.08, cy: 1.96, ry: 0.3, rz: 0.48 },
+  ]), '#a93624');
+  const tailBoom = tint(loft([
+    { x: 0.72, cy: 1.88, ry: 0.46, rz: 0.48 },
+    { x: 1.65, cy: 1.9, ry: 0.36, rz: 0.37 },
+    { x: 2.75, cy: 1.98, ry: 0.26, rz: 0.27 },
+    { x: 3.7, cy: 2.1, ry: 0.18, rz: 0.18 },
+    { x: 4.38, cy: 2.2, ry: 0.14, rz: 0.14 },
+  ]), '#c44a2a');
+  const noseBrow = tint(loft([
+    { x: -3.04, cy: 1.55, ry: 0.18, rz: 0.3 },
+    { x: -2.75, cy: 1.66, ry: 0.28, rz: 0.66 },
+    { x: -2.48, cy: 1.72, ry: 0.3, rz: 0.77 },
+  ]), '#d9693d');
+
+  const frames = [
+    // A, B, and C pillars on each side leave real window openings between them.
+    ...[-1, 1].flatMap((sign) => [
+      frameBar([-2.52, 1.28, sign * 0.74], [-2.48, 2.02, sign * 0.68], 0.04),
+      frameBar([-1.55, 1.24, sign * 0.98], [-1.6, 2.08, sign * 0.82], 0.045),
+      frameBar([-0.55, 1.28, sign * 0.9], [-0.62, 2.0, sign * 0.7], 0.04),
+      frameBar([-2.53, 2.02, sign * 0.68], [-0.62, 2.0, sign * 0.7], 0.032),
+      frameBar([-2.55, 1.25, sign * 0.76], [-0.5, 1.25, sign * 0.9], 0.03),
+      frameBar([-1.55, 0.48, sign * 0.94], [-1.55, 1.22, sign * 0.98], 0.022),
+    ]),
+    // Split windshield mullion and eyebrow.
+    frameBar([-2.91, 1.18, 0], [-2.5, 2.04, 0], 0.035),
+    frameBar([-2.5, 2.04, -0.68], [-2.5, 2.04, 0.68], 0.035),
+  ].map((geometry) => tint(geometry, '#222b31'));
+
+  const articulation = [];
+  // Restrained door hinges/latches and engine-cowling fasteners establish scale.
+  for (const sign of [-1, 1]) {
+    for (const x of [-2.28, -1.86, -1.28, -0.86]) {
+      articulation.push(tint(cylinder(0.018, 0.018, 0.11, 8, {
+        pos: [x, 1.02, sign * 0.955], rot: [Math.PI / 2, 0, 0],
+      }), '#d6c6ae'));
     }
+    articulation.push(tint(roundedBox(0.11, 0.045, 0.025, 0.01, 2, { pos: [-1.1, 1.5, sign * 0.945] }), '#d6c6ae'));
+    articulation.push(tint(roundedBox(0.11, 0.045, 0.025, 0.01, 2, { pos: [-2.05, 1.5, sign * 0.945] }), '#d6c6ae'));
+    // NACA-like engine-deck intake lips.
+    articulation.push(tint(thickPanel([
+      [-0.1, 2.25, sign * 0.73], [0.38, 2.3, sign * 0.72], [0.48, 2.18, sign * 0.7], [0.02, 2.13, sign * 0.72],
+    ], 0.022), '#20282e'));
   }
+  for (let index = 0; index < 18; index += 1) {
+    articulation.push(tint(sphere(0.014, 8, {
+      pos: [-0.36 + index * 0.08, 2.42, index % 2 ? -0.62 : 0.62], scale: [0.7, 0.45, 0.35],
+    }), '#c9b9a3'));
+  }
+
+  const creamStripes = [-1, 1].map((sign) => tint(thickPanel([
+    [-2.5, 0.82, sign * 0.91], [-0.55, 0.84, sign * 0.97], [-0.42, 1.03, sign * 0.94], [-2.42, 1.03, sign * 0.88],
+  ], 0.025), '#e3d5bd'));
+
+  const empennage = [
+    tint(thickPanel([[3.62, 1.95, 0], [4.3, 2.08, 0], [4.2, 2.92, 0], [3.85, 2.78, 0]], 0.13), '#b73c27'),
+    tint(thickPanel([[4.26, 2.24, -0.12], [3.95, 2.24, -1.12], [4.22, 2.24, -1.18], [4.42, 2.24, -0.14]], 0.07), '#c64b2b'),
+    tint(thickPanel([[4.26, 2.24, 0.12], [4.42, 2.24, 0.14], [4.22, 2.24, 1.18], [3.95, 2.24, 1.12]], 0.07), '#c64b2b'),
+    tint(frameBar([3.78, 1.92, -0.18], [4.08, 2.19, -0.82], 0.026), '#303941'),
+    tint(frameBar([3.78, 1.92, 0.18], [4.08, 2.19, 0.82], 0.026), '#303941'),
+    tint(roundedBox(0.54, 0.2, 0.44, 0.07, 3, { pos: [4.18, 2.08, 0] }), '#303941'),
+  ];
+
   return merge([
-    blob(1.78, 1.02, 1.0, 56, { pos: [-1.22, 1.42, 0] }),
-    roundedBox(1.9, 0.62, 1.48, 0.18, 3, { pos: [0.18, 2.12, 0] }),
-    cylinderX(0.5, 0.15, 3.9, 72, [2.55, 1.9, 0]),
-    roundedBox(0.24, 1.3, 0.17, 0.07, 3, { pos: [4.3, 2.3, 0], rot: [0, 0, -0.13] }),
-    roundedBox(0.52, 0.16, 0.42, 0.06, 2, { pos: [4.18, 1.88, 0] }),
-    roundedBox(0.9, 0.12, 1.58, 0.045, 2, { pos: [-1.0, 0.47, 0] }),
-    roundedBox(0.11, 0.9, 0.1, 0.035, 2, { pos: [-2.7, 1.38, 0.78], rot: [0, 0, -0.18] }),
-    roundedBox(0.11, 0.9, 0.1, 0.035, 2, { pos: [-2.7, 1.38, -0.78], rot: [0, 0, -0.18] }),
-    roundedBox(1.42, 0.1, 0.1, 0.035, 2, { pos: [-1.92, 2.2, 0.86], rot: [0, 0, 0.06] }),
-    roundedBox(1.42, 0.1, 0.1, 0.035, 2, { pos: [-1.92, 2.2, -0.86], rot: [0, 0, 0.06] }),
-    ...details,
+    lowerCabin, bellyFairing, roof, aftCabinTransition, engineCowling, tailBoom, noseBrow,
+    ...frames, ...articulation, ...creamStripes, ...empennage,
   ]);
+}
+
+function cockpitGlazingGeometry() {
+  const panels = [
+    // Split, raked windshields.
+    thickPanel([[-2.92, 1.2, -0.04], [-2.5, 2.01, -0.06], [-2.48, 1.98, -0.66], [-2.84, 1.24, -0.7]], 0.032),
+    thickPanel([[-2.92, 1.2, 0.04], [-2.84, 1.24, 0.7], [-2.48, 1.98, 0.66], [-2.5, 2.01, 0.06]], 0.032),
+    // Front and rear door windows on both sides.
+    thickPanel([[-2.46, 1.29, -0.77], [-2.43, 1.96, -0.72], [-1.64, 2.04, -0.86], [-1.59, 1.28, -0.97]], 0.032),
+    thickPanel([[-1.5, 1.28, -0.98], [-1.55, 2.03, -0.86], [-0.66, 1.96, -0.74], [-0.57, 1.3, -0.91]], 0.032),
+    thickPanel([[-2.46, 1.29, 0.77], [-1.59, 1.28, 0.97], [-1.64, 2.04, 0.86], [-2.43, 1.96, 0.72]], 0.032),
+    thickPanel([[-1.5, 1.28, 0.98], [-0.57, 1.3, 0.91], [-0.66, 1.96, 0.74], [-1.55, 2.03, 0.86]], 0.032),
+    // Lower chin windows retain downward hover visibility.
+    thickPanel([[-2.96, 0.9, -0.05], [-2.91, 1.16, -0.05], [-2.83, 1.2, -0.62], [-2.9, 0.92, -0.5]], 0.028),
+    thickPanel([[-2.96, 0.9, 0.05], [-2.9, 0.92, 0.5], [-2.83, 1.2, 0.62], [-2.91, 1.16, 0.05]], 0.028),
+  ];
+  return merge(panels);
 }
 
 export default function turboshaftHelicopter() {
   const group = new THREE.Group();
 
   group.add(
-    part('airframe_shell', airframeGeometry(), COMPOSITE()),
+    part('airframe_shell', airframeGeometry(), AIRFRAME()),
 
-    part('cockpit_glazing', merge([
-      roundedBox(0.12, 0.88, 1.28, 0.055, 3, { pos: [-2.78, 1.68, 0], rot: [0, 0, -0.16] }),
-      roundedBox(1.48, 0.8, 0.045, 0.04, 3, { pos: [-1.9, 1.68, 0.985], rot: [0, 0, 0.08] }),
-      roundedBox(1.48, 0.8, 0.045, 0.04, 3, { pos: [-1.9, 1.68, -0.985], rot: [0, 0, 0.08] }),
-      roundedBox(0.7, 0.72, 0.042, 0.04, 3, { pos: [-0.84, 1.65, 0.98] }),
-      roundedBox(0.7, 0.72, 0.042, 0.04, 3, { pos: [-0.84, 1.65, -0.98] }),
-    ]), GLASS()),
+    part('cockpit_glazing', cockpitGlazingGeometry(), GLASS()),
 
     part('cabin_and_seats', merge([
       roundedBox(2.15, 0.12, 1.5, 0.045, 2, { pos: [-1.35, 0.66, 0] }),

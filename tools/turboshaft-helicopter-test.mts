@@ -58,22 +58,151 @@ function triangleCount(meshes: THREE.Mesh[]) {
 
 function fingerprint(mesh: THREE.Mesh) {
   const hash = createHash('sha256');
-  const position = mesh.geometry.getAttribute('position');
-  const index = mesh.geometry.getIndex();
   const material = mesh.material as THREE.MeshStandardMaterial;
-  hash.update(mesh.name);
-  hash.update(Array.from(position.array as ArrayLike<number>, (value) => Number(value).toFixed(6)).join(','));
-  hash.update(index ? Array.from(index.array as ArrayLike<number>, Number).join(',') : 'non-indexed');
+  const geometry = mesh.geometry;
+  const number = (value: number) => Number.isFinite(value) ? value.toFixed(6) : String(value);
+  const attribute = (name: string, value: THREE.BufferAttribute | THREE.InterleavedBufferAttribute) => {
+    hash.update(`attribute:${name}:${value.itemSize}:${value.normalized}:${value.count}:${value.usage}:${value.gpuType ?? 'default'}:`);
+    for (let index = 0; index < value.count; index += 1) {
+      for (let component = 0; component < value.itemSize; component += 1) hash.update(`${number(value.getComponent(index, component))},`);
+    }
+  };
+
+  mesh.updateMatrix();
+  hash.update(`mesh:${mesh.name}:matrix:${mesh.matrix.elements.map(number).join(',')}:visible:${mesh.visible}:renderOrder:${mesh.renderOrder}:`);
+  for (const name of Object.keys(geometry.attributes).sort()) attribute(name, geometry.getAttribute(name));
+  const index = geometry.getIndex();
+  if (index) attribute('index', index);
+  else hash.update('non-indexed:');
+  for (const name of Object.keys(geometry.morphAttributes).sort()) {
+    geometry.morphAttributes[name].forEach((value, index) => attribute(`morph:${name}:${index}`, value));
+  }
+  hash.update(`morphRelative:${geometry.morphTargetsRelative}:drawRange:${geometry.drawRange.start}:${geometry.drawRange.count}:`);
+  geometry.groups.forEach((group, index) => hash.update(`group:${index}:${group.start}:${group.count}:${group.materialIndex}:`));
   hash.update([
     material.name,
+    material.type,
     material.color.getHexString(),
+    material.emissive.getHexString(),
+    material.emissiveIntensity.toFixed(6),
     material.metalness.toFixed(4),
     material.roughness.toFixed(4),
     material.opacity.toFixed(4),
     material.transparent ? 'transparent' : 'opaque',
     material.vertexColors ? 'vertex-colours' : 'uniform-colour',
+    `side:${material.side}`,
+    `depthWrite:${material.depthWrite}`,
+    `depthTest:${material.depthTest}`,
+    `depthFunc:${material.depthFunc}`,
+    `colorWrite:${material.colorWrite}`,
+    `alphaTest:${material.alphaTest.toFixed(6)}`,
+    `alphaHash:${material.alphaHash}`,
+    `blending:${material.blending}`,
+    `blendSrc:${material.blendSrc}`,
+    `blendDst:${material.blendDst}`,
+    `blendEquation:${material.blendEquation}`,
+    `premultipliedAlpha:${material.premultipliedAlpha}`,
+    `dithering:${material.dithering}`,
+    `flatShading:${material.flatShading}`,
+    `wireframe:${material.wireframe}`,
+    `fog:${material.fog}`,
+    `toneMapped:${material.toneMapped}`,
+    `polygonOffset:${material.polygonOffset}:${material.polygonOffsetFactor}:${material.polygonOffsetUnits}`,
   ].join(':'));
   return hash.digest('hex');
+}
+
+type GeometryComponent = {
+  box: THREE.Box3;
+  vertexCount: number;
+};
+
+function geometryComponents(mesh: THREE.Mesh): GeometryComponent[] {
+  const position = mesh.geometry.getAttribute('position');
+  const index = mesh.geometry.getIndex();
+  const parent = Array.from({ length: position.count }, (_, value) => value);
+  const find = (value: number): number => {
+    let root = value;
+    while (parent[root] !== root) root = parent[root];
+    while (parent[value] !== value) {
+      const next = parent[value];
+      parent[value] = root;
+      value = next;
+    }
+    return root;
+  };
+  const union = (a: number, b: number) => {
+    const ar = find(a);
+    const br = find(b);
+    if (ar !== br) parent[br] = ar;
+  };
+  const indices = index
+    ? Array.from(index.array as ArrayLike<number>, Number)
+    : Array.from({ length: position.count }, (_, value) => value);
+  for (let offset = 0; offset < indices.length; offset += 3) {
+    union(indices[offset], indices[offset + 1]);
+    union(indices[offset], indices[offset + 2]);
+  }
+  const coincident = new Map<string, number>();
+  for (let vertex = 0; vertex < position.count; vertex += 1) {
+    const key = `${position.getX(vertex).toFixed(4)},${position.getY(vertex).toFixed(4)},${position.getZ(vertex).toFixed(4)}`;
+    const existing = coincident.get(key);
+    if (existing === undefined) coincident.set(key, vertex);
+    else union(existing, vertex);
+  }
+  const components = new Map<number, GeometryComponent>();
+  const point = new THREE.Vector3();
+  for (let vertex = 0; vertex < position.count; vertex += 1) {
+    const root = find(vertex);
+    let component = components.get(root);
+    if (!component) {
+      component = { box: new THREE.Box3(), vertexCount: 0 };
+      components.set(root, component);
+    }
+    point.fromBufferAttribute(position, vertex).applyMatrix4(mesh.matrixWorld);
+    component.box.expandByPoint(point);
+    component.vertexCount += 1;
+  }
+  return [...components.values()].filter((component) => component.vertexCount >= 4);
+}
+
+function fingerprintFixture() {
+  const geometry = new THREE.BoxGeometry(1, 0.8, 0.6, 2, 2, 2);
+  const position = geometry.getAttribute('position');
+  const tangents = new Float32Array(position.count * 4);
+  for (let index = 0; index < position.count; index += 1) tangents[index * 4 + 3] = 1;
+  geometry.setAttribute('tangent', new THREE.BufferAttribute(tangents, 4));
+  const indexCount = geometry.getIndex()!.count;
+  geometry.clearGroups();
+  geometry.addGroup(0, indexCount / 2, 0);
+  geometry.addGroup(indexCount / 2, indexCount / 2, 0);
+  const material = new THREE.MeshStandardMaterial({
+    color: '#7695ad',
+    emissive: '#171f29',
+    emissiveIntensity: 0.35,
+    metalness: 0.42,
+    roughness: 0.57,
+    opacity: 0.86,
+    transparent: true,
+  });
+  material.name = 'fingerprint fixture material';
+  material.side = THREE.FrontSide;
+  material.depthWrite = true;
+  const mesh = new THREE.Mesh(geometry, material);
+  mesh.name = 'fingerprint_fixture';
+  mesh.position.set(0.2, -0.3, 0.4);
+  mesh.rotation.set(0.1, -0.2, 0.3);
+  mesh.scale.set(0.9, 1.1, 1.05);
+  mesh.updateMatrixWorld(true);
+  return mesh;
+}
+
+function fingerprintMutation(label: string, mutate: (mesh: THREE.Mesh) => void) {
+  const baseline = fingerprintFixture();
+  const changed = fingerprintFixture();
+  mutate(changed);
+  changed.updateMatrixWorld(true);
+  check(`fingerprint rejects ${label} mutation`, fingerprint(baseline) !== fingerprint(changed));
 }
 
 function verticesIn(mesh: THREE.Mesh, predicate: (point: THREE.Vector3) => boolean) {
@@ -131,6 +260,47 @@ async function run() {
   const secondFingerprints = new Map(collectMeshes(secondRoot).map((mesh) => [mesh.name, fingerprint(mesh)]));
   check('procedural recipe is deterministic', recipeNames.every((name) => recipeFingerprints.get(name) === secondFingerprints.get(name)));
 
+  fingerprintMutation('position attribute', (mesh) => {
+    const attribute = mesh.geometry.getAttribute('position');
+    attribute.setX(0, attribute.getX(0) + 0.125);
+  });
+  fingerprintMutation('index', (mesh) => {
+    const index = mesh.geometry.getIndex()!;
+    const first = index.getX(0);
+    index.setX(0, index.getX(1));
+    index.setX(1, first);
+  });
+  fingerprintMutation('normal attribute', (mesh) => {
+    const attribute = mesh.geometry.getAttribute('normal');
+    attribute.setX(0, attribute.getX(0) + 0.125);
+  });
+  fingerprintMutation('tangent attribute', (mesh) => {
+    const attribute = mesh.geometry.getAttribute('tangent');
+    attribute.setY(0, attribute.getY(0) + 0.25);
+  });
+  fingerprintMutation('UV attribute', (mesh) => {
+    const attribute = mesh.geometry.getAttribute('uv');
+    attribute.setX(0, attribute.getX(0) + 0.125);
+  });
+  fingerprintMutation('geometry group', (mesh) => {
+    mesh.geometry.groups[0].count -= 3;
+  });
+  fingerprintMutation('node transform', (mesh) => {
+    mesh.position.x += 0.25;
+  });
+  fingerprintMutation('emissive colour', (mesh) => {
+    (mesh.material as THREE.MeshStandardMaterial).emissive.offsetHSL(0.1, 0, 0);
+  });
+  fingerprintMutation('emissive intensity', (mesh) => {
+    (mesh.material as THREE.MeshStandardMaterial).emissiveIntensity += 0.2;
+  });
+  fingerprintMutation('material side', (mesh) => {
+    (mesh.material as THREE.MeshStandardMaterial).side = THREE.DoubleSide;
+  });
+  fingerprintMutation('depth-write state', (mesh) => {
+    (mesh.material as THREE.MeshStandardMaterial).depthWrite = false;
+  });
+
   const byName = new Map(productionMeshes.map((mesh) => [mesh.name, mesh]));
   check('all production geometry has finite non-zero bounds', productionMeshes.every((mesh) => {
     const meshSize = size(mesh);
@@ -152,12 +322,60 @@ async function run() {
     mainRotorRadius = Math.max(mainRotorRadius, Math.hypot(mainBladePositions.getX(index) + 1.286, mainBladePositions.getZ(index) - 0.0107));
   }
   check('airframe has a long, compact light-helicopter silhouette', shellSize.x >= 7.0 && shellSize.x <= 8.2 && shellSize.y >= 1.8 && shellSize.y <= 2.8 && shellSize.x / shellSize.z >= 2.7, `${shellSize.x.toFixed(2)} x ${shellSize.y.toFixed(2)} x ${shellSize.z.toFixed(2)}`);
+  const shellComponents = geometryComponents(shell);
+  const substantialSkinStages = shellComponents.filter((component) => {
+    const componentSize = component.box.getSize(new THREE.Vector3());
+    return componentSize.x >= 0.65 && componentSize.y >= 0.25 && componentSize.z >= 0.45;
+  });
+  check('airframe uses at least five coherent exterior skin stages instead of a blob-box-tube stack', substantialSkinStages.length >= 5, `${substantialSkinStages.length} substantial stages`);
+  const primaryCabinSkins = substantialSkinStages.filter((component) => {
+    const componentSize = component.box.getSize(new THREE.Vector3());
+    return componentSize.x >= 2.5 && componentSize.y >= 1.0 && componentSize.z >= 1.5;
+  });
+  const cabinCurvatureSamples = Math.max(0, ...primaryCabinSkins.map((component) => component.vertexCount));
+  check('primary cabin skin has production curvature resolution rather than a faceted low-poly ring', cabinCurvatureSamples >= 480, `${cabinCurvatureSamples} connected vertices`);
+  const fuelCell = geometryComponents(byName.get('fuel_system')!).find((component) => {
+    const componentSize = component.box.getSize(new THREE.Vector3());
+    return componentSize.x >= 0.65 && componentSize.y >= 0.65 && componentSize.z >= 1.1;
+  });
+  const fuelEnclosure = fuelCell && primaryCabinSkins.find((component) => component.box.min.x <= fuelCell.box.min.x - 0.05
+    && component.box.max.x >= fuelCell.box.max.x + 0.08
+    && component.box.min.y <= fuelCell.box.min.y - 0.05
+    && component.box.max.y >= fuelCell.box.max.y + 0.05
+    && component.box.min.z <= fuelCell.box.min.z - 0.05
+    && component.box.max.z >= fuelCell.box.max.z + 0.05);
+  check('closed aft cabin skin encloses the fuel-cell end cap', !!fuelEnclosure);
+  const aftBellyFairing = fuelCell && substantialSkinStages.find((component) => component.box.min.x <= fuelCell.box.min.x - 0.2
+    && component.box.max.x >= fuelCell.box.max.x + 0.5
+    && component.box.min.y <= fuelCell.box.min.y - 0.08
+    && component.box.max.y >= fuelCell.box.max.y + 0.08
+    && component.box.min.z <= fuelCell.box.min.z - 0.08
+    && component.box.max.z >= fuelCell.box.max.z + 0.08);
+  check('aft belly fairing carries the enclosed fuel cell into the boom transition', !!aftBellyFairing);
+  check('aft belly fairing uses enough longitudinal sections for a production surface', !!aftBellyFairing && aftBellyFairing.vertexCount >= 750, `${aftBellyFairing?.vertexCount ?? 0} connected vertices`);
   check('authored bounds stay centred on the model origin for app framing', totalCentre.length() <= 0.05, `${totalCentre.toArray().map((value) => value.toFixed(3)).join(', ')}`);
   check('three-blade main rotor establishes an approximately 11 m tip diameter', mainRotorRadius >= 5.35 && mainRotorRadius <= 5.7, `${(mainRotorRadius * 2).toFixed(2)} m tip diameter`);
   check('main disc dominates plan view without flattening the aircraft', mainBladeSize.x >= 8.1 && mainBladeSize.z >= 8.1 && totalSize.x >= mainBladeSize.x && totalSize.z >= mainBladeSize.z && totalSize.y >= 3.0 && totalSize.y <= 5.2);
 
   const glazing = byName.get('cockpit_glazing')!;
   const cabin = byName.get('cabin_and_seats')!;
+  const glazingComponents = geometryComponents(glazing);
+  check('cockpit glazing uses at least eight separately shaped panes', glazingComponents.length >= 8, `${glazingComponents.length} panes`);
+  const fullWidthWindshieldSlabs = glazingComponents.filter((component) => {
+    const componentSize = component.box.getSize(new THREE.Vector3());
+    const componentCentre = component.box.getCenter(new THREE.Vector3());
+    return componentSize.z >= 1.1 && componentSize.x <= 0.25 && Math.abs(componentCentre.z - 0.0107) <= 0.12;
+  });
+  check('windshield is split around a real centre mullion rather than one full-width slab', fullWidthWindshieldSlabs.length === 0, `${fullWidthWindshieldSlabs.length} full-width slabs`);
+  const cockpitPillars = shellComponents.filter((component) => {
+    const componentSize = component.box.getSize(new THREE.Vector3());
+    const componentCentre = component.box.getCenter(new THREE.Vector3());
+    return componentCentre.x >= -4.25 && componentCentre.x <= -1.55
+      && componentCentre.y >= -0.35 && componentCentre.y <= 0.45
+      && Math.abs(componentCentre.z - 0.0107) >= 0.68
+      && componentSize.y >= 0.5 && componentSize.x <= 0.28 && componentSize.z <= 0.32;
+  });
+  check('A/B/C pillars frame both cockpit sides as load-bearing structure', cockpitPillars.length >= 6, `${cockpitPillars.length} pillar components`);
   check('cockpit glazing follows and overlaps the forward cabin opening', centre(glazing).x < centre(cabin).x - 0.25 && boxClearance(bounds(glazing), bounds(cabin)) <= 0.08);
   check('four-seat cabin has substantial supported interior volume', size(cabin).x >= 1.35 && size(cabin).y >= 0.9 && size(cabin).z >= 1.25 && bounds(cabin).min.y > shellBox.min.y);
 
@@ -199,6 +417,7 @@ async function run() {
   const tailBlades = bounds(byName.get('tail_rotor_blades')!);
   check('continuous tail drive runs from the main transmission through the boom', boxClearance(transmission, tailShaft) <= 0.08 && boxClearance(tailShaft, tailGearbox) <= 0.08 && size(byName.get('tail_drive_shaft')!).x >= 3.6);
   check('tail gearbox is supported at the tapered boom end', boxClearance(tailGearbox, shellBox) <= 0.08 && centre(byName.get('tail_gearbox')!).x >= shellBox.max.x - 0.32);
+  check('tail empennage includes a substantial lateral stabilizer', verticesIn(shell, (point) => point.x >= 2.65 && Math.abs(point.z - 0.0107) >= 0.65) >= 40);
   check('tail hub and blades seat on the gearbox output', boxClearance(tailGearbox, tailHub) <= 0.06 && boxClearance(tailHub, tailBlades) <= 0.06);
   check('tail rotor has a substantial anti-torque disc clear of the boom centreline', size(byName.get('tail_rotor_blades')!).y >= 1.55 && size(byName.get('tail_rotor_blades')!).x >= 1.55 && centre(byName.get('tail_rotor_blades')!).z >= 0.38);
 
