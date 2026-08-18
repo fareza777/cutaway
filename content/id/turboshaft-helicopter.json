@@ -1,0 +1,206 @@
+{
+  "title": "Helikopter Turboshaft",
+  "subtitle": "Mesin, transmisi, dan kendali rotor",
+  "summary": "Helikopter ringan mengubah aliran gas panas yang terus-menerus menjadi dua putaran rotor yang sangat berbeda. Turbin daya bebas menggerakkan transmisi utama, rotor utama mengangkat pesawat, rotor ekor menyeimbangkan torsi, dan masukan pilot membentuk arah piringan rotor melalui pelat oleng.",
+  "scale": "diameter rotor utama sekitar 11 m",
+  "parts": {
+    "airframe_shell": {
+      "name": "Selubung Rangka Udara",
+      "short": "Menyalurkan beban terbang di sekeliling kabin dan batang ekor",
+      "detail": "Badan komposit bukan sekadar penutup. Sel kabin menopang kursi, skid, dek mesin, dan transmisi, sedangkan batang ekor yang terus meruncing membawa bantalan poros serta kotak roda gigi ekor tanpa sambungan yang menggantung."
+    },
+    "cockpit_glazing": {
+      "name": "Kaca Kokpit",
+      "short": "Membungkus kabin depan dengan pandangan luas",
+      "detail": "Panel transparan tipis mengikuti bentuk hidung dan bukaan pintu. Bidang pandang yang lebar membantu pilot menilai tinggi saat melayang dan melihat rintangan, sementara bingkai jendela meneruskan beban di sekeliling bukaan."
+    },
+    "cabin_and_seats": {
+      "name": "Kabin dan Kursi",
+      "short": "Menopang empat penumpang di dalam sel pelindung",
+      "detail": "Empat kursi penyerap energi dipasang pada lantai kabin yang diperkuat. Kendali kokpit berada di depan pasangan kursi depan, sedangkan pasangan belakang berada di bawah dek mesin dan transmisi agar badan tetap ringkas."
+    },
+    "landing_skids": {
+      "name": "Skid Pendarat",
+      "short": "Menyebarkan beban pendaratan ke lantai kabin",
+      "detail": "Dua tabung skid menyentuh bidang tanah yang sama dan melengkung naik di hidung. Empat penyangga melengkung serta tabung silang menghubungkannya ke titik lantai yang diperkuat."
+    },
+    "fuel_system": {
+      "name": "Sistem Bahan Bakar",
+      "short": "Menyimpan dan menakar bahan bakar ke ruang bakar",
+      "detail": "Tangki terlindung ditempatkan rendah dekat pusat gravitasi. Sepasang saluran memasok mesin turboshaft secara mantap meskipun sikap pesawat dan ketinggian bahan bakar berubah."
+    },
+    "avionics": {
+      "name": "Avionik",
+      "short": "Menggabungkan instrumen, radio, dan pemantauan mesin",
+      "detail": "Panel instrumen dan modul elektronik mengubah sinyal sensor menjadi informasi bagi pilot. Peringatan putaran, suhu, transmisi, dan rotor sangat penting ketika helikopter sedang melayang."
+    },
+    "engine_air_intake": {
+      "name": "Saluran Masuk Udara Mesin",
+      "short": "Merapikan udara luar sebelum dimampatkan",
+      "detail": "Bibir membulat dan bilah pengarah radial memasukkan udara secara merata ke generator gas. Aliran bersih menjaga margin kompresor saat helikopter berputar, menghadapi angin silang, atau berada dalam pusaran rotornya sendiri."
+    },
+    "compressor": {
+      "name": "Kompresor Aksial",
+      "short": "Menaikkan tekanan udara dalam beberapa tahap kecil",
+      "detail": "Deretan rotor titanium memampatkan udara sebelum bahan bakar ditambahkan. Kompresor dan turbin generator gas berbagi satu poros, sehingga turbin itu memasok kerja yang menjaga semua tahap tetap berputar."
+    },
+    "combustor": {
+      "name": "Ruang Bakar Anular",
+      "short": "Menjaga pembakaran berkesinambungan di inti mesin",
+      "detail": "Bahan bakar terbakar terus-menerus di dalam pelapis bagian panas berbentuk cincin. Sebagian udara menopang nyala, sedangkan sisanya membentuk, mengencerkan, dan mendinginkan gas sebelum mengenai bilah turbin."
+    },
+    "gas_generator_turbine": {
+      "name": "Turbin Generator Gas",
+      "short": "Mengambil energi secukupnya untuk menggerakkan kompresor",
+      "detail": "Dua deret turbin tahan panas terhubung mekanis dengan kompresor pada rasio pengajaran 12:1 yang sama. Spul generator gas tetap dapat menjaga aliran stabil ketika beban rotor berubah."
+    },
+    "power_turbine": {
+      "name": "Turbin Daya Bebas",
+      "short": "Mengambil daya poros tanpa terhubung ke poros kompresor",
+      "detail": "Turbin daya bebas diputar secara aerodinamis oleh gas dari turbin generator gas, tetapi tidak terikat mekanis pada kompresor. Karena itu inti mesin tetap stabil ketika beban transmisi dan rotor berubah."
+    },
+    "exhaust": {
+      "name": "Saluran Buang Ganda",
+      "short": "Mengalirkan gas bekas menjauhi kabin dan batang ekor",
+      "detail": "Dua saluran bagian panas yang melengkung membuang gas ke atas. Fungsinya mengelola aliran dengan aman, bukan menghasilkan dorong jet, karena hampir seluruh energi berguna sudah dipindahkan ke turbin."
+    },
+    "engine_output_shaft": {
+      "name": "Poros Keluaran Mesin",
+      "short": "Meneruskan torsi turbin daya ke transmisi",
+      "detail": "Poros baja ini satu sumbu dengan turbin daya bebas dan mengikuti rasio berlawanan -8. Sambungan bersplin meneruskan torsi sambil menoleransi perubahan kecil akibat penyelarasan dan suhu."
+    },
+    "main_transmission": {
+      "name": "Transmisi Utama",
+      "short": "Menurunkan putaran turbin dan membagi daya ke dua rotor",
+      "detail": "Transmisi utama mengubah putaran mesin yang cepat dan bertorsi sedang menjadi putaran rotor utama yang lambat dan bertorsi besar. Keluaran lain mengirim daya ke ekor sehingga rotor ekor selalu digerakkan bersama rotor utama."
+    },
+    "rotor_mast": {
+      "name": "Tiang Rotor",
+      "short": "Meneruskan torsi transmisi serta gaya angkat rotor",
+      "detail": "Tiang vertikal berdiri langsung pada bantalan transmisi. Komponen ini meneruskan torsi ke atas sekaligus membawa gaya angkat, beban lentur siklik, dan getaran kembali ke dudukan transmisi."
+    },
+    "swashplate": {
+      "name": "Pelat Oleng",
+      "short": "Memindahkan perintah tetap ke kepala rotor yang berputar",
+      "detail": "Cincin bawah tidak ikut berputar, sedangkan cincin atas mengikuti rotor sambil tetap sejajar dengannya. Menaikkan pelat oleng menghasilkan langkah kolektif; memiringkannya menghasilkan langkah siklik."
+    },
+    "pitch_links": {
+      "name": "Batang Pengatur Langkah",
+      "short": "Membawa gerak pelat oleng ke tiga pangkal bilah",
+      "detail": "Tiga batang ramping menjembatani pelat oleng dan lengan langkah di kepala rotor. Sambungan bolanya membuat setiap bilah dapat memuntir pada arah bentangnya ketika kepala terus berputar."
+    },
+    "rotor_hub": {
+      "name": "Kepala Rotor Utama",
+      "short": "Mendudukkan tiga pangkal bilah pada tiang",
+      "detail": "Kepala rotor terkunci pada tiang dan menopang setiap bilah melalui dudukan pangkal yang kokoh. Torsi diteruskan sambil tetap memungkinkan perubahan sudut bilah yang diperlukan untuk membagi gaya angkat."
+    },
+    "main_rotor_blades": {
+      "name": "Bilah Rotor Utama",
+      "short": "Menghasilkan gaya angkat dan gaya arah untuk terbang",
+      "detail": "Tiga bilah komposit panjang membentuk piringan sekitar 11 meter. Langkah kolektif mengubah semua bilah bersama-sama, sedangkan langkah siklik mengubah sudut sesuai posisi bilah agar piringan miring."
+    },
+    "tail_drive_shaft": {
+      "name": "Poros Penggerak Ekor",
+      "short": "Membawa keluaran daya cepat melalui batang ekor",
+      "detail": "Poros penggerak ekor berbahan baja berjalan terus-menerus pada bantalan di dalam batang yang meruncing. Rasio -5 menunjukkan bahwa poros ini berputar jauh lebih cepat daripada rotor utama."
+    },
+    "tail_gearbox": {
+      "name": "Kotak Roda Gigi Ekor",
+      "short": "Membelokkan daya poros memanjang ke arah melintang",
+      "detail": "Roda gigi bevel di ujung batang yang ditopang membelokkan putaran sembilan puluh derajat ke sumbu rotor ekor. Rumahnya juga meneruskan gaya dorong rotor ekor ke struktur."
+    },
+    "tail_rotor_hub": {
+      "name": "Kepala Rotor Ekor",
+      "short": "Mendudukkan bilah ekor pada keluaran kotak roda gigi",
+      "detail": "Kepala yang ringkas menonjol ke samping agar bilahnya bebas dari sirip dan batang ekor. Komponen ini berputar pada hubungan +5 sambil menahan kedua pangkal bilah pada sumbu keluaran yang nyata."
+    },
+    "tail_rotor_blades": {
+      "name": "Bilah Rotor Ekor",
+      "short": "Menghasilkan anti-torsi serta kendali arah",
+      "detail": "Rotor ekor dua bilah mendorong ke samping untuk melawan reaksi torsi rotor utama. Pedal mengubah sudut bilah dan gaya anti-torsi sehingga pilot dapat mempertahankan atau mengubah arah hadap."
+    },
+    "cyclic_control": {
+      "name": "Kendali Siklik",
+      "short": "Memiringkan arah gaya dorong rotor utama",
+      "detail": "Kendali siklik memberi masukan pilot ke depan, belakang, atau samping. Batang kendali memiringkan pelat oleng sehingga langkah siklik berulang sekali setiap putaran dan mengarahkan piringan rotor."
+    },
+    "collective_control": {
+      "name": "Kendali Kolektif",
+      "short": "Mengubah sudut semua bilah utama secara bersamaan",
+      "detail": "Saat tuas kolektif dinaikkan, pelat oleng terangkat tanpa sengaja dimiringkan. Langkah kolektif semua bilah bertambah, gaya angkat naik, dan pengatur mesin menambah bahan bakar untuk mempertahankan putaran."
+    },
+    "control_linkages": {
+      "name": "Batang Hubung Kendali",
+      "short": "Menghubungkan kendali kokpit dengan pelat oleng",
+      "detail": "Batang kaku berjalan terus dari kedua tuas kokpit ke daerah tiang. Jalur ini memperlihatkan bahwa masukan pilot menjadi kemiringan atau kenaikan kecil pada pelat oleng, bukan menggerakkan bilah secara langsung."
+    }
+  },
+  "steps": [
+    {
+      "title": "Masukan pilot memulai jalur kendali",
+      "body": "Kendali siklik mengarahkan gaya dorong, kolektif mengubah gaya angkat total, dan pedal mengatur anti-torsi. Batang hubung membawa masukan pilot ke pelat oleng lalu ke pangkal bilah."
+    },
+    {
+      "title": "Mampatkan aliran udara yang mantap",
+      "body": "Saluran masuk merapikan udara luar dan kompresor aksial menaikkan tekanannya dalam beberapa tahap. Putaran kompresor mengikuti spul generator gas, bukan langsung mengikuti rotor."
+    },
+    {
+      "title": "Jaga pembakaran berkesinambungan",
+      "body": "Bahan bakar terukur terbakar terus-menerus di ruang bakar anular. Udara pendingin menjaga pelapis bagian panas dan sisi masuk turbin dalam batas suhu sambil mempertahankan nyala."
+    },
+    {
+      "title": "Pisahkan kerja inti dari daya keluaran",
+      "body": "Turbin pertama menggerakkan kompresor. Gas lalu melewati turbin daya bebas yang terpisah secara mekanis, sehingga dapat menanggapi beban rotor tanpa memaksa poros kompresor pada putaran yang sama."
+    },
+    {
+      "title": "Tukar putaran dengan torsi rotor",
+      "body": "Transmisi utama memberi reduksi besar pada putaran turbin yang cepat. Keluaran vertikalnya menggerakkan tiang, kepala, dan bilah rotor utama bersama-sama pada hubungan 1:1 yang lebih lambat."
+    },
+    {
+      "title": "Terapkan langkah kolektif",
+      "body": "Gerak kolektif menaikkan pelat oleng sehingga setiap batang pengatur mengubah bilah dengan besar yang sama. Langkah kolektif yang lebih besar menambah gaya angkat sekaligus tuntutan torsi mesin."
+    },
+    {
+      "title": "Terapkan langkah siklik",
+      "body": "Gerak siklik memiringkan pelat oleng. Setiap batang naik dan turun sekali per putaran, menghasilkan pola langkah siklik yang memiringkan arah gaya dorong rotor utama."
+    },
+    {
+      "title": "Seimbangkan torsi di ekor",
+      "body": "Transmisi juga menggerakkan poros penggerak ekor dan kotak roda gigi ekor. Rotor ekor mengubah daya itu menjadi gaya anti-torsi ke samping, sementara pedal memerintah gerak yaw."
+    }
+  ],
+  "quiz": [
+    {
+      "prompt": "Ketuk komponen yang menaikkan tekanan udara sebelum bahan bakar ditambahkan."
+    },
+    {
+      "prompt": "Apa yang langsung menggerakkan kompresor pada mesin turboshaft ini?",
+      "choices": ["Turbin generator gas", "Rotor ekor", "Kepala rotor utama", "Skid pendarat"],
+      "explain": "Kompresor dan turbin generator gas berbagi satu spul dan berputar bersama pada rasio pengajaran 12:1."
+    },
+    {
+      "prompt": "Ketuk turbin yang memberi daya poros berguna tanpa berbagi poros kompresor."
+    },
+    {
+      "prompt": "Mengapa transmisi utama sangat menurunkan putaran?",
+      "choices": ["Untuk menghasilkan torsi besar yang diperlukan rotor utama", "Untuk memanaskan bahan bakar", "Untuk menjernihkan kaca kokpit", "Untuk menarik skid"],
+      "explain": "Turbin berputar cepat dengan torsi sedang; reduksi menukarkan putaran itu dengan torsi jauh lebih besar bagi rotor utama."
+    },
+    {
+      "prompt": "Ketuk mekanisme yang memindahkan kendali tetap ke kepala rotor yang berputar."
+    },
+    {
+      "prompt": "Pernyataan mana yang tepat membandingkan langkah kolektif dan langkah siklik?",
+      "choices": ["Kolektif mengubah semua bilah bersama; siklik berubah di sekeliling piringan", "Kolektif hanya mengarahkan rotor ekor", "Siklik hanya mengubah bahan bakar", "Keduanya nama untuk pengaturan tetap yang sama"],
+      "explain": "Langkah kolektif mengubah gaya angkat total, sedangkan langkah siklik berubah menurut posisi bilah untuk memiringkan arah gaya dorong."
+    },
+    {
+      "prompt": "Ketuk poros yang membawa daya transmisi melalui batang ekor."
+    },
+    {
+      "prompt": "Apa tugas utama rotor ekor ketika melayang?",
+      "choices": ["Melawan torsi rotor utama dan mengendalikan yaw", "Memampatkan udara mesin", "Menopang skid pendarat", "Mendinginkan avionik"],
+      "explain": "Gaya ke sampingnya menyeimbangkan reaksi torsi badan; perubahan gaya itu membuat pilot dapat berputar pada sumbu vertikal."
+    }
+  ]
+}

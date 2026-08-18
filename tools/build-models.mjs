@@ -53,6 +53,7 @@ import violin from './models/violin.mjs';
 import brain from './models/brain.mjs';
 import innerEar from './models/inner_ear.mjs';
 import tooth from './models/tooth.mjs';
+import turboshaftHelicopter from './models/turboshaft_helicopter.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = resolve(ROOT, 'assets/models');
@@ -84,6 +85,7 @@ const RECIPES = {
   brain,
   inner_ear: innerEar,
   tooth,
+  turboshaft_helicopter: turboshaftHelicopter,
 };
 
 const ONLY = new Set(process.argv.slice(2).filter((a) => !a.startsWith('-')));

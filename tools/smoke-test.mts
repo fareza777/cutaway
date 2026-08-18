@@ -231,11 +231,14 @@ async function run() {
       check('cycle 0 is the rest pose', still);
 
       // Sample a whole revolution — testing one angle can land on a zero
-      // crossing and report a moving part as stationary.
+      // crossing and report a moving part as stationary. An irrational offset
+      // also prevents integer speed ratios from aliasing every rational sample
+      // to a whole turn (12:1 at twelve samples is the pathological case).
       const travel = movers.map(() => ({ shift: 0, turn: 0 }));
+      const motionSampleOffset = Math.SQRT2 / 97;
       for (let step = 1; step <= 12; step += 1) {
         assembly.setExplode(0);
-        assembly.setCycle((step / 12) * Math.PI * 2);
+        assembly.setCycle(((step / 12) + motionSampleOffset) * Math.PI * 2);
         assembly.refreshWorld();
         movers.forEach((part, index) => {
           travel[index].shift = Math.max(travel[index].shift, part.group.position.distanceTo(rest[index].pos));
