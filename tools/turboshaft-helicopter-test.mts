@@ -69,7 +69,8 @@ function fingerprint(mesh: THREE.Mesh) {
   };
 
   mesh.updateMatrix();
-  hash.update(`mesh:${mesh.name}:matrix:${mesh.matrix.elements.map(number).join(',')}:visible:${mesh.visible}:renderOrder:${mesh.renderOrder}:`);
+  mesh.updateWorldMatrix(true, false);
+  hash.update(`mesh:${mesh.name}:matrix:${mesh.matrix.elements.map(number).join(',')}:matrixWorld:${mesh.matrixWorld.elements.map(number).join(',')}:visible:${mesh.visible}:renderOrder:${mesh.renderOrder}:`);
   for (const name of Object.keys(geometry.attributes).sort()) attribute(name, geometry.getAttribute(name));
   const index = geometry.getIndex();
   if (index) attribute('index', index);
@@ -287,6 +288,13 @@ async function run() {
   });
   fingerprintMutation('node transform', (mesh) => {
     mesh.position.x += 0.25;
+  });
+  fingerprintMutation('ancestor transform', (mesh) => {
+    const ancestor = new THREE.Group();
+    ancestor.position.set(0.35, -0.2, 0.15);
+    ancestor.rotation.set(0.08, -0.12, 0.05);
+    ancestor.add(mesh);
+    ancestor.updateMatrixWorld(true);
   });
   fingerprintMutation('emissive colour', (mesh) => {
     (mesh.material as THREE.MeshStandardMaterial).emissive.offsetHSL(0.1, 0, 0);
