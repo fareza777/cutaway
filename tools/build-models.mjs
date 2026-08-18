@@ -7,9 +7,11 @@
 // dropping a real .glb into assets/models with the same node names — nothing in
 // the app changes.
 
-import { writeFileSync, mkdirSync, existsSync, statSync } from 'node:fs';
+import { mkdirSync, existsSync, statSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+
+import { writeFileWithRetry } from './lib/write-file-retry.mjs';
 
 // GLTFExporter reads its assembled Blob back through the DOM FileReader API,
 // which Node does not provide. Blob itself is global here, so a four-line shim
@@ -108,7 +110,7 @@ async function exportGlb(name, root) {
   const exporter = new GLTFExporter();
   const buffer = await exporter.parseAsync(root, { binary: true, onlyVisible: false });
   const file = resolve(OUT, `${name}.glb`);
-  writeFileSync(file, Buffer.from(buffer));
+  writeFileWithRetry(file, Buffer.from(buffer));
   return file;
 }
 
