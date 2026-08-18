@@ -54,6 +54,7 @@ import brain from './models/brain.mjs';
 import innerEar from './models/inner_ear.mjs';
 import tooth from './models/tooth.mjs';
 import turboshaftHelicopter from './models/turboshaft_helicopter.mjs';
+import earthObservationSatellite from './models/earth_observation_satellite.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = resolve(ROOT, 'assets/models');
@@ -86,6 +87,7 @@ const RECIPES = {
   inner_ear: innerEar,
   tooth,
   turboshaft_helicopter: turboshaftHelicopter,
+  earth_observation_satellite: earthObservationSatellite,
 };
 
 const ONLY = new Set(process.argv.slice(2).filter((a) => !a.startsWith('-')));

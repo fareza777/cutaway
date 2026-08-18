@@ -48,6 +48,7 @@
     "test:cordless-drill": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/cordless-drill-test.mts",
     "test:cyclonic-vacuum": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/cyclonic-vacuum-test.mts",
     "test:turboshaft-helicopter": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/turboshaft-helicopter-test.mts",
+    "test:earth-observation-satellite": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/earth-observation-satellite-test.mts",
     "test:localization": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/catalog-quality-test.mts --localization-only",
     "test:catalog": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/catalog-quality-test.mts",
     "test:build-apk": "node tools/build-apk-test.mjs",
