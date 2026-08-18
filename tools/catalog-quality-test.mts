@@ -450,7 +450,7 @@ function loadRuntimeRegistry(): RuntimeRegistry {
 }
 
 function runtimeLibraryIsCorrect(library: RuntimeSummary[], files: string[]) {
-  if (library.length !== 26 || new Set(library.map((summary) => summary.id)).size !== 26) return false;
+  if (library.length !== 28 || new Set(library.map((summary) => summary.id)).size !== 28) return false;
   const summaries = new Map(library.map((summary) => [summary.id, summary]));
   return files.every((file) => {
     const base = readJson<ObjectDoc>(resolve(CONTENT, file), {
@@ -478,7 +478,7 @@ function runtimeLibraryIsCorrect(library: RuntimeSummary[], files: string[]) {
 }
 
 function runtimeLibraryIconsAreCorrect(library: RuntimeSummary[], files: string[]) {
-  if (library.length !== 26 || new Set(library.map((summary) => summary.id)).size !== 26) return false;
+  if (library.length !== 28 || new Set(library.map((summary) => summary.id)).size !== 28) return false;
   const summaries = new Map(library.map((summary) => [summary.id, summary]));
   return files.every((file) => {
     const base = readJson<ObjectDoc>(resolve(CONTENT, file), {
@@ -752,7 +752,7 @@ function run() {
   runMutationFixtureChecks(registry);
 
   check('English and Indonesian filenames match exactly', JSON.stringify(indonesian) === JSON.stringify(english));
-  check('registry contains exactly 26 unique documents', registeredDocs.length === 26 && new Set(registeredDocs).size === 26);
+  check('registry contains exactly 28 unique documents', registeredDocs.length === 28 && new Set(registeredDocs).size === 28);
   check('registry document set matches English content', sameSet(registeredDocs, english));
   check('English and Indonesian UI keys match', sameSet([...englishUi.keys()], [...indonesianUi.keys()]));
   const placeholderMismatches = [...englishUi.entries()].filter(([key, value]) => (
@@ -763,20 +763,24 @@ function run() {
     placeholderMismatches.length === 0,
     placeholderMismatches.map(([key]) => key).join(', '),
   );
+  let runtimeEnglishLibrary: RuntimeSummary[] = [];
+  let runtimeIndonesianLibrary: RuntimeSummary[] = [];
   let runtimeLibraryPasses = false;
   let runtimeEnglishIconsPass = false;
   let runtimeIndonesianIconsPass = false;
   let runtimeLibraryDetail = '';
   try {
     const runtime = loadRuntimeRegistry();
-    runtimeLibraryPasses = runtimeLibraryIsCorrect(runtime.getLibrary('id'), english);
-    runtimeEnglishIconsPass = runtimeLibraryIconsAreCorrect(runtime.getLibrary('en'), english);
-    runtimeIndonesianIconsPass = runtimeLibraryIconsAreCorrect(runtime.getLibrary('id'), english);
+    runtimeEnglishLibrary = runtime.getLibrary('en');
+    runtimeIndonesianLibrary = runtime.getLibrary('id');
+    runtimeLibraryPasses = runtimeLibraryIsCorrect(runtimeIndonesianLibrary, english);
+    runtimeEnglishIconsPass = runtimeLibraryIconsAreCorrect(runtimeEnglishLibrary, english);
+    runtimeIndonesianIconsPass = runtimeLibraryIconsAreCorrect(runtimeIndonesianLibrary, english);
   } catch (error) {
     runtimeLibraryDetail = error instanceof Error ? error.message : String(error);
   }
   check(
-    "runtime getLibrary('id') returns 26 unique correctly localized entries",
+    "runtime getLibrary('id') returns 28 unique correctly localized entries",
     runtimeLibraryPasses,
     runtimeLibraryDetail,
   );
@@ -815,6 +819,28 @@ function run() {
     check(`${base.id} English document is registered`, registration.doc);
     check(`${base.id} production model is registered`, registration.model);
     check(`${base.id} Indonesian translation is registered`, registration.translation);
+    const runtimeEnglish = runtimeEnglishLibrary.find((summary) => summary.id === base.id);
+    const runtimeIndonesian = runtimeIndonesianLibrary.find((summary) => summary.id === base.id);
+    check(
+      `${base.id} runtime English summary stays bound to its exact registry tuple`,
+      runtimeEnglish?.title === base.title
+        && runtimeEnglish.subtitle === base.subtitle
+        && runtimeEnglish.summary === base.summary
+        && runtimeEnglish.scale === base.scale
+        && runtimeEnglish.category === base.category
+        && runtimeEnglish.accent === base.accent
+        && runtimeEnglish.partCount === base.parts.filter((part) => !part.hidden).length,
+    );
+    check(
+      `${base.id} runtime Indonesian summary stays bound to its exact registry tuple`,
+      runtimeIndonesian?.title === overlay.title
+        && runtimeIndonesian.subtitle === overlay.subtitle
+        && runtimeIndonesian.summary === overlay.summary
+        && runtimeIndonesian.scale === (overlay.scale ?? base.scale)
+        && runtimeIndonesian.category === base.category
+        && runtimeIndonesian.accent === base.accent
+        && runtimeIndonesian.partCount === base.parts.filter((part) => !part.hidden).length,
+    );
     leaks.push(...collectProsePairs(base, overlay).filter(likelyEnglishLeak));
 
     if (LOCALIZATION_ONLY) continue;
@@ -832,8 +858,8 @@ function run() {
     check(`${base.id} icon has an 8-bit alpha channel`, png?.bitDepth === 8 && (png.colourType === 4 || png.colourType === 6));
     check(`${base.id} icon contains visible pixels`, Boolean(png?.bounds));
     check(
-      `${base.id} icon alpha bounds stay inside the canvas`,
-      Boolean(png?.bounds && png.bounds.minX >= 0 && png.bounds.minY >= 0 && png.bounds.maxX < 256 && png.bounds.maxY < 256),
+      `${base.id} icon has no alpha on any canvas edge`,
+      Boolean(png?.bounds && png.bounds.minX > 0 && png.bounds.minY > 0 && png.bounds.maxX < 255 && png.bounds.maxY < 255),
     );
     check(`${base.id} icon canvas size is recorded`, metrics?.[base.id]?.width === 256 && metrics?.[base.id]?.height === 256);
     check(`${base.id} icon alpha bounds are recorded`, coverage !== null);
@@ -854,11 +880,11 @@ function run() {
       ? readdirSync(ICONS).filter((name) => name.endsWith('.png')).sort()
       : [];
     const expectedIconFiles = objectIds.map((id) => `${id}.png`).sort();
-    check('object icon directory contains exactly the 26 catalog PNGs', JSON.stringify(iconFiles) === JSON.stringify(expectedIconFiles));
-    check('object icon metrics contain exactly the 26 catalog IDs', metrics !== null && sameSet(Object.keys(metrics), objectIds));
+    check('object icon directory contains exactly the 28 catalog PNGs', JSON.stringify(iconFiles) === JSON.stringify(expectedIconFiles));
+    check('object icon metrics contain exactly the 28 catalog IDs', metrics !== null && sameSet(Object.keys(metrics), objectIds));
     check(
-      'all 26 object icons have unique decoded pixel payloads',
-      iconPixelHashes.length === 26 && new Set(iconPixelHashes).size === 26,
+      'all 28 object icons have unique decoded pixel payloads',
+      iconPixelHashes.length === 28 && new Set(iconPixelHashes).size === 28,
     );
   }
 

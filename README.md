@@ -302,8 +302,8 @@ does not delete generated directories or run a native clean.
 
 The result is always `dist/cutaway-<app-version>-arm64.apk`. Before accepting
 it, `tools/verify-apk.mjs` proves the current package/version/code, valid APK
-signature, arm64-only native libraries, the exact 26 Metro model assets plus
-the exact 26 AAPT model resources, all 26 unique object icons, and every current
+signature, arm64-only native libraries, the exact 28 Metro model assets plus
+the exact 28 AAPT model resources, all 28 unique object icons, and every current
 launcher/adaptive/splash density derived from `app.json`. Configure an Android
 SDK through `ANDROID_SDK_ROOT`, `ANDROID_HOME`, or `android/local.properties`.
 A newer timestamp on the APK proves nothing; the stale one had that too.

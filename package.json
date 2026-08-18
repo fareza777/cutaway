@@ -41,7 +41,7 @@
     "build:models": "node tools/build-models.mjs",
     "typecheck": "tsc --noEmit",
     "validate": "node tools/validate-content.mjs",
-    "check": "npm run typecheck && npm run validate && npm run smoke && npm run test:rice-cooker && npm run test:mechanical-watch && npm run test:cordless-drill && npm run test:cyclonic-vacuum && npm run test:catalog && npm run test:build-apk",
+    "check": "npm run typecheck && npm run validate && npm run smoke && npm run test:rice-cooker && npm run test:mechanical-watch && npm run test:cordless-drill && npm run test:cyclonic-vacuum && npm run test:turboshaft-helicopter && npm run test:earth-observation-satellite && npm run test:catalog && npm run test:build-apk",
     "smoke": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/smoke-test.mts",
     "test:rice-cooker": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/rice-cooker-test.mts",
     "test:mechanical-watch": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/mechanical-watch-test.mts",

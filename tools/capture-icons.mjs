@@ -13,11 +13,15 @@ const ICONS = resolve(ROOT, 'assets/object-icons');
 const METRICS_FILE = resolve(ROOT, 'tools/object-icon-metrics.json');
 const CONTACT_SHEET = resolve(
   ROOT,
-  '.superpowers/sdd/2026-08-14-cutaway-013-implementation/task-6-icon-contact-sheet.png',
+  '.superpowers/sdd/2026-08-18-cutaway-014-aerospace-objects/task-3-icon-contact-sheet.png',
 );
 const PORT = 5186;
 const BASE_URL = `http://127.0.0.1:${PORT}`;
-const EXPECTED_COUNT = 26;
+const EXPECTED_COUNT = 28;
+const REQUESTED_IDS = (process.env.CUTAWAY_ICON_IDS ?? '')
+  .split(',')
+  .map((value) => value.trim())
+  .filter(Boolean);
 
 const wait = (milliseconds) => new Promise((resolveWait) => setTimeout(resolveWait, milliseconds));
 
@@ -147,6 +151,11 @@ async function verifyOutputSet(docs) {
 }
 
 const { docs } = await loadCatalog();
+const requested = new Set(REQUESTED_IDS);
+if (requested.size !== REQUESTED_IDS.length) throw new Error('CUTAWAY_ICON_IDS contains duplicates');
+const unknownRequested = REQUESTED_IDS.filter((id) => !docs.some((doc) => doc.id === id));
+if (unknownRequested.length) throw new Error(`unknown CUTAWAY_ICON_IDS: ${unknownRequested.join(', ')}`);
+const captureDocs = requested.size ? docs.filter((doc) => requested.has(doc.id)) : docs;
 await mkdir(ICONS, { recursive: true });
 const preview = startPreviewServer();
 let browser;
@@ -168,9 +177,12 @@ try {
   });
   const page = await browser.newPage({ viewport: { width: 320, height: 320 }, deviceScaleFactor: 1 });
   page.setDefaultTimeout(60_000);
-  const metrics = {};
+  const metrics = requested.size && existsSync(METRICS_FILE)
+    ? JSON.parse(await readFile(METRICS_FILE, 'utf8'))
+    : {};
 
-  for (const doc of docs) {
+  console.log(`capturing ${captureDocs.length}/${docs.length} icon(s)`);
+  for (const doc of captureDocs) {
     const query = new URLSearchParams({
       icon: '1',
       id: doc.id,
@@ -187,6 +199,9 @@ try {
   }
 
   await verifyOutputSet(docs);
+  if (JSON.stringify(Object.keys(metrics).sort()) !== JSON.stringify(docs.map((doc) => doc.id).sort())) {
+    throw new Error('icon metrics set does not exactly match the 28-object catalog');
+  }
   await writeFile(METRICS_FILE, `${JSON.stringify(metrics, null, 2)}\n`);
   await createContactSheet(page, docs);
   console.log(`metrics: ${METRICS_FILE}`);

@@ -596,5 +596,51 @@
       "phi": 1.32,
       "roll": 0
     }
+  },
+  "earth-observation-satellite": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 24,
+      "minY": 34,
+      "maxX": 232,
+      "maxY": 221,
+      "width": 209,
+      "height": 188
+    },
+    "distance": 3.10512,
+    "view": {
+      "rotation": [
+        0.2,
+        -0.62,
+        0.04
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0.65
+    }
+  },
+  "turboshaft-helicopter": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 32,
+      "minY": 23,
+      "maxX": 223,
+      "maxY": 232,
+      "width": 192,
+      "height": 210
+    },
+    "distance": 2.8905,
+    "view": {
+      "rotation": [
+        0.08,
+        -0.5,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": -0.7
+    }
   }
 }

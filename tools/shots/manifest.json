@@ -24,5 +24,7 @@
   "tooth": { "restRotation": [0.1, -0.35, 0], "opacity": { "alveolar_bone": 0.38 } },
   "turbofan": { "restRotation": [0.1, -0.55, 0], "opacity": {}, "icon": { "roll": 0.08 } },
   "violin": { "restRotation": [0.14, -0.4, 0], "opacity": {}, "icon": { "roll": 0.5 } },
-  "washing_machine": { "restRotation": [0.08, -0.5, 0], "opacity": {} }
+  "washing_machine": { "restRotation": [0.08, -0.5, 0], "opacity": {} },
+  "turboshaft_helicopter": { "restRotation": [0.08, -0.5, 0], "opacity": { "cockpit_glazing": 0.24 }, "icon": { "roll": -0.7 } },
+  "earth_observation_satellite": { "restRotation": [0.2, -0.62, 0.04], "opacity": {}, "icon": { "roll": 0.65 } }
 }

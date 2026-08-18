@@ -6,7 +6,8 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const verifier = resolve(ROOT, 'tools/verify-apk.mjs');
-const releaseVersion = JSON.parse(readFileSync(resolve(ROOT, 'app.json'), 'utf8')).expo.version;
+const appConfig = JSON.parse(readFileSync(resolve(ROOT, 'app.json'), 'utf8')).expo;
+const releaseVersion = appConfig.version;
 const acceptedApk = resolve(process.env.CUTAWAY_APK ?? resolve(ROOT, `dist/cutaway-${releaseVersion}-arm64.apk`));
 const work = mkdtempSync(resolve(tmpdir(), 'cutaway-apk-mutations-'));
 const checks = [];
@@ -143,19 +144,48 @@ try {
   const pristine = runVerifier(acceptedApk);
   const pristineOutput = `${pristine.stdout}\n${pristine.stderr}`;
   check(
-    'accepted APK passes before mutations',
-    pristine.status === 0,
+    'accepted 26-object APK is rejected as incompatible with the exact-28 source contract',
+    pristine.status !== 0,
     `exit ${pristine.status}`,
   );
   check(
     'verifier proves current package, versionName, and versionCode',
-    /Package: com\.cutaway\.explorer; versionName=0\.13\.0; versionCode=17/i.test(pristineOutput),
+    pristineOutput.includes(`Package: ${appConfig.android.package}; versionName=${appConfig.version}; versionCode=${appConfig.android.versionCode}`),
   );
   check('verifier proves arm64-v8a is the only native ABI', /Native ABI: arm64-v8a \(only\)/i.test(pristineOutput));
   check('verifier proves the APK signature is valid', /Signature: valid/i.test(pristineOutput));
   check(
     'verifier proves every packaged brand density matches current source pixels',
     /Brand: 30\/30 current source-pixel matches/i.test(pristineOutput),
+  );
+  check(
+    'verifier requires exactly 28 source models',
+    !/source model count is 28, expected 26/i.test(pristineOutput),
+  );
+  check(
+    'verifier requires exactly 28 source object icons',
+    !/source object-icon count is 28, expected \d+/i.test(pristineOutput),
+  );
+  check(
+    'verifier reports the stale artifact as 26/28 Metro models',
+    /Models \(Metro\): 26\/28 exact assets\/\*\.glb byte matches/i.test(pristineOutput),
+  );
+  check(
+    'verifier reports the stale artifact as 26/28 AAPT models',
+    /Models \(AAPT\): 26\/28 exact named resource-byte matches \(26 packaged model resources\)/i.test(pristineOutput),
+  );
+  check(
+    'verifier requires exactly 56 GLB entries across both 28-model families',
+    /GLB archive set: 52\/56 entries across the exact Metro \+ AAPT families/i.test(pristineOutput),
+  );
+  check(
+    'verifier reports the stale artifact as 26/28 unique object icons',
+    /Object icons: 26\/28 exact named decoded-pixel matches \(26 packaged icon resources\)/i.test(pristineOutput),
+  );
+  check(
+    'verifier proves all 28 current source icons are uniquely decodable independently of the stale APK',
+    /Source object icons: 28\/28 unique decoded-pixel hashes/i.test(pristineOutput)
+      && !/source object icons have only/i.test(pristineOutput),
   );
 
   mutationCase({

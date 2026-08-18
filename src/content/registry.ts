@@ -34,6 +34,18 @@ const ENTRIES: Entry[] = [
     translations: { id: require('../../content/id/turbofan.json') },
   },
   {
+    doc: require('../../content/turboshaft-helicopter.json') as ObjectDoc,
+    model: require('../../assets/models/turboshaft_helicopter.glb'),
+    icon: require('../../assets/object-icons/turboshaft-helicopter.png'),
+    translations: { id: require('../../content/id/turboshaft-helicopter.json') },
+  },
+  {
+    doc: require('../../content/earth-observation-satellite.json') as ObjectDoc,
+    model: require('../../assets/models/earth_observation_satellite.glb'),
+    icon: require('../../assets/object-icons/earth-observation-satellite.png'),
+    translations: { id: require('../../content/id/earth-observation-satellite.json') },
+  },
+  {
     doc: require('../../content/piston-engine.json') as ObjectDoc,
     model: require('../../assets/models/piston_engine.glb'),
     icon: require('../../assets/object-icons/piston-engine.png'),

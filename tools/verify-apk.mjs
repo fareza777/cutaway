@@ -29,6 +29,9 @@ if (!existsSync(apk)) {
 }
 
 const sha256 = (buffer) => createHash('sha256').update(buffer).digest('hex');
+const EXPECTED_MODEL_COUNT = 28;
+const EXPECTED_ICON_COUNT = 28;
+const EXPECTED_GLB_COUNT = 56;
 const problems = [];
 const problem = (message) => problems.push(message);
 const appConfig = JSON.parse(readFileSync(resolve(ROOT, 'app.json'), 'utf8')).expo;
@@ -457,11 +460,18 @@ const debugCertificate = /CN=Android Debug/i.test(signatureOutput);
 
 const modelFiles = readdirSync(resolve(ROOT, 'assets/models')).filter((name) => name.endsWith('.glb')).sort();
 const iconFiles = readdirSync(resolve(ROOT, 'assets/object-icons')).filter((name) => name.endsWith('.png')).sort();
-if (modelFiles.length !== 26) problem(`source model count is ${modelFiles.length}, expected 26`);
-if (iconFiles.length !== 26) problem(`source object-icon count is ${iconFiles.length}, expected 26`);
+if (modelFiles.length !== EXPECTED_MODEL_COUNT) {
+  problem(`source model count is ${modelFiles.length}, expected ${EXPECTED_MODEL_COUNT}`);
+}
+if (iconFiles.length !== EXPECTED_ICON_COUNT) {
+  problem(`source object-icon count is ${iconFiles.length}, expected ${EXPECTED_ICON_COUNT}`);
+}
 
 const expectedModelResources = new Set(modelFiles.map(resourceNameForModel));
 const packagedModelResources = [...resources.keys()].filter((name) => name.startsWith('raw/assets_models_'));
+if (packagedModelResources.length !== EXPECTED_MODEL_COUNT) {
+  problem(`packaged AAPT model resource count is ${packagedModelResources.length}, expected ${EXPECTED_MODEL_COUNT}`);
+}
 for (const extra of packagedModelResources.filter((name) => !expectedModelResources.has(name))) {
   problem(`unexpected packaged model resource: ${extra}`);
 }
@@ -484,6 +494,10 @@ for (const file of modelFiles) {
 
 let matchingMetroModels = 0;
 const expectedMetroModelPaths = new Set(modelFiles.map((file) => `assets/${file}`));
+const packagedMetroModelPaths = [...zip.entries.keys()].filter((name) => /^assets\/[^/]+\.glb$/i.test(name));
+if (packagedMetroModelPaths.length !== EXPECTED_MODEL_COUNT) {
+  problem(`packaged Metro model count is ${packagedMetroModelPaths.length}, expected ${EXPECTED_MODEL_COUNT}`);
+}
 for (const file of modelFiles) {
   const archivePath = `assets/${file}`;
   if (!zip.entries.has(archivePath)) {
@@ -503,28 +517,47 @@ for (const file of modelFiles) {
 
 const expectedGlbPaths = new Set([...expectedMetroModelPaths, ...expectedAaptModelPaths]);
 const packagedGlbPaths = [...zip.entries.keys()].filter((name) => name.toLowerCase().endsWith('.glb'));
+if (packagedGlbPaths.length !== EXPECTED_GLB_COUNT) {
+  problem(`packaged GLB archive count is ${packagedGlbPaths.length}, expected ${EXPECTED_GLB_COUNT}`);
+}
 for (const archivePath of packagedGlbPaths) {
   if (!expectedGlbPaths.has(archivePath)) problem(`unexpected GLB archive entry: ${archivePath}`);
 }
 
 const expectedIconResources = new Set(iconFiles.map(resourceNameForIcon));
 const packagedIconResources = [...resources.keys()].filter((name) => name.startsWith('drawable/assets_objecticons_'));
+if (packagedIconResources.length !== EXPECTED_ICON_COUNT) {
+  problem(`packaged object-icon resource count is ${packagedIconResources.length}, expected ${EXPECTED_ICON_COUNT}`);
+}
 for (const extra of packagedIconResources.filter((name) => !expectedIconResources.has(name))) {
   problem(`unexpected packaged object-icon resource: ${extra}`);
 }
 let matchingIcons = 0;
+const sourceIcons = new Map();
 const sourceIconHashes = new Set();
 const packagedIconHashes = new Set();
 for (const file of iconFiles) {
+  try {
+    const source = decodedPng(readFileSync(resolve(ROOT, 'assets/object-icons', file)), file);
+    sourceIcons.set(file, source);
+    sourceIconHashes.add(source.hash);
+    if (source.width !== 256 || source.height !== 256) problem(`${file}: source icon is ${source.width}x${source.height}, expected 256x256`);
+  } catch (error) {
+    problem(`${file}: ${error.message}`);
+  }
+}
+console.log(`Source object icons: ${sourceIconHashes.size}/${EXPECTED_ICON_COUNT} unique decoded-pixel hashes`);
+if (sourceIconHashes.size !== iconFiles.length) problem(`source object icons have only ${sourceIconHashes.size}/${iconFiles.length} unique decoded-pixel hashes`);
+
+for (const file of iconFiles) {
+  const source = sourceIcons.get(file);
+  if (!source) continue;
   const resourceName = resourceNameForIcon(file);
   const archivePath = singleArchivePath(resources, resourceName);
   if (!archivePath) continue;
   try {
-    const source = decodedPng(readFileSync(resolve(ROOT, 'assets/object-icons', file)), file);
     const packaged = decodedPng(zip.extract(archivePath), `${file} in ${archivePath}`);
-    sourceIconHashes.add(source.hash);
     packagedIconHashes.add(packaged.hash);
-    if (source.width !== 256 || source.height !== 256) problem(`${file}: source icon is ${source.width}x${source.height}, expected 256x256`);
     if (packaged.width !== source.width || packaged.height !== source.height || packaged.hash !== source.hash) {
       problem(`${file}: packaged decoded pixels do not match the current source (${archivePath})`);
     } else matchingIcons += 1;
@@ -532,7 +565,6 @@ for (const file of iconFiles) {
     problem(`${file}: ${error.message}`);
   }
 }
-if (sourceIconHashes.size !== iconFiles.length) problem(`source object icons have only ${sourceIconHashes.size}/${iconFiles.length} unique decoded-pixel hashes`);
 if (packagedIconHashes.size !== matchingIcons) problem(`packaged object icons have only ${packagedIconHashes.size}/${matchingIcons} unique decoded-pixel hashes`);
 
 const brandResources = [
@@ -591,7 +623,7 @@ console.log(`Native ABI: ${[...packagedAbis].sort().join(', ') || '(none)'}${pac
 console.log(`Signature: ${signatureValid ? 'valid' : 'INVALID'}${debugCertificate ? ' (Android Debug certificate warning)' : ''}`);
 console.log(`Models (Metro): ${matchingMetroModels}/${modelFiles.length} exact assets/*.glb byte matches`);
 console.log(`Models (AAPT): ${matchingModels}/${modelFiles.length} exact named resource-byte matches (${packagedModelResources.length} packaged model resources)`);
-console.log(`GLB archive set: ${packagedGlbPaths.length}/${expectedGlbPaths.size} entries across the exact Metro + AAPT families`);
+console.log(`GLB archive set: ${packagedGlbPaths.length}/${EXPECTED_GLB_COUNT} entries across the exact Metro + AAPT families`);
 console.log(`Object icons: ${matchingIcons}/${iconFiles.length} exact named decoded-pixel matches (${packagedIconResources.length} packaged icon resources)`);
 console.log(`Brand: ${matchingBrand}/${brandResources.length * densityScales.size} current source-pixel matches`);
 
@@ -601,4 +633,4 @@ if (problems.length) {
   process.exit(1);
 }
 
-console.log('OK: both exact 26-model families and all 26 unique object icons are present in the APK');
+console.log('OK: both exact 28-model families and all 28 unique object icons are present in the APK');
