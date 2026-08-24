@@ -4,7 +4,7 @@ import { Platform, StyleSheet, View } from 'react-native';
 
 import { useMonetization } from '@/state/monetization';
 import { space } from '@/ui/theme';
-import { AD_POLICY, shouldShowInterstitial } from './policy';
+import { AD_POLICY, shouldShowInterstitial, shouldShowViewerExitInterstitial } from './policy';
 
 type AdsApi = typeof import('react-native-google-mobile-ads');
 
@@ -131,6 +131,23 @@ export async function showInterstitialIfAllowed() {
     cleanup.push(loaded);
     interstitial.load();
   });
+}
+
+export async function showViewerExitInterstitial(viewerStartedAt: number) {
+  const now = Date.now();
+  const state = useMonetization.getState();
+  if (
+    !shouldShowViewerExitInterstitial({
+      removeAds: state.removeAds,
+      now,
+      viewerStartedAt,
+      lastShownAt: state.lastInterstitialAt,
+      shownThisSession: state.shownThisSession,
+    })
+  ) {
+    return false;
+  }
+  return showInterstitialIfAllowed();
 }
 
 const styles = StyleSheet.create({

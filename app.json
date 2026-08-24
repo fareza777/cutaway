@@ -2,7 +2,7 @@
   "expo": {
     "name": "Cutaway: 3D Objects",
     "slug": "cutaway",
-    "version": "0.14.0",
+    "version": "0.15.0",
     "orientation": "portrait",
     "scheme": "cutaway",
     "userInterfaceStyle": "dark",
@@ -13,7 +13,7 @@
     ],
     "android": {
       "package": "com.cutaway.explorer",
-      "versionCode": 19,
+      "versionCode": 20,
       "adaptiveIcon": {
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
@@ -51,7 +51,12 @@
         }
       ],
       "expo-iap",
-      "react-native-google-mobile-ads"
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-6279186647593327~8674849287"
+        }
+      ]
     ],
     "react-native-google-mobile-ads": {
       "android_app_id": "ca-app-pub-6279186647593327~8674849287"

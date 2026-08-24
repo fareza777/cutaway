@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 
-import { AD_POLICY, shouldShowInterstitial } from '../src/monetization/policy.ts';
+import { AD_POLICY, shouldShowInterstitial, shouldShowViewerExitInterstitial } from '../src/monetization/policy.ts';
 
 type Case = { name: string; run: () => void };
 
@@ -67,6 +67,36 @@ const cases: Case[] = [
           shownThisSession: AD_POLICY.maxPerSession,
         }),
         false,
+      );
+    },
+  },
+  {
+    name: 'does not interrupt a short viewer session when leaving',
+    run: () => {
+      assert.equal(
+        shouldShowViewerExitInterstitial({
+          removeAds: false,
+          now: 10_000 + AD_POLICY.viewerMinDurationMs - 1,
+          viewerStartedAt: 10_000,
+          lastShownAt: null,
+          shownThisSession: 0,
+        }),
+        false,
+      );
+    },
+  },
+  {
+    name: 'allows a viewer exit interstitial after a meaningful session',
+    run: () => {
+      assert.equal(
+        shouldShowViewerExitInterstitial({
+          removeAds: false,
+          now: 10_000 + AD_POLICY.viewerMinDurationMs,
+          viewerStartedAt: 10_000,
+          lastShownAt: null,
+          shownThisSession: 0,
+        }),
+        true,
       );
     },
   },
