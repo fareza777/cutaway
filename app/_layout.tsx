@@ -6,6 +6,8 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { useColors, useSettings, useThemeMode } from '@/state/settings';
+import { initializeAds } from '@/monetization/ads';
+import { disposeBilling, initializeBilling } from '@/monetization/billing';
 
 // Hold the native splash until the stored settings are back. Without this the
 // app paints its first frame against whatever the window background happens to
@@ -23,6 +25,15 @@ export default function RootLayout() {
   useEffect(() => {
     if (!hydrated) return;
     void SplashScreen.hideAsync();
+  }, [hydrated]);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    void initializeAds();
+    void initializeBilling();
+    return () => {
+      void disposeBilling();
+    };
   }, [hydrated]);
 
   useEffect(() => {

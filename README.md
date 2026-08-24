@@ -394,8 +394,10 @@ rate with the animation running.
 ## Play Store readiness
 
 Done: package id `com.cutaway.explorer`, portrait lock, edge-to-edge, adaptive
-icon slots, dark theme, no network permission, no ads, no tracking, all content
-on-device.
+icon slots, dark theme, local-first 3D content, privacy policy page, store
+listing assets, Google Mobile Ads wiring, and a Google Play Billing Remove Ads
+flow. The free version uses a library banner and a capped interstitial only
+after a completed quiz; the one-time purchase disables both.
 
 **Ship an `.aab`, not the `.apk`.** `./gradlew assembleRelease` produces a
 ~100 MB universal APK because it carries native libraries for all four ABIs.
@@ -404,7 +406,6 @@ which takes the download to roughly a quarter of that. For a local install on
 one device, `-PreactNativeArchitectures=x86_64` (emulator) or `arm64-v8a`
 (phone) builds far faster and much smaller.
 
-Still needed: a real app icon and feature graphic, a signing key of your own
-(the release build is currently debug-signed), a privacy policy URL (the app
-collects nothing, so it is short), store screenshots, and an `eas build`
-configuration.
+Still needed for release: production AdMob app/unit IDs, Play Console app and
+product setup, a closed-testing release, a signing key of your own (the local
+release build is currently debug-signed), and an `eas build` configuration.

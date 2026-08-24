@@ -6,7 +6,9 @@
  * nothing else stored — no account, no sync, no analytics.
  */
 
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import Constants from 'expo-constants';
+import { Linking, ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -15,8 +17,10 @@ import { LOCALES, type Locale } from '@/i18n/strings';
 import { useColors, useLocale, useSettings, useT, useThemeMode } from '@/state/settings';
 import { useFavourites } from '@/state/favorites';
 import { useProgress } from '@/state/progress';
-import { Label, Text, Touchable } from '@/ui/primitives';
+import { GhostButton, Label, PrimaryButton, Text, Touchable } from '@/ui/primitives';
 import { alpha, radius, space } from '@/ui/theme';
+import { loadRemoveAdsProduct, purchaseRemoveAds, restoreRemoveAds } from '@/monetization/billing';
+import { useMonetization } from '@/state/monetization';
 
 const ACCENT = '#FF9F45';
 
@@ -31,6 +35,46 @@ export default function Settings() {
   const setMode = useSettings((state) => state.setMode);
   const clearFavourites = useFavourites((state) => state.clear);
   const resetProgress = useProgress((state) => state.reset);
+  const removeAds = useMonetization((state) => state.removeAds);
+  const [productPrice, setProductPrice] = useState<string | null>(null);
+  const [purchaseBusy, setPurchaseBusy] = useState(false);
+  const [purchaseFailed, setPurchaseFailed] = useState(false);
+  const privacyPolicyUrl = (Constants.expoConfig?.extra as { privacyPolicyUrl?: string } | undefined)?.privacyPolicyUrl;
+
+  useEffect(() => {
+    let active = true;
+    void loadRemoveAdsProduct().then((product) => {
+      if (active && product?.displayPrice) setProductPrice(product.displayPrice);
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const handlePurchase = async () => {
+    setPurchaseBusy(true);
+    setPurchaseFailed(false);
+    try {
+      await purchaseRemoveAds();
+      await restoreRemoveAds();
+    } catch {
+      setPurchaseFailed(true);
+    } finally {
+      setPurchaseBusy(false);
+    }
+  };
+
+  const handleRestore = async () => {
+    setPurchaseBusy(true);
+    setPurchaseFailed(false);
+    try {
+      await restoreRemoveAds();
+    } catch {
+      setPurchaseFailed(true);
+    } finally {
+      setPurchaseBusy(false);
+    }
+  };
 
   const Row = ({
     label,
@@ -112,6 +156,35 @@ export default function Settings() {
         </View>
 
         <View style={{ gap: space.sm }}>
+          <Label>{t('settings.ads')}</Label>
+          <View style={[styles.purchaseCard, { backgroundColor: colors.surface, borderColor: colors.hairline }]}>
+            <Ionicons name={removeAds ? 'checkmark-circle' : 'megaphone-outline'} size={22} color={removeAds ? colors.correct : ACCENT} />
+            <View style={{ flex: 1, gap: 3 }}>
+              <Text variant="heading">{removeAds ? t('settings.removeAdsPurchased') : t('settings.removeAds')}</Text>
+              <Text variant="caption" color={colors.textFaint}>
+                {t('settings.removeAdsHint')}
+              </Text>
+            </View>
+          </View>
+          {!removeAds ? (
+            <PrimaryButton
+              label={purchaseBusy ? t('settings.purchaseLoading') : productPrice ? `${t('settings.removeAds')} · ${productPrice}` : t('settings.removeAdsCta')}
+              accent={ACCENT}
+              onPress={() => void handlePurchase()}
+              disabled={purchaseBusy}
+            />
+          ) : null}
+          {!removeAds ? (
+            <GhostButton label={t('settings.restorePurchases')} onPress={() => void handleRestore()} />
+          ) : null}
+          {purchaseFailed ? (
+            <Text variant="caption" color={colors.wrong}>
+              {t('settings.purchaseFailed')}
+            </Text>
+          ) : null}
+        </View>
+
+        <View style={{ gap: space.sm }}>
           <Label>{t('settings.data')}</Label>
           <Touchable
             onPress={() => {
@@ -130,6 +203,14 @@ export default function Settings() {
             {t('settings.clearHint')}
           </Text>
         </View>
+
+        {privacyPolicyUrl ? (
+          <Touchable onPress={() => void Linking.openURL(privacyPolicyUrl)} accessibilityRole="link">
+            <Text variant="caption" color={ACCENT}>
+              {t('settings.privacy')}
+            </Text>
+          </Touchable>
+        ) : null}
 
         <Text variant="caption" color={colors.textFaint} style={[styles.justified, { marginTop: space.lg }]}>
           {t('settings.about')}
@@ -153,6 +234,14 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
+    gap: space.md,
+    padding: space.lg,
+    borderRadius: radius.lg,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
+  purchaseCard: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
     gap: space.md,
     padding: space.lg,
     borderRadius: radius.lg,

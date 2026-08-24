@@ -22,6 +22,7 @@ import { Viewport } from '@/ui/Viewport';
 import { IconButton } from '@/ui/explorer/TopBar';
 import { useColors, useLocale, useT } from '@/state/settings';
 import { alpha, radius, space } from '@/ui/theme';
+import { showInterstitialIfAllowed } from '@/monetization/ads';
 
 type Feedback = { correct: boolean; message: string } | null;
 
@@ -43,6 +44,7 @@ export default function Quiz() {
   const [feedback, setFeedback] = useState<Feedback>(null);
   const [finished, setFinished] = useState(false);
   const [loadError, setLoadError] = useState<string | null>(null);
+  const interstitialShownForResult = useRef(false);
 
   const questions = doc?.quiz ?? [];
   const question: Question | undefined = questions[index];
@@ -110,11 +112,21 @@ export default function Quiz() {
     if (finished && doc) recordQuiz(doc.id, { correct: score, total: questions.length });
   }, [finished, doc, recordQuiz, score, questions.length]);
 
+  useEffect(() => {
+    if (!finished || !doc || interstitialShownForResult.current) return;
+    interstitialShownForResult.current = true;
+    const timeout = setTimeout(() => {
+      void showInterstitialIfAllowed();
+    }, 450);
+    return () => clearTimeout(timeout);
+  }, [finished, doc]);
+
   const restart = () => {
     setIndex(0);
     setScore(0);
     setFeedback(null);
     setFinished(false);
+    interstitialShownForResult.current = false;
     viewerRef.current?.setQuizMode(true);
   };
 

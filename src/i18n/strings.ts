@@ -19,7 +19,7 @@ export const LOCALES: { code: Locale; label: string; english: string }[] = [
 
 const en = {
   'app.tagline': 'Take things apart. Find out how they work.',
-  'library.footer': '{count} objects · works offline · no ads',
+  'library.footer': '{count} objects · works offline · optional ads',
   'library.parts': '{count} parts',
   'library.icon': '3D model preview of {title}',
   'library.all': 'All',
@@ -127,7 +127,16 @@ const en = {
   'settings.data': 'Data',
   'settings.clearProgress': 'Clear progress and saved parts',
   'settings.clearHint': 'Removes which objects you have opened, your quiz scores and your saved parts. Nothing leaves this device in the first place.',
-  'settings.about': 'Everything works offline. No account, no ads, no tracking.',
+  'settings.ads': 'Ads & purchases',
+  'settings.removeAds': 'Remove ads',
+  'settings.removeAdsHint': 'One-time purchase. Banner and interstitial ads stay off on this device.',
+  'settings.removeAdsPurchased': 'Ads removed',
+  'settings.removeAdsCta': 'Remove ads · $4.99',
+  'settings.restorePurchases': 'Restore purchase',
+  'settings.purchaseLoading': 'Checking Google Play…',
+  'settings.purchaseFailed': 'Purchase could not be completed. Try again from Google Play.',
+  'settings.privacy': 'Privacy policy',
+  'settings.about': 'The core library works offline. No account or tracking. Optional ads help support new objects.',
 
   'common.goBack': 'Go back',
   'common.close': 'Close {name}',
@@ -137,7 +146,7 @@ type Key = keyof typeof en;
 
 const id: Record<Key, string> = {
   'app.tagline': 'Bongkar. Temukan cara kerjanya.',
-  'library.footer': '{count} objek · tanpa internet · tanpa iklan',
+  'library.footer': '{count} objek · tanpa internet · iklan opsional',
   'library.parts': '{count} bagian',
   'library.icon': 'Pratinjau model 3D {title}',
   'library.all': 'Semua',
@@ -245,7 +254,16 @@ const id: Record<Key, string> = {
   'settings.data': 'Data',
   'settings.clearProgress': 'Hapus progres dan bagian tersimpan',
   'settings.clearHint': 'Tindakan ini menghapus riwayat objek yang dibuka, nilai kuis, dan semua bagian tersimpan. Data hanya tersimpan di perangkat ini.',
-  'settings.about': 'Aplikasi dapat digunakan tanpa internet. Tanpa akun, iklan, atau pelacakan.',
+  'settings.ads': 'Iklan & pembelian',
+  'settings.removeAds': 'Hapus iklan',
+  'settings.removeAdsHint': 'Pembelian satu kali. Iklan banner dan interstitial tidak akan tampil lagi di perangkat ini.',
+  'settings.removeAdsPurchased': 'Iklan sudah dihapus',
+  'settings.removeAdsCta': 'Hapus iklan · $4,99',
+  'settings.restorePurchases': 'Pulihkan pembelian',
+  'settings.purchaseLoading': 'Memeriksa Google Play…',
+  'settings.purchaseFailed': 'Pembelian belum selesai. Coba lagi melalui Google Play.',
+  'settings.privacy': 'Kebijakan privasi',
+  'settings.about': 'Pustaka utama dapat digunakan tanpa internet. Tanpa akun atau pelacakan. Iklan opsional membantu mendukung objek baru.',
 
   'common.goBack': 'Kembali',
   'common.close': 'Tutup {name}',

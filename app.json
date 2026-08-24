@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Cutaway",
+    "name": "Cutaway: 3D Objects",
     "slug": "cutaway",
-    "version": "0.13.0",
+    "version": "0.14.0",
     "orientation": "portrait",
     "scheme": "cutaway",
     "userInterfaceStyle": "dark",
@@ -13,7 +13,7 @@
     ],
     "android": {
       "package": "com.cutaway.explorer",
-      "versionCode": 17,
+      "versionCode": 19,
       "adaptiveIcon": {
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
@@ -49,11 +49,23 @@
             "./assets/models"
           ]
         }
-      ]
+      ],
+      "expo-iap",
+      "react-native-google-mobile-ads"
     ],
+    "react-native-google-mobile-ads": {
+      "android_app_id": "ca-app-pub-3940256099942544~3347511713"
+    },
     "experiments": {
       "typedRoutes": true
     },
-    "backgroundColor": "#07090D"
+    "backgroundColor": "#07090D",
+    "extra": {
+      "privacyPolicyUrl": "https://raw.githubusercontent.com/fareza777/cutaway/agent/add-realistic-rice-cooker/docs/privacy-policy.html",
+      "admob": {
+        "bannerUnitId": "ca-app-pub-3940256099942544/6300978111",
+        "interstitialUnitId": "ca-app-pub-3940256099942544/1033173712"
+      }
+    }
   }
 }
