@@ -9,7 +9,6 @@ import { useProgress } from '@/state/progress';
 import { Chip, Label, Text, Touchable } from '@/ui/primitives';
 import { useCategoryLabel, useColors, useLocale, useSettings, useT, useThemeMode } from '@/state/settings';
 import { alpha, radius, space } from '@/ui/theme';
-import { AdBanner } from '@/monetization/ads';
 
 const ALL = 'All';
 
@@ -105,7 +104,6 @@ export default function Library() {
           </Text>
         </View>
       </ScrollView>
-      <AdBanner bottomInset={insets.bottom} />
     </View>
   );
 }

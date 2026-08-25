@@ -25,7 +25,7 @@ import { PartsPanel, StoryPanel } from '@/ui/explorer/Panels';
 import { Dimensions } from 'react-native';
 import { useColors, useLocale, useSettings, useT, useThemeMode } from '@/state/settings';
 import { alpha, radius, space } from '@/ui/theme';
-import { AdBanner, showViewerExitInterstitial } from '@/monetization/ads';
+import { showViewerExitInterstitial } from '@/monetization/ads';
 
 type Panel = 'none' | 'parts' | 'story';
 
@@ -337,7 +337,6 @@ export default function Explorer() {
             onStory={() => openPanel('story')}
             onQuiz={() => router.push(`/quiz/${doc.id}`)}
           />
-          {!loading && !error ? <AdBanner /> : null}
         </View>
       ) : null}
 

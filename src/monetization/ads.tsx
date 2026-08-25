@@ -1,9 +1,7 @@
 import Constants from 'expo-constants';
-import { useEffect, useState } from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
+import { Platform } from 'react-native';
 
 import { useMonetization } from '@/state/monetization';
-import { space } from '@/ui/theme';
 import { AD_POLICY, shouldShowInterstitial, shouldShowViewerExitInterstitial } from './policy';
 
 type AdsApi = typeof import('react-native-google-mobile-ads');
@@ -28,14 +26,14 @@ async function getAdsApi() {
 
 function extraConfig() {
   return (Constants.expoConfig?.extra as
-    | { admob?: { bannerUnitId?: string; interstitialUnitId?: string } }
+    | { admob?: { interstitialUnitId?: string } }
     | undefined)?.admob;
 }
 
-function unitId(api: AdsApi, kind: 'banner' | 'interstitial') {
-  if (__DEV__) return kind === 'banner' ? api.TestIds.BANNER : api.TestIds.INTERSTITIAL;
+function unitId(api: AdsApi) {
+  if (__DEV__) return api.TestIds.INTERSTITIAL;
   const configured = extraConfig();
-  return kind === 'banner' ? configured?.bannerUnitId ?? api.TestIds.BANNER : configured?.interstitialUnitId ?? api.TestIds.INTERSTITIAL;
+  return configured?.interstitialUnitId ?? api.TestIds.INTERSTITIAL;
 }
 
 export async function initializeAds() {
@@ -60,33 +58,6 @@ export async function initializeAds() {
   return adsInitialization;
 }
 
-export function AdBanner({ bottomInset = 0 }: { bottomInset?: number }) {
-  const removeAds = useMonetization((state) => state.removeAds);
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    let active = true;
-    void initializeAds().then((initialized) => {
-      if (active) setReady(initialized);
-    });
-    return () => {
-      active = false;
-    };
-  }, []);
-
-  if (Platform.OS === 'web' || removeAds || !ready || !adsApi) return null;
-  const BannerAd = adsApi.BannerAd;
-  return (
-    <View style={[styles.banner, { paddingBottom: bottomInset }]} accessibilityLabel="Advertisement">
-      <BannerAd
-        unitId={unitId(adsApi, 'banner')}
-        size={adsApi.BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
-        requestOptions={{ requestNonPersonalizedAdsOnly: true }}
-      />
-    </View>
-  );
-}
-
 export async function showInterstitialIfAllowed() {
   const now = Date.now();
   const state = useMonetization.getState();
@@ -105,7 +76,7 @@ export async function showInterstitialIfAllowed() {
   if (!api) return false;
   await initializeAds();
 
-  const interstitial = api.InterstitialAd.createForAdRequest(unitId(api, 'interstitial'), {
+  const interstitial = api.InterstitialAd.createForAdRequest(unitId(api), {
     requestNonPersonalizedAdsOnly: true,
   });
 
@@ -149,12 +120,3 @@ export async function showViewerExitInterstitial(viewerStartedAt: number) {
   }
   return showInterstitialIfAllowed();
 }
-
-const styles = StyleSheet.create({
-  banner: {
-    alignItems: 'center',
-    borderTopColor: 'rgba(255,255,255,0.08)',
-    borderTopWidth: StyleSheet.hairlineWidth,
-    paddingTop: space.xs,
-  },
-});

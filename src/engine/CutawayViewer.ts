@@ -129,7 +129,7 @@ export class CutawayViewer {
   /** Cost of the last frame, in ms; drives the pacing guard below. */
   private lastCost = 0;
   private lastRenderAt = 0;
-  private mode: SceneMode = 'dark';
+  private mode: SceneMode = 'light';
   private accent = '#ffffff';
   private selected: string | null = null;
   private quizMode = false;

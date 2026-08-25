@@ -8,6 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { palettes, type Palette, type ThemeMode } from '@/ui/theme';
 import { translate, translateCategory, type Locale, type TranslationKey } from '@/i18n/strings';
+import { DEFAULT_THEME_MODE } from './defaults';
 
 type SettingsState = {
   mode: ThemeMode;
@@ -25,7 +26,7 @@ type SettingsState = {
 export const useSettings = create<SettingsState>()(
   persist(
     (set, get) => ({
-      mode: 'dark',
+      mode: DEFAULT_THEME_MODE,
       locale: 'en',
       setLocale: (locale) => set({ locale }),
       onboarded: false,

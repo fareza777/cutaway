@@ -1,10 +1,31 @@
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { DEFAULT_THEME_MODE } from '../src/state/defaults.ts';
 
 import { AD_POLICY, shouldShowInterstitial, shouldShowViewerExitInterstitial } from '../src/monetization/policy.ts';
 
 type Case = { name: string; run: () => void };
 
 const cases: Case[] = [
+  {
+    name: 'starts new installations in light mode',
+    run: () => {
+      assert.equal(DEFAULT_THEME_MODE, 'light');
+      const settings = readFileSync(new URL('../src/state/settings.ts', import.meta.url), 'utf8');
+      assert.match(settings, /mode:\s*DEFAULT_THEME_MODE/);
+    },
+  },
+  {
+    name: 'does not render banner ads anywhere in the app',
+    run: () => {
+      for (const file of ['../app/index.tsx', '../app/object/[id].tsx', '../src/monetization/ads.tsx']) {
+        const source = readFileSync(new URL(file, import.meta.url), 'utf8');
+        assert.doesNotMatch(source, /\bAdBanner\b/);
+      }
+      const appConfig = readFileSync(new URL('../app.json', import.meta.url), 'utf8');
+      assert.doesNotMatch(appConfig, /bannerUnitId/);
+    },
+  },
   {
     name: 'shows the first interstitial at a natural break',
     run: () => {

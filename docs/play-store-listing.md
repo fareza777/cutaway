@@ -34,13 +34,13 @@ MADE FOR CURIOUS MINDS
 
 Whether you are learning STEM, studying anatomy, teaching a class, building something, or simply wondering what is inside, Cutaway turns complex systems into something you can explore with your hands.
 
-The core 3D library, progress, and saved parts work offline. No account is required. The free version contains optional ads. A one-time Remove Ads upgrade for US$4.99 permanently removes banner and interstitial ads on this device.
+The core 3D library, progress, and saved parts work offline. No account is required. The free version contains optional interstitial ads at natural breaks. A one-time Remove Ads upgrade for US$4.99 permanently removes interstitial ads on this device.
 
 Keep asking better questions. Start with one object and follow the parts all the way through.
 
 ## App content declarations
 
-- Contains ads: Yes (Google Mobile Ads banner and interstitial formats)
+- Contains ads: Yes (Google Mobile Ads interstitial format)
 - In-app purchases: Yes (non-consumable Remove Ads product, `remove_ads`, US$4.99)
 - User login: No
 - Core account/data sync: No
