@@ -8,26 +8,39 @@
 
 import { useEffect, useState } from 'react';
 import Constants from 'expo-constants';
-import { Linking, ScrollView, StyleSheet, View } from 'react-native';
+import { Linking, ScrollView, Share, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import { LOCALES, type Locale } from '@/i18n/strings';
-import { useColors, useLocale, useSettings, useT, useThemeMode } from '@/state/settings';
+import { useColors, useReadableAccent, useLocale, useSettings, useT, useThemeMode } from '@/state/settings';
 import { useFavourites } from '@/state/favorites';
 import { useProgress } from '@/state/progress';
 import { GhostButton, Label, PrimaryButton, Text, Touchable } from '@/ui/primitives';
 import { alpha, radius, space } from '@/ui/theme';
 import { loadRemoveAdsProduct, purchaseRemoveAds, restoreRemoveAds } from '@/monetization/billing';
 import { useMonetization } from '@/state/monetization';
+import { showAdPrivacyOptions } from '@/monetization/ads';
 
 const ACCENT = '#FF9F45';
+const MARKET_URL = 'market://details?id=com.cutaway.explorer';
+const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.cutaway.explorer';
+
+async function openUrl(url: string) {
+  try {
+    await Linking.openURL(url);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 export default function Settings() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const colors = useColors();
+  const accentText = useReadableAccent(ACCENT);
   const t = useT();
   const locale = useLocale();
   const mode = useThemeMode();
@@ -36,6 +49,9 @@ export default function Settings() {
   const clearFavourites = useFavourites((state) => state.clear);
   const resetProgress = useProgress((state) => state.reset);
   const removeAds = useMonetization((state) => state.removeAds);
+  const privacyOptionsRequired = useMonetization((state) => state.privacyOptionsRequired);
+  const [privacyFailed, setPrivacyFailed] = useState(false);
+  const [linkFailed, setLinkFailed] = useState(false);
   const [productPrice, setProductPrice] = useState<string | null>(null);
   const [purchaseBusy, setPurchaseBusy] = useState(false);
   const [purchaseFailed, setPurchaseFailed] = useState(false);
@@ -76,6 +92,22 @@ export default function Settings() {
     }
   };
 
+  // The https link opens the Play Store app itself; the market:// scheme is the
+  // fallback and can still raise a store chooser on some devices.
+  const handleRate = async () => {
+    setLinkFailed(false);
+    if (!(await openUrl(PLAY_STORE_URL)) && !(await openUrl(MARKET_URL))) setLinkFailed(true);
+  };
+
+  const handleShare = async () => {
+    setLinkFailed(false);
+    try {
+      await Share.share({ message: t('settings.shareMessage', { link: PLAY_STORE_URL }) });
+    } catch {
+      setLinkFailed(true);
+    }
+  };
+
   const Row = ({
     label,
     selected,
@@ -100,7 +132,7 @@ export default function Settings() {
       ]}
     >
       <View style={{ flex: 1 }}>
-        <Text variant="heading" color={selected ? ACCENT : colors.text}>
+        <Text variant="heading" color={selected ? accentText : colors.text}>
           {label}
         </Text>
         {hint ? (
@@ -109,7 +141,7 @@ export default function Settings() {
           </Text>
         ) : null}
       </View>
-      {selected ? <Ionicons name="checkmark-circle" size={20} color={ACCENT} /> : null}
+      {selected ? <Ionicons name="checkmark-circle" size={20} color={accentText} /> : null}
     </Touchable>
   );
 
@@ -204,9 +236,50 @@ export default function Settings() {
           </Text>
         </View>
 
+        <View style={{ gap: space.sm }}>
+          <Label>{t('settings.more')}</Label>
+          <Touchable
+            onPress={() => void handleRate()}
+            accessibilityRole="button"
+            style={[styles.row, { backgroundColor: colors.surface, borderColor: colors.hairline }]}
+          >
+            <Ionicons name="star-outline" size={18} color={accentText} />
+            <Text variant="heading" style={{ flex: 1 }}>
+              {t('settings.rate')}
+            </Text>
+            <Ionicons name="chevron-forward" size={18} color={colors.textMuted} />
+          </Touchable>
+          <Touchable
+            onPress={() => void handleShare()}
+            accessibilityRole="button"
+            style={[styles.row, { backgroundColor: colors.surface, borderColor: colors.hairline }]}
+          >
+            <Ionicons name="share-social-outline" size={18} color={accentText} />
+            <Text variant="heading" style={{ flex: 1 }}>
+              {t('settings.share')}
+            </Text>
+            <Ionicons name="chevron-forward" size={18} color={colors.textMuted} />
+          </Touchable>
+          {linkFailed ? (
+            <Text variant="caption" color={colors.wrong}>
+              {t('settings.linkFailed')}
+            </Text>
+          ) : null}
+        </View>
+
+        {privacyOptionsRequired ? (
+          <View style={{ gap: space.sm }}>
+            <GhostButton label={t('settings.adPrivacy')} onPress={() => {
+              setPrivacyFailed(false);
+              void showAdPrivacyOptions().catch(() => setPrivacyFailed(true));
+            }} />
+            {privacyFailed ? <Text variant="caption" color={colors.wrong}>{t('settings.adPrivacyFailed')}</Text> : null}
+          </View>
+        ) : null}
+
         {privacyPolicyUrl ? (
           <Touchable onPress={() => void Linking.openURL(privacyPolicyUrl)} accessibilityRole="link">
-            <Text variant="caption" color={ACCENT}>
+            <Text variant="caption" color={accentText}>
               {t('settings.privacy')}
             </Text>
           </Touchable>

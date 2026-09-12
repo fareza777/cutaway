@@ -9,9 +9,10 @@ type AdsApi = typeof import('react-native-google-mobile-ads');
 let adsApi: AdsApi | null = null;
 let adsApiPromise: Promise<AdsApi | null> | null = null;
 let adsInitialization: Promise<boolean> | null = null;
+let consentInitialization: Promise<Awaited<ReturnType<AdsApi['AdsConsent']['getConsentInfo']>>> | null = null;
 
 async function getAdsApi() {
-  if (Platform.OS === 'web') return null;
+  if (Platform.OS !== 'android') return null;
   adsApiPromise ??= import('react-native-google-mobile-ads')
     .then((module) => {
       adsApi = module;
@@ -26,7 +27,7 @@ async function getAdsApi() {
 
 function extraConfig() {
   return (Constants.expoConfig?.extra as
-    | { admob?: { interstitialUnitId?: string } }
+    | { admob?: { interstitialUnitId?: string; bannerUnitId?: string } }
     | undefined)?.admob;
 }
 
@@ -37,8 +38,22 @@ function unitId(api: AdsApi) {
 }
 
 export async function initializeAds() {
+  const state = useMonetization.getState();
+  if (!state.hydrated || state.removeAds) return false;
   const api = await getAdsApi();
   if (!api) return false;
+  try {
+    // A single consent flow per launch, shared by banners and interstitials.
+    consentInitialization ??= api.AdsConsent.gatherConsent().catch(() => api.AdsConsent.getConsentInfo());
+    const consent = await consentInitialization;
+    useMonetization.getState().setPrivacyOptionsRequired(
+      consent.privacyOptionsRequirementStatus === api.AdsConsentPrivacyOptionsRequirementStatus.REQUIRED,
+    );
+    if (!consent.canRequestAds || useMonetization.getState().removeAds) return false;
+  } catch {
+    consentInitialization = null;
+    return false;
+  }
   if (adsInitialization) return adsInitialization;
 
   adsInitialization = (async () => {
@@ -58,6 +73,26 @@ export async function initializeAds() {
   return adsInitialization;
 }
 
+/** The SDK component is only imported on supported, consent-ready devices. */
+export async function getLibraryBanner() {
+  if (!(await initializeAds()) || useMonetization.getState().removeAds) return null;
+  const api = await getAdsApi();
+  if (!api) return null;
+  const bannerUnitId = __DEV__ ? api.TestIds.BANNER : extraConfig()?.bannerUnitId;
+  if (!bannerUnitId) return null;
+  return { Component: api.BannerAd, size: api.BannerAdSize.ANCHORED_ADAPTIVE_BANNER, unitId: bannerUnitId };
+}
+
+export async function showAdPrivacyOptions() {
+  const api = await getAdsApi();
+  if (!api) return;
+  const consent = await api.AdsConsent.showPrivacyOptionsForm();
+  consentInitialization = Promise.resolve(consent);
+  useMonetization.getState().setPrivacyOptionsRequired(
+    consent.privacyOptionsRequirementStatus === api.AdsConsentPrivacyOptionsRequirementStatus.REQUIRED,
+  );
+}
+
 export async function showInterstitialIfAllowed() {
   const now = Date.now();
   const state = useMonetization.getState();
@@ -74,7 +109,7 @@ export async function showInterstitialIfAllowed() {
 
   const api = await getAdsApi();
   if (!api) return false;
-  await initializeAds();
+  if (!(await initializeAds()) || useMonetization.getState().removeAds) return false;
 
   const interstitial = api.InterstitialAd.createForAdRequest(unitId(api), {
     requestNonPersonalizedAdsOnly: true,

@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { DEFAULT_THEME_MODE } from '../src/state/defaults.ts';
 
 import { AD_POLICY, shouldShowInterstitial, shouldShowViewerExitInterstitial } from '../src/monetization/policy.ts';
+import { bannerRetryDelayMs, shouldMountLibraryBanner } from '../src/monetization/banner-policy.ts';
 
 type Case = { name: string; run: () => void };
 
@@ -16,14 +17,21 @@ const cases: Case[] = [
     },
   },
   {
-    name: 'does not render banner ads anywhere in the app',
+    name: 'library banner eligibility is independent of the full-screen ad cap',
     run: () => {
-      for (const file of ['../app/index.tsx', '../app/object/[id].tsx', '../src/monetization/ads.tsx']) {
-        const source = readFileSync(new URL(file, import.meta.url), 'utf8');
-        assert.doesNotMatch(source, /\bAdBanner\b/);
-      }
-      const appConfig = readFileSync(new URL('../app.json', import.meta.url), 'utf8');
-      assert.doesNotMatch(appConfig, /bannerUnitId/);
+      assert.equal(shouldShowInterstitial({ removeAds: false, now: 1000, lastShownAt: null, shownThisSession: AD_POLICY.maxPerSession }), false);
+      assert.equal(shouldMountLibraryBanner({ platform: 'android', hydrated: true, removeAds: false, active: true, keyboardVisible: false }), true);
+    },
+  },
+  {
+    name: 'retries a failed library banner instead of dropping it for the session',
+    run: () => {
+      assert.equal(bannerRetryDelayMs(0), 30_000);
+      assert.ok(bannerRetryDelayMs(1) > bannerRetryDelayMs(0), 'a repeated failure must back off');
+      assert.equal(bannerRetryDelayMs(40), bannerRetryDelayMs(41), 'the pause must stay capped');
+      const banner = readFileSync(new URL('../src/monetization/LibraryBanner.tsx', import.meta.url), 'utf8');
+      assert.match(banner, /bannerRetryDelayMs\(attempt\)/, 'A failed request must schedule another one');
+      assert.match(banner, /onAdFailedToLoad=\{\(error\)/, 'The failure reason must be read, not discarded');
     },
   },
   {

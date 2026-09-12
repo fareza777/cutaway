@@ -13,7 +13,7 @@ import { StyleSheet, View, type LayoutChangeEvent } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, { runOnJS, useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 
-import { useColors } from '@/state/settings';
+import { useColors, useReadableAccent } from '@/state/settings';
 import { alpha, radius, space } from './theme';
 import { Text } from './primitives';
 
@@ -38,6 +38,7 @@ export function Slider({
   steps?: number;
 }) {
   const colors = useColors();
+  const accentText = useReadableAccent(accent);
   const width = useSharedValue(0);
   const progress = useSharedValue(value);
   progress.value = value;
@@ -82,7 +83,7 @@ export function Slider({
           {label}
         </Text>
         {hint ? (
-          <Text variant="caption" color={accent}>
+          <Text variant="caption" color={accentText}>
             {hint}
           </Text>
         ) : null}

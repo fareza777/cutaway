@@ -6,7 +6,7 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { palettes, type Palette, type ThemeMode } from '@/ui/theme';
+import { palettes, readableAccent, type Palette, type ThemeMode } from '@/ui/theme';
 import { translate, translateCategory, type Locale, type TranslationKey } from '@/i18n/strings';
 import { DEFAULT_THEME_MODE } from './defaults';
 
@@ -54,6 +54,11 @@ export function useThemeMode(): ThemeMode {
 /** The active palette. Subscribing here is what re-colours a screen. */
 export function useColors(): Palette {
   return palettes[useSettings((state) => state.mode)];
+}
+
+/** Foreground only: preserve the original accent for decorative fills. */
+export function useReadableAccent(accent: string) {
+  return readableAccent(accent, useThemeMode());
 }
 
 export function useLocale(): Locale {

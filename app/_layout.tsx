@@ -8,6 +8,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useColors, useSettings, useThemeMode } from '@/state/settings';
 import { initializeAds } from '@/monetization/ads';
 import { disposeBilling, initializeBilling } from '@/monetization/billing';
+import { useMonetization } from '@/state/monetization';
 
 // Hold the native splash until the stored settings are back. Without this the
 // app paints its first frame against whatever the window background happens to
@@ -19,6 +20,7 @@ export default function RootLayout() {
   const mode = useThemeMode();
   const hydrated = useSettings((state) => state.hydrated);
   const onboarded = useSettings((state) => state.onboarded);
+  const monetizationHydrated = useMonetization((state) => state.hydrated);
   const router = useRouter();
   const segments = useSegments();
 
@@ -28,13 +30,16 @@ export default function RootLayout() {
   }, [hydrated]);
 
   useEffect(() => {
-    if (!hydrated) return;
-    void initializeAds();
+    if (!hydrated || !monetizationHydrated) return;
     void initializeBilling();
     return () => {
       void disposeBilling();
     };
-  }, [hydrated]);
+  }, [hydrated, monetizationHydrated]);
+
+  useEffect(() => {
+    if (hydrated && monetizationHydrated && onboarded) void initializeAds();
+  }, [hydrated, monetizationHydrated, onboarded]);
 
   useEffect(() => {
     if (!hydrated) return;

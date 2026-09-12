@@ -20,7 +20,7 @@ import { useProgress } from '@/state/progress';
 import { GhostButton, Label, PrimaryButton, Text, Touchable } from '@/ui/primitives';
 import { Viewport } from '@/ui/Viewport';
 import { IconButton } from '@/ui/explorer/TopBar';
-import { useColors, useLocale, useT } from '@/state/settings';
+import { useColors, useReadableAccent, useLocale, useT } from '@/state/settings';
 import { alpha, radius, space } from '@/ui/theme';
 import { showInterstitialIfAllowed } from '@/monetization/ads';
 
@@ -49,6 +49,7 @@ export default function Quiz() {
   const questions = doc?.quiz ?? [];
   const question: Question | undefined = questions[index];
   const accent = doc?.accent ?? colors.text;
+  const accentText = useReadableAccent(accent);
 
   const onReady = useCallback(
     (viewer: CutawayViewer) => {
@@ -143,7 +144,7 @@ export default function Quiz() {
 
   return (
     <View style={[styles.screen, { backgroundColor: colors.bg }]}>
-      <Viewport events={events} onReady={onReady} interactive={!finished} />
+      <Viewport events={events} onReady={onReady} interactive={!finished} active={!finished} />
 
       <View style={[styles.header, { paddingTop: insets.top + space.sm }]} pointerEvents="box-none">
         <IconButton icon="close" onPress={() => router.back()} accent={accent} label={t('quiz.leave')} />
@@ -175,7 +176,7 @@ export default function Quiz() {
         />
       ) : (
         <View style={[styles.panel, { paddingBottom: insets.bottom + space.lg, backgroundColor: colors.scrim, borderColor: colors.hairline }]}>
-          <Label color={alpha(accent, 0.9)}>
+          <Label color={accentText}>
             {t('quiz.question', { index: index + 1, total: questions.length })}
           </Label>
           <Text variant="title" style={{ marginTop: space.sm }}>
@@ -271,6 +272,7 @@ function Results({
 }) {
   const colors = useColors();
   const perfect = score === total;
+  const accentText = useReadableAccent(accent);
   return (
     <Animated.View
       entering={FadeIn.duration(260)}
@@ -280,7 +282,7 @@ function Results({
         <Ionicons
           name={perfect ? 'trophy' : 'ribbon-outline'}
           size={40}
-          color={perfect ? colors.correct : accent}
+          color={perfect ? colors.correct : accentText}
         />
         <Text variant="display" style={{ marginTop: space.lg }}>
           {score} / {total}

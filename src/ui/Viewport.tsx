@@ -17,6 +17,7 @@ import { CutawayViewer, type ViewerEvents } from '@/engine/CutawayViewer';
 import { Text } from './primitives';
 import { useColors, useThemeMode } from '@/state/settings';
 import { space } from './theme';
+import { useScreenActive } from './useScreenActive';
 
 type Props = {
   events: ViewerEvents;
@@ -24,10 +25,15 @@ type Props = {
   onReady: (viewer: CutawayViewer) => void;
   /** Disables orbit and tap while a modal sheet owns the screen. */
   interactive?: boolean;
+  /** False when a full panel covers the model; retains state without drawing. */
+  active?: boolean;
 };
 
-export function Viewport({ events, onReady, interactive = true }: Props) {
+export function Viewport({ events, onReady, interactive = true, active = true }: Props) {
   const colors = useColors();
+  const screenActive = useScreenActive();
+  const activeRef = useRef(false);
+  activeRef.current = screenActive && active;
   const mode = useThemeMode();
   const modeRef = useRef(mode);
   modeRef.current = mode;
@@ -62,6 +68,10 @@ export function Viewport({ events, onReady, interactive = true }: Props) {
     viewerRef.current?.setTheme(mode);
   }, [mode]);
 
+  useEffect(() => {
+    viewerRef.current?.setActive(activeRef.current && layout.current.width > 0 && layout.current.height > 0);
+  }, [screenActive, active]);
+
   const onContextCreate = useCallback(
     (context: ExpoWebGLRenderingContext) => {
       try {
@@ -76,6 +86,7 @@ export function Viewport({ events, onReady, interactive = true }: Props) {
           onAnswer: (partId) => eventsRef.current.onAnswer?.(partId),
         });
         viewerRef.current = viewer;
+        viewer.setActive(activeRef.current && layout.current.width > 0 && layout.current.height > 0);
         // The stage is built dark; adopt the stored preference before the first
         // frame so a light-theme user never sees a black flash.
         viewer.setTheme(modeRef.current);
@@ -101,7 +112,10 @@ export function Viewport({ events, onReady, interactive = true }: Props) {
     // The drawing buffer follows the view, so re-read it rather than deriving a
     // size — a rotation or split-screen resize changes both.
     const context = gl.current;
-    if (context) viewerRef.current?.resize(context.drawingBufferWidth, context.drawingBufferHeight, pixelScale());
+    if (context && width > 0 && height > 0) {
+      viewerRef.current?.resize(context.drawingBufferWidth, context.drawingBufferHeight, pixelScale());
+    }
+    viewerRef.current?.setActive(activeRef.current && width > 0 && height > 0);
   };
 
   const rotate = useCallback((dx: number, dy: number) => {

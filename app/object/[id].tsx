@@ -23,7 +23,7 @@ import { ToolDock, type ToolId, type ToolValues } from '@/ui/explorer/ToolDock';
 import { PartSheet, SHEET_COMPACT, SHEET_EXPANDED } from '@/ui/explorer/PartSheet';
 import { PartsPanel, StoryPanel } from '@/ui/explorer/Panels';
 import { Dimensions } from 'react-native';
-import { useColors, useLocale, useSettings, useT, useThemeMode } from '@/state/settings';
+import { useColors, useLocale, useReadableAccent, useSettings, useT, useThemeMode } from '@/state/settings';
 import { alpha, radius, space } from '@/ui/theme';
 import { showViewerExitInterstitial } from '@/monetization/ads';
 
@@ -278,7 +278,7 @@ export default function Explorer() {
 
   return (
     <View style={[styles.screen, { backgroundColor: colors.bg }]}>
-      <Viewport events={events} onReady={onReady} interactive={!panelOpen} />
+      <Viewport events={events} onReady={onReady} interactive={!panelOpen} active={!panelOpen} />
 
       {loading ? (
         <View style={styles.loading} pointerEvents="none">
@@ -415,6 +415,7 @@ function NavBar({
   onQuiz: () => void;
 }) {
   const colors = useColors();
+  const accentText = useReadableAccent(accent);
   const t = useT();
   const items = [
     { label: t('nav.parts'), icon: 'list-outline' as const, onPress: onParts },
@@ -436,7 +437,7 @@ function NavBar({
           accessibilityLabel={item.label}
           style={[styles.navItem, { borderColor: alpha(accent, 0.24), backgroundColor: colors.floating }]}
         >
-          <Ionicons name={item.icon} size={16} color={accent} />
+          <Ionicons name={item.icon} size={16} color={accentText} />
           <Text variant="caption" color={colors.text}>
             {item.label}
           </Text>
