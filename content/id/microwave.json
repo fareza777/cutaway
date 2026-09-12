@@ -1,6 +1,6 @@
 {
   "title": "Oven Microwave",
-  "subtitle": "Pemancar radio yang diarahkan ke makanan",
+  "subtitle": "Memanaskan makanan dengan mengguncang air di dalamnya",
   "scale": "lebar sekitar 500 mm",
   "summary": "Microwave bukan memanaskan makanan dari dalam ke luar, dan bukan pula memasak dengan radiasi seperti yang sering dikhawatirkan. Alat ini pada dasarnya pemancar radio berdaya sekitar satu kilowatt pada 2,45 GHz yang menembakkan gelombang ke kotak logam tertutup. Molekul air dalam makanan terus berputar mengikuti medan listrik miliaran kali per detik. Gerakan itu menimbulkan gesekan, dan gesekan menghasilkan panas.",
   "parts": {

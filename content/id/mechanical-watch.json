@@ -1,6 +1,6 @@
 {
   "title": "Jam Tangan Mekanis Otomatis",
-  "subtitle": "Pegas, mekanisme pelepas, dan waktu yang dibagi menjadi detak",
+  "subtitle": "Menunjukkan waktu dengan pegas, bukan baterai",
   "scale": "casing 40 mm · tebal sekitar 11 mm",
   "summary": "Jam otomatis menyimpan gerakan pergelangan sebagai energi pada pegas utama, lalu melepaskannya sedikit demi sedikit. Rangkaian roda gigi meneruskan putaran lambat itu ke mekanisme pelepas. Roda pelepas, garpu palet, dan roda keseimbangan mengubah tarikan terus-menerus menjadi impuls yang teratur. Rasio roda gigi yang tetap kemudian menggerakkan jarum jam, menit, dan detik tanpa baterai.",
   "parts": {
@@ -151,7 +151,12 @@
     },
     {
       "prompt": "Di mana energi yang dipakai jam disimpan?",
-      "choices": ["Di dalam kaca", "Sebagai regangan elastis pada pegas utama", "Di dalam bantalan rubi", "Sebagai panas pada casing"],
+      "choices": [
+        "Di dalam kaca",
+        "Sebagai regangan elastis pada pegas utama",
+        "Di dalam bantalan rubi",
+        "Sebagai panas pada casing"
+      ],
       "explain": "Pemutaran menggulung pegas utama. Saat mengendur secara terkendali, pegas memutar tong dan memberi tenaga pada mesin."
     },
     {
@@ -159,7 +164,12 @@
     },
     {
       "prompt": "Mengapa roda keseimbangan terus berosilasi dan tidak segera berhenti?",
-      "choices": ["Muka jam mendorongnya", "Setiap gigi roda pelepas memberi impuls kecil melalui garpu palet", "Kenop terus berputar", "Casing bersifat magnetis"],
+      "choices": [
+        "Muka jam mendorongnya",
+        "Setiap gigi roda pelepas memberi impuls kecil melalui garpu palet",
+        "Kenop terus berputar",
+        "Casing bersifat magnetis"
+      ],
       "explain": "Impuls mekanisme pelepas mengganti sedikit energi yang hilang pada tiap ayunan, sedangkan pegas spiral menghasilkan gaya balik."
     },
     {
@@ -167,7 +177,12 @@
     },
     {
       "prompt": "Seberapa cepat jarum jam berputar dibandingkan jarum menit?",
-      "choices": ["Dua belas kali lebih cepat", "Sama cepat", "Seperdua belas kecepatannya", "Sekali per detik"],
+      "choices": [
+        "Dua belas kali lebih cepat",
+        "Sama cepat",
+        "Seperdua belas kecepatannya",
+        "Sekali per detik"
+      ],
       "explain": "Roda gigi pengatur menurunkan putaran menit dengan rasio 12:1, sesuai dua belas jam pada muka jam."
     },
     {
@@ -175,7 +190,12 @@
     },
     {
       "prompt": "Apa yang berubah saat kenop ditarik ke posisi pengaturan?",
-      "choices": ["Rotor dikunci", "Batang menghubungkan kenop ke roda gigi yang menggerakkan jarum", "Kaca menjadi longgar", "Pegas spiral dipendekkan satu putaran"],
+      "choices": [
+        "Rotor dikunci",
+        "Batang menghubungkan kenop ke roda gigi yang menggerakkan jarum",
+        "Kaca menjadi longgar",
+        "Pegas spiral dipendekkan satu putaran"
+      ],
       "explain": "Mekanisme pengalih memindahkan putaran kenop dari pemutar pegas ke rangkaian roda gigi pengatur waktu."
     }
   ]

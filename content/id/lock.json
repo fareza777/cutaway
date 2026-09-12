@@ -1,6 +1,6 @@
 {
   "title": "Kunci Pin Tumbler",
-  "subtitle": "Silinder yang hanya dapat diputar oleh satu profil logam",
+  "subtitle": "Hanya terbuka oleh kunci dengan bentuk yang tepat",
   "scale": "silinder sekitar 30 mm",
   "summary": "Kunci pin tumbler memakai enam tumpukan pin yang bertumpu pada anak kunci. Batas antara pin bawah dan pin atas berada pada ketinggian berbeda. Gerigi anak kunci mengangkat setiap batas tepat ke garis geser antara silinder inti dan rumah. Jika semua batas sejajar, silinder dapat diputar. Jika satu pin saja masih melintasi garis itu, silinder tetap terkunci pada rumah.",
   "parts": {

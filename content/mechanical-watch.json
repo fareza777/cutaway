@@ -2,262 +2,548 @@
   "schema": 1,
   "id": "mechanical-watch",
   "title": "Automatic Mechanical Watch",
-  "subtitle": "A spring, an escapement, and time divided into ticks",
+  "subtitle": "Keeps time with a spring instead of a battery",
   "category": "Mechanical",
   "accent": "#D2A84F",
   "scale": "40 mm case · about 11 mm thick",
   "summary": "An automatic watch stores wrist motion in a coiled mainspring, then releases that energy in controlled steps. A reduction train carries the slow unwind toward the escapement. The escape wheel, pallet fork, and oscillating balance turn a continuous pull into equal impulses, while fixed gear ratios drive the hour, minute, and seconds hands. No battery is required, but every pivot and tooth must waste very little energy.",
   "model": "mechanical_watch",
   "cutAxis": "x",
-  "restRotation": [1.38, -0.18, -0.12],
+  "restRotation": [
+    1.38,
+    -0.18,
+    -0.12
+  ],
   "parts": [
     {
       "id": "case",
-      "nodes": ["case"],
+      "nodes": [
+        "case"
+      ],
       "name": "Watch Case",
       "short": "The 40 mm steel shell that locates and protects the movement",
       "detail": "The mid-case is a rigid, shallow ring with machined seats for the bezel, crystal, movement, crown tube, and caseback. Its round plan keeps gasket compression even while its curved flank avoids the toy-like look of stacked cylinders. Steel adds impact resistance and a stable reference for every shaft inside.",
       "layer": 0,
-      "explode": [0, 0, 0.9]
+      "explode": [
+        0,
+        0,
+        0.9
+      ]
     },
     {
       "id": "bezel",
-      "nodes": ["bezel"],
+      "nodes": [
+        "bezel"
+      ],
       "name": "Bezel",
       "short": "A polished retaining ring around the crystal",
       "detail": "The sloped bezel presses the crystal and its gasket into the case. Its narrow upper edge leaves most of the diameter available for the dial, while its curved outer shoulder blends into the case rather than forming another flat disc. On a serviceable watch it can be removed with the correct press tools.",
       "layer": 0,
-      "explode": [0, 0.7, 0]
+      "explode": [
+        0,
+        0.7,
+        0
+      ]
     },
     {
       "id": "crystal",
-      "nodes": ["crystal"],
+      "nodes": [
+        "crystal"
+      ],
       "name": "Sapphire Crystal",
       "short": "A transparent, scratch-resistant window over the dial",
       "detail": "Synthetic sapphire is very hard and keeps everyday abrasion away from the hands. The crystal does not carry the movement; it seats against a gasket held by the bezel. A small air gap below it gives the hands room to pass without touching even when the watch receives a light shock.",
       "layer": 0,
       "opacity": 0.24,
-      "explode": [0, 1.25, 0]
+      "explode": [
+        0,
+        1.25,
+        0
+      ]
     },
     {
       "id": "caseback",
-      "nodes": ["caseback"],
+      "nodes": [
+        "caseback"
+      ],
       "name": "Caseback",
       "short": "The sealed rear cover removed for movement service",
       "detail": "A threaded or clamped steel back closes the underside of the watch and compresses a water-resistant gasket. Removing it exposes the automatic rotor first. The shallow recess provides clearance for that swinging mass without allowing it to scrape the cover.",
       "layer": 0,
-      "explode": [0, -1.2, 0]
+      "explode": [
+        0,
+        -1.2,
+        0
+      ]
     },
     {
       "id": "crown",
-      "nodes": ["crown"],
+      "nodes": [
+        "crown"
+      ],
       "name": "Crown",
       "short": "The fluted control for winding and setting",
       "detail": "Turning the crown winds the mainspring through a clutch and winding gears. Pulling it outward changes the sliding keyless works so the same rotation sets the hands instead. The flutes give wet fingers purchase, while a tube and seals keep the side opening from becoming an easy path for dust and water.",
       "layer": 0,
-      "explode": [1.15, 0, 0]
+      "explode": [
+        1.15,
+        0,
+        0
+      ]
     },
     {
       "id": "winding_stem",
-      "nodes": ["winding_stem"],
+      "nodes": [
+        "winding_stem"
+      ],
       "name": "Winding Stem",
       "short": "A slender shaft carrying crown motion into the movement",
       "detail": "The stem crosses the case wall and engages the winding and setting mechanism. In its normal position it transmits crown rotation toward the mainspring barrel; pulled outward, it engages the motion works that move the hands. A controlled break point lets a damaged stem fail before it tears the movement apart.",
       "layer": 2,
-      "explode": [1.25, 0, 0]
+      "explode": [
+        1.25,
+        0,
+        0
+      ]
     },
     {
       "id": "dial",
-      "nodes": ["dial"],
+      "nodes": [
+        "dial"
+      ],
       "name": "Dial",
       "short": "The indexed face that makes the train readable",
       "detail": "The dial is a thin plate fixed above the movement. Raised hour markers and a minute track turn angular hand positions into time. It carries almost no load, but its centre holes must be concentric with the hand arbors or the hands can rub and steal enough energy to stop the watch.",
       "layer": 1,
-      "explode": [0, 0.8, 0]
+      "explode": [
+        0,
+        0.8,
+        0
+      ]
     },
     {
       "id": "hour_hand",
-      "nodes": ["hour_hand"],
+      "nodes": [
+        "hour_hand"
+      ],
       "name": "Hour Hand",
       "short": "The shortest hand, turning once every twelve hours",
       "detail": "A pipe beneath the hand fits the hour wheel. The motion works reduce the minute arbor by 12:1, so the hour hand completes one revolution while the minute hand completes twelve. Its short, broad shape separates it instantly from the longer minute hand.",
       "layer": 1,
-      "explode": [-0.45, 1.05, 0],
-      "motion": { "pivot": [0, 0.208, 0], "spin": { "axis": "y", "ratio": 0.001389 } }
+      "explode": [
+        -0.45,
+        1.05,
+        0
+      ],
+      "motion": {
+        "pivot": [
+          0,
+          0.208,
+          0
+        ],
+        "spin": {
+          "axis": "y",
+          "ratio": 0.001389
+        }
+      }
     },
     {
       "id": "minute_hand",
-      "nodes": ["minute_hand"],
+      "nodes": [
+        "minute_hand"
+      ],
       "name": "Minute Hand",
       "short": "The long hand, turning once per hour",
       "detail": "The minute hand is friction-fitted to the cannon pinion around the centre arbor. That friction lets the crown set the hands while still allowing the gear train to drive them during normal running. Its 12:1 relationship with the hour hand is fixed by gears, not software or sensing.",
       "layer": 1,
-      "explode": [0, 1.2, 0],
-      "motion": { "pivot": [0, 0.22, 0], "spin": { "axis": "y", "ratio": 0.016667 } }
+      "explode": [
+        0,
+        1.2,
+        0
+      ],
+      "motion": {
+        "pivot": [
+          0,
+          0.22,
+          0
+        ],
+        "spin": {
+          "axis": "y",
+          "ratio": 0.016667
+        }
+      }
     },
     {
       "id": "seconds_hand",
-      "nodes": ["seconds_hand"],
+      "nodes": [
+        "seconds_hand"
+      ],
       "name": "Seconds Hand",
       "short": "A light pointer showing the fourth wheel's rotation",
       "detail": "The seconds hand is mounted on, or geared from, the fourth wheel, which turns once per minute. It advances in tiny jumps at the balance frequency; the apparent sweep is a sequence of closely spaced ticks. Keeping it light reduces the inertia the escapement must repeatedly accelerate.",
       "layer": 1,
-      "explode": [0.45, 1.35, 0],
-      "motion": { "pivot": [0, 0.232, 0], "spin": { "axis": "y", "ratio": 1 } }
+      "explode": [
+        0.45,
+        1.35,
+        0
+      ],
+      "motion": {
+        "pivot": [
+          0,
+          0.232,
+          0
+        ],
+        "spin": {
+          "axis": "y",
+          "ratio": 1
+        }
+      }
     },
     {
       "id": "automatic_rotor",
-      "nodes": ["automatic_rotor"],
+      "nodes": [
+        "automatic_rotor"
+      ],
       "name": "Automatic Rotor",
       "short": "An off-centre mass that winds as the wrist moves",
       "detail": "The crescent mass is free to swing around the movement bearing. Changes in wrist orientation make gravity and inertia rotate it; a one-way clutch and reversing gears route useful motion in either direction toward the barrel. This teaching animation swings the rotor alone and leaves a small clutch gap before the stationary reversing train, tracing the winding path without pretending to simulate each pawl and tooth. A slipping bridle prevents overwinding.",
       "layer": 1,
-      "explode": [0, -1.15, 0],
-      "motion": { "pivot": [0, -0.17, 0], "swing": { "axis": "y", "amplitude": 0.85 } }
+      "explode": [
+        0,
+        -1.15,
+        0
+      ],
+      "motion": {
+        "pivot": [
+          0,
+          -0.17,
+          0
+        ],
+        "swing": {
+          "axis": "y",
+          "amplitude": 0.85
+        }
+      }
     },
     {
       "id": "mainspring_barrel",
-      "nodes": ["mainspring_barrel"],
+      "nodes": [
+        "mainspring_barrel"
+      ],
       "name": "Mainspring Barrel",
       "short": "The coiled energy store and its slow-driving drum",
       "detail": "A long spring is coiled inside the toothed barrel. Winding tightens the coil and stores elastic energy; the barrel then turns slowly as the spring relaxes, feeding torque into the centre wheel. The spring's shape and the barrel diameter are chosen to keep torque reasonably even across the useful power reserve.",
       "layer": 3,
-      "explode": [-0.85, 0, 0.65],
-      "motion": { "pivot": [-0.42, -0.07, 0.24], "spin": { "axis": "y", "ratio": -0.005556 } }
+      "explode": [
+        -0.85,
+        0,
+        0.65
+      ],
+      "motion": {
+        "pivot": [
+          -0.42,
+          -0.07,
+          0.24
+        ],
+        "spin": {
+          "axis": "y",
+          "ratio": -0.005556
+        }
+      }
     },
     {
       "id": "centre_wheel",
-      "nodes": ["centre_wheel"],
+      "nodes": [
+        "centre_wheel"
+      ],
       "name": "Centre Wheel",
       "short": "The first large wheel of the going train",
       "detail": "Driven by the barrel, the centre wheel begins the chain of alternating large wheels and small pinions. In a conventional layout it turns once per hour and provides the reference used by the motion works for the minute hand. Its ratio trades the barrel's slow, strong rotation for greater speed downstream.",
       "layer": 3,
-      "explode": [0, 0.5, 0],
-      "motion": { "pivot": [-0.05, -0.025, 0.1], "spin": { "axis": "y", "ratio": 0.016667 } }
+      "explode": [
+        0,
+        0.5,
+        0
+      ],
+      "motion": {
+        "pivot": [
+          -0.05,
+          -0.025,
+          0.1
+        ],
+        "spin": {
+          "axis": "y",
+          "ratio": 0.016667
+        }
+      }
     },
     {
       "id": "third_wheel",
-      "nodes": ["third_wheel"],
+      "nodes": [
+        "third_wheel"
+      ],
       "name": "Third Wheel",
       "short": "An intermediate ratio between centre and fourth wheels",
       "detail": "The third wheel is not named for a third unit of time. It simply carries power through another large-wheel-to-small-pinion pair, raising rotational speed while lowering torque. Its position lets the train route around the barrel and reach the fourth wheel without oversized gears.",
       "layer": 3,
-      "explode": [0.55, 0.35, 0.2],
-      "motion": { "pivot": [0.205, 0.015, 0.055], "spin": { "axis": "y", "ratio": -0.133333 } }
+      "explode": [
+        0.55,
+        0.35,
+        0.2
+      ],
+      "motion": {
+        "pivot": [
+          0.205,
+          0.015,
+          0.055
+        ],
+        "spin": {
+          "axis": "y",
+          "ratio": -0.133333
+        }
+      }
     },
     {
       "id": "fourth_wheel",
-      "nodes": ["fourth_wheel"],
+      "nodes": [
+        "fourth_wheel"
+      ],
       "name": "Fourth Wheel",
       "short": "The once-per-minute wheel associated with seconds",
       "detail": "The fourth wheel receives the third wheel's faster motion and usually turns once each minute. That convenient speed makes its arbor a natural place for a direct seconds hand. Its pinion also drives the escape wheel, so every visible second depends on the escapement releasing this wheel in equal increments.",
       "layer": 3,
-      "explode": [0.55, 0.35, -0.45],
-      "motion": { "pivot": [0.18, 0.055, -0.155], "spin": { "axis": "y", "ratio": 1 } }
+      "explode": [
+        0.55,
+        0.35,
+        -0.45
+      ],
+      "motion": {
+        "pivot": [
+          0.18,
+          0.055,
+          -0.155
+        ],
+        "spin": {
+          "axis": "y",
+          "ratio": 1
+        }
+      }
     },
     {
       "id": "escape_wheel",
-      "nodes": ["escape_wheel"],
+      "nodes": [
+        "escape_wheel"
+      ],
       "name": "Escape Wheel",
       "short": "The toothed gate that releases the train one step at a time",
       "detail": "Torque from the gear train continually urges the escape wheel forward, but the pallet stones alternately lock its teeth. At each balance swing one tooth is released and a tooth face gives a small impulse back through the pallet fork. This stop-and-go exchange both counts oscillations and sustains them.",
       "layer": 4,
-      "explode": [0.15, 0.55, -0.75],
-      "motion": { "pivot": [0.01, 0.095, -0.23], "spin": { "axis": "y", "ratio": -4.5 } }
+      "explode": [
+        0.15,
+        0.55,
+        -0.75
+      ],
+      "motion": {
+        "pivot": [
+          0.01,
+          0.095,
+          -0.23
+        ],
+        "spin": {
+          "axis": "y",
+          "ratio": -4.5
+        }
+      }
     },
     {
       "id": "pallet_fork",
-      "nodes": ["pallet_fork"],
+      "nodes": [
+        "pallet_fork"
+      ],
       "name": "Pallet Fork",
       "short": "A rocking lever between escape wheel and balance",
       "detail": "Two ruby pallet faces alternately stop and release the escape-wheel teeth. The fork's other end engages the balance roller, so each passage through centre unlocks one tooth and receives a measured impulse. The lever moves only a few degrees; large swings would waste power and upset timing.",
       "layer": 4,
-      "explode": [0.45, 0.65, -0.75],
-      "motion": { "pivot": [0.28, 0.11, -0.31], "swing": { "axis": "y", "amplitude": 0.12 } }
+      "explode": [
+        0.45,
+        0.65,
+        -0.75
+      ],
+      "motion": {
+        "pivot": [
+          0.28,
+          0.11,
+          -0.31
+        ],
+        "swing": {
+          "axis": "y",
+          "amplitude": 0.12
+        }
+      }
     },
     {
       "id": "balance_wheel",
-      "nodes": ["balance_wheel"],
+      "nodes": [
+        "balance_wheel"
+      ],
       "name": "Balance Wheel",
       "short": "The oscillator that divides time into equal intervals",
       "detail": "The balance wheel rotates back and forth rather than continuously. Its inertia works with the hairspring's restoring force to set a natural frequency, commonly six or eight beats per second. Poising the rim and limiting pivot friction make successive half-swings as equal as possible in different watch positions.",
       "layer": 4,
-      "explode": [0.85, 0.65, -0.8],
-      "motion": { "pivot": [0.46, 0.105, -0.4], "swing": { "axis": "y", "amplitude": 0.7 } }
+      "explode": [
+        0.85,
+        0.65,
+        -0.8
+      ],
+      "motion": {
+        "pivot": [
+          0.46,
+          0.105,
+          -0.4
+        ],
+        "swing": {
+          "axis": "y",
+          "amplitude": 0.7
+        }
+      }
     },
     {
       "id": "hairspring",
-      "nodes": ["hairspring"],
+      "nodes": [
+        "hairspring"
+      ],
       "name": "Hairspring",
       "short": "The fine spiral that returns the balance toward centre",
       "detail": "This flat spiral tightens and opens as the balance oscillates. Its elasticity supplies the restoring torque; its effective length and the balance's inertia set the rate. A regulator or adjustable inertia makes tiny corrections, while magnetism, impact, or a bent coil can change the frequency enough to gain or lose time.",
       "layer": 4,
-      "explode": [0.85, 0.85, -0.8],
-      "motion": { "pivot": [0.46, 0.14, -0.4], "swing": { "axis": "y", "amplitude": 0.55 } }
+      "explode": [
+        0.85,
+        0.85,
+        -0.8
+      ],
+      "motion": {
+        "pivot": [
+          0.46,
+          0.14,
+          -0.4
+        ],
+        "swing": {
+          "axis": "y",
+          "amplitude": 0.55
+        }
+      }
     },
     {
       "id": "movement_bridges",
-      "nodes": ["movement_bridges"],
+      "nodes": [
+        "movement_bridges"
+      ],
       "name": "Movement Bridges",
       "short": "Rigid plates holding wheel pivots in precise alignment",
       "detail": "Bridges clamp the upper ends of arbors while the main plate supports the other ends. Their bearing holes determine gear depth: too loose and teeth skip, too tight and friction stops the train. Cut-outs reveal the train and reduce mass without sacrificing stiffness around screws and jewel settings.",
       "layer": 2,
-      "explode": [0, -0.55, 0.75]
+      "explode": [
+        0,
+        -0.55,
+        0.75
+      ]
     },
     {
       "id": "jewels",
-      "nodes": ["jewels"],
+      "nodes": [
+        "jewels"
+      ],
       "name": "Ruby Jewels",
       "short": "Hard, polished bearings at high-value pivots and pallets",
       "detail": "Synthetic ruby holes support the tiny steel pivots with a stable, polishable surface and very little wear. A minute oil film reduces sliding friction. Jewels do not add value merely by their count; each useful one controls friction or end-play where a metal bearing would wear or consume too much power.",
       "layer": 4,
-      "explode": [-0.25, 0.8, 0.5]
+      "explode": [
+        -0.25,
+        0.8,
+        0.5
+      ]
     },
     {
       "id": "strap_lugs",
-      "nodes": ["strap_lugs"],
+      "nodes": [
+        "strap_lugs"
+      ],
       "name": "Lugs and Rubber Strap",
       "short": "The flexible connection that keeps the case on the wrist",
       "detail": "Four short lugs align the strap with the case while spring bars provide removable pivots. The fitted rubber strap spreads load across the wrist, resists sweat, and flexes before it transmits a knock into the movement. Its taper and curved shoulders make the round case read as a wearable watch rather than a loose instrument.",
       "layer": 0,
-      "explode": [0, 0, 1.15]
+      "explode": [
+        0,
+        0,
+        1.15
+      ]
     }
   ],
   "steps": [
     {
       "title": "Harvest motion",
       "body": "As the wrist changes direction, the off-centre rotor swings. A one-way clutch and reversing gears pass useful rotation to the winding train. The animation leaves a small clutch gap and keeps those wheels still to trace this route clearly rather than imitate tooth-by-tooth engagement; a slipping bridle prevents overload.",
-      "focus": ["automatic_rotor", "mainspring_barrel"]
+      "focus": [
+        "automatic_rotor",
+        "mainspring_barrel"
+      ]
     },
     {
       "title": "Store energy in the mainspring",
       "body": "Rotor or crown motion coils the mainspring inside its barrel. The spring then tries to open, turning the toothed barrel slowly for many hours instead of releasing all its energy at once.",
-      "focus": ["crown", "winding_stem", "mainspring_barrel"]
+      "focus": [
+        "crown",
+        "winding_stem",
+        "mainspring_barrel"
+      ]
     },
     {
       "title": "Increase speed through the train",
       "body": "The barrel drives the centre, third, and fourth wheels through alternating wheels and pinions. Each ratio increases speed and reduces torque until the fourth wheel can turn once per minute.",
-      "focus": ["mainspring_barrel", "centre_wheel", "third_wheel", "fourth_wheel"]
+      "focus": [
+        "mainspring_barrel",
+        "centre_wheel",
+        "third_wheel",
+        "fourth_wheel"
+      ]
     },
     {
       "title": "Release one tooth per impulse",
       "body": "The pallet fork locks the escape wheel. Each balance passage unlocks one tooth; that tooth advances the train and gives the fork a small impulse that replaces energy lost to friction and air.",
-      "focus": ["escape_wheel", "pallet_fork", "jewels"]
+      "focus": [
+        "escape_wheel",
+        "pallet_fork",
+        "jewels"
+      ]
     },
     {
       "title": "Regulate the tick",
       "body": "The balance wheel and hairspring oscillate at a repeatable natural frequency. Their alternating swings divide continuous mainspring torque into equal beats, and careful regulation turns those beats into accurate time.",
-      "focus": ["balance_wheel", "hairspring", "movement_bridges"]
+      "focus": [
+        "balance_wheel",
+        "hairspring",
+        "movement_bridges"
+      ]
     },
     {
       "title": "Display hours, minutes, and seconds",
       "body": "The fourth wheel supplies seconds, the centre train supplies minutes, and the motion works reduce that rotation 12:1 for hours. Fixed teeth keep all three hands in step above the dial.",
-      "focus": ["seconds_hand", "minute_hand", "hour_hand", "dial"]
+      "focus": [
+        "seconds_hand",
+        "minute_hand",
+        "hour_hand",
+        "dial"
+      ]
     },
     {
       "title": "Set through the crown",
       "body": "Pulling the crown shifts the stem from winding to setting. Turning it now moves the motion works and hands through friction fittings without forcing the escapement or uncoiling the mainspring.",
-      "focus": ["crown", "winding_stem", "minute_hand", "hour_hand"]
+      "focus": [
+        "crown",
+        "winding_stem",
+        "minute_hand",
+        "hour_hand"
+      ]
     }
   ],
   "quiz": [
@@ -269,7 +555,12 @@
     {
       "type": "choice",
       "prompt": "Where is the watch's usable energy stored?",
-      "choices": ["In the crystal", "As elastic strain in the mainspring", "In the ruby jewels", "As heat in the case"],
+      "choices": [
+        "In the crystal",
+        "As elastic strain in the mainspring",
+        "In the ruby jewels",
+        "As heat in the case"
+      ],
       "answer": 1,
       "explain": "Winding coils the mainspring. Its controlled relaxation turns the barrel and powers the movement."
     },
@@ -281,7 +572,12 @@
     {
       "type": "choice",
       "prompt": "Why does the balance wheel keep oscillating instead of running down immediately?",
-      "choices": ["The dial pushes it", "Each released escape tooth returns a small impulse through the pallet fork", "The crown spins continuously", "The case is magnetic"],
+      "choices": [
+        "The dial pushes it",
+        "Each released escape tooth returns a small impulse through the pallet fork",
+        "The crown spins continuously",
+        "The case is magnetic"
+      ],
       "answer": 1,
       "explain": "Escapement impulses replace the small amount of energy lost on each swing while the hairspring supplies the restoring force."
     },
@@ -293,7 +589,12 @@
     {
       "type": "choice",
       "prompt": "How often does the hour hand turn compared with the minute hand?",
-      "choices": ["Twelve times faster", "At the same speed", "One twelfth as fast", "Once per second"],
+      "choices": [
+        "Twelve times faster",
+        "At the same speed",
+        "One twelfth as fast",
+        "Once per second"
+      ],
       "answer": 2,
       "explain": "The motion works reduce minute rotation by 12:1, matching twelve hours on the dial."
     },
@@ -305,7 +606,12 @@
     {
       "type": "choice",
       "prompt": "What changes when the crown is pulled into the setting position?",
-      "choices": ["The rotor is locked", "The stem engages the motion works that move the hands", "The crystal becomes loose", "The hairspring is shortened by one turn"],
+      "choices": [
+        "The rotor is locked",
+        "The stem engages the motion works that move the hands",
+        "The crystal becomes loose",
+        "The hairspring is shortened by one turn"
+      ],
       "answer": 1,
       "explain": "The keyless works redirect crown rotation from winding toward the hand-setting gears."
     }

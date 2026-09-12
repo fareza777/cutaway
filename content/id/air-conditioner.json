@@ -1,6 +1,6 @@
 {
   "title": "AC Split",
-  "subtitle": "Sistem terpisah — unit dalam dan luar ruang",
+  "subtitle": "Mendinginkan ruangan dengan memindahkan panasnya ke luar",
   "scale": "unit dalam ruang, lebar sekitar 800 mm",
   "summary": "AC bekerja dengan prinsip yang sama seperti kulkas, tetapi kedua sisi rangkaian pendinginnya dipisahkan oleh dinding. Panas dari kamar diserap di unit dalam ruang, lalu dibawa refrigeran ke unit luar ruang dan dilepas ke udara. Panas tidak dimusnahkan: unit luar membuang panas dari kamar sekaligus energi listrik yang dipakai untuk memindahkannya.",
   "parts": {

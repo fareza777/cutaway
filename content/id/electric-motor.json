@@ -1,6 +1,6 @@
 {
   "title": "Motor Listrik",
-  "subtitle": "Motor DC bersikat: kumparan yang terus mengejar medan",
+  "subtitle": "Mengubah listrik menjadi putaran",
   "scale": "diameter sekitar 80 mm",
   "summary": "Motor DC bersikat adalah elektromagnet berputar yang tidak pernah dibiarkan selesai menyelaraskan diri. Arus pada jangkar membentuk medan yang tertarik untuk sejajar dengan stator. Tepat sebelum posisi itu tercapai, komutator membalik arah arus dan memulai tarikan berikutnya. Poros menghasilkan kerja mekanis; komutator membuatnya terus berputar alih-alih berhenti pada satu posisi.",
   "parts": {

@@ -2,40 +2,297 @@
   "schema": 1,
   "id": "hard-disk",
   "title": "Hard Disk",
-  "subtitle": "A gramophone for numbers, sealed in a box",
+  "subtitle": "Stores data magnetically on spinning platters",
   "category": "Electronics",
   "accent": "#8A96A4",
   "scale": "≈ 3.5 inches",
   "summary": "A hard disk stores bits as tiny magnets on spinning platters, and reads them with a head that flies on a cushion of air a few nanometres thick. The arm that carries the head is a rotary voice-coil motor. The whole machine is a clean room with a lid on.",
   "model": "hard_disk",
   "cutAxis": "x",
-  "restRotation": [0.95, 0.32, 0],
+  "restRotation": [
+    0.95,
+    0.32,
+    0
+  ],
   "parts": [
-    { "id": "base", "nodes": ["base"], "name": "Base Casting", "short": "The chassis, and the other half of the clean room", "detail": "A machined aluminium tub. Every bearing, every magnet, every filter bosses out of this one piece so the geometry cannot drift. It is also a heatsink: the spindle motor dumps its warmth here.", "layer": 1, "explode": [0, -0.8, 0] },
-    { "id": "cover", "nodes": ["cover"], "name": "Cover", "short": "The lid of a clean room", "detail": "The drive is assembled in a clean room and then this lid goes on for life. A breather filter lets pressure equalise without letting dust in. Opacity here is the same courtesy as a pericardium: the lid is real, and you can still see through it.", "layer": 0, "opacity": 0.12, "explode": [0, 1.4, 0] },
-    { "id": "platters", "nodes": ["platters"], "name": "Platters", "short": "Glass or aluminium discs, coated with a magnetic film", "detail": "Each face is a recording surface. The coating is a few nanometres of magnetic material; the bits are regions of that film magnetised one way or the other. They spin at 5,400 or 7,200 rpm, and in enterprise drives at 15,000. The mirror finish is not vanity — roughness at this scale is a crash.", "layer": 2, "explode": [0, 0.3, 0.6], "motion": { "spin": { "axis": "y", "ratio": 4 } } },
-    { "id": "spindle", "nodes": ["spindle"], "name": "Spindle Motor", "short": "The only motor that is allowed to run for years", "detail": "A fluid-dynamic bearing motor in the hub. It has to be silent, last a decade, and hold the platters to a few microns of runout while they fly. Ball bearings used to do this and then they didn't, which is why you can hear an old drive whine.", "layer": 2, "explode": [0, 0.2, 0], "motion": { "spin": { "axis": "y", "ratio": 4 } } },
-    { "id": "actuator", "nodes": ["actuator"], "name": "Actuator Arm", "short": "The gramophone tonearm, rigid and fast", "detail": "A rotary arm pivoted in the corner of the box. It carries the heads at one end and a coil at the other. Seek times of a few milliseconds are this arm accelerating, stopping, and settling on a track a tenth of a hair wide.", "layer": 2, "explode": [-0.8, 0.4, -0.5], "motion": { "swing": { "axis": "y", "amplitude": 0.25 } } },
-    { "id": "voice_coil", "nodes": ["voice_coil"], "name": "Voice Coil", "short": "The motor that aims the heads", "detail": "A coil in a magnetic gap, same physics as a loudspeaker, used here to rotate the arm. Current is position. The servo that drives it reads the tracks themselves to know where it is — the disk is its own ruler.", "layer": 3, "explode": [-1.1, 0.2, -0.7] },
-    { "id": "magnet", "nodes": ["magnet"], "name": "Voice-Coil Magnet", "short": "The field the arm pushes against", "detail": "Two plates of rare-earth magnet, one above and one below the coil. They do not move. Together they are why a seek that looks lazy on a graph is a violent acceleration in the metal.", "layer": 3, "explode": [-1.2, 0, -0.8] },
-    { "id": "heads", "nodes": ["heads"], "name": "Read/Write Heads", "short": "Fly on air a few nanometres off the disk", "detail": "Each slider is a tiny wing. At speed it takes off on the air the platter drags with it, and flies closer than the wavelength of blue light. A bump, a fingerprint, a power cut that drops the arm onto a spinning disk: that is a head crash, and it is as bad as it sounds.", "layer": 3, "explode": [0.5, 0.5, 0.4], "motion": { "swing": { "axis": "y", "amplitude": 0.25 } } },
-    { "id": "flex_cable", "nodes": ["flex_cable"], "name": "Flex Cable", "short": "The only wire that has to survive the seek", "detail": "A printed ribbon from the arm to the logic board. It has to bend millions of times without cracking. The signals on it are the weakest in the box: millivolts from a head that is reading a magnet the size of a virus.", "layer": 2, "explode": [-0.4, 0.7, 0.2] },
-    { "id": "filter", "nodes": ["filter"], "name": "Breather Filter", "short": "Lets the box breathe without letting dust in", "detail": "A sintered window. Air pressure inside has to match the room or the lid would bulge, but a single particle of smoke is a boulder at flying height. The filter is the compromise.", "layer": 1, "explode": [0.9, -0.3, -0.7] },
-    { "id": "ramp", "nodes": ["ramp"], "name": "Load Ramp", "short": "Where the heads park when the disk stops", "detail": "A plastic slope at the rim. When the platters spin down, the arm lifts the heads onto this ramp so they do not land on the magnetic surface. Without it, every shutdown would be a crash.", "layer": 2, "explode": [0.8, 0.4, 0.6] }
+    {
+      "id": "base",
+      "nodes": [
+        "base"
+      ],
+      "name": "Base Casting",
+      "short": "The chassis, and the other half of the clean room",
+      "detail": "A machined aluminium tub. Every bearing, every magnet, every filter bosses out of this one piece so the geometry cannot drift. It is also a heatsink: the spindle motor dumps its warmth here.",
+      "layer": 1,
+      "explode": [
+        0,
+        -0.8,
+        0
+      ]
+    },
+    {
+      "id": "cover",
+      "nodes": [
+        "cover"
+      ],
+      "name": "Cover",
+      "short": "The lid of a clean room",
+      "detail": "The drive is assembled in a clean room and then this lid goes on for life. A breather filter lets pressure equalise without letting dust in. Opacity here is the same courtesy as a pericardium: the lid is real, and you can still see through it.",
+      "layer": 0,
+      "opacity": 0.12,
+      "explode": [
+        0,
+        1.4,
+        0
+      ]
+    },
+    {
+      "id": "platters",
+      "nodes": [
+        "platters"
+      ],
+      "name": "Platters",
+      "short": "Glass or aluminium discs, coated with a magnetic film",
+      "detail": "Each face is a recording surface. The coating is a few nanometres of magnetic material; the bits are regions of that film magnetised one way or the other. They spin at 5,400 or 7,200 rpm, and in enterprise drives at 15,000. The mirror finish is not vanity — roughness at this scale is a crash.",
+      "layer": 2,
+      "explode": [
+        0,
+        0.3,
+        0.6
+      ],
+      "motion": {
+        "spin": {
+          "axis": "y",
+          "ratio": 4
+        }
+      }
+    },
+    {
+      "id": "spindle",
+      "nodes": [
+        "spindle"
+      ],
+      "name": "Spindle Motor",
+      "short": "The only motor that is allowed to run for years",
+      "detail": "A fluid-dynamic bearing motor in the hub. It has to be silent, last a decade, and hold the platters to a few microns of runout while they fly. Ball bearings used to do this and then they didn't, which is why you can hear an old drive whine.",
+      "layer": 2,
+      "explode": [
+        0,
+        0.2,
+        0
+      ],
+      "motion": {
+        "spin": {
+          "axis": "y",
+          "ratio": 4
+        }
+      }
+    },
+    {
+      "id": "actuator",
+      "nodes": [
+        "actuator"
+      ],
+      "name": "Actuator Arm",
+      "short": "The gramophone tonearm, rigid and fast",
+      "detail": "A rotary arm pivoted in the corner of the box. It carries the heads at one end and a coil at the other. Seek times of a few milliseconds are this arm accelerating, stopping, and settling on a track a tenth of a hair wide.",
+      "layer": 2,
+      "explode": [
+        -0.8,
+        0.4,
+        -0.5
+      ],
+      "motion": {
+        "swing": {
+          "axis": "y",
+          "amplitude": 0.25
+        }
+      }
+    },
+    {
+      "id": "voice_coil",
+      "nodes": [
+        "voice_coil"
+      ],
+      "name": "Voice Coil",
+      "short": "The motor that aims the heads",
+      "detail": "A coil in a magnetic gap, same physics as a loudspeaker, used here to rotate the arm. Current is position. The servo that drives it reads the tracks themselves to know where it is — the disk is its own ruler.",
+      "layer": 3,
+      "explode": [
+        -1.1,
+        0.2,
+        -0.7
+      ]
+    },
+    {
+      "id": "magnet",
+      "nodes": [
+        "magnet"
+      ],
+      "name": "Voice-Coil Magnet",
+      "short": "The field the arm pushes against",
+      "detail": "Two plates of rare-earth magnet, one above and one below the coil. They do not move. Together they are why a seek that looks lazy on a graph is a violent acceleration in the metal.",
+      "layer": 3,
+      "explode": [
+        -1.2,
+        0,
+        -0.8
+      ]
+    },
+    {
+      "id": "heads",
+      "nodes": [
+        "heads"
+      ],
+      "name": "Read/Write Heads",
+      "short": "Fly on air a few nanometres off the disk",
+      "detail": "Each slider is a tiny wing. At speed it takes off on the air the platter drags with it, and flies closer than the wavelength of blue light. A bump, a fingerprint, a power cut that drops the arm onto a spinning disk: that is a head crash, and it is as bad as it sounds.",
+      "layer": 3,
+      "explode": [
+        0.5,
+        0.5,
+        0.4
+      ],
+      "motion": {
+        "swing": {
+          "axis": "y",
+          "amplitude": 0.25
+        }
+      }
+    },
+    {
+      "id": "flex_cable",
+      "nodes": [
+        "flex_cable"
+      ],
+      "name": "Flex Cable",
+      "short": "The only wire that has to survive the seek",
+      "detail": "A printed ribbon from the arm to the logic board. It has to bend millions of times without cracking. The signals on it are the weakest in the box: millivolts from a head that is reading a magnet the size of a virus.",
+      "layer": 2,
+      "explode": [
+        -0.4,
+        0.7,
+        0.2
+      ]
+    },
+    {
+      "id": "filter",
+      "nodes": [
+        "filter"
+      ],
+      "name": "Breather Filter",
+      "short": "Lets the box breathe without letting dust in",
+      "detail": "A sintered window. Air pressure inside has to match the room or the lid would bulge, but a single particle of smoke is a boulder at flying height. The filter is the compromise.",
+      "layer": 1,
+      "explode": [
+        0.9,
+        -0.3,
+        -0.7
+      ]
+    },
+    {
+      "id": "ramp",
+      "nodes": [
+        "ramp"
+      ],
+      "name": "Load Ramp",
+      "short": "Where the heads park when the disk stops",
+      "detail": "A plastic slope at the rim. When the platters spin down, the arm lifts the heads onto this ramp so they do not land on the magnetic surface. Without it, every shutdown would be a crash.",
+      "layer": 2,
+      "explode": [
+        0.8,
+        0.4,
+        0.6
+      ]
+    }
   ],
   "steps": [
-    { "title": "Mirrors that remember", "body": "Bits live as tiny magnets in a film on the platters. The platters spin; the film does not have to move. Rotation is addressing.", "focus": ["platters", "spindle"] },
-    { "title": "A head that flies", "body": "The slider is a wing. Air dragged by the disk is its runway. The gap is nanometres. There is no second chance if it touches.", "focus": ["heads"] },
-    { "title": "Aim with a coil", "body": "The arm is a loudspeaker laid on its side. Current in the voice coil is position on the disk. The tracks themselves tell it where it landed.", "focus": ["actuator", "voice_coil", "magnet"] },
-    { "title": "Park off the media", "body": "When the disk stops, the arm climbs a ramp at the rim. Heads on a stopped platter are a scratch waiting to happen.", "focus": ["ramp", "heads"] },
-    { "title": "A clean room with a lid", "body": "The cover is not decoration. The drive was built in a clean room and this lid keeps it that way for a decade, with one filtered hole so the box can breathe.", "focus": ["cover", "filter", "base"] }
+    {
+      "title": "Mirrors that remember",
+      "body": "Bits live as tiny magnets in a film on the platters. The platters spin; the film does not have to move. Rotation is addressing.",
+      "focus": [
+        "platters",
+        "spindle"
+      ]
+    },
+    {
+      "title": "A head that flies",
+      "body": "The slider is a wing. Air dragged by the disk is its runway. The gap is nanometres. There is no second chance if it touches.",
+      "focus": [
+        "heads"
+      ]
+    },
+    {
+      "title": "Aim with a coil",
+      "body": "The arm is a loudspeaker laid on its side. Current in the voice coil is position on the disk. The tracks themselves tell it where it landed.",
+      "focus": [
+        "actuator",
+        "voice_coil",
+        "magnet"
+      ]
+    },
+    {
+      "title": "Park off the media",
+      "body": "When the disk stops, the arm climbs a ramp at the rim. Heads on a stopped platter are a scratch waiting to happen.",
+      "focus": [
+        "ramp",
+        "heads"
+      ]
+    },
+    {
+      "title": "A clean room with a lid",
+      "body": "The cover is not decoration. The drive was built in a clean room and this lid keeps it that way for a decade, with one filtered hole so the box can breathe.",
+      "focus": [
+        "cover",
+        "filter",
+        "base"
+      ]
+    }
   ],
   "quiz": [
-    { "type": "identify", "prompt": "Tap the discs the bits are magnetised onto.", "partId": "platters" },
-    { "type": "choice", "prompt": "What keeps the head from grinding into the platter?", "choices": ["A layer of oil", "A cushion of air the spinning disc drags with it", "Magnetic levitation", "The cover's pressure"], "answer": 1, "explain": "The slider is a wing. At speed it flies. At rest it must be parked on the ramp." },
-    { "type": "identify", "prompt": "Tap the motor that aims the heads across the disk.", "partId": "voice_coil" },
-    { "type": "identify", "prompt": "Tap where the heads go when the drive spins down.", "partId": "ramp" },
-    { "type": "choice", "prompt": "Why is the cover a real lid with opacity, not a missing wall?", "choices": ["It looks nicer", "The drive is a sealed clean room; taking the lid off is a lie about how it works", "It is glass", "It holds the platters down"], "answer": 1, "explain": "Same rule as the heart's pericardium. Enclosing parts stay. You see through them." },
-    { "type": "identify", "prompt": "Tap the only motor that spins for years without being asked to seek.", "partId": "spindle" }
+    {
+      "type": "identify",
+      "prompt": "Tap the discs the bits are magnetised onto.",
+      "partId": "platters"
+    },
+    {
+      "type": "choice",
+      "prompt": "What keeps the head from grinding into the platter?",
+      "choices": [
+        "A layer of oil",
+        "A cushion of air the spinning disc drags with it",
+        "Magnetic levitation",
+        "The cover's pressure"
+      ],
+      "answer": 1,
+      "explain": "The slider is a wing. At speed it flies. At rest it must be parked on the ramp."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the motor that aims the heads across the disk.",
+      "partId": "voice_coil"
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap where the heads go when the drive spins down.",
+      "partId": "ramp"
+    },
+    {
+      "type": "choice",
+      "prompt": "Why is the cover a real lid with opacity, not a missing wall?",
+      "choices": [
+        "It looks nicer",
+        "The drive is a sealed clean room; taking the lid off is a lie about how it works",
+        "It is glass",
+        "It holds the platters down"
+      ],
+      "answer": 1,
+      "explain": "Same rule as the heart's pericardium. Enclosing parts stay. You see through them."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the only motor that spins for years without being asked to seek.",
+      "partId": "spindle"
+    }
   ]
 }

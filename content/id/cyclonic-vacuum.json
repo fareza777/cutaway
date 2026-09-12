@@ -1,6 +1,6 @@
 {
   "title": "Penyedot Debu Siklon",
-  "subtitle": "Jalur udara akibat perbedaan tekanan yang memisahkan debu sebelum mencapai motor",
+  "subtitle": "Membersihkan dengan mengisap udara lalu memutar debunya keluar",
   "summary": "Penyedot debu tabung beroda ini mengarahkan udara kotor ke pemisah siklon di dalam tabung bening, menjatuhkan partikel berat, menyaring debu halus, lalu membuang udara bersih melewati motor dan kisi belakang.",
   "scale": "Tabung ringkas, panjang sekitar 45 cm",
   "parts": {
@@ -131,7 +131,12 @@
     },
     {
       "prompt": "Apa yang mendorong udara ruangan masuk ke selang saat kipas berputar?",
-      "choices": ["Perbedaan tekanan", "Aliran zat isap", "Pegas penggulung kabel", "Muatan statis di tabung"],
+      "choices": [
+        "Perbedaan tekanan",
+        "Aliran zat isap",
+        "Pegas penggulung kabel",
+        "Muatan statis di tabung"
+      ],
       "explain": "Kipas mempertahankan tekanan statis lebih rendah di saluran masuk, sehingga tekanan ruangan yang lebih tinggi mendorong udara ke arahnya."
     },
     {
@@ -139,7 +144,12 @@
     },
     {
       "prompt": "Mengapa banyak partikel debu bergerak ke dinding siklon?",
-      "choices": ["Kelembamannya menahan perubahan arah aliran yang cepat", "Plastik bening menarik semua partikel", "Motor membalik massa partikel", "Filter pembuangan meniupnya ke samping"],
+      "choices": [
+        "Kelembamannya menahan perubahan arah aliran yang cepat",
+        "Plastik bening menarik semua partikel",
+        "Motor membalik massa partikel",
+        "Filter pembuangan meniupnya ke samping"
+      ],
       "explain": "Partikel dengan kelembaman lebih besar tidak mudah mengikuti garis aliran yang melengkung rapat, sehingga bergerak keluar dan kehilangan energi di dinding."
     },
     {
@@ -147,7 +157,12 @@
     },
     {
       "prompt": "Mengapa rotor dan impeler harus berbagi poros sesumbu?",
-      "choices": ["Untuk meneruskan torsi motor langsung ke kipas", "Untuk menggulung kabel", "Untuk membelokkan kastor", "Untuk membuat tabung transparan"],
+      "choices": [
+        "Untuk meneruskan torsi motor langsung ke kipas",
+        "Untuk menggulung kabel",
+        "Untuk membelokkan kastor",
+        "Untuk membuat tabung transparan"
+      ],
       "explain": "Poros bersama membuat keduanya berputar pada satu sumbu dengan kecepatan serta arah yang sama tanpa transmisi tambahan."
     },
     {
@@ -155,7 +170,12 @@
     },
     {
       "prompt": "Apa akibat yang mungkin terjadi jika paking tabung bocor?",
-      "choices": ["Udara memintas jalur siklon yang semestinya", "Torsi motor bertambah", "Roda membesar", "Kabel tergulung lebih cepat"],
+      "choices": [
+        "Udara memintas jalur siklon yang semestinya",
+        "Torsi motor bertambah",
+        "Roda membesar",
+        "Kabel tergulung lebih cepat"
+      ],
       "explain": "Kebocoran mengurangi kendali atas aliran udara akibat perbedaan tekanan dan memungkinkan udara kotor melewati sebagian pemisah."
     }
   ]

@@ -1,6 +1,6 @@
 {
   "title": "Mesin Bensin",
-  "subtitle": "Mesin satu silinder empat langkah",
+  "subtitle": "Membakar bensin untuk memutar poros engkol",
   "scale": "tinggi sekitar 300 mm",
   "summary": "Mesin empat langkah mengubah rangkaian pembakaran singkat menjadi putaran yang berkesinambungan. Kuncinya adalah poros engkol: komponen ini mengubah gerak lurus piston menjadi putaran, lalu memakai kembali momentum yang tersimpan untuk mendorong piston naik pada langkah berikutnya.",
   "parts": {

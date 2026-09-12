@@ -1,6 +1,6 @@
 {
   "title": "Diferensial",
-  "subtitle": "Satu masukan, dua roda, satu tikungan",
+  "subtitle": "Membuat kedua roda penggerak bisa berputar beda kecepatan",
   "scale": "diameter roda gigi cincin sekitar 250 mm",
   "summary": "Diferensial memungkinkan dua roda pada satu gandar berputar dengan kecepatan berbeda tanpa melawan mesin. Roda gigi cincin memutar rumah diferensial, sedangkan roda gigi satelit di dalamnya dapat berputar pada poros silang. Saat kendaraan berbelok, mekanisme ini membuat roda dalam melambat sebanyak roda luar dipercepat.",
   "parts": {

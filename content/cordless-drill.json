@@ -2,230 +2,445 @@
   "schema": 1,
   "id": "cordless-drill",
   "title": "18 V Brushless Cordless Drill",
-  "subtitle": "Battery current becomes controlled torque at the chuck",
+  "subtitle": "A battery tool for drilling holes and driving screws",
   "category": "Mechanical",
   "accent": "#4E8397",
   "scale": "18 V class · about 20 cm long",
   "summary": "A cordless drill turns chemical energy in a removable lithium-ion pack into controllable rotation. Pulling the trigger commands a PWM electronic speed controller, which meters current through a brushless motor rather than acting as a simple on/off switch. A compact two-stage planetary gearbox reduces motor speed and multiplies torque. The adjustable clutch can then limit fastening torque before the spindle drives the three-jaw chuck.",
   "model": "cordless_drill",
   "cutAxis": "z",
-  "restRotation": [0.08, -0.46, 0.02],
+  "restRotation": [
+    0.08,
+    -0.46,
+    0.02
+  ],
   "parts": [
     {
       "id": "left_housing",
-      "nodes": ["left_housing"],
+      "nodes": [
+        "left_housing"
+      ],
       "name": "Left Housing Half",
       "short": "One molded half of the load-bearing tool shell",
       "detail": "Glass-filled nylon forms a stiff, impact-resistant shell around the motor, gearbox, and controls. The rounded side profile follows the pistol grip without thick toy-like blocks. Real vents are placed beside the cooling fan, and screw bosses clamp this half to its subtly asymmetric partner along the narrow centre seam.",
       "layer": 0,
-      "explode": [0, 0, -1.05]
+      "explode": [
+        0,
+        0,
+        -1.05
+      ]
     },
     {
       "id": "right_housing",
-      "nodes": ["right_housing"],
+      "nodes": [
+        "right_housing"
+      ],
       "name": "Right Housing Half",
       "short": "The mating shell half that closes the drill at rest",
       "detail": "The second molding carries matching ribs, bearing seats, vents, and fastener points. A slight difference in panel depth prevents the drill from looking perfectly mirrored while preserving a closed seam. Together the halves locate the motor and gearbox coaxially so housing flex cannot pull engaged components out of alignment.",
       "layer": 0,
-      "explode": [0, 0, 1.05]
+      "explode": [
+        0,
+        0,
+        1.05
+      ]
     },
     {
       "id": "rubber_grip",
-      "nodes": ["rubber_grip"],
+      "nodes": [
+        "rubber_grip"
+      ],
       "name": "Molded Rubber Grip",
       "short": "High-friction overmolding on the handle",
       "detail": "A thin rubber overmold wraps the side panels and backstrap where the palm carries the reaction torque. Shallow ribs add purchase without becoming an abrasive decoration. The grip remains narrow enough for trigger reach, while its rearward rake places the battery mass beneath the hand instead of pulling the wrist forward.",
       "layer": 0,
-      "explode": [0.25, -0.15, 0.9]
+      "explode": [
+        0.25,
+        -0.15,
+        0.9
+      ]
     },
     {
       "id": "trigger",
-      "nodes": ["trigger"],
+      "nodes": [
+        "trigger"
+      ],
       "name": "Variable-Speed Trigger",
       "short": "A command input for torque and speed, not a simple switch",
       "detail": "Trigger travel is measured electronically. The controller converts that request into pulse-width modulation (PWM), rapidly switching power transistors so the motor receives a controlled average voltage and current. A light pull gives slow, precise rotation; a deeper pull raises duty cycle and available torque. The trigger is therefore not a simple on/off switch.",
       "layer": 1,
-      "explode": [-0.45, 0, 0],
-      "motion": { "pivot": [0.17, 0.24, 0], "slide": { "axis": "x", "amplitude": 0.06 } }
+      "explode": [
+        -0.45,
+        0,
+        0
+      ],
+      "motion": {
+        "pivot": [
+          0.17,
+          0.24,
+          0
+        ],
+        "slide": {
+          "axis": "x",
+          "amplitude": 0.06
+        }
+      }
     },
     {
       "id": "direction_switch",
-      "nodes": ["direction_switch"],
+      "nodes": [
+        "direction_switch"
+      ],
       "name": "Forward/Reverse Switch",
       "short": "Thumb control for reversing electronic commutation",
       "detail": "The cross-bolt above the trigger selects forward or reverse without swapping battery terminals mechanically. Its signal tells the controller to change the order in which stator phases are energized. The centre position commonly locks the trigger for carrying or changing a bit.",
       "layer": 1,
-      "explode": [0, 0, 0.8],
-      "motion": { "slide": { "axis": "z", "amplitude": 0.08 } }
+      "explode": [
+        0,
+        0,
+        0.8
+      ],
+      "motion": {
+        "slide": {
+          "axis": "z",
+          "amplitude": 0.08
+        }
+      }
     },
     {
       "id": "speed_selector",
-      "nodes": ["speed_selector"],
+      "nodes": [
+        "speed_selector"
+      ],
       "name": "Two-Speed Selector",
       "short": "Top slider choosing the gearbox ratio range",
       "detail": "This mechanical selector moves a sleeve inside the planetary gearbox. Low range uses more reduction for high fastening torque; high range accepts less reduction for faster drilling. It should be changed only after the rotating train has stopped so the engagement dogs can seat without chipping.",
       "layer": 1,
-      "explode": [0, 0.6, 0],
-      "motion": { "slide": { "axis": "x", "amplitude": 0.1 } }
+      "explode": [
+        0,
+        0.6,
+        0
+      ],
+      "motion": {
+        "slide": {
+          "axis": "x",
+          "amplitude": 0.1
+        }
+      }
     },
     {
       "id": "motor_stator",
-      "nodes": ["motor_stator"],
+      "nodes": [
+        "motor_stator"
+      ],
       "name": "Brushless Motor Stator",
       "short": "Stationary steel teeth carrying switched copper windings",
       "detail": "Copper windings around laminated electrical-steel poles stay fixed to the housing. The electronic controller energizes phase groups in sequence, creating a rotating magnetic field. Laminations limit eddy-current heating, while the distributed coils make torque smoother than a single electromagnet could.",
       "layer": 2,
-      "explode": [0.3, 0.55, 0.45]
+      "explode": [
+        0.3,
+        0.55,
+        0.45
+      ]
     },
     {
       "id": "motor_rotor",
-      "nodes": ["motor_rotor"],
+      "nodes": [
+        "motor_rotor"
+      ],
       "name": "Permanent-Magnet Rotor",
       "short": "The high-speed magnetic core fixed to the motor shaft",
       "detail": "Permanent magnets on the steel rotor follow the stator's rotating field. Electronic position sensing and commutation keep the field slightly ahead so magnetic attraction produces continuous torque. With no brushes rubbing a commutator, less power becomes friction and electrical arcing.",
       "layer": 3,
-      "explode": [0.35, 0, 0],
-      "motion": { "pivot": [0.68, 0.88, 0], "spin": { "axis": "x", "ratio": 10 } }
+      "explode": [
+        0.35,
+        0,
+        0
+      ],
+      "motion": {
+        "pivot": [
+          0.68,
+          0.88,
+          0
+        ],
+        "spin": {
+          "axis": "x",
+          "ratio": 10
+        }
+      }
     },
     {
       "id": "cooling_fan",
-      "nodes": ["cooling_fan"],
+      "nodes": [
+        "cooling_fan"
+      ],
       "name": "Cooling Fan",
       "short": "A shaft-mounted impeller moving air through rear vents",
       "detail": "The fan is locked to the motor shaft and therefore turns in the same direction and at the same speed as the rotor. Its swept blades draw air through the housing vents and across windings and electronics. Cooling matters most under a heavy low-speed load, when current and copper losses can be high.",
       "layer": 2,
-      "explode": [0.65, 0.1, 0],
-      "motion": { "pivot": [1.18, 0.88, 0], "spin": { "axis": "x", "ratio": 10 } }
+      "explode": [
+        0.65,
+        0.1,
+        0
+      ],
+      "motion": {
+        "pivot": [
+          1.18,
+          0.88,
+          0
+        ],
+        "spin": {
+          "axis": "x",
+          "ratio": 10
+        }
+      }
     },
     {
       "id": "planetary_gearbox",
-      "nodes": ["planetary_gearbox"],
+      "nodes": [
+        "planetary_gearbox"
+      ],
       "name": "Two-Stage Planetary Gearbox",
       "short": "Two compact reduction stages sharing the motor axis",
       "detail": "Each stage places three planet gears between a central sun and an outer ring. Steel pins support the planets on a carrier plate, so the first carrier feeds the second-stage sun and the second carrier feeds the clutch output shaft. The two visible stages use different diameters to show separate reductions; smooth display surfaces simplify the literal production tooth profiles without breaking the real power path.",
       "layer": 3,
-      "explode": [-0.25, 0.45, 0]
+      "explode": [
+        -0.25,
+        0.45,
+        0
+      ]
     },
     {
       "id": "torque_clutch",
-      "nodes": ["torque_clutch"],
+      "nodes": [
+        "torque_clutch"
+      ],
       "name": "Adjustable Torque Clutch",
       "short": "A spring-loaded limiter behind the chuck",
       "detail": "The substantial ribbed collar is exposed between the housing nose and chuck so the operator can turn it; raised setting marks show the selected preload. Turning it changes spring force on detent faces in the drive path. Below the chosen torque they pass rotation to the spindle, but when a seated screw raises reaction torque above the setting, the faces ratchet apart repeatedly.",
       "layer": 3,
-      "explode": [-0.55, 0.2, 0]
+      "explode": [
+        -0.55,
+        0.2,
+        0
+      ]
     },
     {
       "id": "output_spindle",
-      "nodes": ["output_spindle"],
+      "nodes": [
+        "output_spindle"
+      ],
       "name": "Output Spindle",
       "short": "The supported shaft carrying reduced torque to the chuck",
       "detail": "The spindle is coaxial with the motor and gearbox but rotates much more slowly after the two reductions. Bearings in the housing resist radial drilling loads, while a shoulder carries thrust generated as the bit advances. Its front thread or taper secures the chuck body.",
       "layer": 4,
-      "explode": [-0.75, 0, 0],
-      "motion": { "pivot": [-1.28, 0.88, 0], "spin": { "axis": "x", "ratio": 1 } }
+      "explode": [
+        -0.75,
+        0,
+        0
+      ],
+      "motion": {
+        "pivot": [
+          -1.28,
+          0.88,
+          0
+        ],
+        "spin": {
+          "axis": "x",
+          "ratio": 1
+        }
+      }
     },
     {
       "id": "chuck_body",
-      "nodes": ["chuck_body"],
+      "nodes": [
+        "chuck_body"
+      ],
       "name": "Keyless Chuck Body",
       "short": "A compact steel sleeve that moves all three jaws",
       "detail": "Twisting the knurled sleeve rotates an internal nut around the three inclined jaw threads. The steel body stays aligned on the spindle and provides a hand-sized gripping surface without an oversized toy-like nose. Tightening converts sleeve rotation into equal axial jaw travel.",
       "layer": 4,
-      "explode": [-1, 0, 0],
-      "motion": { "pivot": [-1.62, 0.88, 0], "spin": { "axis": "x", "ratio": 1 } }
+      "explode": [
+        -1,
+        0,
+        0
+      ],
+      "motion": {
+        "pivot": [
+          -1.62,
+          0.88,
+          0
+        ],
+        "spin": {
+          "axis": "x",
+          "ratio": 1
+        }
+      }
     },
     {
       "id": "chuck_jaws",
-      "nodes": ["chuck_jaws"],
+      "nodes": [
+        "chuck_jaws"
+      ],
       "name": "Three Chuck Jaws",
       "short": "Three hardened jaws centring round or hexagonal shanks",
       "detail": "Three jaws spaced 120 degrees apart slide on inclined guides. Because one nut drives them together, their gripping faces remain centred on the spindle axis as they close. Hardened steel resists wear from repeated bit changes, while the narrow tips can grip small drill shanks.",
       "layer": 4,
-      "explode": [-1.25, 0, 0],
-      "motion": { "pivot": [-1.93, 0.88, 0], "spin": { "axis": "x", "ratio": 1 } }
+      "explode": [
+        -1.25,
+        0,
+        0
+      ],
+      "motion": {
+        "pivot": [
+          -1.93,
+          0.88,
+          0
+        ],
+        "spin": {
+          "axis": "x",
+          "ratio": 1
+        }
+      }
     },
     {
       "id": "work_light",
-      "nodes": ["work_light"],
+      "nodes": [
+        "work_light"
+      ],
       "name": "LED Work Light",
       "short": "A forward-facing lamp below the chuck",
       "detail": "The LED sits below and ahead of the trigger so its beam reaches the bit without the chuck casting a large shadow. The controller may keep it on briefly after trigger release. An LED needs little pack energy compared with the motor but still requires current limiting.",
       "layer": 1,
-      "explode": [-0.45, -0.35, 0]
+      "explode": [
+        -0.45,
+        -0.35,
+        0
+      ]
     },
     {
       "id": "battery_shell",
-      "nodes": ["battery_shell"],
+      "nodes": [
+        "battery_shell"
+      ],
       "name": "Slide-On Battery Shell",
       "short": "The impact-resistant pack under the grip",
       "detail": "The pack shell protects cells and electronics while its upper rails lock beneath the handle. Placing the mass directly under the hand balances the motor and chuck. Bottom ribs absorb abrasion and leave cooling space, but the shell is not waterproof and must not conceal damaged or swollen cells.",
       "layer": 0,
-      "explode": [0, -1.1, 0]
+      "explode": [
+        0,
+        -1.1,
+        0
+      ]
     },
     {
       "id": "battery_cells",
-      "nodes": ["battery_cells"],
+      "nodes": [
+        "battery_cells"
+      ],
       "name": "Lithium-Ion Cell Grid",
       "short": "Ten cylindrical cells arranged as five series groups",
       "detail": "A typical 18 V nominal pack uses five cell groups in series; this grid shows two 18650-class cylindrical cells in parallel within each group, laid transversely inside the sculpted base. At the stated roughly 20 cm tool scale, each can is about 18 mm in diameter and 64 mm long. Series connections add voltage, while parallel partners share current and capacity.",
       "layer": 2,
-      "explode": [0.15, -0.8, 0.55]
+      "explode": [
+        0.15,
+        -0.8,
+        0.55
+      ]
     },
     {
       "id": "battery_management_board",
-      "nodes": ["battery_management_board"],
+      "nodes": [
+        "battery_management_board"
+      ],
       "name": "Battery Management Board",
       "short": "Electronics monitoring cell groups and pack current",
       "detail": "The BMS measures each series group, pack temperature, and current. It disconnects the pack before overcharge, deep discharge, overheating, or a severe overcurrent damages cells. Balancing circuits trim small state-of-charge differences near full charge; they cannot repair a failed cell.",
       "layer": 2,
-      "explode": [0.1, -0.5, -0.55]
+      "explode": [
+        0.1,
+        -0.5,
+        -0.55
+      ]
     },
     {
       "id": "contacts",
-      "nodes": ["contacts"],
+      "nodes": [
+        "contacts"
+      ],
       "name": "Power and Data Contacts",
       "short": "Spring-loaded copper-alloy blades joining pack and tool",
       "detail": "Wide contacts carry high motor current with low resistance, while smaller terminals can report temperature or pack identity. Spring pressure wipes light contamination from the mating surfaces as the pack slides home. Heat or dark discoloration here signals excess resistance and requires service.",
       "layer": 2,
-      "explode": [0, -0.35, 0]
+      "explode": [
+        0,
+        -0.35,
+        0
+      ]
     }
   ],
   "steps": [
     {
       "title": "Deliver protected battery power",
       "body": "Five series cell groups provide about 18 V nominal. The battery management board checks group voltage, temperature, and current before the contacts deliver power into the handle.",
-      "focus": ["battery_cells", "battery_management_board", "contacts"]
+      "focus": [
+        "battery_cells",
+        "battery_management_board",
+        "contacts"
+      ]
     },
     {
       "title": "Interpret trigger position",
       "body": "Trigger travel becomes a speed request. The electronic speed controller uses PWM to meter current; it is not a simple on/off switch, so a light pull can turn the chuck slowly and controllably.",
-      "focus": ["trigger", "direction_switch"]
+      "focus": [
+        "trigger",
+        "direction_switch"
+      ]
     },
     {
       "title": "Create brushless torque",
       "body": "Switched current in the stator windings creates a rotating magnetic field. The permanent-magnet rotor follows it, producing high-speed shaft torque without brushes or a mechanical commutator.",
-      "focus": ["motor_stator", "motor_rotor"]
+      "focus": [
+        "motor_stator",
+        "motor_rotor"
+      ]
     },
     {
       "title": "Remove motor heat",
       "body": "The shaft-mounted fan turns with the rotor and moves air through vents beside the motor. This carries copper and electronic losses out of the housing during sustained work.",
-      "focus": ["cooling_fan", "motor_stator", "left_housing", "right_housing"]
+      "focus": [
+        "cooling_fan",
+        "motor_stator",
+        "left_housing",
+        "right_housing"
+      ]
     },
     {
       "title": "Reduce speed and multiply torque",
       "body": "Two planetary stages share load among three pinned planets each. The first carrier drives the second sun, and the second carrier drives the clutch shaft. The top selector chooses the ratio range; output speed falls while available spindle torque rises.",
-      "focus": ["speed_selector", "planetary_gearbox", "output_spindle"]
+      "focus": [
+        "speed_selector",
+        "planetary_gearbox",
+        "output_spindle"
+      ]
     },
     {
       "title": "Limit fastening torque",
       "body": "Turn the exposed marked collar ahead of the housing to choose spring preload. The clutch passes normal drive but ratchets when reaction torque exceeds that setting, helping stop a screw near the chosen depth instead of damaging the fastener or work.",
-      "focus": ["torque_clutch", "output_spindle"]
+      "focus": [
+        "torque_clutch",
+        "output_spindle"
+      ]
     },
     {
       "title": "Clamp and turn the bit",
       "body": "The reduced-speed spindle rotates the keyless chuck. Its internal nut moves three jaws together, centring the bit so the chuck body, jaws, and spindle turn as one assembly.",
-      "focus": ["output_spindle", "chuck_body", "chuck_jaws", "work_light"]
+      "focus": [
+        "output_spindle",
+        "chuck_body",
+        "chuck_jaws",
+        "work_light"
+      ]
     }
   ],
   "quiz": [
@@ -237,7 +452,12 @@
     {
       "type": "choice",
       "prompt": "Why is the trigger more than a simple on/off switch?",
-      "choices": ["It mechanically opens the chuck", "It commands PWM duty cycle and motor current", "It changes cell chemistry", "It moves the cooling fan by hand"],
+      "choices": [
+        "It mechanically opens the chuck",
+        "It commands PWM duty cycle and motor current",
+        "It changes cell chemistry",
+        "It moves the cooling fan by hand"
+      ],
       "answer": 1,
       "explain": "The electronic controller converts trigger position into high-frequency transistor switching, allowing controlled speed and torque."
     },
@@ -249,7 +469,12 @@
     {
       "type": "choice",
       "prompt": "What does planetary reduction trade for greater spindle torque?",
-      "choices": ["Battery voltage", "Rotational speed", "Chuck alignment", "Cell capacity"],
+      "choices": [
+        "Battery voltage",
+        "Rotational speed",
+        "Chuck alignment",
+        "Cell capacity"
+      ],
       "answer": 1,
       "explain": "Ignoring losses, reducing output speed increases available torque by approximately the gear ratio."
     },
@@ -261,7 +486,12 @@
     {
       "type": "choice",
       "prompt": "Why are three chuck jaws driven together?",
-      "choices": ["To centre different shank sizes on the spindle", "To cool the bit", "To reverse the motor", "To balance the battery cells"],
+      "choices": [
+        "To centre different shank sizes on the spindle",
+        "To cool the bit",
+        "To reverse the motor",
+        "To balance the battery cells"
+      ],
       "answer": 0,
       "explain": "Equal travel of three jaws spaced 120 degrees apart keeps a round or hexagonal shank centred."
     },
@@ -273,7 +503,12 @@
     {
       "type": "choice",
       "prompt": "Why does the fan spin at motor speed rather than spindle speed?",
-      "choices": ["It is fixed directly to the motor shaft", "The clutch drives it backward", "The battery pushes air through it", "The chuck jaws pump it"],
+      "choices": [
+        "It is fixed directly to the motor shaft",
+        "The clutch drives it backward",
+        "The battery pushes air through it",
+        "The chuck jaws pump it"
+      ],
       "answer": 0,
       "explain": "The fan and rotor share the high-speed motor shaft, upstream of the gearbox reduction."
     }

@@ -2,193 +2,332 @@
   "schema": 1,
   "id": "rocket-engine",
   "title": "Rocket Engine",
-  "subtitle": "Gas-generator liquid engine",
+  "subtitle": "Burns fuel and oxidiser to push a rocket",
   "category": "Aerospace",
   "accent": "#E07A3D",
   "scale": "≈ 3 m tall",
   "summary": "A liquid rocket is two pumps and a shaped hole. The pumps shove fuel and oxidiser into a chamber; they burn; the hole — a tight throat opening into a bell — turns that heat into a supersonic jet. A sip of the same propellants is burned off to the side, just to spin the pumps. Everything else is plumbing, cooling, and the right to point the jet.",
   "model": "rocket_engine",
   "cutAxis": "x",
-  "restRotation": [0.18, 1.08, 0],
+  "restRotation": [
+    0.18,
+    1.08,
+    0
+  ],
   "parts": [
     {
       "id": "nozzle",
-      "nodes": ["nozzle"],
+      "nodes": [
+        "nozzle"
+      ],
       "name": "Bell Nozzle",
       "short": "Turns heat into a supersonic jet",
       "detail": "A de Laval nozzle: the flow chokes at the throat, then expands against a carefully curved wall until it is going far faster than sound. The shape is not a cone. It is closer to a parabola (a Rao contour), because that gives more thrust for a given length. The copper colour is the wall doing a second job — it is a heat exchanger, carrying kerosene up from the rim to keep the metal below its melting point while the gas inside is at several thousand degrees.",
       "layer": 0,
-      "explode": [0, -2.2, 0]
+      "explode": [
+        0,
+        -2.2,
+        0
+      ]
     },
     {
       "id": "cooling_tubes",
-      "nodes": ["cooling_tubes"],
+      "nodes": [
+        "cooling_tubes"
+      ],
       "name": "Cooling Tubes",
       "short": "The wall is a radiator, run backwards",
       "detail": "Dozens of tubes brazed into the bell itself. Fuel is pumped in at the nozzle exit, runs up toward the throat, and arrives at the injector already hot — regenerative cooling. The tubes are the wall, not a jacket around it. If they burn through, the engine is seconds from coming apart. The bands are manifolds: they collect and redistribute the coolant so no meridian runs dry.",
       "layer": 0,
-      "explode": [0, -1.6, 0.8]
+      "explode": [
+        0,
+        -1.6,
+        0.8
+      ]
     },
     {
       "id": "combustion_chamber",
-      "nodes": ["combustion_chamber"],
+      "nodes": [
+        "combustion_chamber"
+      ],
       "name": "Combustion Chamber",
       "short": "Where the flame actually lives",
       "detail": "A short, thick-walled cylinder above the throat. Pressure here is tens of atmospheres; temperature is high enough to melt the wall, which survives only because coolant is moving through it. Stay time is milliseconds. Nothing is stored, nothing is cyclic — unlike a piston engine, this is a continuous fire with a hole at the bottom.",
       "layer": 1,
-      "explode": [0, 0.6, 0]
+      "explode": [
+        0,
+        0.6,
+        0
+      ]
     },
     {
       "id": "injector",
-      "nodes": ["injector"],
+      "nodes": [
+        "injector"
+      ],
       "name": "Injector",
       "short": "Mixes the two liquids so they can burn",
       "detail": "A pintle in the centre and a ring of orifices around it. Fuel and oxidiser meet as a conical sheet and a set of jets, mix in centimetres, and ignite. The pintle can move, which changes the gap and so the mixture ratio — that is how this kind of engine throttles, down to a fraction of rated thrust, without going unstable. Get the pattern wrong and the chamber sings, then cracks.",
       "layer": 3,
-      "explode": [0, 1.7, 0]
+      "explode": [
+        0,
+        1.7,
+        0
+      ]
     },
     {
       "id": "igniter",
-      "nodes": ["igniter"],
+      "nodes": [
+        "igniter"
+      ],
       "name": "Igniter",
       "short": "Starts the fire, then gets out of the way",
       "detail": "A torch of spark and a little propellant, aimed into the chamber (or into the gas generator) at start-up. Once the main flame is lit it is self-sustaining and the igniter is done. Most failures that look like 'it didn't light' are this torch arriving late, or not at all, while the pumps are already flooding the chamber with mixed propellant.",
       "layer": 3,
-      "explode": [0.4, 1.6, 0.5]
+      "explode": [
+        0.4,
+        1.6,
+        0.5
+      ]
     },
     {
       "id": "fuel_pump",
-      "nodes": ["fuel_pump"],
+      "nodes": [
+        "fuel_pump"
+      ],
       "name": "Fuel Pump",
       "short": "Shoves kerosene in against chamber pressure",
       "detail": "A centrifugal impeller in a volute. Chamber pressure is tens of atmospheres; tank pressure is a couple. The difference is this wheel. It shares a shaft with the oxidiser pump and the turbine, so when the turbine spins, both liquids move. Fuel also does the cooling, so this pump is feeding the tubes in the bell as well as the injector.",
       "layer": 2,
-      "explode": [1.8, 0.5, 0],
-      "motion": { "spin": { "axis": "x", "ratio": 6 } }
+      "explode": [
+        1.8,
+        0.5,
+        0
+      ],
+      "motion": {
+        "spin": {
+          "axis": "x",
+          "ratio": 6
+        }
+      }
     },
     {
       "id": "ox_pump",
-      "nodes": ["ox_pump"],
+      "nodes": [
+        "ox_pump"
+      ],
       "name": "Oxidiser Pump",
       "short": "The denser liquid, the larger wheel",
       "detail": "Liquid oxygen, or whatever the oxidiser is, has to arrive at the same moment as the fuel and at a matching pressure. The inducer on the inlet is there to stop the pump cavitating — spinning a cold, boiling liquid is an invitation to vapour bubbles, and bubbles here mean the mixture ratio in the chamber wanders, then the wall burns.",
       "layer": 2,
-      "explode": [1.4, 0.5, -0.3],
-      "motion": { "spin": { "axis": "x", "ratio": 6 } }
+      "explode": [
+        1.4,
+        0.5,
+        -0.3
+      ],
+      "motion": {
+        "spin": {
+          "axis": "x",
+          "ratio": 6
+        }
+      }
     },
     {
       "id": "turbine",
-      "nodes": ["turbine"],
+      "nodes": [
+        "turbine"
+      ],
       "name": "Turbine",
       "short": "The only reason the pumps turn",
       "detail": "Hot gas from the gas generator hits a disc of blades and turns the shaft that runs both pumps. It is a parasite: every gram of propellant burned here is a gram that did not go through the nozzle. Gas-generator engines live with that loss because the plumbing is simple. Staged-combustion engines feed this gas back into the chamber instead, and pay for it in valves.",
       "layer": 2,
-      "explode": [2.2, 0.5, 0],
-      "motion": { "spin": { "axis": "x", "ratio": 6 } }
+      "explode": [
+        2.2,
+        0.5,
+        0
+      ],
+      "motion": {
+        "spin": {
+          "axis": "x",
+          "ratio": 6
+        }
+      }
     },
     {
       "id": "gas_generator",
-      "nodes": ["gas_generator"],
+      "nodes": [
+        "gas_generator"
+      ],
       "name": "Gas Generator",
       "short": "A tiny rocket whose only job is to spin the pumps",
       "detail": "A sip of fuel and oxidiser, burned fuel-rich so the turbine blades do not melt, dumped overboard (or into the nozzle) once they have done their work. It is a complete rocket engine in miniature: injector, chamber, exhaust. Start it first, the pumps come up, the main chamber can light. Shut it down and everything stops.",
       "layer": 2,
-      "explode": [2.0, 1.2, 0]
+      "explode": [
+        2.0,
+        1.2,
+        0
+      ]
     },
     {
       "id": "turbine_exhaust",
-      "nodes": ["turbine_exhaust"],
+      "nodes": [
+        "turbine_exhaust"
+      ],
       "name": "Turbine Exhaust",
       "short": "The dump pipe on the side of the bell",
       "detail": "Spent generator gas, still hot, still moving. On this cycle it is not reused. The pipe runs down the bell and dumps into the nozzle flow, which is why gas-generator engines have that one sooty streak up the side. Staged combustion does not have this pipe — that is the visible difference, and the efficiency difference.",
       "layer": 1,
-      "explode": [1.5, -0.8, 0]
+      "explode": [
+        1.5,
+        -0.8,
+        0
+      ]
     },
     {
       "id": "fuel_valve",
-      "nodes": ["fuel_valve"],
+      "nodes": [
+        "fuel_valve"
+      ],
       "name": "Fuel Valve",
       "short": "The last gate before the injector",
       "detail": "A ball or poppet, hydraulically or pneumatically driven, between the pump and the injector. Start-up and shutdown are a choreography of these valves: oxidiser often leads, fuel follows, and the igniter has to be already lit. A valve that sticks open at shutdown dumps propellant into a hot chamber; one that sticks closed on the pad is a scrub.",
       "layer": 1,
-      "explode": [0.8, 1.1, 0.6]
+      "explode": [
+        0.8,
+        1.1,
+        0.6
+      ]
     },
     {
       "id": "ox_valve",
-      "nodes": ["ox_valve"],
+      "nodes": [
+        "ox_valve"
+      ],
       "name": "Oxidiser Valve",
       "short": "The other last gate — and the more dangerous one",
       "detail": "Same job as the fuel valve, colder metal, less forgiveness. Oxygen-rich gas will eat most steels; the seat and the body are alloys chosen for that, not for strength. Sequence it late and the chamber runs fuel-rich and sooty. Sequence it early and it runs oxygen-rich and burns through.",
       "layer": 1,
-      "explode": [-0.6, 1.1, -0.7]
+      "explode": [
+        -0.6,
+        1.1,
+        -0.7
+      ]
     },
     {
       "id": "gimbal",
-      "nodes": ["gimbal"],
+      "nodes": [
+        "gimbal"
+      ],
       "name": "Gimbal",
       "short": "The bearing the whole engine steers on",
       "detail": "A universal joint at the top of the chamber. The engine hangs from it; the actuators push the chamber around it. Thrust vector control, for a vehicle with no wings, is this bearing plus two hydraulic rams. The flexible lines above it are there so the propellant can follow the engine as it nods.",
       "layer": 0,
-      "explode": [0, 2.4, 0]
+      "explode": [
+        0,
+        2.4,
+        0
+      ]
     },
     {
       "id": "actuators",
-      "nodes": ["actuators"],
+      "nodes": [
+        "actuators"
+      ],
       "name": "Gimbal Actuators",
       "short": "Two rams, two axes, a pointing jet",
       "detail": "Hydraulic cylinders from the vehicle thrust structure down to the chamber. One nods the engine, the other yaws it. A few degrees of bell is enough to steer a launcher. They have to hold against the full thrust, which is why they look undersized and are not.",
       "layer": 0,
-      "explode": [0.9, 0.8, 1.2]
+      "explode": [
+        0.9,
+        0.8,
+        1.2
+      ]
     },
     {
       "id": "fuel_feed",
-      "nodes": ["fuel_feed"],
+      "nodes": [
+        "fuel_feed"
+      ],
       "name": "Fuel Feed",
       "short": "From the tank, through the pump, to the valve",
       "detail": "A low-pressure duct from the vehicle, then a high-pressure duct from the pump discharge to the valve. The diameter drop is the whole story: tanks are a fraction of a bar, the chamber is tens. The pump is the step between them. The upper flange is where this engine stops and the stage begins.",
       "layer": 0,
-      "explode": [1.2, 2.0, 0.4]
+      "explode": [
+        1.2,
+        2.0,
+        0.4
+      ]
     },
     {
       "id": "ox_feed",
-      "nodes": ["ox_feed"],
+      "nodes": [
+        "ox_feed"
+      ],
       "name": "Oxidiser Feed",
       "short": "The cold line, and the thicker one",
       "detail": "Oxidiser arrives denser and usually in greater mass-flow than the fuel, so the duct is fatter. It is also much colder, which is why it frosts on the pad. Insulation, bellows for gimbal, and a valve at the end: the same three problems as the fuel side, at a temperature that makes seals interesting.",
       "layer": 0,
-      "explode": [-1.1, 2.0, -0.5]
+      "explode": [
+        -1.1,
+        2.0,
+        -0.5
+      ]
     }
   ],
   "steps": [
     {
       "title": "A sip to spin the pumps",
       "body": "The gas generator burns a little fuel and oxidiser and blows it through a turbine. That is the only reason the pumps turn. Until this fire is lit, nothing else can start.",
-      "focus": ["gas_generator", "turbine"]
+      "focus": [
+        "gas_generator",
+        "turbine"
+      ]
     },
     {
       "title": "Shove",
       "body": "Two centrifugal pumps, on the same shaft, raise tank pressure to chamber pressure. Fuel also goes down the bell and back up the cooling tubes on its way. Oxidiser takes a shorter path.",
-      "focus": ["fuel_pump", "ox_pump", "cooling_tubes"]
+      "focus": [
+        "fuel_pump",
+        "ox_pump",
+        "cooling_tubes"
+      ]
     },
     {
       "title": "Mix and burn",
       "body": "The pintle and the orifice ring throw the two liquids at each other in the chamber. They mix in centimetres and burn continuously. Stay time is milliseconds; there is no cycle.",
-      "focus": ["injector", "combustion_chamber", "igniter"]
+      "focus": [
+        "injector",
+        "combustion_chamber",
+        "igniter"
+      ]
     },
     {
       "title": "Choke, then expand",
       "body": "The throat is sized so the flow reaches Mach 1 there and cannot go back. Downstream the bell opens, the gas expands and accelerates, and most of the thrust is born in that expansion, not in the chamber.",
-      "focus": ["nozzle"]
+      "focus": [
+        "nozzle"
+      ]
     },
     {
       "title": "Point the jet",
       "body": "The engine hangs from a gimbal. Two hydraulic rams nod and yaw it a few degrees. For a launcher that is the steering wheel: no wings, no rudder, just a bell you can tilt.",
-      "focus": ["gimbal", "actuators"]
+      "focus": [
+        "gimbal",
+        "actuators"
+      ]
     }
   ],
   "quiz": [
-    { "type": "identify", "prompt": "Tap the part that turns heat into a supersonic exhaust.", "partId": "nozzle" },
-    { "type": "identify", "prompt": "Tap the tiny rocket whose only job is to spin the pumps.", "partId": "gas_generator" },
+    {
+      "type": "identify",
+      "prompt": "Tap the part that turns heat into a supersonic exhaust.",
+      "partId": "nozzle"
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the tiny rocket whose only job is to spin the pumps.",
+      "partId": "gas_generator"
+    },
     {
       "type": "choice",
       "prompt": "Why is the nozzle wall made of tubes carrying fuel?",
@@ -201,7 +340,11 @@
       "answer": 1,
       "explain": "Regenerative cooling: the fuel is the coolant. It picks up heat in the bell and arrives at the injector already warm, which also helps it burn."
     },
-    { "type": "identify", "prompt": "Tap the injector feature that lets this engine throttle.", "partId": "injector" },
+    {
+      "type": "identify",
+      "prompt": "Tap the injector feature that lets this engine throttle.",
+      "partId": "injector"
+    },
     {
       "type": "choice",
       "prompt": "In a gas-generator cycle, what happens to the turbine's exhaust?",
@@ -214,12 +357,25 @@
       "answer": 1,
       "explain": "That dump is the efficiency cost of a simple cycle. Staged combustion puts the gas back into the chamber instead."
     },
-    { "type": "identify", "prompt": "Tap the bearing the engine steers on.", "partId": "gimbal" },
-    { "type": "identify", "prompt": "Tap the dump pipe that gives gas-generator engines their sooty streak.", "partId": "turbine_exhaust" },
+    {
+      "type": "identify",
+      "prompt": "Tap the bearing the engine steers on.",
+      "partId": "gimbal"
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the dump pipe that gives gas-generator engines their sooty streak.",
+      "partId": "turbine_exhaust"
+    },
     {
       "type": "choice",
       "prompt": "The throat of a de Laval nozzle is sized so that the flow there is:",
-      "choices": ["At rest", "Subsonic", "Mach 1 — choked", "Already supersonic"],
+      "choices": [
+        "At rest",
+        "Subsonic",
+        "Mach 1 — choked",
+        "Already supersonic"
+      ],
       "answer": 2,
       "explain": "Once the throat is choked, raising chamber pressure no longer changes the Mach number there. It only raises mass flow. Expansion to supersonic happens in the bell, downstream."
     }

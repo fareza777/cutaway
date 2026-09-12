@@ -1,6 +1,6 @@
 {
   "title": "Pengeras Suara",
-  "subtitle": "Kerucut ringan yang digerakkan motor linear",
+  "subtitle": "Mengubah sinyal listrik menjadi suara",
   "scale": "diameter kerucut sekitar 200 mm",
   "summary": "Pengeras suara menempatkan kumparan kawat di dalam celah medan magnet lalu merekatkannya pada kerucut. Arus audio pada kumparan menghasilkan gaya sepanjang sumbu, kerucut mendorong dan menarik udara, lalu perubahan tekanan merambat sebagai bunyi. Magnet tetap diam; kerucut bergerak maju-mundur sejauh beberapa milimeter hingga ribuan kali per detik.",
   "parts": {

@@ -1,6 +1,6 @@
 {
   "title": "Bor Nirkabel Brushless 18 V",
-  "subtitle": "Arus baterai diubah menjadi torsi yang terkendali pada cekam",
+  "subtitle": "Alat bertenaga baterai untuk mengebor dan memasang sekrup",
   "scale": "kelas 18 V · panjang sekitar 20 cm",
   "summary": "Bor nirkabel mengubah energi kimia di dalam baterai litium-ion menjadi putaran yang dapat diatur. Tarikan pelatuk memberi perintah kepada pengatur kecepatan elektronik berbasis PWM, bukan sekadar sakelar hidup-mati. Motor brushless memutar roda gigi planet dua tahap yang menurunkan kecepatan dan memperbesar torsi. Kopling torsi lalu dapat membatasi gaya pengencangan sebelum poros memutar cekam tiga rahang.",
   "parts": {
@@ -136,7 +136,12 @@
     },
     {
       "prompt": "Mengapa pelatuk bukan sekadar sakelar hidup-mati?",
-      "choices": ["Pelatuk membuka cekam secara mekanis", "Pelatuk mengatur siklus kerja PWM dan arus motor", "Pelatuk mengubah kimia sel", "Pelatuk menggerakkan kipas dengan tangan"],
+      "choices": [
+        "Pelatuk membuka cekam secara mekanis",
+        "Pelatuk mengatur siklus kerja PWM dan arus motor",
+        "Pelatuk mengubah kimia sel",
+        "Pelatuk menggerakkan kipas dengan tangan"
+      ],
       "explain": "Pengatur kecepatan elektronik mengubah posisi pelatuk menjadi penyaklaran transistor berfrekuensi tinggi agar kecepatan dan torsi dapat dikendalikan."
     },
     {
@@ -144,7 +149,12 @@
     },
     {
       "prompt": "Apa yang dikorbankan reduksi roda gigi planet untuk memperoleh torsi poros lebih besar?",
-      "choices": ["Tegangan baterai", "Kecepatan putar", "Keselarasan cekam", "Kapasitas sel"],
+      "choices": [
+        "Tegangan baterai",
+        "Kecepatan putar",
+        "Keselarasan cekam",
+        "Kapasitas sel"
+      ],
       "explain": "Jika rugi-rugi diabaikan, penurunan kecepatan keluaran menaikkan torsi kira-kira sebesar rasio roda gigi."
     },
     {
@@ -152,7 +162,12 @@
     },
     {
       "prompt": "Mengapa tiga rahang cekam digerakkan bersamaan?",
-      "choices": ["Agar berbagai ukuran batang tetap terpusat pada poros", "Untuk mendinginkan mata bor", "Untuk membalik motor", "Untuk menyeimbangkan sel baterai"],
+      "choices": [
+        "Agar berbagai ukuran batang tetap terpusat pada poros",
+        "Untuk mendinginkan mata bor",
+        "Untuk membalik motor",
+        "Untuk menyeimbangkan sel baterai"
+      ],
       "explain": "Gerak yang sama pada tiga rahang berjarak 120 derajat menjaga batang bulat atau segi enam tetap di tengah."
     },
     {
@@ -160,7 +175,12 @@
     },
     {
       "prompt": "Mengapa kipas berputar pada kecepatan motor, bukan kecepatan poros keluaran?",
-      "choices": ["Kipas terpasang langsung pada poros motor", "Kopling memutarnya ke belakang", "Baterai mendorong udara melewatinya", "Rahang cekam memompanya"],
+      "choices": [
+        "Kipas terpasang langsung pada poros motor",
+        "Kopling memutarnya ke belakang",
+        "Baterai mendorong udara melewatinya",
+        "Rahang cekam memompanya"
+      ],
       "explain": "Kipas dan rotor berbagi poros motor berkecepatan tinggi sebelum putaran diturunkan oleh roda gigi."
     }
   ]

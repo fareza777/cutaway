@@ -1,6 +1,6 @@
 {
   "title": "Hard Disk",
-  "subtitle": "Penyimpan magnetik berputar di dalam ruang tertutup",
+  "subtitle": "Menyimpan data secara magnetis di piringan yang berputar",
   "scale": "ukuran sekitar 3,5 inci",
   "summary": "Hard disk menyimpan bit sebagai daerah magnetik kecil pada piringan berputar. Kepala baca/tulis melayang hanya beberapa nanometer di atas permukaan, ditopang lapisan udara yang ikut terseret oleh piringan. Motor kumparan suara mengayunkan lengan kepala ke trek yang dipilih. Seluruh mekanisme presisi ini bekerja di dalam ruang bersih yang tertutup rapat.",
   "parts": {

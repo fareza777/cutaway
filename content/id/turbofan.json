@@ -1,6 +1,6 @@
 {
   "title": "Mesin Jet",
-  "subtitle": "Turbofan rasio pintas tinggi (high-bypass)",
+  "subtitle": "Mesin yang mendorong pesawat penumpang di udara",
   "scale": "diameter kipas sekitar 3 m",
   "summary": "Turbofan pada dasarnya adalah kipas dengan motor yang sangat rumit. Inti mesin membakar bahan bakar untuk memutar turbin, turbin memutar kipas, dan kipas—bukan semburan gas buang—menghasilkan sebagian besar gaya dorong. Sekitar sembilan puluh persen udara yang masuk tidak pernah mencapai nyala api.",
   "parts": {

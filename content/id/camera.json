@@ -1,6 +1,6 @@
 {
   "title": "Kamera",
-  "subtitle": "Ruang gelap dengan pengatur waktu",
+  "subtitle": "Merekam gambar dengan menjatuhkan cahaya ke sensor",
   "scale": "lebar sekitar 140 mm",
   "summary": "Kamera pada dasarnya merupakan ruang gelap dengan satu jalur masuk cahaya dan mekanisme yang membukanya selama sepersekian detik. Lensa memusatkan gambar, diafragma mengatur banyaknya cahaya dan kedalaman ruang, rana menentukan durasi, lalu sensor merekam hasilnya. Pentaprisma memungkinkan pengguna kamera SLR melihat melalui lensa yang sama dengan lensa yang membentuk gambar pada sensor.",
   "parts": {

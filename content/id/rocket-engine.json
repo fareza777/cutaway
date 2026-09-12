@@ -1,6 +1,6 @@
 {
   "title": "Mesin Roket Cair",
-  "subtitle": "Mesin siklus generator gas",
+  "subtitle": "Membakar bahan bakar dan oksidator untuk mendorong roket",
   "scale": "tinggi sekitar 3 m",
   "summary": "Mesin roket cair memakai dua pompa untuk mendorong bahan bakar dan oksidator ke ruang bakar. Pembakaran menghasilkan gas sangat panas, lalu leher sempit dan lonceng nosel mengubah energi panasnya menjadi semburan supersonik. Sebagian kecil propelan dibakar terpisah di generator gas hanya untuk memutar turbin dan kedua pompa. Komponen lain mengatur aliran, mendinginkan dinding, dan mengarahkan gaya dorong.",
   "parts": {

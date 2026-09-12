@@ -2,41 +2,316 @@
   "schema": 1,
   "id": "electric-motor",
   "title": "Electric Motor",
-  "subtitle": "Brushed DC: a coil that keeps chasing a field",
+  "subtitle": "Turns electricity into rotation",
   "category": "Mechanical",
   "accent": "#C4783A",
   "scale": "≈ 80 mm diameter",
   "summary": "A brushed DC motor is a rotary electromagnet that never quite catches up. Current in the armature makes a field; that field tries to align with the stator; just as it would, the commutator reverses the current so the chase starts again. The shaft is what you came for. The commutator is why it spins instead of locking.",
   "model": "electric_motor",
   "cutAxis": "x",
-  "restRotation": [0.14, -0.52, 0],
+  "restRotation": [
+    0.14,
+    -0.52,
+    0
+  ],
   "parts": [
-    { "id": "housing", "nodes": ["housing"], "name": "Housing", "short": "The can that is also a magnetic return path", "detail": "A steel tube. It holds the end caps and completes the magnetic circuit around the field windings. The through-bolts are how the whole stack is clamped so the air gap stays the air gap.", "layer": 0, "explode": [0, 0, 2.4] },
-    { "id": "end_cap", "nodes": ["end_cap"], "name": "End Cap", "short": "Holds a bearing and the brush gear", "detail": "A plate that closes the can, locates the bearing, and on this end also carries the brush holders. Take it off and the armature slides out — which is how these motors are serviced, and how the brushes get replaced.", "layer": 0, "explode": [0, 2.4, 0] },
-    { "id": "stator", "nodes": ["stator"], "name": "Stator", "short": "Two poles, iron, the field that does not turn", "detail": "Salient poles inside the can. In a small DC motor they are just shaped iron with a coil around each. Their field is fixed in the frame. The armature is what rotates, always trying to line up, never allowed to.", "layer": 1, "explode": [2.0, 0, 0] },
-    { "id": "field_windings", "nodes": ["field_windings"], "name": "Field Windings", "short": "Electromagnets that make the stator a magnet", "detail": "Copper around the pole shoes. Direct current here makes a steady field. Some motors use permanent magnets instead and skip this part; the physics of the chase is the same.", "layer": 2, "explode": [1.6, 0.5, 0] },
-    { "id": "armature", "nodes": ["armature"], "name": "Armature Core", "short": "The iron that turns, slotted for windings", "detail": "A laminated stack so eddy currents do not cook it. Slots around the rim hold the armature windings. This iron is the rotor's magnetic circuit; without it the coil's field would be a feeble loop in air.", "layer": 3, "explode": [0, -0.5, 0], "motion": { "spin": { "axis": "y", "ratio": 3 } } },
-    { "id": "armature_windings", "nodes": ["armature_windings"], "name": "Armature Windings", "short": "The coils that are always almost aligned", "detail": "Loops of copper dropped into the slots and connected to commutator bars. Current in these, in the stator field, is torque. Reverse the current and the torque reverses — which is exactly what the commutator does every half-turn.", "layer": 3, "explode": [0, 0, -2.0], "motion": { "spin": { "axis": "y", "ratio": 3 } } },
-    { "id": "commutator", "nodes": ["commutator"], "name": "Commutator", "short": "A rotary switch that reverses the current in time", "detail": "A ring of copper bars, insulated from each other, each connected to an armature coil. The brushes sit on this ring. As the shaft turns, each coil is handed from one brush polarity to the other just as it finishes aligning — so it is pushed onward instead of holding still.", "layer": 3, "explode": [0, 2.0, 1.1], "motion": { "spin": { "axis": "y", "ratio": 3 } } },
-    { "id": "brushes", "nodes": ["brushes"], "name": "Brushes", "short": "Carbon blocks that wipe the commutator", "detail": "They slide. That is the whole trick and the whole wear item. Carbon is used because it conducts, lubricates a little, and wears instead of wearing the copper. Sparks here are the current being interrupted; too much sparking is a motor asking for new brushes.", "layer": 2, "explode": [0.7, 0.9, 0] },
-    { "id": "shaft", "nodes": ["shaft"], "name": "Shaft", "short": "What you actually wanted", "detail": "A steel rod through the armature, the commutator, both bearings and the fan. Everything else exists to turn this. Keyways and flats on the ends are how the load attaches.", "layer": 4, "explode": [0, -1.2, 0], "motion": { "spin": { "axis": "y", "ratio": 3 } } },
-    { "id": "bearings", "nodes": ["bearings"], "name": "Bearings", "short": "Two rings that let the shaft spin in a can", "detail": "Usually ball bearings, sometimes sleeves on cheap motors. They take radial load from the belt or the gear, and a little thrust. A motor that howls is often these, not the windings.", "layer": 2, "explode": [0.5, 0.6, 0.5] },
-    { "id": "fan", "nodes": ["fan"], "name": "Cooling Fan", "short": "The windings' only air conditioning", "detail": "A stamped impeller on the shaft. Copper has resistance; resistance is heat. This fan is why a motor can be rated for continuous duty instead of for a few minutes. Block the vents and the varnish lets go.", "layer": 1, "explode": [0, -1.5, 0], "motion": { "spin": { "axis": "y", "ratio": 3 } } },
-    { "id": "terminals", "nodes": ["terminals"], "name": "Terminals", "short": "Where the battery arrives", "detail": "Two posts on the end cap. Swap them and the field — or the armature — reverses relative to the other, and the shaft runs the other way. That is reversing a DC motor: two wires.", "layer": 1, "explode": [0.4, 1.5, 0.3] }
+    {
+      "id": "housing",
+      "nodes": [
+        "housing"
+      ],
+      "name": "Housing",
+      "short": "The can that is also a magnetic return path",
+      "detail": "A steel tube. It holds the end caps and completes the magnetic circuit around the field windings. The through-bolts are how the whole stack is clamped so the air gap stays the air gap.",
+      "layer": 0,
+      "explode": [
+        0,
+        0,
+        2.4
+      ]
+    },
+    {
+      "id": "end_cap",
+      "nodes": [
+        "end_cap"
+      ],
+      "name": "End Cap",
+      "short": "Holds a bearing and the brush gear",
+      "detail": "A plate that closes the can, locates the bearing, and on this end also carries the brush holders. Take it off and the armature slides out — which is how these motors are serviced, and how the brushes get replaced.",
+      "layer": 0,
+      "explode": [
+        0,
+        2.4,
+        0
+      ]
+    },
+    {
+      "id": "stator",
+      "nodes": [
+        "stator"
+      ],
+      "name": "Stator",
+      "short": "Two poles, iron, the field that does not turn",
+      "detail": "Salient poles inside the can. In a small DC motor they are just shaped iron with a coil around each. Their field is fixed in the frame. The armature is what rotates, always trying to line up, never allowed to.",
+      "layer": 1,
+      "explode": [
+        2.0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "field_windings",
+      "nodes": [
+        "field_windings"
+      ],
+      "name": "Field Windings",
+      "short": "Electromagnets that make the stator a magnet",
+      "detail": "Copper around the pole shoes. Direct current here makes a steady field. Some motors use permanent magnets instead and skip this part; the physics of the chase is the same.",
+      "layer": 2,
+      "explode": [
+        1.6,
+        0.5,
+        0
+      ]
+    },
+    {
+      "id": "armature",
+      "nodes": [
+        "armature"
+      ],
+      "name": "Armature Core",
+      "short": "The iron that turns, slotted for windings",
+      "detail": "A laminated stack so eddy currents do not cook it. Slots around the rim hold the armature windings. This iron is the rotor's magnetic circuit; without it the coil's field would be a feeble loop in air.",
+      "layer": 3,
+      "explode": [
+        0,
+        -0.5,
+        0
+      ],
+      "motion": {
+        "spin": {
+          "axis": "y",
+          "ratio": 3
+        }
+      }
+    },
+    {
+      "id": "armature_windings",
+      "nodes": [
+        "armature_windings"
+      ],
+      "name": "Armature Windings",
+      "short": "The coils that are always almost aligned",
+      "detail": "Loops of copper dropped into the slots and connected to commutator bars. Current in these, in the stator field, is torque. Reverse the current and the torque reverses — which is exactly what the commutator does every half-turn.",
+      "layer": 3,
+      "explode": [
+        0,
+        0,
+        -2.0
+      ],
+      "motion": {
+        "spin": {
+          "axis": "y",
+          "ratio": 3
+        }
+      }
+    },
+    {
+      "id": "commutator",
+      "nodes": [
+        "commutator"
+      ],
+      "name": "Commutator",
+      "short": "A rotary switch that reverses the current in time",
+      "detail": "A ring of copper bars, insulated from each other, each connected to an armature coil. The brushes sit on this ring. As the shaft turns, each coil is handed from one brush polarity to the other just as it finishes aligning — so it is pushed onward instead of holding still.",
+      "layer": 3,
+      "explode": [
+        0,
+        2.0,
+        1.1
+      ],
+      "motion": {
+        "spin": {
+          "axis": "y",
+          "ratio": 3
+        }
+      }
+    },
+    {
+      "id": "brushes",
+      "nodes": [
+        "brushes"
+      ],
+      "name": "Brushes",
+      "short": "Carbon blocks that wipe the commutator",
+      "detail": "They slide. That is the whole trick and the whole wear item. Carbon is used because it conducts, lubricates a little, and wears instead of wearing the copper. Sparks here are the current being interrupted; too much sparking is a motor asking for new brushes.",
+      "layer": 2,
+      "explode": [
+        0.7,
+        0.9,
+        0
+      ]
+    },
+    {
+      "id": "shaft",
+      "nodes": [
+        "shaft"
+      ],
+      "name": "Shaft",
+      "short": "What you actually wanted",
+      "detail": "A steel rod through the armature, the commutator, both bearings and the fan. Everything else exists to turn this. Keyways and flats on the ends are how the load attaches.",
+      "layer": 4,
+      "explode": [
+        0,
+        -1.2,
+        0
+      ],
+      "motion": {
+        "spin": {
+          "axis": "y",
+          "ratio": 3
+        }
+      }
+    },
+    {
+      "id": "bearings",
+      "nodes": [
+        "bearings"
+      ],
+      "name": "Bearings",
+      "short": "Two rings that let the shaft spin in a can",
+      "detail": "Usually ball bearings, sometimes sleeves on cheap motors. They take radial load from the belt or the gear, and a little thrust. A motor that howls is often these, not the windings.",
+      "layer": 2,
+      "explode": [
+        0.5,
+        0.6,
+        0.5
+      ]
+    },
+    {
+      "id": "fan",
+      "nodes": [
+        "fan"
+      ],
+      "name": "Cooling Fan",
+      "short": "The windings' only air conditioning",
+      "detail": "A stamped impeller on the shaft. Copper has resistance; resistance is heat. This fan is why a motor can be rated for continuous duty instead of for a few minutes. Block the vents and the varnish lets go.",
+      "layer": 1,
+      "explode": [
+        0,
+        -1.5,
+        0
+      ],
+      "motion": {
+        "spin": {
+          "axis": "y",
+          "ratio": 3
+        }
+      }
+    },
+    {
+      "id": "terminals",
+      "nodes": [
+        "terminals"
+      ],
+      "name": "Terminals",
+      "short": "Where the battery arrives",
+      "detail": "Two posts on the end cap. Swap them and the field — or the armature — reverses relative to the other, and the shaft runs the other way. That is reversing a DC motor: two wires.",
+      "layer": 1,
+      "explode": [
+        0.4,
+        1.5,
+        0.3
+      ]
+    }
   ],
   "steps": [
-    { "title": "A field that does not turn", "body": "Current in the field windings makes the stator a magnet. Its poles are fixed to the can. This is the thing the rotor will chase.", "focus": ["stator", "field_windings"] },
-    { "title": "A field that does", "body": "Current in the armature windings makes a second magnet, this one free to rotate. Magnets align. If that were the end, the shaft would click to a stop.", "focus": ["armature", "armature_windings"] },
-    { "title": "Reverse just in time", "body": "The commutator is a rotary switch. As each coil finishes aligning, the brushes hand it the opposite polarity. The chase never ends. That is rotation.", "focus": ["commutator", "brushes"] },
-    { "title": "The shaft is the point", "body": "Everything else exists to turn a steel rod in two bearings. Hang a load on it and the same current now does work.", "focus": ["shaft", "bearings"] },
-    { "title": "Dump the heat", "body": "Windings are resistors. The fan on the shaft is the cooling system. No fan, no continuous duty.", "focus": ["fan", "housing"] }
+    {
+      "title": "A field that does not turn",
+      "body": "Current in the field windings makes the stator a magnet. Its poles are fixed to the can. This is the thing the rotor will chase.",
+      "focus": [
+        "stator",
+        "field_windings"
+      ]
+    },
+    {
+      "title": "A field that does",
+      "body": "Current in the armature windings makes a second magnet, this one free to rotate. Magnets align. If that were the end, the shaft would click to a stop.",
+      "focus": [
+        "armature",
+        "armature_windings"
+      ]
+    },
+    {
+      "title": "Reverse just in time",
+      "body": "The commutator is a rotary switch. As each coil finishes aligning, the brushes hand it the opposite polarity. The chase never ends. That is rotation.",
+      "focus": [
+        "commutator",
+        "brushes"
+      ]
+    },
+    {
+      "title": "The shaft is the point",
+      "body": "Everything else exists to turn a steel rod in two bearings. Hang a load on it and the same current now does work.",
+      "focus": [
+        "shaft",
+        "bearings"
+      ]
+    },
+    {
+      "title": "Dump the heat",
+      "body": "Windings are resistors. The fan on the shaft is the cooling system. No fan, no continuous duty.",
+      "focus": [
+        "fan",
+        "housing"
+      ]
+    }
   ],
   "quiz": [
-    { "type": "identify", "prompt": "Tap the rotary switch that keeps the motor from locking at the first alignment.", "partId": "commutator" },
-    { "type": "choice", "prompt": "Why doesn't a DC motor just snap to a stop like two magnets?", "choices": ["The shaft is too heavy", "The commutator reverses the armature current every half-turn, so alignment is always in the future", "The brushes are springs", "The fan keeps it moving"], "answer": 1, "explain": "Without commutation you have an electromagnet that finds north and stays there. With it, north keeps moving." },
-    { "type": "identify", "prompt": "Tap the carbon blocks that wipe the commutator.", "partId": "brushes" },
-    { "type": "identify", "prompt": "Tap the iron that turns.", "partId": "armature" },
-    { "type": "choice", "prompt": "How do you reverse a simple DC motor?", "choices": ["Fit a gearbox", "Swap the two supply wires", "Turn the fan around", "Add more brushes"], "answer": 1, "explain": "Reverse armature relative to field and torque reverses. Two wires." },
-    { "type": "identify", "prompt": "Tap what you actually wanted — the bit a load attaches to.", "partId": "shaft" }
+    {
+      "type": "identify",
+      "prompt": "Tap the rotary switch that keeps the motor from locking at the first alignment.",
+      "partId": "commutator"
+    },
+    {
+      "type": "choice",
+      "prompt": "Why doesn't a DC motor just snap to a stop like two magnets?",
+      "choices": [
+        "The shaft is too heavy",
+        "The commutator reverses the armature current every half-turn, so alignment is always in the future",
+        "The brushes are springs",
+        "The fan keeps it moving"
+      ],
+      "answer": 1,
+      "explain": "Without commutation you have an electromagnet that finds north and stays there. With it, north keeps moving."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the carbon blocks that wipe the commutator.",
+      "partId": "brushes"
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the iron that turns.",
+      "partId": "armature"
+    },
+    {
+      "type": "choice",
+      "prompt": "How do you reverse a simple DC motor?",
+      "choices": [
+        "Fit a gearbox",
+        "Swap the two supply wires",
+        "Turn the fan around",
+        "Add more brushes"
+      ],
+      "answer": 1,
+      "explain": "Reverse armature relative to field and torque reverses. Two wires."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap what you actually wanted — the bit a load attaches to.",
+      "partId": "shaft"
+    }
   ]
 }

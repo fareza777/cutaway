@@ -1,6 +1,6 @@
 {
   "title": "Kulkas",
-  "subtitle": "Pompa panas di dalam kotak berinsulasi",
+  "subtitle": "Menjaga makanan tetap dingin dengan membuang panas ke luar",
   "scale": "tinggi sekitar 1,7 m",
   "summary": "Kulkas tidak menghasilkan dingin; alat ini memindahkan panas dari dalam kabinet ke ruangan di belakangnya. Memindahkan panas ke tempat yang lebih hangat memerlukan kerja, dan kompresor menyediakannya. Semua komponen lain dalam rangkaian memungkinkan refrigeran yang sama mengulangi proses tersebut: menguap di bagian yang perlu didinginkan, lalu mengembun di bagian yang digunakan untuk melepaskan panas.",
   "parts": {
