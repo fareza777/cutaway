@@ -1,0 +1,135 @@
+{
+  "title": "Cutaway: How Things Work 3D",
+  "created": "2026-09-12",
+  "screenshots": "Real app captures with editorial framing; no synthesized UI",
+  "files": [
+    {
+      "locale": "en-US",
+      "name": "01-explore.png",
+      "source": "captures/en/01-explore.png",
+      "sourceSha256": "d7fc37b885b094b529dd5d62954cd4c28c463592f75a5101dd28fa411a958efa",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "locale": "en-US",
+      "name": "02-explode.png",
+      "source": "captures/en/02-explode.png",
+      "sourceSha256": "fd4837d50163031b10a0660d33905efe02ecd789017b51e26439e3cd7e21481d",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "locale": "en-US",
+      "name": "03-inside.png",
+      "source": "captures/en/03-inside.png",
+      "sourceSha256": "f3f5757800110f96c3d0b84e08bad6dc4e345eeffd237410fdf7ab1b14c6f5e2",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "locale": "en-US",
+      "name": "04-motion.png",
+      "source": "captures/en/04-motion.png",
+      "sourceSha256": "66b7c8f4cb06521d38055a687f0b74b8d678b4bb812aaead1b5bf96379198b53",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "locale": "en-US",
+      "name": "05-parts.png",
+      "source": "captures/en/05-parts.png",
+      "sourceSha256": "f3fddcabbefa36040b497f7c77513b28ac10682c304a98702560ac3b5dec4a2c",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "locale": "en-US",
+      "name": "06-story.png",
+      "source": "captures/en/06-story.png",
+      "sourceSha256": "6b60582402c06b65444191bfa9ee11f3e9185b0bb78310bf52dc9634418f8115",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "locale": "en-US",
+      "name": "07-quiz.png",
+      "source": "captures/en/07-quiz.png",
+      "sourceSha256": "78d6a64931f643afafca28d3fa36243251a16d05d2f0030cd37c786070ff0354",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "locale": "en-US",
+      "name": "08-library.png",
+      "source": "captures/en/08-library.png",
+      "sourceSha256": "05ea435016333426b7c359ea7250c30c709d1967bac6035f4a036f8ede9a6336",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "locale": "id",
+      "name": "01-explore.png",
+      "source": "captures/id/01-explore.png",
+      "sourceSha256": "4781ac179ffd7791426a5f80687f1f4869f47bf1b4cee3997d774c7966ac4ffb",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "locale": "id",
+      "name": "02-explode.png",
+      "source": "captures/id/02-explode.png",
+      "sourceSha256": "58fd8b30645c58de6b5a41e40e14ed6196d09a3bbf5bc5ac9e96ce2ea3b67f2e",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "locale": "id",
+      "name": "03-inside.png",
+      "source": "captures/id/03-inside.png",
+      "sourceSha256": "d2b3d965a36cfbbca09dde749823fc4da234e02d8c1b1bd25282a71f0ca8844b",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "locale": "id",
+      "name": "04-motion.png",
+      "source": "captures/id/04-motion.png",
+      "sourceSha256": "3f9ca398d64cc90b10876bd0ce2cf941678d0d06ef70d28ee46884fe68c91f97",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "locale": "id",
+      "name": "05-parts.png",
+      "source": "captures/id/05-parts.png",
+      "sourceSha256": "54add0b21360af92262e75f99986edea0fd4928ee8412b78e56cb18492bdf431",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "locale": "id",
+      "name": "06-story.png",
+      "source": "captures/id/06-story.png",
+      "sourceSha256": "7feb5ec4e4c4a915491b2cc69ca25117f07348255be9dd29d0aedfbd325753bd",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "locale": "id",
+      "name": "07-quiz.png",
+      "source": "captures/id/07-quiz.png",
+      "sourceSha256": "4c62b73e8fd3bef7813f43d2e59cb26d9242746f970dc289be5f01ebae7115d7",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "locale": "id",
+      "name": "08-library.png",
+      "source": "captures/id/08-library.png",
+      "sourceSha256": "3f62506ee3c5a917012a5dc985f8bc370084705fbeef896bdf2d3f6e090b23dd",
+      "width": 1080,
+      "height": 1920
+    }
+  ]
+}

@@ -1,8 +1,30 @@
-# Cutaway: 3D Objects — Google Play listing
+# Cutaway: How Things Work 3D — Google Play listing
+
+## September 2026 ASO revision
+
+The canonical, ready-to-upload English and Indonesian listing is
+[`marketing/aso-0.18.0/listing.json`](../marketing/aso-0.18.0/listing.json).
+Use the exported `title.txt`, `short-description.txt`, `full-description.txt`,
+and images in its `en-US/` and `id/` directories for the revised listing.
+Each language has eight 1080×1920 screenshots, a 1024×500 feature graphic,
+and a 512×512 store icon. The screenshots use actual app captures; no
+generated UI or fictional functionality is shown.
+
+- English title: **Cutaway: How Things Work 3D** (27 characters).
+- Indonesian title: **Cutaway: Cara Kerja Benda 3D** (28 characters).
+- Publication status: prepared locally; not uploaded or published. Browser
+  control failed before any Play Console action on 12 September 2026.
+- Target: production, subject to verified production access and Google review.
+- Category remains Education; review eligible tags in the live Console.
+  Do not change the target audience, countries, prices, or data disclosures
+  merely for keyword reach.
+
+The following earlier English copy is retained as a historical reference;
+the versioned JSON and exported text files above supersede it for upload.
 
 ## App identity
 
-- App name: `Cutaway: 3D Objects`
+- App name: `Cutaway: How Things Work 3D`
 - Package name: `com.cutaway.explorer`
 - App type: App
 - Category: Education

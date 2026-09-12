@@ -60,7 +60,11 @@
     "test:build-apk": "node tools/build-apk-test.mjs",
     "build:store-assets": "node tools/create-store-assets.mjs",
     "test:verify-apk": "node tools/verify-apk-test.mjs",
-    "build:brand": "node tools/build-brand.mjs",
+    "build:brand": "node tools/build-brand-premium.mjs",
+    "capture:aso": "node tools/aso-capture.mjs",
+    "build:aso-assets": "node tools/build-aso-assets.mjs",
+    "verify:aso-assets": "node tools/verify-aso-assets.mjs",
+    "verify:bundle": "node tools/verify-release-bundle.mjs",
     "preview": "node tools/preview-server.mjs",
     "verify:apk": "node tools/verify-apk.mjs",
     "build:apk": "node tools/build-apk.mjs"

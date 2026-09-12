@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Cutaway: 3D Objects",
+    "name": "Cutaway: How Things Work 3D",
     "slug": "cutaway",
-    "version": "0.17.0",
+    "version": "0.18.0",
     "orientation": "portrait",
     "scheme": "cutaway",
     "userInterfaceStyle": "light",
@@ -13,7 +13,7 @@
     ],
     "android": {
       "package": "com.cutaway.explorer",
-      "versionCode": 22,
+      "versionCode": 23,
       "adaptiveIcon": {
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
