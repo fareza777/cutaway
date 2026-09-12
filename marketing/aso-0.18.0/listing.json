@@ -1,0 +1,127 @@
+{
+  "appPackage": "com.cutaway.explorer",
+  "versionName": "0.18.0",
+  "versionCode": 23,
+  "intendedTrack": "production",
+  "publicationStatus": "NOT_UPLOADED_BROWSER_CONNECTION_UNAVAILABLE",
+  "category": "EDUCATION",
+  "tagsToReviewInConsole": [
+    "Education",
+    "Science",
+    "Reference"
+  ],
+  "locales": {
+    "en-US": {
+      "title": "Cutaway: How Things Work 3D",
+      "shortDescription": "Explore 3D models, look inside objects, learn how they work and take quizzes.",
+      "fullDescription": "Discover how things work by looking inside them.\n\nCutaway: How Things Work 3D is an interactive learning app for exploring machines, everyday objects and human anatomy. Rotate a 3D model, separate its components, reveal hidden layers and learn what each part does.\n\nEXPLORE 28 INTERACTIVE 3D OBJECTS\nLook inside a smartphone, refrigerator, mechanical watch, cordless drill and more. Explore aerospace systems such as a turbofan jet engine, turboshaft helicopter, rocket engine and Earth-observation satellite. Discover anatomical models including the heart, brain, eye and lungs.\n\nTAKE THINGS APART IN 3D\n• Rotate and zoom to inspect models from different angles.\n• Use exploded views to separate components.\n• Peel away outer layers and reveal internal structures.\n• Explore X-ray and cross-section views.\n• Tap a component or choose it from the parts list to read its explanation.\n\nUNDERSTAND THE MECHANISM\nRun supported mechanisms to see moving parts in action. Follow step-by-step explanations that connect individual components to the way the whole object works. Save interesting parts so you can return to them.\n\nTEST WHAT YOU LEARN\nTry interactive quizzes, identify parts and revisit objects to strengthen your understanding. Your exploration progress and quiz results are saved locally on your device.\n\nLEARN YOUR WAY\nSearch the object library by name or description, browse categories and choose a light or dark theme. Switch between English and Indonesian for the interface and object explanations.\n\nThe bundled 3D library and core learning features work offline after installation. No account is required. Internet access is needed for advertising, purchases and purchase restoration.\n\nCutaway contains banner and interstitial ads. An optional one-time Remove Ads purchase removes advertising; pricing is shown in Google Play.\n\nMade for curious learners, students, educators and anyone who wants to understand what is inside. Models and explanations are educational illustrations, not repair instructions, professional engineering tools or medical advice.\n\nPick an object. Look inside. Find out how it works.",
+      "releaseNotes": "New app name: Cutaway: How Things Work 3D.\nRefreshed app icon and visual identity.\nExplore 28 objects with English and Indonesian explanations, library search, interactive 3D tools and quizzes.",
+      "screens": [
+        [
+          "01-explore",
+          "See how\nthings work.",
+          "Explore real objects in interactive 3D.",
+          "EXPLORE IN 3D"
+        ],
+        [
+          "02-explode",
+          "Take it apart.\nPiece by piece.",
+          "Separate components. Discover the structure.",
+          "EXPLODED VIEW"
+        ],
+        [
+          "03-inside",
+          "Go beneath\nthe surface.",
+          "Peel back layers. Reveal hidden parts.",
+          "LOOK INSIDE"
+        ],
+        [
+          "04-motion",
+          "Watch the\nmechanism move.",
+          "See moving parts work together.",
+          "MECHANISMS"
+        ],
+        [
+          "05-parts",
+          "Every part.\nA clear purpose.",
+          "Explore components and their explanations.",
+          "LEARN THE PARTS"
+        ],
+        [
+          "06-story",
+          "Follow the\nwhole process.",
+          "Understand each step from input to output.",
+          "HOW IT WORKS"
+        ],
+        [
+          "07-quiz",
+          "Turn curiosity\ninto knowledge.",
+          "Find the parts. Test what you learned.",
+          "INTERACTIVE QUIZZES"
+        ],
+        [
+          "08-library",
+          "28 objects.\nSo much to explore.",
+          "Search the library. Learn in English or Indonesian.",
+          "YOUR 3D LIBRARY"
+        ]
+      ]
+    },
+    "id": {
+      "title": "Cutaway: Cara Kerja Benda 3D",
+      "shortDescription": "Jelajahi objek 3D, lihat bagian dalam, pahami cara kerjanya, dan ikuti kuis.",
+      "fullDescription": "Temukan cara kerja benda dengan melihat bagian dalamnya.\n\nCutaway: Cara Kerja Benda 3D adalah aplikasi belajar interaktif untuk menjelajahi mesin, benda sehari-hari, dan anatomi tubuh manusia. Putar model 3D, pisahkan komponennya, buka lapisan tersembunyi, dan pahami fungsi setiap bagian.\n\nJELAJAHI 28 OBJEK 3D INTERAKTIF\nLihat isi ponsel, kulkas, jam mekanis, bor tanpa kabel, dan berbagai benda lainnya. Pelajari sistem dirgantara seperti mesin jet turbofan, helikopter turboshaft, mesin roket, dan satelit pengamatan Bumi. Kenali model anatomi, termasuk jantung, otak, mata, dan paru-paru.\n\nBONGKAR DAN LIHAT BAGIAN DALAMNYA\n• Putar dan perbesar model untuk mengamati dari berbagai sudut.\n• Uraikan susunan objek untuk memisahkan komponen.\n• Kupas lapisan luar dan temukan struktur di dalamnya.\n• Gunakan tampilan rontgen dan penampang.\n• Ketuk komponen atau pilih dari daftar bagian untuk membaca penjelasannya.\n\nPAHAMI CARA KERJANYA\nJalankan mekanisme yang mendukung animasi untuk melihat bagian-bagiannya bergerak. Ikuti penjelasan langkah demi langkah agar hubungan antarbagian lebih mudah dipahami. Simpan bagian yang menarik untuk dipelajari kembali.\n\nUJI HASIL BELAJAR\nCoba kuis interaktif, kenali komponen, dan kunjungi kembali objek untuk memperkuat pemahaman. Progres penjelajahan dan hasil kuis tersimpan secara lokal di perangkat.\n\nBELAJAR SESUAI PILIHAN ANDA\nCari objek berdasarkan nama atau deskripsi, telusuri kategori, lalu pilih tema terang atau gelap. Bahasa antarmuka dan penjelasan objek tersedia dalam bahasa Indonesia dan Inggris.\n\nPustaka model 3D bawaan dan fitur belajar utama dapat digunakan tanpa internet setelah pemasangan. Tidak perlu membuat akun. Koneksi internet diperlukan untuk iklan, pembelian, dan pemulihan pembelian.\n\nCutaway menampilkan iklan banner dan interstisial. Pembelian Hapus Iklan tersedia sebagai pilihan sekali bayar; harga ditampilkan oleh Google Play.\n\nUntuk pelajar, pengajar, penggemar teknologi, dan siapa saja yang ingin memahami isi suatu benda. Model dan penjelasan merupakan ilustrasi edukatif, bukan panduan perbaikan, alat rekayasa profesional, atau nasihat medis.\n\nPilih satu objek. Lihat ke dalam. Pahami cara kerjanya.",
+      "releaseNotes": "Nama baru: Cutaway: Cara Kerja Benda 3D.\nIkon dan identitas visual diperbarui.\nJelajahi 28 objek dengan penjelasan Indonesia dan Inggris, pencarian pustaka, alat 3D interaktif, dan kuis.",
+      "screens": [
+        [
+          "01-explore",
+          "Pahami cara\nkerja benda.",
+          "Jelajahi objek nyata dalam 3D interaktif.",
+          "JELAJAHI DALAM 3D"
+        ],
+        [
+          "02-explode",
+          "Bongkar.\nBagian demi bagian.",
+          "Pisahkan komponen. Kenali susunannya.",
+          "URAIKAN OBJEK"
+        ],
+        [
+          "03-inside",
+          "Lihat di balik\npermukaannya.",
+          "Kupas lapisannya. Lihat bagian di dalamnya.",
+          "LIHAT BAGIAN DALAM"
+        ],
+        [
+          "04-motion",
+          "Lihat mekanisme\nbergerak.",
+          "Amati bagaimana tiap bagian bekerja bersama.",
+          "MEKANISME"
+        ],
+        [
+          "05-parts",
+          "Setiap bagian.\nAda fungsinya.",
+          "Kenali komponen dan baca penjelasannya.",
+          "KENALI KOMPONEN"
+        ],
+        [
+          "06-story",
+          "Ikuti alurnya.\nPahami prosesnya.",
+          "Pelajari langkah demi langkah cara kerjanya.",
+          "CARA KERJA"
+        ],
+        [
+          "07-quiz",
+          "Dari rasa ingin tahu\njadi pengetahuan.",
+          "Kenali bagian. Uji hasil belajar Anda.",
+          "KUIS INTERAKTIF"
+        ],
+        [
+          "08-library",
+          "28 objek.\nBanyak hal menarik.",
+          "Cari di pustaka. Pilih Indonesia atau Inggris.",
+          "PUSTAKA 3D ANDA"
+        ]
+      ]
+    }
+  }
+}

@@ -1,31 +1,111 @@
 {
-  "title": "Kunci Pin-Tumbler",
-  "subtitle": "Pintu yang hanya satu bentuk logam bisa membuka",
-  "scale": "≈ silinder 30 mm",
-  "summary": "Kunci pin-tumbler adalah enam piston kecil yang duduk di atas sebuah anak kunci. Tiap pasangan pin terbelah pada ketinggian berbeda. Anak kunci adalah tangga yang dipotong supaya setiap belahan mendarat di lingkaran yang sama — garis geser antara plug dan rumah. Putar. Jika satu belahan saja menyimpang dari garis itu, plug menjadi pin padat menembus rumah, dan tidak ada yang bergerak.",
+  "title": "Kunci Pin Tumbler",
+  "subtitle": "Hanya terbuka oleh kunci dengan bentuk yang tepat",
+  "scale": "silinder sekitar 30 mm",
+  "summary": "Kunci pin tumbler memakai enam tumpukan pin yang bertumpu pada anak kunci. Batas antara pin bawah dan pin atas berada pada ketinggian berbeda. Gerigi anak kunci mengangkat setiap batas tepat ke garis geser antara silinder inti dan rumah. Jika semua batas sejajar, silinder dapat diputar. Jika satu pin saja masih melintasi garis itu, silinder tetap terkunci pada rumah.",
   "parts": {
-    "housing": { "name": "Rumah Silinder", "short": "Bagian yang tetap di pintu", "detail": "Tabung kuningan dengan bible persegi di atas. Bible adalah deret kamar, satu per tumpukan pin. Rumah tidak berputar. Semua yang harus berputar hidup di dalamnya, dan satu-satunya alasan sesuatu bisa berputar adalah tumpukan pin bisa diangkat sampai tidak lagi menyeberang dari tabung ini ke plug." },
-    "plug": { "name": "Plug", "short": "Bagian yang diputar anak kunci", "detail": "Silinder yang pas di rumah dengan sisa sepersepuluh milimeter. Celah lingkaran itu garis geser. Keyway adalah alur sepanjang badannya, dibentuk supaya hanya blank profil yang benar yang masuk — rahasia pertama dari dua, sebelum bitting ikut bicara." },
-    "key_pins": { "name": "Pin Anak Kunci", "short": "Kuningan, duduk di anak kunci, panjangnya berbeda-beda", "detail": "Enam pin, enam panjang. Bawah masing-masing menunggang anak kunci; atasnya adalah belahan. Potong anak kunci cocok dan setiap puncak mendarat di garis geser bersama-sama. Potong salah dan setidaknya satu pin masih menyeberangi garis, dan plug terkunci ke rumah oleh satu pin itu." },
-    "driver_pins": { "name": "Pin Pendorong", "short": "Baja, didorong turun oleh pegas", "detail": "Setengah atas tiap tumpukan. Pegas mendorongnya turun supaya, tanpa anak kunci, mereka duduk menyeberangi garis geser dan mengunci plug. Biasanya baja, lebih keras daripada pin kuningan, karena merekalah yang menahan setiap kunci palsu dan setiap pick." },
-    "springs": { "name": "Pegas Pin", "short": "Alasan kunci mereset sendiri", "detail": "Koil di tiap kamar. Cabut anak kunci dan mereka mendorong tumpukan kembali menyeberangi garis geser. Kunci yang tidak mereset adalah gerendel, dan gerendel bukan kunci." },
-    "key": { "name": "Anak Kunci", "short": "Tangga yang sekaligus kata sandi", "detail": "Bilahnya urutan potongan, masing-masing mengangkat satu pin ke garis geser. Busurnya cuma pegangan. Alur di sisi cocok dengan keyway supaya blank dari seri lain tidak masuk sama sekali. Hilangkan anak kunci dan kunci tetap mengerjakan tepat apa yang dibuat untuk dikerjakan." },
-    "cam": { "name": "Kam", "short": "Berputar bersama plug dan melempar palang", "detail": "Lidah di belakang plug. Begitu pin bersih dari garis geser, memutar anak kunci memutar ini, dan inilah yang benar-benar menarik palang di pintu. Satu-satunya tugas kunci adalah memutuskan apakah ini boleh bergerak." },
-    "retaining_clip": { "name": "Klip Penahan", "short": "Mencegah plug jatuh dari pintu", "detail": "Circlip di alur belakang plug. Tanpanya seluruh silinder akan terdorong keluar dari rumah pertama kali Anda menekan anak kunci. Ini bagian paling membosankan, dan yang Anda sadari hanya saat hilang." }
+    "housing": {
+      "name": "Rumah Silinder",
+      "short": "Bagian tetap yang dipasang pada pintu",
+      "detail": "Tabung kuningan ini memiliki deretan ruang pin di bagian atas, satu ruang untuk tiap tumpukan. Rumah tidak ikut berputar. Silinder inti hanya dapat bergerak ketika tidak ada satu pun pin yang menjembatani celah antara keduanya."
+    },
+    "plug": {
+      "name": "Silinder Inti",
+      "short": "Bagian yang diputar oleh anak kunci",
+      "detail": "Silinder dipasang sangat rapat di dalam rumah dengan celah sekitar sepersepuluh milimeter. Keliling celah tersebut adalah garis geser. Alur anak kunci membatasi bentuk penampang blanko yang dapat masuk, sedangkan pola kedalaman gerigi menentukan apakah pin dapat sejajar."
+    },
+    "key_pins": {
+      "name": "Pin Kunci",
+      "short": "Pin kuningan dengan panjang berbeda yang menyentuh anak kunci",
+      "detail": "Enam pin bawah memiliki panjang berbeda. Ujung bawah mengikuti gerigi anak kunci, sedangkan ujung atas membentuk batas dengan pin atas. Pada anak kunci yang cocok, semua batas berhenti tepat di garis geser. Potongan yang keliru meninggalkan sedikitnya satu pin melintasi garis dan mencegah putaran."
+    },
+    "driver_pins": {
+      "name": "Pin Atas",
+      "short": "Pin yang ditekan pegas dan mengunci silinder",
+      "detail": "Pin bagian atas pada setiap tumpukan didorong ke bawah oleh pegas. Tanpa anak kunci, pin ini melintasi garis geser dan mengikat silinder inti ke rumah. Bahannya sering lebih keras daripada pin kuningan di bawah karena bagian inilah yang menahan upaya membuka dengan anak kunci salah atau alat congkel."
+    },
+    "springs": {
+      "name": "Pegas Pin",
+      "short": "Mengembalikan tumpukan ke posisi terkunci",
+      "detail": "Satu pegas koil berada di atas setiap pin atas. Saat anak kunci dicabut, pegas menekan seluruh tumpukan turun hingga kembali melintasi garis geser. Mekanisme inilah yang membuat silinder mengunci kembali secara otomatis."
+    },
+    "key": {
+      "name": "Anak Kunci",
+      "short": "Tangga kedalaman yang bertindak sebagai kode mekanis",
+      "detail": "Setiap potongan pada bilah mengangkat satu pin ke ketinggian tertentu. Alur memanjang di sisinya harus cocok dengan alur masuk silinder, sehingga blanko dari seri berbeda tidak dapat dimasukkan. Pegangan hanya memberi torsi; kode sebenarnya tersimpan pada profil dan kedalaman potongan bilah."
+    },
+    "cam": {
+      "name": "Nok",
+      "short": "Lidah berputar yang menggerakkan grendel",
+      "detail": "Nok dipasang di belakang silinder inti. Setelah semua pin bebas dari garis geser, putaran anak kunci memutar silinder dan nok bersamanya. Gerak nok inilah yang menarik atau mendorong grendel pintu; seluruh mekanisme pin hanya menentukan apakah gerak itu diizinkan."
+    },
+    "retaining_clip": {
+      "name": "Klip Penahan",
+      "short": "Menahan silinder inti tetap di dalam rumah",
+      "detail": "Cincin pengunci dipasang pada alur di belakang silinder. Tanpanya, tekanan saat anak kunci dimasukkan dapat mendorong seluruh inti keluar dari rumah. Komponen kecil ini tidak memengaruhi kode, tetapi menjaga rakitan tetap pada tempatnya."
+    }
   },
   "steps": [
-    { "title": "Tangga dari logam", "body": "Anak kunci bukan jimat. Ia enam kedalaman, dipotong supaya masing-masing mengangkat satu tumpukan pin. Masukkan dan setiap pasangan pin menunggang anak tangganya sendiri." },
-    { "title": "Bertemu di garis geser", "body": "Belahan antara pin anak kunci dan pendorong harus mendarat tepat di lingkaran antara plug dan rumah. Keenamnya, sekaligus. Lingkaran itu satu-satunya tempat plug boleh berputar." },
-    { "title": "Pegas menunggu untuk membatalkan", "body": "Di atas setiap pendorong sebuah koil tertekan. Cabut anak kunci dan tumpukan jatuh kembali menyeberangi garis. Kunci tidak tetap terbuka. Ia harus ditahan terbuka oleh anak kunci." },
-    { "title": "Kini plug bisa berputar", "body": "Dengan setiap pin bersih dari garis geser, plug hanyalah silinder dalam tabung. Anak kunci berputar, plug berputar bersamanya." },
-    { "title": "Kam melempar palang", "body": "Di belakang plug sebuah lidah menyapu. Itu satu-satunya hubungan ke pintu. Semua di depannya adalah pertanyaan: apakah ini tangga yang benar?" }
+    {
+      "title": "Masukkan tangga logam",
+      "body": "Anak kunci memiliki enam kedalaman yang masing-masing mengangkat satu tumpukan pin. Saat bilah masuk, setiap pin bawah mengikuti potongannya sendiri."
+    },
+    {
+      "title": "Sejajarkan pada garis geser",
+      "body": "Batas antara pin kunci dan pin atas harus berhenti tepat pada keliling antara silinder inti dan rumah. Keenam tumpukan harus sejajar sekaligus agar silinder dapat berputar."
+    },
+    {
+      "title": "Tekan dengan pegas",
+      "body": "Pegas terus mendorong pin dari atas. Ketika anak kunci dicabut, tumpukan turun kembali melintasi garis geser dan silinder terkunci."
+    },
+    {
+      "title": "Putar silinder inti",
+      "body": "Setelah seluruh pin bebas dari garis geser, silinder menjadi poros yang dapat berputar di dalam rumah. Anak kunci memberikan torsi untuk memutarnya."
+    },
+    {
+      "title": "Gerakkan grendel",
+      "body": "Nok di belakang silinder ikut berputar dan menggerakkan grendel pintu. Semua komponen di depannya hanya memeriksa apakah profil anak kunci benar."
+    }
   ],
   "quiz": [
-    { "prompt": "Ketuk garis tempat pin harus terbelah sebelum kunci terbuka." },
-    { "prompt": "Secara mekanis, apa itu anak kunci?", "choices": ["Magnet yang menarik pin", "Tangga kedalaman yang mengangkat tiap pasangan pin ke garis geser", "Kata sandi yang tersimpan di kunci", "Baji yang memaksa plug berputar"], "explain": "Tiap potongan mengangkat satu tumpukan. Ketika setiap belahan duduk di garis geser, plug bebas." },
-    { "prompt": "Ketuk pin yang didorong pegas, yang mengunci plug saat tidak ada anak kunci." },
-    { "prompt": "Mengapa kunci menutup sendiri ketika anak kunci dicabut?", "choices": ["Kam pegas kembali", "Gravitasi menjatuhkan plug", "Koil di atas pendorong mendorong tumpukan kembali menyeberangi garis geser", "Keyway mencubit tertutup"], "explain": "Pegas adalah alasan kunci bukan gerendel. Cabut anak kunci dan pin mengunci lagi." },
-    { "prompt": "Ketuk bagian yang benar-benar menggerakkan palang pintu." },
-    { "prompt": "Jika satu pin salah panjangnya, apa yang terjadi?", "choices": ["Lima yang lain mengganti", "Satu pin itu masih menyeberangi garis geser dan plug tidak bisa berputar", "Anak kunci tidak masuk", "Pegas patah"], "explain": "Kunci adalah rantai dari enam. Satu pin menyeberangi garis sudah cukup." }
+    {
+      "prompt": "Ketuk batas tempat semua pin harus sejajar sebelum kunci dapat dibuka."
+    },
+    {
+      "prompt": "Secara mekanis, apa fungsi anak kunci?",
+      "choices": [
+        "Magnet yang menarik pin",
+        "Tangga kedalaman yang mengangkat setiap pasangan pin ke garis geser",
+        "Kata sandi elektronik yang tersimpan di dalam kunci",
+        "Baji yang memaksa silinder berputar"
+      ],
+      "explain": "Setiap potongan mengangkat satu tumpukan. Ketika semua batas pin tepat di garis geser, silinder inti bebas berputar."
+    },
+    {
+      "prompt": "Ketuk pin yang didorong pegas dan mengunci silinder saat anak kunci tidak ada."
+    },
+    {
+      "prompt": "Mengapa silinder kembali terkunci setelah anak kunci dicabut?",
+      "choices": [
+        "Nok kembali karena pegas",
+        "Gravitasi menjatuhkan silinder",
+        "Pegas di atas pin mendorong tumpukan kembali melintasi garis geser",
+        "Alur anak kunci menjepit hingga tertutup"
+      ],
+      "explain": "Pegas mendorong pin atas dan pin kunci turun setelah bilah dicabut, sehingga pin kembali menjembatani silinder dan rumah."
+    },
+    {
+      "prompt": "Ketuk bagian yang benar-benar menggerakkan grendel pintu."
+    },
+    {
+      "prompt": "Apa yang terjadi jika satu pin berada pada ketinggian yang salah?",
+      "choices": [
+        "Lima pin lain menggantikannya",
+        "Pin tersebut tetap melintasi garis geser sehingga silinder tidak dapat berputar",
+        "Anak kunci tidak dapat dimasukkan",
+        "Pegas langsung patah"
+      ],
+      "explain": "Satu pin yang masih menjembatani celah sudah cukup untuk mengikat silinder inti ke rumah."
+    }
   ]
 }

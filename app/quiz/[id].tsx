@@ -20,8 +20,9 @@ import { useProgress } from '@/state/progress';
 import { GhostButton, Label, PrimaryButton, Text, Touchable } from '@/ui/primitives';
 import { Viewport } from '@/ui/Viewport';
 import { IconButton } from '@/ui/explorer/TopBar';
-import { useColors, useLocale, useT } from '@/state/settings';
+import { useColors, useReadableAccent, useLocale, useT } from '@/state/settings';
 import { alpha, radius, space } from '@/ui/theme';
+import { showInterstitialIfAllowed } from '@/monetization/ads';
 
 type Feedback = { correct: boolean; message: string } | null;
 
@@ -43,10 +44,12 @@ export default function Quiz() {
   const [feedback, setFeedback] = useState<Feedback>(null);
   const [finished, setFinished] = useState(false);
   const [loadError, setLoadError] = useState<string | null>(null);
+  const interstitialShownForResult = useRef(false);
 
   const questions = doc?.quiz ?? [];
   const question: Question | undefined = questions[index];
   const accent = doc?.accent ?? colors.text;
+  const accentText = useReadableAccent(accent);
 
   const onReady = useCallback(
     (viewer: CutawayViewer) => {
@@ -110,11 +113,21 @@ export default function Quiz() {
     if (finished && doc) recordQuiz(doc.id, { correct: score, total: questions.length });
   }, [finished, doc, recordQuiz, score, questions.length]);
 
+  useEffect(() => {
+    if (!finished || !doc || interstitialShownForResult.current) return;
+    interstitialShownForResult.current = true;
+    const timeout = setTimeout(() => {
+      void showInterstitialIfAllowed();
+    }, 450);
+    return () => clearTimeout(timeout);
+  }, [finished, doc]);
+
   const restart = () => {
     setIndex(0);
     setScore(0);
     setFeedback(null);
     setFinished(false);
+    interstitialShownForResult.current = false;
     viewerRef.current?.setQuizMode(true);
   };
 
@@ -131,7 +144,7 @@ export default function Quiz() {
 
   return (
     <View style={[styles.screen, { backgroundColor: colors.bg }]}>
-      <Viewport events={events} onReady={onReady} interactive={!finished} />
+      <Viewport events={events} onReady={onReady} interactive={!finished} active={!finished} />
 
       <View style={[styles.header, { paddingTop: insets.top + space.sm }]} pointerEvents="box-none">
         <IconButton icon="close" onPress={() => router.back()} accent={accent} label={t('quiz.leave')} />
@@ -163,7 +176,7 @@ export default function Quiz() {
         />
       ) : (
         <View style={[styles.panel, { paddingBottom: insets.bottom + space.lg, backgroundColor: colors.scrim, borderColor: colors.hairline }]}>
-          <Label color={alpha(accent, 0.9)}>
+          <Label color={accentText}>
             {t('quiz.question', { index: index + 1, total: questions.length })}
           </Label>
           <Text variant="title" style={{ marginTop: space.sm }}>
@@ -259,6 +272,7 @@ function Results({
 }) {
   const colors = useColors();
   const perfect = score === total;
+  const accentText = useReadableAccent(accent);
   return (
     <Animated.View
       entering={FadeIn.duration(260)}
@@ -268,7 +282,7 @@ function Results({
         <Ionicons
           name={perfect ? 'trophy' : 'ribbon-outline'}
           size={40}
-          color={perfect ? colors.correct : accent}
+          color={perfect ? colors.correct : accentText}
         />
         <Text variant="display" style={{ marginTop: space.lg }}>
           {score} / {total}

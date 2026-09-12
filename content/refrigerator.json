@@ -2,172 +2,284 @@
   "schema": 1,
   "id": "refrigerator",
   "title": "Refrigerator",
-  "subtitle": "A heat pump in a foam box",
+  "subtitle": "Keeps food cold by moving heat out of the box",
   "category": "Appliances",
   "accent": "#5FD3E0",
   "scale": "≈ 1.7 m tall",
   "summary": "A fridge does not make cold. It moves heat — from inside the box to the room behind it — and the only way to push heat uphill is to spend work doing it. That work is the compressor, and everything else in the loop exists to let one refrigerant do the same trick over and over: boil where you want cold, condense where you want heat.",
   "model": "refrigerator",
   "cutAxis": "x",
-  "restRotation": [0.06, -0.62, 0],
+  "restRotation": [
+    0.06,
+    -0.62,
+    0
+  ],
   "parts": [
     {
       "id": "compressor",
-      "nodes": ["compressor"],
+      "nodes": [
+        "compressor"
+      ],
       "name": "Compressor",
       "short": "The pump that makes the whole loop possible",
       "detail": "A small motor and piston sealed inside a welded steel can, sitting in a bath of its own oil. It takes cold low-pressure vapour and squeezes it into hot high-pressure vapour — and that squeeze is the entire reason a fridge works. Heat only flows from hot to cold, so to dump heat into a warm kitchen the refrigerant must first be made hotter than the kitchen. This is the only part that consumes electricity in any real quantity, and the hum you hear is it.",
       "layer": 3,
-      "explode": [0.6, -1.1, -0.9]
+      "explode": [
+        0.6,
+        -1.1,
+        -0.9
+      ]
     },
     {
       "id": "condenser",
-      "nodes": ["condenser"],
+      "nodes": [
+        "condenser"
+      ],
       "name": "Condenser Coil",
       "short": "Where the heat actually leaves",
       "detail": "The black grille on the back is where the hot, compressed vapour gives up its heat to the room and condenses into a liquid. That is why the back of a fridge is warm and why pushing one flat against a wall makes it work harder and cost more — you have blocked the one place the heat can go. Dust on these coils does the same thing.",
       "layer": 2,
-      "explode": [0, -0.2, -1.5]
+      "explode": [
+        0,
+        -0.2,
+        -1.5
+      ]
     },
     {
       "id": "capillary_tube",
-      "nodes": ["capillary_tube"],
+      "nodes": [
+        "capillary_tube"
+      ],
       "name": "Capillary Tube",
       "short": "A deliberate bottleneck, and the coldest trick in the box",
       "detail": "A metre or two of very narrow copper, and nothing more — no valve, no moving part. High-pressure liquid is forced through a restriction so tight that the pressure collapses on the other side, and a liquid at low pressure boils. Boiling absorbs heat. This is where the refrigerant is made cold, and it is the cheapest component in the machine.",
       "layer": 3,
-      "explode": [-0.9, -0.5, -1.2]
+      "explode": [
+        -0.9,
+        -0.5,
+        -1.2
+      ]
     },
     {
       "id": "evaporator",
-      "nodes": ["evaporator"],
+      "nodes": [
+        "evaporator"
+      ],
       "name": "Evaporator Coil",
       "short": "Where the cold is made — inside the freezer",
       "detail": "Cold refrigerant boils inside these finned tubes, and boiling pulls heat out of whatever is around them. This is the only genuinely cold object in the appliance; everything else is just cold because the air touching this has been. It is buried in the freezer even on models that only chill the fridge below, because you cannot cool a compartment colder than the coil that serves it.",
       "layer": 3,
-      "explode": [0, 1.0, -0.6],
+      "explode": [
+        0,
+        1.0,
+        -0.6
+      ],
       "motion": {}
     },
     {
       "id": "evaporator_fan",
-      "nodes": ["evaporator_fan"],
+      "nodes": [
+        "evaporator_fan"
+      ],
       "name": "Circulation Fan",
       "short": "Blows the cold where you actually want it",
       "detail": "Air is a poor conductor, so without moving it the coil would chill only its immediate surroundings. This fan pushes freezer air over the coil and ducts a measured trickle down into the fridge compartment. It is also why a frost-free fridge dries food out: the same moving air that carries cold also carries moisture away, straight onto the coil as frost.",
       "layer": 3,
-      "explode": [0, 0.7, -1.3],
-      "motion": { "spin": { "axis": "z", "ratio": 4 } }
+      "explode": [
+        0,
+        0.7,
+        -1.3
+      ],
+      "motion": {
+        "spin": {
+          "axis": "z",
+          "ratio": 4
+        }
+      }
     },
     {
       "id": "insulation",
-      "nodes": ["insulation"],
+      "nodes": [
+        "insulation"
+      ],
       "name": "Foam Insulation",
       "short": "The reason it holds temperature at all",
       "detail": "Rigid polyurethane foam injected between the inner liner and the outer steel, full of trapped gas pockets that conduct heat far worse than air does. It is thicker around the freezer than the fridge. A refrigeration loop with poor insulation is just an expensive heater — most of the efficiency of a modern appliance comes from this dull white foam rather than from anything mechanical.",
       "layer": 1,
-      "explode": [-1.3, 0.2, 0]
+      "explode": [
+        -1.3,
+        0.2,
+        0
+      ]
     },
     {
       "id": "door_gasket",
-      "nodes": ["door_gasket"],
+      "nodes": [
+        "door_gasket"
+      ],
       "name": "Door Gasket",
       "short": "A magnet in a rubber sleeve",
       "detail": "The soft strip around each door hides a flexible magnetic core that pulls the door shut against the cabinet. It is the single most common thing to fail on an old fridge, and the failure is quiet — the machine keeps running, just constantly, because warm room air is leaking in as fast as the coil can chill it. The paper test works: shut a banknote in the door and if it slides out freely, the seal has gone.",
       "layer": 0,
-      "explode": [0, 0, 1.6]
+      "explode": [
+        0,
+        0,
+        1.6
+      ]
     },
     {
       "id": "thermostat",
-      "nodes": ["thermostat"],
+      "nodes": [
+        "thermostat"
+      ],
       "name": "Thermostat",
       "short": "Decides when the compressor runs",
       "detail": "A sensing bulb on a capillary, filled with gas that expands as it warms and trips a switch. A fridge does not run continuously and does not modulate — it runs flat out or not at all, and the thermostat simply decides which. That on-off cycling is why the interior temperature is never one number but a slow sawtooth of a few degrees.",
       "layer": 2,
-      "explode": [-1.2, 0.3, -0.7]
+      "explode": [
+        -1.2,
+        0.3,
+        -0.7
+      ]
     },
     {
       "id": "cabinet",
-      "nodes": ["cabinet"],
+      "nodes": [
+        "cabinet"
+      ],
       "name": "Cabinet",
       "short": "Structure, and half of the condenser on cheaper models",
       "detail": "The outer shell carries the load of a full door swinging on it, but it often has a second job: on many modern fridges the condenser is not a visible grille at all but tubing bonded to the inside of the outer steel skin, so the whole cabinet radiates heat. That is why the sides of some fridges feel warm and there is nothing to dust.",
       "layer": 0,
-      "explode": [0, 0, -1.7]
+      "explode": [
+        0,
+        0,
+        -1.7
+      ]
     },
     {
       "id": "freezer_door",
-      "nodes": ["freezer_door"],
+      "nodes": [
+        "freezer_door"
+      ],
       "name": "Freezer Door",
       "short": "Separate for a reason",
       "detail": "Freezer and fridge get their own doors because opening one dumps its entire cold air load onto the floor — cold air is denser than warm and pours out. Splitting the compartments means a raid on the ice cream does not also warm the milk, and it lets the two spaces sit at very different temperatures on one refrigeration loop.",
       "layer": 0,
-      "explode": [0.3, 0.9, 1.4]
+      "explode": [
+        0.3,
+        0.9,
+        1.4
+      ]
     },
     {
       "id": "fridge_door",
-      "nodes": ["fridge_door"],
+      "nodes": [
+        "fridge_door"
+      ],
       "name": "Fridge Door",
       "short": "The warmest shelves in the machine",
       "detail": "Door shelves swing into room-temperature air every time they are opened and sit furthest from the circulation duct, so they are the warmest and most temperature-unstable part of the appliance. Which is why the moulded egg tray and milk shelf in the door are, from a food-safety point of view, the worst places to put either.",
       "layer": 0,
-      "explode": [0.3, -0.6, 1.6]
+      "explode": [
+        0.3,
+        -0.6,
+        1.6
+      ]
     },
     {
       "id": "shelves",
-      "nodes": ["shelves"],
+      "nodes": [
+        "shelves"
+      ],
       "name": "Shelves",
       "short": "Glass, and deliberately not solid to the back",
       "detail": "Toughened glass is used because it wipes clean and does not absorb spills, but the important detail is the gap left at the back of most shelves: it is a deliberate air path. Chilled air arriving from the duct above needs a route down through the compartment, and a shelf sealed to the rear wall would dam it.",
       "layer": 2,
-      "explode": [0, -0.3, 1.2]
+      "explode": [
+        0,
+        -0.3,
+        1.2
+      ]
     },
     {
       "id": "crisper",
-      "nodes": ["crisper"],
+      "nodes": [
+        "crisper"
+      ],
       "name": "Crisper Drawer",
       "short": "A humid pocket, sealed off from the dry air",
       "detail": "The circulating air that keeps the rest of the fridge frost-free also dehydrates it, which is exactly wrong for vegetables. The crisper is a nearly sealed box at the bottom, out of the airflow, where moisture given off by the produce stays put and keeps it turgid. The little vent slider changes how sealed it is: closed for leaves, open for fruit that gives off ripening gas.",
       "layer": 2,
-      "explode": [0, -1.3, 1.0]
+      "explode": [
+        0,
+        -1.3,
+        1.0
+      ]
     }
   ],
   "steps": [
     {
       "title": "Squeeze",
       "body": "The compressor takes cold low-pressure vapour and compresses it, which makes it hot — hotter than the kitchen. Nothing has been cooled yet; work has simply been added.",
-      "focus": ["compressor"]
+      "focus": [
+        "compressor"
+      ]
     },
     {
       "title": "Dump the heat",
       "body": "That hot vapour runs through the condenser at the back, gives its heat to the room, and turns into a warm liquid. The heat you feel behind a fridge is the heat that used to be in your food.",
-      "focus": ["condenser"]
+      "focus": [
+        "condenser"
+      ]
     },
     {
       "title": "Drop the pressure",
       "body": "The liquid is forced through the capillary tube — a deliberate restriction. On the far side the pressure collapses, and a liquid at low pressure boils. Boiling absorbs heat.",
-      "focus": ["capillary_tube"]
+      "focus": [
+        "capillary_tube"
+      ]
     },
     {
       "title": "Take the heat",
       "body": "Boiling happens in the evaporator, inside the freezer, so the heat it absorbs comes out of the food and air around it. A fan spreads that cold through both compartments.",
-      "focus": ["evaporator", "evaporator_fan"]
+      "focus": [
+        "evaporator",
+        "evaporator_fan"
+      ]
     },
     {
       "title": "Round again",
       "body": "The refrigerant leaves as cold vapour and returns to the compressor, unchanged and ready to repeat. Nothing is consumed. The only input is the electricity that runs the pump, and the only output is heat, moved from one side of an insulated wall to the other.",
-      "focus": ["compressor", "insulation"]
+      "focus": [
+        "compressor",
+        "insulation"
+      ]
     }
   ],
   "quiz": [
-    { "type": "identify", "prompt": "Tap the part that actually gets cold.", "partId": "evaporator" },
+    {
+      "type": "identify",
+      "prompt": "Tap the part that actually gets cold.",
+      "partId": "evaporator"
+    },
     {
       "type": "choice",
       "prompt": "Where does the heat taken out of your food end up?",
-      "choices": ["It is destroyed by the refrigerant", "In the room, via the coils at the back", "In the freezer compartment", "It is vented into the drain"],
+      "choices": [
+        "It is destroyed by the refrigerant",
+        "In the room, via the coils at the back",
+        "In the freezer compartment",
+        "It is vented into the drain"
+      ],
       "answer": 1,
       "explain": "A fridge is a heat pump. It moves heat from inside the box to the room — which is why the back is warm and why a fridge cannot cool a closed kitchen."
     },
-    { "type": "identify", "prompt": "Tap the part that consumes nearly all the electricity.", "partId": "compressor" },
+    {
+      "type": "identify",
+      "prompt": "Tap the part that consumes nearly all the electricity.",
+      "partId": "compressor"
+    },
     {
       "type": "choice",
       "prompt": "What makes the refrigerant cold in the first place?",
@@ -180,7 +292,11 @@
       "answer": 1,
       "explain": "Cold is made at the capillary tube, by dropping the pressure so the liquid boils. Nothing in a fridge generates cold; it only moves heat."
     },
-    { "type": "identify", "prompt": "Tap the part most likely to be the reason an old fridge runs constantly.", "partId": "door_gasket" },
+    {
+      "type": "identify",
+      "prompt": "Tap the part most likely to be the reason an old fridge runs constantly.",
+      "partId": "door_gasket"
+    },
     {
       "type": "choice",
       "prompt": "Why does a frost-free fridge dry food out?",

@@ -1,0 +1,178 @@
+{
+  "title": "Penanak Nasi",
+  "subtitle": "Menanak nasi lalu mati sendiri saat matang",
+  "scale": "kapasitas sekitar 5 L · lebar 28 cm",
+  "summary": "Penanak nasi tampak seperti panci dengan sakelar, tetapi kemampuan terpentingnya adalah mengetahui kapan air bebas telah habis. Selama air mendidih, suhu panci bertahan di sekitar 100 °C. Setelah air terserap oleh beras, suhu dasar panci naik cepat. Sensor berpegas di bawah panci mendeteksi perubahan tersebut, pengendali menghentikan daya masak penuh, lalu daya yang jauh lebih rendah menjaga nasi tetap hangat tanpa terus mendidihkannya.",
+  "parts": {
+    "outer_shell": {
+      "name": "Cangkang Luar",
+      "short": "Selubung struktural di sekeliling ruang panas",
+      "detail": "Dinding baja tekan yang dicat memberi kekuatan sambil menyisakan celah udara di sekeliling ruang panas. Celah memperlambat rambatan panas menuju kontrol plastik dan meja. Tepi yang digulung serta sambungan bawah memperkaku panel tipis agar tidak berdenting, penyok, atau berubah bentuk setelah berulang kali memanas dan mendingin."
+    },
+    "outer_lid": {
+      "name": "Tutup Luar",
+      "short": "Menutup ruang dan membawa jalur uap",
+      "detail": "Tutup plastik menekan tutup dalam berbahan logam beserta gasket-nya ke bibir panci. Bentuknya cembung agar air kondensasi mengalir ke tepi, bukan menetes dari satu titik saat dibuka. Pada model nontekanan ini tutup menahan cipratan dan mengarahkan uap, tetapi tidak mengubahnya menjadi panci bertekanan."
+    },
+    "carry_handle": {
+      "name": "Gagang Bawa",
+      "short": "Lengkungan lipat yang tertambat di sisi tutup",
+      "detail": "Gagang dapat direbahkan saat alat dipakai dan diangkat menjadi lengkungan lebar untuk membawanya. Dua poros membagi beban ke rangka atas sehingga tutup tidak menahan seluruh berat isi panci. Kabel tetap harus dicabut dan alat dibiarkan cukup dingin sebelum dipindahkan; gagang tidak melindungi tangan dari uap atau tumpahan panas."
+    },
+    "lid_release": {
+      "name": "Tombol Pembuka Tutup",
+      "short": "Menarik kait di sisi depan",
+      "detail": "Menekan tombol menarik kait kecil dari rangka atas sehingga tutup berpegas dapat terbuka. Tombol ditempatkan di bawah jalur uap dan jauh dari engsel agar jari tidak mendekati ventilasi. Bunyi klik saat tutup ditekan berasal dari kait yang kembali mengunci di bawah bibir rangka."
+    },
+    "steam_vent": {
+      "name": "Ventilasi Uap",
+      "short": "Jalan keluar terkontrol untuk uap dan busa pati",
+      "detail": "Air mendidih harus keluar sebagai uap, sehingga penutup yang dapat dilepas mengubah semburan langsung menjadi jalur bersekat yang lebih lambat. Celah-celahnya mengurangi cipratan dan memberi ruang bagi busa untuk runtuh sebelum keluar. Menutup ventilasi ini berbahaya: bahkan alat nontekanan dapat mengalami kenaikan tekanan tak disengaja bila satu-satunya jalur uap tersumbat."
+    },
+    "hinge": {
+      "name": "Engsel Tutup",
+      "short": "Menjaga tutup sejajar dengan bibir penyegel",
+      "detail": "Sebuah pin baja membentang di antara dua dudukan tebal di belakang. Selain memungkinkan tutup berayun, engsel menentukan tempat tutup dalam mendarat; kelonggaran beberapa milimeter saja dapat membuat uap lolos dari gasket. Rumah engsel yang tebal juga mencegah plastik retak setelah ribuan kali dibuka."
+    },
+    "control_panel": {
+      "name": "Panel Kontrol",
+      "short": "Tombol mode masak, timer, dan penghangat",
+      "detail": "Membran depan yang tersegel memungkinkan pengguna memilih jenis nasi, mulai, batal, atau mengatur waktu tanpa memaparkan elektronik pada kelembapan dapur. Kemiringan tipis membuat kontrol mudah dibaca dari posisi berdiri. Pada model digital, setiap tekanan tombol dikirim ke papan kontrol di belakang panel."
+    },
+    "display": {
+      "name": "Layar",
+      "short": "Menampilkan program dan waktu tersisa",
+      "detail": "Jendela gelap menutupi layar segmen berdaya rendah. Layar melaporkan program, timer, dan status penghangat, bukan melihat nasi secara langsung. Pengendali memperkirakan waktu tersisa dari profil pilihan serta riwayat suhu, lalu memperbaruinya saat alat mendekati tahap akhir penyerapan air."
+    },
+    "inner_pot": {
+      "name": "Panci Dalam",
+      "short": "Mangkuk lepas-pasang yang menyebarkan panas ke nasi dan air",
+      "detail": "Panci aluminium memiliki dasar tebal yang meratakan panas dari elemen sebelum mencapai makanan. Lapisan antilengket mencegah pati menempel pada dinding, sedangkan garis takaran membantu mencocokkan air dan beras. Dasarnya harus rata dan bersih saat menyentuh pemanas serta sensor; sebutir nasi yang terjepit pun dapat mengangkat panci dan mengacaukan pembacaan suhu."
+    },
+    "inner_lid": {
+      "name": "Tutup Dalam",
+      "short": "Permukaan logam yang dapat dicuci dan menghadap makanan",
+      "detail": "Pelat baja tahan karat lepas-pasang ini adalah langit-langit sebenarnya dari ruang masak. Pelat ini menangkap cipratan pati, membawa bukaan ventilasi, dan menyebarkan tekanan tutup luar ke sekeliling gasket. Kemampuan melepasnya penting karena pati yang mengering dapat menyempitkan jalur uap dan menyimpan bau."
+    },
+    "lid_gasket": {
+      "name": "Gasket Tutup",
+      "short": "Cincin silikon yang menjaga uap tetap di jalurnya",
+      "detail": "Cincin lunak menyesuaikan diri dengan bibir panci saat tutup terkunci. Cincin ini tidak menciptakan tekanan masak; tugasnya mencegah uap dan air berpati bocor di seluruh tepi serta mengarahkannya ke ventilasi. Gasket yang terpelintir, kotor, atau mengeras menyebabkan aliran basah di sekitar bibir dan hilangnya kelembapan secara tidak merata."
+    },
+    "heating_plate": {
+      "name": "Pelat Pemanas Cor",
+      "short": "Mengubah hambatan listrik menjadi panas di bawah panci",
+      "detail": "Elemen resistif dicor di dalam pelat aluminium berat ini. Arus yang melewati hambatan listrik berubah menjadi panas, lalu pelat menyebarkannya ke dasar panci. Saat memasak, alat memberi daya penuh dalam interval terkontrol; sesudah air habis, daya dihentikan atau diberikan dalam pulsa kecil untuk mode hangat."
+    },
+    "temperature_sensor": {
+      "name": "Sensor Suhu",
+      "short": "Tombol berpegas yang mendeteksi akhir pendidihan",
+      "detail": "Pegas menjaga sensor menempel tepat di tengah dasar panci. Selama air cair mendidih, penguapan menahan suhu panci dekat titik didih. Setelah air bebas terserap atau menguap, suhu dasar naik cepat; sensor melihat perubahan itu dan memberi tahu pengendali bahwa fase masak utama selesai."
+    },
+    "control_board": {
+      "name": "Papan Kontrol",
+      "short": "Menjalankan profil panas dan beralih ke mode hangat",
+      "detail": "Papan sirkuit membaca tombol dan sensor suhu, menghitung waktu program, lalu mengoperasikan relai pemanas. Model dengan logika fuzzy membandingkan laju kenaikan suhu dengan profil tersimpan agar dapat menyesuaikan diri terhadap jumlah isi dan suhu ruangan. Pengendali tidak melihat nasi secara langsung; perubahan suhu terhadap waktu menjadi petunjuk utamanya."
+    },
+    "thermal_fuse": {
+      "name": "Sekering Termal",
+      "short": "Pemutus keselamatan sekali pakai di dekat pemanas",
+      "detail": "Sekering kecil ini terbuka permanen bila panas abnormal mencapai ambang batas, memutus listrik walaupun relai atau perangkat lunak gagal dalam posisi menyala. Berbeda dari sensor suhu normal, sekering bukan bagian dari kontrol sehari-hari dan tidak kembali tersambung setelah dingin. Jika terputus, sumber masalah harus ditemukan sebelum alat digunakan lagi."
+    },
+    "wiring_harness": {
+      "name": "Rangkaian Kabel",
+      "short": "Konduktor tahan panas yang menghubungkan daya, sensor, dan kontrol",
+      "detail": "Kabel berisolasi menghubungkan soket belakang ke papan, pemanas, sensor, dan sekering termal. Jalurnya dijepit jauh dari logam terpanas dan menyisakan kelonggaran saat komponen memuai. Kabel pemanas lebih tebal karena membawa arus utama, sedangkan kabel sensor hanya membawa sinyal pengukuran kecil."
+    },
+    "power_socket": {
+      "name": "Soket Daya",
+      "short": "Sambungan listrik lepas-pasang yang tersembunyi",
+      "detail": "Kabel lepas-pasang masuk ke soket cekung di belakang agar jauh dari sisi uap panas. Soket mencengkeram pin listrik dan badan steker; kontak yang longgar menghasilkan panas tepat di tempat rumah plastik paling sulit menahannya. Melepas kabel juga membuat alat lebih mudah disimpan dan dibersihkan."
+    },
+    "base_plate": {
+      "name": "Alas Berventilasi",
+      "short": "Menopang alat sambil memasukkan udara pendingin",
+      "detail": "Alas cetak membawa empat kaki lebar yang menjauhkan logam panas dan soket listrik dari meja. Celah di bawah membiarkan konveksi mendinginkan papan kontrol serta kabel tanpa memberi jalan langsung bagi tumpahan dari atas. Bibirnya yang terangkat juga mengunci tepi cangkang menjadi satu rumah yang kaku."
+    }
+  },
+  "steps": [
+    {
+      "title": "Dudukkan dan segel",
+      "body": "Beras dan air yang sudah ditakar berada di dalam panci lepas-pasang. Menutup tutup menekan gasket ke bibir panci, sementara tutup dalam mengarahkan seluruh uap ke ventilasi."
+    },
+    {
+      "title": "Tambahkan panas",
+      "body": "Papan kontrol menyalakan pemanas cor. Massa aluminiumnya menyebarkan panas resistif ke dasar panci yang tebal, mengurangi titik panas yang dapat menghanguskan pati sebelum air mengedarkannya."
+    },
+    {
+      "title": "Didihkan dan edarkan",
+      "body": "Air mendidih dan gelembung yang naik mengedarkan panas melalui beras. Uap melewati tutup dalam dan keluar lewat ventilasi bersekat, sedangkan gasket mencegah kebocoran acak di bibir panci."
+    },
+    {
+      "title": "Deteksi berakhirnya air bebas",
+      "body": "Air mendidih menahan suhu panci di sekitar 100 °C. Ketika beras telah menyerap air bebas, dasar panci mendadak menjadi lebih panas. Sensor di tengah mendeteksi kenaikan tersebut dan melaporkannya ke papan kontrol."
+    },
+    {
+      "title": "Istirahatkan nasi",
+      "body": "Daya masak penuh berhenti, tetapi ruang tertutup beristirahat beberapa menit. Panas dan kelembapan menyebar kembali di antara butir, bukan terus didorong keluar oleh pendidihan."
+    },
+    {
+      "title": "Jaga hangat dengan aman",
+      "body": "Papan memberikan pulsa daya jauh lebih rendah agar nasi tetap hangat. Jika kontrol gagal dan alas terlalu panas, sekering termal independen memutus rangkaian listrik secara permanen."
+    }
+  ],
+  "quiz": [
+    {
+      "prompt": "Ketuk bagian yang langsung menyebarkan panas listrik ke panci."
+    },
+    {
+      "prompt": "Bagaimana alat mengetahui air bebas sudah habis?",
+      "choices": [
+        "Nasi menjadi lebih berat",
+        "Suhu panci naik setelah tidak lagi tertahan pada titik didih",
+        "Ventilasi uap menutup",
+        "Kamera memeriksa permukaan nasi"
+      ],
+      "explain": "Air mendidih menahan suhu panci tetap stabil. Ketika tidak ada air bebas untuk menyerap panas melalui penguapan, dasar panci cepat menjadi lebih panas."
+    },
+    {
+      "prompt": "Ketuk komponen berpegas yang menyentuh dasar panci."
+    },
+    {
+      "prompt": "Apa tugas utama gasket tutup pada alat ini?",
+      "choices": [
+        "Menciptakan tekanan tinggi agar masak lebih cepat",
+        "Mengarahkan uap ke ventilasi dan mencegah kebocoran tepi",
+        "Mengukur banyaknya beras",
+        "Mengisolasi papan kontrol"
+      ],
+      "explain": "Ini bukan panci bertekanan. Gasket hanya menyegel bibir agar uap mengikuti jalur ventilasi yang dirancang."
+    },
+    {
+      "prompt": "Ketuk permukaan lepas-pasang yang menangkap cipratan pati di bawah tutup."
+    },
+    {
+      "prompt": "Mengapa dasar panci dalam lebih tebal daripada dindingnya?",
+      "choices": [
+        "Agar alat lebih berat",
+        "Untuk menyebarkan energi pemanas dan mengurangi titik panas",
+        "Untuk menghalangi sensor suhu",
+        "Untuk menyimpan listrik di antara siklus"
+      ],
+      "explain": "Dasar konduktif yang tebal menyebarkan panas ke samping sebelum mencapai nasi, sehingga mengurangi cincin gosong tepat di atas pemanas."
+    },
+    {
+      "prompt": "Ketuk pengaman sekali pakai yang terputus jika alat terlalu panas."
+    },
+    {
+      "prompt": "Apa yang berubah saat alat masuk mode penghangat?",
+      "choices": [
+        "Ventilasi uap tertutup sepenuhnya",
+        "Pemanas menerima daya rata-rata yang jauh lebih kecil",
+        "Panci diangkat secara mekanis dari pemanas",
+        "Sekering termal mengulang program"
+      ],
+      "explain": "Mode hangat memakai daya pemanas rendah atau berpulsa. Suhu saji dipertahankan tanpa meneruskan pendidihan berdaya penuh."
+    }
+  ]
+}

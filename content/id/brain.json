@@ -1,35 +1,124 @@
 {
   "title": "Otak",
-  "subtitle": "Komputer berkerut yang berjalan dengan gula",
-  "scale": "≈ 15 cm panjang",
-  "summary": "Otak adalah lembar sel saraf, dikerutkan supaya muat, duduk di tangkai yang sudah tahu cara menjaga Anda bernapas sebelum apa pun di lembar itu punya pikiran. Kerutan bukan hiasan: itulah cara satu meter persegi korteks masuk ke tengkorak. Dua belahan bicara lewat jembatan kabel putih. Kamar berisi cairan di dalam adalah peredam kejut dan saluran pembuangan.",
+  "subtitle": "Organ yang mengendalikan seluruh kerja tubuh",
+  "scale": "panjang sekitar 15 cm",
+  "summary": "Otak tersusun dari lembaran sel saraf yang dilipat agar muat di dalam tengkorak. Lipatan itu bukan hiasan: luas korteksnya mendekati satu meter persegi. Dua belahan bertukar informasi melalui berkas serat putih, sedangkan batang otak di bawahnya telah mengatur napas dan fungsi dasar lain bahkan sebelum pikiran sadar bekerja. Rongga berisi cairan di bagian dalam membantu melindungi jaringan sekaligus mengedarkan dan membuang zat sisa.",
   "parts": {
-    "left_hemisphere": { "name": "Belahan Kiri", "short": "Bahasa, bagi kebanyakan orang, tinggal di sini", "detail": "Lembar korteks abu-abu yang dikerutkan di atas inti kabel putih. Pada kebanyakan orang kidal kanan, wilayah yang mengubah pikiran menjadi kata duduk di sisi ini. Kerusakan di sini bisa mengambil bicara dan meninggalkan orangnya utuh, itulah cara kita tahu kerutan tidak semua mengerjakan pekerjaan yang sama." },
-    "right_hemisphere": { "name": "Belahan Kanan", "short": "Setengah lain dari lembar yang sama", "detail": "Bukan 'sisi kreatif' dalam cara apa pun yang masih pantas dikatakan buku teks. Ia menangani lapangan pandang kiri, banyak atensi, dan banyak dari apa yang membuat wajah sebuah wajah. Potong jembatan antara keduanya dan Anda mendapat dua pikiran dalam satu tengkorak, itulah cara kita tahu mereka sedang bicara." },
-    "cerebellum": { "name": "Serebelum", "short": "Kerutan lebih halus, dan alasan Anda bisa menangkap bola", "detail": "Terselip di bawah belakang, dengan folia alih-alih girus — trik yang sama pada skala lebih kecil. Ia tidak memulai gerakan; ia mengatur waktunya. Orang tanpa banyak darinya masih bisa memutuskan bergerak, lalu meleset." },
-    "brainstem": { "name": "Batang Otak", "short": "Bagian yang tidak akan membiarkan Anda berhenti bernapas", "detail": "Otak tengah, pons, medula: tangkai mesin yang lebih tua. Denyut jantung, tekanan darah, sakelar kesadaran. Belahan bisa hancur dan orangnya masih hidup; ini tidak." },
-    "corpus_callosum": { "name": "Korpus Kalosum", "short": "Kabel antara belahan", "detail": "Dua ratus juta serat dalam berkas berbentuk C. Setiap kali tangan kiri tahu apa yang dikerjakan kanan, ini sebabnya. Potong untuk mengobati epilepsi dan kedua belahan berjalan sebagai tetangga yang tidak lagi bicara." },
-    "ventricles": { "name": "Ventrikel", "short": "Kamar penuh air laut, di dalam otak", "detail": "Empat rongga yang membuat dan mengedarkan cairan serebrospinal. Cairan itu bantal, bak kimia, dan saluran. Jika saluran tersumbat, kamar membengkak dan otak dihancurkan dari dalam — hidrosefalus." },
-    "thalamus": { "name": "Talamus", "short": "Relai: hampir semua berhenti di sini dulu", "detail": "Dua inti berbentuk telur di atas batang otak. Informasi indra, kecuali penciuman, berhenti di sini sebelum korteks. Kesadaran sendiri tampaknya butuh loop ini. Itulah alasan stroke kecil di sini bisa mengambil seluruh satu sisi dunia." },
-    "meninges": { "name": "Meningen", "short": "Tiga kulit, dan alasan pukulan tengkorak masih bisa memar", "detail": "Dura, araknoid, pia: kantong luar yang liat, jaring, cling-film di kerutan. Di antara mereka mengalir cairan. Meningitis adalah kulit ini meradang. Mereka menyelubungi seluruh organ, jadi digambar tembus pandang." },
-    "cerebral_arteries": { "name": "Arteri Serebral", "short": "Lingkaran darah di bawah otak", "detail": "Lingkaran Willis dan pohon yang memanjat darinya. Otak dua persen tubuh dan mengambil dua puluh persen darah. Gumpalan di salah satu cabang ini adalah stroke, dan wilayah cabang itu adalah defisitnya." },
-    "pituitary": { "name": "Hipofisis", "short": "Kacang polong yang menjalankan kelenjar", "detail": "Menggantung dari hipotalamus di tangkai, dalam pelana tulang. Ia tidak berpikir. Ia kantong hormon yang memberitahu tiroid, adrenal, dan gonad apa yang harus dikerjakan. Tumor di sini bisa mencuri lapangan pandang dari bawah karena kiasma optik duduk di atasnya." },
-    "olfactory_bulbs": { "name": "Bulbus Olfaktorius", "short": "Penciuman satu-satunya indra yang melewati talamus", "detail": "Dua tangkai di bawah lobus frontal, tertancap langsung ke korteks. Itulah alasan bau bisa menjadi ingatan sebelum Anda punya kata untuknya. Mereka otak, bukan hidung: reseptor di hidung satu-satunya neuron yang hidup di cuaca." },
-    "spinal_cord": { "name": "Sumsum Tulang Belakang", "short": "Kabel yang pergi", "detail": "Batang otak dilanjutkan, kini dengan tulang di sekelilingnya. Semua yang tubuh bisa beritahu otak, dan semua yang otak bisa beritahu tubuh, menyempit lewat ini. Potong dan orang di atas potongan utuh, dan orang di bawahnya tidak." }
+    "left_hemisphere": {
+      "name": "Belahan Kiri",
+      "short": "Menangani bahasa pada kebanyakan orang",
+      "detail": "Korteks abu-abu yang berlipat menyelubungi inti serabut saraf putih. Pada kebanyakan orang bertangan dominan kanan, wilayah yang mengubah gagasan menjadi kata berada di belahan ini. Kerusakan pada wilayah tertentu dapat menghilangkan kemampuan bicara tanpa menghapus kepribadian, bukti bahwa setiap bagian korteks memiliki tugas berbeda."
+    },
+    "right_hemisphere": {
+      "name": "Belahan Kanan",
+      "short": "Pasangan yang memproses ruang, perhatian, dan wajah",
+      "detail": "Belahan kanan bukan sekadar 'sisi kreatif'. Bagian ini memproses medan pandang kiri, banyak fungsi perhatian, dan pengenalan wajah. Jika jembatan utama antara kedua belahan diputus, informasi yang diterima satu sisi tidak selalu dapat dijelaskan oleh sisi lain. Pengamatan itu menunjukkan betapa aktif keduanya terus berkomunikasi."
+    },
+    "cerebellum": {
+      "name": "Serebelum",
+      "short": "Lipatan halus yang menyelaraskan waktu gerakan",
+      "detail": "Serebelum terletak di bawah bagian belakang otak dan memiliki lipatan kecil yang disebut folia. Struktur ini tidak memulai gerakan, melainkan membandingkan rencana dengan hasil dan mengoreksi waktu serta ketepatannya. Seseorang dengan kerusakan serebelum masih dapat berniat bergerak, tetapi gerakannya mudah meleset dan kehilangan keseimbangan."
+    },
+    "brainstem": {
+      "name": "Batang Otak",
+      "short": "Pusat kendali napas dan fungsi hidup dasar",
+      "detail": "Otak tengah, pons, dan medula membentuk batang otak yang secara evolusi lebih tua. Bagian ini mengatur napas, denyut jantung, tekanan darah, serta mekanisme penting bagi kesadaran. Kerusakan luas pada belahan besar masih mungkin menyisakan fungsi hidup dasar, tetapi kerusakan berat pada batang otak biasanya tidak."
+    },
+    "corpus_callosum": {
+      "name": "Korpus Kalosum",
+      "short": "Jembatan serabut di antara kedua belahan",
+      "detail": "Sekitar dua ratus juta serabut saraf membentuk berkas melengkung seperti huruf C. Melalui jalur ini, informasi dan perintah di satu belahan tersedia bagi belahan lain. Pemutusan jalur untuk menangani epilepsi berat dapat membuat kedua belahan bekerja lebih mandiri karena tidak lagi bertukar informasi seperti sebelumnya."
+    },
+    "ventricles": {
+      "name": "Ventrikel",
+      "short": "Rongga tempat cairan serebrospinal beredar",
+      "detail": "Empat rongga saling terhubung menghasilkan dan mengedarkan cairan serebrospinal. Cairan ini melindungi otak dari benturan, menjaga lingkungan kimia, dan membantu membawa zat sisa. Jika alirannya tersumbat, cairan menumpuk, ventrikel membesar, dan jaringan tertekan dari dalam dalam kondisi yang disebut hidrosefalus."
+    },
+    "thalamus": {
+      "name": "Talamus",
+      "short": "Stasiun penghubung bagi hampir semua informasi indra",
+      "detail": "Sepasang inti berbentuk telur ini berada di atas batang otak. Hampir semua informasi indra kecuali penciuman singgah di talamus sebelum mencapai korteks. Putaran sinyal antara talamus dan korteks juga penting bagi kesadaran. Karena itu stroke kecil di sini dapat menghilangkan sensasi atau perhatian terhadap seluruh sisi dunia."
+    },
+    "meninges": {
+      "name": "Meningen",
+      "short": "Tiga selaput pelindung yang membungkus otak",
+      "detail": "Dura mater yang kuat, araknoid seperti jaring, dan pia mater yang melekat pada setiap lipatan membentuk tiga lapisan pelindung. Cairan serebrospinal mengalir di ruang di antaranya. Radang pada selaput ini disebut meningitis. Pada model, meningen dibuat tembus pandang agar jaringan di bawahnya tetap terlihat."
+    },
+    "cerebral_arteries": {
+      "name": "Arteri Serebral",
+      "short": "Cincin dan percabangan pembawa darah ke otak",
+      "detail": "Lingkaran Willis di dasar otak menghubungkan arteri utama, lalu cabangnya menyebar di permukaan. Walau hanya sekitar dua persen massa tubuh, otak menerima kira-kira dua puluh persen aliran darah. Gumpalan yang menyumbat satu cabang menyebabkan stroke, dan fungsi yang hilang mengikuti wilayah yang dipasok cabang tersebut."
+    },
+    "pituitary": {
+      "name": "Kelenjar Hipofisis",
+      "short": "Kelenjar kecil yang mengendalikan kelenjar lain",
+      "detail": "Kelenjar sebesar kacang polong ini menggantung dari hipotalamus di dalam lekukan tulang. Hipofisis melepaskan hormon yang mengatur tiroid, adrenal, gonad, pertumbuhan, dan keseimbangan air. Kiasma optik berada tepat di atasnya, sehingga tumor hipofisis dapat menekan jalur penglihatan dan mengurangi medan pandang dari kedua sisi."
+    },
+    "olfactory_bulbs": {
+      "name": "Bulbus Olfaktorius",
+      "short": "Jalur penciuman yang tidak singgah di talamus",
+      "detail": "Sepasang struktur di bawah lobus frontal menerima sinyal langsung dari reseptor di hidung dan menghubungkannya ke korteks. Jalur langsung ke wilayah emosi dan ingatan membantu menjelaskan mengapa bau dapat memicu kenangan sebelum mudah dijelaskan dengan kata-kata. Bulbus merupakan bagian otak, sedangkan neuronnya menerima masukan dari reseptor yang terpapar udara luar."
+    },
+    "spinal_cord": {
+      "name": "Sumsum Tulang Belakang",
+      "short": "Jalur utama antara otak dan tubuh",
+      "detail": "Batang otak berlanjut menjadi sumsum yang dilindungi ruas tulang belakang. Hampir semua informasi dari tubuh menuju otak dan perintah dari otak menuju tubuh melewati jalur ini. Cedera yang memutusnya dapat mempertahankan fungsi di atas lokasi kerusakan, tetapi memutus gerak dan sensasi di bawahnya."
+    }
   },
   "steps": [
-    { "title": "Keram lembar supaya muat tengkorak", "body": "Korteks adalah lembar. Sulkus adalah cara satu meter persegi darinya masuk. Dua belahan adalah lembar itu dilipat dua kali, dengan celah di tengah." },
-    { "title": "Kabel antara belahan", "body": "Korpus kalosum adalah alasan belahan adalah satu pikiran. Potong dan mereka dua." },
-    { "title": "Mesin yang lebih tua di bawah", "body": "Serebelum mengatur waktu gerakan. Batang otak menjaga Anda bernapas entah Anda pikirkan atau tidak. Talamus adalah relai tempat lembar berpikir duduk." },
-    { "title": "Kamar cairan, kantong kulit", "body": "Ventrikel meredam dan mengalirkan. Meningen menyelubungi. Bersama mereka alasan otak bisa duduk di kotak keras tanpa menghancurkan diri setiap anggukan." },
-    { "title": "Bahan bakar dan jalan keluar", "body": "Arteri memberi makan organ yang rakus. Sumsum tulang belakang adalah cara apa pun yang bukan kepala masih terhitung sebagai Anda." }
+    {
+      "title": "Lipat korteks agar muat",
+      "body": "Korteks merupakan lembaran jaringan saraf. Alur dan tonjolannya memungkinkan permukaan hampir satu meter persegi masuk ke tengkorak, sedangkan celah tengah membaginya menjadi dua belahan."
+    },
+    {
+      "title": "Hubungkan kedua belahan",
+      "body": "Korpus kalosum membuat kedua belahan bekerja sebagai satu sistem dengan meneruskan informasi di antara keduanya. Jika jalur ini diputus, masing-masing belahan dapat bertindak lebih mandiri."
+    },
+    {
+      "title": "Jalankan fungsi dasar dari bawah",
+      "body": "Serebelum menyelaraskan gerakan, batang otak menjaga napas serta denyut jantung, dan talamus meneruskan hampir semua informasi indra ke korteks."
+    },
+    {
+      "title": "Lindungi dengan selaput dan cairan",
+      "body": "Ventrikel menghasilkan serta mengedarkan cairan serebrospinal, sementara meningen membungkus organ. Keduanya membantu jaringan lunak bertahan di dalam tengkorak yang keras."
+    },
+    {
+      "title": "Pasok energi dan hubungkan tubuh",
+      "body": "Arteri memberi otak aliran darah yang sangat besar untuk ukurannya. Sumsum tulang belakang membawa informasi dan perintah antara otak dengan hampir seluruh bagian tubuh."
+    }
   ],
   "quiz": [
-    { "prompt": "Ketuk kabel yang membiarkan dua belahan bicara." },
-    { "prompt": "Mengapa korteks berkerut?", "choices": ["Supaya kelihatan seperti kenari", "Untuk memasukkan lembar sel saraf yang luas ke tengkorak kecil", "Kerutan menyimpan ingatan", "Pembuluh darah butuh alur"], "explain": "Luas permukaan. Otak licin akan butuh tengkorak jauh lebih besar untuk lembar yang sama." },
-    { "prompt": "Ketuk bagian yang tidak akan membiarkan Anda berhenti bernapas." },
-    { "prompt": "Ketuk struktur berkerut lebih halus yang mengatur waktu gerakan." },
-    { "prompt": "Indra mana yang melewati talamus?", "choices": ["Penglihatan", "Pendengaran", "Penciuman", "Sentuhan"], "explain": "Bulbus olfaktorius tertancap langsung ke korteks. Itulah alasan bau bisa menjadi ingatan sebelum menjadi kata." },
-    { "prompt": "Ketuk kulit yang menyelubungi seluruh organ." }
+    {
+      "prompt": "Ketuk berkas serabut yang memungkinkan kedua belahan berkomunikasi."
+    },
+    {
+      "prompt": "Mengapa permukaan korteks berlipat-lipat?",
+      "choices": [
+        "Agar bentuknya menyerupai kenari",
+        "Agar lembaran sel saraf yang luas muat di dalam tengkorak",
+        "Karena ingatan disimpan di dalam lipatan",
+        "Karena pembuluh darah memerlukan alur"
+      ],
+      "explain": "Lipatan menambah luas permukaan. Korteks dengan jumlah jaringan yang sama akan memerlukan tengkorak jauh lebih besar jika permukaannya mulus."
+    },
+    {
+      "prompt": "Ketuk bagian yang mengatur napas secara otomatis."
+    },
+    {
+      "prompt": "Ketuk struktur berlipat halus yang menyelaraskan waktu gerakan."
+    },
+    {
+      "prompt": "Indra mana yang tidak singgah di talamus sebelum mencapai korteks?",
+      "choices": [
+        "Penglihatan",
+        "Pendengaran",
+        "Penciuman",
+        "Sentuhan"
+      ],
+      "explain": "Bulbus olfaktorius meneruskan penciuman melalui jalur yang terhubung langsung ke korteks, termasuk wilayah emosi dan ingatan."
+    },
+    {
+      "prompt": "Ketuk selaput yang membungkus seluruh otak."
+    }
   ]
 }

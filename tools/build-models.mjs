@@ -7,9 +7,11 @@
 // dropping a real .glb into assets/models with the same node names — nothing in
 // the app changes.
 
-import { writeFileSync, mkdirSync, existsSync, statSync } from 'node:fs';
+import { mkdirSync, existsSync, statSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+
+import { writeFileWithRetry } from './lib/write-file-retry.mjs';
 
 // GLTFExporter reads its assembled Blob back through the DOM FileReader API,
 // which Node does not provide. Blob itself is global here, so a four-line shim
@@ -36,6 +38,10 @@ import pistonEngine from './models/piston-engine.mjs';
 import refrigerator from './models/refrigerator.mjs';
 import washingMachine from './models/washing_machine.mjs';
 import microwave from './models/microwave.mjs';
+import riceCooker from './models/rice_cooker.mjs';
+import mechanicalWatch from './models/mechanical_watch.mjs';
+import cordlessDrill from './models/cordless_drill.mjs';
+import cyclonicVacuum from './models/cyclonic_vacuum.mjs';
 import airConditioner from './models/air_conditioner.mjs';
 import heart from './models/heart.mjs';
 import rocketEngine from './models/rocket_engine.mjs';
@@ -49,6 +55,8 @@ import violin from './models/violin.mjs';
 import brain from './models/brain.mjs';
 import innerEar from './models/inner_ear.mjs';
 import tooth from './models/tooth.mjs';
+import turboshaftHelicopter from './models/turboshaft_helicopter.mjs';
+import earthObservationSatellite from './models/earth_observation_satellite.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = resolve(ROOT, 'assets/models');
@@ -63,6 +71,10 @@ const RECIPES = {
   refrigerator,
   washing_machine: washingMachine,
   microwave,
+  rice_cooker: riceCooker,
+  mechanical_watch: mechanicalWatch,
+  cordless_drill: cordlessDrill,
+  cyclonic_vacuum: cyclonicVacuum,
   air_conditioner: airConditioner,
   heart,
   rocket_engine: rocketEngine,
@@ -76,6 +88,8 @@ const RECIPES = {
   brain,
   inner_ear: innerEar,
   tooth,
+  turboshaft_helicopter: turboshaftHelicopter,
+  earth_observation_satellite: earthObservationSatellite,
 };
 
 const ONLY = new Set(process.argv.slice(2).filter((a) => !a.startsWith('-')));
@@ -96,7 +110,7 @@ async function exportGlb(name, root) {
   const exporter = new GLTFExporter();
   const buffer = await exporter.parseAsync(root, { binary: true, onlyVisible: false });
   const file = resolve(OUT, `${name}.glb`);
-  writeFileSync(file, Buffer.from(buffer));
+  writeFileWithRetry(file, Buffer.from(buffer));
   return file;
 }
 

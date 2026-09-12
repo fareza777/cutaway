@@ -99,12 +99,13 @@ npm run android        # debug build onto a connected device or emulator
 `npm run web` also works and is the fastest way to preview a model change
 without a native rebuild.
 
-For a release APK — bundled JS, embedded assets, no Metro — the production path:
+For a release APK — bundled JS, embedded assets, no Metro — use the canonical version-checked production path:
 
 ```bash
-npx expo prebuild --platform android --clean
-cd android && ./gradlew assembleRelease
+npm run build:apk -- 0.13.0
 ```
+
+That command rebuilds generated assets, synchronizes the ignored Android project, assembles only ARM64, and runs the complete release verifier. See "Building a production APK" below for its guarantees and output path.
 
 Two Windows-specific notes, both of which cost time here:
 
@@ -290,13 +291,22 @@ and not the artefact.
 Always build with:
 
 ```bash
-npm run build:apk 0.9.0
+npm run build:apk -- 0.13.0
 ```
 
-which rebuilds the models, deletes `android/app/build/generated/{assets,res}/react`,
-assembles, and then runs `tools/verify-apk.mjs` — which hashes every `.glb` on
-disk and every `.glb` inside the APK and fails if any of them differ. A newer
-timestamp on the APK proves nothing; the stale one had that too.
+The optional argument must match `expo.version` in `app.json`; omitting it uses
+that version. The command rebuilds the models and brand, runs the full source
+contract, synchronizes the ignored native project with Expo prebuild, and then
+forces an ARM64 release bundle with Gradle's task and build caches disabled. It
+does not delete generated directories or run a native clean.
+
+The result is always `dist/cutaway-<app-version>-arm64.apk`. Before accepting
+it, `tools/verify-apk.mjs` proves the current package/version/code, valid APK
+signature, arm64-only native libraries, the exact 28 Metro model assets plus
+the exact 28 AAPT model resources, all 28 unique object icons, and every current
+launcher/adaptive/splash density derived from `app.json`. Configure an Android
+SDK through `ANDROID_SDK_ROOT`, `ANDROID_HOME`, or `android/local.properties`.
+A newer timestamp on the APK proves nothing; the stale one had that too.
 
 ### Looking at a model before it ships
 
@@ -341,9 +351,13 @@ Three defects in the heart came straight out of looking at it:
 
 ### What is still not covered
 
-Automated coverage of the GL path — every check on it so far has been a human
-looking at a screenshot. `tools/device-check.sh` scripts the walkthrough and
-captures shots at each step, but nothing asserts on them.
+`node tools/product-ui-test.mjs` now checks the browser GL path: draw calls
+stop while a full panel or another route covers the viewer and resume when
+returning. It also exercises localized search and checks text contrast on
+ten screens. Run a local Expo web preview at `http://127.0.0.1:5199` first, or
+set `CUTAWAY_PREVIEW_URL`. These checks do not replace native GPU profiling or
+visual inspection of every model. `tools/device-check.sh` captures a native
+walkthrough, but does not assert on those screenshots.
 
 **It has only run on an emulator, never on physical hardware.** The emulator's
 GL driver is not a real one; test on an actual phone before shipping. Two
@@ -384,17 +398,25 @@ rate with the animation running.
 ## Play Store readiness
 
 Done: package id `com.cutaway.explorer`, portrait lock, edge-to-edge, adaptive
-icon slots, dark theme, no network permission, no ads, no tracking, all content
-on-device.
+icon slots, light/dark themes, local-first 3D content, privacy policy page, store
+listing assets, Google Mobile Ads wiring, and a Google Play Billing Remove Ads
+flow. The free version uses an anchored library banner and capped interstitials
+after a completed quiz or when leaving a viewer session lasting at least one
+minute; the one-time purchase disables both. SDK requests are gated by UMP
+consent and the persisted purchase entitlement. The banner is unmounted when
+the library loses focus, the app backgrounds, or the search keyboard opens.
 
-**Ship an `.aab`, not the `.apk`.** `./gradlew assembleRelease` produces a
-~100 MB universal APK because it carries native libraries for all four ABIs.
-`./gradlew bundleRelease` produces an app bundle and Play splits it per device,
-which takes the download to roughly a quarter of that. For a local install on
-one device, `-PreactNativeArchitectures=x86_64` (emulator) or `arm64-v8a`
-(phone) builds far faster and much smaller.
+**Ship an upload-key-signed `.aab`, not the local `.apk`.** Gradle
+`bundleRelease` produces an app bundle; Play generates device-specific APKs.
+The configured `reactNativeArchitectures` determines supported ABIs. Keep all
+four existing bundle targets (`arm64-v8a`, `armeabi-v7a`, `x86`, `x86_64`) for
+store updates; the local APK workflow is intentionally ARM64-only. Download
+size must be measured from the resulting bundle rather than inferred from
+the universal APK size.
 
-Still needed: a real app icon and feature graphic, a signing key of your own
-(the release build is currently debug-signed), a privacy policy URL (the app
-collects nothing, so it is short), store screenshots, and an `eas build`
-configuration.
+Production AdMob app, banner, and interstitial IDs are configured in app.json.
+Before publishing, verify Play product activation, AdMob privacy messages,
+Data Safety, the hosted privacy page, and native device behavior. Release
+signing defaults to the debug key unless the private `cutawayUpload*` Gradle
+properties are supplied. Reuse the existing upload key; never generate a
+replacement silently. An unsigned bundle is not ready for Play upload.

@@ -2,18 +2,24 @@
   "schema": 1,
   "id": "lung",
   "title": "Lungs",
-  "subtitle": "A tree grown until it fills the chest",
+  "subtitle": "The organ that puts oxygen into the blood",
   "category": "Anatomy",
   "accent": "#72B7D8",
   "scale": "≈ 25 cm tall",
   "summary": "Lungs do not breathe. They have no muscle of their own and cannot pull in so much as a teaspoon of air — the diaphragm underneath does that, by flattening and making the chest bigger until air falls in on its own. What the lungs are for is the surface. The airway divides about twenty-three times, and by the end those branches open into 300 million tiny sacs whose combined area comes to roughly half a tennis court, wrapped in blood vessels so fine that red cells cross them in single file. Everything about the shape is in service of getting an enormous area into a small box.",
   "model": "lung",
   "cutAxis": "z",
-  "restRotation": [0.05, -0.25, 0],
+  "restRotation": [
+    0.05,
+    -0.25,
+    0
+  ],
   "parts": [
     {
       "id": "pleura",
-      "nodes": ["pleura"],
+      "nodes": [
+        "pleura"
+      ],
       "name": "Pleura",
       "short": "Two slippery sheets, and the suction that holds a lung open",
       "detail": "One sheet lines the chest wall, the other wraps the lung, and between them is a film of fluid a few microns thick. The lung is not attached to the ribcage at all. It is held out against it by suction, which is why a hole letting air into that gap — from a broken rib or a stab wound — makes the lung shrink away and collapse in seconds. The fluid also lets the two surfaces slide, which is what stops breathing from being an act of friction.",
@@ -22,7 +28,9 @@
     },
     {
       "id": "upper_lobe_right",
-      "nodes": ["upper_lobe_right"],
+      "nodes": [
+        "upper_lobe_right"
+      ],
       "name": "Right Upper Lobe",
       "short": "The top third, and where inhaled trouble tends to land",
       "detail": "Lobes are not decorative divisions. Each is a genuinely separable piece of lung with its own bronchus and its own artery, which is why a surgeon can remove one and leave the rest working. The right upper lobe is the commonest home of tuberculosis, because the very top of the lung gets the most air and the least blood, and the bacterium prefers exactly that combination.",
@@ -30,7 +38,9 @@
     },
     {
       "id": "middle_lobe_right",
-      "nodes": ["middle_lobe_right"],
+      "nodes": [
+        "middle_lobe_right"
+      ],
       "name": "Right Middle Lobe",
       "short": "A small wedge that only the right lung has",
       "detail": "The left lung has no equivalent, because the heart occupies the space where it would sit. Its bronchus leaves at a sharp angle and is narrow, so it drains and clears badly — this small lobe collapses more readily than any other, often enough that the pattern has its own name in radiology. It is a good demonstration that lung disease is frequently about plumbing angles rather than about tissue.",
@@ -38,7 +48,9 @@
     },
     {
       "id": "lower_lobe_right",
-      "nodes": ["lower_lobe_right"],
+      "nodes": [
+        "lower_lobe_right"
+      ],
       "name": "Right Lower Lobe",
       "short": "The biggest lobe, and the one that does most of the work at rest",
       "detail": "Gravity pulls blood downward inside the chest, so the base of the lung is far better supplied than the apex. At rest most gas exchange happens down here. That is also why pneumonia in someone who has been lying on their back tends to settle in the lower lobes at the back, and why getting a patient sitting up is treatment and not just comfort.",
@@ -46,7 +58,9 @@
     },
     {
       "id": "upper_lobe_left",
-      "nodes": ["upper_lobe_left"],
+      "nodes": [
+        "upper_lobe_left"
+      ],
       "name": "Left Upper Lobe",
       "short": "Carries the lingula, and the notch the heart presses into it",
       "detail": "The left lung has two lobes rather than three, and it is noticeably smaller than the right, because the heart sits mostly on the left side of the chest and takes the room. You can see the bite it makes in the front edge of this lobe — the cardiac notch. The little tongue of tissue that curls beneath it is the lingula, which is the left lung's rough answer to a middle lobe without being one.",
@@ -54,7 +68,9 @@
     },
     {
       "id": "lower_lobe_left",
-      "nodes": ["lower_lobe_left"],
+      "nodes": [
+        "lower_lobe_left"
+      ],
       "name": "Left Lower Lobe",
       "short": "Sits mostly behind, not below",
       "detail": "Because the fissure runs diagonally, this lobe occupies far more of the back of the chest than of the bottom. That surprises people the first time they see a scan: listening to the lower lobes means putting the stethoscope on someone's back, not under their ribs at the front. Almost everything you hear through the front of the chest is upper lobe.",
@@ -62,7 +78,9 @@
     },
     {
       "id": "trachea",
-      "nodes": ["trachea"],
+      "nodes": [
+        "trachea"
+      ],
       "name": "Trachea",
       "short": "Held open by cartilage rings that are deliberately incomplete",
       "detail": "About twelve centimetres of tube stiffened by fifteen to twenty rings of cartilage — but each ring is a C, not an O. The gap faces backwards, where the oesophagus runs, and it is soft there so a swallowed mouthful can bulge into the space. The stiffness matters: without it the tube would collapse on every hard breath in, exactly as a drinking straw does when you suck too hard on a thick drink.",
@@ -70,7 +88,9 @@
     },
     {
       "id": "carina",
-      "nodes": ["carina"],
+      "nodes": [
+        "carina"
+      ],
       "name": "Carina",
       "short": "The fork, and the most ticklish spot in the body",
       "detail": "The ridge where the trachea splits in two. It carries an extraordinary density of cough receptors: touch it with a suction catheter and the cough is immediate, violent and impossible to suppress. Anaesthetists use its position as a landmark, and because it is fixed in the chest, a shift in where it sits on an X-ray is a reliable sign that something is pushing or pulling from one side.",
@@ -78,7 +98,9 @@
     },
     {
       "id": "right_main_bronchus",
-      "nodes": ["right_main_bronchus"],
+      "nodes": [
+        "right_main_bronchus"
+      ],
       "name": "Right Main Bronchus",
       "short": "Wider, shorter and steeper — which is why things inhaled go right",
       "detail": "The heart shoulders the left bronchus aside, leaving the right one running more directly downward. Anything inhaled by accident — a peanut, a tooth, a mouthful of vomit — therefore ends up in the right lung far more often than the left. It is one of the few pieces of anatomy that reliably predicts where an emergency will be found before anyone has looked.",
@@ -86,7 +108,9 @@
     },
     {
       "id": "left_main_bronchus",
-      "nodes": ["left_main_bronchus"],
+      "nodes": [
+        "left_main_bronchus"
+      ],
       "name": "Left Main Bronchus",
       "short": "Longer and flatter, because the heart is in the way",
       "detail": "It has to travel further and at a shallower angle to reach a lung that has been pushed sideways by the heart. It also passes under the arch of the aorta, which means an aneurysm there can press on it, and on the nerve running alongside — a hoarse voice is occasionally the first sign of a problem that has nothing to do with the throat.",
@@ -94,7 +118,9 @@
     },
     {
       "id": "hilum",
-      "nodes": ["hilum"],
+      "nodes": [
+        "hilum"
+      ],
       "name": "Hilum",
       "short": "The doorway where everything crosses into the lung",
       "detail": "Not really a structure so much as an address: the one place where the bronchus, the pulmonary artery, the veins, the nerves and the lymphatics all pass through the pleura together. Because every lymph vessel in the lung drains through here, the nodes at the hilum are the first place lung cancer spreads to, and the first thing a radiologist looks at after finding a shadow.",
@@ -102,7 +128,9 @@
     },
     {
       "id": "bronchial_tree",
-      "nodes": ["bronchial_tree"],
+      "nodes": [
+        "bronchial_tree"
+      ],
       "name": "Bronchial Tree",
       "short": "Twenty-three divisions, each one smaller than the last",
       "detail": "The airway splits in two, and each half splits again, about twenty-three times over. That doubling is why the total cross-section of the airway grows enormously as the tubes get smaller: by the far end, the combined area is thousands of times greater than the trachea's, and the air is barely moving. It has to be. Gas exchange needs stillness, and the tree's whole job is to slow a rush of air down to a drift.",
@@ -110,7 +138,9 @@
     },
     {
       "id": "bronchioles",
-      "nodes": ["bronchioles"],
+      "nodes": [
+        "bronchioles"
+      ],
       "name": "Bronchioles",
       "short": "No cartilage at all — and that is what asthma attacks",
       "detail": "Below about a millimetre across, the airway gives up its cartilage entirely. These small tubes are held open only by the pull of the elastic tissue around them, and their walls carry a ring of smooth muscle. Squeeze that muscle and they narrow; swell the lining and they narrow further. That is an asthma attack, and it is also why the wheeze comes on breathing out — the same elastic pull that holds them open works only while the lung is stretched.",
@@ -118,7 +148,9 @@
     },
     {
       "id": "alveoli",
-      "nodes": ["alveoli"],
+      "nodes": [
+        "alveoli"
+      ],
       "name": "Alveoli",
       "short": "300 million sacs — drawn here far larger than life",
       "detail": "Each is about a fifth of a millimetre across, and there are roughly 300 million of them; modelled to scale they would be smaller than a pixel, so they are drawn perhaps two hundred times life size. Together their surface comes to something like half a tennis court. They are also inherently unstable — a small bubble tends to empty into a larger one — and stay open only because the cells lining them secrete a detergent that weakens the surface tension. A baby born too early to make that detergent cannot keep its lungs open at all.",
@@ -126,7 +158,9 @@
     },
     {
       "id": "pulmonary_arteries",
-      "nodes": ["pulmonary_arteries"],
+      "nodes": [
+        "pulmonary_arteries"
+      ],
       "name": "Pulmonary Arteries",
       "short": "The arteries carrying the blue blood",
       "detail": "These break the rule taught in school, because the rule is wrong: artery means a vessel leading away from the heart, not a vessel full of oxygen. They carry used blood from the right ventricle out to the lungs. Their walls are much thinner than the aorta's, since the whole pulmonary circuit runs at about a fifth of the pressure — the lungs are right next door and need no great push to reach.",
@@ -134,7 +168,9 @@
     },
     {
       "id": "pulmonary_veins",
-      "nodes": ["pulmonary_veins"],
+      "nodes": [
+        "pulmonary_veins"
+      ],
       "name": "Pulmonary Veins",
       "short": "The veins carrying the red blood",
       "detail": "Four of them, two from each lung, returning freshly oxygenated blood to the left atrium. They are the only veins in the body that do. The muscle sleeve where they join the heart is the usual origin of atrial fibrillation, which is why the standard treatment is to burn or freeze a ring around each opening and electrically cut them off from the rest of the atrium.",
@@ -142,7 +178,9 @@
     },
     {
       "id": "capillary_bed",
-      "nodes": ["capillary_bed"],
+      "nodes": [
+        "capillary_bed"
+      ],
       "name": "Capillary Bed",
       "short": "A barrier thinner than a soap bubble",
       "detail": "Around every alveolus is a mesh so fine that red cells pass through it in single file, squeezing to fit. Between the air and the blood there is only the alveolar wall, a shared basement membrane and the capillary wall — about half a micron in total, thinner than the film of a soap bubble. Oxygen crosses it in less than a quarter of a second. When that gap thickens, from scarring or from fluid, breathlessness follows long before anything shows in the blood at rest.",
@@ -150,48 +188,78 @@
     },
     {
       "id": "diaphragm",
-      "nodes": ["diaphragm"],
+      "nodes": [
+        "diaphragm"
+      ],
       "name": "Diaphragm",
       "short": "The muscle that actually does the breathing",
       "detail": "A dome of muscle beneath the lungs, and the reason any of this works. When it contracts it flattens, the chest gets bigger, the pressure inside drops below the pressure outside, and air falls in — you never pull air in, you make room for it. It accounts for about three quarters of quiet breathing. Its nerve comes from the neck rather than the chest, an accident of how the body folds in the embryo, and it is why a broken neck can stop someone breathing while leaving the chest wall untouched.",
       "layer": 1,
-      "explode": [0, -1.6, 0]
+      "explode": [
+        0,
+        -1.6,
+        0
+      ]
     }
   ],
   "steps": [
     {
       "title": "The floor drops",
       "body": "The diaphragm contracts and flattens. Nothing has been pulled anywhere: the chest has simply become a bigger box, and the pressure inside it has fallen below the pressure of the room.",
-      "focus": ["diaphragm"]
+      "focus": [
+        "diaphragm"
+      ]
     },
     {
       "title": "Air falls in",
       "body": "Atmospheric pressure pushes air down the trachea, past the carina, and into both lungs. Roughly half a litre for a quiet breath. The lungs are passive throughout — they have no muscle and are only following the space made for them.",
-      "focus": ["trachea", "carina", "right_main_bronchus", "left_main_bronchus"]
+      "focus": [
+        "trachea",
+        "carina",
+        "right_main_bronchus",
+        "left_main_bronchus"
+      ]
     },
     {
       "title": "The rush slows to a drift",
       "body": "Each split halves the flow and adds to the total cross-section, twenty-three times over. By the smallest airways the air has almost stopped moving, and the last stretch is covered by molecules simply spreading out. Gas exchange needs stillness, and this is how it is arranged.",
-      "focus": ["bronchial_tree", "bronchioles"]
+      "focus": [
+        "bronchial_tree",
+        "bronchioles"
+      ]
     },
     {
       "title": "Half a tennis court, folded up",
       "body": "The branches end in 300 million sacs. Their combined surface is enormous and the wall between air and blood is about half a micron, so oxygen crosses in under a quarter of a second and carbon dioxide crosses back the other way.",
-      "focus": ["alveoli", "capillary_bed"]
+      "focus": [
+        "alveoli",
+        "capillary_bed"
+      ]
     },
     {
       "title": "Blue goes in, red comes out",
       "body": "Used blood arrives from the right side of the heart through the pulmonary arteries and leaves through the pulmonary veins, recharged, to the left side. It is the one place in the body where the artery carries the darker blood.",
-      "focus": ["pulmonary_arteries", "pulmonary_veins"]
+      "focus": [
+        "pulmonary_arteries",
+        "pulmonary_veins"
+      ]
     },
     {
       "title": "And out again, without effort",
       "body": "Breathing out is mostly not muscular. The diaphragm relaxes, and the stretched lung recoils on its own, like a balloon let go. That is why breathing out takes longer than breathing in, and why losing that elasticity — in emphysema — makes emptying the lungs the hard part rather than filling them.",
-      "focus": ["diaphragm", "lower_lobe_right", "lower_lobe_left"]
+      "focus": [
+        "diaphragm",
+        "lower_lobe_right",
+        "lower_lobe_left"
+      ]
     }
   ],
   "quiz": [
-    { "type": "identify", "prompt": "Tap the part that actually does the work of breathing.", "partId": "diaphragm" },
+    {
+      "type": "identify",
+      "prompt": "Tap the part that actually does the work of breathing.",
+      "partId": "diaphragm"
+    },
     {
       "type": "choice",
       "prompt": "How does air get into the lungs?",
@@ -204,7 +272,11 @@
       "answer": 1,
       "explain": "Lungs have no muscle and cannot pull. The diaphragm makes the box bigger, the pressure inside falls below atmospheric, and the air outside does the pushing."
     },
-    { "type": "identify", "prompt": "Tap the sacs where oxygen actually crosses into the blood.", "partId": "alveoli" },
+    {
+      "type": "identify",
+      "prompt": "Tap the sacs where oxygen actually crosses into the blood.",
+      "partId": "alveoli"
+    },
     {
       "type": "choice",
       "prompt": "Why does something accidentally inhaled almost always end up in the right lung?",
@@ -217,7 +289,11 @@
       "answer": 1,
       "explain": "The heart takes up room on the left, so the left bronchus has to travel further at a shallower angle. Anything falling down the airway takes the straighter road."
     },
-    { "type": "identify", "prompt": "Tap the vessels that carry oxygen-poor blood — despite being arteries.", "partId": "pulmonary_arteries" },
+    {
+      "type": "identify",
+      "prompt": "Tap the vessels that carry oxygen-poor blood — despite being arteries.",
+      "partId": "pulmonary_arteries"
+    },
     {
       "type": "choice",
       "prompt": "Why is the left lung smaller than the right?",
@@ -230,7 +306,11 @@
       "answer": 1,
       "explain": "Two lobes instead of three, a notch bitten out of the front edge, and no middle lobe at all — the heart is the reason for all three."
     },
-    { "type": "identify", "prompt": "Tap what holds the lung open against the chest wall.", "partId": "pleura" },
+    {
+      "type": "identify",
+      "prompt": "Tap what holds the lung open against the chest wall.",
+      "partId": "pleura"
+    },
     {
       "type": "choice",
       "prompt": "What makes an asthma attack narrow the airway?",

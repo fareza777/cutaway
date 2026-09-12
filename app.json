@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "Cutaway",
+    "name": "Cutaway: How Things Work 3D",
     "slug": "cutaway",
-    "version": "0.12.0",
+    "version": "0.18.0",
     "orientation": "portrait",
     "scheme": "cutaway",
-    "userInterfaceStyle": "dark",
+    "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "icon": "./assets/icon.png",
     "assetBundlePatterns": [
@@ -13,7 +13,7 @@
     ],
     "android": {
       "package": "com.cutaway.explorer",
-      "versionCode": 16,
+      "versionCode": 23,
       "adaptiveIcon": {
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
@@ -21,7 +21,7 @@
         "backgroundColor": "#07090D"
       },
       "permissions": [],
-      "backgroundColor": "#07090D"
+      "backgroundColor": "#F4F5F8"
     },
     "ios": {
       "supportsTablet": true,
@@ -39,7 +39,7 @@
           "image": "./assets/splash-icon.png",
           "imageWidth": 190,
           "resizeMode": "contain",
-          "backgroundColor": "#07090D"
+          "backgroundColor": "#F4F5F8"
         }
       ],
       [
@@ -49,11 +49,29 @@
             "./assets/models"
           ]
         }
+      ],
+      "expo-iap",
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-6279186647593327~8674849287",
+          "delayAppMeasurementInit": true
+        }
       ]
     ],
+    "react-native-google-mobile-ads": {
+      "android_app_id": "ca-app-pub-6279186647593327~8674849287"
+    },
     "experiments": {
       "typedRoutes": true
     },
-    "backgroundColor": "#07090D"
+    "backgroundColor": "#F4F5F8",
+    "extra": {
+      "privacyPolicyUrl": "https://raw.githubusercontent.com/fareza777/cutaway/agent/add-realistic-rice-cooker/docs/privacy-policy.html",
+      "admob": {
+        "bannerUnitId": "ca-app-pub-6279186647593327/5209257311",
+        "interstitialUnitId": "ca-app-pub-6279186647593327/7776650259"
+      }
+    }
   }
 }

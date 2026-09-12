@@ -1,142 +1,157 @@
 {
-  "title": "Mesin Roket",
-  "subtitle": "Mesin cair siklus gas-generator",
-  "scale": "≈ 3 m tinggi",
-  "summary": "Roket cair adalah dua pompa dan sebuah lubang yang dibentuk. Pompa mendorong bahan bakar dan oksidator ke dalam ruang bakar; keduanya terbakar; lubang itu — leher sempit yang membuka menjadi lonceng — mengubah panas menjadi jet supersonik. Sedikit propelan yang sama dibakar di samping, hanya untuk memutar pompa. Selebihnya pipa, pendinginan, dan hak untuk mengarahkan jet.",
+  "title": "Mesin Roket Cair",
+  "subtitle": "Membakar bahan bakar dan oksidator untuk mendorong roket",
+  "scale": "tinggi sekitar 3 m",
+  "summary": "Mesin roket cair memakai dua pompa untuk mendorong bahan bakar dan oksidator ke ruang bakar. Pembakaran menghasilkan gas sangat panas, lalu leher sempit dan lonceng nosel mengubah energi panasnya menjadi semburan supersonik. Sebagian kecil propelan dibakar terpisah di generator gas hanya untuk memutar turbin dan kedua pompa. Komponen lain mengatur aliran, mendinginkan dinding, dan mengarahkan gaya dorong.",
   "parts": {
     "nozzle": {
       "name": "Nosel Lonceng",
-      "short": "Mengubah panas menjadi jet supersonik",
-      "detail": "Nosel de Laval: aliran tersumbat di leher, lalu mengembang menekan dinding lengkung sampai jauh lebih cepat daripada suara. Bentuknya bukan kerucut. Lebih dekat ke parabola (kontur Rao), karena itu memberi lebih banyak dorongan untuk panjang yang sama. Warna tembaga adalah dinding yang mengerjakan tugas kedua — penukar panas, membawa minyak tanah dari bibir nosel agar logam tetap di bawah titik leleh sementara gas di dalam beberapa ribu derajat."
+      "short": "Mengubah panas dan tekanan menjadi semburan supersonik",
+      "detail": "Nosel de Laval membuat aliran mencapai Mach 1 pada leher, lalu gas mengembang sepanjang dinding lengkung dan dipercepat hingga supersonik. Kontur lonceng bukan kerucut sederhana, melainkan mendekati kurva Rao agar menghasilkan lebih banyak dorong dengan panjang terbatas. Dinding tembaga juga menjadi penukar panas: bahan bakar mengalir dari bibir menuju leher dan menjaga logam tetap di bawah titik leleh walau gas di dalam bersuhu ribuan derajat."
     },
     "cooling_tubes": {
       "name": "Tabung Pendingin",
-      "short": "Dindingnya radiator yang dipasang terbalik",
-      "detail": "Puluhan tabung yang dipatri menjadi lonceng itu sendiri. Bahan bakar dipompa masuk di ujung nosel, naik menuju leher, dan tiba di injektor sudah panas — pendinginan regeneratif. Tabung-tabung itu adalah dindingnya, bukan jaket di luarnya. Bila terbakar tembus, mesin tinggal beberapa detik sebelum hancur. Pita-pita itu manifold: mengumpulkan dan membagi ulang pendingin supaya tidak ada meridian yang kering."
+      "short": "Saluran bahan bakar yang sekaligus membentuk dinding nosel",
+      "detail": "Puluhan tabung dipatri menjadi struktur lonceng. Bahan bakar masuk dari ujung nosel, mengalir ke arah leher, lalu tiba di injektor dalam keadaan lebih hangat; sistem ini disebut pendinginan regeneratif. Tabung bukan jaket tambahan, melainkan bagian dinding itu sendiri. Manifold membagi ulang aliran agar tidak ada jalur yang kering, karena kebocoran bakar dapat menghancurkan mesin dalam hitungan detik."
     },
     "combustion_chamber": {
       "name": "Ruang Bakar",
-      "short": "Tempat nyala api benar-benar tinggal",
-      "detail": "Silinder pendek berdinding tebal di atas leher. Tekanannya puluhan atmosfer; suhunya cukup untuk melelehkan dinding, yang bertahan hanya karena pendingin bergerak di dalamnya. Waktu tinggalnya milidetik. Tidak ada yang disimpan, tidak ada yang berulang — bukan mesin piston; ini api kontinu dengan lubang di bawah."
+      "short": "Tempat nyala berkesinambungan menghasilkan gas bertekanan tinggi",
+      "detail": "Silinder pendek berdinding tebal di atas leher menahan tekanan puluhan atmosfer. Suhu gas cukup tinggi untuk melelehkan dinding, sehingga saluran pendingin harus terus mengalir. Propelan hanya berada di ruang selama beberapa milidetik dan pembakaran berlangsung berkesinambungan, bukan dalam langkah terpisah seperti mesin piston."
     },
     "injector": {
       "name": "Injektor",
-      "short": "Mencampur dua cairan supaya bisa terbakar",
-      "detail": "Pintle di tengah dan cincin orifis di sekelilingnya. Bahan bakar dan oksidator bertemu sebagai lembaran kerucut dan sejumlah jet, tercampur dalam sentimeter, lalu menyala. Pintle bisa bergerak, mengubah celah dan rasio campuran — begitulah mesin ini bisa dithrottle, sampai sebagian kecil daya, tanpa menjadi tidak stabil. Pola yang salah, ruang bakar bernyanyi, lalu retak."
+      "short": "Mengabutkan dan mencampur dua cairan",
+      "detail": "Pintle di tengah dan cincin lubang di sekelilingnya membentuk lembaran serta semburan bahan bakar dan oksidator yang saling bertabrakan. Keduanya tercampur dalam jarak beberapa sentimeter lalu terbakar. Pintle dapat bergerak untuk mengubah luas celah dan laju aliran, sehingga daya mesin dapat diturunkan tanpa kehilangan kestabilan. Pola pencampuran yang buruk dapat menimbulkan osilasi tekanan yang merusak ruang."
     },
     "igniter": {
       "name": "Penyala",
-      "short": "Menyalakan api, lalu undur",
-      "detail": "Obor percikan dan sedikit propelan, diarahkan ke ruang bakar (atau ke gas generator) saat start. Begitu nyala utama hidup, ia mandiri dan penyala selesai. Sebagian besar kegagalan yang kelihatan seperti 'tidak menyala' adalah obor ini datang terlambat, atau tidak sama sekali, sementara pompa sudah membanjiri ruang dengan propelan tercampur."
+      "short": "Obor awal yang memulai pembakaran utama",
+      "detail": "Percikan menyalakan sedikit propelan menjadi obor yang diarahkan ke ruang bakar atau generator gas saat penyalaan awal. Setelah nyala utama stabil, pembakaran berlanjut tanpa bantuan dan penyala berhenti. Urutan waktunya penting: propelan yang memenuhi ruang sebelum obor hadir dapat menyala sekaligus dan menghasilkan lonjakan tekanan."
     },
     "fuel_pump": {
       "name": "Pompa Bahan Bakar",
-      "short": "Mendorong minyak tanah melawan tekanan ruang bakar",
-      "detail": "Impeler sentrifugal dalam volute. Tekanan ruang bakar puluhan atmosfer; tekanan tangki cuma beberapa. Selisihnya roda ini. Satu poros dengan pompa oksidator dan turbin, jadi saat turbin berputar, kedua cairan bergerak. Bahan bakar juga mendinginkan, jadi pompa ini mengisi tabung di lonceng sekaligus injektor."
+      "short": "Menaikkan tekanan bahan bakar di atas tekanan ruang bakar",
+      "detail": "Impeler sentrifugal berputar di dalam rumah berbentuk volute. Tekanan tangki hanya beberapa bar, sedangkan ruang bakar mencapai puluhan atmosfer; pompa mengatasi selisih tersebut. Poros yang sama menghubungkannya dengan pompa oksidator dan turbin. Sebagian aliran bahan bakar lebih dahulu melewati tabung pendingin sebelum mencapai injektor."
     },
     "ox_pump": {
       "name": "Pompa Oksidator",
-      "short": "Cairan yang lebih padat, roda yang lebih besar",
-      "detail": "Oksigen cair, atau oksidator apa pun, harus tiba bersamaan dengan bahan bakar pada tekanan yang cocok. Induser di inlet mencegah pompa kavitasi — memutar cairan dingin yang hampir mendidih adalah undangan gelembung uap, dan gelembung di sini berarti rasio campuran di ruang bakar liar, lalu dinding terbakar."
+      "short": "Memompa cairan kriogenik yang lebih rapat",
+      "detail": "Oksigen cair atau oksidator lain harus tiba pada tekanan dan waktu yang cocok dengan bahan bakar. Induser di saluran masuk menaikkan tekanan secara bertahap untuk mencegah kavitasi. Cairan kriogenik mudah membentuk gelembung uap ketika tekanannya turun; gelembung dapat mengganggu aliran, mengubah rasio campuran, dan membuat dinding ruang terlalu panas."
     },
     "turbine": {
       "name": "Turbin",
-      "short": "Satu-satunya alasan pompa berputar",
-      "detail": "Gas panas dari gas generator menabrak cakram sudu dan memutar poros kedua pompa. Ia parasit: setiap gram propelan yang terbakar di sini adalah gram yang tidak lewat nosel. Mesin gas-generator hidup dengan kerugian itu karena perpipaannya sederhana. Mesin staged-combustion mengembalikan gas ini ke ruang bakar, dan membayarnya dengan katup."
+      "short": "Penggerak poros kedua pompa",
+      "detail": "Gas panas dari generator gas melewati bilah turbin dan memutar poros pompa bahan bakar serta oksidator. Propelan yang dibakar di sini tidak menghasilkan dorong utama, sehingga siklus generator gas mengorbankan sebagian efisiensi demi perpipaan yang lebih sederhana. Siklus pembakaran bertahap mengembalikan gas turbin ke ruang utama, tetapi memerlukan tekanan dan katup yang lebih rumit."
     },
     "gas_generator": {
-      "name": "Gas Generator",
-      "short": "Roket mini yang tugasnya cuma memutar pompa",
-      "detail": "Sedikit bahan bakar dan oksidator, dibakar kaya bahan bakar supaya sudu turbin tidak meleleh, dibuang (atau ke nosel) setelah selesai bekerja. Ini mesin roket lengkap dalam ukuran mini: injektor, ruang, knalpot. Nyalakan dulu, pompa naik, ruang utama bisa menyala. Matikan, semuanya berhenti."
+      "name": "Generator Gas",
+      "short": "Ruang bakar kecil khusus untuk memutar pompa",
+      "detail": "Sebagian kecil bahan bakar dan oksidator dibakar dengan campuran kaya bahan bakar agar suhu gas tidak melelehkan bilah turbin. Perangkat ini merupakan mesin roket kecil dengan injektor, ruang bakar, dan saluran buangnya sendiri. Generator dinyalakan lebih dahulu untuk mempercepat pompa; ketika dimatikan, aliran utama ikut berhenti."
     },
     "turbine_exhaust": {
-      "name": "Knalpot Turbin",
-      "short": "Pipa buang di sisi lonceng",
-      "detail": "Gas generator yang sudah terpakai, masih panas, masih bergerak. Pada siklus ini tidak dipakai ulang. Pipa turun di sisi lonceng dan masuk ke aliran nosel — itulah sebabnya mesin gas-generator punya satu garis jelaga di samping. Staged combustion tidak punya pipa ini — itu perbedaan yang kelihatan, dan perbedaan efisiensi."
+      "name": "Saluran Buang Turbin",
+      "short": "Pipa pembuangan gas di sisi lonceng",
+      "detail": "Gas yang telah melewati turbin masih panas dan bergerak, tetapi pada siklus terbuka tidak dikembalikan ke ruang bakar. Pipa menyalurkannya ke sisi aliran nosel dan dapat meninggalkan garis jelaga yang khas. Mesin pembakaran bertahap tidak memiliki saluran buang terbuka seperti ini karena gas turbin dipakai kembali."
     },
     "fuel_valve": {
       "name": "Katup Bahan Bakar",
-      "short": "Pintu terakhir sebelum injektor",
-      "detail": "Bola atau poppet, digerakkan hidrolik atau pneumatik, antara pompa dan injektor. Start dan shutdown adalah koreografi katup-katup ini: oksidator sering duluan, bahan bakar menyusul, dan penyala harus sudah menyala. Katup yang macet terbuka saat shutdown menuang propelan ke ruang panas; yang macet tertutup di pad adalah scrub."
+      "short": "Pengendali aliran terakhir sebelum injektor",
+      "detail": "Katup bola atau poppet yang digerakkan hidraulik maupun pneumatik ditempatkan antara pompa dan injektor. Penyalaan serta penghentian merupakan urutan waktu beberapa katup dan penyala. Katup yang tetap terbuka saat mesin berhenti dapat menuangkan bahan bakar ke ruang panas, sedangkan katup yang gagal membuka membatalkan peluncuran."
     },
     "ox_valve": {
       "name": "Katup Oksidator",
-      "short": "Pintu terakhir yang lain — dan yang lebih berbahaya",
-      "detail": "Tugas sama dengan katup bahan bakar, logam lebih dingin, maaf lebih sedikit. Gas kaya oksigen memakan sebagian besar baja; dudukannya dan badannya paduan yang dipilih untuk itu, bukan untuk kekuatan. Terlambat, ruang bakar kaya bahan bakar dan berjelaga. Terlalu awal, kaya oksigen dan terbakar tembus."
+      "short": "Pengatur akhir aliran oksidator kriogenik",
+      "detail": "Fungsinya sejajar dengan katup bahan bakar, tetapi bahan dan segelnya harus tahan suhu kriogenik serta lingkungan kaya oksigen. Campuran kaya oksigen dapat membakar banyak logam yang biasanya tahan panas. Pembukaan terlambat membuat ruang terlalu kaya bahan bakar, sedangkan pembukaan terlalu awal dapat menciptakan kondisi oksidatif yang merusak dinding."
     },
     "gimbal": {
       "name": "Gimbal",
-      "short": "Bantalan tempat seluruh mesin berbelok",
-      "detail": "Sendi universal di puncak ruang bakar. Mesin tergantung di sini; aktuator mendorong ruang bakar mengitarinya. Kendali vektor dorong, untuk wahana tanpa sayap, adalah bantalan ini plus dua ram hidrolik. Pipa fleksibel di atasnya ada supaya propelan bisa mengikuti mesin saat mengangguk."
+      "short": "Sendi tempat seluruh mesin berayun",
+      "detail": "Sendi universal di atas ruang bakar menahan berat dan gaya dorong mesin sambil memungkinkan perubahan sudut. Aktuator memiringkan mesin mengelilingi titik ini untuk mengubah arah vektor dorong. Pipa fleksibel serta sambungan bellow di atasnya memungkinkan propelan tetap mengalir saat mesin bergerak."
     },
     "actuators": {
       "name": "Aktuator Gimbal",
-      "short": "Dua ram, dua sumbu, jet yang bisa diarahkan",
-      "detail": "Silinder hidrolik dari struktur dorong wahana ke ruang bakar. Yang satu menganggukkan mesin, yang lain menggeleng. Beberapa derajat lonceng cukup untuk mengarahkan peluncur. Mereka harus menahan dorongan penuh, itulah sebabnya kelihatan terlalu kecil dan sebenarnya tidak."
+      "short": "Dua silinder yang mengarahkan semburan pada dua sumbu",
+      "detail": "Dua ram hidraulik menghubungkan struktur dorong wahana dengan ruang bakar. Satu mengatur angguk dan satu lagi geleng. Perubahan sudut hanya beberapa derajat sudah cukup untuk mengemudikan peluncur. Walau tampak kecil dibanding nosel, aktuator dan dudukannya harus bekerja sambil menahan gaya dorong penuh."
     },
     "fuel_feed": {
       "name": "Saluran Bahan Bakar",
-      "short": "Dari tangki, lewat pompa, ke katup",
-      "detail": "Duk rendah dari wahana, lalu duk bertekanan tinggi dari keluaran pompa ke katup. Turunan diameter adalah seluruh ceritanya: tangki pecahan bar, ruang bakar puluhan. Pompa adalah anak tangga di antaranya. Flens atas adalah tempat mesin ini berhenti dan tahap wahana mulai."
+      "short": "Jalur dari tangki melalui pompa menuju katup",
+      "detail": "Saluran bertekanan rendah membawa bahan bakar dari tangki, kemudian saluran bertekanan tinggi menghubungkan keluaran pompa ke katup. Penyusutan diameter menunjukkan seluruh prosesnya: tekanan tangki kurang dari satu bar, sedangkan ruang bakar mencapai puluhan bar. Pompa menaikkan tekanan di antara keduanya. Flens atas menandai batas mesin dengan tingkat kendaraan."
     },
     "ox_feed": {
       "name": "Saluran Oksidator",
-      "short": "Saluran dingin, dan yang lebih gemuk",
-      "detail": "Oksidator tiba lebih padat dan biasanya dengan laju massa lebih besar daripada bahan bakar, jadi duknya lebih gemuk. Juga jauh lebih dingin, itulah sebabnya berembun beku di pad. Isolasi, bellow untuk gimbal, dan katup di ujung: tiga masalah yang sama dengan sisi bahan bakar, pada suhu yang membuat perapat menjadi menarik."
+      "short": "Pipa kriogenik dengan laju massa besar",
+      "detail": "Oksidator biasanya lebih rapat dan mengalir dengan laju massa lebih besar daripada bahan bakar, sehingga pipanya berdiameter lebih besar. Suhunya yang sangat rendah membentuk embun beku saat kendaraan berada di landasan. Insulasi, bellow untuk gerak gimbal, dan segel katup harus tetap bekerja pada suhu yang membuat banyak bahan menjadi kaku."
     }
   },
   "steps": [
     {
-      "title": "Sedikit api untuk memutar pompa",
-      "body": "Gas generator membakar sedikit bahan bakar dan oksidator lalu meniupnya melalui turbin. Itulah satu-satunya alasan pompa berputar. Sampai api ini menyala, yang lain tidak bisa start."
+      "title": "Bakar sedikit propelan untuk memutar pompa",
+      "body": "Generator gas membakar sebagian kecil bahan bakar dan oksidator lalu mengalirkan gasnya melalui turbin. Turbin mempercepat kedua pompa; sebelum rangkaian kecil ini hidup, ruang bakar utama belum dapat menerima aliran penuh."
     },
     {
-      "title": "Dorong",
-      "body": "Dua pompa sentrifugal, satu poros, menaikkan tekanan tangki ke tekanan ruang bakar. Bahan bakar juga turun ke lonceng dan naik lagi lewat tabung pendingin. Oksidator jalannya lebih pendek."
+      "title": "Naikkan tekanan propelan",
+      "body": "Dua pompa sentrifugal pada satu poros menaikkan tekanan tangki hingga melampaui tekanan ruang bakar. Bahan bakar lebih dahulu mengalir turun ke lonceng dan kembali melalui tabung pendingin, sedangkan jalur oksidator lebih langsung."
     },
     {
-      "title": "Campur dan bakar",
-      "body": "Pintle dan cincin orifis melemparkan dua cairan satu sama lain di ruang bakar. Tercampur dalam sentimeter dan terbakar terus-menerus. Waktu tinggal milidetik; tidak ada siklus."
+      "title": "Campur dan bakar terus-menerus",
+      "body": "Pintle dan cincin lubang menyemprotkan kedua cairan agar bertabrakan, tercampur dalam beberapa sentimeter, lalu terbakar berkesinambungan. Propelan hanya berada di ruang selama beberapa milidetik."
     },
     {
-      "title": "Sumbat, lalu kembangkan",
-      "body": "Leher disesuaikan supaya aliran mencapai Mach 1 di situ dan tidak bisa kembali. Di hilir lonceng membuka, gas mengembang dan berakselerasi, dan sebagian besar dorongan lahir di ekspansi itu, bukan di ruang bakar."
+      "title": "Capai Mach 1 lalu kembangkan gas",
+      "body": "Ukuran leher membuat aliran tercekik (choked) pada Mach 1. Di hilir, lonceng yang melebar menurunkan tekanan dan mempercepat gas hingga supersonik; sebagian besar gaya dorong dihasilkan selama ekspansi ini."
     },
     {
-      "title": "Arahkan jet",
-      "body": "Mesin tergantung pada gimbal. Dua ram hidrolik mengangguk dan menggeleng beberapa derajat. Bagi peluncur, itu setirnya: tanpa sayap, tanpa kemudi, hanya lonceng yang bisa dimiringkan."
+      "title": "Arahkan semburan",
+      "body": "Mesin digantung pada gimbal dan dua aktuator memiringkannya beberapa derajat pada dua sumbu. Bagi peluncur tanpa permukaan kemudi efektif, perubahan arah lonceng menjadi sistem kemudinya."
     }
   ],
   "quiz": [
-    { "prompt": "Ketuk bagian yang mengubah panas menjadi knalpot supersonik." },
-    { "prompt": "Ketuk roket mini yang tugasnya hanya memutar pompa." },
     {
-      "prompt": "Mengapa dinding nosel berupa tabung yang dialiri bahan bakar?",
+      "prompt": "Ketuk bagian yang mengubah panas menjadi semburan supersonik."
+    },
+    {
+      "prompt": "Ketuk ruang bakar kecil yang hanya bertugas memutar pompa."
+    },
+    {
+      "prompt": "Mengapa dinding nosel tersusun dari tabung yang dialiri bahan bakar?",
       "choices": [
-        "Supaya lebih ringan daripada dinding padat",
-        "Supaya bahan bakar mendinginkan dinding dalam perjalanan ke injektor",
+        "Agar lebih ringan daripada dinding padat",
+        "Agar bahan bakar mendinginkan dinding sebelum menuju injektor",
         "Untuk mencampur bahan bakar dan oksidator sebelum ruang bakar",
         "Untuk mengarahkan mesin"
       ],
-      "explain": "Pendinginan regeneratif: bahan bakar adalah pendinginnya. Ia mengambil panas di lonceng dan tiba di injektor sudah hangat, yang juga membantu pembakaran."
+      "explain": "Dalam pendinginan regeneratif, bahan bakar menyerap panas dari lonceng lalu tiba di injektor dalam keadaan lebih hangat, yang juga membantu penguapan dan pembakaran."
     },
-    { "prompt": "Ketuk fitur injektor yang memungkinkan mesin ini dithrottle." },
     {
-      "prompt": "Pada siklus gas-generator, apa yang terjadi pada knalpot turbin?",
+      "prompt": "Ketuk bagian injektor yang dapat bergerak untuk mengatur daya mesin."
+    },
+    {
+      "prompt": "Pada siklus generator gas, apa yang terjadi pada gas buang turbin?",
       "choices": [
         "Dikembalikan ke ruang bakar utama",
-        "Dibuang (atau ke nosel) dan tidak dipakai ulang",
-        "Mendinginkan lonceng",
-        "Memutar gimbal"
+        "Dibuang atau dialirkan ke sisi nosel tanpa dipakai ulang",
+        "Dipakai untuk mendinginkan lonceng",
+        "Dipakai untuk menggerakkan gimbal"
       ],
-      "explain": "Pembuangan itu harga efisiensi siklus yang sederhana. Staged combustion mengembalikan gas ke ruang bakar."
+      "explain": "Pembuangan gas merupakan kerugian efisiensi yang ditukar dengan rancangan lebih sederhana. Siklus pembakaran bertahap mengembalikannya ke ruang bakar utama."
     },
-    { "prompt": "Ketuk bantalan tempat mesin berbelok." },
-    { "prompt": "Ketuk pipa buang yang memberi garis jelaga pada mesin gas-generator." },
     {
-      "prompt": "Leher nosel de Laval disesuaikan supaya aliran di situ:",
-      "choices": ["Diam", "Subsonik", "Mach 1 — tersumbat", "Sudah supersonik"],
-      "explain": "Begitu leher tersumbat, menaikkan tekanan ruang bakar tidak lagi mengubah bilangan Mach di situ. Yang naik hanya laju massa. Ekspansi ke supersonik terjadi di lonceng, di hilir."
+      "prompt": "Ketuk sendi tempat seluruh mesin berayun."
+    },
+    {
+      "prompt": "Ketuk pipa buang yang dapat meninggalkan garis jelaga pada mesin generator gas."
+    },
+    {
+      "prompt": "Leher nosel de Laval disesuaikan agar aliran di sana berada pada kondisi apa?",
+      "choices": [
+        "Diam",
+        "Subsonik",
+        "Mach 1 — aliran tercekik (choked)",
+        "Sudah supersonik"
+      ],
+      "explain": "Setelah aliran tercekik di leher, kenaikan tekanan ruang menambah laju massa tetapi tidak menaikkan bilangan Mach di titik itu. Percepatan menjadi supersonik terjadi di lonceng sesudah leher."
     }
   ]
 }

@@ -1,33 +1,114 @@
 {
   "title": "Pengeras Suara",
-  "subtitle": "Kerucut kertas yang sekaligus motor linier",
-  "scale": "≈ kerucut 200 mm",
-  "summary": "Pengeras suara adalah koil kawat dalam celah magnet, dilem ke kerucut kertas. Arus di koil menjadi gaya sepanjang sumbu; kerucut mendorong udara; udara adalah bunyi. Magnet tidak bergerak. Kerucut yang bergerak, satu-dua milimeter, ribuan kali per detik.",
+  "subtitle": "Mengubah sinyal listrik menjadi suara",
+  "scale": "diameter kerucut sekitar 200 mm",
+  "summary": "Pengeras suara menempatkan kumparan kawat di dalam celah medan magnet lalu merekatkannya pada kerucut. Arus audio pada kumparan menghasilkan gaya sepanjang sumbu, kerucut mendorong dan menarik udara, lalu perubahan tekanan merambat sebagai bunyi. Magnet tetap diam; kerucut bergerak maju-mundur sejauh beberapa milimeter hingga ribuan kali per detik.",
   "parts": {
-    "cone": { "name": "Kerucut", "short": "Piston yang mendorong udara", "detail": "Suar kertas atau plastik yang ringan dan kaku. Ringan supaya bisa berakselerasi; kaku supaya tidak pecah jadi riak pada frekuensi tinggi. Luasnya alasan sebuah speaker bisa menggerakkan seisi ruangan dengan perjalanan milimeter." },
-    "surround": { "name": "Surround", "short": "Engsel di tepi", "detail": "Gulungan karet atau busa yang membiarkan kerucut masuk-keluar tanpa bocor udara di tepi. Ia perapat dan pegas. Ketika membusuk, speaker terdengar lembek, lalu sobek." },
-    "dust_cap": { "name": "Tudung Debu", "short": "Menjaga kotoran keluar dari celah", "detail": "Kubah kecil di atas koil suara. Debu di celah magnet akan menggores, lalu macet. Tudung ini juga memancarkan frekuensi tertinggi, sebab itu penyok mengubah treble." },
-    "voice_coil": { "name": "Koil Suara", "short": "Lilitan motor, dililit pada former", "detail": "Lilitan tembaga di celah antara kutub dan magnet. Arus melaluinya, dalam medan radial, menghasilkan gaya aksial — aturan tangan kiri Fleming pada kecepatan audio. Terlalu banyak arus dan ia gosong; bau speaker jebol adalah pernis ini terbakar." },
-    "former": { "name": "Former Koil", "short": "Tabung tempat koil dililit", "detail": "Kapton, aluminium, atau kertas. Harus kaku, tahan panas, dan tepat di tengah celah selebar milimeter. Jika bergesek, Anda mendengar goresan pada nada bass." },
-    "spider": { "name": "Spider", "short": "Memusatkan koil dan memegasnya kembali", "detail": "Cakram kain beralur. Ia menahan koil mati di tengah celah dan memberi sebagian besar gaya pemulih yang membuat kerucut sistem resonan. Spider lebih kaku, frekuensi resonan lebih tinggi, bass lebih ketat." },
-    "magnet": { "name": "Magnet", "short": "Medan yang didorong koil", "detail": "Cincin ferit atau neodimium. Tidak bergerak. Satu-satunya tugasnya menaruh medan radial kuat di celah supaya arus di koil menjadi gaya sepanjang sumbu. Magnet lebih besar, gaya lebih besar untuk arus yang sama — efisiensi." },
-    "pole_piece": { "name": "Kutub Besi", "short": "Membentuk celah tempat koil tinggal", "detail": "T baja: kutub tengah dan pelat depan. Bersama magnet mereka membuat celah silinder sempit dengan garis medan ke dalam. Koil duduk di situ. Geometri T ini sebagian besar motor sebuah driver." },
-    "basket": { "name": "Keranjang", "short": "Sasis tempat semua tergantung", "detail": "Bingkai stempel atau cor. Menahan magnet, spider, dan surround konsentris. Jika ia lentur, koil bergesek. Jari-jarinya ada supaya kerucut bisa bernapas dari belakang — keranjang tertutup adalah speaker yang lain." },
-    "terminals": { "name": "Terminal", "short": "Tempat amplifier tiba", "detail": "Dua lug di belakang. Dari sini kawat tinsel naik ke koil, cukup lentur untuk bertahan jutaan ayunan. Balikkan dan kerucut masuk ketika seharusnya keluar — polaritas, yang baru penting begitu Anda punya dua speaker." }
+    "cone": {
+      "name": "Kerucut",
+      "short": "Diafragma yang mendorong udara",
+      "detail": "Kerucut dari kertas atau plastik dibuat ringan agar mudah dipercepat dan cukup kaku agar tidak pecah menjadi gelombang tak terkendali pada frekuensi tinggi. Luas permukaannya memungkinkan perpindahan udara yang berarti meskipun langkahnya hanya beberapa milimeter."
+    },
+    "surround": {
+      "name": "Suspensi Tepi",
+      "short": "Engsel lentur di keliling kerucut",
+      "detail": "Gulungan karet atau busa memungkinkan kerucut bergerak maju-mundur tanpa membocorkan udara di tepi. Bagian ini juga memberi gaya pemulih. Seiring usia, busa dapat rapuh dan retak sehingga gerakan tidak lagi terkendali dan suara mulai pecah."
+    },
+    "dust_cap": {
+      "name": "Tudung Debu",
+      "short": "Melindungi celah magnet dari kotoran",
+      "detail": "Kubah kecil menutup pusat kerucut di atas kumparan suara. Debu yang masuk ke celah sempit dapat menggesek kumparan lalu membuatnya macet. Tudung juga membantu memancarkan frekuensi tinggi, sehingga penyok pada bagian ini dapat mengubah karakter trebel."
+    },
+    "voice_coil": {
+      "name": "Kumparan Suara",
+      "short": "Lilitan yang mengubah arus menjadi gaya",
+      "detail": "Lilitan tembaga berada di celah antara kutub besi dan magnet. Arus yang melintas di dalam medan radial menghasilkan gaya maju atau mundur sepanjang sumbu sesuai arah arus. Daya berlebihan memanaskan kawat dan dapat membakar pernis isolasinya, menimbulkan bau khas pengeras suara rusak."
+    },
+    "former": {
+      "name": "Tabung Kumparan",
+      "short": "Silinder tempat kawat kumparan dililit",
+      "detail": "Tabung dibuat dari Kapton, aluminium, atau kertas yang tahan panas dan cukup kaku. Posisi kumparan harus tepat di tengah celah yang lebarnya sekitar satu milimeter. Jika tabung bergeser atau berubah bentuk, gesekannya terdengar sebagai suara garukan terutama pada nada rendah."
+    },
+    "spider": {
+      "name": "Suspensi Dalam",
+      "short": "Cakram beralur yang memusatkan dan mengembalikan kumparan",
+      "detail": "Cakram kain bergelombang menahan kumparan tepat di tengah celah dan menyumbang sebagian besar gaya pemulih sistem. Kekakuannya ikut menentukan frekuensi resonansi: suspensi lebih kaku menaikkan resonansi dan membatasi langkah pada frekuensi rendah."
+    },
+    "magnet": {
+      "name": "Magnet",
+      "short": "Sumber medan tetap bagi kumparan",
+      "detail": "Cincin ferit atau neodimium ini tidak bergerak. Tugasnya menghasilkan medan radial kuat di dalam celah agar arus kumparan berubah menjadi gaya sepanjang sumbu. Medan yang lebih kuat menghasilkan gaya lebih besar untuk arus yang sama dan meningkatkan efisiensi."
+    },
+    "pole_piece": {
+      "name": "Kutub Besi",
+      "short": "Membentuk celah silinder tempat kumparan bergerak",
+      "detail": "Kutub tengah dan pelat depan dari baja membentuk jalur magnet menyerupai huruf T. Bersama magnet, keduanya memusatkan medan ke celah silinder yang sempit. Kumparan bergerak di dalam celah ini tanpa menyentuh dinding."
+    },
+    "basket": {
+      "name": "Keranjang",
+      "short": "Sasis yang menjaga semua komponen sepusat",
+      "detail": "Rangka baja tekan atau cor menopang magnet, suspensi dalam, dan suspensi tepi pada satu sumbu. Sedikit pembengkokan dapat membuat kumparan menggesek. Jari-jari terbuka memberi jalan bagi udara di belakang kerucut agar dapat bergerak bebas."
+    },
+    "terminals": {
+      "name": "Terminal",
+      "short": "Titik masuk sinyal dari penguat",
+      "detail": "Dua sambungan belakang terhubung ke kumparan melalui kawat lentur yang tahan jutaan gerakan. Menukar polaritas membuat kerucut bergerak masuk ketika seharusnya keluar. Pada satu unit pengaruhnya kecil, tetapi dua pengeras suara yang berbeda fase dapat saling mengurangi nada rendah."
+    }
   },
   "steps": [
-    { "title": "Koil dalam celah", "body": "Koil suara duduk di celah silinder tipis tempat medan magnet berjalan ke dalam. Arus di koil, medan melintasinya: gayanya sepanjang sumbu." },
-    { "title": "Kerucut adalah piston", "body": "Gaya itu dilem ke suar kertas. Luas suar besar, perjalanannya kecil, dan begitulah satu watt listrik menjadi bunyi seisi ruangan." },
-    { "title": "Engsel, bukan kelonggaran", "body": "Surround di tepi dan spider di belakang koil membiarkan kerucut hanya masuk-keluar, dan memegasnya kembali. Selain itu adalah goresan." },
-    { "title": "Keranjang menjaga celah tetap benar", "body": "Semua ini tergantung pada sasis yang harus tetap konsentris seumur driver. Keranjang bengkok adalah motor rusak." },
-    { "title": "Arus masuk, udara keluar", "body": "Amplifier tiba di dua lug. Balikkan dan piston menarik napas ketika seharusnya mengembuskan. Dengan satu speaker mungkin tidak kentara. Dengan dua, bass saling membatalkan." }
+    {
+      "title": "Tempatkan kumparan di dalam medan",
+      "body": "Kumparan suara berada di celah silinder sempit dengan medan magnet radial. Arus audio yang melintasi medan menghasilkan gaya sepanjang sumbu."
+    },
+    {
+      "title": "Gerakkan kerucut sebagai piston",
+      "body": "Gaya kumparan diteruskan ke kerucut. Permukaan yang luas bergerak dalam langkah kecil dan mendorong serta menarik udara untuk membentuk perubahan tekanan suara."
+    },
+    {
+      "title": "Kendalikan satu arah gerak",
+      "body": "Suspensi tepi dan suspensi dalam membatasi kerucut agar hanya bergerak maju-mundur serta mengembalikannya ke tengah. Gerak menyamping akan membuat kumparan menggesek."
+    },
+    {
+      "title": "Jaga celah tetap sepusat",
+      "body": "Keranjang menopang semua bagian pada satu sumbu sepanjang umur penggerak. Rangka yang bengkok membuat motor linear ini kehilangan keselarasan."
+    },
+    {
+      "title": "Ubah arus menjadi gerak udara",
+      "body": "Penguat mengirim sinyal ke dua terminal. Polaritas menentukan arah gerak sesaat; beberapa pengeras suara harus dipasang sefase agar gelombang nada rendah tidak saling meniadakan."
+    }
   ],
   "quiz": [
-    { "prompt": "Ketuk lilitan yang mengubah arus menjadi gaya." },
-    { "prompt": "Mengapa magnet tidak bergerak?", "choices": ["Terlalu berat", "Gaya ada pada koil di celah; magnet hanya memasok medan", "Ia dilem ke kerucut", "Ia elektromagnet yang mati"], "explain": "Pengeras suara adalah motor linier. Bagian yang bergerak adalah koil. Magnet adalah stator." },
-    { "prompt": "Ketuk kain beralur yang memusatkan koil di celah." },
-    { "prompt": "Ketuk piston yang benar-benar mendorong udara." },
-    { "prompt": "Apa yang terjadi jika koil tidak di tengah celah?", "choices": ["Lebih banyak bass", "Bergesek, menggores, dan akhirnya macet", "Magnet kehilangan kemagnetan", "Tidak apa-apa; surround mengkoreksinya"], "explain": "Celahnya sekitar satu milimeter. Tidak di tengah adalah goresan di setiap nada bass." },
-    { "prompt": "Ketuk bagian baja yang, bersama magnet, membentuk celah." }
+    {
+      "prompt": "Ketuk lilitan yang mengubah arus menjadi gaya."
+    },
+    {
+      "prompt": "Mengapa magnet tidak ikut bergerak?",
+      "choices": [
+        "Karena terlalu berat",
+        "Gaya gerak bekerja pada kumparan di dalam celah, sedangkan magnet hanya menyediakan medan",
+        "Karena magnet direkatkan ke kerucut",
+        "Karena magnet merupakan elektromagnet yang sedang mati"
+      ],
+      "explain": "Pengeras suara bekerja sebagai motor linear. Kumparan merupakan bagian bergerak, sedangkan magnet berfungsi seperti stator."
+    },
+    {
+      "prompt": "Ketuk cakram kain beralur yang memusatkan kumparan di dalam celah."
+    },
+    {
+      "prompt": "Ketuk diafragma yang benar-benar mendorong udara."
+    },
+    {
+      "prompt": "Apa yang terjadi jika kumparan tidak berada tepat di tengah celah?",
+      "choices": [
+        "Nada rendah menjadi lebih kuat",
+        "Kumparan bergesek, menimbulkan suara garukan, lalu dapat macet",
+        "Magnet kehilangan sifat magnetnya",
+        "Tidak terjadi apa-apa karena suspensi selalu mengoreksinya"
+      ],
+      "explain": "Celahnya hanya sekitar satu milimeter. Sedikit penyimpangan membuat kumparan menyentuh dinding pada setiap gerakan besar."
+    },
+    {
+      "prompt": "Ketuk bagian baja yang bersama magnet membentuk celah."
+    }
   ]
 }

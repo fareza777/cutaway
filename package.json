@@ -11,6 +11,7 @@
     "expo-file-system": "~57.0.2",
     "expo-gl": "~57.0.2",
     "expo-haptics": "~57.0.1",
+    "expo-iap": "^5.3.2",
     "expo-linking": "~57.0.5",
     "expo-router": "~57.0.12",
     "expo-splash-screen": "~57.0.6",
@@ -20,6 +21,7 @@
     "react-dom": "19.2.3",
     "react-native": "0.86.2",
     "react-native-gesture-handler": "~2.32.0",
+    "react-native-google-mobile-ads": "^16.5.0",
     "react-native-reanimated": "4.5.1",
     "react-native-safe-area-context": "~5.7.0",
     "react-native-screens": "~4.26.0",
@@ -28,8 +30,11 @@
     "zustand": "^5.0.14"
   },
   "devDependencies": {
+    "@expo/image-utils": "0.11.4",
     "@types/react": "~19.2.2",
     "@types/three": "^0.185.4",
+    "playwright-core": "^1.62.1",
+    "sharp": "^0.35.3",
     "typescript": "~6.0.3"
   },
   "scripts": {
@@ -39,12 +44,30 @@
     "build:models": "node tools/build-models.mjs",
     "typecheck": "tsc --noEmit",
     "validate": "node tools/validate-content.mjs",
-    "check": "npm run typecheck && npm run validate && npm run smoke",
+    "check": "npm run typecheck && npm run test:product-upgrade && npm run test:monetization-policy && npm run validate && npm run smoke && npm run test:model-write && npm run test:rice-cooker && npm run test:mechanical-watch && npm run test:cordless-drill && npm run test:cyclonic-vacuum && npm run test:turboshaft-helicopter && npm run test:earth-observation-satellite && npm run test:catalog && npm run test:build-apk",
+    "test:product-upgrade": "node --test tools/product-upgrade-test.mjs tools/banner-ads-test.mjs",
     "smoke": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/smoke-test.mts",
-    "build:brand": "node tools/build-brand.mjs",
+    "test:monetization-policy": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/monetization-policy-test.mts",
+    "test:rice-cooker": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/rice-cooker-test.mts",
+    "test:mechanical-watch": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/mechanical-watch-test.mts",
+    "test:cordless-drill": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/cordless-drill-test.mts",
+    "test:cyclonic-vacuum": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/cyclonic-vacuum-test.mts",
+    "test:turboshaft-helicopter": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/turboshaft-helicopter-test.mts",
+    "test:earth-observation-satellite": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/earth-observation-satellite-test.mts",
+    "test:model-write": "node tools/write-file-retry-test.mjs",
+    "test:localization": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/catalog-quality-test.mts --localization-only",
+    "test:catalog": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON tools/catalog-quality-test.mts",
+    "test:build-apk": "node tools/build-apk-test.mjs",
+    "build:store-assets": "node tools/create-store-assets.mjs",
+    "test:verify-apk": "node tools/verify-apk-test.mjs",
+    "build:brand": "node tools/build-brand-premium.mjs",
+    "capture:aso": "node tools/aso-capture.mjs",
+    "build:aso-assets": "node tools/build-aso-assets.mjs",
+    "verify:aso-assets": "node tools/verify-aso-assets.mjs",
+    "verify:bundle": "node tools/verify-release-bundle.mjs",
     "preview": "node tools/preview-server.mjs",
     "verify:apk": "node tools/verify-apk.mjs",
-    "build:apk": "bash tools/build-apk.sh"
+    "build:apk": "node tools/build-apk.mjs"
   },
   "private": true
 }

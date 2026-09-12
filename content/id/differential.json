@@ -1,33 +1,114 @@
 {
-  "title": "Differensial",
-  "subtitle": "Satu masukan, dua roda, sebuah tikungan",
-  "scale": "≈ gigi cincin 250 mm",
-  "summary": "Differensial membiarkan dua roda pada satu gandar berputar pada kecepatan berbeda tanpa melawan mesin. Triknya adalah silang gigi bevel di dalam carrier: carrier didorong gigi cincin; gigi laba-laba di silang bisa idle, itulah cara roda dalam diizinkan melambat di tikungan sementara yang luar mempercepat.",
+  "title": "Diferensial",
+  "subtitle": "Membuat kedua roda penggerak bisa berputar beda kecepatan",
+  "scale": "diameter roda gigi cincin sekitar 250 mm",
+  "summary": "Diferensial memungkinkan dua roda pada satu gandar berputar dengan kecepatan berbeda tanpa melawan mesin. Roda gigi cincin memutar rumah diferensial, sedangkan roda gigi satelit di dalamnya dapat berputar pada poros silang. Saat kendaraan berbelok, mekanisme ini membuat roda dalam melambat sebanyak roda luar dipercepat.",
   "parts": {
-    "housing": { "name": "Rumah Gandar", "short": "Banjo yang menahan oli dan bantalan", "detail": "Casing besi cor atau aluminium, secara tradisional 'banjo' dengan tabung untuk gandar. Ia gearbox, reservoir, dan balok. Oli di dalamnya yang menjaga gigi hypoid tetap hidup." },
-    "ring_gear": { "name": "Gigi Cincin", "short": "Mahkota besar yang didorong pinion", "detail": "Mahkota hypoid atau spiral-bevel yang dibaut ke carrier. Inilah cara driveshaft memanjang memutar gandar melintang, dan cara pinion kecil mendapat perkalian torsi besar. Dengung yang Anda dengar di van tua adalah mesh ini." },
-    "pinion": { "name": "Pinion Penggerak", "short": "Gigi kecil di ujung propshaft", "detail": "Segelintir gigi mendorong banyak. Rasio itu alasan mobil bisa mendaki tanpa mesin raksasa. Pinion diimbangi pada pasangan hypoid supaya propshaft bisa duduk lebih rendah daripada garis tengah gandar." },
-    "carrier": { "name": "Carrier", "short": "Sangkar tempat laba-laba tinggal", "detail": "Kotak yang berputar bersama gigi cincin. Pin silang terpasang di dalamnya. Jika kedua roda punya cengkeraman sama, seluruh carrier, laba-laba, dan gigi sisi berputar sebagai satu gumpalan dan laba-laba tidak berputar di pinnya. Itu jalan lurus." },
-    "spider_gears": { "name": "Gigi Laba-laba", "short": "Bevel yang idle ketika roda tidak setuju", "detail": "Dua (kadang empat) bevel di pin silang. Mereka bertaut dengan kedua gigi sisi. Ketika roda ingin kecepatan berbeda, ini berputar di pin dan membiarkan satu gigi sisi lebih cepat dari carrier, yang lain lebih lambat, sejumlah yang sama. Itu tikungan." },
-    "side_gears": { "name": "Gigi Sisi", "short": "Terpasang spline ke gandar, bertaut dengan laba-laba", "detail": "Satu per roda. Mereka mengambil kecepatan apa pun yang diberi laba-laba dan mengirimnya ke poros gandar. Differensial limited-slip adalah pasangan ini plus kopling ekstra, karena laba-laba terbuka akan mengirim semua torsi ke roda yang berputar di lumpur." },
-    "left_axle": { "name": "Poros Gandar Kiri", "short": "Setengah lebar mobil, satu roda", "detail": "Poros terpasang spline ke gigi sisi kiri dan, di ujung lain, ke hub. Ia hanya tahu apa yang dikatakan gigi sisi. Di tikungan itu lebih lambat daripada gigi cincin." },
-    "right_axle": { "name": "Poros Gandar Kanan", "short": "Setengah yang lain", "detail": "Bagian yang sama, arah lain. Di belok kiri ini poros yang lebih cepat. Seluruh kepribadian differensial adalah bahwa dua ini diizinkan tidak setuju." },
-    "pinion_shaft": { "name": "Poros Pinion", "short": "Masukan, dari gearbox", "detail": "Hal terakhir yang dilihat gearbox. Flens di belakang poros ini tempat propshaft dibaut. Semua di hilir lebih lambat dan lebih kuat." },
-    "bearings": { "name": "Bantalan", "short": "Yang mencegah mesh berjalan pergi", "detail": "Rol tirus di pinion, lagi di carrier. Gigi hypoid menghasilkan dorongan sepanjang sumbu pinion; bantalan ini ada untuk memakan dorongan itu supaya gigi tetap bertaut, bukan membuka gearbox." }
+    "housing": {
+      "name": "Rumah Gandar",
+      "short": "Casing yang menopang bantalan dan menampung oli",
+      "detail": "Casing besi cor atau aluminium ini membentuk rumah roda gigi, penampung pelumas, sekaligus struktur gandar. Bentuk tradisionalnya menyerupai banjo dengan tabung gandar memanjang ke kedua sisi. Oli di dalam melindungi permukaan gigi hipoid yang menanggung tekanan geser sangat tinggi."
+    },
+    "ring_gear": {
+      "name": "Roda Gigi Cincin",
+      "short": "Roda mahkota besar yang digerakkan pinion",
+      "detail": "Roda gigi hipoid atau bevel spiral ini dibaut pada rumah diferensial. Pasangannya dengan pinion membelokkan putaran poros propeler yang memanjang menjadi putaran gandar melintang. Perbedaan jumlah gigi juga mengurangi kecepatan dan melipatgandakan torsi. Keausan atau penyetelan pertautan yang keliru menimbulkan dengung khas."
+    },
+    "pinion": {
+      "name": "Pinion Penggerak",
+      "short": "Roda gigi kecil di ujung poros propeler",
+      "detail": "Sedikit gigi pada pinion mendorong jauh lebih banyak gigi pada roda cincin, menghasilkan reduksi yang membantu kendaraan menanjak tanpa mesin sangat besar. Pada pasangan hipoid, sumbu pinion dibuat lebih rendah daripada pusat roda cincin agar poros propeler dan lantai kendaraan dapat dipasang lebih rendah."
+    },
+    "carrier": {
+      "name": "Rumah Diferensial",
+      "short": "Sangkar berputar yang memegang roda gigi satelit",
+      "detail": "Rumah ini dibaut ke roda gigi cincin dan membawa poros silang di bagian dalam. Ketika kedua roda memiliki cengkeraman dan menempuh jarak yang sama, rumah, roda gigi satelit, dan kedua roda gigi samping berputar bersama sebagai satu unit. Dalam keadaan itu, roda satelit tidak berputar pada poros silangnya."
+    },
+    "spider_gears": {
+      "name": "Roda Gigi Satelit",
+      "short": "Roda bevel yang berputar saat kecepatan roda berbeda",
+      "detail": "Dua atau empat roda bevel kecil dipasang pada poros silang dan bertaut dengan kedua roda gigi samping. Saat roda kendaraan memerlukan kecepatan berbeda, roda satelit berputar pada porosnya. Gerak itu menambah kecepatan salah satu roda gigi samping dan mengurangi sisi lain dalam jumlah yang sama."
+    },
+    "side_gears": {
+      "name": "Roda Gigi Samping",
+      "short": "Terhubung dengan poros gandar melalui spline",
+      "detail": "Satu roda gigi samping menggerakkan setiap roda kendaraan. Kecepatan yang diberikan roda satelit diteruskan langsung ke poros gandar. Diferensial selip terbatas menambahkan kopling pada sistem ini, karena diferensial terbuka dapat menyalurkan torsi yang tersedia mengikuti batas roda dengan cengkeraman terendah."
+    },
+    "left_axle": {
+      "name": "Poros Gandar Kiri",
+      "short": "Menghubungkan roda gigi samping kiri dengan roda",
+      "detail": "Spline pada ujung dalam mengikat poros ke roda gigi samping kiri, sedangkan ujung luar terhubung ke hub roda. Saat kendaraan berbelok sehingga sisi kiri berada di dalam tikungan, poros ini berputar lebih lambat daripada rumah diferensial."
+    },
+    "right_axle": {
+      "name": "Poros Gandar Kanan",
+      "short": "Menghubungkan roda gigi samping kanan dengan roda",
+      "detail": "Poros ini bekerja seperti sisi kiri dalam arah berlawanan. Pada belokan ke kiri, roda kanan menempuh lintasan lebih panjang sehingga poros kanan berputar lebih cepat. Diferensial dirancang agar kedua poros dapat memiliki kecepatan berbeda tanpa terputus dari penggerak."
+    },
+    "pinion_shaft": {
+      "name": "Poros Pinion",
+      "short": "Masukan dari transmisi melalui poros propeler",
+      "detail": "Flens pada ujung poros menjadi tempat poros propeler dibaut. Putaran dari transmisi masuk ke pinion melalui komponen ini. Setelah melewati rasio pinion dan roda cincin, semua komponen berikutnya berputar lebih lambat tetapi membawa torsi lebih besar."
+    },
+    "bearings": {
+      "name": "Bantalan",
+      "short": "Menahan posisi roda gigi saat menerima gaya aksial",
+      "detail": "Bantalan rol tirus menopang poros pinion dan rumah diferensial. Gigi hipoid menghasilkan gaya yang mencoba mendorong pinion sepanjang sumbunya. Bantalan menahan dorongan tersebut agar kedalaman pertautan gigi tetap tepat dan roda gigi tidak saling menjauh."
+    }
   },
   "steps": [
-    { "title": "Ubah sudut menjadi gandar", "body": "Pinion di propshaft mendorong gigi cincin yang jauh lebih besar. Arah berubah sembilan puluh derajat; torsi berlipat. Itu bagian mudahnya." },
-    { "title": "Carrier adalah rata-rata", "body": "Gigi cincin dibaut ke sangkar. Jika kedua roda setuju, sangkar ini, laba-laba, dan kedua gigi sisi berputar sebagai satu. Jalan lurus, satu kecepatan." },
-    { "title": "Laba-laba idle di tikungan", "body": "Ketika satu roda harus lambat dan yang lain cepat, bevel di pin silang berputar. Mereka menambah kecepatan ke satu gigi sisi dan menguranginya dari yang lain. Mesin tetap melihat satu masukan." },
-    { "title": "Dua poros, dua pikiran", "body": "Tiap gigi sisi punya gandar sendiri. Itulah alasan mobil tidak melompat di bundaran, dan alasan differensial terbuka akan memutar satu roda di salju dan meninggalkan Anda di situ." },
-    { "title": "Bantalan memakan dorongan", "body": "Gigi hypoid mencoba mendorong pinion keluar dari casing. Bantalan tirus satu-satunya alasan mesh bertahan." }
+    {
+      "title": "Belokkan arah putaran",
+      "body": "Pinion pada poros propeler mendorong roda gigi cincin yang jauh lebih besar. Arah putaran berubah 90 derajat, kecepatan turun, dan torsi meningkat."
+    },
+    {
+      "title": "Putar kedua roda bersama",
+      "body": "Roda cincin memutar rumah diferensial. Saat kedua roda menempuh jarak sama, rumah, roda satelit, dan roda gigi samping berputar sebagai satu unit dengan satu kecepatan."
+    },
+    {
+      "title": "Biarkan roda satelit berputar",
+      "body": "Dalam tikungan, roda satelit berputar pada poros silang. Geraknya menambah kecepatan pada satu roda gigi samping dan mengurangi kecepatan sisi lain dengan jumlah yang sama."
+    },
+    {
+      "title": "Kirim dua kecepatan ke roda",
+      "body": "Setiap roda gigi samping memiliki poros gandar sendiri. Mekanisme ini mencegah ban terseret saat berbelok, tetapi pada diferensial terbuka juga memungkinkan satu roda kehilangan cengkeraman dan berputar sendiri."
+    },
+    {
+      "title": "Tahan gaya dengan bantalan",
+      "body": "Pasangan gigi hipoid mendorong pinion sepanjang sumbunya. Bantalan rol tirus menahan gaya itu dan menjaga pertautan roda gigi tetap pada posisi yang benar."
+    }
   ],
   "quiz": [
-    { "prompt": "Ketuk gigi kecil yang memutar mahkota besar." },
-    { "prompt": "Apa yang dilakukan gigi laba-laba di tikungan?", "choices": ["Mengunci kedua roda bersama", "Idle di pin silang supaya satu gandar bisa lebih cepat dari yang lain", "Memutus mesin", "Memutar kemudi"], "explain": "Mereka berputar relatif terhadap carrier, menambah kecepatan ke satu sisi dan menguranginya dari yang lain." },
-    { "prompt": "Ketuk bevel yang idle ketika roda tidak setuju." },
-    { "prompt": "Ketuk mahkota besar yang dibaut ke carrier." },
-    { "prompt": "Mengapa differensial terbuka bisa membuat Anda macet dengan satu roda berputar?", "choices": ["Tenaganya kurang", "Torsi mengikuti jalur hambatan terkecil — roda yang berputar — dan laba-laba dengan senang hati mengizinkannya", "Gigi cincin selip", "Gandar terlalu tipis"], "explain": "Laba-laba terbuka tidak memihak. Limited-slip menambah kopling karena lumpur bukan tikungan." },
-    { "prompt": "Ketuk sangkar tempat laba-laba tinggal." }
+    {
+      "prompt": "Ketuk roda gigi kecil yang memutar roda mahkota besar."
+    },
+    {
+      "prompt": "Apa yang dilakukan roda gigi satelit saat kendaraan berbelok?",
+      "choices": [
+        "Mengunci kedua roda",
+        "Berputar pada poros silang agar satu gandar dapat bergerak lebih cepat daripada yang lain",
+        "Memutus hubungan dengan mesin",
+        "Memutar sistem kemudi"
+      ],
+      "explain": "Roda satelit berputar relatif terhadap rumah diferensial, menambah kecepatan pada satu sisi dan menguranginya dari sisi lain."
+    },
+    {
+      "prompt": "Ketuk roda bevel kecil yang berputar saat kecepatan kedua roda berbeda."
+    },
+    {
+      "prompt": "Ketuk roda mahkota besar yang dibaut ke rumah diferensial."
+    },
+    {
+      "prompt": "Mengapa diferensial terbuka dapat membuat kendaraan macet sementara satu roda berputar?",
+      "choices": [
+        "Tenaga mesin tidak cukup",
+        "Torsi yang dapat diteruskan dibatasi oleh roda dengan cengkeraman paling rendah dan roda satelit membiarkan roda itu berputar",
+        "Roda gigi cincin selip",
+        "Poros gandar terlalu tipis"
+      ],
+      "explain": "Diferensial terbuka tidak dapat membedakan tikungan dari hilangnya cengkeraman. Diferensial selip terbatas menambahkan kopling untuk membatasi perbedaan tersebut."
+    },
+    {
+      "prompt": "Ketuk sangkar yang memegang roda gigi satelit."
+    }
   ]
 }

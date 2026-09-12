@@ -1,0 +1,107 @@
+{
+  "title": "Ponsel Pintar",
+  "subtitle": "Komputer saku berisi layar, radio, dan kamera",
+  "scale": "tinggi sekitar 150 mm",
+  "summary": "Ponsel modern tersusun seperti roti lapis. Setiap milimeter ketebalan diperebutkan, sehingga komponennya ditumpuk menjadi lapisan datar di antara dua lembar kaca. Semuanya dipisahkan dan ditopang oleh rangka logam hasil pemesinan yang juga berfungsi sebagai antena.",
+  "parts": {
+    "display": {
+      "name": "Layar OLED",
+      "short": "Setiap piksel memancarkan cahayanya sendiri",
+      "detail": "Setiap piksel merupakan dioda organik mikroskopis yang menghasilkan cahaya sendiri, tanpa lampu latar. Karena itu layar OLED dapat menampilkan hitam sejati: piksel tersebut cukup dimatikan. Panelnya juga dapat dibuat lebih tipis daripada kartu kredit. Kabel pita dilipat ke bawah panel lalu dihubungkan ke papan logika."
+    },
+    "frame": {
+      "name": "Rangka Struktural",
+      "short": "Sasis, penyebar panas, dan antena sekaligus",
+      "detail": "Bingkai tepi dikerjakan dari satu balok aluminium atau baja tahan karat. Rangka menanggung benturan saat ponsel jatuh dan menyebarkan panas dari prosesor. Celah plastik yang membagi bingkai bukan hiasan; celah itu memisahkan logam menjadi beberapa segmen antena radio."
+    },
+    "back_glass": {
+      "name": "Penutup Belakang",
+      "short": "Terbuat dari kaca agar gelombang radio dapat lewat",
+      "detail": "Bagian belakang dibuat dari kaca, bukan logam, terutama agar pengisian daya nirkabel dan antena seluler memiliki jalur bagi gelombang. Kaca yang diperkuat secara kimia juga kaku dan tahan gores, tetapi sebagai gantinya sering menjadi bagian pertama yang pecah saat ponsel jatuh."
+    },
+    "camera_module": {
+      "name": "Modul Kamera",
+      "short": "Tumpukan lensa di atas sensor sebesar kuku",
+      "detail": "Setiap kamera berisi lima sampai tujuh elemen lensa plastik yang ditumpuk di atas sensor gambar selebar beberapa milimeter. Tonjolan kamera diperlukan karena susunan lensa tidak dapat dipendekkan tanpa mengurangi cahaya; optik tidak menyusut seperti transistor. Elektromagnet kecil menggeser seluruh susunan lensa untuk mengimbangi getaran tangan."
+    },
+    "logic_board": {
+      "name": "Papan Logika",
+      "short": "Seluruh komputer dipadatkan sebesar perangko",
+      "detail": "Prosesor, memori, modem, dan penyimpanan berada pada papan yang lebih kecil daripada kartu nama, tersusun dari belasan lapisan tembaga. Cip terbesar memakai kemasan bertumpuk (package-on-package): RAM disolder langsung di atas prosesor agar jalur di antara keduanya sependek mungkin."
+    },
+    "shield_can": {
+      "name": "Pelindung EMI",
+      "short": "Tutup logam yang mencegah cip saling mengganggu",
+      "detail": "Cip digital berkecepatan tinggi memancarkan derau elektromagnetik. Selubung logam yang disolder di atasnya menjadi sangkar Faraday, sehingga derau pensaklaran prosesor tidak menenggelamkan sinyal menara seluler yang diterima radio hanya beberapa sentimeter di sebelahnya."
+    },
+    "battery": {
+      "name": "Baterai Litium-Ion",
+      "short": "Lapisan foil dan elektrolit yang digulung",
+      "detail": "Di dalam kantong terdapat pita panjang berlapis foil tembaga, grafit, separator, litium kobalt oksida, dan foil aluminium yang digulung. Saat diisi, ion litium didorong ke grafit; saat dipakai, ion bergerak kembali. Kantongnya lentur karena susunan sedikit mengembang pada setiap siklus, dan baterai memakan volume lebih besar daripada semua komponen lain."
+    },
+    "battery_connector": {
+      "name": "Konektor Papan",
+      "short": "Kontak berlapis emas yang dijepit oleh gaya pegas",
+      "detail": "Konektor antarpapan membawa daya dan data melalui kontak yang berjarak sepersekian milimeter. Kontaknya dilapisi emas agar tidak teroksidasi. Kedua sisi mengunci dengan gaya pegas tanpa solder; sambungan inilah yang memungkinkan baterai atau layar dilepas dan diganti."
+    },
+    "haptic_engine": {
+      "name": "Motor Haptik",
+      "short": "Beban berpegas yang digerakkan medan magnet",
+      "detail": "Aktuator resonan linear ini berupa massa yang digantung pada pegas di antara dua magnet dan digerakkan oleh kumparan. Karena bergerak lurus, bukan memutar beban yang tidak seimbang, aktuator dapat mulai dan berhenti dalam satu siklus. Getaran biasa pun berubah menjadi ketukan singkat dengan bentuk yang dapat dirasakan."
+    },
+    "speaker": {
+      "name": "Modul Pengeras Suara",
+      "short": "Kotak tertutup yang disetel seperti alat musik kecil",
+      "detail": "Penggeraknya lebih kecil daripada kancing baju, sehingga casing plastik di sekelilingnya melakukan sebagian besar pekerjaan akustik. Volume di dalam casing disetel agar resonansinya cukup rendah untuk memberi kesan nada bas yang sebenarnya tidak mampu dihasilkan penggerak sekecil itu. Beberapa modul diisi serbuk zeolit agar kotaknya berperilaku seolah-olah lebih besar."
+    }
+  },
+  "steps": [
+    {
+      "title": "Semuanya disusun berlapis",
+      "body": "Ketebalan adalah ruang paling langka dalam ponsel. Komponen ditata datar dan bertumpuk, bukan berdasarkan kemudahan perakitan, agar seluruh perangkat tetap lebih tipis dari 8 mm. Kupas lapisannya untuk melihat urutannya."
+    },
+    {
+      "title": "Baterai menguasai volume",
+      "body": "Baterai merupakan benda tunggal terbesar di dalam ponsel dan menjadi alasan ponsel berhenti makin menipis. Semua komponen lain ditempatkan di ruang yang tidak diperlukannya."
+    },
+    {
+      "title": "Komputernya justru kecil",
+      "body": "Papan logika memuat prosesor, memori, penyimpanan, dan modem dalam ruang yang lebih kecil daripada tonjolan kamera. Memperkecilnya lagi tidak banyak mengubah ukuran ponsel karena baterai dan layar tetap menjadi penentu."
+    },
+    {
+      "title": "Radio memerlukan jalur terbuka",
+      "body": "Logam menghalangi radio. Penutup kaca dan celah plastik yang memutus rangka logam memberi jalan bagi sinyal seluler, Wi-Fi, NFC, dan pengisian daya nirkabel."
+    }
+  ],
+  "quiz": [
+    {
+      "prompt": "Ketuk komponen yang memakan volume internal paling besar."
+    },
+    {
+      "prompt": "Ketuk bagian yang berfungsi sebagai sasis sekaligus antena."
+    },
+    {
+      "prompt": "Mengapa bagian belakang kebanyakan ponsel dibuat dari kaca, bukan logam?",
+      "choices": [
+        "Harganya lebih murah",
+        "Gelombang radio dapat melewatinya",
+        "Kaca lebih kuat",
+        "Kaca menghantarkan panas lebih baik"
+      ],
+      "explain": "Logam menghalangi radio. Kaca memungkinkan jaringan seluler, Wi-Fi, NFC, dan pengisian daya nirkabel bekerja melalui bagian belakang ponsel."
+    },
+    {
+      "prompt": "Apa yang membuat layar OLED dapat menampilkan hitam sejati?",
+      "choices": [
+        "Filter lampu latar yang sangat gelap",
+        "Setiap piksel dapat mati sepenuhnya",
+        "Kaca terpolarisasi",
+        "Laju penyegaran yang lebih tinggi"
+      ],
+      "explain": "Setiap piksel menghasilkan cahayanya sendiri. Piksel hitam cukup tidak diberi daya, sehingga tidak ada lampu latar yang bocor."
+    },
+    {
+      "prompt": "Ketuk bagian yang membuat ketukan pada layar terasa seperti klik."
+    }
+  ]
+}

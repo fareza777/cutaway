@@ -2,42 +2,302 @@
   "schema": 1,
   "id": "violin",
   "title": "Violin",
-  "subtitle": "A wooden box that sings when you scrape it",
+  "subtitle": "A four-string instrument played with a bow",
   "category": "Music",
   "accent": "#C4A06A",
   "scale": "≈ 356 mm body",
   "summary": "A violin is a carefully shaped box. Four strings, a bridge that wedges their vibration into the belly, a soundpost that couples belly to back, and two f-holes that let the box breathe. The scroll is a handle. The sound is the wood.",
   "model": "violin",
   "cutAxis": "x",
-  "restRotation": [0.14, -0.4, 0],
+  "restRotation": [
+    0.14,
+    -0.4,
+    0
+  ],
   "parts": [
-    { "id": "belly", "nodes": ["belly"], "name": "Belly", "short": "Spruce, arched, the plate that radiates", "detail": "The front plate, carved from spruce because spruce is stiff along the grain and light. The arch is structural and acoustic. The f-holes are not decoration: they are how the air in the box is allowed to move, and they weaken the plate in exactly the places a maker wants it to flex.", "layer": 0, "explode": [0, 0, 0.9] },
-    { "id": "back", "nodes": ["back"], "name": "Back", "short": "Maple, the other half of the box", "detail": "Usually two pieces of maple, joined down the centre, carved to an arch that is not the belly's arch. It reflects and colours what the belly started. A violin with no back is a plate. A violin with a back is an instrument.", "layer": 0, "explode": [0, 0, -0.9] },
-    { "id": "ribs", "nodes": ["ribs"], "name": "Ribs", "short": "The walls that set the air volume", "detail": "Thin maple strips, bent on a hot iron, lining the outline. Their height is the depth of the box, and that depth is a tuning choice: too shallow and the air resonance climbs out of the useful range; too deep and the instrument goes tubby.", "layer": 0, "explode": [0.7, 0, 0] },
-    { "id": "neck", "nodes": ["neck"], "name": "Neck", "short": "The handle, set at an angle that is not optional", "detail": "Maple, mortised into the block at the top of the body. The angle of this joint sets the height of the strings over the bridge. A millimetre here is the difference between an instrument that speaks and one that fights.", "layer": 1, "explode": [0, 1.1, 0] },
-    { "id": "scroll", "nodes": ["scroll"], "name": "Scroll", "short": "A spiral that is also a calling card", "detail": "Carved from the same block as the pegbox. It does almost nothing acoustic. It is how you recognise a maker from across a room, and how you hang the instrument on a peg.", "layer": 1, "explode": [0, 1.4, 0] },
-    { "id": "fingerboard", "nodes": ["fingerboard"], "name": "Fingerboard", "short": "Ebony, where the notes are chosen", "detail": "A black bar glued to the neck, not fretted. Every pitch is a position. The hollow under the board is why a violin's neck feels thinner than it looks, and why the hand can move fast.", "layer": 1, "explode": [0, 0.8, 0.4] },
-    { "id": "bridge", "nodes": ["bridge"], "name": "Bridge", "short": "The wedge that drives the belly", "detail": "A thin maple fit, held only by string tension, feet shaped to the arch. It is a mechanical transformer: the strings move a millimetre, the belly a fraction of that over a much larger area. A bridge in the wrong place, or cut too heavy, and the violin goes mute.", "layer": 2, "explode": [0, 0, 0.7] },
-    { "id": "strings", "nodes": ["strings"], "name": "Strings", "short": "Four lengths of tension", "detail": "G, D, A, E, tuned in fifths. Gut, steel, or synthetic cores wrapped in metal. They are the only part the bow touches. Everything else is a loudspeaker for these four wires.", "layer": 1, "explode": [0, 0, 1.1] },
-    { "id": "tailpiece", "nodes": ["tailpiece"], "name": "Tailpiece", "short": "Anchors the strings at the other end", "detail": "Ebony or composite, held by a gut loop to the end button. Fine tuners live here on the E, sometimes on all four. Its mass is part of the afterlength, which is part of the sound.", "layer": 1, "explode": [0, -1.0, 0.3] },
-    { "id": "pegs", "nodes": ["pegs"], "name": "Pegs", "short": "Tapered sticks that are also brakes", "detail": "Ebony or rosewood cones in tapered holes. Friction holds the tune; a peg that slips or sticks is a humidity problem, not a character trait. Turning one is how a violin is tuned, slowly, a few cents at a time.", "layer": 2, "explode": [0.6, 1.3, 0] },
-    { "id": "soundpost", "nodes": ["soundpost"], "name": "Soundpost", "short": "A stick that is not glued, and must not fall", "detail": "A spruce dowel wedged between belly and back, just behind the treble foot of the bridge. It is the sound's spine: it couples the two plates and sets how the treble speaks. It is held only by fit. Let it fall and the instrument is a box of wood until someone who knows stands it up again.", "layer": 3, "explode": [0.4, 0, 0] },
-    { "id": "bass_bar", "nodes": ["bass_bar"], "name": "Bass Bar", "short": "A rib under the bass foot of the bridge", "detail": "A spruce bar glued along the belly, under the G-string side of the bridge. It stiffens the bass side so the low strings can drive a large area of plate. Without it the G is a thud.", "layer": 3, "explode": [-0.5, 0, 0.3] },
-    { "id": "chinrest", "nodes": ["chinrest"], "name": "Chinrest", "short": "Where the jaw goes, so the hand is free", "detail": "A later invention. Baroque players held the instrument differently. The rest clamps to the ribs and lets the left hand shift without supporting the neck. It is comfort, not acoustics, and people argue about it anyway.", "layer": 1, "explode": [0.5, -1.1, 0.4] }
+    {
+      "id": "belly",
+      "nodes": [
+        "belly"
+      ],
+      "name": "Belly",
+      "short": "Spruce, arched, the plate that radiates",
+      "detail": "The front plate, carved from spruce because spruce is stiff along the grain and light. The arch is structural and acoustic. The f-holes are not decoration: they are how the air in the box is allowed to move, and they weaken the plate in exactly the places a maker wants it to flex.",
+      "layer": 0,
+      "explode": [
+        0,
+        0,
+        0.9
+      ]
+    },
+    {
+      "id": "back",
+      "nodes": [
+        "back"
+      ],
+      "name": "Back",
+      "short": "Maple, the other half of the box",
+      "detail": "Usually two pieces of maple, joined down the centre, carved to an arch that is not the belly's arch. It reflects and colours what the belly started. A violin with no back is a plate. A violin with a back is an instrument.",
+      "layer": 0,
+      "explode": [
+        0,
+        0,
+        -0.9
+      ]
+    },
+    {
+      "id": "ribs",
+      "nodes": [
+        "ribs"
+      ],
+      "name": "Ribs",
+      "short": "The walls that set the air volume",
+      "detail": "Thin maple strips, bent on a hot iron, lining the outline. Their height is the depth of the box, and that depth is a tuning choice: too shallow and the air resonance climbs out of the useful range; too deep and the instrument goes tubby.",
+      "layer": 0,
+      "explode": [
+        0.7,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "neck",
+      "nodes": [
+        "neck"
+      ],
+      "name": "Neck",
+      "short": "The handle, set at an angle that is not optional",
+      "detail": "Maple, mortised into the block at the top of the body. The angle of this joint sets the height of the strings over the bridge. A millimetre here is the difference between an instrument that speaks and one that fights.",
+      "layer": 1,
+      "explode": [
+        0,
+        1.1,
+        0
+      ]
+    },
+    {
+      "id": "scroll",
+      "nodes": [
+        "scroll"
+      ],
+      "name": "Scroll",
+      "short": "A spiral that is also a calling card",
+      "detail": "Carved from the same block as the pegbox. It does almost nothing acoustic. It is how you recognise a maker from across a room, and how you hang the instrument on a peg.",
+      "layer": 1,
+      "explode": [
+        0,
+        1.4,
+        0
+      ]
+    },
+    {
+      "id": "fingerboard",
+      "nodes": [
+        "fingerboard"
+      ],
+      "name": "Fingerboard",
+      "short": "Ebony, where the notes are chosen",
+      "detail": "A black bar glued to the neck, not fretted. Every pitch is a position. The hollow under the board is why a violin's neck feels thinner than it looks, and why the hand can move fast.",
+      "layer": 1,
+      "explode": [
+        0,
+        0.8,
+        0.4
+      ]
+    },
+    {
+      "id": "bridge",
+      "nodes": [
+        "bridge"
+      ],
+      "name": "Bridge",
+      "short": "The wedge that drives the belly",
+      "detail": "A thin maple fit, held only by string tension, feet shaped to the arch. It is a mechanical transformer: the strings move a millimetre, the belly a fraction of that over a much larger area. A bridge in the wrong place, or cut too heavy, and the violin goes mute.",
+      "layer": 2,
+      "explode": [
+        0,
+        0,
+        0.7
+      ]
+    },
+    {
+      "id": "strings",
+      "nodes": [
+        "strings"
+      ],
+      "name": "Strings",
+      "short": "Four lengths of tension",
+      "detail": "G, D, A, E, tuned in fifths. Gut, steel, or synthetic cores wrapped in metal. They are the only part the bow touches. Everything else is a loudspeaker for these four wires.",
+      "layer": 1,
+      "explode": [
+        0,
+        0,
+        1.1
+      ]
+    },
+    {
+      "id": "tailpiece",
+      "nodes": [
+        "tailpiece"
+      ],
+      "name": "Tailpiece",
+      "short": "Anchors the strings at the other end",
+      "detail": "Ebony or composite, held by a gut loop to the end button. Fine tuners live here on the E, sometimes on all four. Its mass is part of the afterlength, which is part of the sound.",
+      "layer": 1,
+      "explode": [
+        0,
+        -1.0,
+        0.3
+      ]
+    },
+    {
+      "id": "pegs",
+      "nodes": [
+        "pegs"
+      ],
+      "name": "Pegs",
+      "short": "Tapered sticks that are also brakes",
+      "detail": "Ebony or rosewood cones in tapered holes. Friction holds the tune; a peg that slips or sticks is a humidity problem, not a character trait. Turning one is how a violin is tuned, slowly, a few cents at a time.",
+      "layer": 2,
+      "explode": [
+        0.6,
+        1.3,
+        0
+      ]
+    },
+    {
+      "id": "soundpost",
+      "nodes": [
+        "soundpost"
+      ],
+      "name": "Soundpost",
+      "short": "A stick that is not glued, and must not fall",
+      "detail": "A spruce dowel wedged between belly and back, just behind the treble foot of the bridge. It is the sound's spine: it couples the two plates and sets how the treble speaks. It is held only by fit. Let it fall and the instrument is a box of wood until someone who knows stands it up again.",
+      "layer": 3,
+      "explode": [
+        0.4,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "bass_bar",
+      "nodes": [
+        "bass_bar"
+      ],
+      "name": "Bass Bar",
+      "short": "A rib under the bass foot of the bridge",
+      "detail": "A spruce bar glued along the belly, under the G-string side of the bridge. It stiffens the bass side so the low strings can drive a large area of plate. Without it the G is a thud.",
+      "layer": 3,
+      "explode": [
+        -0.5,
+        0,
+        0.3
+      ]
+    },
+    {
+      "id": "chinrest",
+      "nodes": [
+        "chinrest"
+      ],
+      "name": "Chinrest",
+      "short": "Where the jaw goes, so the hand is free",
+      "detail": "A later invention. Baroque players held the instrument differently. The rest clamps to the ribs and lets the left hand shift without supporting the neck. It is comfort, not acoustics, and people argue about it anyway.",
+      "layer": 1,
+      "explode": [
+        0.5,
+        -1.1,
+        0.4
+      ]
+    }
   ],
   "steps": [
-    { "title": "Scrape four wires", "body": "The bow is a stick of horsehair and rosin. The strings hiss, then lock to a stick-slip cycle, and that cycle is the note.", "focus": ["strings"] },
-    { "title": "Wedge it into wood", "body": "The bridge stands only because the strings press it down. Their side-to-side motion becomes an up-and-down drive into the belly, through two feet that are not doing the same job.", "focus": ["bridge", "belly"] },
-    { "title": "Couple the box", "body": "A loose spruce stick, the soundpost, jams between belly and back under the treble foot. A glued bar, the bass bar, stiffens the other side. Together they make two plates into one instrument.", "focus": ["soundpost", "bass_bar", "back"] },
-    { "title": "Let the box breathe", "body": "The f-holes are vents. The air in the body has a resonance of its own, around the C on the G string, and the holes are sized for that, not for looking like an f.", "focus": ["belly", "ribs"] },
-    { "title": "Choose the pitch with a fingertip", "body": "No frets. The fingerboard is a length. The left hand is a moving nut. The pegs at the other end are how the open strings get into the same room as the hand.", "focus": ["fingerboard", "pegs", "neck"] }
+    {
+      "title": "Scrape four wires",
+      "body": "The bow is a stick of horsehair and rosin. The strings hiss, then lock to a stick-slip cycle, and that cycle is the note.",
+      "focus": [
+        "strings"
+      ]
+    },
+    {
+      "title": "Wedge it into wood",
+      "body": "The bridge stands only because the strings press it down. Their side-to-side motion becomes an up-and-down drive into the belly, through two feet that are not doing the same job.",
+      "focus": [
+        "bridge",
+        "belly"
+      ]
+    },
+    {
+      "title": "Couple the box",
+      "body": "A loose spruce stick, the soundpost, jams between belly and back under the treble foot. A glued bar, the bass bar, stiffens the other side. Together they make two plates into one instrument.",
+      "focus": [
+        "soundpost",
+        "bass_bar",
+        "back"
+      ]
+    },
+    {
+      "title": "Let the box breathe",
+      "body": "The f-holes are vents. The air in the body has a resonance of its own, around the C on the G string, and the holes are sized for that, not for looking like an f.",
+      "focus": [
+        "belly",
+        "ribs"
+      ]
+    },
+    {
+      "title": "Choose the pitch with a fingertip",
+      "body": "No frets. The fingerboard is a length. The left hand is a moving nut. The pegs at the other end are how the open strings get into the same room as the hand.",
+      "focus": [
+        "fingerboard",
+        "pegs",
+        "neck"
+      ]
+    }
   ],
   "quiz": [
-    { "type": "identify", "prompt": "Tap the only part that holds the bridge up.", "partId": "strings" },
-    { "type": "choice", "prompt": "What is the soundpost held by?", "choices": ["Glue", "A screw", "Fit and string tension on the belly — it is not glued", "Magnet"], "answer": 2, "explain": "It is a wedge. That is why dropping a violin can 'knock the post down', and why a luthier stands it back up through the f-hole." },
-    { "type": "identify", "prompt": "Tap the stick between the plates that must not fall.", "partId": "soundpost" },
-    { "type": "identify", "prompt": "Tap the plate the bridge stands on.", "partId": "belly" },
-    { "type": "choice", "prompt": "Why does a violin have f-holes instead of a round soundhole?", "choices": ["Fashion", "They let the plate flex in the right places and tune the air resonance of the box", "To look like the letter f", "They are where the soundpost is glued"], "answer": 1, "explain": "Shape of the hole is stiffness of the plate plus Helmholtz resonance of the air. Both matter." },
-    { "type": "identify", "prompt": "Tap the bar glued under the bass side of the belly.", "partId": "bass_bar" }
+    {
+      "type": "identify",
+      "prompt": "Tap the only part that holds the bridge up.",
+      "partId": "strings"
+    },
+    {
+      "type": "choice",
+      "prompt": "What is the soundpost held by?",
+      "choices": [
+        "Glue",
+        "A screw",
+        "Fit and string tension on the belly — it is not glued",
+        "Magnet"
+      ],
+      "answer": 2,
+      "explain": "It is a wedge. That is why dropping a violin can 'knock the post down', and why a luthier stands it back up through the f-hole."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the stick between the plates that must not fall.",
+      "partId": "soundpost"
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the plate the bridge stands on.",
+      "partId": "belly"
+    },
+    {
+      "type": "choice",
+      "prompt": "Why does a violin have f-holes instead of a round soundhole?",
+      "choices": [
+        "Fashion",
+        "They let the plate flex in the right places and tune the air resonance of the box",
+        "To look like the letter f",
+        "They are where the soundpost is glued"
+      ],
+      "answer": 1,
+      "explain": "Shape of the hole is stiffness of the plate plus Helmholtz resonance of the air. Both matter."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the bar glued under the bass side of the belly.",
+      "partId": "bass_bar"
+    }
   ]
 }
