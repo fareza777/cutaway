@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import * as Haptics from 'expo-haptics';
 
-import { useColors } from '@/state/settings';
+import { useColors, useReadableAccent } from '@/state/settings';
 import { alpha, radius, space, type } from './theme';
 
 type Variant = keyof typeof type;
@@ -89,10 +89,13 @@ export function Chip({
   disabled?: boolean;
 }) {
   const colors = useColors();
+  const accentText = useReadableAccent(accent);
   return (
     <Touchable
       onPress={onPress}
       disabled={disabled}
+      accessibilityRole="button"
+      accessibilityState={{ selected: active, disabled }}
       style={{
         paddingHorizontal: space.lg,
         paddingVertical: 9,
@@ -103,7 +106,7 @@ export function Chip({
         opacity: disabled ? 0.35 : 1,
       }}
     >
-      <Text variant="caption" color={active ? accent : colors.textMuted}>
+      <Text variant="caption" color={active ? accentText : colors.textMuted}>
         {label}
       </Text>
     </Touchable>
@@ -160,6 +163,7 @@ export function GhostButton({
   style?: StyleProp<ViewStyle>;
 }) {
   const colors = useColors();
+  const accentText = useReadableAccent(accent ?? colors.textMuted);
   return (
     <Touchable
       onPress={onPress}
@@ -175,7 +179,7 @@ export function GhostButton({
         style,
       ]}
     >
-      <Text variant="heading" color={accent ?? colors.textMuted}>
+      <Text variant="heading" color={accent ? accentText : colors.textMuted}>
         {label}
       </Text>
     </Touchable>

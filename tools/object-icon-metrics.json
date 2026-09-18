@@ -1,0 +1,646 @@
+{
+  "air-conditioner": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 41,
+      "minY": 24,
+      "maxX": 214,
+      "maxY": 232,
+      "width": 174,
+      "height": 209
+    },
+    "distance": 3.73542,
+    "view": {
+      "rotation": [
+        0.12,
+        -0.5,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "brain": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 23,
+      "minY": 32,
+      "maxX": 232,
+      "maxY": 224,
+      "width": 210,
+      "height": 193
+    },
+    "distance": 3.00538,
+    "view": {
+      "rotation": [
+        0.22,
+        -0.52,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "camera": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 25,
+      "minY": 24,
+      "maxX": 230,
+      "maxY": 232,
+      "width": 206,
+      "height": 209
+    },
+    "distance": 3.08094,
+    "view": {
+      "rotation": [
+        0.12,
+        -0.55,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "cordless-drill": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 24,
+      "minY": 36,
+      "maxX": 232,
+      "maxY": 219,
+      "width": 209,
+      "height": 184
+    },
+    "distance": 3.66871,
+    "view": {
+      "rotation": [
+        0.08,
+        -0.46,
+        0.02
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "cyclonic-vacuum": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 23,
+      "minY": 37,
+      "maxX": 232,
+      "maxY": 218,
+      "width": 210,
+      "height": 182
+    },
+    "distance": 3.74403,
+    "view": {
+      "rotation": [
+        0.08,
+        -0.5,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": -0.75
+    }
+  },
+  "differential": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 18,
+      "minY": 47,
+      "maxX": 238,
+      "maxY": 209,
+      "width": 221,
+      "height": 163
+    },
+    "distance": 2.71297,
+    "view": {
+      "rotation": [
+        0.25,
+        0.85,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0.45
+    }
+  },
+  "electric-motor": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 48,
+      "minY": 23,
+      "maxX": 208,
+      "maxY": 232,
+      "width": 161,
+      "height": 210
+    },
+    "distance": 3.63019,
+    "view": {
+      "rotation": [
+        0.14,
+        -0.52,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "eye": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 23,
+      "minY": 25,
+      "maxX": 232,
+      "maxY": 231,
+      "width": 210,
+      "height": 207
+    },
+    "distance": 2.90631,
+    "view": {
+      "rotation": [
+        0.08,
+        -0.5,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "hard-disk": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 23,
+      "minY": 32,
+      "maxX": 232,
+      "maxY": 224,
+      "width": 210,
+      "height": 193
+    },
+    "distance": 4.31707,
+    "view": {
+      "rotation": [
+        0.95,
+        0.32,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "heart": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 45,
+      "minY": 23,
+      "maxX": 211,
+      "maxY": 233,
+      "width": 167,
+      "height": 211
+    },
+    "distance": 3.24208,
+    "view": {
+      "rotation": [
+        0.06,
+        -0.35,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": -0.26
+    }
+  },
+  "inner-ear": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 24,
+      "minY": 28,
+      "maxX": 232,
+      "maxY": 228,
+      "width": 209,
+      "height": 201
+    },
+    "distance": 3.17924,
+    "view": {
+      "rotation": [
+        0.28,
+        -0.72,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "kidney": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 48,
+      "minY": 24,
+      "maxX": 208,
+      "maxY": 232,
+      "width": 161,
+      "height": 209
+    },
+    "distance": 3.41845,
+    "view": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0.32
+    }
+  },
+  "lock": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 23,
+      "minY": 42,
+      "maxX": 232,
+      "maxY": 214,
+      "width": 210,
+      "height": 173
+    },
+    "distance": 3.63427,
+    "view": {
+      "rotation": [
+        0.12,
+        -0.95,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0.32
+    }
+  },
+  "loudspeaker": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 46,
+      "minY": 18,
+      "maxX": 210,
+      "maxY": 237,
+      "width": 165,
+      "height": 220
+    },
+    "distance": 2.9335,
+    "view": {
+      "rotation": [
+        0.38,
+        1.02,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0.08
+    }
+  },
+  "lung": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 48,
+      "minY": 24,
+      "maxX": 207,
+      "maxY": 232,
+      "width": 160,
+      "height": 209
+    },
+    "distance": 3.57904,
+    "view": {
+      "rotation": [
+        0.05,
+        -0.25,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "mechanical-watch": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 31,
+      "minY": 24,
+      "maxX": 225,
+      "maxY": 232,
+      "width": 195,
+      "height": 209
+    },
+    "distance": 3.50211,
+    "view": {
+      "rotation": [
+        1.38,
+        -0.18,
+        -0.12
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": -0.78
+    }
+  },
+  "microwave": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 24,
+      "minY": 46,
+      "maxX": 232,
+      "maxY": 209,
+      "width": 209,
+      "height": 164
+    },
+    "distance": 4.62367,
+    "view": {
+      "rotation": [
+        0.1,
+        -0.55,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0.3
+    }
+  },
+  "piston-engine": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 46,
+      "minY": 23,
+      "maxX": 210,
+      "maxY": 232,
+      "width": 165,
+      "height": 210
+    },
+    "distance": 4.27306,
+    "view": {
+      "rotation": [
+        0.08,
+        -0.45,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": -0.58
+    }
+  },
+  "refrigerator": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 43,
+      "minY": 23,
+      "maxX": 212,
+      "maxY": 232,
+      "width": 170,
+      "height": 210
+    },
+    "distance": 4.40392,
+    "view": {
+      "rotation": [
+        0.06,
+        -0.62,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0.35
+    }
+  },
+  "rice-cooker": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 28,
+      "minY": 24,
+      "maxX": 227,
+      "maxY": 232,
+      "width": 200,
+      "height": 209
+    },
+    "distance": 3.25419,
+    "view": {
+      "rotation": [
+        0.08,
+        -0.48,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "rocket-engine": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 24,
+      "minY": 28,
+      "maxX": 232,
+      "maxY": 228,
+      "width": 209,
+      "height": 201
+    },
+    "distance": 3.81288,
+    "view": {
+      "rotation": [
+        0.18,
+        1.08,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": -0.78
+    }
+  },
+  "smartphone": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 45,
+      "minY": 23,
+      "maxX": 211,
+      "maxY": 232,
+      "width": 167,
+      "height": 210
+    },
+    "distance": 4.55935,
+    "view": {
+      "rotation": [
+        0.12,
+        -0.5,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": -0.56
+    }
+  },
+  "tooth": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 44,
+      "minY": 23,
+      "maxX": 212,
+      "maxY": 232,
+      "width": 169,
+      "height": 210
+    },
+    "distance": 3.22433,
+    "view": {
+      "rotation": [
+        0.1,
+        -0.35,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "turbofan": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 49,
+      "minY": 23,
+      "maxX": 207,
+      "maxY": 232,
+      "width": 159,
+      "height": 210
+    },
+    "distance": 3.24314,
+    "view": {
+      "rotation": [
+        0.1,
+        -0.55,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0.08
+    }
+  },
+  "violin": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 41,
+      "minY": 24,
+      "maxX": 215,
+      "maxY": 232,
+      "width": 175,
+      "height": 209
+    },
+    "distance": 3.65949,
+    "view": {
+      "rotation": [
+        0.14,
+        -0.4,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0.5
+    }
+  },
+  "washing-machine": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 24,
+      "minY": 24,
+      "maxX": 232,
+      "maxY": 231,
+      "width": 209,
+      "height": 208
+    },
+    "distance": 3.20888,
+    "view": {
+      "rotation": [
+        0.08,
+        -0.5,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "earth-observation-satellite": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 24,
+      "minY": 34,
+      "maxX": 232,
+      "maxY": 221,
+      "width": 209,
+      "height": 188
+    },
+    "distance": 3.10512,
+    "view": {
+      "rotation": [
+        0.2,
+        -0.62,
+        0.04
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0.65
+    }
+  },
+  "turboshaft-helicopter": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 32,
+      "minY": 23,
+      "maxX": 223,
+      "maxY": 232,
+      "width": 192,
+      "height": 210
+    },
+    "distance": 2.8905,
+    "view": {
+      "rotation": [
+        0.08,
+        -0.5,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": -0.7
+    }
+  }
+}

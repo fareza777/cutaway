@@ -12,7 +12,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 import type { ObjectDoc, Part, Step } from '@/content/types';
 import { Divider, GhostButton, Label, Text, Touchable } from '../primitives';
-import { useColors, useT } from '@/state/settings';
+import { useColors, useReadableAccent, useT } from '@/state/settings';
 import { alpha, radius, space } from '../theme';
 
 function PanelFrame({
@@ -136,6 +136,7 @@ export function StoryPanel({
 }) {
   const colors = useColors();
   const t = useT();
+  const accentText = useReadableAccent(accent);
   const steps: Step[] = doc.steps;
   const current = steps[step];
   const last = step >= steps.length - 1;
@@ -168,7 +169,7 @@ export function StoryPanel({
 
         {current ? (
           <View style={[styles.stepCard, { borderColor: alpha(accent, 0.28), backgroundColor: colors.surface }]}>
-            <Label color={alpha(accent, 0.9)}>
+            <Label color={accentText}>
               {t('panel.step', { index: step + 1, total: steps.length })}
             </Label>
             <Text variant="title" style={{ marginTop: 6 }}>

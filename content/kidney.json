@@ -2,7 +2,7 @@
   "schema": 1,
   "id": "kidney",
   "title": "Kidney",
-  "subtitle": "A million filters, plumbed in parallel",
+  "subtitle": "Filters waste and surplus water out of the blood",
   "category": "Anatomy",
   "accent": "#E0806A",
   "scale": "≈ 11 cm long",
@@ -12,16 +12,24 @@
   "parts": [
     {
       "id": "renal_capsule",
-      "nodes": ["renal_capsule"],
+      "nodes": [
+        "renal_capsule"
+      ],
       "name": "Renal Capsule",
       "short": "A tough, glossy skin — and the reason a kidney infection hurts",
       "detail": "A thin sheet of fibrous tissue wrapped tight around the whole organ, so smooth that in life it slips off under a thumb. It barely stretches, and that is the interesting part: when a kidney swells — from infection, or a stone backing urine up behind it — the capsule refuses to give, pressure rises inside, and the pain that follows is the capsule being stretched rather than the kidney itself being damaged. It is shown here peeled back, the way a specimen is presented.",
       "layer": 0,
-      "explode": [0, 0, 1.5]
+      "explode": [
+        0,
+        0,
+        1.5
+      ]
     },
     {
       "id": "renal_cortex",
-      "nodes": ["renal_cortex"],
+      "nodes": [
+        "renal_cortex"
+      ],
       "name": "Cortex",
       "short": "The outer third, where the filtering happens",
       "detail": "Every one of the kidney's million filters sits in this outer band, which is why it is the part with the richest blood supply in the body relative to its size — a quarter of everything the heart pumps arrives here. Under a lens it looks granular, and each grain is a glomerulus. The cortex also dips down between the pyramids as the renal columns, so the boundary between cortex and medulla is not a smooth shell but an interlocking one.",
@@ -29,7 +37,9 @@
     },
     {
       "id": "renal_medulla",
-      "nodes": ["renal_medulla"],
+      "nodes": [
+        "renal_medulla"
+      ],
       "name": "Medulla (Pyramids)",
       "short": "Eight cones aimed at the drain",
       "detail": "The striped appearance is real: each pyramid is thousands of parallel tubes running the same direction, from the cortex down to the tip. Nothing is filtered here. What happens instead is concentration — the medulla is kept deliberately salty, saltier the deeper you go, and urine passing through gives up water to that saltiness. This is the machinery that lets you produce a small amount of dark urine when you are short of water, rather than losing litres you cannot spare.",
@@ -37,7 +47,9 @@
     },
     {
       "id": "renal_columns",
-      "nodes": ["renal_columns"],
+      "nodes": [
+        "renal_columns"
+      ],
       "name": "Renal Columns",
       "short": "Cortex reaching down between the pyramids",
       "detail": "Wedges of cortex that run inward between neighbouring pyramids, dividing the medulla into separate lobes. They are not filler. Every vessel travelling between the hilum and the outer cortex goes up a column, because there is no other route that does not cut straight through a pyramid's carefully layered salt gradient.",
@@ -45,7 +57,9 @@
     },
     {
       "id": "renal_papillae",
-      "nodes": ["renal_papillae"],
+      "nodes": [
+        "renal_papillae"
+      ],
       "name": "Papillae",
       "short": "The tip of each pyramid, where urine finally drips out",
       "detail": "The blunt end of a pyramid, perforated with the open mouths of collecting ducts. This is the exact point where urine stops being inside a tube belonging to a cell and becomes a fluid in a space — everything upstream is intricate microscopic plumbing, everything downstream is just drainage. Papillae are also where damage from long-term painkiller overuse shows up first.",
@@ -53,7 +67,9 @@
     },
     {
       "id": "minor_calyces",
-      "nodes": ["minor_calyces"],
+      "nodes": [
+        "minor_calyces"
+      ],
       "name": "Minor Calyces",
       "short": "A cup catching the drip from each papilla",
       "detail": "One small funnel per pyramid, fitted over the papilla like a cup over a tap. They are lined with muscle and squeeze in sequence, so urine is milked toward the pelvis rather than left to trickle. A stone lodged in a calyx can sit there for years causing nothing; the same stone in the ureter is one of the most painful things a person can experience.",
@@ -61,7 +77,9 @@
     },
     {
       "id": "major_calyces",
-      "nodes": ["major_calyces"],
+      "nodes": [
+        "major_calyces"
+      ],
       "name": "Major Calyces",
       "short": "Two or three cups merging into one",
       "detail": "The minor calyces join into two or three larger channels before they meet the pelvis. It is a straightforward gathering system — the branching pattern of a river run backwards — and the only reason it matters clinically is that it is the shape a radiologist reads. A blocked kidney shows its blockage here first, as calyces swollen from sharp cups into blunt clubs.",
@@ -69,7 +87,9 @@
     },
     {
       "id": "renal_pelvis",
-      "nodes": ["renal_pelvis"],
+      "nodes": [
+        "renal_pelvis"
+      ],
       "name": "Renal Pelvis",
       "short": "The funnel where everything collects",
       "detail": "A flattened funnel sitting in the notch of the kidney, gathering every calyx into the single tube that leaves. It holds only a few millilitres — urine is not stored here, it is passed through. The junction where it narrows into the ureter is the tightest point in the whole drainage path and therefore the commonest place for a stone to jam.",
@@ -77,34 +97,54 @@
     },
     {
       "id": "ureter",
-      "nodes": ["ureter"],
+      "nodes": [
+        "ureter"
+      ],
       "name": "Ureter",
       "short": "A muscular tube that pushes, not a pipe that drains",
       "detail": "Urine does not run down to the bladder under gravity — you would be in trouble lying down if it did. The ureter squeezes in waves a few times a minute, driving urine along regardless of which way up you are. Those same waves are what make a stone so agonising: the muscle keeps trying to push past an obstruction it cannot move, and the pain comes in rising and falling waves to match.",
       "layer": 1,
-      "explode": [0, -1.6, 0]
+      "explode": [
+        0,
+        -1.6,
+        0
+      ]
     },
     {
       "id": "renal_artery",
-      "nodes": ["renal_artery"],
+      "nodes": [
+        "renal_artery"
+      ],
       "name": "Renal Artery",
       "short": "A fifth of the body's entire blood supply, for an organ this size",
       "detail": "Short, wide, and straight off the aorta, because the kidney needs both enormous flow and high pressure. Around a fifth of every heartbeat's output comes down these two arteries — far more than the kidney needs for its own metabolism. The blood is not being delivered for the kidney's benefit; it is the material being processed.",
       "layer": 1,
-      "explode": [-1.6, 0.3, -0.2]
+      "explode": [
+        -1.6,
+        0.3,
+        -0.2
+      ]
     },
     {
       "id": "renal_vein",
-      "nodes": ["renal_vein"],
+      "nodes": [
+        "renal_vein"
+      ],
       "name": "Renal Vein",
       "short": "Wider than the artery, and in front of it",
       "detail": "Carries the same volume back out at a fraction of the pressure, which is why it is the wider of the two. Its position in front of the artery at the hilum is consistent enough to be a landmark in surgery. Almost everything the kidney reclaims — the water, the salt, the glucose, the amino acids — leaves the organ through this vein, having been filtered out and then deliberately taken back.",
       "layer": 1,
-      "explode": [-1.6, -0.3, 0.4]
+      "explode": [
+        -1.6,
+        -0.3,
+        0.4
+      ]
     },
     {
       "id": "segmental_arteries",
-      "nodes": ["segmental_arteries"],
+      "nodes": [
+        "segmental_arteries"
+      ],
       "name": "Segmental Arteries",
       "short": "The first split, and the reason a kidney can be cut in parts",
       "detail": "The renal artery divides into around five branches, and each supplies a territory that shares no blood with its neighbours. That makes them end arteries: block one and its whole segment dies, with nothing flowing in from around the edges to rescue it. The same property is what allows a surgeon to remove one segment and leave the rest of the kidney alive.",
@@ -112,7 +152,9 @@
     },
     {
       "id": "interlobar_arteries",
-      "nodes": ["interlobar_arteries"],
+      "nodes": [
+        "interlobar_arteries"
+      ],
       "name": "Interlobar Arteries",
       "short": "Up the columns, between the pyramids",
       "detail": "Branches that climb outward from the hilum through the renal columns, taking the only route that avoids cutting through a pyramid. They are a useful reminder that the kidney's lobed structure is not decorative — the blood supply is organised around it, one set of vessels per lobe.",
@@ -120,7 +162,9 @@
     },
     {
       "id": "arcuate_arteries",
-      "nodes": ["arcuate_arteries"],
+      "nodes": [
+        "arcuate_arteries"
+      ],
       "name": "Arcuate Arteries",
       "short": "Arching along the cortex–medulla border",
       "detail": "Where the interlobar arteries reach the base of a pyramid, they turn and run along the boundary between cortex and medulla in a distinct arch. From these arches, small branches head straight up into the cortex, and each one ends in a glomerulus. The arch is a landmark a pathologist uses to tell at a glance which part of a slice they are looking at.",
@@ -128,7 +172,9 @@
     },
     {
       "id": "glomerulus",
-      "nodes": ["glomerulus"],
+      "nodes": [
+        "glomerulus"
+      ],
       "name": "Glomerulus",
       "short": "A knot of leaky capillaries — shown far larger than life",
       "detail": "A tuft of capillaries so fine and so porous that water and small molecules are forced straight out of the blood by pressure alone. The trick is at the exit: the vessel leaving is narrower than the vessel arriving, so blood backs up inside the knot and pressure stays high enough to keep filtering. Everything from here to the collecting duct is drawn at perhaps fifty times life size — a real nephron is about a centimetre long, and there are a million of them in each kidney.",
@@ -136,7 +182,9 @@
     },
     {
       "id": "bowmans_capsule",
-      "nodes": ["bowmans_capsule"],
+      "nodes": [
+        "bowmans_capsule"
+      ],
       "name": "Bowman's Capsule",
       "short": "The cup that catches what is squeezed out",
       "detail": "A double-walled sac wrapped around the glomerulus, catching the fluid pressed out of it. What lands here is essentially blood plasma without the proteins and without the cells: water, salt, glucose, urea, amino acids, everything small. About 180 litres of it are produced every day. Almost all of it is about to be taken back.",
@@ -144,7 +192,9 @@
     },
     {
       "id": "proximal_tubule",
-      "nodes": ["proximal_tubule"],
+      "nodes": [
+        "proximal_tubule"
+      ],
       "name": "Proximal Tubule",
       "short": "Where the 99% is reclaimed",
       "detail": "Coiled tightly against the capsule, its inner surface carpeted in microscopic folds, and packed with more mitochondria than almost any other cell in the body — because taking things back against a gradient costs energy. All the glucose, all the amino acids and around two thirds of the water and salt are recovered right here. Diabetic urine is sweet only because this stretch has a maximum rate and blood sugar has exceeded it.",
@@ -152,7 +202,9 @@
     },
     {
       "id": "loop_of_henle",
-      "nodes": ["loop_of_henle"],
+      "nodes": [
+        "loop_of_henle"
+      ],
       "name": "Loop of Henle",
       "short": "A hairpin down into the medulla, and the whole reason concentrated urine is possible",
       "detail": "The tube dives deep into a pyramid and comes back. The descending limb leaks water but not salt; the ascending limb pumps out salt but holds water. Run those two side by side and each one strengthens the other, building a salt gradient in the medulla that gets steeper the deeper it goes. Animals that must survive on very little water have exceptionally long loops. Yours are the reason you can go a day without drinking.",
@@ -160,7 +212,9 @@
     },
     {
       "id": "collecting_duct",
-      "nodes": ["collecting_duct"],
+      "nodes": [
+        "collecting_duct"
+      ],
       "name": "Collecting Duct",
       "short": "The last chance to take water back, and the one under hormonal control",
       "detail": "Many nephrons drain into one duct, which then runs the full depth of a pyramid to the papilla — straight through that salt gradient the loop worked to build. Whether water follows the gradient out is not automatic: it depends on antidiuretic hormone opening water channels in the wall. Dehydrated, the hormone is high, the wall goes porous, and urine leaves dark and small. After several drinks the hormone stops, the wall stays sealed, and the water goes out as it came.",
@@ -171,44 +225,78 @@
     {
       "title": "Deliver the blood",
       "body": "A fifth of everything the heart pumps arrives down the renal artery, at full arterial pressure. That is not the kidney feeding itself — it is raw material arriving to be processed, and the pressure is part of the equipment.",
-      "focus": ["renal_artery", "segmental_arteries", "arcuate_arteries"]
+      "focus": [
+        "renal_artery",
+        "segmental_arteries",
+        "arcuate_arteries"
+      ]
     },
     {
       "title": "Throw almost everything away",
       "body": "In each glomerulus, pressure forces water and every small molecule straight out of the blood and into Bowman's capsule. Cells and proteins are too big and stay behind. About 180 litres a day comes out — roughly your entire blood plasma, forty times over.",
-      "focus": ["glomerulus", "bowmans_capsule"]
+      "focus": [
+        "glomerulus",
+        "bowmans_capsule"
+      ]
     },
     {
       "title": "Take back what you wanted",
       "body": "The proximal tubule immediately reclaims all the glucose, all the amino acids and most of the water and salt, spending real energy to do it. Filtering everything and then choosing what to recover sounds wasteful, but it is what makes the kidney adjustable.",
-      "focus": ["proximal_tubule"]
+      "focus": [
+        "proximal_tubule"
+      ]
     },
     {
       "title": "Build a salt gradient",
       "body": "The loop of Henle dives into a pyramid and returns, leaking water on the way down and pumping salt on the way up. The two limbs reinforce each other until the deep medulla is intensely salty. Nothing is being excreted yet; a tool is being built.",
-      "focus": ["loop_of_henle", "renal_medulla"]
+      "focus": [
+        "loop_of_henle",
+        "renal_medulla"
+      ]
     },
     {
       "title": "Decide how much water to keep",
       "body": "The collecting duct runs down through that gradient to the papilla. A hormone decides whether its wall lets water out. That single decision is the difference between dark, scant urine and pale, plentiful urine — and it is made minute by minute.",
-      "focus": ["collecting_duct", "renal_papillae", "minor_calyces"]
+      "focus": [
+        "collecting_duct",
+        "renal_papillae",
+        "minor_calyces"
+      ]
     },
     {
       "title": "Drain it away",
       "body": "Drops leave each papilla into a calyx, gather through the major calyces into the pelvis, and are squeezed down the ureter to the bladder in waves. From the papilla onward nothing is adjusted any further — the composition is already final.",
-      "focus": ["minor_calyces", "major_calyces", "renal_pelvis", "ureter"]
+      "focus": [
+        "minor_calyces",
+        "major_calyces",
+        "renal_pelvis",
+        "ureter"
+      ]
     }
   ],
   "quiz": [
-    { "type": "identify", "prompt": "Tap the part where blood is actually filtered.", "partId": "glomerulus" },
+    {
+      "type": "identify",
+      "prompt": "Tap the part where blood is actually filtered.",
+      "partId": "glomerulus"
+    },
     {
       "type": "choice",
       "prompt": "Roughly how much fluid is filtered out of the blood each day?",
-      "choices": ["About 2 litres", "About 20 litres", "About 180 litres", "About 1000 litres"],
+      "choices": [
+        "About 2 litres",
+        "About 20 litres",
+        "About 180 litres",
+        "About 1000 litres"
+      ],
       "answer": 2,
       "explain": "Around 180 litres — and about 99% of it is reclaimed before it reaches the bladder. Filtering everything and then taking back what you want is what makes the kidney adjustable minute by minute."
     },
-    { "type": "identify", "prompt": "Tap the hairpin that makes concentrated urine possible.", "partId": "loop_of_henle" },
+    {
+      "type": "identify",
+      "prompt": "Tap the hairpin that makes concentrated urine possible.",
+      "partId": "loop_of_henle"
+    },
     {
       "type": "choice",
       "prompt": "Why does a kidney stone hurt in waves rather than steadily?",
@@ -221,7 +309,11 @@
       "answer": 1,
       "explain": "The ureter drives urine along by squeezing in waves. Against a stone it keeps trying and failing, and the pain rises and falls with each attempt."
     },
-    { "type": "identify", "prompt": "Tap the part that decides how much water you keep.", "partId": "collecting_duct" },
+    {
+      "type": "identify",
+      "prompt": "Tap the part that decides how much water you keep.",
+      "partId": "collecting_duct"
+    },
     {
       "type": "choice",
       "prompt": "Why is a fifth of the heart's output sent to the kidneys?",
@@ -234,7 +326,11 @@
       "answer": 1,
       "explain": "The kidney's own metabolic needs are modest. That volume arrives because the blood itself is what is being worked on."
     },
-    { "type": "identify", "prompt": "Tap the tough outer skin that makes a swollen kidney painful.", "partId": "renal_capsule" },
+    {
+      "type": "identify",
+      "prompt": "Tap the tough outer skin that makes a swollen kidney painful.",
+      "partId": "renal_capsule"
+    },
     {
       "type": "choice",
       "prompt": "Why is diabetic urine sweet?",

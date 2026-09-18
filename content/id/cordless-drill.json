@@ -1,0 +1,187 @@
+{
+  "title": "Bor Nirkabel Brushless 18 V",
+  "subtitle": "Alat bertenaga baterai untuk mengebor dan memasang sekrup",
+  "scale": "kelas 18 V · panjang sekitar 20 cm",
+  "summary": "Bor nirkabel mengubah energi kimia di dalam baterai litium-ion menjadi putaran yang dapat diatur. Tarikan pelatuk memberi perintah kepada pengatur kecepatan elektronik berbasis PWM, bukan sekadar sakelar hidup-mati. Motor brushless memutar roda gigi planet dua tahap yang menurunkan kecepatan dan memperbesar torsi. Kopling torsi lalu dapat membatasi gaya pengencangan sebelum poros memutar cekam tiga rahang.",
+  "parts": {
+    "left_housing": {
+      "name": "Belahan Kiri Cangkang",
+      "short": "Salah satu belahan plastik yang menahan struktur bor",
+      "detail": "Nilon berpenguat serat kaca membentuk cangkang yang kaku dan tahan benturan di sekeliling motor, roda gigi, dan kontrol. Profil samping yang membulat mengikuti gagang pistol tanpa balok tebal seperti mainan. Lubang ventilasi berada tepat di dekat kipas, sedangkan dudukan sekrup menjepit belahan ini ke pasangannya di sepanjang sambungan tengah yang tipis."
+    },
+    "right_housing": {
+      "name": "Belahan Kanan Cangkang",
+      "short": "Belahan pasangan yang menutup bor saat dirakit",
+      "detail": "Cetakan kedua membawa rusuk, dudukan bantalan, ventilasi, dan titik sekrup yang berpasangan. Kedalaman panel dibuat sedikit berbeda agar bentuknya tidak tampak simetris sempurna, tetapi sambungan tetap rapat. Kedua belahan menjaga motor dan roda gigi tetap segaris sehingga kelenturan cangkang tidak menggeser komponen yang saling terhubung."
+    },
+    "rubber_grip": {
+      "name": "Lapisan Karet Gagang",
+      "short": "Karet bercengkeram tinggi pada area telapak tangan",
+      "detail": "Lapisan karet tipis membungkus panel samping dan punggung gagang, tempat telapak menahan reaksi torsi. Rusuk dangkal menambah cengkeraman tanpa terasa kasar. Gagang tetap cukup ramping untuk menjangkau pelatuk, sedangkan kemiringannya menempatkan massa baterai di bawah tangan agar pergelangan tidak terus tertarik ke depan."
+    },
+    "trigger": {
+      "name": "Pelatuk Kecepatan Variabel",
+      "short": "Masukan untuk mengatur torsi dan kecepatan, bukan sakelar biasa",
+      "detail": "Jarak gerak pelatuk diukur secara elektronik. Papan kontrol menerjemahkannya menjadi modulasi lebar pulsa (PWM), yaitu transistor daya dinyalakan dan dimatikan dengan cepat untuk mengatur tegangan serta arus rata-rata ke motor. Tarikan ringan menghasilkan putaran lambat yang presisi, sedangkan tarikan lebih dalam menaikkan siklus kerja dan torsi. Pelatuk ini bukan sekadar sakelar hidup-mati."
+    },
+    "direction_switch": {
+      "name": "Sakelar Maju/Mundur",
+      "short": "Kontrol ibu jari untuk membalik urutan komutasi",
+      "detail": "Tuas melintang di atas pelatuk memilih putaran maju atau mundur tanpa menukar terminal baterai secara mekanis. Sinyalnya meminta pengendali mengubah urutan pemberian arus pada fase kumparan. Posisi tengah biasanya mengunci pelatuk saat bor dibawa atau mata bor diganti."
+    },
+    "speed_selector": {
+      "name": "Pemilih Dua Kecepatan",
+      "short": "Penggeser atas untuk memilih rentang rasio roda gigi",
+      "detail": "Pemilih mekanis ini menggeser selongsong di dalam rangkaian roda gigi planet. Rentang rendah memberi reduksi lebih besar untuk torsi pengencangan tinggi, sedangkan rentang tinggi memberi putaran lebih cepat untuk mengebor. Posisi sebaiknya diubah setelah semua bagian berhenti agar gigi pengait dapat masuk tanpa tersumbing atau rusak."
+    },
+    "motor_stator": {
+      "name": "Stator Motor Brushless",
+      "short": "Gigi baja diam yang membawa kumparan tembaga",
+      "detail": "Kumparan tembaga pada kutub baja listrik berlapis tetap diam di dalam cangkang. Pengatur kecepatan elektronik mengalirkan arus ke kelompok fase secara berurutan sehingga terbentuk medan magnet berputar. Lapisan baja mengurangi panas akibat arus pusar, sedangkan pembagian kumparan membuat torsi lebih halus."
+    },
+    "motor_rotor": {
+      "name": "Rotor Magnet Permanen",
+      "short": "Inti magnet berkecepatan tinggi yang menyatu dengan poros motor",
+      "detail": "Magnet permanen pada rotor baja mengikuti medan berputar dari stator. Sensor posisi dan komutasi elektronik menjaga medan sedikit mendahului rotor sehingga gaya tarik magnet terus menghasilkan torsi. Tanpa sikat yang bergesekan dengan komutator, lebih sedikit daya hilang sebagai gesekan dan percikan listrik."
+    },
+    "cooling_fan": {
+      "name": "Kipas Pendingin",
+      "short": "Kipas pada poros yang mengalirkan udara melalui ventilasi belakang",
+      "detail": "Kipas terkunci pada poros motor, sehingga arah dan kecepatannya sama dengan rotor. Bilahnya mengalirkan udara melewati ventilasi, kumparan, dan papan kontrol. Pendinginan sangat penting saat beban berat pada putaran rendah karena arus dan rugi panas di kumparan dapat tetap tinggi."
+    },
+    "planetary_gearbox": {
+      "name": "Roda Gigi Planet Dua Tahap",
+      "short": "Dua tahap reduksi ringkas pada satu sumbu motor",
+      "detail": "Setiap tahap menempatkan tiga roda gigi planet di antara roda matahari di tengah dan roda cincin di luar. Pin baja menyangga planet pada pelat pembawa; pembawa tahap pertama memutar roda matahari tahap kedua, lalu pembawa kedua meneruskan tenaga ke poros kopling. Diameter kedua tahap berbeda agar jalur reduksi terpisah terlihat jelas, sedangkan permukaan halus hanya menyederhanakan profil gigi produksi."
+    },
+    "torque_clutch": {
+      "name": "Kopling Torsi yang Dapat Diatur",
+      "short": "Pembatas berpegas di belakang cekam",
+      "detail": "Cincin besar berusuk tampak di antara hidung cangkang dan cekam sehingga mudah diputar; tanda timbul menunjukkan pilihan tekanan pegas. Selama torsi masih di bawah setelan, permukaan pengunci tetap menyatu dan meneruskan putaran ke poros. Setelah sekrup duduk dan torsi reaksi melewati batas, pengunci melompat berulang kali untuk membatasi gaya pengencangan."
+    },
+    "output_spindle": {
+      "name": "Poros Keluaran",
+      "short": "Poros tertumpu yang membawa torsi hasil reduksi ke cekam",
+      "detail": "Poros keluaran segaris dengan motor dan rangkaian roda gigi, tetapi berputar jauh lebih lambat setelah dua tahap reduksi. Bantalan pada cangkang menahan gaya radial saat mengebor, sementara bahunya menahan gaya dorong ketika mata bor maju. Ulir atau tirus pada ujung depan mengikat badan cekam."
+    },
+    "chuck_body": {
+      "name": "Badan Cekam Tanpa Kunci",
+      "short": "Selongsong baja ringkas yang menggerakkan ketiga rahang",
+      "detail": "Saat selongsong bertekstur diputar, mur di dalamnya bergerak pada ulir miring ketiga rahang. Badan baja tetap segaris dengan poros dan menyediakan bidang genggam yang cukup tanpa hidung terlalu besar seperti mainan. Putaran selongsong diubah menjadi gerak maju-mundur rahang yang sama besar."
+    },
+    "chuck_jaws": {
+      "name": "Tiga Rahang Cekam",
+      "short": "Rahang baja keras yang memusatkan batang bulat atau segi enam",
+      "detail": "Tiga rahang berjarak 120 derajat bergeser pada alur miring. Karena satu mur menggerakkan semuanya, bidang jepit tetap berpusat pada sumbu poros saat menutup. Baja yang dikeraskan tahan terhadap pergantian mata bor berulang, sedangkan ujungnya yang ramping dapat menjepit batang berdiameter kecil."
+    },
+    "work_light": {
+      "name": "Lampu Kerja LED",
+      "short": "Lampu menghadap ke depan di bawah cekam",
+      "detail": "LED ditempatkan di bawah dan di depan pelatuk agar cahayanya mencapai mata bor tanpa banyak terhalang cekam. Pengendali dapat mempertahankan lampu beberapa saat setelah pelatuk dilepas. Konsumsi dayanya kecil dibandingkan motor, tetapi arus LED tetap harus dibatasi."
+    },
+    "battery_shell": {
+      "name": "Cangkang Baterai Geser",
+      "short": "Pelindung baterai tahan benturan di bawah gagang",
+      "detail": "Cangkang melindungi sel dan papan kontrol, sedangkan rel atasnya mengunci di bawah gagang. Penempatan massa tepat di bawah tangan menyeimbangkan motor dan cekam. Rusuk dasar menerima gesekan dan menyisakan ruang pendinginan, tetapi cangkang bukan wadah kedap air dan tidak boleh menyembunyikan sel yang rusak atau menggembung."
+    },
+    "battery_cells": {
+      "name": "Susunan Sel Litium-Ion",
+      "short": "Sepuluh sel silinder dalam lima kelompok seri",
+      "detail": "Baterai 18 V nominal umumnya memakai lima kelompok sel yang disusun seri. Model ini menunjukkan dua sel silinder kelas 18650 yang dipasang melintang dan paralel pada setiap kelompok. Pada skala bor sekitar 20 cm, setiap sel berdiameter sekitar 18 mm dan panjang 64 mm. Hubungan seri menambah tegangan, sedangkan pasangan paralel berbagi arus serta kapasitas."
+    },
+    "battery_management_board": {
+      "name": "Papan Kontrol Baterai",
+      "short": "Elektronik pemantau kelompok sel dan arus baterai",
+      "detail": "Papan kontrol atau BMS mengukur setiap kelompok seri, suhu, dan arus baterai. Rangkaian memutus daya sebelum pengisian berlebih, pengosongan terlalu dalam, panas berlebih, atau arus sangat besar merusak sel. Penyeimbang hanya merapikan selisih kecil saat hampir penuh dan tidak dapat memperbaiki sel yang gagal."
+    },
+    "contacts": {
+      "name": "Kontak Daya dan Data",
+      "short": "Bilah paduan tembaga yang menghubungkan baterai dan bor",
+      "detail": "Kontak lebar membawa arus motor yang besar dengan hambatan rendah, sedangkan terminal kecil dapat melaporkan suhu atau identitas baterai. Tekanan pegas mengikis kotoran ringan saat baterai digeser masuk. Panas atau warna gelap pada bagian ini menandakan hambatan berlebih dan perlu diperiksa."
+    }
+  },
+  "steps": [
+    {
+      "title": "Salurkan daya baterai yang terlindungi",
+      "body": "Lima kelompok sel seri menghasilkan tegangan nominal sekitar 18 V. Papan kontrol baterai memeriksa tegangan tiap kelompok, suhu, dan arus sebelum kontak menyalurkan daya ke gagang."
+    },
+    {
+      "title": "Baca posisi pelatuk",
+      "body": "Jarak gerak pelatuk menjadi permintaan kecepatan. Pengatur kecepatan elektronik memakai PWM untuk mengatur arus; ini bukan sekadar sakelar hidup-mati, sehingga tarikan ringan dapat memutar cekam secara lambat dan terkendali."
+    },
+    {
+      "title": "Hasilkan torsi tanpa sikat",
+      "body": "Arus yang dialihkan di dalam kumparan stator menciptakan medan magnet berputar. Rotor magnet permanen mengikutinya dan menghasilkan torsi poros tinggi tanpa sikat atau komutator mekanis."
+    },
+    {
+      "title": "Buang panas motor",
+      "body": "Kipas yang terpasang pada poros berputar bersama rotor dan mengalirkan udara melalui ventilasi. Aliran ini membawa panas dari kumparan dan papan kontrol keluar dari cangkang."
+    },
+    {
+      "title": "Turunkan kecepatan dan perbesar torsi",
+      "body": "Dua tahap roda gigi planet membagi beban pada tiga planet berpin. Pembawa pertama memutar roda matahari tahap kedua, lalu pembawa kedua menggerakkan poros kopling. Pemilih di atas menentukan rentang rasio; kecepatan keluaran turun sementara torsi poros naik."
+    },
+    {
+      "title": "Batasi torsi pengencangan",
+      "body": "Putar cincin bertanda yang terlihat di depan cangkang untuk memilih tekanan pegas. Kopling meneruskan putaran normal, lalu melompat saat torsi reaksi melewati setelan sehingga sekrup berhenti dekat kedalaman yang dipilih tanpa merusak pengikat atau benda kerja."
+    },
+    {
+      "title": "Jepit dan putar mata bor",
+      "body": "Poros berkecepatan rendah memutar cekam tanpa kunci. Mur di dalam cekam menggeser tiga rahang bersamaan sehingga mata bor tetap terpusat dan badan cekam, rahang, serta poros berputar sebagai satu kesatuan."
+    }
+  ],
+  "quiz": [
+    {
+      "prompt": "Ketuk kontrol yang meminta kecepatan melalui PWM."
+    },
+    {
+      "prompt": "Mengapa pelatuk bukan sekadar sakelar hidup-mati?",
+      "choices": [
+        "Pelatuk membuka cekam secara mekanis",
+        "Pelatuk mengatur siklus kerja PWM dan arus motor",
+        "Pelatuk mengubah kimia sel",
+        "Pelatuk menggerakkan kipas dengan tangan"
+      ],
+      "explain": "Pengatur kecepatan elektronik mengubah posisi pelatuk menjadi penyaklaran transistor berfrekuensi tinggi agar kecepatan dan torsi dapat dikendalikan."
+    },
+    {
+      "prompt": "Ketuk mekanisme dua tahap yang menurunkan kecepatan motor."
+    },
+    {
+      "prompt": "Apa yang dikorbankan reduksi roda gigi planet untuk memperoleh torsi poros lebih besar?",
+      "choices": [
+        "Tegangan baterai",
+        "Kecepatan putar",
+        "Keselarasan cekam",
+        "Kapasitas sel"
+      ],
+      "explain": "Jika rugi-rugi diabaikan, penurunan kecepatan keluaran menaikkan torsi kira-kira sebesar rasio roda gigi."
+    },
+    {
+      "prompt": "Ketuk komponen berpegas yang dapat melompat pada torsi pilihan."
+    },
+    {
+      "prompt": "Mengapa tiga rahang cekam digerakkan bersamaan?",
+      "choices": [
+        "Agar berbagai ukuran batang tetap terpusat pada poros",
+        "Untuk mendinginkan mata bor",
+        "Untuk membalik motor",
+        "Untuk menyeimbangkan sel baterai"
+      ],
+      "explain": "Gerak yang sama pada tiga rahang berjarak 120 derajat menjaga batang bulat atau segi enam tetap di tengah."
+    },
+    {
+      "prompt": "Ketuk papan yang melindungi dan memantau kelompok sel."
+    },
+    {
+      "prompt": "Mengapa kipas berputar pada kecepatan motor, bukan kecepatan poros keluaran?",
+      "choices": [
+        "Kipas terpasang langsung pada poros motor",
+        "Kopling memutarnya ke belakang",
+        "Baterai mendorong udara melewatinya",
+        "Rahang cekam memompanya"
+      ],
+      "explain": "Kipas dan rotor berbagi poros motor berkecepatan tinggi sebelum putaran diturunkan oleh roda gigi."
+    }
+  ]
+}

@@ -44,3 +44,8 @@ yarn-error.*
 
 # device screenshots
 .shots/
+
+# local model review captures (the five standard dark views remain tracked)
+tools/shots/ricecooker-cutaway-*.png
+tools/shots/ricecooker-core-*.png
+tools/shots/ricecooker-light-*.png

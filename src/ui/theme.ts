@@ -39,7 +39,7 @@ const dark: Palette = {
   hairlineStrong: 'rgba(255,255,255,0.16)',
   text: '#F3F6FB',
   textMuted: '#98A2B4',
-  textFaint: '#5C6577',
+  textFaint: '#8995A9',
   correct: '#3ED598',
   wrong: '#FF5B5B',
   scrim: 'rgba(11,14,19,0.97)',
@@ -56,10 +56,10 @@ const light: Palette = {
   hairline: 'rgba(16,20,28,0.10)',
   hairlineStrong: 'rgba(16,20,28,0.20)',
   text: '#12161D',
-  textMuted: '#5A6474',
-  textFaint: '#8B94A3',
-  correct: '#0E9F6E',
-  wrong: '#D8443C',
+  textMuted: '#4F5A6B',
+  textFaint: '#596474',
+  correct: '#076443',
+  wrong: '#B92E32',
   scrim: 'rgba(255,255,255,0.97)',
   floating: 'rgba(255,255,255,0.94)',
 };
@@ -114,12 +114,40 @@ export function alpha(hex: string, value: number) {
  * the pale ones — the smartphone's cyan especially — turn to mush against
  * white, so they are darkened until they carry text again.
  */
-export function readableAccent(hex: string, mode: ThemeMode) {
-  if (mode === 'dark') return hex;
+const accentTextCache = new Map<string, string>();
+
+function channels(hex: string) {
   const clean = hex.replace('#', '');
-  const rgb = [0, 2, 4].map((i) => parseInt(clean.slice(i, i + 2), 16));
-  const luminance = (0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]) / 255;
-  if (luminance <= 0.5) return hex;
-  const scale = 0.5 / luminance;
-  return `#${rgb.map((c) => Math.round(c * scale).toString(16).padStart(2, '0')).join('')}`;
+  const full = clean.length === 3 ? clean.split('').map((c) => c + c).join('') : clean;
+  return [0, 2, 4].map((i) => parseInt(full.slice(i, i + 2), 16));
+}
+
+function relativeLuminance(rgb: number[]) {
+  return rgb.map((channel) => channel / 255)
+    .map((value) => value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4)
+    .reduce((sum, value, i) => sum + value * [0.2126, 0.7152, 0.0722][i], 0);
+}
+
+export function readableAccent(hex: string, mode: ThemeMode) {
+  const key = `${mode}:${hex}`;
+  const cached = accentTextCache.get(key);
+  if (cached) return cached;
+  const rgb = channels(hex);
+  const palette = palettes[mode];
+  const backgrounds = [palette.bg, palette.surface, palette.surfaceHigh, palette.surfacePressed]
+    .flatMap((surface) => {
+      const base = channels(surface);
+      return [relativeLuminance(base), relativeLuminance(base.map((c, i) => c * 0.8 + rgb[i] * 0.2))];
+    });
+  const target = mode === 'light' ? 0 : 255;
+  for (let step = 0; step <= 100; step++) {
+    const candidate = rgb.map((c) => Math.round(c + (target - c) * step / 100));
+    const foreground = relativeLuminance(candidate);
+    if (backgrounds.every((background) => (Math.max(foreground, background) + 0.05) / (Math.min(foreground, background) + 0.05) >= 4.6)) {
+      const result = `#${candidate.map((c) => c.toString(16).padStart(2, '0')).join('')}`;
+      accentTextCache.set(key, result);
+      return result;
+    }
+  }
+  return palette.text;
 }

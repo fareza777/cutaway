@@ -22,6 +22,7 @@ import { RenderScale } from './RenderScale';
 import { createRenderer, present, type GLContext } from './renderer';
 import { contactShadowTexture, studioEnvironment } from './textures';
 import { partOpacity, type VisibilityState } from './visibility';
+import { FrameLoop } from './FrameLoop';
 
 const FOV = 38;
 /**
@@ -117,8 +118,7 @@ export class CutawayViewer {
   private homeDistance = 10;
   /** Device pixels per layout point; the gesture layer measures it for us. */
   private density = 1;
-  private frame = 0;
-  private clock = new THREE.Clock();
+  private frameLoop = new FrameLoop((delta) => this.loop(delta));
   private disposed = false;
   private loadToken = 0;
 
@@ -129,7 +129,7 @@ export class CutawayViewer {
   /** Cost of the last frame, in ms; drives the pacing guard below. */
   private lastCost = 0;
   private lastRenderAt = 0;
-  private mode: SceneMode = 'dark';
+  private mode: SceneMode = 'light';
   private accent = '#ffffff';
   private selected: string | null = null;
   private quizMode = false;
@@ -167,7 +167,7 @@ export class CutawayViewer {
     this.scene.add(this.hotspots.group);
     this.hotspots.setPixelSize(DOT_POINTS * this.density, this.height, FOV);
 
-    this.loop();
+    this.frameLoop.setActive(true);
   }
 
   // ------------------------------------------------------------------ stage
@@ -688,11 +688,15 @@ export class CutawayViewer {
     if (seconds > 0) this.busyUntil = Math.max(this.busyUntil, Date.now() + seconds * 1000);
   }
 
-  private loop = () => {
+  /** Retains the scene and camera while cancelling all hidden-screen frames. */
+  setActive(active: boolean) {
     if (this.disposed) return;
-    this.frame = requestAnimationFrame(this.loop);
+    if (active) this.markDirty();
+    this.frameLoop.setActive(active);
+  }
 
-    const delta = Math.min(this.clock.getDelta(), 0.05);
+  private loop = (delta: number) => {
+    if (this.disposed || this.width <= 0 || this.height <= 0) return;
     const now = Date.now();
 
     if (this.orbit.update(delta, AUTO_ROTATE_IDLE)) {
@@ -731,7 +735,7 @@ export class CutawayViewer {
   dispose() {
     this.disposed = true;
     this.loadToken += 1;
-    cancelAnimationFrame(this.frame);
+    this.frameLoop.dispose();
     this.clearObject();
     this.hotspots.dispose();
     this.assets.dispose();

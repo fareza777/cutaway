@@ -1,95 +1,95 @@
 {
   "title": "Kulkas",
-  "subtitle": "Pompa panas di dalam kotak busa",
-  "scale": "≈ 1,7 m tinggi",
-  "summary": "Kulkas tidak membuat dingin, melainkan memindahkan panas — dari dalam kotak ke ruangan di belakangnya — dan satu-satunya cara mendorong panas menanjak adalah dengan mengeluarkan kerja untuk itu. Kerja itu adalah kompresor, dan segala hal lain dalam siklusnya ada supaya satu zat pendingin bisa mengulang trik yang sama terus-menerus: mendidih di tempat Anda ingin dingin, mengembun di tempat Anda ingin panas.",
+  "subtitle": "Menjaga makanan tetap dingin dengan membuang panas ke luar",
+  "scale": "tinggi sekitar 1,7 m",
+  "summary": "Kulkas tidak menghasilkan dingin; alat ini memindahkan panas dari dalam kabinet ke ruangan di belakangnya. Memindahkan panas ke tempat yang lebih hangat memerlukan kerja, dan kompresor menyediakannya. Semua komponen lain dalam rangkaian memungkinkan refrigeran yang sama mengulangi proses tersebut: menguap di bagian yang perlu didinginkan, lalu mengembun di bagian yang digunakan untuk melepaskan panas.",
   "parts": {
     "compressor": {
       "name": "Kompresor",
-      "short": "Pompa yang membuat seluruh siklus mungkin",
-      "detail": "Motor kecil dan piston tersegel di dalam tabung baja las, berendam dalam olinya sendiri. Uap dingin bertekanan rendah masuk, lalu diperas jadi uap panas bertekanan tinggi. Perasan itulah seluruh alasan kulkas bisa bekerja. Panas hanya mengalir dari panas ke dingin, jadi untuk membuang panas ke dapur yang hangat, zat pendingin harus lebih dulu dibuat lebih panas daripada dapur itu. Ini satu-satunya bagian yang menyedot listrik dalam jumlah berarti, dan dengung yang Anda dengar adalah dia."
+      "short": "Pompa yang menggerakkan seluruh siklus pendinginan",
+      "detail": "Motor kecil dan mekanisme pemampat tersegel di dalam tabung baja las serta terendam oli pelumas. Kompresor menerima uap refrigeran dingin bertekanan rendah lalu memampatkannya menjadi uap panas bertekanan tinggi. Agar panas dapat dilepas ke dapur, suhu refrigeran harus lebih tinggi daripada udara dapur. Bagian ini memakai hampir seluruh daya listrik kulkas dan menghasilkan suara dengung yang terdengar saat bekerja."
     },
     "condenser": {
       "name": "Koil Kondensor",
-      "short": "Tempat panasnya benar-benar keluar",
-      "detail": "Kisi hitam di punggung kulkas adalah tempat uap panas terkompresi melepas panasnya ke ruangan dan mengembun jadi cairan. Itulah sebabnya punggung kulkas terasa hangat, dan sebabnya mendorongnya rapat ke dinding membuatnya bekerja lebih keras dan lebih boros — Anda menutup satu-satunya jalan keluar panas. Debu tebal di koil ini berakibat sama."
+      "short": "Tempat panas dilepaskan ke ruangan",
+      "detail": "Pada kisi hitam di belakang kulkas, uap panas hasil pemampatan menyerahkan panas ke udara lalu mengembun menjadi cairan. Itulah sebabnya bagian belakang terasa hangat. Jika kulkas ditempelkan ke dinding atau koil tertutup debu, aliran udara terhambat sehingga kompresor harus bekerja lebih lama dan memakai lebih banyak listrik."
     },
     "capillary_tube": {
       "name": "Pipa Kapiler",
-      "short": "Penyempitan yang disengaja, dan trik paling dingin di kotak ini",
-      "detail": "Satu-dua meter tembaga yang sangat sempit, tak lebih. Tanpa katup, tanpa bagian bergerak. Cairan bertekanan tinggi dipaksa melewati celah yang begitu sempit sampai tekanannya ambruk di sisi seberang, dan cairan pada tekanan rendah akan mendidih. Mendidih menyerap panas. Di sinilah zat pendingin dibuat dingin, dan ini komponen termurah di seluruh mesin."
+      "short": "Penyempitan tetap yang menurunkan tekanan refrigeran",
+      "detail": "Pipa tembaga sangat sempit sepanjang satu atau dua meter ini tidak memiliki katup maupun bagian bergerak. Cairan bertekanan tinggi dipaksa melewati hambatan besar, sehingga tekanannya turun tajam di sisi keluar. Pada tekanan rendah, sebagian cairan langsung menguap dan campurannya menjadi dingin. Penguapan berikutnya menyerap panas di evaporator."
     },
     "evaporator": {
       "name": "Koil Evaporator",
-      "short": "Tempat dingin dibuat — di dalam freezer",
-      "detail": "Zat pendingin dingin mendidih di dalam pipa bersirip ini, dan mendidih menarik panas dari apa pun di sekelilingnya. Ini satu-satunya benda yang benar-benar dingin di dalam alat ini; semua yang lain dingin hanya karena udara yang menyentuhnya sudah lewat sini. Letaknya terkubur di freezer, bahkan pada model yang cuma mendinginkan rak bawah, sebab satu ruang tidak mungkin lebih dingin daripada koil yang melayaninya."
+      "short": "Bagian dingin yang menyerap panas di dalam freezer",
+      "detail": "Refrigeran dingin mendidih di dalam pipa bersirip ini dan menyerap panas dari udara di sekelilingnya. Evaporator merupakan satu-satunya komponen yang sengaja dibuat dingin; ruang lain menjadi dingin karena udara telah melewatinya. Koil ditempatkan di freezer karena tidak ada ruang yang dapat didinginkan hingga lebih rendah daripada suhu koil yang melayaninya."
     },
     "evaporator_fan": {
       "name": "Kipas Sirkulasi",
-      "short": "Meniup dingin ke tempat yang Anda inginkan",
-      "detail": "Udara penghantar panas yang buruk, jadi tanpa digerakkan koil hanya akan mendinginkan sekitarnya sendiri. Kipas ini mendorong udara freezer melewati koil lalu menyalurkan sebagian terukur turun ke ruang kulkas. Ini juga sebabnya kulkas frost-free mengeringkan makanan: udara bergerak yang sama, yang membawa dingin, juga membawa pergi uap air — langsung ke koil sebagai bunga es."
+      "short": "Mengalirkan udara dingin ke tempat yang diperlukan",
+      "detail": "Udara menghantarkan panas dengan buruk, sehingga koil tanpa aliran hanya mendinginkan daerah terdekat. Kipas mendorong udara freezer melewati evaporator lalu menyalurkan sebagian ke ruang kulkas. Aliran yang sama membuat kulkas bebas bunga es cenderung mengeringkan makanan: uap air dibawa ke koil terdingin dan membeku di sana."
     },
     "insulation": {
-      "name": "Isolasi Busa",
-      "short": "Alasan kulkas bisa menahan suhu sama sekali",
-      "detail": "Busa poliuretan kaku yang disuntikkan antara pelapis dalam dan baja luar, penuh kantong gas terperangkap yang jauh lebih buruk menghantar panas daripada udara. Lapisannya lebih tebal di sekeliling freezer daripada di ruang kulkas. Siklus pendingin dengan isolasi buruk hanyalah pemanas yang mahal — sebagian besar efisiensi alat modern justru datang dari busa putih yang membosankan ini, bukan dari komponen mekanis mana pun."
+      "name": "Insulasi Busa",
+      "short": "Menghambat panas agar suhu dapat dipertahankan",
+      "detail": "Busa poliuretan kaku disuntikkan di antara pelapis dalam dan cangkang baja. Kantong gas yang terperangkap di dalamnya sangat sulit menghantarkan panas, dan lapisannya dibuat lebih tebal di sekitar freezer. Rangkaian pendingin dengan insulasi buruk hanya akan terus memindahkan panas yang segera masuk kembali. Sebagian besar peningkatan efisiensi kulkas modern justru berasal dari busa ini."
     },
     "door_gasket": {
-      "name": "Karet Pintu",
-      "short": "Magnet dalam selongsong karet",
-      "detail": "Strip lunak di keliling tiap pintu menyembunyikan inti magnet lentur yang menarik pintu rapat ke badan kulkas. Ini bagian yang paling sering rusak pada kulkas tua, dan rusaknya senyap — mesinnya tetap jalan, hanya saja terus-menerus, karena udara hangat masuk secepat koil mampu mendinginkannya. Tes kertas itu ampuh: jepit selembar uang di pintu, kalau tertarik keluar dengan mudah, segelnya sudah habis."
+      "name": "Paking Pintu",
+      "short": "Inti magnet lentur di dalam selubung karet",
+      "detail": "Strip lunak di sekeliling pintu berisi magnet lentur yang menariknya rapat ke kabinet. Paking merupakan salah satu bagian yang paling sering aus pada kulkas lama. Kerusakannya tidak langsung terlihat: kompresor terus menyala karena udara hangat masuk secepat udara dapat didinginkan. Uji sederhana dapat dilakukan dengan menjepit selembar kertas; jika mudah ditarik, segelnya tidak lagi rapat."
     },
     "thermostat": {
       "name": "Termostat",
-      "short": "Penentu kapan kompresor menyala",
-      "detail": "Bohlam sensor pada pipa kapiler, berisi gas yang memuai saat menghangat dan menjentik sakelar. Kulkas tidak berjalan terus-menerus dan tidak punya pengaturan kuat-lemah. Mesinnya cuma dua keadaan: menyala penuh atau mati sama sekali, dan termostat sekadar memutuskan yang mana. Siklus nyala-mati itulah sebabnya suhu di dalam tak pernah satu angka, melainkan gigi gergaji lambat beberapa derajat."
+      "short": "Menentukan kapan kompresor hidup dan mati",
+      "detail": "Sensor pada pipa kapiler berisi gas yang memuai saat suhu naik lalu menggerakkan sakelar. Kulkas biasa tidak mengatur kompresor secara bertahap: kompresor bekerja penuh atau berhenti, sedangkan termostat memilih waktunya. Siklus hidup-mati ini membuat suhu bagian dalam naik dan turun perlahan dalam rentang beberapa derajat, bukan bertahan tepat pada satu angka."
     },
     "cabinet": {
-      "name": "Badan Kulkas",
-      "short": "Rangka, dan separuh kondensor pada model murah",
-      "detail": "Cangkang luar memikul beban pintu penuh yang berayun padanya, tapi sering punya tugas kedua: pada banyak kulkas modern kondensornya bukan kisi yang terlihat, melainkan pipa yang direkatkan ke sisi dalam kulit baja luar, sehingga seluruh badan memancarkan panas. Itulah sebabnya sisi sebagian kulkas terasa hangat dan tak ada apa pun untuk dibersihkan dari debu."
+      "name": "Kabinet",
+      "short": "Struktur utama dan kadang sekaligus pelepas panas",
+      "detail": "Cangkang luar menanggung beban pintu penuh pada engselnya. Pada banyak kulkas modern, pipa kondensor direkatkan di balik kulit baja alih-alih dipasang sebagai kisi yang terlihat. Seluruh sisi kabinet kemudian ikut memancarkan panas. Karena itu sebagian kulkas terasa hangat pada sisi luarnya dan tidak memiliki koil belakang untuk dibersihkan."
     },
     "freezer_door": {
       "name": "Pintu Freezer",
-      "short": "Terpisah karena ada alasannya",
-      "detail": "Freezer dan kulkas punya pintu sendiri-sendiri karena membuka salah satunya menumpahkan seluruh muatan udara dinginnya ke lantai — udara dingin lebih rapat daripada udara hangat dan mengucur keluar. Memisahkan ruangnya berarti serangan ke es krim tidak sekaligus menghangatkan susu, dan membuat dua ruang itu bisa berada di suhu sangat berbeda dengan satu siklus pendingin."
+      "short": "Pintu terpisah yang membatasi hilangnya udara dingin",
+      "detail": "Freezer dan ruang kulkas memiliki pintu sendiri karena udara dingin lebih rapat dan mengalir keluar ke lantai setiap kali ruang dibuka. Pemisahan pintu mencegah pembukaan freezer ikut menghangatkan semua makanan di bawahnya. Dua ruang pun dapat dipertahankan pada suhu sangat berbeda dengan satu rangkaian refrigeran."
     },
     "fridge_door": {
       "name": "Pintu Kulkas",
-      "short": "Rak paling hangat di seluruh mesin",
-      "detail": "Setiap kali dibuka, rak pintu berayun ke udara bersuhu ruang, dan letaknya pun paling jauh dari saluran sirkulasi. Jadilah bagian yang paling hangat sekaligus paling tidak stabil suhunya. Itu pula sebabnya tatakan telur dan rak susu yang dicetak di pintu, dari sudut pandang keamanan pangan, justru tempat terburuk untuk keduanya."
+      "short": "Lokasi rak dengan suhu paling hangat dan berubah-ubah",
+      "detail": "Rak pintu terkena udara ruangan setiap kali dibuka dan berada paling jauh dari saluran sirkulasi. Karena itu suhunya paling tinggi dan paling mudah berubah. Walau banyak pintu dilengkapi wadah telur dan rak susu, keduanya justru lebih aman disimpan di bagian utama yang suhunya lebih stabil."
     },
     "shelves": {
       "name": "Rak",
-      "short": "Kaca, dan sengaja tidak rapat ke dinding belakang",
-      "detail": "Kaca tempered dipakai karena mudah dilap dan tidak menyerap tumpahan, tapi detail pentingnya ada pada celah yang disisakan di belakang sebagian besar rak: itu jalur udara yang disengaja. Udara dingin yang datang dari saluran di atas butuh rute turun menembus ruang, dan rak yang menempel rapat ke dinding belakang akan membendungnya."
+      "short": "Kaca kuat dengan celah aliran udara di belakang",
+      "detail": "Kaca temper mudah dibersihkan dan tidak menyerap tumpahan. Celah di belakang sebagian besar rak sengaja disisakan sebagai jalur udara. Udara dingin dari saluran atas harus dapat turun melewati seluruh ruang; rak yang menutup rapat dinding belakang akan menghambat sirkulasi dan membuat suhu tidak merata."
     },
     "crisper": {
       "name": "Laci Sayur",
-      "short": "Kantong lembap, disekat dari udara kering",
-      "detail": "Udara bersirkulasi yang menjaga kulkas bebas bunga es juga mengeringkan isinya, dan itu justru salah untuk sayuran. Laci sayur adalah kotak nyaris tertutup di bagian bawah, di luar jalur aliran udara, tempat uap air yang dilepas sayuran tetap tinggal dan menjaganya tetap segar. Penggeser ventilasi kecil itu mengatur seberapa rapat: tutup untuk daun-daunan, buka untuk buah yang melepas gas pematangan."
+      "short": "Ruang lembap yang terlindung dari aliran udara kering",
+      "detail": "Sirkulasi yang mencegah bunga es juga menarik kelembapan dari makanan, padahal sayuran perlu mempertahankan air. Laci sayur hampir tertutup dan berada di luar aliran utama, sehingga kelembapan dari bahan pangan tertahan dan menjaga teksturnya. Ventilasi ditutup untuk sayuran daun, tetapi dapat dibuka bagi buah yang melepaskan gas pematangan."
     }
   },
   "steps": [
     {
-      "title": "Peras",
-      "body": "Kompresor mengambil uap dingin bertekanan rendah dan memampatkannya, yang membuatnya panas — lebih panas daripada dapur. Belum ada apa pun yang didinginkan; yang terjadi barulah kerja ditambahkan."
+      "title": "Mampatkan refrigeran",
+      "body": "Kompresor menerima uap dingin bertekanan rendah lalu memampatkannya menjadi uap bertekanan tinggi yang lebih panas daripada dapur. Belum ada panas yang diambil dari makanan; pada tahap ini energi baru ditambahkan ke rangkaian."
     },
     {
-      "title": "Buang panasnya",
-      "body": "Uap panas itu mengalir lewat kondensor di punggung, melepas panas ke ruangan, dan berubah jadi cairan hangat. Panas yang Anda rasakan di belakang kulkas adalah panas yang tadinya ada di makanan Anda."
+      "title": "Lepaskan panas",
+      "body": "Uap panas mengalir melalui kondensor, menyerahkan panas ke ruangan, lalu mengembun menjadi cairan hangat. Panas di belakang kulkas berasal dari bagian dalam kulkas ditambah energi yang dipakai kompresor."
     },
     {
-      "title": "Jatuhkan tekanannya",
-      "body": "Cairan dipaksa melewati pipa kapiler — penyempitan yang disengaja. Di sisi seberang tekanannya ambruk, dan cairan pada tekanan rendah akan mendidih. Mendidih menyerap panas."
+      "title": "Turunkan tekanan",
+      "body": "Cairan dipaksa melewati pipa kapiler yang sempit. Tekanannya turun tajam di sisi keluar, sebagian cairan langsung menguap, dan campuran refrigeran menjadi dingin."
     },
     {
-      "title": "Ambil panasnya",
-      "body": "Pendidihan terjadi di evaporator, di dalam freezer, jadi panas yang diserapnya diambil dari makanan dan udara di sekitarnya. Sebuah kipas menyebarkan dingin itu ke kedua ruang."
+      "title": "Serap panas",
+      "body": "Refrigeran mendidih di evaporator di dalam freezer. Penguapan menyerap panas dari udara dan makanan di sekitarnya, lalu kipas menyebarkan udara dingin ke kedua ruang."
     },
     {
-      "title": "Lalu berputar lagi",
-      "body": "Zat pendingin keluar sebagai uap dingin dan kembali ke kompresor, utuh dan siap mengulang. Tidak ada yang habis. Satu-satunya masukan adalah listrik yang menjalankan pompa, dan satu-satunya keluaran adalah panas, yang dipindahkan dari sisi satu dinding berisolasi ke sisi lainnya."
+      "title": "Ulangi siklus",
+      "body": "Refrigeran keluar sebagai uap dingin dan kembali ke kompresor untuk digunakan lagi. Refrigeran tidak habis; listrik menggerakkan pompa, sedangkan hasil akhirnya adalah panas yang berpindah dari dalam kabinet berinsulasi ke ruangan."
     }
   ],
   "quiz": [
@@ -97,40 +97,40 @@
       "prompt": "Ketuk bagian yang benar-benar menjadi dingin."
     },
     {
-      "prompt": "Ke mana perginya panas yang diambil dari makanan Anda?",
+      "prompt": "Ke mana panas yang diambil dari makanan berpindah?",
       "choices": [
-        "Dimusnahkan oleh zat pendingin",
-        "Ke ruangan, lewat koil di bagian belakang",
+        "Panas dimusnahkan oleh refrigeran",
+        "Ke udara ruangan melalui koil di belakang",
         "Ke ruang freezer",
-        "Dibuang lewat saluran air"
+        "Keluar melalui saluran air"
       ],
-      "explain": "Kulkas adalah pompa panas: panas dipindahkan dari dalam kotak ke ruangan — itulah sebabnya punggungnya hangat dan sebabnya kulkas tak bisa mendinginkan dapur yang tertutup."
+      "explain": "Kulkas adalah pompa panas yang memindahkan panas dari dalam kabinet ke ruangan. Karena itu bagian belakang terasa hangat dan kulkas yang terbuka tidak dapat mendinginkan dapur tertutup."
     },
     {
-      "prompt": "Ketuk bagian yang menghabiskan hampir seluruh listriknya."
+      "prompt": "Ketuk bagian yang memakai hampir seluruh daya listrik."
     },
     {
-      "prompt": "Apa yang sebenarnya membuat zat pendingin menjadi dingin?",
+      "prompt": "Apa yang mula-mula membuat refrigeran menjadi dingin?",
       "choices": [
         "Kompresor mendinginkannya",
-        "Tekanan yang jatuh mendadak membuatnya mendidih, dan mendidih menyerap panas",
-        "Kipas yang meniupnya",
-        "Sentuhan dengan dinding freezer"
+        "Penurunan tekanan membuat sebagian cairan menguap dan penguapan menyerap panas",
+        "Kipas meniup permukaannya",
+        "Refrigeran menyentuh dinding freezer"
       ],
-      "explain": "Dingin dibuat di pipa kapiler, dengan menjatuhkan tekanan sampai cairannya mendidih. Tidak ada bagian kulkas yang menghasilkan dingin. Yang terjadi cuma perpindahan panas."
+      "explain": "Pipa kapiler menurunkan tekanan sehingga sebagian refrigeran langsung menguap. Kulkas tidak menciptakan dingin; evaporator menyerap panas dan rangkaian memindahkannya ke luar."
     },
     {
-      "prompt": "Ketuk bagian yang paling mungkin jadi sebab kulkas tua menyala terus-menerus."
+      "prompt": "Ketuk bagian yang paling mungkin membuat kulkas lama terus menyala."
     },
     {
-      "prompt": "Kenapa kulkas frost-free mengeringkan makanan?",
+      "prompt": "Mengapa kulkas bebas bunga es dapat mengeringkan makanan?",
       "choices": [
-        "Zat pendinginnya menyerap air",
-        "Udara yang bersirkulasi membawa uap air ke koil yang dingin",
-        "Isolasinya menyedot air keluar",
-        "Kompresornya dirancang bekerja pada kelembapan rendah"
+        "Refrigeran menyerap air dari makanan",
+        "Udara yang bersirkulasi membawa uap air ke koil dingin",
+        "Insulasi menarik air keluar",
+        "Kompresor dirancang untuk kelembapan rendah"
       ],
-      "explain": "Udara bergerak yang sama, yang menyebarkan dingin, juga membawa uap air ke permukaan terdingin lalu membekukannya di sana. Justru itulah yang dicegah oleh laci sayur yang tertutup rapat."
+      "explain": "Udara yang menyebarkan suhu dingin juga membawa uap air ke permukaan terdingin, tempat air membeku. Laci sayur yang hampir tertutup mengurangi kehilangan kelembapan tersebut."
     }
   ]
 }
