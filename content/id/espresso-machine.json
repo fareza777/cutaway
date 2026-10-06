@@ -1,0 +1,215 @@
+{
+  "title": "Mesin Espresso",
+  "subtitle": "Telusuri air, panas, dan tekanan dari tangki hingga menjadi espresso",
+  "scale": "lebar sekitar 24 cm · kedalaman 25 cm · tinggi 38 cm · satu boiler",
+  "summary": "Espresso dihasilkan melalui alur yang terkontrol: pompa getar mengambil air dari tangki, boiler memanaskannya, lalu kepala penyeduh mengalirkan air melalui bubuk kopi yang dipadatkan. Katup pembatas tekanan mengembalikan kelebihan aliran, sedangkan katup tiga arah melepas tekanan setelah penyeduhan berhenti. Model mesin semiotomatis ini juga memperlihatkan bagaimana boiler yang sama memasok pipa uap. Ini adalah model pembelajaran, bukan panduan perbaikan: mesin sungguhan mengandung air panas bertekanan dan listrik bertegangan tinggi.",
+  "parts": {
+    "outer_shell": {
+      "name": "Casing Baja Tahan Karat",
+      "short": "Panel lipat melindungi bagian dalam yang panas dan dialiri listrik",
+      "detail": "Panel samping dan belakang dari baja tahan karat membentuk pelindung kokoh untuk pipa serta komponen listrik. Lipatan tepi, sekrup, dan kisi belakang memiliki fungsi nyata, bukan sekadar hiasan. Bagian depan bawah tetap terbuka untuk cangkir dan baki tetesan. Melepas lapisan ini pada model memperlihatkan mekanisme di dalamnya; jangan membuka mesin sungguhan saat masih terhubung ke listrik."
+    },
+    "front_panel": {
+      "name": "Panel Depan",
+      "short": "Panel terpisah menjadi dudukan tiga sakelar utama",
+      "detail": "Panel baja berlapis cat putih hangat menutup ruang bagian atas, sementara area bawah menyediakan tempat bagi kepala penyeduh dan cangkir. Tiga lubang menahan sakelar, dan sekrup kecil mengikat panel ke rangka. Sambungan serta tepi yang sedikit membulat memperlihatkan konstruksi lembaran logam. Lapisan cat tidak mencegah permukaannya menjadi hangat di dekat boiler."
+    },
+    "brew_bay_panel": {
+      "name": "Panel Pelindung Ruang Seduh",
+      "short": "Dinding baja melindungi pompa yang berada di belakang cangkir",
+      "detail": "Panel terpisah menutup belakang ruang cangkir dan melindungi pompa, selang, serta kabel bawah dari percikan sehari-hari. Kepala penyeduh di atas dan baki di bawah tetap dapat diakses. Pipa pelepas tekanan berada di depan panel agar airnya mengalir ke baki. Mengupas lapisan ini memperlihatkan mekanisme bawah tanpa menggambarkan mesin sungguhan dengan bagian listrik yang terbuka."
+    },
+    "cup_warmer": {
+      "name": "Rak Penghangat Cangkir",
+      "short": "Panas dari dalam mesin membantu menghangatkan cangkir",
+      "detail": "Rak logam berlubang ini berada di atas boiler. Panas yang naik dari dalam casing dapat menghangatkan cangkir di atasnya; desain ini tidak memiliki elemen pemanas cangkir tersendiri. Celah rak juga membantu udara hangat keluar, sedangkan pagar kecil di belakang menahan cangkir. Cangkir yang sudah hangat mengurangi hilangnya panas saat menerima sedikit espresso."
+    },
+    "chassis": {
+      "name": "Rangka Dalam",
+      "short": "Pelat dasar dan penyangga menahan seluruh mekanisme",
+      "detail": "Rangka menopang boiler, pompa, dan bagian penyeduh tanpa bergantung pada panel luar. Dasar yang lebar membagi beban, sementara penyangga tegak menahan gaya puntir saat dudukan saringan dikunci. Dengan begitu, casing tipis tidak mudah berubah bentuk. Pada perangkat sungguhan, rangka logam harus terhubung dengan pembumian pelindung yang sesuai."
+    },
+    "rubber_feet": {
+      "name": "Kaki Karet",
+      "short": "Empat kaki mencengkeram meja dan meredam getaran",
+      "detail": "Empat kaki karet membagi berat mesin dan membantu mencegahnya bergeser di atas meja. Bahan lenturnya mengurangi getaran pompa yang diteruskan ke permukaan kerja sekaligus memberi jarak di bawah dasar. Kaki ini mendukung kestabilan, tetapi tidak menghilangkan kebutuhan untuk menahan badan mesin saat dudukan saringan dikunci dengan kuat."
+    },
+    "water_tank": {
+      "name": "Tangki Air Lepas-Pasang",
+      "short": "Tangki tanpa tekanan menyimpan air untuk penyeduhan",
+      "detail": "Tangki tembus pandang di bagian belakang menyimpan air pada tekanan udara biasa. Satu selang mengambil air menuju pompa, sedangkan selang lainnya menerima aliran yang dikembalikan oleh katup pembatas tekanan. Tangki terpisah dari boiler panas, sehingga pengisian tidak memerlukan pembukaan bejana bertekanan. Model memperlihatkan dinding, bagian atas terbuka, dan penanda ketinggian air."
+    },
+    "tank_lid": {
+      "name": "Tutup Tangki Air",
+      "short": "Tutup belakang melindungi persediaan air dari kotoran",
+      "detail": "Tutup belakang melindungi tangki dari debu dan percikan. Pegangan kecil memungkinkan tutup diangkat tanpa memindahkan rak penghangat cangkir. Tutup ini bukan penutup bejana bertekanan: udara tetap harus dapat masuk saat pompa mengambil air. Bibir di bagian bawah menempatkannya pada posisi yang tepat tanpa menjepit selang yang masuk dari atas."
+    },
+    "drip_tray": {
+      "name": "Baki Penampung Tetesan",
+      "short": "Wadah berongga menampung tetesan dan air buangan",
+      "detail": "Baki bawah menampung tetesan dari kepala penyeduh, tumpahan di sekitar cangkir, dan air yang dilepas melalui saluran katup tiga arah. Dindingnya menahan cairan di bawah kisi logam. Pegangan depan memudahkan baki ditarik untuk dikosongkan. Baki ini adalah tempat air buangan, bukan persediaan air bersih; air di dalamnya tidak boleh dipakai kembali untuk menyeduh."
+    },
+    "tray_grille": {
+      "name": "Kisi Baki Tetesan",
+      "short": "Bilah logam menyangga cangkir di atas air yang terkumpul",
+      "detail": "Kisi menghubungkan kedua sisi baki dengan bilah logam yang memiliki celah terbuka. Cangkir bertumpu pada bilah, bukan terendam dalam air buangan, sementara tetesan dapat mengalir ke bawah. Kisi dapat diangkat untuk membersihkan baki. Penyangga melintang di bawah bilah membuat susunan yang ringan ini tetap cukup kaku untuk menahan cangkir."
+    },
+    "control_switches": {
+      "name": "Sakelar Daya, Seduh, dan Uap",
+      "short": "Tiga sakelar memisahkan fungsi utama mesin",
+      "detail": "Tiga sakelar mewakili daya, penyeduhan, dan pemilihan mode uap. Sakelar seduh mengaktifkan pompa serta rangkaian katup penyeduh, sedangkan mode uap memakai termostat dengan suhu lebih tinggi. Mesin ini semiotomatis: pengguna menentukan kapan seduhan dihentikan, bukan pengukur aliran elektronik. Model juga memperlihatkan badan sakelar yang berada di balik panel depan."
+    },
+    "steam_knob": {
+      "name": "Kenop Pengatur Uap",
+      "short": "Pegangan beralur memutar katup uap mekanis",
+      "detail": "Kenop hitam di samping menyediakan permukaan yang lebih nyaman untuk memutar batang katup uap. Alur di sekelilingnya membantu jari mencengkeram, sementara tanda kecil menunjukkan posisi kenop. Memutar kenop mengubah bukaan katup, bukan suhu boiler. Sakelar mode uap menentukan cara pemanasan; kenop menentukan apakah uap boleh mengalir menuju pipa uap."
+    },
+    "steam_valve": {
+      "name": "Katup dan Jalur Pasokan Uap",
+      "short": "Katup kuningan mengatur uap dari bagian atas boiler",
+      "detail": "Uap diambil dari bagian atas boiler, lalu melewati jalur kuningan menuju katup mekanis. Batang yang terhubung ke kenop mengubah bukaan katup dan mengatur aliran menuju pipa uap. Jalur turun ini terpisah dari keluaran air seduh di bawah boiler. Sambungan segi enam memperjelas hubungan pipa tanpa menambahkan jalur atau boiler kedua yang tidak diperlukan."
+    },
+    "steam_wand": {
+      "name": "Pipa Uap Pembuih Susu",
+      "short": "Pipa kecil melengkung mengalirkan uap ke dalam susu",
+      "detail": "Uap melewati pipa baja tahan karat dan keluar melalui ujung kecil ke dalam wadah susu. Pengembunan uap memindahkan panas; udara yang dimasukkan dekat permukaan membentuk busa, dan sirkulasi membantu meratakan gelembung. Sambungan putar memudahkan penempatan ujung. Logamnya menjadi panas. Ujung sederhana ini menunjukkan keluaran uap, bukan simulasi semburan atau gerakan cairan."
+    },
+    "boiler_body": {
+      "name": "Badan Boiler Kuningan",
+      "short": "Ruang berdinding tebal memasok air seduh dan uap",
+      "detail": "Boiler menyimpan sedikit air di dekat kepala penyeduh. Dinding kuningan menghantarkan panas dan membantu menyimpan energi termal, sementara elemen terendam memanaskan air. Jalur bawah memasok air seduh, sedangkan jalur atas mengambil uap. Karena hanya memakai satu boiler, mesin menggunakan suhu operasi yang berbeda untuk menyeduh dan mengukus, bukan dua pemanas yang bekerja terpisah."
+    },
+    "boiler_lid": {
+      "name": "Tutup Boiler Berbaut",
+      "short": "Enam pengikat menutup ruang pemanas secara merata",
+      "detail": "Flensa atas menutup boiler sekaligus menyediakan tempat bagi terminal pemanas dan pengendali suhu. Enam pengikat membagi gaya jepit di sekeliling sambungan. Pada mesin sungguhan, bagian ini juga memerlukan penyekat, pengikat, dan pemasangan yang sesuai. Tutup dibuat sebagai komponen terpisah pada model agar elemen pemanas di dalamnya dapat dilihat dengan jelas."
+    },
+    "heating_element": {
+      "name": "Elemen Pemanas Terendam",
+      "short": "Pemanas berbentuk U memindahkan energi langsung ke air",
+      "detail": "Arus listrik memanaskan kawat resistansi di dalam selubung logam pelindung. Bagian melengkung yang terendam memindahkan panas ke air boiler, sedangkan dua terminal menembus tutup untuk terhubung ke kabel. Pemanas berada di dalam ruang air, bukan di bawahnya seperti pelat pemanas. Menyalakannya tanpa air yang cukup dapat merusaknya; model ini bukan panduan perbaikan listrik."
+    },
+    "thermostats": {
+      "name": "Termostat Seduh dan Uap",
+      "short": "Sakelar peka suhu mengendalikan dua mode pemanasan",
+      "detail": "Dua termostat menyentuh tutup boiler untuk mendeteksi suhu. Rangkaian seduh menggunakan setelan lebih rendah, sementara mode uap menggunakan setelan lebih tinggi agar air dapat menghasilkan uap. Termostat menyalakan dan mematikan pemanas secara berkala, bukan mempertahankan suhu yang benar-benar tetap. Badan sensor serta terminalnya berbeda dari terminal daya pada elemen pemanas."
+    },
+    "pump_coil": {
+      "name": "Kumparan Pompa Getar",
+      "short": "Elektromagnet menghasilkan gerakan bolak-balik yang cepat",
+      "detail": "Kumparan mengelilingi inti bergerak di dalam pompa getar. Tarikan elektromagnet dan dorongan balik pegas menghasilkan gerakan bolak-balik, bukan putaran poros terus-menerus. Katup satu arah di dalam pompa mengubah denyutan tersebut menjadi aliran maju. Selubung merah, dudukan terminal, dan cincin ujung terlihat pada model; plunger dapat dilihat setelah lapisan ini dilepas."
+    },
+    "pump_plunger": {
+      "name": "Plunger dan Pegas Pompa",
+      "short": "Langkah kecil mendorong air melalui katup satu arah",
+      "detail": "Plunger logam bergerak di dalam kumparan, sementara pegas mengembalikannya di antara tarikan elektromagnet. Katup satu arah membuat denyutan perpindahan air menghasilkan aliran maju. Animasi pada model sengaja diperlambat untuk menjelaskan gerakan; animasi ini tidak meniru frekuensi listrik atau menghitung tekanan. Langkah plunger tetap berada di dalam selubung kumparan."
+    },
+    "pump_mount": {
+      "name": "Dudukan Lentur Pompa",
+      "short": "Cincin karet mengurangi getaran yang mencapai rangka",
+      "detail": "Dua cincin lentur menahan pompa tanpa menjepit badannya langsung ke rangka logam. Karet sedikit berubah bentuk saat pompa berdenyut, sehingga mengurangi suara dan getaran yang diteruskan ke casing. Bagian penyangga mengikat dudukan ke rangka. Dudukan ini tidak membuat pompa benar-benar senyap, tetapi membantu mencegah seluruh casing ikut beresonansi."
+    },
+    "overpressure_valve": {
+      "name": "Katup Pembatas Tekanan",
+      "short": "Jalur pintas berpegas membatasi tekanan penyeduhan",
+      "detail": "Saat tekanan melampaui setelan katup, mekanisme berpegas mengalihkan sebagian aliran pompa kembali ke tangki. Ini membatasi tekanan ketika bubuk kopi memberi hambatan besar terhadap aliran. Tekanan maksimum yang tercantum pada pompa tidak sama dengan tekanan di lapisan kopi. Badan kuningan dan sambungan berulir menunjukkan mekanisme pembatas, bukan alat pengukur tekanan."
+    },
+    "pressure_hose": {
+      "name": "Selang Pasokan Bertekanan",
+      "short": "Jalur polimer menghubungkan pompa, katup, dan boiler",
+      "detail": "Selang ini membawa air dari pompa menuju masukan boiler, dengan katup pembatas terhubung di sepanjang jalur. Warna pucat mewakili pipa polimer yang sesuai untuk tekanan; sambungan kuningannya ditampilkan terpisah. Lengkungan memberi ruang di sekitar rangka dan bagian panas. Pada mesin sungguhan, selang harus memiliki ketahanan suhu serta tekanan yang tepat."
+    },
+    "suction_return_hoses": {
+      "name": "Selang Pengambilan dan Pengembalian Air",
+      "short": "Satu selang mengambil air, satu lagi mengembalikan aliran berlebih",
+      "detail": "Dua selang lentur masuk ke tangki dari atas. Selang pengambilan menjangkau bagian bawah tangki dan terhubung ke masukan pompa. Selang pengembalian membawa air yang dialihkan katup pembatas kembali ke tangki tanpa tekanan. Kedua jalur dibedakan agar fungsinya mudah diikuti. Udara yang masuk ke selang pengambilan dapat mengganggu pengisian pompa, sehingga tangki perlu berisi cukup air."
+    },
+    "three_way_valve": {
+      "name": "Katup Penyeduh Tiga Arah",
+      "short": "Mengalihkan kepala penyeduh antara pasokan air dan pembuangan",
+      "detail": "Saat menyeduh, katup yang digerakkan listrik menghubungkan jalur air panas boiler dengan kepala penyeduh. Setelah penyeduhan berhenti, pasokan ditutup dan kepala penyeduh dihubungkan ke saluran buang. Air mengalir menuju baki, mengurangi tekanan yang terperangkap di atas kopi dan membantu menyisakan ampas yang lebih kering. Fungsinya berbeda dari katup pembatas tekanan."
+    },
+    "solenoid_coil": {
+      "name": "Solenoida Katup Penyeduh",
+      "short": "Penggerak elektromagnet mengubah posisi katup tiga arah",
+      "detail": "Solenoida hitam mengelilingi penggerak katup penyeduh. Saat dialiri listrik, medan magnet menggeser bagian di dalamnya untuk mengubah hubungan antarjalur katup. Pegas mengembalikan posisi saat listrik dimatikan. Solenoida bukan pompa air kedua: tugasnya mengendalikan jalur aliran yang sudah ada. Dudukan terminal dan batang penahan ditampilkan terpisah dari badan katup kuningan."
+    },
+    "drain_tube": {
+      "name": "Pipa Buang Pelepas Tekanan",
+      "short": "Pipa logam mengarahkan air dari katup menuju baki",
+      "detail": "Pipa kecil ini turun dari katup tiga arah ke bagian belakang kisi baki. Setelah penyeduhan selesai, air dan tekanan di atas lapisan kopi dilepas melalui jalur ini. Ujung bawah terbuka di atas wadah penampung, bukan terhubung ke tangki air bersih. Karena itu, keluarnya sedikit air melalui pipa ini dapat menjadi bagian dari kerja katup yang normal."
+    },
+    "group_head": {
+      "name": "Kepala Penyeduh",
+      "short": "Rumah logam menyalurkan air dan mengunci dudukan saringan",
+      "detail": "Kepala penyeduh terletak tepat di bawah boiler. Saluran di dalamnya membawa air panas ke pelat penyebar, sementara pengunci menahan dudukan saringan pada cincin penyekat. Hubungan logam dengan boiler membantu menghangatkannya sebelum penyeduhan. Model memperlihatkan tonjolan pengunci pada rumah logam, sedangkan pelat berlubang dan cincin karet di bawahnya dapat dipilih secara terpisah."
+    },
+    "shower_screen": {
+      "name": "Pelat Penyebar Air",
+      "short": "Lubang kecil meratakan pasokan air di atas bubuk kopi",
+      "detail": "Pelat bundar mengubah aliran masuk menjadi banyak jalur kecil di atas permukaan kopi. Lubang, bibir tepi, dan pengikat tengahnya benar-benar dibuat dalam geometri. Sebaran yang lebih merata mengurangi salah satu penyebab aliran tidak seimbang, tetapi tidak dapat memperbaiki persiapan kopi yang buruk. Pelat ini berada di atas kopi, bukan di dasar keranjang saringan."
+    },
+    "group_gasket": {
+      "name": "Cincin Penyekat Kepala Penyeduh",
+      "short": "Karet yang tertekan merapatkan bibir keranjang saringan",
+      "detail": "Cincin karet menyekat pertemuan kepala penyeduh dengan bibir keranjang. Saat dudukan saringan dikunci, cincin tertekan sehingga air bertekanan diarahkan melalui kopi, bukan bocor di sekelilingnya. Cincin ini mengelilingi pelat penyebar air. Kelenturannya penting untuk menyesuaikan perbedaan kecil pada permukaan dan gerakan sambungan."
+    },
+    "filter_basket": {
+      "name": "Keranjang Saringan Kopi",
+      "short": "Wadah baja berlubang menahan kopi dan melewatkan hasil seduhan",
+      "detail": "Keranjang baja tahan karat yang tipis berada di dalam dudukan saringan. Dinding meruncing menahan bubuk kopi, sementara lubang kecil di dasar melewatkan cairan menuju cerat. Bibir yang melebar menempatkannya pada cincin penyekat. Model ini memakai keranjang tanpa pembentuk tekanan tambahan: sebagian besar hambatan penyeduhan berasal dari lapisan kopi, bukan satu lubang keluaran yang sempit."
+    },
+    "portafilter_body": {
+      "name": "Dudukan Saringan dan Cerat",
+      "short": "Pemegang logam mengunci keranjang dan mengarahkan espresso",
+      "detail": "Dudukan saringan, atau portafilter, adalah pemegang logam yang dapat dilepas dari kepala penyeduh. Dua tonjolan pengunci menekan bibir keranjang ke cincin penyekat. Badan berongga mengumpulkan cairan dari dasar keranjang, lalu dua cerat mengarahkannya ke satu cangkir atau dua cangkir kecil. Keranjang, kopi, dan pegangan dibuat sebagai komponen terpisah."
+    },
+    "portafilter_handle": {
+      "name": "Pegangan Dudukan Saringan",
+      "short": "Pegangan berisolasi memberi daya ungkit tanpa memegang logam panas",
+      "detail": "Pegangan gelap yang panjang digunakan untuk mengunci, melepas, dan membawa dudukan saringan tanpa menyentuh badan logam yang panas. Leher logam meneruskan gaya, sedangkan bagian polimer memberi daya ungkit serta permukaan genggam yang lebih nyaman. Ujung membulat dan alur bawah memperjelas bentuknya. Pegangan ini bukan pengendali aliran atau tekanan."
+    },
+    "coffee_puck": {
+      "name": "Lapisan Kopi yang Dipadatkan",
+      "short": "Bubuk kopi memberikan hambatan aliran sekaligus rasa",
+      "detail": "Bubuk kopi halus diratakan dan dipadatkan di dalam keranjang saringan. Air panas yang melewatinya melarutkan serta membawa senyawa rasa menuju cangkir. Kehalusan gilingan, takaran, dan persiapan memengaruhi hambatan aliran; lapisan tidak merata dapat membuat air memilih jalur yang lebih mudah. Cakram cokelat menunjukkan posisi kopi, bukan simulasi cairan atau resep ekstraksi yang berlaku untuk semua kopi."
+    },
+    "power_inlet": {
+      "name": "Soket Daya Belakang",
+      "short": "Konektor terlindung membawa listrik masuk ke mesin",
+      "detail": "Soket belakang yang masuk ke dalam panel menerima sambungan daya lepas-pasang. Bingkai polimer menempatkan konektor dengan aman pada panel logam. Pemanas membutuhkan daya jauh lebih besar daripada katup kecil dan pengendalinya. Model ini tidak menyediakan diagram sambungan atau prosedur servis; mencabut listrik pun tidak langsung menghilangkan panas dan tekanan yang mungkin masih tersisa."
+    },
+    "wiring_harness": {
+      "name": "Rangkaian Kabel Berisolasi",
+      "short": "Kabel terpisah menghubungkan sakelar, pemanas, pompa, dan katup",
+      "detail": "Kabel berisolasi membagi daya ke sakelar, rangkaian termostat, pemanas, pompa, dan solenoida katup penyeduh. Pembumian pelindung menghubungkan rangka logam pada mesin sungguhan. Warna jalur membedakan hubungan listrik dari selang air. Penempatan kabel perlu menghindari permukaan panas serta bagian tajam atau bergerak. Warna dalam model hanya membantu penjelasan, bukan petunjuk penyambungan."
+    },
+    "demitasse": {
+      "name": "Cangkir Espresso Porselen",
+      "short": "Cangkir kecil berdinding tebal menerima hasil seduhan",
+      "detail": "Cangkir kecil bertumpu pada kisi di bawah kedua cerat. Dinding keramik yang tebal membantu mempertahankan panas, sementara gagang terbuka menyediakan tempat memegang yang lebih dingin. Bagian dalam berongga dan permukaan kopi dibuat dalam model. Ukurannya memberi acuan skala yang akrab, sehingga mesin terbaca sebagai perangkat dapur ringkas, bukan sistem industri berukuran besar."
+    }
+  },
+  "steps": [
+    {"title": "1 · Siapkan air bersih", "body": "Mulai dari tangki tembus pandang di belakang. Selang pengambilan menjangkau air dan menuju pompa getar. Selang kedua mengembalikan air yang dialihkan katup pembatas ke tangki yang sama. Tangki tidak bertekanan; pompa baru menghasilkan tekanan pada jalur penyeduhan setelahnya."},
+    {"title": "2 · Panaskan satu boiler", "body": "Elemen berbentuk U yang terendam memanaskan air di dalam boiler kuningan. Pada mode seduh, termostat bersuhu lebih rendah menyalakan dan mematikan pemanas. Panas juga mencapai kepala penyeduh melalui hubungan logam. Untuk menghasilkan uap, mesin satu boiler ini harus berganti mode pemanasan, bukan memakai boiler uap tersendiri."},
+    {"title": "3 · Siapkan dan kunci kopi", "body": "Bubuk kopi berada dalam keranjang berlubang di dalam dudukan saringan. Menggiling, meratakan, dan memadatkan kopi menghasilkan lapisan dengan hambatan aliran yang sesuai. Tonjolan dudukan mengunci ke kepala penyeduh dan menekan bibir keranjang pada cincin karet. Cangkir menunggu di bawah cerat."},
+    {"title": "4 · Bangun tekanan yang terkontrol", "body": "Sakelar seduh menyalakan pompa dan mengoperasikan katup penyeduh. Plunger pompa getar bergerak bolak-balik; katup satu arah membuat denyutannya mendorong air ke depan. Selang bertekanan membawa air menuju boiler. Jika tekanan melampaui setelan pembatas, sebagian aliran dikembalikan ke tangki."},
+    {"title": "5 · Seduh melalui lapisan kopi", "body": "Air panas mencapai kepala penyeduh dan menyebar melalui pelat berlubang. Air melewati kopi yang dipadatkan, keluar dari lubang dasar keranjang, lalu mengalir ke cerat dudukan saringan. Pengguna menentukan kapan penyeduhan dihentikan. Ilustrasi ini memperlihatkan mekanisme, bukan laju aliran hasil simulasi atau resep ekstraksi."},
+    {"title": "6 · Lepaskan tekanan penyeduh", "body": "Saat seduhan dihentikan, katup tiga arah menutup pasokan dari boiler dan menghubungkan kepala penyeduh ke saluran buang. Air di atas kopi turun melalui pipa logam menuju baki. Karena itu, sedikit air buangan setelah penyeduhan adalah hal wajar. Katup tiga arah ini berbeda fungsi dari katup pembatas tekanan."},
+    {"title": "7 · Beralih ke mode uap", "body": "Mode uap memilih termostat dengan suhu lebih tinggi. Membuka kenop samping mengalirkan uap dari bagian atas boiler ke pipa uap. Pengembunan uap memanaskan susu, sedangkan udara yang dimasukkan secara terkontrol membentuk busa. Penyeduhan dan pengukusan memakai boiler yang sama pada suhu yang berbeda."},
+    {"title": "8 · Pahami keseluruhan sistem", "body": "Bandingkan jalurnya: pasokan dan pengembalian air menghubungkan tangki dengan pompa, sedangkan saluran buang katup penyeduh berakhir di baki. Panel logam serta rangka melindungi jalur air dan kabel berisolasi. Gunakan kupas lapisan, potongan, dan pembongkaran untuk menelusurinya. Model ini bukan izin untuk membuka atau memperbaiki mesin panas yang masih dialiri listrik."}
+  ],
+  "quiz": [
+    {"prompt": "Temukan ruang tempat air dipanaskan sebelum penyeduhan."},
+    {"prompt": "Komponen berlubang mana yang menyebarkan air di atas lapisan kopi?"},
+    {"prompt": "Temukan katup yang melepas tekanan kepala penyeduh setelah seduhan selesai."},
+    {"prompt": "Bagaimana pompa getar ini mengalirkan air?", "choices": ["Baling-baling berputar di dalam tangki", "Plunger bergerak bolak-balik melalui katup satu arah", "Tekanan uap mengangkat seluruh tangki", "Pegangan saringan memutar sekrup air"], "explain": "Tarikan elektromagnet dan dorongan balik pegas menggerakkan plunger. Katup satu arah mengarahkan denyutan aliran ke depan."},
+    {"prompt": "Apa fungsi katup pembatas tekanan?", "choices": ["Menggiling kopi sebelum diseduh", "Menentukan jumlah busa susu", "Mengembalikan kelebihan aliran pompa ke tangki", "Memanaskan cangkir dengan elemen tersendiri"], "explain": "Jalur pintas berpegas membatasi tekanan penyeduhan. Tekanan maksimum pompa tidak sama dengan tekanan pada lapisan kopi."},
+    {"prompt": "Ke mana air yang dilepas katup tiga arah mengalir?", "choices": ["Ke baki tetesan melalui saluran buang tersendiri", "Langsung kembali ke tangki air bersih", "Ke pagar rak penghangat cangkir", "Melalui soket listrik"], "explain": "Saluran buang kepala penyeduh berakhir di atas baki. Jalur ini terpisah dari selang pengembalian katup pembatas tekanan."},
+    {"prompt": "Mengapa mesin berganti mode sebelum menghasilkan uap?", "choices": ["Pipa uap memiliki tangki air sendiri", "Baki tetesan harus diberi tekanan", "Keranjang saringan perlu berputar", "Satu boiler memakai suhu berbeda untuk air seduh dan uap"], "explain": "Satu boiler tidak bekerja seperti dua boiler yang dipanaskan secara mandiri. Mode uap memilih termostat bersuhu lebih tinggi."},
+    {"prompt": "Apa yang merapatkan bibir keranjang pada kepala penyeduh?", "choices": ["Gagang cangkir kopi", "Cincin karet yang tertekan", "Kumparan listrik pada pompa", "Tutup tangki di belakang"], "explain": "Mengunci dudukan saringan menekan cincin penyekat agar air bertekanan melewati kopi, bukan bocor di sekitar bibir keranjang."},
+    {"prompt": "Dari mana sebagian besar hambatan penyeduhan pada keranjang ini berasal?", "choices": ["Celah rak penghangat cangkir", "Tutup tangki yang tidak bertekanan", "Lapisan kopi yang sudah disiapkan", "Kaki penyangga dari karet"], "explain": "Pada keranjang tanpa pembentuk tekanan tambahan, kehalusan gilingan, takaran, dan persiapan kopi sangat memengaruhi hambatan serta aliran."},
+    {"prompt": "Apa yang dijelaskan animasi plunger pompa?", "choices": ["Ilustrasi gerakan bolak-balik yang sengaja diperlambat", "Simulasi frekuensi listrik yang persis", "Pengukuran tekanan espresso", "Poros yang terus berputar"], "explain": "Animasi menjelaskan cara mekanisme bergerak. Animasi ini tidak menyimulasikan frekuensi listrik, aliran air, atau tekanan yang dihasilkan."}
+  ]
+}

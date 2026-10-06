@@ -39,6 +39,7 @@ import refrigerator from './models/refrigerator.mjs';
 import washingMachine from './models/washing_machine.mjs';
 import microwave from './models/microwave.mjs';
 import riceCooker from './models/rice_cooker.mjs';
+import espressoMachine from './models/espresso_machine.mjs';
 import mechanicalWatch from './models/mechanical_watch.mjs';
 import cordlessDrill from './models/cordless_drill.mjs';
 import cyclonicVacuum from './models/cyclonic_vacuum.mjs';
@@ -72,6 +73,7 @@ const RECIPES = {
   washing_machine: washingMachine,
   microwave,
   rice_cooker: riceCooker,
+  espresso_machine: espressoMachine,
   mechanical_watch: mechanicalWatch,
   cordless_drill: cordlessDrill,
   cyclonic_vacuum: cyclonicVacuum,

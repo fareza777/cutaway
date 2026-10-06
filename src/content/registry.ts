@@ -70,6 +70,12 @@ const ENTRIES: Entry[] = [
     translations: { id: require('../../content/id/rice-cooker.json') },
   },
   {
+    doc: require('../../content/espresso-machine.json') as ObjectDoc,
+    model: require('../../assets/models/espresso_machine.glb'),
+    icon: require('../../assets/object-icons/espresso-machine.png'),
+    translations: { id: require('../../content/id/espresso-machine.json') },
+  },
+  {
     doc: require('../../content/microwave.json') as ObjectDoc,
     model: require('../../assets/models/microwave.glb'),
     icon: require('../../assets/object-icons/microwave.png'),

@@ -450,7 +450,7 @@ function loadRuntimeRegistry(): RuntimeRegistry {
 }
 
 function runtimeLibraryIsCorrect(library: RuntimeSummary[], files: string[]) {
-  if (library.length !== 28 || new Set(library.map((summary) => summary.id)).size !== 28) return false;
+  if (library.length !== 29 || new Set(library.map((summary) => summary.id)).size !== 29) return false;
   const summaries = new Map(library.map((summary) => [summary.id, summary]));
   return files.every((file) => {
     const base = readJson<ObjectDoc>(resolve(CONTENT, file), {
@@ -478,7 +478,7 @@ function runtimeLibraryIsCorrect(library: RuntimeSummary[], files: string[]) {
 }
 
 function runtimeLibraryIconsAreCorrect(library: RuntimeSummary[], files: string[]) {
-  if (library.length !== 28 || new Set(library.map((summary) => summary.id)).size !== 28) return false;
+  if (library.length !== 29 || new Set(library.map((summary) => summary.id)).size !== 29) return false;
   const summaries = new Map(library.map((summary) => [summary.id, summary]));
   return files.every((file) => {
     const base = readJson<ObjectDoc>(resolve(CONTENT, file), {
@@ -752,7 +752,7 @@ function run() {
   runMutationFixtureChecks(registry);
 
   check('English and Indonesian filenames match exactly', JSON.stringify(indonesian) === JSON.stringify(english));
-  check('registry contains exactly 28 unique documents', registeredDocs.length === 28 && new Set(registeredDocs).size === 28);
+  check('registry contains exactly 29 unique documents', registeredDocs.length === 29 && new Set(registeredDocs).size === 29);
   check('registry document set matches English content', sameSet(registeredDocs, english));
   check('English and Indonesian UI keys match', sameSet([...englishUi.keys()], [...indonesianUi.keys()]));
   const placeholderMismatches = [...englishUi.entries()].filter(([key, value]) => (
@@ -780,7 +780,7 @@ function run() {
     runtimeLibraryDetail = error instanceof Error ? error.message : String(error);
   }
   check(
-    "runtime getLibrary('id') returns 28 unique correctly localized entries",
+    "runtime getLibrary('id') returns 29 unique correctly localized entries",
     runtimeLibraryPasses,
     runtimeLibraryDetail,
   );
@@ -880,11 +880,11 @@ function run() {
       ? readdirSync(ICONS).filter((name) => name.endsWith('.png')).sort()
       : [];
     const expectedIconFiles = objectIds.map((id) => `${id}.png`).sort();
-    check('object icon directory contains exactly the 28 catalog PNGs', JSON.stringify(iconFiles) === JSON.stringify(expectedIconFiles));
-    check('object icon metrics contain exactly the 28 catalog IDs', metrics !== null && sameSet(Object.keys(metrics), objectIds));
+    check('object icon directory contains exactly the 29 catalog PNGs', JSON.stringify(iconFiles) === JSON.stringify(expectedIconFiles));
+    check('object icon metrics contain exactly the 29 catalog IDs', metrics !== null && sameSet(Object.keys(metrics), objectIds));
     check(
-      'all 28 object icons have unique decoded pixel payloads',
-      iconPixelHashes.length === 28 && new Set(iconPixelHashes).size === 28,
+      'all 29 object icons have unique decoded pixel payloads',
+      iconPixelHashes.length === 29 && new Set(iconPixelHashes).size === 29,
     );
   }
 

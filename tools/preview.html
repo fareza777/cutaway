@@ -217,6 +217,31 @@ ${renderer.domElement.toDataURL('image/png')}` });
     return views.length;
   };
 
+  // Inspection only: frame a few working parts without changing the GLB or
+  // its home view. This prevents close-up evidence from clipping tall objects.
+  window.captureDetail = async (names, suffix = 'detail') => {
+    if (!names.length) throw new Error('Detail capture needs at least one mesh');
+    const selected = new Set(names);
+    const visibleBox = new THREE.Box3();
+    scene.updateMatrixWorld(true);
+    root.traverse((o) => {
+      if (!o.isMesh) return;
+      o.visible = selected.has(o.name);
+      if (o.visible) visibleBox.union(new THREE.Box3().setFromObject(o));
+    });
+    if (visibleBox.isEmpty()) throw new Error('Detail capture mesh names did not resolve');
+    const sphere = visibleBox.getBoundingSphere(new THREE.Sphere());
+    const distance = sphere.radius / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2)) * 1.22;
+    camera.up.set(0, 1, 0);
+    camera.position.copy(sphere.center).add(new THREE.Vector3(...APP_DIR).multiplyScalar(distance));
+    camera.lookAt(sphere.center);
+    renderer.render(scene, camera);
+    await fetch('/shot', { method: 'POST', body: `${MODEL}-${suffix}-${mode}-detail
+${renderer.domElement.toDataURL('image/png')}` });
+    root.traverse((o) => { if (o.isMesh) o.visible = true; });
+    look('app');
+  };
+
   const ICON_SIZE = 256;
   const iconCanvas = document.createElement('canvas');
   iconCanvas.width = ICON_SIZE;

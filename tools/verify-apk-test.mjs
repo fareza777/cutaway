@@ -144,7 +144,7 @@ try {
   const pristine = runVerifier(acceptedApk);
   const pristineOutput = `${pristine.stdout}\n${pristine.stderr}`;
   check(
-    'accepted 28-object APK satisfies the exact source and package contract',
+    'accepted 29-object APK satisfies the exact source and package contract',
     pristine.status === 0,
     `exit ${pristine.status}`,
   );
@@ -159,32 +159,32 @@ try {
     /Brand: 30\/30 current source-pixel matches/i.test(pristineOutput),
   );
   check(
-    'verifier requires exactly 28 source models',
-    !/source model count is 28, expected 26/i.test(pristineOutput),
+    'verifier requires exactly 29 source models',
+    !/source model count is 29, expected 26/i.test(pristineOutput),
   );
   check(
-    'verifier requires exactly 28 source object icons',
-    !/source object-icon count is 28, expected \d+/i.test(pristineOutput),
+    'verifier requires exactly 29 source object icons',
+    !/source object-icon count is 29, expected \d+/i.test(pristineOutput),
   );
   check(
-    'verifier proves all 28 Metro models match current source bytes',
-    /Models \(Metro\): 28\/28 exact assets\/\*\.glb byte matches/i.test(pristineOutput),
+    'verifier proves all 29 Metro models match current source bytes',
+    /Models \(Metro\): 29\/29 exact assets\/\*\.glb byte matches/i.test(pristineOutput),
   );
   check(
-    'verifier proves all 28 AAPT models match current source bytes',
-    /Models \(AAPT\): 28\/28 exact named resource-byte matches \(28 packaged model resources\)/i.test(pristineOutput),
+    'verifier proves all 29 AAPT models match current source bytes',
+    /Models \(AAPT\): 29\/29 exact named resource-byte matches \(29 packaged model resources\)/i.test(pristineOutput),
   );
   check(
-    'verifier proves exactly 56 GLB entries across both 28-model families',
-    /GLB archive set: 56\/56 entries across the exact Metro \+ AAPT families/i.test(pristineOutput),
+    'verifier proves exactly 58 GLB entries across both 29-model families',
+    /GLB archive set: 58\/58 entries across the exact Metro \+ AAPT families/i.test(pristineOutput),
   );
   check(
-    'verifier proves all 28 unique object icons match current source pixels',
-    /Object icons: 28\/28 exact named decoded-pixel matches \(28 packaged icon resources\)/i.test(pristineOutput),
+    'verifier proves all 29 unique object icons match current source pixels',
+    /Object icons: 29\/29 exact named decoded-pixel matches \(29 packaged icon resources\)/i.test(pristineOutput),
   );
   check(
-    'verifier proves all 28 current source icons are uniquely decodable',
-    /Source object icons: 28\/28 unique decoded-pixel hashes/i.test(pristineOutput)
+    'verifier proves all 29 current source icons are uniquely decodable',
+    /Source object icons: 29\/29 unique decoded-pixel hashes/i.test(pristineOutput)
       && !/source object icons have only/i.test(pristineOutput),
   );
 

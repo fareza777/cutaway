@@ -642,5 +642,28 @@
       "phi": 1.32,
       "roll": -0.7
     }
+  },
+  "espresso-machine": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 35,
+      "minY": 24,
+      "maxX": 220,
+      "maxY": 232,
+      "width": 186,
+      "height": 209
+    },
+    "distance": 3.70332,
+    "view": {
+      "rotation": [
+        0.05,
+        -0.9,
+        0
+      ],
+      "theta": 0,
+      "phi": 1.18,
+      "roll": 0
+    }
   }
 }

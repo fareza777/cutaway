@@ -27,8 +27,8 @@ assert.deepEqual(config.extra.admob, expected.extra.admob);
 assert.equal(config.extra.admob.bannerUnitId, 'ca-app-pub-6279186647593327/5209257311');
 assert.equal(config.plugins.find((value) => Array.isArray(value) && value[0] === 'react-native-google-mobile-ads')[1].delayAppMeasurementInit, true);
 const models = readdirSync(resolve(root, 'assets/models')).filter((name) => name.endsWith('.glb'));
-assert.equal(models.length, 28);
-assert.equal(entryNames.filter((name) => name.endsWith('.glb')).length, 56);
+assert.equal(models.length, 29);
+assert.equal(entryNames.filter((name) => name.endsWith('.glb')).length, 58);
 for (const model of models) {
   const digest = sha(readFileSync(resolve(root, 'assets/models', model)));
   for (const path of [`base/assets/${model}`, `base/res/raw/assets_models_${model}`]) {
@@ -37,8 +37,8 @@ for (const model of models) {
   }
 }
 const icons = readdirSync(resolve(root, 'assets/object-icons')).filter((name) => name.endsWith('.png'));
-assert.equal(icons.length, 28);
-assert.equal(entryNames.filter((name) => /assets_objecticons_.*\.png$/.test(name)).length, 28);
+assert.equal(icons.length, 29);
+assert.equal(entryNames.filter((name) => /assets_objecticons_.*\.png$/.test(name)).length, 29);
 const iconHashes = new Set();
 for (const name of icons) {
   const archiveName = `base/res/drawable-mdpi-v4/assets_objecticons_${name.replace(/-/g, '')}`;
@@ -51,7 +51,7 @@ for (const name of icons) {
   assert.equal(sha(packaged.data), digest, `Stale icon: ${archiveName}`);
   iconHashes.add(digest);
 }
-assert.equal(iconHashes.size, 28);
+assert.equal(iconHashes.size, 29);
 const abis = [...new Set(entryNames.filter((name) => /^base\/lib\/.+\.so$/.test(name)).map((name) => name.split('/')[2]))].sort();
 assert.deepEqual(abis, ['arm64-v8a', 'armeabi-v7a', 'x86', 'x86_64']);
 let checked64BitLibraries = 0;
@@ -78,7 +78,7 @@ for (const token of ['getLibraryBanner', 'library.search', 'library.noResults', 
 }
 const signatures = entryNames.filter((name) => /^META-INF\/.+\.(RSA|DSA|EC|SF)$/.test(name));
 console.log(JSON.stringify({ bundle: file, bytes: statSync(file).size, sha256: sha(archiveBytes), version: config.version,
-  versionCode: config.android.versionCode, package: config.android.package, abis, matchingModelCopies: 56,
+  versionCode: config.android.versionCode, package: config.android.package, abis, matchingModelCopies: 58,
   matchingObjectIcons: iconHashes.size, checked64BitLibraries, elf64LoadAlignmentAtLeast16KiB: true,
   bannerUnitId: config.extra.admob.bannerUnitId,
   interstitialUnitId: config.extra.admob.interstitialUnitId, freshJavaScript: true, signatureEntries: signatures }, null, 2));

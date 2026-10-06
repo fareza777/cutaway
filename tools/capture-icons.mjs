@@ -13,11 +13,11 @@ const ICONS = resolve(ROOT, 'assets/object-icons');
 const METRICS_FILE = resolve(ROOT, 'tools/object-icon-metrics.json');
 const CONTACT_SHEET = resolve(
   ROOT,
-  '.superpowers/sdd/2026-08-18-cutaway-014-aerospace-objects/task-3-icon-contact-sheet.png',
+  '.shots/espresso-machine/catalog-icons.png',
 );
 const PORT = 5186;
 const BASE_URL = `http://127.0.0.1:${PORT}`;
-const EXPECTED_COUNT = 28;
+const EXPECTED_COUNT = 29;
 const REQUESTED_IDS = (process.env.CUTAWAY_ICON_IDS ?? '')
   .split(',')
   .map((value) => value.trim())
@@ -200,7 +200,7 @@ try {
 
   await verifyOutputSet(docs);
   if (JSON.stringify(Object.keys(metrics).sort()) !== JSON.stringify(docs.map((doc) => doc.id).sort())) {
-    throw new Error('icon metrics set does not exactly match the 28-object catalog');
+    throw new Error('icon metrics set does not exactly match the 29-object catalog');
   }
   await writeFile(METRICS_FILE, `${JSON.stringify(metrics, null, 2)}\n`);
   await createContactSheet(page, docs);
