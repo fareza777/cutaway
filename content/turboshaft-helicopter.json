@@ -1,0 +1,402 @@
+{
+  "schema": 1,
+  "id": "turboshaft-helicopter",
+  "title": "Turboshaft Helicopter",
+  "subtitle": "Engine, transmission & rotor controls",
+  "category": "Aerospace",
+  "accent": "#FFB45E",
+  "summary": "A light helicopter turns continuous hot-gas power into two very different rotor speeds. Its free power turbine drives a reduction transmission, the main rotor carries the aircraft, the tail rotor balances torque, and pilot inputs reshape the rotating main disc through a swashplate.",
+  "scale": "approximately 11 m main-rotor diameter",
+  "model": "turboshaft_helicopter",
+  "cutAxis": "z",
+  "restRotation": [0, 0, 0],
+  "parts": [
+    {
+      "id": "airframe_shell",
+      "nodes": ["airframe_shell"],
+      "name": "Airframe Shell",
+      "short": "Carries flight loads around the cabin and tail boom",
+      "detail": "The composite fuselage is more than a fairing. Its cabin cell supports the seats, skids, engine deck, and transmission, while the continuously tapered tail boom carries the tail-drive bearings and the tail gearbox without a floating joint.",
+      "layer": 0,
+      "explode": [0, 0, -1.25]
+    },
+    {
+      "id": "cockpit_glazing",
+      "nodes": ["cockpit_glazing"],
+      "name": "Cockpit Glazing",
+      "short": "Wraps the forward cabin with a wide outside view",
+      "detail": "Thin transparent panels follow the faceted nose and door openings. The broad field of view helps the pilot judge hover height and obstacles while the structural window frames carry loads around the openings.",
+      "layer": 0,
+      "explode": [-0.35, 0.45, 1.25],
+      "opacity": 0.32
+    },
+    {
+      "id": "cabin_and_seats",
+      "nodes": ["cabin_and_seats"],
+      "name": "Cabin and Seats",
+      "short": "Supports four occupants inside the protective cell",
+      "detail": "Four energy-absorbing seats are fixed to a reinforced cabin floor. The cockpit controls sit ahead of the front pair, while the rear pair stays below the engine and transmission deck so the helicopter remains compact.",
+      "layer": 1,
+      "explode": [-0.7, -0.25, 0.85]
+    },
+    {
+      "id": "landing_skids",
+      "nodes": ["landing_skids"],
+      "name": "Landing Skids",
+      "short": "Spread landing loads into the cabin floor",
+      "detail": "Twin skid tubes meet one ground plane and curve upward at the nose. Four arched struts and lateral cross tubes connect them to reinforced floor points, giving a light, simple undercarriage with no retracting mechanism.",
+      "layer": 0,
+      "explode": [0, -1.25, 0]
+    },
+    {
+      "id": "fuel_system",
+      "nodes": ["fuel_system"],
+      "name": "Fuel System",
+      "short": "Stores and meters fuel to the combustor",
+      "detail": "A protected tank sits low near the aircraft centre of gravity. Paired feed lines climb toward the engine so pumps and metering hardware can supply a steady spray through changes in attitude and fuel level.",
+      "layer": 2,
+      "explode": [0, -0.55, 1.05]
+    },
+    {
+      "id": "avionics",
+      "nodes": ["avionics"],
+      "name": "Avionics",
+      "short": "Combines flight instruments, radios, and engine monitoring",
+      "detail": "The instrument panel and compact electronics modules turn sensor signals into pilot information. Engine-speed, temperature, transmission, and rotor warnings matter especially during hover, when little time exists to diagnose a power problem.",
+      "layer": 2,
+      "explode": [-0.65, 0.15, -1.0]
+    },
+    {
+      "id": "engine_air_intake",
+      "nodes": ["engine_air_intake"],
+      "name": "Engine Air Intake",
+      "short": "Straightens outside air before compression",
+      "detail": "A rounded lip and radial guide vanes admit air to the gas generator with low distortion. Clean, even flow protects compressor margin when the helicopter yaws, hovers in crosswind, or operates near its own turbulent rotor wake.",
+      "layer": 2,
+      "explode": [-1.15, 0.2, 0.65]
+    },
+    {
+      "id": "compressor",
+      "nodes": ["compressor"],
+      "name": "Axial Compressor",
+      "short": "Raises air pressure in several small steps",
+      "detail": "Successive titanium rotor rows compress the intake flow before fuel is added. The compressor and gas-generator turbine share one shaft, so the turbine must supply exactly the work needed to keep these stages turning.",
+      "layer": 3,
+      "explode": [-0.85, 0.05, 0.9],
+      "motion": {
+        "pivot": [-1.106, 0.1595, 0.0107],
+        "spin": {"axis": "x", "ratio": 12}
+      }
+    },
+    {
+      "id": "combustor",
+      "nodes": ["combustor"],
+      "name": "Annular Combustor",
+      "short": "Maintains continuous combustion around the engine core",
+      "detail": "Fuel burns continuously in an annular hot-section liner rather than in piston-like bursts. Only part of the compressor air supports the flame; the rest shapes and cools the gas before it reaches the turbine blades.",
+      "layer": 3,
+      "explode": [-0.35, 0.1, -1.05]
+    },
+    {
+      "id": "gas_generator_turbine",
+      "nodes": ["gas_generator_turbine"],
+      "name": "Gas-generator Turbine",
+      "short": "Takes enough hot-gas energy to drive the compressor",
+      "detail": "Two heat-resistant turbine rows are mechanically locked to the compressor at the same 12:1 teaching ratio. This gas-generator spool can establish stable airflow even though the separate output turbine changes speed with rotor load.",
+      "layer": 3,
+      "explode": [0.2, 0.1, 1.05],
+      "motion": {
+        "pivot": [-0.376, 0.1595, 0.0107],
+        "spin": {"axis": "x", "ratio": 12}
+      }
+    },
+    {
+      "id": "power_turbine",
+      "nodes": ["power_turbine"],
+      "name": "Free Power Turbine",
+      "short": "Extracts useful shaft power without joining the gas-generator shaft",
+      "detail": "The free power turbine is driven aerodynamically by gas leaving the gas-generator turbine. It is not mechanically tied to the compressor, so the engine core can remain stable while rotor and transmission load vary.",
+      "layer": 3,
+      "explode": [0.65, 0.15, -1.0],
+      "motion": {
+        "pivot": [-0.086, 0.1595, 0.0107],
+        "spin": {"axis": "x", "ratio": -8}
+      }
+    },
+    {
+      "id": "exhaust",
+      "nodes": ["exhaust"],
+      "name": "Twin Exhaust",
+      "short": "Routes spent gas clear of the cabin and tail boom",
+      "detail": "Curved hot-section ducts split the remaining gas into two upward outlets. Their job is safe flow management rather than jet thrust: nearly all useful engine energy has already been transferred to the turbines.",
+      "layer": 2,
+      "explode": [0.9, 0.55, 0]
+    },
+    {
+      "id": "engine_output_shaft",
+      "nodes": ["engine_output_shaft"],
+      "name": "Engine Output Shaft",
+      "short": "Carries free-turbine torque into the transmission",
+      "detail": "This steel shaft shares the free power turbine axis and counter-rotating -8 ratio. Splined couplings let it transmit torque while tolerating small alignment and thermal changes between the engine and gearbox.",
+      "layer": 3,
+      "explode": [0, -0.35, 1.05],
+      "motion": {
+        "pivot": [-0.606, 0.1595, 0.0107],
+        "spin": {"axis": "x", "ratio": -8}
+      }
+    },
+    {
+      "id": "main_transmission",
+      "nodes": ["main_transmission"],
+      "name": "Main Transmission",
+      "short": "Reduces turbine speed and divides power between both rotors",
+      "detail": "The main transmission converts fast, modest-torque engine rotation into slow, high-torque main-rotor rotation. Another takeoff sends power rearward, so the tail rotor stays driven whenever the main rotor is driven.",
+      "layer": 2,
+      "explode": [0, 0.55, -0.95]
+    },
+    {
+      "id": "rotor_mast",
+      "nodes": ["rotor_mast"],
+      "name": "Rotor Mast",
+      "short": "Carries transmission torque and rotor lift",
+      "detail": "The vertical mast rises directly from transmission bearings. It must transmit engine torque upward while carrying rotor lift, cyclic bending loads, and vibration back into the gearbox and airframe mounts.",
+      "layer": 2,
+      "explode": [0, 0.9, 0],
+      "motion": {
+        "pivot": [-1.286, 0.8595, 0.0107],
+        "spin": {"axis": "y", "ratio": 1}
+      }
+    },
+    {
+      "id": "swashplate",
+      "nodes": ["swashplate"],
+      "name": "Swashplate",
+      "short": "Transfers fixed pilot commands into the rotating head",
+      "detail": "The lower ring does not rotate with the mast; the upper ring follows the rotor while remaining aligned with it. Raising the assembly creates collective pitch, while tilting it creates cyclic pitch around the disc.",
+      "layer": 2,
+      "explode": [0.65, 0.2, 0.65],
+      "motion": {
+        "pivot": [-1.286, 1.1695, 0.0107],
+        "swing": {"axis": "z", "amplitude": 0.08}
+      }
+    },
+    {
+      "id": "pitch_links",
+      "nodes": ["pitch_links"],
+      "name": "Pitch Links",
+      "short": "Carry swashplate motion to all three blade roots",
+      "detail": "Three slender rods bridge the moving swashplate and pitch horns at the rotor hub. Their seated ball joints let each blade twist about its span while the hub continues rotating.",
+      "layer": 2,
+      "explode": [0.85, 0.3, -0.45],
+      "motion": {
+        "pivot": [-1.286, 1.1695, 0.0107],
+        "swing": {"axis": "z", "amplitude": 0.08}
+      }
+    },
+    {
+      "id": "rotor_hub",
+      "nodes": ["rotor_hub"],
+      "name": "Main Rotor Hub",
+      "short": "Seats three blade roots on the mast",
+      "detail": "The hub locks to the mast and supports each blade through a substantial root fitting. It transmits torque while allowing the pitch changes and small blade motions needed to distribute lift around the rotor disc.",
+      "layer": 1,
+      "explode": [0, 1.05, 0],
+      "motion": {
+        "pivot": [-1.286, 1.4595, 0.0107],
+        "spin": {"axis": "y", "ratio": 1}
+      }
+    },
+    {
+      "id": "main_rotor_blades",
+      "nodes": ["main_rotor_blades"],
+      "name": "Main Rotor Blades",
+      "short": "Create the lift and directional force that fly the helicopter",
+      "detail": "Three long composite blades form an approximately 11 metre disc. Collective pitch changes all blades together to alter total lift; cyclic pitch changes each blade according to its position so the disc tilts and pulls the aircraft sideways.",
+      "layer": 0,
+      "explode": [0, 1.35, 0],
+      "motion": {
+        "pivot": [-1.286, 1.4595, 0.0107],
+        "spin": {"axis": "y", "ratio": 1}
+      }
+    },
+    {
+      "id": "tail_drive_shaft",
+      "nodes": ["tail_drive_shaft"],
+      "name": "Tail-drive Shaft",
+      "short": "Carries a fast power takeoff through the tail boom",
+      "detail": "A continuous steel shaft runs on support bearings inside the tapered boom. Its -5 teaching ratio shows that the tail drive remains much faster than the reduced main rotor before the tail gearbox changes direction.",
+      "layer": 3,
+      "explode": [0, 0.25, 1.05],
+      "motion": {
+        "pivot": [1.014, 0.3295, 0.0107],
+        "spin": {"axis": "x", "ratio": -5}
+      }
+    },
+    {
+      "id": "tail_gearbox",
+      "nodes": ["tail_gearbox"],
+      "name": "Tail Gearbox",
+      "short": "Turns longitudinal shaft power across the tail",
+      "detail": "Bevel gears at the supported end of the boom turn rotation ninety degrees onto the lateral tail-rotor axis. The housing also carries the tail-rotor thrust and feeds those loads into the tail structure.",
+      "layer": 2,
+      "explode": [0.75, 0.25, -0.65]
+    },
+    {
+      "id": "tail_rotor_hub",
+      "nodes": ["tail_rotor_hub"],
+      "name": "Tail Rotor Hub",
+      "short": "Seats the tail blades on the gearbox output",
+      "detail": "The compact hub projects laterally from the gearbox so its blades clear the fin and boom. It turns with the tail rotor at the +5 relationship while holding both blade roots around the real output axis.",
+      "layer": 1,
+      "explode": [0, 0, 1.0],
+      "motion": {
+        "pivot": [3.194, 0.5895, 0.4907],
+        "spin": {"axis": "z", "ratio": 5}
+      }
+    },
+    {
+      "id": "tail_rotor_blades",
+      "nodes": ["tail_rotor_blades"],
+      "name": "Tail Rotor Blades",
+      "short": "Create anti-torque and yaw control",
+      "detail": "The two-blade tail rotor pushes sideways to oppose the fuselage reaction to main-rotor torque. Pedal input changes its blade pitch, varying anti-torque force so the pilot can hold or change heading.",
+      "layer": 0,
+      "explode": [0, 0, 1.3],
+      "motion": {
+        "pivot": [3.194, 0.5895, 0.4907],
+        "spin": {"axis": "z", "ratio": 5}
+      }
+    },
+    {
+      "id": "cyclic_control",
+      "nodes": ["cyclic_control"],
+      "name": "Cyclic Control",
+      "short": "Tilts the main-rotor thrust direction",
+      "detail": "The pilot's cyclic control produces a fore-aft or lateral pilot input. Linkages tilt the swashplate, scheduling a repeating pitch change once per revolution so the rotor disc leans toward the commanded direction.",
+      "layer": 1,
+      "explode": [-0.55, 0.25, 0.8],
+      "motion": {
+        "pivot": [-2.766, -0.9105, 0.1907],
+        "swing": {"axis": "z", "amplitude": 0.22}
+      }
+    },
+    {
+      "id": "collective_control",
+      "nodes": ["collective_control"],
+      "name": "Collective Control",
+      "short": "Changes all main-blade pitch together",
+      "detail": "Raising the collective lever raises the swashplate without deliberately tilting it. All blade angles increase together, rotor lift rises, and engine governing adds fuel to preserve rotor speed under the greater load.",
+      "layer": 1,
+      "explode": [-0.4, 0.15, -0.8],
+      "motion": {
+        "pivot": [-2.466, -0.9105, -0.4893],
+        "swing": {"axis": "z", "amplitude": 0.18}
+      }
+    },
+    {
+      "id": "control_linkages",
+      "nodes": ["control_linkages"],
+      "name": "Control Linkages",
+      "short": "Connect cockpit controls to the swashplate servos",
+      "detail": "Rigid rods run continuously from both cockpit levers to the mast region. Their geometry makes the control path visible: pilot input becomes a restrained swashplate tilt or lift rather than moving the blades directly.",
+      "layer": 3,
+      "explode": [-0.15, -0.1, 1.1],
+      "motion": {
+        "pivot": [-1.286, 1.0295, 0.0107],
+        "swing": {"axis": "z", "amplitude": 0.06}
+      }
+    }
+  ],
+  "steps": [
+    {
+      "title": "Pilot input starts the control path",
+      "body": "The cyclic tilts thrust, the collective changes total lift, and pedals command anti-torque. Mechanical control linkages carry the pilot input upward to the swashplate and out toward the blade roots.",
+      "focus": ["cyclic_control", "collective_control", "control_linkages"]
+    },
+    {
+      "title": "Compress a steady airflow",
+      "body": "The intake straightens outside air and the axial compressor raises its pressure in several small steps. Compressor speed belongs to the gas-generator spool, not directly to the rotor.",
+      "focus": ["engine_air_intake", "compressor"]
+    },
+    {
+      "title": "Hold continuous combustion",
+      "body": "Metered fuel burns continuously in the annular combustor. Cooling and dilution air keep the hot-section liner and turbine inlet within limits while preserving a stable flame.",
+      "focus": ["fuel_system", "combustor"]
+    },
+    {
+      "title": "Separate core work from output work",
+      "body": "The first turbine drives the compressor. Gas then crosses the mechanically separate free power turbine, which can respond to rotor load without forcing the compressor shaft to the same speed.",
+      "focus": ["gas_generator_turbine", "power_turbine", "engine_output_shaft"]
+    },
+    {
+      "title": "Trade speed for rotor torque",
+      "body": "The main transmission applies strong reduction to fast turbine rotation. Its vertical output drives the mast, hub, and main blades together at the slower 1:1 teaching ratio.",
+      "focus": ["main_transmission", "rotor_mast", "rotor_hub", "main_rotor_blades"]
+    },
+    {
+      "title": "Apply collective pitch",
+      "body": "Collective motion raises the swashplate so every pitch link changes its blade by the same amount. More collective pitch produces more lift and requires more engine torque.",
+      "focus": ["collective_control", "swashplate", "pitch_links"]
+    },
+    {
+      "title": "Apply cyclic pitch",
+      "body": "Cyclic motion tilts the swashplate. Each link then raises and lowers once per turn, producing a cyclic blade-pitch pattern that tilts the main-rotor thrust vector.",
+      "focus": ["cyclic_control", "swashplate", "pitch_links", "main_rotor_blades"]
+    },
+    {
+      "title": "Balance torque at the tail",
+      "body": "The transmission also powers the tail-drive shaft and tail gearbox. The tail rotor turns that power into sideways anti-torque force, while pedal changes let the pilot command yaw.",
+      "focus": ["tail_drive_shaft", "tail_gearbox", "tail_rotor_hub", "tail_rotor_blades"]
+    }
+  ],
+  "quiz": [
+    {
+      "type": "identify",
+      "prompt": "Tap the component that raises intake-air pressure before fuel is added.",
+      "partId": "compressor"
+    },
+    {
+      "type": "choice",
+      "prompt": "What directly drives the compressor in this turboshaft?",
+      "choices": ["The gas-generator turbine", "The tail rotor", "The main rotor hub", "The skids"],
+      "answer": 0,
+      "explain": "The compressor and gas-generator turbine share one spool and turn together at the 12:1 teaching ratio."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the turbine that delivers useful shaft power without sharing the compressor shaft.",
+      "partId": "power_turbine"
+    },
+    {
+      "type": "choice",
+      "prompt": "Why does the main transmission strongly reduce rotational speed?",
+      "choices": ["To produce the high torque a large main rotor needs", "To heat the fuel", "To make the glazing clearer", "To retract the skids"],
+      "answer": 0,
+      "explain": "The turbine turns rapidly with modest torque; reduction trades that speed for the much greater torque needed by the main rotor."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the mechanism that transfers fixed controls into the rotating rotor head.",
+      "partId": "swashplate"
+    },
+    {
+      "type": "choice",
+      "prompt": "Which statement correctly compares collective and cyclic pitch?",
+      "choices": ["Collective changes every blade together; cyclic changes pitch around the disc", "Collective steers only the tail rotor", "Cyclic changes engine fuel only", "They are two names for the same fixed setting"],
+      "answer": 0,
+      "explain": "Collective changes total lift, while cyclic varies pitch with blade position to tilt the rotor thrust vector."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the shaft that carries transmission power through the tail boom.",
+      "partId": "tail_drive_shaft"
+    },
+    {
+      "type": "choice",
+      "prompt": "What is the tail rotor's primary job in a hover?",
+      "choices": ["Oppose main-rotor torque and control yaw", "Compress engine air", "Support the landing skids", "Cool the avionics"],
+      "answer": 0,
+      "explain": "Its sideways thrust balances fuselage torque reaction; changing that thrust lets the pilot turn about the vertical axis."
+    }
+  ]
+}

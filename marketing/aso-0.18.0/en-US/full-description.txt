@@ -1,0 +1,30 @@
+Discover how things work by looking inside them.
+
+Cutaway: How Things Work 3D is an interactive learning app for exploring machines, everyday objects and human anatomy. Rotate a 3D model, separate its components, reveal hidden layers and learn what each part does.
+
+EXPLORE 28 INTERACTIVE 3D OBJECTS
+Look inside a smartphone, refrigerator, mechanical watch, cordless drill and more. Explore aerospace systems such as a turbofan jet engine, turboshaft helicopter, rocket engine and Earth-observation satellite. Discover anatomical models including the heart, brain, eye and lungs.
+
+TAKE THINGS APART IN 3D
+• Rotate and zoom to inspect models from different angles.
+• Use exploded views to separate components.
+• Peel away outer layers and reveal internal structures.
+• Explore X-ray and cross-section views.
+• Tap a component or choose it from the parts list to read its explanation.
+
+UNDERSTAND THE MECHANISM
+Run supported mechanisms to see moving parts in action. Follow step-by-step explanations that connect individual components to the way the whole object works. Save interesting parts so you can return to them.
+
+TEST WHAT YOU LEARN
+Try interactive quizzes, identify parts and revisit objects to strengthen your understanding. Your exploration progress and quiz results are saved locally on your device.
+
+LEARN YOUR WAY
+Search the object library by name or description, browse categories and choose a light or dark theme. Switch between English and Indonesian for the interface and object explanations.
+
+The bundled 3D library and core learning features work offline after installation. No account is required. Internet access is needed for advertising, purchases and purchase restoration.
+
+Cutaway contains banner and interstitial ads. An optional one-time Remove Ads purchase removes advertising; pricing is shown in Google Play.
+
+Made for curious learners, students, educators and anyone who wants to understand what is inside. Models and explanations are educational illustrations, not repair instructions, professional engineering tools or medical advice.
+
+Pick an object. Look inside. Find out how it works.

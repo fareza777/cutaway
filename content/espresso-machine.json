@@ -1,0 +1,259 @@
+{
+  "schema": 1,
+  "id": "espresso-machine",
+  "title": "Espresso Machine",
+  "subtitle": "Follow water, heat and pressure from tank to espresso",
+  "category": "Appliances",
+  "accent": "#D6A76A",
+  "scale": "≈ 24 × 25 × 38 cm · single-boiler design",
+  "summary": "Espresso is a controlled journey: a vibration pump draws water from a reservoir, a heated boiler raises its temperature, and the brew group distributes it through a compressed bed of coffee. A pressure-limiting valve diverts excess flow; a three-way valve releases pressure when brewing stops. This detailed, generic semi-automatic machine also reveals how the same boiler supplies a steam wand. It is an educational model, not a repair guide: real machines contain hot, pressurised water and mains electricity.",
+  "model": "espresso_machine",
+  "cutAxis": "x",
+  "restRotation": [0.05, -0.9, 0],
+  "parts": [
+    {
+      "id": "outer_shell", "nodes": ["outer_shell"], "name": "Stainless Housing",
+      "short": "Folded panels protect the hot, powered interior",
+      "detail": "Thin stainless-steel side and rear panels form a rigid enclosure around the plumbing and electrics. Their folded edges, fixing screws and rear louvres make the shell practical rather than ornamental. The lower front remains open for a cup and removable drip tray. Removing this layer in the model reveals the working assembly; a real powered machine must never be opened for exploration.",
+      "layer": 0, "explode": [-2.0, 0, -0.6]
+    },
+    {
+      "id": "front_panel", "nodes": ["front_panel"], "name": "Front Fascia",
+      "short": "A separate panel carries the three rocker controls",
+      "detail": "The warm-white powder-coated steel fascia closes the upper chamber while leaving space below for the group and cup. Rectangular openings hold the control switches, and small screws secure it to the frame. Its panel seams and gently rounded edges reveal a folded metal appliance rather than a solid block. The coated surface can still become warm near the boiler.",
+      "layer": 0, "explode": [0, 0.2, 2.1]
+    },
+    {
+      "id": "brew_bay_panel", "nodes": ["brew_bay_panel"], "name": "Brew-Bay Splash Panel",
+      "short": "A steel back wall shields the pump behind the cup",
+      "detail": "This separate steel panel closes the back of the cup bay, shielding the lower pump, hoses and wiring from everyday splashes. It leaves the brew group above and drip tray below accessible. The pressure-release drain is deliberately routed on the panel's front side so it can discharge into the tray. Removing this layer reveals the lower mechanisms without misrepresenting an exposed working appliance.",
+      "layer": 0, "explode": [-0.4, -0.4, -1.8]
+    },
+    {
+      "id": "cup_warmer", "nodes": ["cup_warmer"], "name": "Cup-Warming Deck",
+      "short": "Waste heat gently warms cups on the slotted top",
+      "detail": "This slotted steel deck sits above the boiler. Heat rising through the enclosure can warm cups placed on it; there is no separate cup-heater element in this design. The openings also let warm air escape, while a raised rear rail helps keep cups in place. Prewarming a cup reduces how much heat a small espresso loses immediately after serving.",
+      "layer": 0, "explode": [0.2, 2.1, 0.3]
+    },
+    {
+      "id": "chassis", "nodes": ["chassis"], "name": "Internal Frame",
+      "short": "A stamped base and uprights support the mechanisms",
+      "detail": "The internal frame carries the boiler, pump and front working assembly independently of the decorative panels. A broad base distributes the weight, and upright brackets resist the twisting load when the portafilter is locked into the group. Keeping these loads in the frame helps the thin outer casing stay straight. The metal frame must be properly earthed in a real mains-powered appliance.",
+      "layer": 1, "explode": [1.6, -0.9, -1.4]
+    },
+    {
+      "id": "rubber_feet", "nodes": ["rubber_feet"], "name": "Rubber Feet",
+      "short": "Four soft supports grip and isolate the countertop",
+      "detail": "Four rubber feet spread the machine's weight and provide friction against the counter. They also reduce the transfer of pump vibration into the work surface and leave clearance below the base. Their compliance helps an otherwise rigid metal appliance sit securely. They support the machine but do not remove the need to hold the body when tightening a stubborn portafilter.",
+      "layer": 0, "explode": [0.3, -2.0, -0.4]
+    },
+    {
+      "id": "water_tank", "nodes": ["water_tank"], "name": "Removable Water Reservoir",
+      "short": "An unpressurised tank supplies fresh brewing water",
+      "detail": "The translucent rear reservoir holds the machine's water supply at atmospheric pressure. One immersed hose draws water toward the pump; another returns flow diverted by the pressure-limiting valve. The tank is separate from the hot boiler, so filling it does not require opening a pressure vessel. Its open top, wall thickness and level marks are modelled rather than represented by a solid plastic block.",
+      "layer": 1, "opacity": 0.28, "explode": [0.3, 0.7, -2.2]
+    },
+    {
+      "id": "tank_lid", "nodes": ["tank_lid"], "name": "Reservoir Cover",
+      "short": "A lift-off rear lid protects the water supply",
+      "detail": "A separate rear cover shields the reservoir from dust and incidental splashes. Its small raised grip makes it removable without disturbing the cup-warming deck. This cover is not a pressure seal: the reservoir must remain vented as the pump removes water. The inner lip locates it over the tank while leaving clearance for the hoses entering from above.",
+      "layer": 0, "explode": [-0.2, 1.8, -1.0]
+    },
+    {
+      "id": "drip_tray", "nodes": ["drip_tray"], "name": "Removable Drip Tray",
+      "short": "A hollow basin collects rinsing and released water",
+      "detail": "The removable lower basin catches drops from the brew group, spills around a cup, and water discharged through the three-way valve's drain. Its raised walls hold liquid beneath the metal grille. A shallow front grip allows it to slide out for emptying. This is a collection tray, not the fresh-water supply; dirty tray water should never be reused for brewing.",
+      "layer": 0, "explode": [0.5, -1.2, 1.7]
+    },
+    {
+      "id": "tray_grille", "nodes": ["tray_grille"], "name": "Drip-Tray Grille",
+      "short": "Open steel slats support the cup above collected water",
+      "detail": "The polished grille spans the drip tray with narrow, genuinely open gaps between its slats. A cup rests on the metal rather than standing in collected water, and liquid can fall through into the basin. Removing the grille gives access to the tray for cleaning. The cross-support beneath the slats keeps the lightweight insert stiff enough to hold a cup securely.",
+      "layer": 0, "explode": [-0.5, -0.5, 2.2]
+    },
+    {
+      "id": "control_switches", "nodes": ["control_switches"], "name": "Rocker Switches",
+      "short": "Power, brew and steam modes remain separate controls",
+      "detail": "Three physical rocker switches represent power, brewing and steam-mode selection. The brew control operates the pump and brew-valve circuit; steam mode selects the hotter thermostat needed for steaming. This is semi-automatic brewing: the user decides when to end the shot rather than asking an electronic flow meter to dose it. The switches include front rockers and the electrical bodies behind the fascia.",
+      "layer": 0, "explode": [-1.3, 0.7, 1.5]
+    },
+    {
+      "id": "steam_knob", "nodes": ["steam_knob"], "name": "Steam-Control Knob",
+      "short": "A ribbed grip turns the mechanical steam valve",
+      "detail": "The black side knob provides a cool gripping surface for the steam-valve spindle. Its radial ribs improve finger purchase, and the small marker indicates its orientation. Turning the knob changes the valve opening, not the boiler temperature. The separate steam-mode switch determines heating mode; the knob determines whether steam can leave through the wand.",
+      "layer": 0, "explode": [2.1, 0.8, 0.3]
+    },
+    {
+      "id": "steam_valve", "nodes": ["steam_valve"], "name": "Steam Valve and Feed",
+      "short": "A brass valve meters vapour from the boiler's top",
+      "detail": "Steam is taken from the upper region of the boiler and routed through a brass line to a mechanically operated valve. A spindle from the side knob changes the valve opening, regulating the flow reaching the wand. The descending feed remains distinct from the lower brew-water outlet. Hexagonal unions make the connections legible without adding imaginary pipes or an extra steam boiler.",
+      "layer": 2, "explode": [1.5, 1.0, -0.1]
+    },
+    {
+      "id": "steam_wand", "nodes": ["steam_wand"], "name": "Steam Wand",
+      "short": "A narrow bent tube carries steam into milk",
+      "detail": "Steam flows through the stainless wand and its small tip into a milk pitcher. Condensing steam transfers heat; introducing air near the milk surface creates foam, while circulation helps distribute the bubbles. A swivelling joint makes the tip easier to position. The bare metal becomes hot. This simplified tip illustrates the outlet, rather than simulating individual jets or fluid dynamics.",
+      "layer": 1, "explode": [1.9, -0.6, 1.0]
+    },
+    {
+      "id": "boiler_body", "nodes": ["boiler_body"], "name": "Brass Boiler Body",
+      "short": "A thick-walled hot chamber supplies brewing and steam",
+      "detail": "The boiler contains a relatively small volume of water close to the brew group. Its brass wall conducts heat and adds thermal mass, while the immersed heater supplies energy. A lower path feeds the group and an upper take-off supplies steam. Because this design has one boiler, brewing and steaming use different operating temperatures rather than independent simultaneous heating circuits.",
+      "layer": 3, "explode": [-0.9, 0.8, 0.0]
+    },
+    {
+      "id": "boiler_lid", "nodes": ["boiler_lid"], "name": "Bolted Boiler Cover",
+      "short": "A six-fastener flange closes the heated chamber",
+      "detail": "The top flange closes the boiler and provides mounting points for heater terminals and temperature-control devices. Six visible fasteners distribute clamping force around the joint. In a real machine the joint also needs a suitable seal, correctly specified fasteners and proper assembly. The model shows the flange as a separate removable part so the immersed element can be inspected clearly.",
+      "layer": 3, "explode": [-0.2, 1.9, 0.1]
+    },
+    {
+      "id": "heating_element", "nodes": ["heating_element"], "name": "Immersed Heating Element",
+      "short": "A U-shaped resistance heater transfers heat into water",
+      "detail": "Electric current heats a resistance wire inside a protective metal sheath. The curved immersed section transfers that heat to the boiler water, while two terminals pass through the lid to the wiring. The element stays inside the chamber instead of sitting beneath it like a hotplate. Operating an immersed heater without enough water can damage it; this educational model does not prescribe electrical servicing.",
+      "layer": 4, "explode": [0.5, 1.6, 0.7]
+    },
+    {
+      "id": "thermostats", "nodes": ["thermostats"], "name": "Brew and Steam Thermostats",
+      "short": "Contact switches regulate two heating modes",
+      "detail": "Two temperature-sensitive switches contact the boiler cover. The brewing circuit uses a lower temperature setting; selecting steam mode uses a higher one so the boiler can generate steam. These thermostats cycle the heater rather than holding temperature perfectly constant like an ideal laboratory controller. Their sensing bodies and terminals are distinct from the heater's power terminals.",
+      "layer": 2, "explode": [0.6, 1.5, -0.8]
+    },
+    {
+      "id": "pump_coil", "nodes": ["pump_coil"], "name": "Vibration-Pump Coil",
+      "short": "An electromagnet drives rapid reciprocal pumping",
+      "detail": "The coil surrounds the small vibration pump's moving core. Alternating electrical excitation and spring return produce a rapid back-and-forth movement, not continuous shaft rotation. Internal non-return valves make those pulses move water in one direction. The red coil enclosure, terminal body and end collars are visible here; the moving plunger is a separate part revealed by peeling this layer.",
+      "layer": 3, "explode": [-1.7, -0.3, -0.7]
+    },
+    {
+      "id": "pump_plunger", "nodes": ["pump_plunger"], "name": "Pump Plunger and Spring",
+      "short": "A tiny stroke displaces water through check valves",
+      "detail": "The metal plunger moves inside the pump coil, and a return spring helps restore its position between electromagnetic pulls. Check valves turn successive displacement pulses into forward water flow. The model's reciprocal animation is deliberately slowed and illustrative: it does not reproduce mains-frequency motion or calculate delivered pressure. It keeps the stroke inside the enclosing coil.",
+      "layer": 4, "motion": {"slide": {"axis": "y", "amplitude": 0.018}}, "explode": [-0.9, -1.0, 0.3]
+    },
+    {
+      "id": "pump_mount", "nodes": ["pump_mount"], "name": "Elastic Pump Cradles",
+      "short": "Rubber collars keep pumping pulses out of the frame",
+      "detail": "Two elastic collars locate the vibration pump without clamping its body directly against the metal chassis. Their rubber flexes slightly as the pump pulses, reducing noise and vibration transmitted through the enclosure. Support tabs attach the collars to the frame. These mounts cannot make the pump silent, but they avoid turning the entire casing into a sounding board.",
+      "layer": 2, "explode": [-1.5, -1.0, -1.0]
+    },
+    {
+      "id": "overpressure_valve", "nodes": ["overpressure_valve"], "name": "Overpressure Valve",
+      "short": "A spring-loaded bypass limits brew-circuit pressure",
+      "detail": "When pressure rises above the valve's setting, a spring-loaded bypass diverts some pump flow back to the reservoir. This limits pressure in the brewing circuit when the coffee bed strongly resists flow. A pump's advertised maximum pressure is not the same as pressure at the coffee puck. The brass valve and threaded unions represent the bypass mechanism, not a pressure gauge.",
+      "layer": 2, "explode": [-1.6, 0.4, 0.3]
+    },
+    {
+      "id": "pressure_hose", "nodes": ["pressure_hose"], "name": "Pressure-Feed Tubing",
+      "short": "A pale polymer line connects pump, bypass and boiler",
+      "detail": "The pressure feed carries pumped water toward the boiler inlet, with the bypass valve connected along that route. The pale tube represents pressure-rated polymer tubing; its threaded connections are separate brass hardware. Curved routing provides clearance around the frame and hot components. In a real machine, temperature and pressure ratings matter: ordinary flexible drinking-water hose is not an interchangeable substitute.",
+      "layer": 2, "explode": [-1.0, 0.1, 1.3]
+    },
+    {
+      "id": "suction_return_hoses", "nodes": ["suction_return_hoses"], "name": "Tank Pickup and Return Hoses",
+      "short": "One line draws water; the other returns bypass flow",
+      "detail": "Two flexible hoses enter the reservoir from above. The pickup reaches low into the tank and connects to the pump inlet. The return takes flow diverted by the overpressure valve back into the same unpressurised tank. Their separate routes distinguish supply from bypass flow. Air entering the pickup can interrupt priming, which is why the tank must contain enough water.",
+      "layer": 2, "explode": [1.5, 0.5, -1.5]
+    },
+    {
+      "id": "three_way_valve", "nodes": ["three_way_valve"], "name": "Three-Way Brew Valve",
+      "short": "Changes the group between brewing and pressure release",
+      "detail": "During brewing, the electrically actuated valve connects the boiler's brew-water path to the group. When brewing stops, it closes that supply and connects the group to a drain. The released water goes into the drip tray, reducing trapped pressure above the coffee and helping leave a drier puck. It performs a different job from the pressure-limiting bypass valve.",
+      "layer": 2, "explode": [-1.1, -0.1, 0.7]
+    },
+    {
+      "id": "solenoid_coil", "nodes": ["solenoid_coil"], "name": "Brew-Valve Solenoid",
+      "short": "An electromagnetic actuator switches the three-way valve",
+      "detail": "The black solenoid surrounds the brew valve's actuator. Energising it creates a magnetic field that moves an internal armature, changing which valve ports communicate. A spring returns the valve when power is removed. The solenoid is not a second water pump: it controls an existing flow path. Its terminal block and retaining stem are shown separately from the brass valve body.",
+      "layer": 3, "explode": [-0.7, 0.8, 1.2]
+    },
+    {
+      "id": "drain_tube", "nodes": ["drain_tube"], "name": "Pressure-Release Drain",
+      "short": "A slim metal outlet empties the brew valve into the tray",
+      "detail": "This narrow drain descends from the three-way valve to the rear of the drip-tray grille. At the end of a shot, released water and pressure leave through this route instead of remaining trapped above the puck. The lower outlet is open over the collection basin, not joined to the fresh-water reservoir. Occasional discharge here is therefore part of normal valve operation.",
+      "layer": 1, "explode": [-1.5, -0.6, 1.5]
+    },
+    {
+      "id": "group_head", "nodes": ["group_head"], "name": "Brew Group",
+      "short": "A heated casting delivers water and locks the portafilter",
+      "detail": "The brew group sits immediately beneath the boiler. Its internal passages bring hot water to the shower screen, while bayonet features hold the portafilter against the gasket. Thermal contact with the boiler helps warm the group before a shot. The shiny casting includes the projecting locking features; the removable screen and rubber gasket are separately selectable below it.",
+      "layer": 2, "explode": [0.7, 0.1, 1.4]
+    },
+    {
+      "id": "shower_screen", "nodes": ["shower_screen"], "name": "Perforated Shower Screen",
+      "short": "Many small openings spread water over the coffee bed",
+      "detail": "The circular shower screen breaks a concentrated incoming flow into many smaller paths across the top of the puck. Its actual perforations, shallow rim and central fixing are represented in geometry. More even distribution reduces one source of preferential flow, but it cannot fix badly prepared coffee by itself. The screen is above the coffee rather than at the bottom of the filter basket.",
+      "layer": 3, "explode": [0.8, -0.1, 1.9]
+    },
+    {
+      "id": "group_gasket", "nodes": ["group_gasket"], "name": "Group Sealing Ring",
+      "short": "A compressible ring seals the locked basket rim",
+      "detail": "The rubber ring seals the junction between the brew group and portafilter basket rim. Locking the portafilter compresses this gasket so pressurised brewing water is directed through the coffee rather than leaking around the edge. The seal surrounds the shower screen. Its flexibility is important: a rigid metal ring could not accommodate the small variations and movement at this joint.",
+      "layer": 3, "explode": [1.5, -0.2, 0.9]
+    },
+    {
+      "id": "filter_basket", "nodes": ["filter_basket"], "name": "Perforated Filter Basket",
+      "short": "A tapered steel cup holds coffee and lets espresso through",
+      "detail": "A thin stainless basket sits inside the portafilter body. Its tapered side wall contains the grounds, and small openings in its floor let brewed liquid pass into the spouts below. A flanged rim locates it against the group gasket. This model uses a conventional non-pressurised basket: most brewing resistance comes from the prepared coffee bed, not a single restrictive outlet.",
+      "layer": 3, "explode": [0.2, -1.1, 1.6]
+    },
+    {
+      "id": "portafilter_body", "nodes": ["portafilter_body"], "name": "Portafilter Body and Spouts",
+      "short": "A locking metal holder supports the basket and directs the drink",
+      "detail": "The portafilter is the removable metal holder that locks into the brew group. Two projecting ears engage its bayonet fitting, bringing the basket rim firmly against the gasket. The hollow body collects espresso leaving the basket, and two downward spouts direct it into a cup or two small cups. The basket, coffee and insulated handle remain separate parts in the model.",
+      "layer": 1, "explode": [0, -1.6, 0.9]
+    },
+    {
+      "id": "portafilter_handle", "nodes": ["portafilter_handle"], "name": "Insulated Portafilter Handle",
+      "short": "A shaped grip gives leverage without holding hot metal",
+      "detail": "The long dark handle lets the user tighten, release and carry the portafilter while avoiding its hot metal body. A metal neck transfers force into the holder, while the polymer grip provides leverage and a more comfortable touch surface. Its rounded end and shallow underside ribs make the silhouette recognisable. The handle is not a separate brewing or pressure-control mechanism.",
+      "layer": 0, "explode": [0.8, -0.7, 2.0]
+    },
+    {
+      "id": "coffee_puck", "nodes": ["coffee_puck"], "name": "Compressed Coffee Bed",
+      "short": "The prepared grounds provide resistance and flavour",
+      "detail": "Finely ground coffee is distributed and tamped into a compact bed in the basket. Hot water passing through dissolves and carries flavour compounds into the cup. Grind size, dose and preparation all affect resistance and flow; an uneven bed can channel water through easier routes. The brown disc illustrates the bed's location, not a fluid simulation or a universal recipe for extraction.",
+      "layer": 4, "explode": [0.9, -1.0, 1.4]
+    },
+    {
+      "id": "power_inlet", "nodes": ["power_inlet"], "name": "Rear Power Inlet",
+      "short": "A protected connector brings mains power into the chassis",
+      "detail": "The recessed rear inlet is the entry point for the detachable power connection. A protective polymer surround keeps the connector located in the metal rear panel. The machine's heater draws much more power than its small valve and control mechanisms. This model does not provide a wiring diagram or servicing procedure; unplugging alone does not immediately remove heat or trapped pressure.",
+      "layer": 1, "explode": [1.4, -0.7, -1.8]
+    },
+    {
+      "id": "wiring_harness", "nodes": ["wiring_harness"], "name": "Insulated Wiring Harness",
+      "short": "Separate wires link switches, heater, pump and valve",
+      "detail": "Insulated wires distribute power among the controls, thermostat circuit, heater, pump and brew-valve solenoid. A protective-earth connection bonds the metal frame in a real appliance. The coloured routes make these electrical links distinct from the water hoses. Routing must avoid hot surfaces and moving or sharp parts. Wire colours here support illustration and are not instructions for connecting a machine.",
+      "layer": 2, "explode": [1.8, 0.3, -0.7]
+    },
+    {
+      "id": "demitasse", "nodes": ["demitasse"], "name": "Porcelain Espresso Cup",
+      "short": "A small thick-walled cup receives the brewed coffee",
+      "detail": "The demitasse rests on the grille beneath the two spouts. Its thick ceramic wall retains heat, while an open handle provides a cooler grip. The hollow interior and a shallow coffee surface are modelled separately within the same selectable cup. Its size provides a familiar scale reference, showing that this is a compact countertop machine rather than an oversized industrial system.",
+      "layer": 0, "explode": [-1.1, -1.2, 1.9]
+    }
+  ],
+  "steps": [
+    {"title": "1 · Supply fresh water", "body": "Start at the translucent rear reservoir. Its pickup hose reaches into the water and leads to the vibration pump. A second hose returns bypassed water to the same tank. The reservoir is not pressurised; the pump creates pressure only farther along the brewing circuit.", "focus": ["water_tank", "suction_return_hoses", "pump_coil"]},
+    {"title": "2 · Heat one boiler", "body": "The immersed U-shaped element heats water inside the brass boiler. In brew mode, the lower-temperature thermostat cycles the heater. Heat also reaches the group through the connected metal assembly. This single-boiler design must change heating mode for steam rather than relying on a separate steam boiler.", "focus": ["boiler_body", "boiler_lid", "heating_element", "thermostats", "group_head"]},
+    {"title": "3 · Prepare and lock the coffee", "body": "Coffee sits in the perforated basket inside the portafilter. Grinding, distributing and tamping create a bed with useful resistance to flow. The portafilter ears lock into the group, pressing the basket rim against the rubber sealing ring. The cup waits below the spouts.", "focus": ["filter_basket", "coffee_puck", "portafilter_body", "portafilter_handle", "group_gasket", "demitasse"]},
+    {"title": "4 · Build controlled pressure", "body": "The brew switch starts the pump and operates the brew valve. Inside the vibration pump, the plunger reciprocates; check valves make the resulting pulses move water forward. The pressure feed takes water toward the boiler. If pressure exceeds the bypass setting, the overpressure valve returns some flow to the tank.", "focus": ["control_switches", "pump_coil", "pump_plunger", "pressure_hose", "overpressure_valve", "suction_return_hoses"]},
+    {"title": "5 · Extract through the bed", "body": "Hot water reaches the group and spreads through the shower screen. It passes through the compact coffee bed, exits the small holes in the basket floor, and reaches the portafilter spouts. The user decides when to stop the shot. The illustration shows the mechanism, not a simulated flow rate or an extraction recipe.", "focus": ["group_head", "shower_screen", "coffee_puck", "filter_basket", "portafilter_body", "demitasse"]},
+    {"title": "6 · Release the group pressure", "body": "Ending the shot switches the three-way valve away from the boiler supply and connects the group to the drain. Water released from above the puck descends through the metal drain into the drip tray. This is why a little discharge after a shot is normal, and why the three-way valve is not interchangeable with the bypass valve.", "focus": ["three_way_valve", "solenoid_coil", "drain_tube", "drip_tray", "tray_grille"]},
+    {"title": "7 · Switch to steam", "body": "Steam mode selects the higher-temperature thermostat. Opening the side knob allows steam from the boiler's upper take-off to reach the wand. In milk, condensing steam supplies heat and carefully introduced air produces foam. Brewing and steaming use the same boiler at different temperatures in this design.", "focus": ["control_switches", "thermostats", "boiler_body", "steam_knob", "steam_valve", "steam_wand"]},
+    {"title": "8 · See the complete system", "body": "Compare the two water circuits: supply and bypass return link the tank to the pump, while the brew valve's separate drain ends in the collection tray. Metal panels and a rigid frame enclose those paths and the insulated wiring. Use peel, section and explode to follow the connections. This learning model is not permission to open or repair a hot, powered machine.", "focus": ["chassis", "water_tank", "suction_return_hoses", "pressure_hose", "drain_tube", "wiring_harness"]}
+  ],
+  "quiz": [
+    {"type": "identify", "prompt": "Find the chamber where water is heated before brewing.", "partId": "boiler_body"},
+    {"type": "identify", "prompt": "Which perforated part distributes water above the coffee bed?", "partId": "shower_screen"},
+    {"type": "identify", "prompt": "Find the valve that releases group pressure when a shot ends.", "partId": "three_way_valve"},
+    {"type": "choice", "prompt": "How does this vibration pump move water?", "choices": ["A propeller spins inside the reservoir", "A plunger moves back and forth through check valves", "Steam pressure lifts the entire tank", "The portafilter handle turns a water screw"], "answer": 1, "explain": "Electromagnetic excitation and spring return move the plunger reciprocally. Check valves direct the resulting pulses forward."},
+    {"type": "choice", "prompt": "What does the overpressure valve do?", "choices": ["Grinds coffee before brewing", "Sets the amount of milk foam", "Diverts excess pump flow back to the tank", "Heats the cup with a separate element"], "answer": 2, "explain": "The spring-loaded bypass limits brew-circuit pressure. Pump maximum pressure and coffee-bed pressure are not the same quantity."},
+    {"type": "choice", "prompt": "Where does released water from the three-way valve go?", "choices": ["Into the drip tray through a dedicated drain", "Directly back into the fresh-water tank", "Into the cup-warming rail", "Through the electrical inlet"], "answer": 0, "explain": "The group drain ends above the collection tray. It is separate from the overpressure valve's reservoir-return hose."},
+    {"type": "choice", "prompt": "Why does this machine change modes before steaming?", "choices": ["The steam wand contains its own water tank", "The drip tray needs to become pressurised", "The filter basket must rotate", "One boiler uses different temperatures for brew water and steam"], "answer": 3, "explain": "A single boiler cannot act like two independently heated boilers. Steam mode selects a higher-temperature thermostat."},
+    {"type": "choice", "prompt": "What seals the basket rim against the group?", "choices": ["The coffee cup handle", "A compressed rubber gasket", "The pump's electrical coil", "The rear reservoir cover"], "answer": 1, "explain": "Locking the portafilter compresses the group gasket, directing pressurised water through the coffee instead of around the rim."},
+    {"type": "choice", "prompt": "Where does most brewing resistance come from with this basket?", "choices": ["The cup-warming slots", "The unpressurised reservoir lid", "The prepared coffee bed", "The rubber support feet"], "answer": 2, "explain": "In a conventional non-pressurised basket, grind size, dose and coffee preparation strongly affect resistance and flow."},
+    {"type": "choice", "prompt": "What is the animation of the pump plunger showing?", "choices": ["An intentionally slowed illustration of reciprocal movement", "An exact mains-frequency simulation", "A measurement of espresso pressure", "A continuously rotating shaft"], "answer": 0, "explain": "The motion explains how the mechanism moves. It does not simulate electrical frequency, water flow or delivered pressure."}
+  ]
+}

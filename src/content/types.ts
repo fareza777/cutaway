@@ -11,15 +11,25 @@
 export type Vec3 = [number, number, number];
 export type Axis = 'x' | 'y' | 'z';
 
-/** Composable rigid motion, evaluated against a shared cycle angle. */
-export type Motion = {
-  /** Continuous rotation about `axis`, in cycles per crank revolution. */
-  spin?: { axis: Axis; ratio: number };
-  /** Sinusoidal travel along `axis`, in normalised model units. */
-  slide?: { axis: Axis; amplitude: number; phase?: number };
-  /** Sinusoidal rotation about `axis`, in radians. */
-  swing?: { axis: Axis; amplitude: number; phase?: number };
+type MotionOrigin = {
+  /** Optional rotation origin in the source model's local coordinates. */
+  pivot?: Vec3;
 };
+
+type Spin = { axis: Axis; ratio: number };
+type Slide = { axis: Axis; amplitude: number; phase?: number };
+type Swing = { axis: Axis; amplitude: number; phase?: number };
+
+/** Composable rigid motion with at least one real driver. */
+export type Motion = MotionOrigin & (
+  | { spin: Spin; slide?: Slide; swing?: Swing }
+  | { spin?: Spin; slide: Slide; swing?: Swing }
+  | { spin?: Spin; slide?: Slide; swing: Swing }
+);
+
+export function hasMotionDriver(motion: Motion | undefined): boolean {
+  return Boolean(motion?.spin || motion?.swing || motion?.slide);
+}
 
 export type Part = {
   id: string;
@@ -89,6 +99,9 @@ export type ObjectSummary = Pick<
   ObjectDoc,
   'id' | 'title' | 'subtitle' | 'category' | 'accent' | 'summary' | 'scale'
 > & { partCount: number };
+
+/** Localized catalog metadata plus the statically bundled object render. */
+export type LibraryItem = ObjectSummary & { icon: number };
 
 export function summarise(doc: ObjectDoc): ObjectSummary {
   return {

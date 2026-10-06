@@ -1,0 +1,141 @@
+{
+  "title": "AC Split",
+  "subtitle": "Mendinginkan ruangan dengan memindahkan panasnya ke luar",
+  "scale": "unit dalam ruang, lebar sekitar 800 mm",
+  "summary": "AC bekerja dengan prinsip yang sama seperti kulkas, tetapi kedua sisi rangkaian pendinginnya dipisahkan oleh dinding. Panas dari kamar diserap di unit dalam ruang, lalu dibawa refrigeran ke unit luar ruang dan dilepas ke udara. Panas tidak dimusnahkan: unit luar membuang panas dari kamar sekaligus energi listrik yang dipakai untuk memindahkannya.",
+  "parts": {
+    "evaporator_coil": {
+      "name": "Koil Evaporator",
+      "short": "Sisi dingin yang berada di dalam ruangan",
+      "detail": "Refrigeran masuk sebagai campuran cairan dan uap dingin bertekanan rendah, lalu mendidih ketika udara kamar melewati sirip aluminium. Pendidihan menyerap panas dari udara. Sirip memperluas bidang perpindahan panas, sedangkan suhu koil yang berada di bawah titik embun membuat uap air mengembun. Karena itu AC sekaligus menurunkan suhu dan kelembapan kamar."
+    },
+    "blower": {
+      "name": "Kipas Aliran Silang",
+      "short": "Drum panjang yang menghasilkan aliran lebar dan senyap",
+      "detail": "Kipas ini bukan baling-baling, melainkan silinder selebar unit dengan banyak bilah kecil melengkung. Bentuknya menghasilkan lembaran udara yang lebar, merata, dan relatif lambat sehingga lebih senyap daripada semburan sempit berkecepatan tinggi. Jarak bilah sering dibuat sedikit tidak seragam agar bunyinya menyebar sebagai desis, bukan satu nada yang mengganggu."
+    },
+    "air_filter": {
+      "name": "Filter Udara",
+      "short": "Terutama melindungi koil dari debu",
+      "detail": "Jaring yang dapat dicuci ini menahan debu sebelum mencapai sirip evaporator. Debu menyumbat celah udara sekaligus menyelimuti koil, sehingga perpindahan panas turun dan koil dapat membeku. Filter yang kotor sering menyebabkan AC terus bekerja tetapi kamar tetap sulit dingin. Perawatan terpentingnya sederhana: lepas, bilas, keringkan, lalu pasang kembali."
+    },
+    "drain_pan": {
+      "name": "Bak dan Selang Pembuangan",
+      "short": "Menampung air hasil pengembunan",
+      "detail": "Air yang mengembun pada koil menetes ke bak miring lalu mengalir keluar melalui selang. Kebanyakan AC split tidak memakai pompa pembuangan, jadi alirannya mengandalkan gravitasi. Unit dalam harus terpasang rata atau sedikit miring ke arah saluran. Tetesan di dinding biasanya menandakan selang tersumbat atau pemasangan keliru, bukan kebocoran refrigeran."
+    },
+    "louver": {
+      "name": "Kisi Pengarah Berayun",
+      "short": "Mengarahkan dan meratakan udara dingin",
+      "detail": "Sirip bermotor ini mengayun untuk mengarahkan udara keluar. Udara dingin lebih rapat dan cenderung turun, sehingga aliran biasanya diarahkan agak ke atas agar bercampur lebih merata sebelum turun. Pengarahan yang tepat membuat suhu kamar terasa nyaman tanpa menimbulkan hembusan dingin langsung pada penghuni."
+    },
+    "indoor_housing": {
+      "name": "Casing Unit Dalam",
+      "short": "Cangkang akustik yang membentuk jalur udara",
+      "detail": "Casing plastik hampir tidak memikul beban karena unit digantung pada pelat baja di dinding. Bentuk bagian dalamnya mengarahkan udara dari koil menuju kipas dan keluar sebagai aliran yang rata. Ketebalan serta lengkungan plastik juga membantu meredam frekuensi suara yang dihasilkan kipas."
+    },
+    "refrigerant_lines": {
+      "name": "Pipa Refrigeran",
+      "short": "Dua pipa yang menghubungkan kedua unit",
+      "detail": "Pipa kecil membawa cairan hangat bertekanan tinggi menuju unit dalam, sedangkan pipa besar mengembalikan uap dingin bertekanan rendah ke kompresor. Pipa besar diberi isolasi karena suhunya berada di bawah suhu kamar; tanpa isolasi, air akan mengembun di sepanjang permukaannya. Sepasang pipa inilah yang menyatukan unit dalam dan luar menjadi satu mesin."
+    },
+    "compressor": {
+      "name": "Kompresor",
+      "short": "Pompa yang menjadi panas dan bising sehingga ditempatkan di luar",
+      "detail": "Pompa rotari atau scroll yang tertutup rapat ini menaikkan tekanan dan suhu uap refrigeran hingga lebih panas daripada udara luar. Barulah panas dapat mengalir dari refrigeran ke lingkungan. Kompresor memakai sebagian besar daya listrik dan menghasilkan hampir seluruh suara mekanis. Pada AC inverter, kecepatannya dapat berubah terus-menerus agar kapasitas mengikuti kebutuhan kamar tanpa sering hidup-mati."
+    },
+    "condenser_coil": {
+      "name": "Koil Kondensor",
+      "short": "Tempat panas dari kamar dilepas ke luar",
+      "detail": "Uap panas bertekanan tinggi melepaskan panas ke udara luar dan mengembun menjadi cairan di koil ini. Koil membungkus beberapa sisi unit agar luas permukaannya cukup besar. Sirip yang tertutup daun atau debu, jarak terlalu rapat dari dinding, maupun udara panas dari unit lain akan menaikkan tekanan kerja dan membebani kompresor."
+    },
+    "condenser_fan": {
+      "name": "Kipas Kondensor",
+      "short": "Baling-baling yang mengalirkan banyak udara luar",
+      "detail": "Kipas aksial ini menarik udara melewati koil kondensor lalu membuangnya melalui kisi. Di luar ruangan, kebisingan tidak sekritis di kamar, sehingga baling-baling sederhana menjadi pilihan yang murah dan efisien. Jika kipas berhenti sementara kompresor tetap bekerja, tekanan dan suhu akan naik sampai pengaman mematikan sistem."
+    },
+    "expansion_valve": {
+      "name": "Katup Ekspansi",
+      "short": "Menurunkan tekanan agar refrigeran menjadi dingin",
+      "detail": "Pembatas aliran ini menurunkan tekanan cairan refrigeran secara tajam. Sebagian cairan langsung menguap dan campurannya menjadi dingin sebelum masuk ke evaporator. Pada sistem yang lebih baik, katup elektronik terus menyesuaikan aliran sesuai beban pendinginan. Sistem sederhana dapat memakai pipa kapiler tetap seperti pada kulkas."
+    },
+    "reversing_valve": {
+      "name": "Katup Pembalik",
+      "short": "Membalik fungsi pendingin menjadi pemanas",
+      "detail": "Katup empat arah ini menukar koil yang berfungsi sebagai evaporator dan kondensor. Ketika aliran dibalik, mesin mengambil panas dari udara luar dan melepaskannya ke kamar. Inilah prinsip pompa panas: beberapa kilowatt panas dapat dipindahkan dengan satu kilowatt listrik karena sistem memindahkan panas, bukan menghasilkannya seluruhnya dari listrik."
+    },
+    "service_valves": {
+      "name": "Katup Servis",
+      "short": "Titik penyambungan, pengosongan, dan pengukuran",
+      "detail": "Dua port bertutup ini menjadi tempat pipa dipasang, sistem divakumkan, diisi, dan diperiksa tekanannya. Sebelum refrigeran dilepas ke rangkaian, teknisi menarik vakum untuk mengeluarkan udara dan uap air. Jika tahap ini dilewati, air dapat membeku pada katup ekspansi dan menyumbat aliran."
+    },
+    "outdoor_casing": {
+      "name": "Casing Unit Luar",
+      "short": "Melindungi komponen tanpa menghambat aliran udara",
+      "detail": "Casing baja bercat melindungi kelistrikan dari hujan, tetapi sebagian besar koil tetap terbuka agar udara dapat mengalir. Pelindung jari di depan kipas terutama berfungsi untuk keselamatan. Jika unit ditempatkan di sudut sempit dan panas, udara buang akan berputar kembali sehingga kemampuan pendinginan turun pada saat paling dibutuhkan."
+    }
+  },
+  "steps": [
+    {
+      "title": "Serap panas dari kamar",
+      "body": "Refrigeran dingin mendidih di dalam koil evaporator ketika kipas mendorong udara kamar melewatinya. Udara keluar lebih sejuk dan lebih kering; air yang mengembun mengalir ke bak pembuangan."
+    },
+    {
+      "title": "Bawa panas ke luar",
+      "body": "Refrigeran meninggalkan unit dalam sebagai uap dingin melalui pipa berisolasi, lalu bergerak menuju unit luar. Aliran refrigeran menjadi jalur utama yang membawa panas keluar dari kamar."
+    },
+    {
+      "title": "Naikkan suhu refrigeran",
+      "body": "Kompresor menaikkan tekanan uap sampai suhunya melebihi udara luar. Tahap ini belum membuang panas; kompresor justru menambahkan energi yang juga harus dilepas di luar."
+    },
+    {
+      "title": "Lepaskan panas ke luar",
+      "body": "Kipas menarik udara melewati kondensor. Refrigeran menyerahkan panas dari kamar beserta energi kompresor, lalu mengembun kembali menjadi cairan hangat."
+    },
+    {
+      "title": "Dinginkan refrigeran kembali",
+      "body": "Katup ekspansi menurunkan tekanan sehingga sebagian cairan langsung menguap dan menjadi dingin. Campuran kembali ke evaporator dan siklus berulang. Katup pembalik dapat membalik seluruh aliran agar sistem menghangatkan kamar."
+    }
+  ],
+  "quiz": [
+    {
+      "prompt": "Ketuk bagian yang melepaskan panas dari kamar ke udara luar."
+    },
+    {
+      "prompt": "Mengapa sebagian AC harus berada di luar ruangan?",
+      "choices": [
+        "Agar suaranya tidak terdengar",
+        "Panas hanya dapat dipindahkan, bukan dimusnahkan, sehingga harus dilepas di tempat lain",
+        "Kompresor membutuhkan udara segar agar menyala",
+        "Agar refrigeran tetap dingin"
+      ],
+      "explain": "AC adalah pompa panas. Sistem memindahkan panas kamar ke luar sekaligus membuang energi yang dipakai kompresor. Karena itu AC portabel yang membuang udara panas ke kamar yang sama justru menghangatkan ruangan."
+    },
+    {
+      "prompt": "Ketuk katup yang membuat mesin dapat menghangatkan, bukan mendinginkan."
+    },
+    {
+      "prompt": "Mengapa hanya satu dari dua pipa refrigeran yang diberi isolasi?",
+      "choices": [
+        "Karena tekanannya lebih tinggi",
+        "Karena pipa itu membawa uap dingin dan akan dipenuhi embun tanpa isolasi",
+        "Karena pipa itu lebih rapuh",
+        "Untuk meredam suara kompresor"
+      ],
+      "explain": "Pipa balik yang besar berada di bawah suhu kamar. Tanpa isolasi, uap air akan mengembun di sepanjang pipa."
+    },
+    {
+      "prompt": "Ketuk bagian yang paling sering membuat AC bekerja terus tetapi kurang dingin."
+    },
+    {
+      "prompt": "Dari mana asal air yang menetes ke luar saat AC bekerja?",
+      "choices": [
+        "Refrigeran yang bocor",
+        "Uap air dari udara kamar yang mengembun pada koil dingin",
+        "Air hujan yang tertampung di unit luar",
+        "Sistem pendingin kompresor"
+      ],
+      "explain": "Suhu koil dalam berada di bawah titik embun, sehingga kelembapan udara mengembun lalu dialirkan keluar. Pengurangan kelembapan ini berperan besar dalam rasa nyaman."
+    }
+  ]
+}

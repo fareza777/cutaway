@@ -2,37 +2,234 @@
   "schema": 1,
   "id": "lock",
   "title": "Pin-Tumbler Lock",
-  "subtitle": "A door that only one shape of metal can open",
+  "subtitle": "Opens only for a key cut to the right shape",
   "category": "Mechanical",
   "accent": "#C4A35A",
   "scale": "≈ 30 mm cylinder",
   "summary": "A pin-tumbler lock is six little pistons sitting on a key. Each pair of pins is split at a different height. The key is a staircase cut so that every split lands on the same circle — the shear line between plug and housing. Turn. If any split is off that line, the plug is a solid pin through the housing, and nothing moves.",
   "model": "lock",
   "cutAxis": "z",
-  "restRotation": [0.12, -0.95, 0],
+  "restRotation": [
+    0.12,
+    -0.95,
+    0
+  ],
   "parts": [
-    { "id": "housing", "nodes": ["housing"], "name": "Cylinder Housing", "short": "The part that stays in the door", "detail": "A brass tube with a rectangular bible on top. The bible is a row of chambers, one per pin stack. The housing does not turn. Everything that should rotate lives inside it, and the only reason anything can rotate is that the pin stacks can be lifted until they no longer cross from this tube into the plug.", "layer": 0, "opacity": 0.22, "explode": [0, 0.9, 0] },
-    { "id": "plug", "nodes": ["plug"], "name": "Plug", "short": "The part the key turns", "detail": "A cylinder that fits the housing with a tenth of a millimetre to spare. That circular gap is the shear line. The keyway is a slot cut along its length, shaped so that only a blank of the right profile will enter — the first of two secrets, before the bitting even matters.", "layer": 1, "explode": [0.6, 0, 0] },
-    { "id": "key_pins", "nodes": ["key_pins"], "name": "Key Pins", "short": "Brass, sitting on the key, different lengths", "detail": "Six pins of six lengths. The bottom of each rides the key; the top of each is the split. Cut the key to match and every top lands on the shear line together. Cut it wrong and at least one pin still straddles the line, and the plug is locked to the housing by that one pin.", "layer": 2, "explode": [0, -0.7, 0] },
-    { "id": "driver_pins", "nodes": ["driver_pins"], "name": "Driver Pins", "short": "Steel, pushed down by the springs", "detail": "The upper half of each stack. Springs shove them down so that, with no key, they sit across the shear line and lock the plug. They are usually steel, harder than the brass key pins, because they take the beating of every lockpick and every wrong key.", "layer": 2, "explode": [0, 1.1, 0] },
-    { "id": "springs", "nodes": ["springs"], "name": "Pin Springs", "short": "The reason the lock resets itself", "detail": "A coil in each chamber. Pull the key out and they drive the stacks back down across the shear line. A lock that did not reset would be a latch, and a latch is not a lock.", "layer": 3, "explode": [0, 1.5, 0] },
-    { "id": "key", "nodes": ["key"], "name": "Key", "short": "A staircase that is also a password", "detail": "The blade is a sequence of cuts, each one lifting one pin to the shear line. The bow is just a handle. The groove along the side matches the keyway so a blank from a different series will not even enter. Lose the key and the lock is still doing exactly what it was made to do.", "layer": 1, "explode": [-1.4, 0, 0] },
-    { "id": "cam", "nodes": ["cam"], "name": "Cam", "short": "Turns with the plug and throws the bolt", "detail": "A tab on the back of the plug. Once the pins clear the shear line, turning the key turns this, and this is what actually retracts the bolt in the door. The lock's only job is to decide whether this is allowed to move.", "layer": 1, "explode": [1.2, 0, 0] },
-    { "id": "retaining_clip", "nodes": ["retaining_clip"], "name": "Retaining Clip", "short": "Stops the plug falling out of the door", "detail": "A circlip in a groove at the back of the plug. Without it the whole cylinder would push out of the housing the first time you leaned on the key. It is the most boring part, and the one you notice only when it is missing.", "layer": 1, "explode": [1.0, 0.4, 0] }
+    {
+      "id": "housing",
+      "nodes": [
+        "housing"
+      ],
+      "name": "Cylinder Housing",
+      "short": "The part that stays in the door",
+      "detail": "A brass tube with a rectangular bible on top. The bible is a row of chambers, one per pin stack. The housing does not turn. Everything that should rotate lives inside it, and the only reason anything can rotate is that the pin stacks can be lifted until they no longer cross from this tube into the plug.",
+      "layer": 0,
+      "opacity": 0.22,
+      "explode": [
+        0,
+        0.9,
+        0
+      ]
+    },
+    {
+      "id": "plug",
+      "nodes": [
+        "plug"
+      ],
+      "name": "Plug",
+      "short": "The part the key turns",
+      "detail": "A cylinder that fits the housing with a tenth of a millimetre to spare. That circular gap is the shear line. The keyway is a slot cut along its length, shaped so that only a blank of the right profile will enter — the first of two secrets, before the bitting even matters.",
+      "layer": 1,
+      "explode": [
+        0.6,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "key_pins",
+      "nodes": [
+        "key_pins"
+      ],
+      "name": "Key Pins",
+      "short": "Brass, sitting on the key, different lengths",
+      "detail": "Six pins of six lengths. The bottom of each rides the key; the top of each is the split. Cut the key to match and every top lands on the shear line together. Cut it wrong and at least one pin still straddles the line, and the plug is locked to the housing by that one pin.",
+      "layer": 2,
+      "explode": [
+        0,
+        -0.7,
+        0
+      ]
+    },
+    {
+      "id": "driver_pins",
+      "nodes": [
+        "driver_pins"
+      ],
+      "name": "Driver Pins",
+      "short": "Steel, pushed down by the springs",
+      "detail": "The upper half of each stack. Springs shove them down so that, with no key, they sit across the shear line and lock the plug. They are usually steel, harder than the brass key pins, because they take the beating of every lockpick and every wrong key.",
+      "layer": 2,
+      "explode": [
+        0,
+        1.1,
+        0
+      ]
+    },
+    {
+      "id": "springs",
+      "nodes": [
+        "springs"
+      ],
+      "name": "Pin Springs",
+      "short": "The reason the lock resets itself",
+      "detail": "A coil in each chamber. Pull the key out and they drive the stacks back down across the shear line. A lock that did not reset would be a latch, and a latch is not a lock.",
+      "layer": 3,
+      "explode": [
+        0,
+        1.5,
+        0
+      ]
+    },
+    {
+      "id": "key",
+      "nodes": [
+        "key"
+      ],
+      "name": "Key",
+      "short": "A staircase that is also a password",
+      "detail": "The blade is a sequence of cuts, each one lifting one pin to the shear line. The bow is just a handle. The groove along the side matches the keyway so a blank from a different series will not even enter. Lose the key and the lock is still doing exactly what it was made to do.",
+      "layer": 1,
+      "explode": [
+        -1.4,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "cam",
+      "nodes": [
+        "cam"
+      ],
+      "name": "Cam",
+      "short": "Turns with the plug and throws the bolt",
+      "detail": "A tab on the back of the plug. Once the pins clear the shear line, turning the key turns this, and this is what actually retracts the bolt in the door. The lock's only job is to decide whether this is allowed to move.",
+      "layer": 1,
+      "explode": [
+        1.2,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "retaining_clip",
+      "nodes": [
+        "retaining_clip"
+      ],
+      "name": "Retaining Clip",
+      "short": "Stops the plug falling out of the door",
+      "detail": "A circlip in a groove at the back of the plug. Without it the whole cylinder would push out of the housing the first time you leaned on the key. It is the most boring part, and the one you notice only when it is missing.",
+      "layer": 1,
+      "explode": [
+        1.0,
+        0.4,
+        0
+      ]
+    }
   ],
   "steps": [
-    { "title": "A staircase of metal", "body": "The key is not a magic token. It is a set of six depths, cut so that each one lifts one pin stack. Slide it in and every pair of pins rides up its own step.", "focus": ["key", "key_pins"] },
-    { "title": "Meet at the shear line", "body": "The split between key pin and driver is supposed to land exactly on the circle between plug and housing. All six, at once. That circle is the only place the plug is allowed to turn.", "focus": ["key_pins", "driver_pins", "plug"] },
-    { "title": "Springs wait to undo it", "body": "Above every driver a coil is compressed. Pull the key out and the stacks drop back across the line. The lock does not stay open. It has to be held open by the key.", "focus": ["springs", "driver_pins"] },
-    { "title": "Now the plug can turn", "body": "With every pin clear of the shear line the plug is just a cylinder in a tube. The key turns, the plug turns with it.", "focus": ["plug", "housing"] },
-    { "title": "The cam throws the bolt", "body": "On the back of the plug a tab sweeps. That is the only connection to the door. Everything in front of it was a question: is this the right staircase?", "focus": ["cam"] }
+    {
+      "title": "A staircase of metal",
+      "body": "The key is not a magic token. It is a set of six depths, cut so that each one lifts one pin stack. Slide it in and every pair of pins rides up its own step.",
+      "focus": [
+        "key",
+        "key_pins"
+      ]
+    },
+    {
+      "title": "Meet at the shear line",
+      "body": "The split between key pin and driver is supposed to land exactly on the circle between plug and housing. All six, at once. That circle is the only place the plug is allowed to turn.",
+      "focus": [
+        "key_pins",
+        "driver_pins",
+        "plug"
+      ]
+    },
+    {
+      "title": "Springs wait to undo it",
+      "body": "Above every driver a coil is compressed. Pull the key out and the stacks drop back across the line. The lock does not stay open. It has to be held open by the key.",
+      "focus": [
+        "springs",
+        "driver_pins"
+      ]
+    },
+    {
+      "title": "Now the plug can turn",
+      "body": "With every pin clear of the shear line the plug is just a cylinder in a tube. The key turns, the plug turns with it.",
+      "focus": [
+        "plug",
+        "housing"
+      ]
+    },
+    {
+      "title": "The cam throws the bolt",
+      "body": "On the back of the plug a tab sweeps. That is the only connection to the door. Everything in front of it was a question: is this the right staircase?",
+      "focus": [
+        "cam"
+      ]
+    }
   ],
   "quiz": [
-    { "type": "identify", "prompt": "Tap the line the pins must split on before the lock will open.", "partId": "plug" },
-    { "type": "choice", "prompt": "What is a key, mechanically?", "choices": ["A magnet that attracts the pins", "A staircase of depths that lifts each pin pair to the shear line", "A password stored in the lock", "A wedge that forces the plug around"], "answer": 1, "explain": "Each cut lifts one stack. When every split sits on the shear line, the plug is free." },
-    { "type": "identify", "prompt": "Tap the pins that the springs push, the ones that lock the plug with no key in.", "partId": "driver_pins" },
-    { "type": "choice", "prompt": "Why does the lock close itself when you pull the key out?", "choices": ["The cam springs back", "Gravity drops the plug", "Coils above the drivers shove the stacks back across the shear line", "The keyway pinches shut"], "answer": 2, "explain": "The springs are why a lock is not a latch. Remove the key and the pins re-lock it." },
-    { "type": "identify", "prompt": "Tap the part that actually moves the door bolt.", "partId": "cam" },
-    { "type": "choice", "prompt": "If one pin is the wrong length, what happens?", "choices": ["The other five compensate", "That one pin still straddles the shear line and the plug cannot turn", "The key will not enter", "The spring breaks"], "answer": 1, "explain": "A lock is a chain of six. One pin across the line is enough." }
+    {
+      "type": "identify",
+      "prompt": "Tap the line the pins must split on before the lock will open.",
+      "partId": "plug"
+    },
+    {
+      "type": "choice",
+      "prompt": "What is a key, mechanically?",
+      "choices": [
+        "A magnet that attracts the pins",
+        "A staircase of depths that lifts each pin pair to the shear line",
+        "A password stored in the lock",
+        "A wedge that forces the plug around"
+      ],
+      "answer": 1,
+      "explain": "Each cut lifts one stack. When every split sits on the shear line, the plug is free."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the pins that the springs push, the ones that lock the plug with no key in.",
+      "partId": "driver_pins"
+    },
+    {
+      "type": "choice",
+      "prompt": "Why does the lock close itself when you pull the key out?",
+      "choices": [
+        "The cam springs back",
+        "Gravity drops the plug",
+        "Coils above the drivers shove the stacks back across the shear line",
+        "The keyway pinches shut"
+      ],
+      "answer": 2,
+      "explain": "The springs are why a lock is not a latch. Remove the key and the pins re-lock it."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the part that actually moves the door bolt.",
+      "partId": "cam"
+    },
+    {
+      "type": "choice",
+      "prompt": "If one pin is the wrong length, what happens?",
+      "choices": [
+        "The other five compensate",
+        "That one pin still straddles the shear line and the plug cannot turn",
+        "The key will not enter",
+        "The spring breaks"
+      ],
+      "answer": 1,
+      "explain": "A lock is a chain of six. One pin across the line is enough."
+    }
   ]
 }

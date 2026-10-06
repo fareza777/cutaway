@@ -1,0 +1,479 @@
+{
+  "schema": 1,
+  "id": "cyclonic-vacuum",
+  "title": "Cyclonic Vacuum Cleaner",
+  "subtitle": "Cleans by drawing in air and spinning the dust out",
+  "category": "Appliances",
+  "accent": "#55B8C7",
+  "scale": "Compact canister, about 45 cm long",
+  "summary": "A wheeled bagless canister guides dirty air into a clear cyclone bin, separates heavy particles by inertia, filters the remaining dust, and returns cleaned air through the motor and rear exhaust.",
+  "model": "cyclonic_vacuum",
+  "cutAxis": "z",
+  "restRotation": [
+    0.08,
+    -0.5,
+    0
+  ],
+  "parts": [
+    {
+      "id": "outer_body",
+      "nodes": [
+        "outer_body"
+      ],
+      "name": "Canister Body",
+      "short": "The low sealed shell that carries the airflow duct and mechanisms",
+      "detail": "Impact-resistant plastic forms a broad, low chassis around the motor, filters, reel, and internal duct. Overlapping molded volumes close the pressure side at rest while the front saddle leaves the removable bin visible and supported.",
+      "layer": 0,
+      "explode": [
+        0,
+        0,
+        -1.1
+      ]
+    },
+    {
+      "id": "carry_handle",
+      "nodes": [
+        "carry_handle"
+      ],
+      "name": "Carry Handle",
+      "short": "A rigid bridge anchored to both shoulders of the shell",
+      "detail": "Two broad feet transfer the appliance's weight into the canister body. The horizontal grip is integrated into the low silhouette rather than attached as a floating loop.",
+      "layer": 0,
+      "explode": [
+        0,
+        0.85,
+        0
+      ]
+    },
+    {
+      "id": "hose_inlet",
+      "nodes": [
+        "hose_inlet"
+      ],
+      "name": "Tangential Hose Inlet",
+      "short": "The hose socket that aims dirty air around the cyclone wall",
+      "detail": "The curved socket enters high and off-centre, tangent to the circular separator. That direction gives incoming air angular momentum instead of firing dust straight into the middle of the bin.",
+      "layer": 1,
+      "explode": [
+        -0.75,
+        0,
+        0.35
+      ]
+    },
+    {
+      "id": "dust_bin",
+      "nodes": [
+        "dust_bin"
+      ],
+      "name": "Clear Dust Bin",
+      "short": "A removable transparent vessel for separated debris",
+      "detail": "Tough clear polycarbonate makes the fill level visible and lets the sealed cyclone be inspected. The bin surrounds the separator but remains removable for emptying without opening the motor chamber.",
+      "layer": 0,
+      "explode": [
+        -0.8,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "cyclone_cone",
+      "nodes": [
+        "cyclone_cone"
+      ],
+      "name": "Cyclone Cone",
+      "short": "A taper that tightens the descending vortex",
+      "detail": "Air spirals downward as the cone narrows. Dust has more inertia than the turning air, so particles migrate toward the wall, lose speed, and fall into the bin while the cleaner core flow turns upward.",
+      "layer": 2,
+      "explode": [
+        0,
+        -0.75,
+        0
+      ]
+    },
+    {
+      "id": "cyclone_shroud",
+      "nodes": [
+        "cyclone_shroud"
+      ],
+      "name": "Perforated Cyclone Shroud",
+      "short": "A screened clean-air outlet inside the separator",
+      "detail": "Real open passages admit the cleaner inner vortex while stopping larger debris from reaching the outlet duct. The shroud's upper neck bends rearward toward the first filter.",
+      "layer": 2,
+      "explode": [
+        0,
+        0.65,
+        0
+      ]
+    },
+    {
+      "id": "bin_seal",
+      "nodes": [
+        "bin_seal"
+      ],
+      "name": "Bin and Filter Seals",
+      "short": "Compressible gaskets closing the separator and both filter frames",
+      "detail": "Rubber seals are squeezed around the bin rim, pre-motor filter, and exhaust filter. They force the air through each filter medium instead of letting it leak around an edge into the body cavity.",
+      "layer": 1,
+      "explode": [
+        0,
+        0.75,
+        0
+      ]
+    },
+    {
+      "id": "pre_motor_filter",
+      "nodes": [
+        "pre_motor_filter"
+      ],
+      "name": "Pre-motor Filter",
+      "short": "A pleated barrier immediately upstream of the fan",
+      "detail": "Fine particles that remain after cyclonic separation meet the full pleated area of this filter. Its sealed frame spans the inlet duct so air cannot simply travel around the medium and into the impeller.",
+      "layer": 2,
+      "explode": [
+        -0.15,
+        0,
+        0.8
+      ]
+    },
+    {
+      "id": "motor_stator",
+      "nodes": [
+        "motor_stator"
+      ],
+      "name": "Motor Stator",
+      "short": "Stationary steel poles and copper windings around the rotor",
+      "detail": "Controlled current in the copper windings creates a rotating magnetic field. The close annular air gap lets that field act efficiently on the coaxial rotor while air moving through the chamber also removes heat.",
+      "layer": 3,
+      "explode": [
+        0,
+        0,
+        -0.85
+      ]
+    },
+    {
+      "id": "motor_rotor",
+      "nodes": [
+        "motor_rotor"
+      ],
+      "name": "Motor Rotor",
+      "short": "The high-speed magnetic rotor and shared shaft",
+      "detail": "Permanent magnets follow the stator field and spin the steel shaft. The rotor and impeller are coaxial and phase-locked, so electrical torque reaches the fan without a belt or gearbox.",
+      "layer": 4,
+      "explode": [
+        0,
+        0,
+        0.65
+      ],
+      "motion": {
+        "pivot": [
+          0.72,
+          0.02,
+          0
+        ],
+        "spin": {
+          "axis": "x",
+          "ratio": 10
+        }
+      }
+    },
+    {
+      "id": "impeller",
+      "nodes": [
+        "impeller"
+      ],
+      "name": "Centrifugal Impeller",
+      "short": "The shaft-mounted fan that accelerates air outward",
+      "detail": "Curved blades accelerate air from the eye of the fan toward its rim. The diffuser and downstream passage convert part of that velocity into pressure rise, allowing the running fan to maintain lower static pressure at the inlet.",
+      "layer": 4,
+      "explode": [
+        -0.45,
+        0,
+        0
+      ],
+      "motion": {
+        "pivot": [
+          0.24,
+          0.02,
+          0
+        ],
+        "spin": {
+          "axis": "x",
+          "ratio": 10
+        }
+      }
+    },
+    {
+      "id": "motor_mount",
+      "nodes": [
+        "motor_mount"
+      ],
+      "name": "Motor Mount",
+      "short": "Two annular supports tying the motor to the chassis",
+      "detail": "The rings locate the stator around the shaft and their four feet carry reaction torque into the body. Resilient interfaces reduce vibration without leaving the motor floating inside the shell.",
+      "layer": 3,
+      "explode": [
+        0,
+        -0.7,
+        0
+      ]
+    },
+    {
+      "id": "exhaust_filter",
+      "nodes": [
+        "exhaust_filter"
+      ],
+      "name": "Exhaust Filter",
+      "short": "A final pleated filter between motor discharge and room air",
+      "detail": "The full motor discharge crosses this second pleated medium before reaching the vent. It catches fine particles and brush or bearing debris that should not be returned to the room.",
+      "layer": 2,
+      "explode": [
+        0.1,
+        0,
+        0.8
+      ]
+    },
+    {
+      "id": "exhaust_vent",
+      "nodes": [
+        "exhaust_vent"
+      ],
+      "name": "Rear Exhaust Vent",
+      "short": "A protected outlet spreading filtered air behind the machine",
+      "detail": "The enclosed outlet plenum leads directly from the exhaust filter to horizontal louvers. Their large combined opening limits back-pressure and directs the cleaned air away from the dust bin and floor pickup path.",
+      "layer": 1,
+      "explode": [
+        0.8,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "cord_reel",
+      "nodes": [
+        "cord_reel"
+      ],
+      "name": "Cord Reel",
+      "short": "A spring-return drum storing the mains cable",
+      "detail": "The cable wraps around a low rear drum below the motor. A spiral spring rewinds it when released, while the wide flanges keep the turns from spilling into the airflow or wheel space.",
+      "layer": 2,
+      "explode": [
+        0,
+        -0.7,
+        0
+      ],
+      "motion": {
+        "pivot": [
+          1.55,
+          -0.69,
+          0
+        ],
+        "spin": {
+          "axis": "z",
+          "ratio": 0.55
+        }
+      }
+    },
+    {
+      "id": "power_control",
+      "nodes": [
+        "power_control"
+      ],
+      "name": "Power and Rewind Controls",
+      "short": "Large foot-operated buttons on the rear deck",
+      "detail": "One button switches motor power and the other releases the cord-reel latch. Their broad, ribbed surfaces can be operated without lifting the low canister from the floor.",
+      "layer": 0,
+      "explode": [
+        0,
+        0.55,
+        0
+      ]
+    },
+    {
+      "id": "main_wheels",
+      "nodes": [
+        "main_wheels"
+      ],
+      "name": "Main Wheels",
+      "short": "Two large rubber-tired wheels on one transverse axle",
+      "detail": "The substantial wheels carry most of the canister's mass and meet the floor at the lowest plane. Steel hubs overlap the body-mounted axle, so the pair rolls as supported hardware rather than floating decoration.",
+      "layer": 0,
+      "explode": [
+        0,
+        0,
+        1.05
+      ],
+      "motion": {
+        "pivot": [
+          0.86,
+          -0.76,
+          0
+        ],
+        "spin": {
+          "axis": "z",
+          "ratio": 0.8
+        }
+      }
+    },
+    {
+      "id": "caster_wheel",
+      "nodes": [
+        "caster_wheel"
+      ],
+      "name": "Front Caster Wheel",
+      "short": "A smaller supported wheel stabilising the nose",
+      "detail": "The caster shares the ground plane with the main wheels and sits well ahead of their axle. Its fork and swivel stem connect into the bin saddle so the nose can change direction without scraping the floor.",
+      "layer": 0,
+      "explode": [
+        0,
+        -0.4,
+        0
+      ],
+      "motion": {
+        "pivot": [
+          -1.42,
+          -0.94,
+          0
+        ],
+        "spin": {
+          "axis": "z",
+          "ratio": 1.2
+        }
+      }
+    }
+  ],
+  "steps": [
+    {
+      "title": "Establish the pressure-driven flow",
+      "body": "The spinning fan accelerates air and maintains lower static pressure at the hose inlet than in the room. The resulting pressure difference pushes room air and dust into the hose; suction is a useful description of the effect, not a material that the machine creates.",
+      "focus": [
+        "impeller",
+        "motor_rotor",
+        "hose_inlet"
+      ]
+    },
+    {
+      "title": "Enter the separator tangentially",
+      "body": "Dirty air arrives high and off-centre. The tangential inlet turns the flow around the cyclone wall instead of sending it directly toward the clean-air outlet.",
+      "focus": [
+        "hose_inlet",
+        "dust_bin",
+        "bin_seal"
+      ]
+    },
+    {
+      "title": "Separate dust in the vortex",
+      "body": "The narrowing cone sustains a fast spiral. Heavier particles resist the tight turn, move toward the wall, and fall into the clear bin while cleaner air remains nearer the centre.",
+      "focus": [
+        "cyclone_cone",
+        "dust_bin"
+      ]
+    },
+    {
+      "title": "Protect the fan from fine dust",
+      "body": "Air turns through the perforated shroud and clean-air neck, then crosses the pre-motor filter. The sealed pleated area catches fine particles that escaped inertial separation.",
+      "focus": [
+        "cyclone_shroud",
+        "pre_motor_filter"
+      ]
+    },
+    {
+      "title": "Convert electrical power into airflow",
+      "body": "The stator's rotating magnetic field drives the coaxial rotor. Its shared shaft spins the centrifugal impeller at the same speed and direction, continuously adding energy to the airflow.",
+      "focus": [
+        "motor_stator",
+        "motor_rotor",
+        "impeller",
+        "motor_mount"
+      ]
+    },
+    {
+      "title": "Filter and discharge the air",
+      "body": "Motor discharge crosses the exhaust filter before entering the rear plenum. Wide louvers release cleaned air with modest back-pressure and direct it away from collected dust.",
+      "focus": [
+        "exhaust_filter",
+        "exhaust_vent"
+      ]
+    },
+    {
+      "title": "Roll, empty, and store",
+      "body": "Large main wheels and the front caster keep the low canister mobile. The clear bin lifts from its sealed saddle for emptying, and the spring reel stores the power cord inside the rear chassis.",
+      "focus": [
+        "main_wheels",
+        "caster_wheel",
+        "dust_bin",
+        "cord_reel",
+        "carry_handle"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "type": "identify",
+      "prompt": "Tap the part that introduces dirty air tangentially.",
+      "partId": "hose_inlet"
+    },
+    {
+      "type": "choice",
+      "prompt": "What pushes room air into the hose while the fan runs?",
+      "choices": [
+        "A pressure difference",
+        "A stream of suction material",
+        "The cord reel spring",
+        "Static charge in the bin"
+      ],
+      "answer": 0,
+      "explain": "The fan maintains lower static pressure at the inlet, so the higher room pressure drives air toward it."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the taper that tightens the descending vortex.",
+      "partId": "cyclone_cone"
+    },
+    {
+      "type": "choice",
+      "prompt": "Why do many dust particles move toward the cyclone wall?",
+      "choices": [
+        "Their inertia resists the rapidly turning airflow",
+        "The clear plastic attracts every particle",
+        "The motor reverses their mass",
+        "The exhaust filter blows them sideways"
+      ],
+      "answer": 0,
+      "explain": "Particles with greater inertia cannot follow the tight curved streamlines as readily as air, so they migrate outward and lose energy at the wall."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the pleated barrier that protects the impeller and motor.",
+      "partId": "pre_motor_filter"
+    },
+    {
+      "type": "choice",
+      "prompt": "Why must the rotor and impeller share a coaxial shaft?",
+      "choices": [
+        "To transfer motor torque directly to the fan",
+        "To rewind the cable",
+        "To steer the caster",
+        "To make the bin transparent"
+      ],
+      "answer": 0,
+      "explain": "A common shaft keeps both rotating about one axis at the same speed and direction without a separate transmission."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the final filter immediately before the rear outlet.",
+      "partId": "exhaust_filter"
+    },
+    {
+      "type": "choice",
+      "prompt": "What is a likely result of a leaking bin seal?",
+      "choices": [
+        "Air bypasses the intended cyclone path",
+        "The motor gains extra torque",
+        "The wheels become larger",
+        "The cord rewinds faster"
+      ],
+      "answer": 0,
+      "explain": "A leak reduces control of the pressure-driven flow and lets dirty air bypass part of the separator."
+    }
+  ]
+}

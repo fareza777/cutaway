@@ -1,0 +1,178 @@
+{
+  "title": "Paru-paru",
+  "subtitle": "Organ yang memasukkan oksigen ke dalam darah",
+  "scale": "tinggi sekitar 25 cm",
+  "summary": "Paru-paru tidak bernapas dengan tenaganya sendiri. Organ ini tidak memiliki otot untuk menarik udara; diafragma di bawahnya yang mendatar dan memperbesar rongga dada hingga udara masuk akibat perbedaan tekanan. Fungsi paru-paru adalah menyediakan permukaan. Saluran napas bercabang sekitar 23 kali dan berakhir pada 300 juta kantung kecil dengan luas gabungan kira-kira setengah lapangan tenis. Kapiler yang sangat halus menyelubunginya hingga sel darah merah lewat satu per satu. Seluruh bentuknya dirancang untuk memuat permukaan sangat luas di dalam ruang kecil.",
+  "parts": {
+    "pleura": {
+      "name": "Pleura",
+      "short": "Dua selaput licin dan tekanan negatif yang menahan paru tetap terbuka",
+      "detail": "Satu selaput melapisi dinding dada dan satu lagi membungkus paru, dengan lapisan cairan setebal beberapa mikrometer di antaranya. Paru tidak menempel langsung pada tulang rusuk, melainkan tertahan oleh tekanan negatif. Jika udara masuk ke celah itu akibat patah tulang rusuk atau luka tusuk, paru mengerut dan kolaps dalam hitungan detik. Cairan pleura memungkinkan kedua permukaan bergeser tanpa gesekan saat bernapas."
+    },
+    "upper_lobe_right": {
+      "name": "Lobus Atas Kanan",
+      "short": "Bagian atas tempat gangguan akibat bahan yang terhirup sering terjadi",
+      "detail": "Lobus bukan sekadar pembagian bentuk. Setiap lobus merupakan bagian paru yang dapat dipisahkan dan memiliki bronkus serta arterinya sendiri, sehingga satu lobus dapat diangkat tanpa menghentikan bagian lain. Tuberkulosis paling sering menetap di lobus kanan atas karena puncak paru menerima banyak udara tetapi lebih sedikit darah, kondisi yang disukai bakterinya."
+    },
+    "middle_lobe_right": {
+      "name": "Lobus Tengah Kanan",
+      "short": "Irisan kecil yang hanya dimiliki paru kanan",
+      "detail": "Paru kiri tidak memiliki lobus setara karena jantung menempati ruang tersebut. Bronkus lobus tengah sempit dan bercabang pada sudut tajam, sehingga pembuangan lendirnya kurang baik. Lobus kecil ini lebih mudah kolaps daripada yang lain, contoh bahwa gangguan paru sering dipengaruhi sudut percabangan saluran, bukan hanya jaringan."
+    },
+    "lower_lobe_right": {
+      "name": "Lobus Bawah Kanan",
+      "short": "Lobus terbesar dan paling aktif saat tubuh beristirahat",
+      "detail": "Gravitasi menarik darah ke bagian bawah dada, sehingga dasar paru menerima aliran jauh lebih besar daripada puncaknya. Sebagian besar pertukaran gas saat istirahat terjadi di sini. Karena itu pneumonia pada orang yang lama berbaring sering mengendap di bagian belakang lobus bawah, dan mendudukkan pasien dapat menjadi bagian pengobatan, bukan hanya memberi kenyamanan."
+    },
+    "upper_lobe_left": {
+      "name": "Lobus Atas Kiri",
+      "short": "Memiliki lingula dan lekukan tempat jantung menekan",
+      "detail": "Paru kiri hanya memiliki dua lobus dan lebih kecil daripada paru kanan karena sebagian besar jantung berada di sisi kiri dada. Tekanan jantung membentuk lekuk jantung pada tepi depan lobus ini. Lidah jaringan kecil di bawah lekukan disebut lingula, bagian yang kurang lebih menggantikan lobus tengah di paru kiri."
+    },
+    "lower_lobe_left": {
+      "name": "Lobus Bawah Kiri",
+      "short": "Lebih banyak berada di belakang daripada di bawah",
+      "detail": "Celah antarlobus berjalan miring, sehingga lobus ini menempati lebih banyak sisi belakang dada daripada bagian bawah. Karena itu pemeriksaan lobus bawah dengan stetoskop dilakukan melalui punggung, bukan hanya di bawah rusuk depan. Suara yang terdengar dari bagian depan dada sebagian besar berasal dari lobus atas."
+    },
+    "trachea": {
+      "name": "Trakea",
+      "short": "Disangga cincin tulang rawan yang sengaja tidak tertutup penuh",
+      "detail": "Saluran sepanjang sekitar 12 cm ini diperkuat 15–20 cincin tulang rawan berbentuk C, bukan lingkaran penuh. Celahnya menghadap ke belakang ke arah esofagus dan tetap lunak agar makanan yang ditelan dapat menonjol ke ruang tersebut. Kekakuan cincin mencegah trakea mengempis saat menarik napas kuat, seperti sedotan yang terjepit ketika cairan kental disedot."
+    },
+    "carina": {
+      "name": "Karina",
+      "short": "Titik percabangan yang sangat peka terhadap sentuhan",
+      "detail": "Punggung jaringan di tempat trakea membelah dua ini memiliki sangat banyak reseptor batuk. Sentuhan kateter pengisap dapat langsung memicu batuk keras yang sulit ditahan. Dokter anestesi memakainya sebagai patokan, dan pergeseran posisi karina pada foto Rontgen menunjukkan adanya dorongan atau tarikan dari salah satu sisi dada."
+    },
+    "right_main_bronchus": {
+      "name": "Bronkus Utama Kanan",
+      "short": "Lebih lebar, pendek, dan tegak sehingga benda asing cenderung masuk ke kanan",
+      "detail": "Jantung mendorong bronkus kiri ke samping, sementara bronkus kanan turun lebih lurus. Karena itu benda yang tidak sengaja terhirup—kacang, gigi, atau muntahan—jauh lebih sering masuk ke paru kanan. Bentuk anatomi ini dapat memprediksi letak keadaan darurat sebelum pemeriksaan dilakukan."
+    },
+    "left_main_bronchus": {
+      "name": "Bronkus Utama Kiri",
+      "short": "Lebih panjang dan mendatar karena terhalang jantung",
+      "detail": "Bronkus ini menempuh jalur lebih jauh pada sudut lebih landai untuk mencapai paru yang terdorong ke samping oleh jantung. Jalurnya juga melewati bawah lengkung aorta. Aneurisma di sana dapat menekan bronkus dan saraf di sebelahnya, sehingga suara serak kadang menjadi tanda awal masalah yang bukan berasal dari tenggorokan."
+    },
+    "hilum": {
+      "name": "Hilum Paru",
+      "short": "Pintu tempat semua saluran keluar-masuk paru",
+      "detail": "Hilum lebih tepat disebut lokasi daripada satu struktur: bronkus, arteri pulmonalis, vena, saraf, dan pembuluh limfa bersama-sama menembus pleura di sini. Karena semua limfa paru mengalir melewatinya, kelenjar di hilum sering menjadi tempat pertama penyebaran kanker paru dan diperiksa setelah ditemukan bayangan mencurigakan."
+    },
+    "bronchial_tree": {
+      "name": "Pohon Bronkial",
+      "short": "Sekitar 23 tingkat percabangan yang makin mengecil",
+      "detail": "Saluran napas membelah dua, lalu masing-masing cabang membelah lagi sekitar 23 kali. Walau tiap tabung mengecil, luas penampang gabungannya meningkat sangat besar. Di ujung, luasnya ribuan kali trakea dan udara bergerak sangat lambat. Pertukaran gas memerlukan ketenangan, sehingga percabangan ini mengubah semburan udara menjadi aliran lembut."
+    },
+    "bronchioles": {
+      "name": "Bronkiolus",
+      "short": "Saluran tanpa tulang rawan yang menyempit saat asma",
+      "detail": "Pada diameter di bawah sekitar satu milimeter, saluran napas tidak lagi memiliki tulang rawan. Bronkiolus dipertahankan terbuka oleh tarikan jaringan elastis di sekitarnya, sedangkan dindingnya memiliki cincin otot polos. Kontraksi otot dan pembengkakan lapisan mempersempit saluran saat serangan asma. Bunyi mengi terutama terdengar saat mengembuskan napas karena tarikan pembuka berkurang ketika paru mengempis."
+    },
+    "alveoli": {
+      "name": "Alveoli",
+      "short": "Sekitar 300 juta kantung yang ditampilkan sangat diperbesar",
+      "detail": "Setiap alveolus berdiameter sekitar seperlima milimeter dan jumlahnya kira-kira 300 juta, sehingga model menampilkannya sekitar dua ratus kali lebih besar. Luas permukaan gabungannya mencapai kurang lebih setengah lapangan tenis. Kantung kecil cenderung mengempis ke kantung besar, tetapi surfaktan yang dihasilkan sel lapisan mengurangi tegangan permukaan dan menjaganya terbuka. Bayi prematur yang belum cukup menghasilkan surfaktan kesulitan mempertahankan paru tetap mengembang."
+    },
+    "pulmonary_arteries": {
+      "name": "Arteri Pulmonalis",
+      "short": "Arteri yang membawa darah miskin oksigen",
+      "detail": "Istilah arteri berarti pembuluh yang menjauhi jantung, bukan selalu pembuluh kaya oksigen. Arteri pulmonalis membawa darah miskin oksigen dari ventrikel kanan menuju paru. Dindingnya jauh lebih tipis daripada aorta karena sirkulasi paru bekerja pada sekitar seperlima tekanan sistemik; jarak ke paru dekat dan tidak memerlukan dorongan besar."
+    },
+    "pulmonary_veins": {
+      "name": "Vena Pulmonalis",
+      "short": "Vena yang membawa darah kaya oksigen",
+      "detail": "Empat vena—dua dari setiap paru—mengembalikan darah yang baru menerima oksigen ke atrium kiri. Inilah satu-satunya vena pada tubuh dewasa yang melakukan hal tersebut. Selubung otot di pertemuannya dengan jantung sering menjadi sumber fibrilasi atrium, sehingga terapi standar dapat mengisolasi area di sekeliling tiap muara secara elektrik."
+    },
+    "capillary_bed": {
+      "name": "Anyaman Kapiler",
+      "short": "Pembatas yang lebih tipis daripada selaput gelembung sabun",
+      "detail": "Setiap alveolus diselubungi anyaman pembuluh yang begitu halus hingga sel darah merah lewat satu per satu sambil berubah bentuk. Udara dan darah hanya dipisahkan dinding alveolus, membran basal bersama, dan dinding kapiler—total sekitar setengah mikrometer. Oksigen menyeberang dalam kurang dari seperempat detik. Jaringan parut atau cairan yang menebalkan jarak ini segera menimbulkan sesak."
+    },
+    "diaphragm": {
+      "name": "Diafragma",
+      "short": "Otot yang benar-benar menggerakkan pernapasan",
+      "detail": "Kubah otot di bawah paru ini menjadi penggerak utama pernapasan. Saat berkontraksi, diafragma mendatar, rongga dada membesar, tekanannya turun, dan udara masuk karena didorong tekanan atmosfer. Otot ini menjalankan sekitar tiga perempat napas tenang. Sarafnya berasal dari leher akibat perkembangan embrio, sehingga cedera leher dapat menghentikan napas walau dinding dada tidak rusak."
+    }
+  },
+  "steps": [
+    {
+      "title": "Dasar rongga dada turun",
+      "body": "Diafragma berkontraksi dan mendatar. Tidak ada udara yang ditarik secara langsung; rongga dada hanya menjadi lebih besar sehingga tekanannya turun di bawah tekanan udara luar."
+    },
+    {
+      "title": "Udara terdorong masuk",
+      "body": "Tekanan atmosfer mendorong udara melalui trakea, melewati karina, lalu masuk ke kedua paru—sekitar setengah liter pada napas tenang. Paru tetap pasif karena tidak memiliki otot dan hanya mengikuti ruang yang dibentuk diafragma."
+    },
+    {
+      "title": "Aliran cepat berubah menjadi gerak lambat",
+      "body": "Setiap percabangan membagi aliran dan menambah luas penampang gabungan, berulang hingga sekitar 23 tingkat. Di saluran terkecil, udara hampir berhenti dan molekul menyebar dengan difusi. Kondisi tenang ini memungkinkan pertukaran gas."
+    },
+    {
+      "title": "Permukaan seluas setengah lapangan tenis",
+      "body": "Cabang berakhir pada 300 juta kantung. Luas gabungannya sangat besar dan dinding antara udara serta darah hanya sekitar setengah mikrometer, sehingga oksigen menyeberang dalam kurang dari seperempat detik sementara karbon dioksida bergerak ke arah sebaliknya."
+    },
+    {
+      "title": "Darah miskin oksigen masuk, darah kaya oksigen keluar",
+      "body": "Darah miskin oksigen tiba dari sisi kanan jantung melalui arteri pulmonalis, lalu kembali dalam keadaan kaya oksigen melalui vena pulmonalis menuju sisi kiri. Di sinilah arteri membawa darah yang lebih gelap."
+    },
+    {
+      "title": "Udara keluar tanpa banyak tenaga",
+      "body": "Mengembuskan napas tenang sebagian besar tidak memerlukan kerja otot. Diafragma mengendur dan jaringan paru yang teregang memantul kembali seperti balon yang dilepas. Hilangnya elastisitas pada emfisema membuat pengosongan paru lebih sulit daripada pengisiannya."
+    }
+  ],
+  "quiz": [
+    {
+      "prompt": "Ketuk bagian yang benar-benar melakukan kerja pernapasan."
+    },
+    {
+      "prompt": "Bagaimana udara masuk ke paru-paru?",
+      "choices": [
+        "Paru-paru mengembang dan mengisap udara",
+        "Rongga dada diperbesar, tekanan di dalam turun, lalu udara luar terdorong masuk",
+        "Trakea memompa udara ke bawah",
+        "Diafragma meniupkan udara"
+      ],
+      "explain": "Paru-paru tidak memiliki otot untuk menarik. Diafragma memperbesar rongga dada, tekanan di dalam turun di bawah tekanan atmosfer, dan udara luar terdorong masuk."
+    },
+    {
+      "prompt": "Ketuk kantung tempat oksigen benar-benar menyeberang ke dalam darah."
+    },
+    {
+      "prompt": "Mengapa benda yang tidak sengaja terhirup hampir selalu masuk ke paru kanan?",
+      "choices": [
+        "Paru kanan lebih besar",
+        "Bronkus utama kanan lebih lebar, pendek, dan tegak karena jantung mendorong bronkus kiri ke samping",
+        "Orang cenderung miring ke kanan",
+        "Paru kiri dilindungi katup"
+      ],
+      "explain": "Jantung memenuhi ruang di sisi kiri sehingga bronkus kiri harus menempuh jalur lebih panjang dan mendatar. Benda yang jatuh di saluran napas cenderung memilih jalur kanan yang lebih lurus."
+    },
+    {
+      "prompt": "Ketuk pembuluh yang membawa darah miskin oksigen meskipun disebut arteri."
+    },
+    {
+      "prompt": "Mengapa paru kiri lebih kecil daripada paru kanan?",
+      "choices": [
+        "Jumlah alveolusnya lebih sedikit",
+        "Sebagian besar jantung berada di kiri dan memakan ruang",
+        "Paru kiri lebih jarang digunakan",
+        "Lambung menekannya"
+      ],
+      "explain": "Paru kiri hanya memiliki dua lobus, lekukan pada tepi depan, dan tidak memiliki lobus tengah karena ruangnya ditempati jantung."
+    },
+    {
+      "prompt": "Ketuk bagian yang menahan paru tetap terbuka pada dinding dada."
+    },
+    {
+      "prompt": "Apa yang membuat saluran napas menyempit saat serangan asma?",
+      "choices": [
+        "Cincin tulang rawan mengencang",
+        "Saluran terkecil tidak memiliki tulang rawan sehingga otot pada dindingnya dapat menyempitkannya",
+        "Alveoli terisi cairan",
+        "Diafragma melemah"
+      ],
+      "explain": "Di bawah diameter sekitar satu milimeter, saluran napas tidak memiliki tulang rawan dan hanya ditahan terbuka oleh jaringan sekitarnya. Otot polos pada dindingnya dapat berkontraksi hingga saluran menyempit."
+    }
+  ]
+}

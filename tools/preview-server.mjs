@@ -12,17 +12,27 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { extname, join, normalize } from 'node:path';
 
 const ROOT = process.cwd();
-const PORT = 5179;
+const requestedPort = Number(process.env.CUTAWAY_PREVIEW_PORT ?? 5179);
+if (!Number.isInteger(requestedPort) || requestedPort < 1024 || requestedPort > 65535) {
+  throw new Error(`Invalid CUTAWAY_PREVIEW_PORT: ${process.env.CUTAWAY_PREVIEW_PORT}`);
+}
+const PORT = requestedPort;
 const TYPES = {
   '.html': 'text/html',
   '.js': 'text/javascript',
   '.mjs': 'text/javascript',
   '.glb': 'model/gltf-binary',
   '.json': 'application/json',
+  '.png': 'image/png',
 };
 
 createServer(async (request, response) => {
   const path = decodeURIComponent((request.url ?? '/').split('?')[0]);
+
+  if (request.method === 'GET' && path === '/health') {
+    response.writeHead(200, { 'content-type': 'text/plain' }).end('ok');
+    return;
+  }
 
   // The page renders offscreen and posts the frame here. Going through the
   // server rather than returning the image to the caller keeps a megabyte of
@@ -40,6 +50,31 @@ createServer(async (request, response) => {
     return;
   }
 
+  if (request.method === 'POST' && path === '/icon') {
+    const chunks = [];
+    let length = 0;
+    for await (const chunk of request) {
+      length += chunk.length;
+      if (length > 8 * 1024 * 1024) {
+        response.writeHead(413).end('icon payload too large');
+        return;
+      }
+      chunks.push(chunk);
+    }
+    const body = Buffer.concat(chunks).toString();
+    const split = body.indexOf('\n');
+    const id = body.slice(0, split);
+    const dataUrl = body.slice(split + 1);
+    if (split < 1 || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id) || !dataUrl.startsWith('data:image/png;base64,')) {
+      response.writeHead(400).end('invalid icon payload');
+      return;
+    }
+    await mkdir(join(ROOT, 'assets/object-icons'), { recursive: true });
+    await writeFile(join(ROOT, 'assets/object-icons', `${id}.png`), Buffer.from(dataUrl.split(',')[1], 'base64'));
+    response.writeHead(200).end('ok');
+    return;
+  }
+
   const file = join(ROOT, normalize(path === '/' ? '/tools/preview.html' : path));
   if (!file.startsWith(ROOT)) {
     response.writeHead(403).end('no');
@@ -51,4 +86,4 @@ createServer(async (request, response) => {
   } catch {
     response.writeHead(404).end('not found');
   }
-}).listen(PORT, () => console.log(`preview on http://localhost:${PORT}`));
+}).listen(PORT, '127.0.0.1', () => console.log(`preview on http://127.0.0.1:${PORT} pid=${process.pid}`));

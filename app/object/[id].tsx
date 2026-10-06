@@ -23,8 +23,9 @@ import { ToolDock, type ToolId, type ToolValues } from '@/ui/explorer/ToolDock';
 import { PartSheet, SHEET_COMPACT, SHEET_EXPANDED } from '@/ui/explorer/PartSheet';
 import { PartsPanel, StoryPanel } from '@/ui/explorer/Panels';
 import { Dimensions } from 'react-native';
-import { useColors, useLocale, useSettings, useT, useThemeMode } from '@/state/settings';
+import { useColors, useLocale, useReadableAccent, useSettings, useT, useThemeMode } from '@/state/settings';
 import { alpha, radius, space } from '@/ui/theme';
+import { showViewerExitInterstitial } from '@/monetization/ads';
 
 type Panel = 'none' | 'parts' | 'story';
 
@@ -43,6 +44,8 @@ export default function Explorer() {
   const modelAsset = useMemo(() => (id ? getModelAsset(id) : undefined), [id]);
 
   const viewerRef = useRef<CutawayViewer | null>(null);
+  const viewerStartedAt = useRef<number | null>(null);
+  const exitAdRequested = useRef(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
@@ -58,6 +61,18 @@ export default function Explorer() {
   const [sheetExpanded, setSheetExpanded] = useState(false);
   const [layerFocus, setLayerFocus] = useState<number | null>(null);
   const [cutAxis, setCutAxis] = useState<'x' | 'y' | 'z'>('x');
+
+  useEffect(() => {
+    viewerStartedAt.current = null;
+    exitAdRequested.current = false;
+  }, [id]);
+
+  const handleViewerBack = useCallback(async () => {
+    if (exitAdRequested.current) return;
+    exitAdRequested.current = true;
+    await showViewerExitInterstitial(viewerStartedAt.current ?? Date.now());
+    router.back();
+  }, [router]);
 
   const changeCutAxis = useCallback((axis: 'x' | 'y' | 'z') => {
     setCutAxis(axis);
@@ -85,10 +100,11 @@ export default function Explorer() {
         setIsolated(false);
         return true;
       }
-      return false;
+      void handleViewerBack();
+      return true;
     });
     return () => subscription.remove();
-  }, [panel, selected]);
+  }, [handleViewerBack, panel, selected]);
 
   const onReady = useCallback(
     (viewer: CutawayViewer) => {
@@ -104,6 +120,7 @@ export default function Explorer() {
       viewer
         .setObject(doc, modelAsset)
         .then(() => {
+          viewerStartedAt.current = Date.now();
           setMaxLayer(viewer.maxLayer);
           setAnimatable(viewer.animatable);
         })
@@ -261,7 +278,7 @@ export default function Explorer() {
 
   return (
     <View style={[styles.screen, { backgroundColor: colors.bg }]}>
-      <Viewport events={events} onReady={onReady} interactive={!panelOpen} />
+      <Viewport events={events} onReady={onReady} interactive={!panelOpen} active={!panelOpen} />
 
       {loading ? (
         <View style={styles.loading} pointerEvents="none">
@@ -287,7 +304,7 @@ export default function Explorer() {
         accent={accent}
         top={insets.top}
         autoRotate={autoRotate}
-        onBack={() => router.back()}
+        onBack={() => void handleViewerBack()}
         onReset={resetAll}
         onToggleAutoRotate={toggleAutoRotate}
         onToggleTheme={toggleMode}
@@ -398,6 +415,7 @@ function NavBar({
   onQuiz: () => void;
 }) {
   const colors = useColors();
+  const accentText = useReadableAccent(accent);
   const t = useT();
   const items = [
     { label: t('nav.parts'), icon: 'list-outline' as const, onPress: onParts },
@@ -419,7 +437,7 @@ function NavBar({
           accessibilityLabel={item.label}
           style={[styles.navItem, { borderColor: alpha(accent, 0.24), backgroundColor: colors.floating }]}
         >
-          <Ionicons name={item.icon} size={16} color={accent} />
+          <Ionicons name={item.icon} size={16} color={accentText} />
           <Text variant="caption" color={colors.text}>
             {item.label}
           </Text>

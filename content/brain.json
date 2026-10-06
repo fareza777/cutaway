@@ -2,41 +2,288 @@
   "schema": 1,
   "id": "brain",
   "title": "Brain",
-  "subtitle": "A wrinkled computer that runs on sugar",
+  "subtitle": "The organ that controls everything the body does",
   "category": "Anatomy",
   "accent": "#D4A090",
   "scale": "≈ 15 cm long",
   "summary": "A brain is a sheet of nerve cells, crumpled so it will fit, sitting on a stalk that already knew how to keep you breathing before anything in the sheet had a thought. The wrinkles are not decoration: they are how a square metre of cortex packs into a skull. The two halves talk through a bridge of white cable. The fluid-filled rooms inside are a shock absorber and a sewer.",
   "model": "brain",
   "cutAxis": "x",
-  "restRotation": [0.22, -0.52, 0],
+  "restRotation": [
+    0.22,
+    -0.52,
+    0
+  ],
   "parts": [
-    { "id": "left_hemisphere", "nodes": ["left_hemisphere"], "name": "Left Hemisphere", "short": "Language, for most people, lives here", "detail": "A crumpled sheet of grey cortex over a core of white cables. In most right-handed people the regions that turn thought into words sit on this side. Damage here can take speech and leave the rest of the person intact, which is how we know the wrinkles are not all doing the same job.", "layer": 1, "explode": [-0.8, 0, 0] },
-    { "id": "right_hemisphere", "nodes": ["right_hemisphere"], "name": "Right Hemisphere", "short": "The other half of the same sheet", "detail": "Not the 'creative side' in any way a textbook should still be saying. It handles the left visual field, much of attention, and a lot of what makes a face a face. Cut the bridge between the two and you get two minds in one skull, which is how we know they were talking.", "layer": 1, "explode": [0.8, 0, 0] },
-    { "id": "cerebellum", "nodes": ["cerebellum"], "name": "Cerebellum", "short": "Finer wrinkles, and the reason you can catch a ball", "detail": "Tucked under the back, with folia instead of gyri — the same trick at a smaller scale. It does not start movements; it times them. People without much of it can still decide to move, and then they miss.", "layer": 1, "explode": [0, -0.7, -0.8] },
-    { "id": "brainstem", "nodes": ["brainstem"], "name": "Brainstem", "short": "The part that will not let you stop breathing", "detail": "Midbrain, pons, medulla: a stalk of older machinery. Heart rate, blood pressure, the switch for consciousness. A hemisphere can be devastated and the person still live; this cannot.", "layer": 2, "explode": [0, -1.0, 0] },
-    { "id": "corpus_callosum", "nodes": ["corpus_callosum"], "name": "Corpus Callosum", "short": "The cable between the hemispheres", "detail": "Two hundred million fibres in a C-shaped bundle. Every time the left hand knows what the right is doing, this is why. Cut it to treat epilepsy and the two hemispheres go on as neighbours who no longer speak.", "layer": 3, "explode": [0, 0.5, 0] },
-    { "id": "ventricles", "nodes": ["ventricles"], "name": "Ventricles", "short": "Rooms full of seawater, inside the brain", "detail": "Four cavities making and circulating cerebrospinal fluid. The fluid is a cushion, a chemical bath, and a drain. If the drain blocks, the rooms swell and the brain is crushed from inside — hydrocephalus.", "layer": 3, "opacity": 0.45, "explode": [0, 0.2, 0.4] },
-    { "id": "thalamus", "nodes": ["thalamus"], "name": "Thalamus", "short": "The relay: almost everything stops here first", "detail": "Two egg-shaped nuclei on top of the brainstem. Sensory information, except smell, pauses here before cortex. Consciousness itself seems to need this loop. It is why a small stroke here can take a whole side of the world.", "layer": 3, "explode": [0, -0.2, 0.3] },
-    { "id": "meninges", "nodes": ["meninges"], "name": "Meninges", "short": "Three skins, and the reason a skull blow can still bruise", "detail": "Dura, arachnoid, pia: a tough outer bag, a web, a cling-film on the wrinkles. Between them runs the fluid. Meningitis is these skins inflamed. They enclose the whole organ, so they are drawn see-through.", "layer": 0, "opacity": 0.14, "explode": [0, 0.9, 0] },
-    { "id": "cerebral_arteries", "nodes": ["cerebral_arteries"], "name": "Cerebral Arteries", "short": "A circle of blood under the brain", "detail": "The circle of Willis and the trees that climb out of it. The brain is two percent of the body and takes twenty percent of the blood. A clot in one of these branches is a stroke, and the territory of that branch is the deficit.", "layer": 2, "explode": [0, -0.5, 0.6] },
-    { "id": "pituitary", "nodes": ["pituitary"], "name": "Pituitary", "short": "A pea that runs the glands", "detail": "Hanging from the hypothalamus on a stalk, in a bony saddle. It is not thinking. It is a bag of hormones that tells the thyroid, the adrenals and the gonads what to do. A tumour here can steal the visual fields from below because the optic chiasm sits on top of it.", "layer": 2, "explode": [0, -0.6, 0.5] },
-    { "id": "olfactory_bulbs", "nodes": ["olfactory_bulbs"], "name": "Olfactory Bulbs", "short": "Smell is the one sense that skips the thalamus", "detail": "Two stalks under the frontal lobes, plugged straight into cortex. That is why a smell can be a memory before you have a word for it. They are brain, not nose: the receptors in the nose are the only neurons that live in the weather.", "layer": 2, "explode": [0, 0.4, 1.0] },
-    { "id": "spinal_cord", "nodes": ["spinal_cord"], "name": "Spinal Cord", "short": "The cable that leaves", "detail": "The brainstem continued, now with bone around it. Everything the body can tell the brain, and everything the brain can tell the body, funnels through this. Cut it and the person above the cut is intact, and the person below it is not.", "layer": 2, "explode": [0, -1.5, 0] }
+    {
+      "id": "left_hemisphere",
+      "nodes": [
+        "left_hemisphere"
+      ],
+      "name": "Left Hemisphere",
+      "short": "Language, for most people, lives here",
+      "detail": "A crumpled sheet of grey cortex over a core of white cables. In most right-handed people the regions that turn thought into words sit on this side. Damage here can take speech and leave the rest of the person intact, which is how we know the wrinkles are not all doing the same job.",
+      "layer": 1,
+      "explode": [
+        -0.8,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "right_hemisphere",
+      "nodes": [
+        "right_hemisphere"
+      ],
+      "name": "Right Hemisphere",
+      "short": "The other half of the same sheet",
+      "detail": "Not the 'creative side' in any way a textbook should still be saying. It handles the left visual field, much of attention, and a lot of what makes a face a face. Cut the bridge between the two and you get two minds in one skull, which is how we know they were talking.",
+      "layer": 1,
+      "explode": [
+        0.8,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "cerebellum",
+      "nodes": [
+        "cerebellum"
+      ],
+      "name": "Cerebellum",
+      "short": "Finer wrinkles, and the reason you can catch a ball",
+      "detail": "Tucked under the back, with folia instead of gyri — the same trick at a smaller scale. It does not start movements; it times them. People without much of it can still decide to move, and then they miss.",
+      "layer": 1,
+      "explode": [
+        0,
+        -0.7,
+        -0.8
+      ]
+    },
+    {
+      "id": "brainstem",
+      "nodes": [
+        "brainstem"
+      ],
+      "name": "Brainstem",
+      "short": "The part that will not let you stop breathing",
+      "detail": "Midbrain, pons, medulla: a stalk of older machinery. Heart rate, blood pressure, the switch for consciousness. A hemisphere can be devastated and the person still live; this cannot.",
+      "layer": 2,
+      "explode": [
+        0,
+        -1.0,
+        0
+      ]
+    },
+    {
+      "id": "corpus_callosum",
+      "nodes": [
+        "corpus_callosum"
+      ],
+      "name": "Corpus Callosum",
+      "short": "The cable between the hemispheres",
+      "detail": "Two hundred million fibres in a C-shaped bundle. Every time the left hand knows what the right is doing, this is why. Cut it to treat epilepsy and the two hemispheres go on as neighbours who no longer speak.",
+      "layer": 3,
+      "explode": [
+        0,
+        0.5,
+        0
+      ]
+    },
+    {
+      "id": "ventricles",
+      "nodes": [
+        "ventricles"
+      ],
+      "name": "Ventricles",
+      "short": "Rooms full of seawater, inside the brain",
+      "detail": "Four cavities making and circulating cerebrospinal fluid. The fluid is a cushion, a chemical bath, and a drain. If the drain blocks, the rooms swell and the brain is crushed from inside — hydrocephalus.",
+      "layer": 3,
+      "opacity": 0.45,
+      "explode": [
+        0,
+        0.2,
+        0.4
+      ]
+    },
+    {
+      "id": "thalamus",
+      "nodes": [
+        "thalamus"
+      ],
+      "name": "Thalamus",
+      "short": "The relay: almost everything stops here first",
+      "detail": "Two egg-shaped nuclei on top of the brainstem. Sensory information, except smell, pauses here before cortex. Consciousness itself seems to need this loop. It is why a small stroke here can take a whole side of the world.",
+      "layer": 3,
+      "explode": [
+        0,
+        -0.2,
+        0.3
+      ]
+    },
+    {
+      "id": "meninges",
+      "nodes": [
+        "meninges"
+      ],
+      "name": "Meninges",
+      "short": "Three skins, and the reason a skull blow can still bruise",
+      "detail": "Dura, arachnoid, pia: a tough outer bag, a web, a cling-film on the wrinkles. Between them runs the fluid. Meningitis is these skins inflamed. They enclose the whole organ, so they are drawn see-through.",
+      "layer": 0,
+      "opacity": 0.14,
+      "explode": [
+        0,
+        0.9,
+        0
+      ]
+    },
+    {
+      "id": "cerebral_arteries",
+      "nodes": [
+        "cerebral_arteries"
+      ],
+      "name": "Cerebral Arteries",
+      "short": "A circle of blood under the brain",
+      "detail": "The circle of Willis and the trees that climb out of it. The brain is two percent of the body and takes twenty percent of the blood. A clot in one of these branches is a stroke, and the territory of that branch is the deficit.",
+      "layer": 2,
+      "explode": [
+        0,
+        -0.5,
+        0.6
+      ]
+    },
+    {
+      "id": "pituitary",
+      "nodes": [
+        "pituitary"
+      ],
+      "name": "Pituitary",
+      "short": "A pea that runs the glands",
+      "detail": "Hanging from the hypothalamus on a stalk, in a bony saddle. It is not thinking. It is a bag of hormones that tells the thyroid, the adrenals and the gonads what to do. A tumour here can steal the visual fields from below because the optic chiasm sits on top of it.",
+      "layer": 2,
+      "explode": [
+        0,
+        -0.6,
+        0.5
+      ]
+    },
+    {
+      "id": "olfactory_bulbs",
+      "nodes": [
+        "olfactory_bulbs"
+      ],
+      "name": "Olfactory Bulbs",
+      "short": "Smell is the one sense that skips the thalamus",
+      "detail": "Two stalks under the frontal lobes, plugged straight into cortex. That is why a smell can be a memory before you have a word for it. They are brain, not nose: the receptors in the nose are the only neurons that live in the weather.",
+      "layer": 2,
+      "explode": [
+        0,
+        0.4,
+        1.0
+      ]
+    },
+    {
+      "id": "spinal_cord",
+      "nodes": [
+        "spinal_cord"
+      ],
+      "name": "Spinal Cord",
+      "short": "The cable that leaves",
+      "detail": "The brainstem continued, now with bone around it. Everything the body can tell the brain, and everything the brain can tell the body, funnels through this. Cut it and the person above the cut is intact, and the person below it is not.",
+      "layer": 2,
+      "explode": [
+        0,
+        -1.5,
+        0
+      ]
+    }
   ],
   "steps": [
-    { "title": "Crumple a sheet to fit a skull", "body": "The cortex is a sheet. The sulci are how a square metre of it packs in. The two hemispheres are that sheet folded twice, with a gap down the middle.", "focus": ["left_hemisphere", "right_hemisphere"] },
-    { "title": "A cable between the halves", "body": "The corpus callosum is why the halves are one mind. Cut it and they are two.", "focus": ["corpus_callosum"] },
-    { "title": "Older machinery underneath", "body": "The cerebellum times movement. The brainstem keeps you breathing whether you think about it or not. The thalamus is the relay the thinking sheet sits on.", "focus": ["cerebellum", "brainstem", "thalamus"] },
-    { "title": "Rooms of fluid, a bag of skins", "body": "Ventricles cushion and drain. Meninges enclose. Together they are why a brain can sit in a hard box without destroying itself at every nod.", "focus": ["ventricles", "meninges"] },
-    { "title": "Fuel and a way out", "body": "Arteries feed a greedy organ. The spinal cord is how anything that is not the head still counts as you.", "focus": ["cerebral_arteries", "spinal_cord"] }
+    {
+      "title": "Crumple a sheet to fit a skull",
+      "body": "The cortex is a sheet. The sulci are how a square metre of it packs in. The two hemispheres are that sheet folded twice, with a gap down the middle.",
+      "focus": [
+        "left_hemisphere",
+        "right_hemisphere"
+      ]
+    },
+    {
+      "title": "A cable between the halves",
+      "body": "The corpus callosum is why the halves are one mind. Cut it and they are two.",
+      "focus": [
+        "corpus_callosum"
+      ]
+    },
+    {
+      "title": "Older machinery underneath",
+      "body": "The cerebellum times movement. The brainstem keeps you breathing whether you think about it or not. The thalamus is the relay the thinking sheet sits on.",
+      "focus": [
+        "cerebellum",
+        "brainstem",
+        "thalamus"
+      ]
+    },
+    {
+      "title": "Rooms of fluid, a bag of skins",
+      "body": "Ventricles cushion and drain. Meninges enclose. Together they are why a brain can sit in a hard box without destroying itself at every nod.",
+      "focus": [
+        "ventricles",
+        "meninges"
+      ]
+    },
+    {
+      "title": "Fuel and a way out",
+      "body": "Arteries feed a greedy organ. The spinal cord is how anything that is not the head still counts as you.",
+      "focus": [
+        "cerebral_arteries",
+        "spinal_cord"
+      ]
+    }
   ],
   "quiz": [
-    { "type": "identify", "prompt": "Tap the cable that lets the two hemispheres talk.", "partId": "corpus_callosum" },
-    { "type": "choice", "prompt": "Why is the cortex wrinkled?", "choices": ["To look like a walnut", "To pack a large sheet of nerve cells into a small skull", "The wrinkles store memories", "Blood vessels need grooves"], "answer": 1, "explain": "Surface area. A smooth brain would need a much larger skull for the same sheet." },
-    { "type": "identify", "prompt": "Tap the part that will not let you stop breathing.", "partId": "brainstem" },
-    { "type": "identify", "prompt": "Tap the finer-wrinkled structure that times movement.", "partId": "cerebellum" },
-    { "type": "choice", "prompt": "Which sense skips the thalamus?", "choices": ["Vision", "Hearing", "Smell", "Touch"], "answer": 2, "explain": "The olfactory bulbs plug into cortex directly. That is why a smell can be a memory before it is a word." },
-    { "type": "identify", "prompt": "Tap the skins that enclose the whole organ.", "partId": "meninges" }
+    {
+      "type": "identify",
+      "prompt": "Tap the cable that lets the two hemispheres talk.",
+      "partId": "corpus_callosum"
+    },
+    {
+      "type": "choice",
+      "prompt": "Why is the cortex wrinkled?",
+      "choices": [
+        "To look like a walnut",
+        "To pack a large sheet of nerve cells into a small skull",
+        "The wrinkles store memories",
+        "Blood vessels need grooves"
+      ],
+      "answer": 1,
+      "explain": "Surface area. A smooth brain would need a much larger skull for the same sheet."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the part that will not let you stop breathing.",
+      "partId": "brainstem"
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the finer-wrinkled structure that times movement.",
+      "partId": "cerebellum"
+    },
+    {
+      "type": "choice",
+      "prompt": "Which sense skips the thalamus?",
+      "choices": [
+        "Vision",
+        "Hearing",
+        "Smell",
+        "Touch"
+      ],
+      "answer": 2,
+      "explain": "The olfactory bulbs plug into cortex directly. That is why a smell can be a memory before it is a word."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the skins that enclose the whole organ.",
+      "partId": "meninges"
+    }
   ]
 }

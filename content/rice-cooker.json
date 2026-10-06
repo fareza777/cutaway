@@ -1,0 +1,418 @@
+{
+  "schema": 1,
+  "id": "rice-cooker",
+  "title": "Rice Cooker",
+  "subtitle": "Cooks rice and switches itself off when it is done",
+  "category": "Appliances",
+  "accent": "#F2A65A",
+  "scale": "≈ 5 L · 28 cm wide",
+  "summary": "A rice cooker looks like a pot with a switch, but its useful trick is knowing when the free water has gone. While water is boiling, the pot stays close to 100 °C. Once the rice absorbs the remaining water, the pot temperature rises sharply. A spring-loaded sensor under the bowl detects that change, the controller stops full-power cooking, and a gentler circuit keeps the rice warm without continuing to boil it.",
+  "model": "rice_cooker",
+  "cutAxis": "x",
+  "restRotation": [
+    0.08,
+    -0.48,
+    0
+  ],
+  "parts": [
+    {
+      "id": "outer_shell",
+      "nodes": [
+        "outer_shell"
+      ],
+      "name": "Outer Shell",
+      "short": "The structural skin around the hot chamber",
+      "detail": "A drawn and painted steel wall gives the cooker its strength while leaving an air gap around the hot inner chamber. That gap slows heat reaching the plastic controls and the countertop. The rolled shoulders and lower seam are not decoration: they stiffen a thin panel so it does not drum, dent, or distort as the cooker repeatedly heats and cools.",
+      "layer": 0,
+      "explode": [
+        -1.5,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "outer_lid",
+      "nodes": [
+        "outer_lid"
+      ],
+      "name": "Outer Lid",
+      "short": "Closes the chamber and carries the steam path",
+      "detail": "The moulded outer lid presses the removable metal inner lid and its gasket against the pot rim. It is domed so condensed water runs toward the edge instead of dripping from one central point when the lid opens. On this non-pressure design it restrains splashes and channels steam, but it does not turn the vessel into a pressure cooker.",
+      "layer": 0,
+      "explode": [
+        0,
+        1.5,
+        0.2
+      ]
+    },
+    {
+      "id": "carry_handle",
+      "nodes": [
+        "carry_handle"
+      ],
+      "name": "Carry Handle",
+      "short": "A folding arch anchored beside the lid",
+      "detail": "The handle pivots down when the cooker is in use and lifts into a broad arch for carrying. Its two pivots spread the load into the upper frame instead of asking the lid to carry a full pot of rice. A cooker should still be unplugged and allowed to cool before it is moved; the handle is not protection from steam or hot contents.",
+      "layer": 0,
+      "explode": [
+        0,
+        1.9,
+        -0.4
+      ]
+    },
+    {
+      "id": "lid_release",
+      "nodes": [
+        "lid_release"
+      ],
+      "name": "Lid Release",
+      "short": "Retracts the latch at the front edge",
+      "detail": "Pressing this button pulls a small catch away from the upper frame so the spring-assisted lid can rise. The button sits below the steam path and ahead of the hinge, keeping fingers away from the vent. The click on closing is the catch returning under the lip of the frame.",
+      "layer": 0,
+      "explode": [
+        0,
+        0.6,
+        1.6
+      ]
+    },
+    {
+      "id": "steam_vent",
+      "nodes": [
+        "steam_vent"
+      ],
+      "name": "Steam Vent",
+      "short": "A controlled exit for vapour and starchy foam",
+      "detail": "Boiling water must leave as vapour, so a removable cap turns the direct jet into a slower, baffled path. The slots reduce splashing and give foam room to collapse before it reaches the outside. Blocking this vent is dangerous: even a non-pressure cooker can build an unintended pressure rise if its only steam path is sealed.",
+      "layer": 0,
+      "explode": [
+        0.8,
+        1.5,
+        -0.8
+      ]
+    },
+    {
+      "id": "hinge",
+      "nodes": [
+        "hinge"
+      ],
+      "name": "Lid Hinge",
+      "short": "Keeps the lid aligned with the sealing rim",
+      "detail": "A steel pin spans two reinforced bosses at the rear. Besides letting the lid swing, it controls where the inner lid lands: a few millimetres of sideways play would let steam bypass the gasket. The thick rear housings also stop the plastic around the hinge from cracking after thousands of openings.",
+      "layer": 1,
+      "explode": [
+        0,
+        0.5,
+        -1.6
+      ]
+    },
+    {
+      "id": "control_panel",
+      "nodes": [
+        "control_panel"
+      ],
+      "name": "Control Panel",
+      "short": "Buttons for cook mode, timer, and keep warm",
+      "detail": "A sealed front membrane lets the user select rice type, start cooking, cancel, or set a timer without exposing the electronics to kitchen moisture. The shallow tilt makes the controls readable from standing height. On a simple cooker these controls may be mechanical; a digital model sends each press to the control board behind the panel.",
+      "layer": 0,
+      "explode": [
+        0,
+        -0.1,
+        1.7
+      ]
+    },
+    {
+      "id": "display",
+      "nodes": [
+        "display"
+      ],
+      "name": "Display",
+      "short": "Shows the selected programme and remaining time",
+      "detail": "The dark window covers a low-power segmented display. It reports programme, timer, and keep-warm state rather than measuring rice directly. The controller estimates remaining time from its selected profile and temperature history, then updates the display as the cooker approaches the final water-absorption stage.",
+      "layer": 0,
+      "explode": [
+        0,
+        0.45,
+        1.9
+      ]
+    },
+    {
+      "id": "inner_pot",
+      "nodes": [
+        "inner_pot"
+      ],
+      "name": "Inner Pot",
+      "short": "A removable bowl that spreads heat into rice and water",
+      "detail": "The aluminium bowl has a thick base that smooths the heater's concentrated hot spots before they reach the food. Its dark non-stick coating prevents swollen starch from bonding to the wall, while stamped level marks help match water to the measured rice. The bottom must sit flat and clean against the heater and sensor; one grain underneath can lift the bowl enough to distort temperature sensing.",
+      "layer": 1,
+      "explode": [
+        0,
+        1.05,
+        0.15
+      ]
+    },
+    {
+      "id": "inner_lid",
+      "nodes": [
+        "inner_lid"
+      ],
+      "name": "Inner Lid",
+      "short": "The washable metal surface facing the food",
+      "detail": "This removable stainless plate is the true ceiling of the cooking chamber. It catches starch spray, carries the vent opening, and spreads pressure from the outer lid evenly around the gasket. Making it removable matters because condensed starch dries into a film that would otherwise narrow the steam path and hold odours.",
+      "layer": 1,
+      "explode": [
+        0,
+        1.6,
+        0.25
+      ]
+    },
+    {
+      "id": "lid_gasket",
+      "nodes": [
+        "lid_gasket"
+      ],
+      "name": "Lid Gasket",
+      "short": "A silicone ring that keeps steam on its intended path",
+      "detail": "The soft ring conforms to the pot rim when the lid latches. It does not create cooking pressure here; it stops vapour and starchy water leaking around the entire lid and directs them toward the vent. A twisted, dirty, or hardened gasket causes wet streaks around the rim and uneven moisture loss.",
+      "layer": 1,
+      "explode": [
+        0,
+        1.9,
+        0
+      ]
+    },
+    {
+      "id": "heating_plate",
+      "nodes": [
+        "heating_plate"
+      ],
+      "name": "Cast Heating Plate",
+      "short": "Turns electrical resistance into heat under the pot",
+      "detail": "A resistance element is cast into this heavy aluminium plate. Current meeting electrical resistance becomes heat, which the plate spreads across the pot base. During cooking it runs at full power in controlled intervals; after the water is gone, the controller either turns it off or pulses a much smaller amount for keep warm.",
+      "layer": 2,
+      "explode": [
+        0,
+        -1.15,
+        0
+      ]
+    },
+    {
+      "id": "temperature_sensor",
+      "nodes": [
+        "temperature_sensor"
+      ],
+      "name": "Temperature Sensor",
+      "short": "The spring-loaded button that detects the end of boiling",
+      "detail": "A spring keeps this sensor pressed against the exact centre of the pot base. As long as liquid water is boiling, evaporation holds the pot close to water's boiling point. Once the free water has been absorbed or boiled away, the base temperature climbs quickly; the sensor sees that change and tells the controller the main cooking phase is finished.",
+      "layer": 2,
+      "explode": [
+        0.4,
+        -1.55,
+        0.2
+      ]
+    },
+    {
+      "id": "control_board",
+      "nodes": [
+        "control_board"
+      ],
+      "name": "Control Board",
+      "short": "Runs the heating profile and makes the switch to keep warm",
+      "detail": "The circuit board reads buttons and temperature, times each programme, and operates the power relay feeding the heater. More advanced fuzzy-logic cookers compare the rate of temperature rise with stored profiles, allowing them to compensate for pot load and room temperature. It never looks at the rice; temperature over time is its only evidence.",
+      "layer": 2,
+      "explode": [
+        1.25,
+        -0.15,
+        1.1
+      ]
+    },
+    {
+      "id": "thermal_fuse",
+      "nodes": [
+        "thermal_fuse"
+      ],
+      "name": "Thermal Fuse",
+      "short": "A one-use safety cut-out beside the heater",
+      "detail": "This small fuse opens permanently if abnormal heat reaches its rated threshold, cutting power even if the relay or software has failed on. Unlike the normal temperature sensor, it is not part of everyday control and cannot reset after cooling. A blown thermal fuse means the fault must be found before the cooker is returned to service.",
+      "layer": 3,
+      "explode": [
+        -1.05,
+        -0.8,
+        0.7
+      ]
+    },
+    {
+      "id": "wiring_harness",
+      "nodes": [
+        "wiring_harness"
+      ],
+      "name": "Wiring Harness",
+      "short": "Heat-resistant conductors linking power, sensing, and control",
+      "detail": "Insulated leads connect the rear inlet to the board, heater, sensor, and thermal fuse. Routes are clipped away from the hottest metal and leave slack where parts expand. The heater conductors are thicker because they carry the main current; the sensor leads carry only a small measurement signal and are kept away from electrical noise where practical.",
+      "layer": 3,
+      "explode": [
+        1.3,
+        -0.75,
+        0.1
+      ]
+    },
+    {
+      "id": "power_socket",
+      "nodes": [
+        "power_socket"
+      ],
+      "name": "Power Socket",
+      "short": "A recessed, detachable mains connection",
+      "detail": "The detachable cord plugs into a recessed inlet at the rear so it cannot be confused with the hot steam side. The socket grips both electrical pins and the plug body; loose electrical contact would generate heat exactly where the plastic housing is least able to tolerate it. Unplugging here also makes the cooker easier to store and clean.",
+      "layer": 1,
+      "explode": [
+        -0.8,
+        -0.4,
+        -1.7
+      ]
+    },
+    {
+      "id": "base_plate",
+      "nodes": [
+        "base_plate"
+      ],
+      "name": "Vented Base",
+      "short": "Supports the cooker while admitting cooling air",
+      "detail": "The moulded base carries four broad feet, keeping the hot metal and electrical inlet clear of the worktop. Slots underneath let convection cool the control board and wiring without offering a direct route for spilled liquid from above. Its raised rim also captures the shell edge, completing the stiff enclosure.",
+      "layer": 0,
+      "explode": [
+        0,
+        -1.7,
+        0
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Seat and seal",
+      "body": "The measured rice and water sit in the removable pot. Closing the lid compresses the gasket against the rim, while the inner lid directs all vapour toward the steam vent.",
+      "focus": [
+        "inner_pot",
+        "inner_lid",
+        "lid_gasket",
+        "steam_vent"
+      ]
+    },
+    {
+      "title": "Add heat",
+      "body": "The control board powers the cast heater. Its aluminium mass spreads resistance heat into the thick pot base, reducing hot spots that would scorch starch before the water circulates it.",
+      "focus": [
+        "control_board",
+        "heating_plate",
+        "inner_pot"
+      ]
+    },
+    {
+      "title": "Boil and circulate",
+      "body": "Water reaches boiling and rising bubbles stir heat through the rice. Escaping vapour crosses the inner lid and leaves through the baffled vent, while the gasket prevents random leaks around the rim.",
+      "focus": [
+        "inner_pot",
+        "inner_lid",
+        "lid_gasket",
+        "steam_vent"
+      ]
+    },
+    {
+      "title": "Detect the dry point",
+      "body": "Boiling water holds the pot near 100 °C. When the rice has absorbed the free water, the base suddenly becomes hotter. The spring-loaded centre sensor detects that rise and reports it to the board.",
+      "focus": [
+        "temperature_sensor",
+        "inner_pot",
+        "control_board"
+      ]
+    },
+    {
+      "title": "Rest the rice",
+      "body": "Full cooking power stops, but the closed chamber rests for several minutes. Heat and moisture redistribute through the grains instead of being driven out by continued boiling.",
+      "focus": [
+        "control_board",
+        "inner_pot",
+        "outer_lid"
+      ]
+    },
+    {
+      "title": "Keep warm safely",
+      "body": "The board pulses much lower heater power to keep rice above serving temperature. If control ever fails and the base overheats, the independent thermal fuse opens the mains circuit permanently.",
+      "focus": [
+        "control_board",
+        "heating_plate",
+        "temperature_sensor",
+        "thermal_fuse"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "type": "identify",
+      "prompt": "Tap the part that directly spreads electrical heat into the pot.",
+      "partId": "heating_plate"
+    },
+    {
+      "type": "choice",
+      "prompt": "How does the cooker know the free water is gone?",
+      "choices": [
+        "The rice becomes heavier",
+        "The pot temperature rises above its boiling plateau",
+        "The steam vent closes",
+        "A camera checks the rice surface"
+      ],
+      "answer": 1,
+      "explain": "Boiling water holds the pot close to a stable temperature. When no free water remains to absorb heat by evaporation, the pot base gets hotter quickly."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the spring-loaded part that touches the pot base.",
+      "partId": "temperature_sensor"
+    },
+    {
+      "type": "choice",
+      "prompt": "What is the lid gasket's main job in this cooker?",
+      "choices": [
+        "Create high pressure for faster cooking",
+        "Direct vapour to the vent and stop rim leaks",
+        "Measure the amount of rice",
+        "Insulate the control board"
+      ],
+      "answer": 1,
+      "explain": "This is not a pressure cooker. The gasket simply seals the rim well enough that steam follows the designed vent path."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the removable surface that catches starch spray under the lid.",
+      "partId": "inner_lid"
+    },
+    {
+      "type": "choice",
+      "prompt": "Why is the inner pot base thicker than its wall?",
+      "choices": [
+        "To make the cooker heavier",
+        "To spread concentrated heater energy and reduce hot spots",
+        "To block the temperature sensor",
+        "To store electricity between cycles"
+      ],
+      "answer": 1,
+      "explain": "A thicker conductive base spreads heat sideways before it reaches the rice, helping prevent a scorched ring directly over the heater."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the one-use safety device that opens if the cooker overheats.",
+      "partId": "thermal_fuse"
+    },
+    {
+      "type": "choice",
+      "prompt": "What changes when the cooker enters keep warm?",
+      "choices": [
+        "The steam vent seals completely",
+        "The heater receives much less average power",
+        "The pot is mechanically lifted from the heater",
+        "The thermal fuse resets the programme"
+      ],
+      "answer": 1,
+      "explain": "Keep warm uses low or pulsed heater power. It maintains serving temperature without continuing the full-power boil."
+    }
+  ]
+}

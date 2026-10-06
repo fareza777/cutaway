@@ -1,189 +1,189 @@
 {
   "title": "Mata Manusia",
-  "subtitle": "Kamera yang mengembangkan filmnya sendiri",
-  "scale": "≈ 24 mm diameter",
-  "summary": "Mata bukan jendela dengan otak di belakangnya. Ia sebuah kamera: jendela bening yang melakukan sebagian besar pembiasan, bukaan berwarna yang mengecil di siang hari, lensa yang menambah beberapa dioptri terakhir dan bisa berubah bentuk, dan selembar jaringan saraf di belakang yang menjadi filmnya — bedanya film ini hidup, bagian dari otak, dan berlubang di tempat kabel keluar. Semua yang di depan lembar itu ada untuk menaruh gambar tajam di atasnya.",
+  "subtitle": "Organ yang mengubah cahaya menjadi penglihatan",
+  "scale": "diameter sekitar 24 mm",
+  "summary": "Mata adalah kamera dengan lensa, bukaan, dan lapisan peka cahaya, tetapi susunannya tidak seperti rancangan seorang insinyur. Retina terpasang terbalik sehingga cahaya harus melewati serabut saraf dan pembuluh darah sebelum mencapai sel pendeteksi. Ada lubang tempat kabel saraf keluar, dan hanya daerah sekecil tanda titik yang melihat dengan sangat rinci. Kekurangan itu tidak terasa karena penglihatan sebenarnya disusun di otak: mata mengirim gambar kecil, terbalik, tidak merata, dan kabur di tepi, lalu otak membangun dunia yang tampak stabil, tajam, serta lengkap.",
   "parts": {
     "cornea": {
       "name": "Kornea",
-      "short": "Jendela yang mengerjakan dua pertiga fokus",
-      "detail": "Kubah berlapis, bening karena kolagennya tersusun rapat dan teratur sehingga cahaya bisa lewat, dan lebih lengkung daripada bola mata lainnya — itulah sebabnya ia menonjol dari yang putih. Kelengkungan ekstra itu mengerjakan sebagian besar fokus; lensa hanya menyetel. Gores permukaannya, ia sembuh dalam sehari. Parut di lapisan dalam, jendela tetap keruh, dan itulah sebabnya transplantasi kornea bisa mengembalikan penglihatan yang kacamata tidak pernah bisa. Ia tidak punya pembuluh darah. Ia minum dari air mata di depan dan aqueous di belakang."
+      "short": "Jendela bening yang menghasilkan sekitar dua pertiga daya fokus",
+      "detail": "Kubah berlapis ini bening karena serat kolagennya tersusun rapat dan teratur. Kelengkungannya lebih tajam daripada bagian lain bola mata, sehingga sebagian besar pembiasan terjadi di sini dan lensa hanya menyempurnakannya. Lapisan permukaan dapat pulih cepat, tetapi parut dalam tetap mengaburkan pandangan. Kornea tidak memiliki pembuluh; oksigen dan nutrisinya berasal dari air mata serta cairan akueus."
     },
     "sclera": {
       "name": "Sklera",
-      "short": "Yang putih, dan alasan mata menjaga bentuknya",
-      "detail": "Cangkang fibrosa yang liat, sekitar satu milimeter di belakang, lebih tipis di depan. Putih karena kolagennya tidak tersusun rapi seperti kornea — cahaya dihamburkan, bukan dilewatkan. Otot ekstraokular menempel di sini, saraf optik keluar lewat saringan di sini, dan tekanan di dalam (biasanya 10–21 mmHg) adalah yang ditahannya. Bila tekanan itu terus tinggi, saringan di belakang adalah yang pertama menyerah, dan begitulah glaukoma mencuri penglihatan tepi tanpa rasa sakit sama sekali."
+      "short": "Cangkang putih yang mempertahankan bentuk mata",
+      "detail": "Lapisan buram yang liat ini tebalnya sekitar setengah milimeter. Serat-seratnya bersilangan ke segala arah sehingga mampu mempertahankan bentuk terhadap tekanan dari dalam. Tekanan tersebut menjaga mata tetap bulat dan retina tetap menempel rata pada dinding belakang. Manusia merupakan pengecualian karena begitu banyak sklera kita terlihat: hampir semua primata lain memiliki sklera gelap. Menurut salah satu teori, sklera manusia menjadi putih agar orang lain dapat mengikuti arah pandangan kita."
     },
     "conjunctiva": {
       "name": "Konjungtiva",
-      "short": "Kulit licin pada yang putih",
-      "detail": "Membran mukosa tipis yang mulai di limbus, menutupi sklera yang terlihat, lalu melipat balik melapisi kelopak — jadi lensa kontak duduk di kantung, bukan di bola mata. Sebagian besar yang disebut 'mata merah' adalah membran ini meradang. Digambar tembus pandang di sini karena memang begitu; ketuk dan ia menjadi cukup padat untuk dibaca."
+      "short": "Selaput licin yang menutupi bagian putih mata",
+      "detail": "Membran mukosa tipis ini berawal di tepi kornea, menutup sklera yang terlihat, lalu melipat ke permukaan dalam kelopak. Lipatan membentuk kantong tertutup sehingga lensa kontak tidak dapat terselip ke belakang bola mata. Kebanyakan kasus mata merah berasal dari peradangan selaput ini. Pada model, konjungtiva dibuat transparan sebagaimana bentuk aslinya."
     },
     "limbus": {
       "name": "Limbus",
-      "short": "Tempat yang bening menjadi putih — dan tempat kornea baru lahir",
-      "detail": "Cincin tempat kornea bertemu sklera. Sel punca di sini terus mengganti permukaan kornea; hancurkan cincin ini (luka bakar kimia, infeksi berat) dan yang putih dari konjungtiva merayap menutupi jendela lalu penglihatan hilang. Di sinilah juga ahli bedah masuk, karena sayatan di limbus sembuh hampir tanpa parut di sumbu penglihatan."
+      "short": "Cincin pertemuan kornea bening dan sklera putih",
+      "detail": "Sel punca pada cincin ini terus memperbarui permukaan kornea. Jika rusak berat akibat bahan kimia atau infeksi, jaringan konjungtiva dapat tumbuh menutupi kornea dan mengganggu penglihatan. Ahli bedah juga sering membuat sayatan di limbus karena aksesnya dekat ruang depan tanpa meninggalkan parut di pusat sumbu pandang."
     },
     "iris": {
       "name": "Iris",
-      "short": "Bukaan yang hidup, dan satu-satunya otot berwarna yang Anda punya",
-      "detail": "Cakram tipis dengan lubang di tengah. Warnanya pigmen di stroma — cokelat bila banyak, biru bila nyaris tidak ada dan yang Anda lihat adalah hamburan stroma sendiri, hazel bila keduanya bercampur. Serat radialnya nyata: kripta, kolaret, cincin gelap di limbus. Dua otot berebut lubang. Ini bagian mata yang semua orang sudah kenal, dan tugasnya sederhana: agar film tidak kebanjiran."
+      "short": "Diafragma hidup yang memberi warna mata",
+      "detail": "Cakram tipis berpigmen ini memiliki lubang di tengah. Banyak melanin menghasilkan warna cokelat; sedikit pigmen membuat hamburan cahaya pada stroma tampak biru; campurannya dapat terlihat hazel. Dua kelompok otot mengatur lebar pupil agar cahaya yang mencapai retina sesuai dengan keadaan. Serat radial, kripta, dan lingkaran pada permukaannya membentuk pola iris yang khas."
     },
     "sphincter_pupillae": {
-      "name": "Sfinkter Pupil",
-      "short": "Cincin yang menutup bukaan",
-      "detail": "Otot melingkar di tepi pupil, digerakkan sistem parasimpatis. Senter didekatkan, ia berkontraksi dalam sepersekian detik — bukan untuk melindungi retina dari cedera (kedip lebih cepat) melainkan untuk menajamkan gambar, seperti mengecilkan diafragma kamera. Pupil sebelahnya ikut, itulah sebabnya senter di satu mata adalah tes jalur mata yang lain sekaligus otot ini."
+      "name": "Sfingter Pupil",
+      "short": "Otot melingkar yang mengecilkan pupil",
+      "detail": "Otot parasimpatis ini mengelilingi tepi pupil dan berkontraksi cepat saat terkena cahaya. Penyempitan terutama meningkatkan ketajaman dengan mengurangi berkas cahaya tepi, seperti menutup diafragma kamera. Respons pada mata sebelah ikut terjadi, sehingga menyinari satu mata juga menguji jalur saraf menuju mata lainnya."
     },
     "ciliary_body": {
       "name": "Badan Siliar",
-      "short": "Membuat cairan, dan menarik lensa",
-      "detail": "Cincin otot dan jaringan sekretori di belakang iris. Jajaran prosesusnya membuat aqueous humour, yang memberi makan kornea dan lensa lalu mengalir di sudut — sumbatan di sana adalah penyebab biasa glaukoma. Ototnya sendiri mengubah lensa: saat berkontraksi, zonula kendor, lensa menebal, dan Anda bisa membaca. Saat relaks, zonula menarik lensa pipih untuk jarak jauh. Itulah akomodasi, dan itulah yang memudar setelah empat puluh."
+      "short": "Menghasilkan cairan dan mengatur bentuk lensa",
+      "detail": "Cincin otot serta jaringan sekretori ini berada di belakang iris. Prosesus siliar menghasilkan cairan akueus untuk memberi nutrisi kornea dan lensa, lalu cairan keluar melalui sudut bilik. Saat otot siliar berkontraksi, tegangan zonula berkurang dan lensa menebal untuk melihat dekat. Saat relaks, zonula memipihkan lensa untuk melihat jauh. Kemampuan ini berkurang setelah usia sekitar empat puluh tahun."
     },
     "lens": {
       "name": "Lensa",
-      "short": "Fokus halus — dan satu-satunya bagian yang tidak pernah berhenti tumbuh",
-      "detail": "Kantong bikonveks sel hidup yang memenuhi dirinya dengan protein kristalin lalu, unik, melarutkan intinya sendiri agar tetap bening. Serat baru ditambahkan sepanjang hidup, seperti kulit bawang, itulah sebabnya lensa makin tebal, kuning, dan kaku seiring usia. Katarak adalah serat-serat itu mengeruh. Operasi yang menggantinya adalah operasi tersering di bumi, dan berhasil karena ini satu-satunya bagian optik yang bisa ditukar."
+      "short": "Penyempurna fokus yang terus bertambah sepanjang hidup",
+      "detail": "Lensa tersusun berlapis seperti bawang, sepenuhnya bening, serta sama sekali tidak memiliki pembuluh darah atau saraf. Kamera memfokuskan gambar dengan menggeser lensa, sedangkan lensa mata mengubah bentuknya sendiri. Cara yang lebih elegan ini memiliki satu kelemahan: lensa terus mengeras sepanjang hidup. Memasuki usia empat puluhan, lensa tidak lagi cukup membulat untuk melihat dekat—kondisi yang disebut presbiopia—sehingga kacamata baca diperlukan sekalipun sebelumnya penglihatan sangat baik. Kemudian proteinnya dapat menggumpal dan mengeruh, membentuk katarak."
     },
     "zonules": {
       "name": "Zonula",
-      "short": "Benang yang menahan lensa, dan membiarkannya berubah bentuk",
-      "detail": "Ratusan serat halus dari prosesus siliar ke ekuator lensa. Itulah gantungannya. Tarik, lensa pipih untuk jarak jauh; kendor, elastisitas lensa sendiri yang menebalkannya untuk dekat. Itulah juga sebabnya pukulan keras bisa membuat lensa lepas — benang putus, dan fokus halus duduk longgar di bilik yang salah."
+      "short": "Serabut halus penyangga dan pengubah bentuk lensa",
+      "detail": "Ratusan serabut menghubungkan prosesus siliar dengan keliling lensa. Tarikan zonula memipihkan lensa untuk fokus jauh; ketika tarikan mengendur, elastisitas lensa membuatnya menebal untuk fokus dekat. Benturan kuat dapat memutus serabut dan membuat lensa bergeser dari posisi normal."
     },
     "canal_of_schlemm": {
       "name": "Kanal Schlemm",
-      "short": "Saluran pembuangan cairan yang dibuat badan siliar",
-      "detail": "Vena melingkar di sudut tempat kornea bertemu iris, menampung aqueous humour setelah menyaring lewat anyaman trabekula. Bila saluran ini mendangkal, tekanan di dalam bola naik dan saraf optik mulai mati — pelan, dari tepi lapang pandang ke dalam. Itulah glaukoma sudut terbuka, dan itulah sebabnya cek tekanan jadi bagian dari bertambah tua."
+      "short": "Saluran pembuangan cairan akueus",
+      "detail": "Saluran melingkar di sudut pertemuan kornea dan iris ini menerima cairan setelah melewati anyaman trabekula. Jika alirannya terhambat, tekanan bola mata meningkat dan serabut saraf optik perlahan mati dari penglihatan tepi menuju pusat. Proses glaukoma sudut terbuka biasanya tidak terasa, sehingga pemeriksaan tekanan dan saraf penting seiring usia."
     },
     "vitreous": {
-      "name": "Vitreus",
-      "short": "Gel yang mengisi bola, sampai suatu saat tidak lagi",
-      "detail": "Gel bening, hampir seluruhnya air, mengisi ruang antara lensa dan retina. Di masa muda ia menempel pada retina; seiring usia ia mencair dan mengelupas — ablasio vitreus posterior, yang tampak seperti sarang laba-laba atau kilatan tiba-tiba. Biasanya tidak berbahaya. Kadang gel menarik lubang di retina saat pergi, dan lubang itu adalah awal ablasio retina. Floaters yang Anda lihat adalah bayangan gel ini pada film."
+      "name": "Badan Vitreus",
+      "short": "Gel bening yang mengisi bagian terbesar bola mata",
+      "detail": "Gel yang hampir seluruhnya air ini mengisi ruang antara lensa dan retina. Pada usia muda, vitreus melekat lebih kuat pada retina; seiring waktu gel mencair dan dapat terlepas, terlihat sebagai bayangan melayang atau kilatan. Biasanya tidak berbahaya, tetapi tarikan kadang merobek retina dan memulai ablasio retina. Bayangan benda melayang berasal dari struktur gel yang jatuh pada retina."
     },
     "choroid": {
       "name": "Koroid",
-      "short": "Selimut darah yang memberi makan film",
-      "detail": "Lapisan gelap, padat pembuluh, antara sklera dan retina. Itulah sebabnya pupil tampak hitam: hampir tidak ada cahaya yang sampai ke belakang yang kembali keluar. Ia juga memberi makan retina luar, termasuk fotoreseptor, itulah sebabnya bengkak koroid atau perdarahan makula sentral bisa mencuri penglihatan baca dalam semalam. Kegelapannya melanin — pigmen yang sama dengan kulit — dan ia menghentikan cahaya memantul-mantul di dalam kamera."
+      "short": "Lapisan gelap kaya pembuluh yang memberi nutrisi retina",
+      "detail": "Lapisan di antara sklera dan retina ini dipenuhi pembuluh darah dan pigmen melanin. Koroid memberi makan bagian luar retina, termasuk fotoreseptor. Warna gelapnya menyerap cahaya agar tidak memantul di dalam bola mata, seperti lapisan hitam pada kamera. Pembengkakan atau perdarahan di dekat makula dapat menghilangkan penglihatan pusat dengan cepat."
     },
     "retina": {
       "name": "Retina",
-      "short": "Jaringan otak yang kebetulan tinggal di mata",
-      "detail": "Lembar setebal sepersekian milimeter, melapisi dua pertiga belakang bola. Cahaya mendarat terbalik: harus melewati kabel dan pembuluh sebelum sampai ke batang dan kerucut, yang duduk menempel koroid. Tepi depannya bergerigi — ora serrata. Ini bukan sensor yang ditempelkan ke otak. Ini otak, tumbuh keluar lewat tangkai optik di embrio, itulah sebabnya retina lepas adalah darurat bedah dan Anda tidak bisa menumbuhkan yang baru."
+      "short": "Lapisan jaringan saraf yang merupakan bagian sistem otak",
+      "detail": "Lembaran setebal sepersekian milimeter ini melapisi dua pertiga bagian belakang bola mata. Cahaya melewati serabut saraf dan pembuluh sebelum mencapai sel batang dan kerucut yang menempel pada koroid. Retina tumbuh dari tangkai otak pada embrio, sehingga merupakan jaringan saraf pusat dan tidak mudah beregenerasi. Ablasio yang memisahkannya dari koroid merupakan keadaan darurat."
     },
     "macula": {
       "name": "Makula",
-      "short": "Satu-satunya patch yang membaca, mengenali wajah, melihat warna rapat",
-      "detail": "Beberapa milimeter retina berwarna kuning, di temporal dari diskus, padat kerucut. Lekukan di pusatnya adalah fovea: tanpa batang, tanpa pembuluh, lapisan dalam disingkirkan sehingga cahaya mengenai kerucut hampir telanjang. Semua yang Anda lihat sekarang mendarat di titik kira-kira sebesar huruf o ini. Degenerasi makula terkait usia menyisakan penglihatan tepi dan mengambil tepat titik ini — itulah sebabnya penderitanya bisa berjalan tetapi tidak bisa membaca."
+      "short": "Wilayah pusat untuk membaca, mengenali wajah, dan melihat warna rinci",
+      "detail": "Daerah kekuningan selebar beberapa milimeter ini dipenuhi sel kerucut dan terletak di sisi temporal diskus optik. Fovea di pusatnya tidak memiliki pembuluh dan lapisan dalam disisihkan agar cahaya langsung mencapai kerucut. Hampir semua detail yang sedang ditatap jatuh pada daerah sekecil huruf cetak. Degenerasi makula merusak penglihatan pusat tetapi menyisakan penglihatan tepi."
     },
     "optic_disc": {
       "name": "Diskus Optik",
-      "short": "Titik buta: tempat kabel keluar, dan tidak ada fotoreseptor",
-      "detail": "Lingkaran pucat di nasal dari makula, tempat setiap serat saraf retina berkumpul dan menyelam menembus sklera. Tidak ada batang atau kerucut di sini, jadi ada lubang di gambar — diisi otak, itulah sebabnya Anda tidak pernah melihatnya. Cekungan di pusatnya adalah cup; mengawasi cup itu melebar adalah cara glaukoma dilacak. Ini juga satu-satunya tempat dokter bisa melihat saraf hidup tanpa menyayat apa pun."
+      "short": "Titik buta tempat serabut saraf meninggalkan retina",
+      "detail": "Lingkaran pucat di sisi nasal makula ini menjadi tempat seluruh serabut retina menembus sklera. Tidak ada sel batang atau kerucut di area tersebut, sehingga terbentuk lubang pada gambar yang biasanya dilengkapi oleh otak. Cekungan tengahnya dipantau karena melebar pada glaukoma. Diskus juga memungkinkan dokter melihat jaringan saraf hidup tanpa pembedahan."
     },
     "retinal_vessels": {
       "name": "Pembuluh Retina",
-      "short": "Satu-satunya arteri yang bisa Anda tonton tanpa membuka kulit",
-      "detail": "Arteri dan vena masuk lewat diskus dan melengkung mengitari makula, tidak pernah menyeberangi fovea. Itulah sebabnya foto fundus tampak seperti pohon merah di ladang oranye. Diabetes, hipertensi, dan belasan penyakit darah menuliskan dirinya di pembuluh ini lebih dulu, itulah sebabnya melihat belakang mata bukan sekadar tes mata."
+      "short": "Arteri dan vena yang dapat dilihat langsung dari luar",
+      "detail": "Pembuluh masuk melalui diskus lalu melengkung mengitari makula tanpa melewati fovea. Polanya tampak seperti pohon merah pada foto fundus. Diabetes, hipertensi, dan berbagai kelainan darah sering menimbulkan perubahan awal pada pembuluh ini, sehingga pemeriksaan retina memberi informasi tentang kesehatan tubuh, bukan hanya mata."
     },
     "optic_nerve": {
       "name": "Saraf Optik",
-      "short": "Sejuta akson, terbungkus, menuju otak",
-      "detail": "Bukan saraf dalam arti biasa — ini traktus otak, bermielin oligodendrosit, dan tidak tumbuh kembali. Sekitar sejuta serat keluar lewat lamina cribrosa, memakai selubung meningeal, dan berjalan ke kiasma, tempat setengah nasal gambar tiap mata menyilang sehingga otak kiri melihat dunia kanan. Radang selubung, sakit saat gerak mata dan hilang penglihatan sementara; itu neuritis optik, dan sering halaman pertama sklerosis multipel."
+      "short": "Sekitar sejuta akson dari retina menuju otak",
+      "detail": "Tepatnya, saraf optik merupakan traktus sistem saraf pusat yang tumbuh keluar selama perkembangan untuk menemui cahaya. Karena itu, tidak seperti saraf di lengan, jalur ini tidak dapat beregenerasi. Jalur ini membawa sekitar satu juta serabut dan keluar dari belakang bola mata sedikit ke arah hidung. Posisi tersebut membuat bintik buta mata kanan berada di kanan pusat pandangan, sedangkan bintik buta mata kiri berada di kiri."
     },
     "extraocular_muscles": {
       "name": "Otot Ekstraokular",
-      "short": "Enam tali yang mengarahkan kamera, lebih cepat dari pikir Anda",
-      "detail": "Empat otot rektus dari cincin bersama di apeks rongga mata, plus dua oblik. Mereka bisa memutar bola lebih jauh dan lebih cepat daripada otot rangka mana pun, itulah yang membuat dua mata mengunci pada wajah yang bergerak. Oblik superior melingkar lewat katrol (troklea) sebelum menempel — trik mekanis yang membuat otot yang menarik dari hidung memutar mata ke bawah-dalam. Yang lemah adalah sebab sebagian orang memiringkan kepala agar melihat tunggal."
+      "short": "Enam otot yang mengarahkan bola mata dengan cepat",
+      "detail": "Otot-otot ini menggerakkan mata dalam lompatan balistik tiga sampai empat kali per detik, lebih cepat daripada otot lain di tubuh, dan nyaris tidak pernah beristirahat. Di antara lompatan itu, otak menekan penglihatan agar dunia tidak tampak kabur. Artinya, kita sejenak buta beberapa kali setiap detik tanpa pernah menyadarinya. Amati sentakan mata orang lain saat membaca; yang tidak dapat kita lakukan adalah menyaksikan mata sendiri bergerak seperti itu di cermin."
     },
     "pupil": {
       "name": "Pupil",
-      "short": "Bukan benda — sebuah lubang",
-      "detail": "Tidak ada apa pun di sana. Terlihat hitam karena hampir tidak ada cahaya yang masuk lalu keluar lagi, sama seperti jendela terbuka di seberang jalan yang tampak hitam di siang terang. Pupil menyempit saat kena cahaya, tapi juga menyempit saat mata fokus ke benda dekat, dan melebar karena tertarik, takut, atau nyeri. Itu sebabnya senter kecil di tangan dokter menceritakan keadaan batang otak, bukan cuma keadaan mata."
+      "short": "Bukaan pada iris, bukan jaringan tersendiri",
+      "detail": "Pupil tampak hitam karena sangat sedikit cahaya yang masuk lalu kembali keluar dari bagian dalam mata. Ukurannya mengecil saat terang dan ketika fokus ke benda dekat, serta dapat melebar karena gelap, takut, nyeri, atau ketertarikan. Karena responsnya melibatkan jalur di batang otak, senter kecil dapat memberi informasi neurologis selain memeriksa mata."
     },
     "aqueous_humour": {
-      "name": "Cairan Akuos",
-      "short": "Cairan bening yang terus dibuat dan terus dibuang",
-      "detail": "Mengisi ruang antara kornea dan lensa, memberi makan keduanya — sebab kornea maupun lensa sama sekali tidak punya pembuluh darah — dan seluruhnya berganti setiap beberapa jam. Keseimbangan antara laju pembuatan dan laju pembuangannya itulah yang menentukan tekanan bola mata. Kalau salurannya tersumbat, tekanan naik dan perlahan mematikan saraf optik dari tepi ke tengah. Itulah glaukoma, dan prosesnya tanpa rasa sakit sampai banyak penglihatan sudah telanjur hilang."
+      "name": "Cairan Akueus",
+      "short": "Cairan bening yang terus diproduksi dan dibuang",
+      "detail": "Cairan ini mengisi ruang antara kornea dan lensa serta memberi nutrisi kepada keduanya karena tidak memiliki pembuluh darah. Seluruh volumenya diganti setiap beberapa jam. Keseimbangan produksi pada badan siliar dan pembuangan di sudut bilik menentukan tekanan mata. Sumbatan perlahan merusak saraf optik dalam glaukoma, sering tanpa nyeri hingga banyak penglihatan hilang."
     },
     "fovea": {
       "name": "Fovea",
-      "short": "Cekungan yang sama sekali tidak punya sel batang",
-      "detail": "Tepat di tengah makula, kabel-kabel retina disingkirkan ke samping supaya cahaya langsung mengenai sel kerucut — jalan pintas untuk retina yang memang terpasang terbalik. Isinya padat sel kerucut dan tidak ada satu pun sel batang. Akibatnya bisa Anda uji malam ini: bintang yang redup menghilang saat ditatap lurus, lalu muncul lagi begitu pandangan digeser sedikit ke samping."
+      "short": "Cekungan pusat yang hanya berisi sel kerucut",
+      "detail": "Di pusat makula, lapisan serabut retina disingkirkan ke samping agar cahaya langsung mengenai sel kerucut yang sangat rapat. Fovea tidak memiliki sel batang. Karena sel batang lebih peka pada cahaya redup, bintang samar dapat menghilang ketika ditatap lurus lalu muncul kembali saat pandangan digeser sedikit."
     }
   },
   "steps": [
     {
-      "title": "Biaskan cahaya lebih dulu",
-      "body": "Sebagian besar fokus terjadi di kornea, sebelum cahaya masuk ke mata. Kubahnya lebih curam daripada bola, dengan sengaja. Air mata menjaganya licin secara optik; astigmatisme adalah permukaan ini lebih curam di satu meridian daripada yang lain."
+      "title": "Biaskan cahaya",
+      "body": "Sekitar dua pertiga daya fokus muncul saat cahaya melintasi kornea, bahkan sebelum masuk ke bagian utama mata. Bentuk kornea tetap dan menjadi pengaturan kasar; operasi laser memperbaiki fokus dengan membentuk ulang permukaannya."
     },
     {
-      "title": "Kecilkan bukaan",
-      "body": "Iris adalah diafragma hidup. Di siang hari sfinkter menarik pupil kecil, menajamkan gambar dan melindungi film dari silau. Di gelap, dilator yang menang, dan lubang terbuka."
+      "title": "Atur bukaan",
+      "body": "Iris membuka dan menutup pupil dalam rentang sekitar enam belas banding satu, menukar banyaknya cahaya dengan kedalaman ruang seperti pada kamera. Pupil juga mengecil saat melihat dekat sehingga gambar lebih tajam, tetapi lebih redup."
     },
     {
-      "title": "Fokus halus untuk dekat",
-      "body": "Otot siliar berkontraksi, zonula kendor, lensa menebal. Kelengkungan ekstra itu beberapa dioptri terakhir — perbedaan antara jalan di kejauhan dan kalimat ini. Setelah empat puluh lensa tidak lagi menebal, dan membaca bergeser sejarak lengan."
+      "title": "Sempurnakan fokus dengan mengubah bentuk",
+      "body": "Otot siliar berkontraksi, serabut penyangga lensa mengendur, lalu lensa menebal. Otot yang relaks membuat lensa pipih untuk melihat jauh; jadi memandang jauh merupakan keadaan istirahat, sedangkan membaca memerlukan kerja."
     },
     {
-      "title": "Lempar gambar ke jaringan otak",
-      "body": "Cahaya menyeberangi vitreus dan mendarat di retina — terbalik, lewat kabel, ke batang dan kerucut yang menempel koroid. Makula mengambil pusat. Diskus adalah lubang di gambar tempat kabel keluar."
+      "title": "Lintasi gel dan jatuhkan gambar secara terbalik",
+      "body": "Cahaya melewati vitreus lalu tiba pada retina dalam keadaan terbalik atas-bawah dan kiri-kanan, sebagaimana gambar dari satu lensa. Tidak ada bagian yang membaliknya kembali; otak sejak awal membaca susunan tersebut apa adanya."
     },
     {
-      "title": "Kirim ke otak, dan tuju bingkai berikutnya",
-      "body": "Sejuta akson keluar lewat saraf optik. Otot ekstraokular sudah mulai menggerakkan bola ke apa pun yang diputuskan otak untuk dilihat berikutnya — loop lebih cepat dari pikiran sadar."
+      "title": "Lewati jaringan kabel lalu kirim ke otak",
+      "body": "Retina menghadap terbalik, sehingga cahaya melintasi serabut saraf dan pembuluh sebelum mencapai sel batang serta kerucut; hanya di fovea kabel disingkirkan. Sekitar sejuta serabut kemudian berkumpul dan keluar melalui diskus optik, membentuk lubang nyata pada medan pandang. Mata mengirim gambar kecil, terbalik, tidak merata, dan hanya tajam pada satu titik; otak menyusun sisanya."
     }
   ],
   "quiz": [
     {
-      "prompt": "Ketuk jendela yang mengerjakan sebagian besar fokus mata."
+      "prompt": "Ketuk bagian yang menghasilkan sebagian besar daya fokus mata."
+    },
+    {
+      "prompt": "Bagaimana lensa memusatkan pandangan pada benda dekat?",
+      "choices": [
+        "Lensa bergeser ke depan seperti lensa kamera",
+        "Otot mengendur dan menarik lensa hingga pipih",
+        "Otot berkontraksi, serabut penyangga mengendur, dan lensa menebal",
+        "Pupil menutup lalu lensa mengikutinya"
+      ],
+      "explain": "Kontraksi cincin siliar memperkecil diameternya sehingga serabut penyangga mengendur dan lensa kembali lebih bulat. Saat otot relaks, lensa pipih dan fokus ke jauh; melihat jauh adalah keadaan istirahat, sedangkan membaca memerlukan kerja."
+    },
+    {
+      "prompt": "Ketuk bagian yang menimbulkan lubang pada medan pandang tanpa pernah kita sadari."
+    },
+    {
+      "prompt": "Apa yang tidak biasa dari susunan retina?",
+      "choices": [
+        "Retina lebih tebal di tepi daripada di tengah",
+        "Cahaya melewati serabut saraf dan pembuluh darah sebelum mencapai sel pendeteksi",
+        "Retina tidak memiliki pasokan darah",
+        "Retina mengganti seluruh selnya setiap tahun"
+      ],
+      "explain": "Retina menghadap terbalik. Cekungan fovea dan titik buta tempat saraf keluar merupakan penyesuaian terhadap susunan yang tidak dapat dibalik lagi selama evolusi."
+    },
+    {
+      "prompt": "Ketuk daerah yang melakukan seluruh penglihatan rinci."
+    },
+    {
+      "prompt": "Mengapa bintang redup menghilang ketika ditatap lurus?",
+      "choices": [
+        "Pupil mengecil ketika kita berkonsentrasi",
+        "Fovea tidak memiliki sel batang, padahal sel batang peka terhadap cahaya redup",
+        "Lensa tidak dapat memusatkan benda sejauh itu",
+        "Titik buta berada tepat di pusat penglihatan"
+      ],
+      "explain": "Fovea dipenuhi sel kerucut dan tidak memiliki sel batang. Menggeser pandangan sedikit membuat cahaya bintang jatuh pada retina yang memiliki sel batang, sehingga bintang tampak kembali."
+    },
+    {
+      "prompt": "Ketuk lapisan gelap yang mencegah cahaya memantul di dalam mata."
     },
     {
       "prompt": "Mengapa pupil tampak hitam?",
       "choices": [
-        "Lensa buram",
-        "Hampir tidak ada cahaya yang sampai ke koroid yang kembali keluar",
-        "Vitreus adalah tinta",
-        "Iris mengecatnya"
+        "Pupil dipenuhi pigmen gelap",
+        "Pupil adalah lubang dan hampir tidak ada cahaya yang masuk lalu kembali keluar",
+        "Lensa di belakangnya berwarna gelap",
+        "Iris menjatuhkan bayangan ke pupil"
       ],
-      "explain": "Koroid padat melanin dan darah. Ia perangkap cahaya. Kamera dengan interior hitam adalah ide yang sama."
-    },
-    {
-      "prompt": "Ketuk bukaan yang hidup."
-    },
-    {
-      "prompt": "Apa yang sebenarnya dilakukan otot siliar saat Anda membaca?",
-      "choices": [
-        "Memipihkan lensa",
-        "Mengendurkan zonula agar lensa bisa menebal",
-        "Melebarkan pupil",
-        "Menarik retina ke depan"
-      ],
-      "explain": "Fokus dekat adalah elastisitas lensa sendiri, dilepas saat zonula kendor. Otot tidak memeras lensa; ia melepasnya."
-    },
-    {
-      "prompt": "Ketuk satu-satunya patch retina yang bisa membaca kalimat ini."
-    },
-    {
-      "prompt": "Mengapa ada titik buta?",
-      "choices": [
-        "Kornea punya sambungan",
-        "Fotoreseptor absen di tempat saraf optik keluar",
-        "Lensa punya nukleus yang menghalangi cahaya",
-        "Pupil tidak di tengah"
-      ],
-      "explain": "Setiap serat harus keluar di suatu tempat. Tempat itu diskus, dan tidak ada sisa ruang untuk batang atau kerucut."
-    },
-    {
-      "prompt": "Ketuk saluran yang bila tersumbat menaikkan tekanan di dalam mata."
-    },
-    {
-      "prompt": "Retina istimewa di antara organ indera karena ia:",
-      "choices": [
-        "Satu-satunya organ tanpa pasokan darah",
-        "Tumbuhan otak, bukan sensor yang ditancapkan ke dalamnya",
-        "Diganti setiap beberapa hari seperti kulit",
-        "Terbuat dari kolagen yang sama dengan kornea"
-      ],
-      "explain": "Ia tumbuh dari otak depan di embrio. Itulah sebabnya tidak beregenerasi, dan melihat diskus adalah melihat jaringan saraf pusat."
+      "explain": "Tidak ada benda di dalam pupil yang dapat berwarna hitam. Efek yang sama membuat jendela terbuka di seberang jalan tampak gelap pada siang hari."
     }
   ]
 }

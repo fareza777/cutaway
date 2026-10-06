@@ -1,0 +1,136 @@
+{
+  "title": "Mesin Bensin",
+  "subtitle": "Membakar bensin untuk memutar poros engkol",
+  "scale": "tinggi sekitar 300 mm",
+  "summary": "Mesin empat langkah mengubah rangkaian pembakaran singkat menjadi putaran yang berkesinambungan. Kuncinya adalah poros engkol: komponen ini mengubah gerak lurus piston menjadi putaran, lalu memakai kembali momentum yang tersimpan untuk mendorong piston naik pada langkah berikutnya.",
+  "parts": {
+    "piston": {
+      "name": "Piston",
+      "short": "Dinding bergerak pada ruang bakar",
+      "detail": "Piston merupakan komponen aluminium berongga yang menerima seluruh gaya pembakaran pada mahkotanya lalu meneruskannya melalui pin piston. Saat dingin bentuknya tidak benar-benar bulat: piston dikerjakan sedikit oval dan mengerucut agar memuai menjadi silinder tepat pada suhu kerja. Pada 6.000 rpm, piston berhenti dan berbalik arah seratus kali setiap detik."
+    },
+    "piston_rings": {
+      "name": "Ring Piston",
+      "short": "Menyekat tekanan dan mengikis oli",
+      "detail": "Tiga ring bercelah menjalankan tiga tugas. Dua ring atas menyekat tekanan pembakaran; gas masuk ke belakangnya dan menekan ring makin kuat ke dinding silinder saat beban meningkat. Ring bawah mengikis oli agar kembali turun. Ring juga menjadi jalur utama pelepasan panas dari piston ke blok mesin."
+    },
+    "connecting_rod": {
+      "name": "Batang Penghubung",
+      "short": "Mengubah dorongan lurus menjadi putaran",
+      "detail": "Batang ini tidak hanya bergerak turun, tetapi juga berayun karena ujung bawahnya menempuh lintasan melingkar sementara ujung atas bergerak lurus. Penampang berbentuk I menahannya saat ditekan pada langkah tenaga dan ditarik kuat di puncak langkah buang, ketika batang harus menghentikan piston lalu menariknya kembali."
+    },
+    "crankshaft": {
+      "name": "Poros Engkol",
+      "short": "Poros dengan pena bergeser yang membuat mekanisme bekerja",
+      "detail": "Pena engkol berada di luar sumbu utama sejauh setengah langkah piston. Pergeseran ini mengubah gaya lurus menjadi torsi sekaligus menentukan jarak tempuh piston. Tonjolan berat di sisi lain adalah pemberat penyeimbang; tanpanya, getaran mesin akan sangat kuat hingga berusaha melepaskan mesin dari dudukannya."
+    },
+    "flywheel": {
+      "name": "Roda Gila",
+      "short": "Menyimpan tenaga satu langkah untuk membayar tiga langkah lain",
+      "detail": "Hanya satu dari empat langkah yang menghasilkan tenaga; tiga lainnya memakainya. Roda gila menyimpan energi dari langkah tenaga lalu mengembalikannya untuk menjalankan langkah isap, kompresi, dan buang. Karena itu mesin satu silinder berdetak tidak rata saat langsam, sedangkan mesin empat silinder lebih halus. Gigi pada tepinya dicengkeram motor starter."
+    },
+    "cylinder_block": {
+      "name": "Blok Silinder",
+      "short": "Struktur, pemandu, dan pelepas panas",
+      "detail": "Blok mempertahankan bentuk lubang silinder saat tekanan pembakaran berusaha mengangkat kepala silinder. Sirip memperluas permukaan untuk pendinginan udara. Mesin berpendingin cairan mengganti sirip dengan saluran internal; suhunya lebih merata dan suaranya lebih tenang, tetapi memerlukan pompa, radiator, dan lebih banyak komponen yang dapat gagal."
+    },
+    "cylinder_liner": {
+      "name": "Liner Silinder",
+      "short": "Permukaan gesek yang keras dan dapat diganti",
+      "detail": "Selongsong baja atau berlapis bahan keras ini dipasang ke dalam blok paduan yang lebih lunak. Permukaannya sengaja diasah membentuk guratan silang halus untuk menahan lapisan oli tempat ring piston bergerak. Jika pola itu terkikis hingga licin, mesin mulai membakar oli."
+    },
+    "cylinder_head": {
+      "name": "Kepala Silinder",
+      "short": "Atap ruang bakar dan dudukan katup",
+      "detail": "Kepala silinder menutup bagian atas silinder dan membentuk ruang bakar. Geometrinya mengatur perambatan nyala serta rasio kompresi yang dapat digunakan sebelum terjadi detonasi. Bagian ini juga memuat saluran masuk, saluran buang, dan seluruh mekanisme pembuka serta penutupnya."
+    },
+    "intake_valve": {
+      "name": "Katup Masuk",
+      "short": "Memasukkan udara dan bahan bakar",
+      "detail": "Katup membuka saat piston mulai turun sehingga udara masuk. Ukurannya biasanya lebih besar daripada katup buang karena mengisap udara hanya dengan tekanan atmosfer lebih sulit daripada mendorong gas buang yang masih bertekanan. Katup tetap terbuka sedikit setelah piston mencapai dasar agar momentum aliran terus mengisi silinder."
+    },
+    "exhaust_valve": {
+      "name": "Katup Buang",
+      "short": "Melepaskan gas sisa sambil menahan suhu tinggi",
+      "detail": "Katup ini jauh lebih panas daripada katup masuk karena hanya dilewati gas buang sekitar 800 °C, tanpa aliran masuk yang sejuk. Banyak katup dibuat berongga dan diisi sebagian dengan natrium. Saat meleleh dan bergerak mengikuti katup, natrium membawa panas dari kepala katup ke batang dan pemandunya."
+    },
+    "camshaft": {
+      "name": "Poros Nok",
+      "short": "Berputar tepat setengah kecepatan mesin",
+      "detail": "Setiap nok merupakan tonjolan eksentrik yang membuka katup sekali per putaran. Satu siklus empat langkah membutuhkan dua putaran poros engkol, sehingga poros nok harus berputar setengahnya. Rasio itu dikunci oleh sabuk atau rantai; jika bergeser, katup dan piston dapat bertabrakan. Bentuk nok menentukan waktu buka, tinggi angkat, dan lamanya katup terbuka."
+    },
+    "spark_plug": {
+      "name": "Busi",
+      "short": "Menyala sebelum piston mencapai titik tertinggi",
+      "detail": "Tegangan sekitar 20.000 volt melompati celah di bawah tekanan hingga 40 atmosfer. Busi menyala lebih awal, biasanya 20–30 derajat sebelum titik mati atas, karena nyala membutuhkan waktu untuk merambat. Tekanan puncak harus tiba sesaat setelah piston mulai turun; penyalaan tepat di puncak justru terlambat."
+    },
+    "crankcase": {
+      "name": "Bak Engkol",
+      "short": "Rumah bantalan dan penampung oli",
+      "detail": "Bak engkol menopang bantalan utama tempat poros engkol berputar dan menampung oli yang turun dari komponen di atasnya. Ruang ini juga mengalami denyut tekanan saat piston bergerak turun, sehingga mesin memerlukan ventilasi agar udara dapat keluar tanpa mendorong oli ikut terlepas."
+    }
+  },
+  "steps": [
+    {
+      "title": "Langkah isap",
+      "body": "Piston bergerak turun saat katup masuk terbuka, menarik udara dan bahan bakar ke dalam silinder. Mesin mengandalkan momentum yang tersimpan; langkah ini memakai energi."
+    },
+    {
+      "title": "Langkah kompresi",
+      "body": "Kedua katup tertutup dan piston naik, memampatkan campuran hingga sekitar sepersepuluh volumenya. Pemampatan menaikkan suhu dan mendekatkan molekul agar pembakaran cepat serta tuntas."
+    },
+    {
+      "title": "Langkah tenaga",
+      "body": "Busi menyala sesaat sebelum piston mencapai puncak. Nyala merambat, tekanan melonjak, dan piston terdorong kuat ke bawah. Inilah satu-satunya dari empat langkah yang menghasilkan kerja."
+    },
+    {
+      "title": "Langkah buang",
+      "body": "Katup buang membuka dan piston mendorong gas sisa keluar. Siklus kemudian berulang: dua putaran penuh poros engkol untuk satu langkah tenaga."
+    },
+    {
+      "title": "Alasan roda gila diperlukan",
+      "body": "Tiga langkah memakai energi dan hanya satu yang mengembalikannya. Roda gila menyimpan satu dorongan itu lalu membagikannya sepanjang sisa siklus, sehingga rangkaian pembakaran berubah menjadi putaran yang lebih rata."
+    }
+  ],
+  "quiz": [
+    {
+      "prompt": "Ketuk bagian yang mengubah gerak naik-turun menjadi putaran."
+    },
+    {
+      "prompt": "Seberapa cepat poros nok berputar dibandingkan poros engkol?",
+      "choices": [
+        "Dua kali lebih cepat",
+        "Sama cepat",
+        "Setengah kecepatannya",
+        "Berubah mengikuti beban"
+      ],
+      "explain": "Satu siklus empat langkah memerlukan dua putaran poros engkol, sedangkan tiap katup membuka sekali per siklus. Karena itu poros nok berputar sekali untuk setiap dua putaran poros engkol."
+    },
+    {
+      "prompt": "Ketuk bagian yang menyimpan energi di antara langkah tenaga."
+    },
+    {
+      "prompt": "Mengapa busi menyala sebelum piston mencapai puncak?",
+      "choices": [
+        "Untuk mengurangi pemakaian bahan bakar",
+        "Nyala memerlukan waktu untuk merambat agar tekanan puncak tiba sesaat setelah titik mati atas",
+        "Untuk mendinginkan katup",
+        "Busi sebenarnya menyala tepat di puncak"
+      ],
+      "explain": "Pembakaran tidak berlangsung seketika. Penyalaan lebih awal membuat tekanan puncak terjadi sesaat setelah piston mulai turun, ketika tekanannya dapat menghasilkan kerja paling besar."
+    },
+    {
+      "prompt": "Ketuk bagian yang menyekat tekanan pembakaran terhadap dinding silinder."
+    },
+    {
+      "prompt": "Langkah mana yang benar-benar menghasilkan tenaga?",
+      "choices": [
+        "Isap",
+        "Kompresi",
+        "Tenaga",
+        "Buang"
+      ],
+      "explain": "Hanya satu dari empat langkah yang menghasilkan kerja. Tiga langkah lain digerakkan oleh energi yang tersimpan pada roda gila."
+    }
+  ]
+}

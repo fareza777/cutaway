@@ -2,184 +2,319 @@
   "schema": 1,
   "id": "microwave",
   "title": "Microwave Oven",
-  "subtitle": "A radio transmitter aimed at your dinner",
+  "subtitle": "Heats food by shaking the water inside it",
   "category": "Appliances",
   "accent": "#FFC44D",
   "scale": "≈ 500 mm wide",
   "summary": "A microwave does not heat food from the inside out, and it does not cook with radiation in the way people fear. It is a radio transmitter — around a kilowatt at 2.45 GHz — firing into a sealed metal box. Water molecules in the food twist back and forth to follow the field, billions of times a second, and that twisting is friction. The friction is the heat.",
   "model": "microwave",
   "cutAxis": "x",
-  "restRotation": [0.1, -0.55, 0],
+  "restRotation": [
+    0.1,
+    -0.55,
+    0
+  ],
   "parts": [
     {
       "id": "magnetron",
-      "nodes": ["magnetron"],
+      "nodes": [
+        "magnetron"
+      ],
       "name": "Magnetron",
       "short": "The transmitter itself, and wartime radar technology",
       "detail": "A vacuum tube with a heated cathode at its centre, ringed by resonant copper cavities, sitting in a powerful magnetic field. Electrons boiled off the cathode try to fly straight to the outer wall, the magnet bends them into curling paths, and as they sweep past the cavities they set up an oscillation at exactly 2.45 GHz. It is the same device that made airborne radar possible in 1940, and it is still made by the million because nothing cheaper does the job.",
       "layer": 3,
-      "explode": [1.3, 0.4, -0.8]
+      "explode": [
+        1.3,
+        0.4,
+        -0.8
+      ]
     },
     {
       "id": "waveguide",
-      "nodes": ["waveguide"],
+      "nodes": [
+        "waveguide"
+      ],
       "name": "Waveguide",
       "short": "A hollow metal pipe that carries radio waves",
       "detail": "Microwaves are not carried on wires here; they are launched from an antenna into a rectangular metal duct and bounce along it into the cooking cavity. The dimensions are not arbitrary — a waveguide only passes frequencies above a cutoff set by its width, so this channel is sized around the 12 cm wavelength it has to carry. It is a pipe for radio.",
       "layer": 3,
-      "explode": [0.5, 0.9, -0.9]
+      "explode": [
+        0.5,
+        0.9,
+        -0.9
+      ]
     },
     {
       "id": "waveguide_cover",
-      "nodes": ["waveguide_cover"],
+      "nodes": [
+        "waveguide_cover"
+      ],
       "name": "Waveguide Cover",
       "short": "The mica flap people mistake for rubbish",
       "detail": "A thin sheet of mica over the opening where microwaves enter the oven. It is transparent to the waves but stops steam and food splatter from getting into the waveguide, where burnt-on residue would arc and eventually destroy the magnetron. It looks like a scrap of cardboard, which is why it gets thrown away, and running the oven without it is how the expensive part dies.",
       "layer": 2,
-      "explode": [-0.2, 1.0, -0.8]
+      "explode": [
+        -0.2,
+        1.0,
+        -0.8
+      ]
     },
     {
       "id": "cavity",
-      "nodes": ["cavity"],
+      "nodes": [
+        "cavity"
+      ],
       "name": "Cooking Cavity",
       "short": "A metal box, sized to trap standing waves",
       "detail": "The cooking chamber is a resonant cavity: waves bounce off every wall and interfere with each other, producing a fixed pattern of hot spots and cold spots roughly 6 cm apart — half a wavelength. That pattern is why food heats unevenly, and it is why a microwave has to move either the food or the field.",
       "layer": 1,
-      "explode": [-1.0, 0, -0.9]
+      "explode": [
+        -1.0,
+        0,
+        -0.9
+      ]
     },
     {
       "id": "turntable",
-      "nodes": ["turntable"],
+      "nodes": [
+        "turntable"
+      ],
       "name": "Turntable",
       "short": "Not a convenience — a fix for physics",
       "detail": "The glass plate exists because the standing wave pattern inside the cavity is stationary. Anything left still would cook in stripes. Rotating the food drags it through the hot and cold regions so the average evens out. Glass and ceramic are used because they barely absorb microwaves — the plate stays cool while the food heats.",
       "layer": 2,
-      "explode": [-0.5, -1.2, 0],
-      "motion": { "spin": { "axis": "y", "ratio": 1 } }
+      "explode": [
+        -0.5,
+        -1.2,
+        0
+      ],
+      "motion": {
+        "spin": {
+          "axis": "y",
+          "ratio": 1
+        }
+      }
     },
     {
       "id": "turntable_motor",
-      "nodes": ["turntable_motor"],
+      "nodes": [
+        "turntable_motor"
+      ],
       "name": "Turntable Motor",
       "short": "Deliberately, almost comically slow",
       "detail": "A small synchronous motor geared down to about six revolutions per minute — slow enough that a full mug of soup does not slop. It has no position sensing and no reason to care which way it turns; many will start in either direction depending on where they happened to stop.",
       "layer": 3,
-      "explode": [-0.5, -1.6, 0],
-      "motion": { "spin": { "axis": "y", "ratio": 1 } }
+      "explode": [
+        -0.5,
+        -1.6,
+        0
+      ],
+      "motion": {
+        "spin": {
+          "axis": "y",
+          "ratio": 1
+        }
+      }
     },
     {
       "id": "stirrer",
-      "nodes": ["stirrer"],
+      "nodes": [
+        "stirrer"
+      ],
       "name": "Mode Stirrer",
       "short": "A metal fan that stirs the waves, not the air",
       "detail": "A slowly turning reflective vane in the roof of the cavity, usually hidden above a plastic panel. It scatters the incoming beam in a constantly changing direction so the standing-wave pattern never settles. Ovens with a good stirrer can do without a turntable entirely, which is how flatbed microwaves work.",
       "layer": 2,
-      "explode": [-0.4, 1.4, 0],
-      "motion": { "spin": { "axis": "y", "ratio": 2 } }
+      "explode": [
+        -0.4,
+        1.4,
+        0
+      ],
+      "motion": {
+        "spin": {
+          "axis": "y",
+          "ratio": 2
+        }
+      }
     },
     {
       "id": "door_screen",
-      "nodes": ["door_screen"],
+      "nodes": [
+        "door_screen"
+      ],
       "name": "Door Screen",
       "short": "The holes are bigger than light, smaller than microwaves",
       "detail": "The perforated metal sheet in the door is a Faraday cage. A wave cannot pass through an opening much smaller than its wavelength, and at 12 cm the microwaves are stopped dead by holes a couple of millimetres across — while visible light, with a wavelength under a thousandth of a millimetre, sails straight through. That is the whole reason you can watch your food without being cooked with it.",
       "layer": 1,
-      "explode": [0, 0, 1.9]
+      "explode": [
+        0,
+        0,
+        1.9
+      ]
     },
     {
       "id": "door_interlocks",
-      "nodes": ["door_interlocks"],
+      "nodes": [
+        "door_interlocks"
+      ],
       "name": "Door Interlocks",
       "short": "Three switches, and one is a deliberate fuse",
       "detail": "Opening the door must kill the magnetron instantly, so there are redundant switches rather than one. The third is a monitor switch wired to short the supply and blow the fuse if the others fail to open in the right order — the design would rather destroy itself than emit with the door open. It is also the most common cause of a microwave that is completely dead after a slammed door.",
       "layer": 2,
-      "explode": [1.1, 0, 1.2]
+      "explode": [
+        1.1,
+        0,
+        1.2
+      ]
     },
     {
       "id": "transformer",
-      "nodes": ["transformer"],
+      "nodes": [
+        "transformer"
+      ],
       "name": "High-Voltage Transformer",
       "short": "Turns mains into about 2,000 volts",
       "detail": "A heavy iron-cored transformer that steps the mains up to a couple of thousand volts for the magnetron, and separately down to a few volts for its cathode heater. It is the single heaviest component in the appliance and the reason a microwave weighs what it does. Modern inverter models replace it with switching electronics, which is how they became light enough to hang over a hob.",
       "layer": 3,
-      "explode": [1.4, -0.6, 0.6]
+      "explode": [
+        1.4,
+        -0.6,
+        0.6
+      ]
     },
     {
       "id": "capacitor_diode",
-      "nodes": ["capacitor_diode"],
+      "nodes": [
+        "capacitor_diode"
+      ],
       "name": "Capacitor and Diode",
       "short": "Doubles the voltage — and can kill long after unplugging",
       "detail": "A capacitor and a high-voltage diode arranged as a voltage doubler, taking the transformer's couple of thousand volts up to around four thousand at the magnetron. The capacitor stores a lethal charge and does not necessarily lose it when the oven is unplugged. This single component is why every repair guide about microwaves opens with a warning and not a parts list.",
       "layer": 3,
-      "explode": [1.2, 0.3, 1.3]
+      "explode": [
+        1.2,
+        0.3,
+        1.3
+      ]
     },
     {
       "id": "cooling_fan",
-      "nodes": ["cooling_fan"],
+      "nodes": [
+        "cooling_fan"
+      ],
       "name": "Cooling Fan",
       "short": "Keeps the magnetron alive, and vents the steam",
       "detail": "A magnetron converts only about two thirds of what it draws into microwaves; the rest is heat it must lose through those fins or it fails in minutes. The same fan pushes some air through the cavity to carry steam out of the vents. It is why a microwave keeps running noisily for a moment after the food is done on some models — that is the cool-down, not a fault.",
       "layer": 3,
-      "explode": [1.5, 0.5, -1.2],
-      "motion": { "spin": { "axis": "x", "ratio": 6 } }
+      "explode": [
+        1.5,
+        0.5,
+        -1.2
+      ],
+      "motion": {
+        "spin": {
+          "axis": "x",
+          "ratio": 6
+        }
+      }
     },
     {
       "id": "door",
-      "nodes": ["door"],
+      "nodes": [
+        "door"
+      ],
       "name": "Door",
       "short": "Sealed by a trap, not by contact",
       "detail": "The door does not need to press metal-to-metal against the frame, and on most ovens it does not. Around its edge is a quarter-wavelength channel — a choke — which reflects any escaping wave back on itself in opposite phase so the two cancel. It is a seal made of geometry rather than pressure, which is why a slightly loose door is still safe while a bent one is not.",
       "layer": 0,
-      "explode": [0, 0, 2.2]
+      "explode": [
+        0,
+        0,
+        2.2
+      ]
     },
     {
       "id": "control_panel",
-      "nodes": ["control_panel"],
+      "nodes": [
+        "control_panel"
+      ],
       "name": "Control Panel",
       "short": "Power levels are just on-and-off in disguise",
       "detail": "Except on inverter models, a magnetron has one output: full. Setting 50% power does not weaken the beam — it runs the magnetron flat out for half of each cycle and switches it off for the other half. That is why defrosting works at all: the off periods let heat conduct inward from the thawed edges instead of cooking them.",
       "layer": 0,
-      "explode": [1.6, 0, 1.4]
+      "explode": [
+        1.6,
+        0,
+        1.4
+      ]
     },
     {
       "id": "cabinet",
-      "nodes": ["cabinet"],
+      "nodes": [
+        "cabinet"
+      ],
       "name": "Cabinet",
       "short": "Also part of the shielding",
       "detail": "The outer case is grounded steel and forms the rest of the Faraday cage around the cavity, which is why microwave enclosures are never plastic where they matter. The louvres on the side are sized on the same principle as the door screen: large enough for air, far too small for a 12 cm wave.",
       "layer": 0,
-      "explode": [0, 0, -1.8]
+      "explode": [
+        0,
+        0,
+        -1.8
+      ]
     }
   ],
   "steps": [
     {
       "title": "Make the wave",
       "body": "The transformer and voltage doubler put around four thousand volts across the magnetron. Electrons spiral in its magnetic field, resonate in its cavities, and the tube emits at 2.45 GHz — about a kilowatt of radio.",
-      "focus": ["transformer", "capacitor_diode", "magnetron"]
+      "focus": [
+        "transformer",
+        "capacitor_diode",
+        "magnetron"
+      ]
     },
     {
       "title": "Get it into the box",
       "body": "The waveguide carries the energy from the magnetron's antenna into the cooking cavity, through an opening protected by a sheet of mica that passes waves but not steam.",
-      "focus": ["waveguide", "waveguide_cover"]
+      "focus": [
+        "waveguide",
+        "waveguide_cover"
+      ]
     },
     {
       "title": "Trap it",
       "body": "The metal cavity reflects everything back. Waves interfere with themselves and settle into a fixed pattern of hot and cold spots about six centimetres apart — which would cook food in stripes.",
-      "focus": ["cavity"]
+      "focus": [
+        "cavity"
+      ]
     },
     {
       "title": "Move the food through it",
       "body": "The turntable drags the food through the pattern and the mode stirrer scrambles the pattern itself. Between them the hot spots average out.",
-      "focus": ["turntable", "stirrer"]
+      "focus": [
+        "turntable",
+        "stirrer"
+      ]
     },
     {
       "title": "Keep it inside",
       "body": "A grounded steel box, a perforated door screen whose holes are far smaller than the wavelength, a quarter-wave choke around the door edge, and three interlocks that cut power the instant it opens. The energy has nowhere to go but into the food.",
-      "focus": ["door_screen", "door", "door_interlocks", "cabinet"]
+      "focus": [
+        "door_screen",
+        "door",
+        "door_interlocks",
+        "cabinet"
+      ]
     }
   ],
   "quiz": [
-    { "type": "identify", "prompt": "Tap the part that actually generates the microwaves.", "partId": "magnetron" },
+    {
+      "type": "identify",
+      "prompt": "Tap the part that actually generates the microwaves.",
+      "partId": "magnetron"
+    },
     {
       "type": "choice",
       "prompt": "Why can you see through the door without being exposed?",
@@ -192,7 +327,11 @@
       "answer": 1,
       "explain": "A wave cannot pass an opening much smaller than its wavelength. Microwaves are stopped by millimetre holes; visible light, a thousand times shorter, passes freely."
     },
-    { "type": "identify", "prompt": "Tap the part that exists because the wave pattern inside is stationary.", "partId": "turntable" },
+    {
+      "type": "identify",
+      "prompt": "Tap the part that exists because the wave pattern inside is stationary.",
+      "partId": "turntable"
+    },
     {
       "type": "choice",
       "prompt": "What does setting 50% power actually do on a normal microwave?",
@@ -205,7 +344,11 @@
       "answer": 1,
       "explain": "A magnetron has one output: full. Power levels are duty cycles — and the off periods are exactly what lets heat conduct inward when defrosting."
     },
-    { "type": "identify", "prompt": "Tap the part that can still hold a lethal charge after unplugging.", "partId": "capacitor_diode" },
+    {
+      "type": "identify",
+      "prompt": "Tap the part that can still hold a lethal charge after unplugging.",
+      "partId": "capacitor_diode"
+    },
     {
       "type": "choice",
       "prompt": "What is the thin sheet of mica in front of the waveguide opening for?",

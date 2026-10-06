@@ -1,0 +1,381 @@
+{
+  "schema": 1,
+  "id": "earth-observation-satellite",
+  "title": "Earth Observation Satellite",
+  "subtitle": "Optics, power & attitude control",
+  "category": "Aerospace",
+  "accent": "#66D9FF",
+  "summary": "A compact three-axis-stabilized observatory turns sunlight into precisely pointed measurements. Segmented solar wings feed a regulated electrical bus, a nadir telescope focuses Earth light onto a detector, reaction wheels hold the line of sight, thrusters manage momentum and orbit, and a steerable high-gain antenna returns the science data.",
+  "scale": "approximately 5 m across deployed solar arrays",
+  "model": "earth_observation_satellite",
+  "cutAxis": "z",
+  "restRotation": [0, 0, 0],
+  "parts": [
+    {
+      "id": "spacecraft_bus",
+      "nodes": ["spacecraft_bus"],
+      "name": "Spacecraft Bus",
+      "short": "Carries launch and orbital loads through a rigid frame",
+      "detail": "A graphite-composite cage ties the payload, decks, solar hinges, antenna mount, and propulsion hardware into one load path. The frame remains compact around the centre of mass so pointing disturbances stay predictable.",
+      "layer": 0,
+      "explode": [0, 0, -1.15]
+    },
+    {
+      "id": "thermal_blankets",
+      "nodes": ["thermal_blankets"],
+      "name": "Multi-layer Insulation",
+      "short": "Limits radiative heating and cooling around the bus",
+      "detail": "Gold-toned multi-layer insulation reflects external radiation while separated film layers slow heat flow. Restrained folds, seams, and fasteners cover the structural bays without blocking the telescope, sensors, radiators, or antenna.",
+      "layer": 0,
+      "explode": [0, 0, 1.25]
+    },
+    {
+      "id": "structural_deck",
+      "nodes": ["structural_deck"],
+      "name": "Structural Decks",
+      "short": "Support equipment on stiff internal planes",
+      "detail": "Three aluminium decks and vertical posts prevent the battery, computer, detector, tank, and power electronics from floating in an empty box. They spread launch vibration into the corner frame and preserve optical alignment.",
+      "layer": 2,
+      "explode": [0, -0.55, 0.7]
+    },
+    {
+      "id": "solar_array_port",
+      "nodes": ["solar_array_port"],
+      "name": "Port Solar Array",
+      "short": "Converts sunlight into electrical current",
+      "detail": "Twenty-eight separated photovoltaic cells form the port wing. A perimeter frame and cross ribs keep the thin laminate flat, while the root remains seated in a real hinge journal instead of floating beside the bus.",
+      "layer": 0,
+      "explode": [-0.7, 0.25, 0],
+      "motion": {
+        "pivot": [-0.72, 0.28, 0],
+        "spin": {"axis": "z", "ratio": 0.12}
+      }
+    },
+    {
+      "id": "solar_array_starboard",
+      "nodes": ["solar_array_starboard"],
+      "name": "Starboard Solar Array",
+      "short": "Balances the deployed power-generating span",
+      "detail": "The matching starboard wing provides a symmetric generating area and load path. Its opposite signed motion represents coordinated sun tracking while preserving the stable three-axis spacecraft attitude.",
+      "layer": 0,
+      "explode": [0.7, 0.25, 0],
+      "motion": {
+        "pivot": [0.72, 0.28, 0],
+        "spin": {"axis": "z", "ratio": -0.12}
+      }
+    },
+    {
+      "id": "solar_gimbal_port",
+      "nodes": ["solar_gimbal_port"],
+      "name": "Port Solar Gimbal",
+      "short": "Supports and turns the port wing at the bus",
+      "detail": "A journal, paired bearings, yoke, and root fitting transfer wing bending into the spacecraft frame. Electrical harnesses pass beside the hinge so generated current can reach the power-distribution unit through the full tracking arc.",
+      "layer": 1,
+      "explode": [-0.3, 0.15, 0.45],
+      "motion": {
+        "pivot": [-0.72, 0.28, 0],
+        "spin": {"axis": "z", "ratio": 0.12}
+      }
+    },
+    {
+      "id": "solar_gimbal_starboard",
+      "nodes": ["solar_gimbal_starboard"],
+      "name": "Starboard Solar Gimbal",
+      "short": "Supports and turns the starboard wing",
+      "detail": "The starboard bearing set mirrors the port mechanism. Both the panel and its gimbal use the same physical pivot, so runtime tracking rotates a connected assembly rather than detaching the wing from its support.",
+      "layer": 1,
+      "explode": [0.3, 0.15, -0.45],
+      "motion": {
+        "pivot": [0.72, 0.28, 0],
+        "spin": {"axis": "z", "ratio": -0.12}
+      }
+    },
+    {
+      "id": "battery_module",
+      "nodes": ["battery_module"],
+      "name": "Battery Module",
+      "short": "Powers the spacecraft during eclipse and peak demand",
+      "detail": "A braced rechargeable battery sits low on an internal deck. It stores surplus solar energy, carries the electrical bus through eclipse, and supplies short power peaks without forcing sensitive payload voltage to sag.",
+      "layer": 3,
+      "explode": [-0.55, -0.35, -0.65]
+    },
+    {
+      "id": "power_distribution_unit",
+      "nodes": ["power_distribution_unit"],
+      "name": "Power Distribution Unit",
+      "short": "Regulates array and battery energy for every load",
+      "detail": "The power-distribution unit receives visible harnesses from both solar gimbals. Regulators condition changing array voltage, charge the battery safely, isolate faults, and switch protected power to the payload, computer, heaters, sensors, and actuators.",
+      "layer": 3,
+      "explode": [0.55, -0.3, -0.65]
+    },
+    {
+      "id": "flight_computer",
+      "nodes": ["flight_computer"],
+      "name": "Flight Computer",
+      "short": "Coordinates sensing, pointing, imaging, and downlink",
+      "detail": "Radiation-tolerant processors combine star-tracker and sun-sensor measurements, command reaction-wheel torque, schedule observations, compress focal-plane data, control heaters, and prepare packets for the high-gain antenna.",
+      "layer": 3,
+      "explode": [-0.45, 0.35, -0.7]
+    },
+    {
+      "id": "telescope_baffle",
+      "nodes": ["telescope_baffle"],
+      "name": "Nadir Telescope Baffle",
+      "short": "Admits Earth light while rejecting stray illumination",
+      "detail": "An open blackened barrel points toward nadir. Its real aperture, stiff rim, longitudinal vanes, and bus attachment protect image contrast from off-axis sunlight while keeping the primary and secondary mirrors on one optical line.",
+      "layer": 1,
+      "explode": [0, -0.75, 0]
+    },
+    {
+      "id": "primary_mirror",
+      "nodes": ["primary_mirror"],
+      "name": "Primary Mirror",
+      "short": "Collects the incoming Earth scene",
+      "detail": "A protected-silver concave surface provides most of the telescope aperture. It gathers the nearly parallel optical rays entering from below and reflects them back toward the smaller secondary mirror.",
+      "layer": 3,
+      "explode": [0.45, -0.25, 0.55]
+    },
+    {
+      "id": "secondary_mirror",
+      "nodes": ["secondary_mirror"],
+      "name": "Secondary Mirror",
+      "short": "Folds the converging beam back through the telescope",
+      "detail": "A small mirror is held by three slender spider supports inside the baffle. It returns the beam through the primary's central opening, lengthening the optical path without requiring a long spacecraft body.",
+      "layer": 3,
+      "explode": [-0.45, -0.4, 0.5]
+    },
+    {
+      "id": "focal_plane",
+      "nodes": ["focal_plane"],
+      "name": "Focal Plane",
+      "short": "Converts the focused image into digital samples",
+      "detail": "A supported detector package receives the final optical image. Photosensitive pixels convert light into charge, nearby electronics digitize it, and calibration plus compression prepares a science data stream for the flight computer.",
+      "layer": 3,
+      "explode": [0, 0.2, 0.8]
+    },
+    {
+      "id": "scan_mirror",
+      "nodes": ["scan_mirror"],
+      "name": "Scan Mirror",
+      "short": "Sweeps the optical line of sight across a ground strip",
+      "detail": "A small protected mirror rotates only through a restrained angle on a seated cross-axis journal. That motion shifts the observed ground line without moving the entire spacecraft or breaking the telescope-to-focal-plane path.",
+      "layer": 3,
+      "explode": [0.4, 0.1, -0.7],
+      "motion": {
+        "pivot": [0, -0.04, 0],
+        "swing": {"axis": "x", "amplitude": 0.12}
+      }
+    },
+    {
+      "id": "reaction_wheel_roll",
+      "nodes": ["reaction_wheel_roll"],
+      "name": "Roll Reaction Wheel",
+      "short": "Applies precise torque about the X axis",
+      "detail": "A steel flywheel near the centre of mass changes speed to exchange angular momentum with the spacecraft. Its shaft lies on the roll axis and remains independent from the pitch and yaw wheels.",
+      "layer": 3,
+      "explode": [-0.65, 0.3, 0.4],
+      "motion": {
+        "pivot": [-0.22, 0.18, 0.22],
+        "spin": {"axis": "x", "ratio": 6}
+      }
+    },
+    {
+      "id": "reaction_wheel_pitch",
+      "nodes": ["reaction_wheel_pitch"],
+      "name": "Pitch Reaction Wheel",
+      "short": "Applies precise torque about the Y axis",
+      "detail": "The orthogonal pitch wheel follows its own speed command at the -7 teaching ratio. Reversing or accelerating the rotor turns the bus oppositely without spending propellant during ordinary pointing.",
+      "layer": 3,
+      "explode": [0.65, 0.35, 0.35],
+      "motion": {
+        "pivot": [0.22, 0.18, 0.22],
+        "spin": {"axis": "y", "ratio": -7}
+      }
+    },
+    {
+      "id": "reaction_wheel_yaw",
+      "nodes": ["reaction_wheel_yaw"],
+      "name": "Yaw Reaction Wheel",
+      "short": "Completes three-axis fine pointing",
+      "detail": "The yaw rotor spins about the third mutually orthogonal axis at the +8 teaching ratio. Together the wheel triad can hold the telescope stable while the spacecraft travels rapidly over Earth.",
+      "layer": 3,
+      "explode": [0, -0.35, -0.8],
+      "motion": {
+        "pivot": [0, -0.18, -0.25],
+        "spin": {"axis": "z", "ratio": 8}
+      }
+    },
+    {
+      "id": "star_trackers",
+      "nodes": ["star_trackers"],
+      "name": "Star Trackers",
+      "short": "Measure absolute attitude from star patterns",
+      "detail": "Two blackened optical heads point into unobstructed, different parts of the sky. Their measured star patterns provide accurate attitude determination even when one view is unavailable or contaminated by bright Earth light.",
+      "layer": 1,
+      "explode": [-0.5, 0.55, -0.75]
+    },
+    {
+      "id": "sun_sensors",
+      "nodes": ["sun_sensors"],
+      "name": "Sun Sensors",
+      "short": "Provide robust coarse pointing and safe-mode direction",
+      "detail": "Small detectors on several external faces measure the Sun direction over a wide field. They help acquire a safe power-positive attitude before the more precise star trackers and telescope are ready.",
+      "layer": 1,
+      "explode": [0.45, 0.6, 0.65]
+    },
+    {
+      "id": "propellant_tank",
+      "nodes": ["propellant_tank"],
+      "name": "Propellant Tank",
+      "short": "Stores manoeuvring fluid near the centre of mass",
+      "detail": "A spherical titanium tank sits on the central deck to reduce balance changes as propellant is consumed. Polar fittings and a reinforcing band lead into a symmetric set of small feed lines.",
+      "layer": 3,
+      "explode": [0, 0.55, 0]
+    },
+    {
+      "id": "propellant_lines",
+      "nodes": ["propellant_lines"],
+      "name": "Propellant Lines",
+      "short": "Feed both sides of the thruster system",
+      "detail": "Eight continuous small-bore runs leave the tank manifold, cross supported deck paths, and terminate at paired nozzle valves. The mirrored routing avoids an unexplained floating tank or decorative thrusters with no fluid source.",
+      "layer": 3,
+      "explode": [0, -0.2, 0.9]
+    },
+    {
+      "id": "thruster_cluster",
+      "nodes": ["thruster_cluster"],
+      "name": "Thruster Cluster",
+      "short": "Unloads wheel momentum and trims the orbit",
+      "detail": "Eight open-throat nozzles form balanced pairs on the lateral faces. Brief firings provide momentum unloading when reaction wheels approach their speed limits, and longer combinations perform small orbit trim manoeuvres.",
+      "layer": 1,
+      "explode": [0, -0.2, -1.0]
+    },
+    {
+      "id": "high_gain_antenna",
+      "nodes": ["high_gain_antenna"],
+      "name": "High-gain Antenna",
+      "short": "Concentrates radio energy for science downlink",
+      "detail": "A shaped composite dish, reinforced rim, three feed struts, and central feed horn form a narrow radio beam. The antenna points independently enough to maintain a ground-station link while the telescope keeps its Earth target.",
+      "layer": 0,
+      "explode": [0.45, 0.4, 0.95],
+      "motion": {
+        "pivot": [0.32, 0.62, 0.7],
+        "swing": {"axis": "y", "amplitude": 0.22}
+      }
+    },
+    {
+      "id": "antenna_gimbal",
+      "nodes": ["antenna_gimbal"],
+      "name": "Antenna Gimbal",
+      "short": "Supports the dish through a restrained pointing arc",
+      "detail": "A bus-mounted base, vertical bearing, paired yoke arms, and cross shaft form a two-piece pointing support. The dish and gimbal share one authored pivot and clear the insulated bus across the commanded swing.",
+      "layer": 1,
+      "explode": [0.25, 0.25, 0.55],
+      "motion": {
+        "pivot": [0.32, 0.62, 0.7],
+        "swing": {"axis": "y", "amplitude": 0.22}
+      }
+    },
+    {
+      "id": "radiator_panels",
+      "nodes": ["radiator_panels"],
+      "name": "Radiator Panels",
+      "short": "Reject waste heat to deep space",
+      "detail": "Two white external faces sit clear of the antenna and warm insulated bus. Conductive supports carry heat from electronics to high-emissivity surfaces that radiate it away without requiring air or a coolant fan.",
+      "layer": 0,
+      "explode": [0, 0, -1.2]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Turn sunlight into regulated power",
+      "body": "Sunlight releases charge in the segmented solar cells. Both hinged wings carry current through visible harnesses to the power-distribution unit, which conditions voltage and feeds every spacecraft load.",
+      "focus": ["solar_array_port", "solar_array_starboard", "solar_gimbal_port", "solar_gimbal_starboard", "power_distribution_unit"]
+    },
+    {
+      "title": "Cross eclipse on stored energy",
+      "body": "Before eclipse the regulator charges the battery. In darkness the battery supports the computer, heaters, attitude sensors, reaction wheels, and payload until sunlight returns.",
+      "focus": ["battery_module", "power_distribution_unit", "flight_computer"]
+    },
+    {
+      "title": "Collect and focus the optical scene",
+      "body": "Earth light enters the nadir baffle, reflects from the primary to the secondary, returns through the centre, and crosses the restrained scan mirror along one connected optical path.",
+      "focus": ["telescope_baffle", "primary_mirror", "secondary_mirror", "scan_mirror"]
+    },
+    {
+      "title": "Digitize at the focal plane",
+      "body": "The focal plane converts the focused optical image into calibrated samples. Detector electronics and the flight computer process, compress, store, and schedule those measurements for transmission.",
+      "focus": ["focal_plane", "flight_computer"]
+    },
+    {
+      "title": "Measure spacecraft attitude",
+      "body": "Star patterns provide precise attitude determination, while external sun sensors preserve coarse pointing and safe-mode awareness. The flight computer combines both measurements into an attitude estimate.",
+      "focus": ["star_trackers", "sun_sensors", "flight_computer"]
+    },
+    {
+      "title": "Point with orthogonal reaction wheels",
+      "body": "Independent roll, pitch, and yaw reaction wheels change speed to exchange angular momentum with the bus. The three-axis torque holds the telescope line of sight without continuous propellant use.",
+      "focus": ["reaction_wheel_roll", "reaction_wheel_pitch", "reaction_wheel_yaw"]
+    },
+    {
+      "title": "Unload momentum and trim the orbit",
+      "body": "When environmental torque drives a wheel toward its speed limit, symmetric thruster firings perform momentum unloading. Other balanced pulses provide orbit trim while the central tank and continuous lines feed every nozzle.",
+      "focus": ["propellant_tank", "propellant_lines", "thruster_cluster"]
+    },
+    {
+      "title": "Steer the science downlink",
+      "body": "The two-piece gimbal swings the high-gain antenna clear of the bus. Its narrow beam carries compressed images to a ground station while radiators reject the heat produced by payload and radio electronics.",
+      "focus": ["high_gain_antenna", "antenna_gimbal", "radiator_panels"]
+    }
+  ],
+  "quiz": [
+    {
+      "type": "identify",
+      "prompt": "Tap the unit that regulates solar-array voltage and distributes protected power.",
+      "partId": "power_distribution_unit"
+    },
+    {
+      "type": "choice",
+      "prompt": "What supplies electrical power while the spacecraft is in eclipse?",
+      "choices": ["The battery module", "The primary mirror", "The propellant tank", "The radiator panels"],
+      "answer": 0,
+      "explain": "The battery stores solar energy and supports the spacecraft electrical bus until sunlight reaches the arrays again."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the largest optical surface that first collects the incoming Earth scene.",
+      "partId": "primary_mirror"
+    },
+    {
+      "type": "choice",
+      "prompt": "Why are three reaction wheels mounted on orthogonal axes?",
+      "choices": ["To control roll, pitch, and yaw independently", "To pump propellant", "To cool the battery", "To unfold the radiators"],
+      "answer": 0,
+      "explain": "Three mutually perpendicular wheel axes let the controller produce fine torque about every spacecraft attitude axis."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the sensors that recognize star patterns for precise attitude determination.",
+      "partId": "star_trackers"
+    },
+    {
+      "type": "choice",
+      "prompt": "When are thrusters used instead of reaction wheels?",
+      "choices": ["For momentum unloading and orbit trim", "For every fine pointing correction", "To focus the telescope", "To generate solar power"],
+      "answer": 0,
+      "explain": "Reaction wheels handle routine precise pointing; thrusters spend propellant when wheel momentum must be unloaded or the orbit must change."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the detector package that converts the focused image into digital samples.",
+      "partId": "focal_plane"
+    },
+    {
+      "type": "choice",
+      "prompt": "Why does the high-gain antenna need a supported gimbal?",
+      "choices": ["To point its narrow downlink beam without moving the telescope off target", "To store eclipse energy", "To compress image data", "To measure propellant level"],
+      "answer": 0,
+      "explain": "The gimbal redirects the narrow radio beam toward a ground station while the spacecraft maintains its observing attitude."
+    }
+  ]
+}

@@ -12,7 +12,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 import { Slider } from '../Slider';
 import { Text, Touchable } from '../primitives';
-import { useColors, useT } from '@/state/settings';
+import { useColors, useReadableAccent, useT } from '@/state/settings';
 import { alpha, radius, space } from '../theme';
 
 export type ToolId = 'explode' | 'peel' | 'cut';
@@ -43,6 +43,7 @@ function ToolButton({
   disabled?: boolean;
 }) {
   const colors = useColors();
+  const accentText = useReadableAccent(accent);
   return (
     <Touchable
       onPress={onPress}
@@ -59,8 +60,8 @@ function ToolButton({
         },
       ]}
     >
-      <Ionicons name={icon} size={17} color={active ? accent : colors.textMuted} />
-      <Text variant="caption" color={active ? accent : colors.textMuted}>
+      <Ionicons name={icon} size={17} color={active ? accentText : colors.textMuted} />
+      <Text variant="caption" color={active ? accentText : colors.textMuted}>
         {label}
       </Text>
     </Touchable>
@@ -103,6 +104,7 @@ export function ToolDock({
   onLayerFocus: (layer: number | null) => void;
 }) {
   const colors = useColors();
+  const accentText = useReadableAccent(accent);
   const t = useT();
   const layerSteps = maxLayer + 1;
 
@@ -150,7 +152,7 @@ export function ToolDock({
                         },
                       ]}
                     >
-                      <Text variant="caption" color={cutAxis === axis ? accent : colors.textMuted}>
+                      <Text variant="caption" color={cutAxis === axis ? accentText : colors.textMuted}>
                         {axis.toUpperCase()}
                       </Text>
                     </Touchable>
@@ -207,7 +209,7 @@ export function ToolDock({
                   },
                 ]}
               >
-                <Text variant="caption" color={active ? accent : colors.textMuted}>
+                <Text variant="caption" color={active ? accentText : colors.textMuted}>
                   {label}
                 </Text>
               </Touchable>

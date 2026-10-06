@@ -1,35 +1,124 @@
 {
   "title": "Kamera",
-  "subtitle": "Kotak gelap dengan jam di dalamnya",
-  "scale": "≈ lebar 140 mm",
-  "summary": "Kamera adalah ruangan yang gelap kecuali sebuah lubang, dan sebuah jam yang membuka lubang itu sepersekian detik. Lensa mengerjakan fokus; diafragma mengerjakan kedalaman; rana mengerjakan waktu; sensor mengerjakan mengingat. Pentaprisma di atas adalah alasan Anda bisa melihat melalui lensa yang sama yang sedang dilihat film — atau sensor.",
+  "subtitle": "Merekam gambar dengan menjatuhkan cahaya ke sensor",
+  "scale": "lebar sekitar 140 mm",
+  "summary": "Kamera pada dasarnya merupakan ruang gelap dengan satu jalur masuk cahaya dan mekanisme yang membukanya selama sepersekian detik. Lensa memusatkan gambar, diafragma mengatur banyaknya cahaya dan kedalaman ruang, rana menentukan durasi, lalu sensor merekam hasilnya. Pentaprisma memungkinkan pengguna kamera SLR melihat melalui lensa yang sama dengan lensa yang membentuk gambar pada sensor.",
   "parts": {
-    "body": { "name": "Bodi", "short": "Kotak kedap cahaya dengan pegangan", "detail": "Sasis adalah ruang gelap. Setiap bagian lain ada untuk memasukkan jumlah cahaya terkontrol, selama waktu terkontrol, terfokus pada bidang terkontrol. Pegangan ada karena kamera dipegang satu tangan sementara yang lain mengerjakan lensa." },
-    "lens_barrel": { "name": "Tabung Lensa", "short": "Helikoid, tudung, dan yang Anda putar", "detail": "Tabung cincin aluminium. Memutar cincin fokus membuka helikoid dan kelompok kaca bergerak. Memutar cincin diafragma menutup iris. Ulir filter di depan tempat orang memasang hal yang sudah dihitung perancangnya." },
-    "front_element": { "name": "Elemen Depan", "short": "Kaca pertama yang dikenai cahaya", "detail": "Mahkota cembung, dilapisi supaya tidak memantulkan hantu matahari ke dalam gambar. Paling terpapar dan paling mahal diganti, sebab itu tutup lensa ada dan filter UV adalah jendela murah." },
-    "lens_group": { "name": "Kelompok Fokus", "short": "Kaca yang benar-benar bergerak", "detail": "Beberapa elemen, sebagian direkat, sebagian berjarak udara, tugasnya menaruh gambar tajam di sensor. Fokus adalah menggerakkan kelompok ini sepanjang sumbu. Zoom adalah menggerakkan lebih dari satu kelompok pada laju berbeda — argumen mekanis dalam tabung." },
-    "aperture": { "name": "Diafragma", "short": "Iris: seberapa lebar lubangnya", "detail": "Cincin bilah yang menutup menjadi poligon lebih kecil. Terbuka lebar adalah lebih banyak cahaya dan irisan fokus tipis. Ditutup adalah lebih sedikit cahaya, lebih banyak dunia yang tajam, dan akhirnya difraksi yang tidak bisa dikalahkan megapiksel mana pun." },
-    "mirror": { "name": "Cermin Refleks", "short": "Alasan Anda bisa melihat melalui lensa pengambil", "detail": "Kepakan berlapis perak di depan, empat puluh lima derajat. Ia mengirim gambar ke atas ke pentaprisma supaya viewfinder menunjukkan apa yang akan dilihat sensor. Saat eksposur ia terangkat — itulah klek — dan rana bisa membuka ke jalur yang bersih." },
-    "shutter": { "name": "Rana Bidang-Fokus", "short": "Dua tirai dan sebuah celah", "detail": "Dua bidai kain atau logam di depan sensor. Yang pertama membuka; yang kedua mengejarnya. Pada kecepatan tinggi mereka membentuk celah bergerak; seluruh bingkai tidak pernah terbuka sekaligus. Itulah alasan baling-baling cepat bisa kelihatan bengkok, dan alasan flash punya kecepatan sinkron maksimum." },
-    "sensor": { "name": "Sensor Gambar", "short": "Film yang sekaligus spreadsheet", "detail": "Chip silikon dibagi menjadi jutaan sumur yang menghitung foton. Filter Bayer di atas berpura-pura mereka bisa melihat warna. Semua setelah ini adalah aritmetika. Ukuran persegi panjang ini alasan lensa seukuran itu." },
-    "pentaprism": { "name": "Pentaprisma", "short": "Punuk yang membalik gambar ke arah yang benar", "detail": "Balok kaca bersisi lima. Gambar cermin terbalik dan tercermin; prisma beratap ini mengkoreksi keduanya supaya Anda bisa menyusun tanpa berdiri di kepala. Siluet SLR adalah punuk ini. Kamera mirrorless tidak punya, dan kelihatan seperti bata." },
-    "viewfinder": { "name": "Viewfinder", "short": "Okuler tempat wajah Anda", "detail": "Lensa kecil yang melihat ke pentaprisma. Penyesuaian dioptri adalah lensa ini bergerak, supaya orang berkacamata masih bisa fokus ke layar. Yang Anda lihat di sini bukan layar: itu dunia, lewat lensa pengambil, lewat cermin, lewat prisma." },
-    "mount": { "name": "Mount Lensa", "short": "Bayonet yang sekaligus kontrak", "detail": "Cincin tiga lug dan deret kontak listrik. Lug menahan torsi lensa berat; kontak memberitahu bodi panjang fokus dan membiarkannya menutup diafragma. Ganti cincin ini dan Anda ganti sistem." },
-    "shutter_dial": { "name": "Dial Rana", "short": "Jam: berapa lama lubang tetap terbuka", "detail": "Cincin waktu click-stop, dari satu detik sampai seperseribu dan seterusnya. Bersama diafragma itulah eksposur. Satu stop lebih lama sama cahayanya dengan satu stop lebih lebar lubang, sebab itu fotografer bicara dalam stop, bukan milidetik." }
+    "body": {
+      "name": "Bodi Kamera",
+      "short": "Ruang kedap cahaya dengan pegangan",
+      "detail": "Sasis membentuk ruang gelap yang kaku. Semua komponen lain bertugas memasukkan cahaya dalam jumlah dan waktu yang terukur, lalu memusatkannya tepat pada bidang sensor. Pegangan dibuat untuk tangan kanan agar tangan kiri tetap bebas menopang dan mengatur lensa."
+    },
+    "lens_barrel": {
+      "name": "Tabung Lensa",
+      "short": "Rumah mekanisme fokus dan diafragma",
+      "detail": "Susunan cincin logam ini menjaga elemen kaca tetap sejajar. Cincin fokus menggerakkan mekanisme heliks sehingga kelompok lensa bergeser, sedangkan cincin diafragma mengubah bukaan iris. Ulir depan menerima filter atau tudung lensa tanpa mengganggu kelompok optik di dalamnya."
+    },
+    "front_element": {
+      "name": "Elemen Depan",
+      "short": "Permukaan kaca pertama yang menerima cahaya",
+      "detail": "Elemen cembung ini dilapisi bahan antirefleksi agar cahaya terang tidak memantul berulang kali dan membentuk bayangan semu. Karena paling terbuka terhadap debu, benturan, dan goresan sekaligus mahal diganti, elemen dilindungi tutup lensa; filter bening kadang dipakai sebagai lapisan pengorbanan."
+    },
+    "lens_group": {
+      "name": "Kelompok Lensa Fokus",
+      "short": "Kumpulan elemen kaca yang benar-benar bergerak",
+      "detail": "Beberapa elemen, baik direkatkan maupun dipisahkan oleh udara, bekerja bersama membentuk gambar tajam pada sensor. Fokus dicapai dengan menggeser kelompok ini sepanjang sumbu optik. Pada lensa zoom, beberapa kelompok bergerak dengan jarak berbeda melalui mekanisme presisi di dalam tabung."
+    },
+    "aperture": {
+      "name": "Diafragma",
+      "short": "Iris yang mengatur lebar bukaan",
+      "detail": "Bilah-bilah tipis saling menumpuk dan menutup menjadi lubang berbentuk poligon. Bukaan lebar meloloskan banyak cahaya tetapi menghasilkan daerah tajam yang tipis. Bukaan kecil mengurangi cahaya dan memperluas kedalaman ruang, hingga difraksi mulai melunakkan detail terlepas dari jumlah megapiksel."
+    },
+    "mirror": {
+      "name": "Cermin Refleks",
+      "short": "Mengalihkan gambar lensa ke jendela bidik",
+      "detail": "Cermin berlapis reflektif berdiri pada sudut 45 derajat di depan rana dan mengirim gambar ke atas menuju pentaprisma. Karena itu jendela bidik memperlihatkan pandangan dari lensa pengambil gambar. Saat pemotretan, cermin terangkat—menghasilkan bunyi klik—agar cahaya dapat mencapai sensor."
+    },
+    "shutter": {
+      "name": "Rana Bidang Fokus",
+      "short": "Dua tirai yang membentuk celah bergerak",
+      "detail": "Dua tirai kain atau logam bergerak di depan sensor. Tirai pertama membuka dan tirai kedua menyusul menutup. Pada kecepatan tinggi, keduanya membentuk celah yang menyapu sensor sehingga seluruh bingkai tidak pernah terbuka sekaligus. Efek ini dapat membengkokkan bentuk benda berputar dan membatasi kecepatan sinkron lampu kilat."
+    },
+    "sensor": {
+      "name": "Sensor Gambar",
+      "short": "Silikon yang menghitung foton pada jutaan piksel",
+      "detail": "Cip silikon dibagi menjadi jutaan fotosit yang mengumpulkan muatan sesuai jumlah cahaya. Filter warna Bayer di atasnya membuat fotosit peka terhadap kelompok warna berbeda, lalu perangkat lunak menghitung gambar berwarna penuh. Ukuran bidang persegi panjang ini ikut menentukan ukuran lensa dan sudut pandang."
+    },
+    "pentaprism": {
+      "name": "Pentaprisma",
+      "short": "Balok kaca yang mengembalikan orientasi gambar",
+      "detail": "Prisma kaca bersisi lima dengan bagian atap membalik dan mencerminkan kembali gambar dari cermin, sehingga tampak tegak serta tidak terbalik kiri-kanan di jendela bidik. Tonjolan di atas bodi SLR menampung komponen ini. Kamera tanpa cermin tidak memerlukannya karena memakai tampilan elektronik."
+    },
+    "viewfinder": {
+      "name": "Jendela Bidik",
+      "short": "Okuler untuk melihat gambar dari pentaprisma",
+      "detail": "Lensa kecil ini diarahkan ke pentaprisma. Penyetel dioptri menggeser elemen okuler agar pengguna dengan perbedaan penglihatan tetap dapat melihat layar fokus dengan tajam. Pandangan yang terlihat bukan gambar layar digital, melainkan cahaya dunia yang melewati lensa, cermin, dan prisma."
+    },
+    "mount": {
+      "name": "Dudukan Lensa",
+      "short": "Sambungan bayonet mekanis dan listrik",
+      "detail": "Cincin dengan tiga pengunci menahan torsi lensa berat, sedangkan deretan kontak membawa daya serta data. Bodi membaca panjang fokus dan dapat memerintahkan lensa menutup diafragma. Bentuk dudukan menentukan keluarga lensa yang dapat dipakai, sehingga menggantinya berarti berpindah sistem kamera."
+    },
+    "shutter_dial": {
+      "name": "Kenop Kecepatan Rana",
+      "short": "Pengatur lamanya cahaya mencapai sensor",
+      "detail": "Kenop bertakik memilih waktu dari beberapa detik hingga sepersekian ribu detik. Bersama bukaan diafragma, durasi menentukan eksposur. Menambah satu stop waktu melipatgandakan cahaya, setara dengan membuka diafragma satu stop; karena itu fotografer membandingkan eksposur dalam stop, bukan hanya milidetik."
+    }
   },
   "steps": [
-    { "title": "Tekuk cahaya", "body": "Elemen depan dan kelompok fokus menaruh gambar tajam di bidang beberapa sentimeter di belakang mount. Fokus adalah menggerakkan kaca, bukan menggerakkan sensor." },
-    { "title": "Tutup diafragma", "body": "Iris menutup. Lebih sedikit cahaya, lebih banyak gambar yang fokus, dan akhirnya kelembutan yang adalah fisika, bukan lensa kotor." },
-    { "title": "Lihat lewat lubang yang sama", "body": "Cermin mengirim gambar ke atas ke pentaprisma supaya okuler menunjukkan apa yang akan didapat sensor. Itulah seluruh poin SLR, dan alasan punuk." },
-    { "title": "Singkirkan cermin", "body": "Saat eksposur cermin terangkat. Sepersekian detik Anda buta di finder dan jalur ke sensor bersih." },
-    { "title": "Hitung foton", "body": "Dua tirai berjalan menyeberangi sensor. Sumur menghitung cahaya. Setelah itu ia berkas." }
+    {
+      "title": "Belokkan dan pusatkan cahaya",
+      "body": "Elemen depan dan kelompok fokus membentuk gambar tajam pada bidang sensor beberapa sentimeter di belakang dudukan. Fokus dilakukan dengan menggeser kaca, bukan sensor."
+    },
+    {
+      "title": "Atur bukaan",
+      "body": "Iris menutup sesuai pengaturan. Bukaan yang lebih kecil mengurangi cahaya dan memperluas daerah yang tampak tajam, tetapi bukaan terlalu kecil menurunkan detail akibat difraksi."
+    },
+    {
+      "title": "Lihat melalui lensa yang sama",
+      "body": "Cermin mengirim gambar ke pentaprisma, lalu okuler menampilkannya dengan orientasi yang benar. Inilah prinsip refleks satu lensa (single-lens reflex) dan alasan bodi SLR memiliki tonjolan di atas."
+    },
+    {
+      "title": "Angkat cermin",
+      "body": "Saat tombol rana ditekan, cermin terangkat dan untuk sesaat jendela bidik menjadi gelap. Jalur cahaya menuju sensor pun terbuka."
+    },
+    {
+      "title": "Rekam cahaya",
+      "body": "Dua tirai rana menyapu permukaan sensor selama waktu yang dipilih. Setiap fotosit mengumpulkan cahaya, lalu hasil pengukuran diolah menjadi berkas gambar."
+    }
   ],
   "quiz": [
-    { "prompt": "Ketuk punuk yang membalik gambar viewfinder ke arah yang benar." },
-    { "prompt": "Mengapa viewfinder SLR menunjukkan tepat apa yang akan dilihat sensor?", "choices": ["Overlay komputer", "Cermin mengirim gambar lensa pengambil ke atas lewat pentaprisma ke okuler", "Sensor ada di pentaprisma", "Ia menebak"], "explain": "Itulah arti 'single-lens reflex'. Satu lensa, sebuah cermin, sebuah prisma." },
-    { "prompt": "Ketuk kepakan yang harus terangkat sebelum gambar diambil." },
-    { "prompt": "Ketuk dua tirai yang mengontrol berapa lama sensor melihat cahaya." },
-    { "prompt": "Pada kecepatan rana cepat, bingkai diekspos oleh:", "choices": ["Membuka seluruh rana sekaligus", "Celah bergerak yang dibentuk dua tirai yang saling kejar", "Diafragma berkedip", "Sensor mati"], "explain": "Itulah alasan flash punya kecepatan sinkron, dan alasan bilah baling-baling bisa kelihatan bengkok." },
-    { "prompt": "Ketuk silikon yang menghitung foton." }
+    {
+      "prompt": "Ketuk komponen di dalam tonjolan yang mengembalikan orientasi gambar jendela bidik."
+    },
+    {
+      "prompt": "Mengapa jendela bidik SLR menunjukkan pandangan yang sama dengan sensor?",
+      "choices": [
+        "Karena memakai lapisan gambar komputer",
+        "Cermin mengirim gambar dari lensa pengambil melalui pentaprisma ke okuler",
+        "Sensor berada di dalam pentaprisma",
+        "Kamera memperkirakan hasilnya"
+      ],
+      "explain": "Sistem refleks satu lensa memakai satu lensa untuk membentuk gambar, lalu cermin dan prisma mengarahkannya ke mata sebelum pemotretan."
+    },
+    {
+      "prompt": "Ketuk komponen yang harus terangkat sebelum gambar direkam."
+    },
+    {
+      "prompt": "Ketuk dua tirai yang mengatur lama sensor menerima cahaya."
+    },
+    {
+      "prompt": "Pada kecepatan rana tinggi, bagaimana bingkai diekspos?",
+      "choices": [
+        "Seluruh rana terbuka sekaligus",
+        "Celah bergerak yang dibentuk dua tirai menyapu sensor",
+        "Diafragma berkedip",
+        "Sensor dimatikan"
+      ],
+      "explain": "Celah bergerak menjelaskan batas sinkron lampu kilat dan alasan baling-baling cepat dapat tampak bengkok pada gambar."
+    },
+    {
+      "prompt": "Ketuk komponen silikon yang menghitung foton."
+    }
   ]
 }

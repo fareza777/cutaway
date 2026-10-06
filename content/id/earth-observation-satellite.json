@@ -1,0 +1,206 @@
+{
+  "title": "Satelit Observasi Bumi",
+  "subtitle": "Optik, daya, dan kendali sikap",
+  "summary": "Satelit observasi Bumi tiga sumbu ini mengubah cahaya Matahari menjadi pengukuran yang diarahkan dengan teliti. Panel surya memberi daya, teleskop nadir memusatkan citra, roda reaksi menjaga arah pandang, pendorong mengelola momentum serta orbit, dan antena berpenguatan tinggi mengirim data ilmiah.",
+  "scale": "sekitar 5 m pada bentang panel surya yang terbuka",
+  "parts": {
+    "spacecraft_bus": {
+      "name": "Bus Wahana",
+      "short": "Meneruskan beban peluncuran dan orbit melalui rangka kaku",
+      "detail": "Rangka komposit grafit menyatukan muatan, dek, engsel panel, dudukan antena, dan perangkat propulsi dalam satu jalur beban. Bentuknya ringkas di sekitar pusat massa agar gangguan arah mudah diperkirakan."
+    },
+    "thermal_blankets": {
+      "name": "Insulasi Berlapis",
+      "short": "Membatasi pemanasan dan pendinginan radiasi pada bus",
+      "detail": "Insulasi berlapis bernuansa emas memantulkan radiasi luar, sedangkan lapisan film yang terpisah memperlambat perpindahan panas. Lipatan, jahitan, dan pengikatnya tidak menghalangi teleskop, sensor, radiator, atau antena."
+    },
+    "structural_deck": {
+      "name": "Dek Struktur",
+      "short": "Menopang perangkat pada bidang internal yang kaku",
+      "detail": "Tiga dek aluminium dan tiang vertikal menopang baterai, komputer, detektor, tangki, dan elektronik daya. Struktur ini menyebarkan getaran peluncuran ke rangka sudut sekaligus menjaga keselarasan optik."
+    },
+    "solar_array_port": {
+      "name": "Panel Surya Kiri",
+      "short": "Mengubah cahaya Matahari menjadi arus listrik",
+      "detail": "Dua puluh delapan sel fotovoltaik terpisah membentuk sayap kiri. Bingkai tepi dan rusuk silang menjaga laminat tetap rata, sedangkan pangkal panel surya benar-benar duduk pada jurnal engsel."
+    },
+    "solar_array_starboard": {
+      "name": "Panel Surya Kanan",
+      "short": "Menyeimbangkan bentang pembangkit daya",
+      "detail": "Sayap kanan yang sepadan memberi luas pembangkit dan jalur beban yang simetris. Gerak berlawanan tandanya menggambarkan pelacakan Matahari yang terkoordinasi tanpa mengubah sikap stabil satelit."
+    },
+    "solar_gimbal_port": {
+      "name": "Gimbal Surya Kiri",
+      "short": "Menopang dan memutar sayap kiri pada bus",
+      "detail": "Jurnal, sepasang bantalan, garpu, dan dudukan pangkal meneruskan beban lentur sayap ke rangka. Kabel daya berjalan di samping engsel agar arus dapat mencapai unit distribusi daya sepanjang gerak pelacakan."
+    },
+    "solar_gimbal_starboard": {
+      "name": "Gimbal Surya Kanan",
+      "short": "Menopang dan memutar sayap kanan",
+      "detail": "Perangkat bantalan kanan mencerminkan mekanisme kiri. Panel dan gimbalnya berbagi satu titik putar fisik sehingga gerak runtime tidak melepaskan sayap dari penyangga."
+    },
+    "battery_module": {
+      "name": "Modul Baterai",
+      "short": "Memberi daya saat gerhana dan beban puncak",
+      "detail": "Baterai isi ulang yang diperkuat berada rendah di atas dek internal. Baterai menyimpan kelebihan energi surya, menjaga bus listrik ketika gerhana, dan memasok beban puncak tanpa menjatuhkan tegangan muatan."
+    },
+    "power_distribution_unit": {
+      "name": "Unit Distribusi Daya",
+      "short": "Mengatur energi panel dan baterai untuk semua beban",
+      "detail": "Unit distribusi daya menerima kabel nyata dari kedua gimbal. Regulator menyesuaikan tegangan panel surya, mengisi baterai dengan aman, mengisolasi gangguan, dan menyalurkan daya terlindung ke muatan, komputer, pemanas, sensor, serta aktuator."
+    },
+    "flight_computer": {
+      "name": "Komputer Penerbangan",
+      "short": "Mengoordinasikan sensor, pengarahan, pencitraan, dan kiriman data",
+      "detail": "Prosesor tahan radiasi menggabungkan data pelacak bintang dan sensor Matahari, memerintah roda reaksi, menjadwalkan pengamatan, memampatkan data bidang fokus, serta menyiapkan paket untuk antena."
+    },
+    "telescope_baffle": {
+      "name": "Bafel Teleskop Nadir",
+      "short": "Menerima cahaya Bumi sambil menolak cahaya liar",
+      "detail": "Tabung hitam terbuka mengarah ke nadir. Apertur, bibir kaku, bilah memanjang, dan dudukannya melindungi kontras citra dari cahaya menyamping serta menjaga cermin primer dan sekunder pada satu garis optik."
+    },
+    "primary_mirror": {
+      "name": "Cermin Primer",
+      "short": "Mengumpulkan pemandangan Bumi yang masuk",
+      "detail": "Permukaan cekung berlapis perak terlindung membentuk sebagian besar apertur. Cermin mengumpulkan sinar optik yang hampir sejajar dari bawah dan memantulkannya kembali menuju cermin sekunder."
+    },
+    "secondary_mirror": {
+      "name": "Cermin Sekunder",
+      "short": "Melipat berkas yang memusat kembali ke dalam teleskop",
+      "detail": "Cermin kecil ditahan tiga penyangga ramping di dalam bafel. Cermin ini mengembalikan berkas melalui pusat cermin primer sehingga jalur optik lebih panjang tanpa memerlukan badan satelit yang panjang."
+    },
+    "focal_plane": {
+      "name": "Bidang Fokus",
+      "short": "Mengubah citra terfokus menjadi sampel digital",
+      "detail": "Paket detektor yang ditopang menerima citra optik akhir. Piksel peka cahaya mengubah foton menjadi muatan, elektronik di dekatnya mendigitalkan sinyal, lalu kalibrasi dan pemampatan menyiapkan data ilmiah."
+    },
+    "scan_mirror": {
+      "name": "Cermin Pindai",
+      "short": "Menyapu garis pandang optik melintasi jalur permukaan",
+      "detail": "Cermin kecil bergerak dengan sudut terbatas pada jurnal sumbu silang yang nyata. Gerak ini menggeser garis pengamatan tanpa memutar seluruh wahana atau memutus jalur teleskop ke bidang fokus."
+    },
+    "reaction_wheel_roll": {
+      "name": "Roda Reaksi Roll",
+      "short": "Memberi torsi teliti pada sumbu X",
+      "detail": "Roda baja dekat pusat massa mengubah putaran untuk bertukar momentum sudut dengan wahana. Porosnya berada pada sumbu roll dan bekerja mandiri dari roda pitch serta yaw."
+    },
+    "reaction_wheel_pitch": {
+      "name": "Roda Reaksi Pitch",
+      "short": "Memberi torsi teliti pada sumbu Y",
+      "detail": "Roda pitch yang ortogonal mengikuti perintah putaran sendiri pada rasio pengajaran -7. Mempercepat atau membalik rotor memutar bus ke arah berlawanan tanpa menghabiskan propelan pada pengarahan biasa."
+    },
+    "reaction_wheel_yaw": {
+      "name": "Roda Reaksi Yaw",
+      "short": "Melengkapi pengarahan halus tiga sumbu",
+      "detail": "Rotor yaw berputar pada sumbu ortogonal ketiga dengan rasio pengajaran +8. Tiga roda reaksi dapat menjaga garis pandang teleskop tetap stabil saat satelit bergerak cepat di atas Bumi."
+    },
+    "star_trackers": {
+      "name": "Pelacak Bintang",
+      "short": "Mengukur sikap mutlak dari pola bintang",
+      "detail": "Dua kepala optik hitam mengarah bebas ke bagian langit yang berbeda. Pola bintang yang diukur memberi penentuan sikap akurat walaupun satu pandangan terganggu oleh Bumi yang terang."
+    },
+    "sun_sensors": {
+      "name": "Sensor Matahari",
+      "short": "Memberi arah kasar yang kuat untuk mode aman",
+      "detail": "Detektor kecil pada beberapa sisi luar mengukur arah Matahari dengan bidang pandang lebar. Sensor membantu memperoleh sikap aman dengan daya positif sebelum pelacak bintang dan teleskop siap."
+    },
+    "propellant_tank": {
+      "name": "Tangki Propelan",
+      "short": "Menyimpan fluida manuver dekat pusat massa",
+      "detail": "Tangki propelan titanium berbentuk bola berada pada dek tengah agar perubahan keseimbangan kecil ketika isinya berkurang. Sambungan kutub dan sabuk penguat menuju jaringan saluran yang simetris."
+    },
+    "propellant_lines": {
+      "name": "Saluran Propelan",
+      "short": "Memasok kedua sisi sistem pendorong",
+      "detail": "Delapan saluran kecil yang berkesinambungan meninggalkan manifold tangki, melewati jalur dek yang ditopang, lalu berakhir pada katup nosel. Susunan ini memperlihatkan sumber fluida nyata bagi setiap pendorong."
+    },
+    "thruster_cluster": {
+      "name": "Kelompok Pendorong",
+      "short": "Melepas momentum roda dan mengoreksi orbit",
+      "detail": "Delapan nosel dengan leher terbuka membentuk pasangan seimbang di kedua sisi. Tembakan singkat melakukan pelepasan momentum ketika roda reaksi mendekati batas putaran; gabungan lain melakukan koreksi kecil pada orbit."
+    },
+    "high_gain_antenna": {
+      "name": "Antena Berpenguatan Tinggi",
+      "short": "Memusatkan energi radio untuk mengirim data ilmiah",
+      "detail": "Piringan komposit berbentuk khusus, bibir yang diperkuat, tiga batang umpan, dan tanduk pusat membentuk berkas radio sempit. Antena dapat menjaga sambungan ke stasiun bumi ketika teleskop tetap mengarah pada sasaran."
+    },
+    "antenna_gimbal": {
+      "name": "Gimbal Antena",
+      "short": "Menopang piringan melalui busur pengarahan terbatas",
+      "detail": "Dudukan bus, bantalan vertikal, sepasang lengan garpu, dan poros silang membentuk penyangga dua bagian. Piringan serta gimbal berbagi titik putar dan tetap bebas dari insulasi selama berayun."
+    },
+    "radiator_panels": {
+      "name": "Panel Radiator",
+      "short": "Membuang panas sisa ke ruang angkasa",
+      "detail": "Dua permukaan putih berada di luar bus hangat dan bebas dari antena. Penyangga konduktif membawa panas elektronik ke lapisan beremisivitas tinggi yang memancarkannya tanpa udara atau kipas."
+    }
+  },
+  "steps": [
+    {
+      "title": "Ubah cahaya Matahari menjadi daya teratur",
+      "body": "Cahaya Matahari melepaskan muatan pada sel panel surya. Kedua sayap berengsel membawa arus melalui kabel menuju unit distribusi daya yang mengatur tegangan untuk semua beban satelit."
+    },
+    {
+      "title": "Lewati gerhana dengan energi tersimpan",
+      "body": "Sebelum gerhana, regulator mengisi baterai. Dalam kegelapan, baterai menopang komputer, pemanas, sensor sikap, roda reaksi, dan muatan sampai panel surya kembali terkena cahaya."
+    },
+    {
+      "title": "Kumpulkan dan pusatkan pemandangan optik",
+      "body": "Cahaya Bumi masuk melalui bafel nadir, dipantulkan cermin primer ke cermin sekunder, kembali melalui pusat, lalu melintasi cermin pindai pada satu jalur optik yang tersambung."
+    },
+    {
+      "title": "Digitalkan citra pada bidang fokus",
+      "body": "Bidang fokus mengubah citra optik menjadi sampel terkalibrasi. Elektronik detektor dan komputer penerbangan memproses, memampatkan, menyimpan, serta menjadwalkan hasil pengukuran."
+    },
+    {
+      "title": "Ukur sikap satelit",
+      "body": "Pola bintang memberi penentuan sikap yang teliti, sedangkan sensor Matahari menjaga arah kasar dan mode aman. Komputer penerbangan menggabungkan keduanya menjadi perkiraan sikap."
+    },
+    {
+      "title": "Arahkan dengan roda reaksi ortogonal",
+      "body": "Roda reaksi roll, pitch, dan yaw mengubah putaran secara mandiri untuk bertukar momentum dengan bus. Torsi tiga sumbu menjaga garis pandang tanpa terus menghabiskan propelan."
+    },
+    {
+      "title": "Lepas momentum dan koreksi orbit",
+      "body": "Ketika roda mendekati batas putaran, tembakan pendorong simetris melepaskan momentum. Denyut seimbang lain mengoreksi orbit, sementara tangki propelan dan salurannya memasok setiap nosel."
+    },
+    {
+      "title": "Arahkan kiriman data ilmiah",
+      "body": "Gimbal dua bagian mengayunkan antena berpenguatan tinggi agar bebas dari bus. Berkas sempitnya mengirim citra terkompresi ke stasiun bumi, sementara radiator membuang panas elektronik."
+    }
+  ],
+  "quiz": [
+    {
+      "prompt": "Ketuk unit yang mengatur tegangan panel surya dan menyalurkan daya terlindung."
+    },
+    {
+      "prompt": "Apa yang memasok daya listrik ketika satelit berada dalam gerhana?",
+      "choices": ["Modul baterai", "Cermin primer", "Tangki propelan", "Panel radiator"],
+      "explain": "Baterai menyimpan energi surya dan menopang bus listrik sampai panel surya kembali mendapat cahaya."
+    },
+    {
+      "prompt": "Ketuk permukaan optik terbesar yang pertama mengumpulkan pemandangan Bumi."
+    },
+    {
+      "prompt": "Mengapa tiga roda reaksi dipasang pada sumbu yang saling tegak lurus?",
+      "choices": ["Untuk mengendalikan roll, pitch, dan yaw secara mandiri", "Untuk memompa propelan", "Untuk mendinginkan baterai", "Untuk membuka radiator"],
+      "explain": "Tiga sumbu roda yang saling tegak lurus membuat pengendali dapat memberi torsi halus pada setiap sumbu sikap."
+    },
+    {
+      "prompt": "Ketuk sensor yang mengenali pola bintang untuk penentuan sikap yang teliti."
+    },
+    {
+      "prompt": "Kapan pendorong digunakan sebagai pengganti roda reaksi?",
+      "choices": ["Untuk pelepasan momentum dan koreksi orbit", "Untuk setiap koreksi arah halus", "Untuk memusatkan teleskop", "Untuk menghasilkan daya surya"],
+      "explain": "Roda reaksi menangani pengarahan teliti, sedangkan pendorong memakai propelan ketika momentum harus dilepas atau orbit harus diubah."
+    },
+    {
+      "prompt": "Ketuk paket detektor yang mengubah citra terfokus menjadi sampel digital."
+    },
+    {
+      "prompt": "Mengapa antena berpenguatan tinggi memerlukan gimbal yang ditopang?",
+      "choices": ["Agar berkas kirimannya dapat diarahkan tanpa menggeser teleskop dari sasaran", "Untuk menyimpan energi saat gerhana", "Untuk memampatkan data citra", "Untuk mengukur isi propelan"],
+      "explain": "Gimbal mengarahkan berkas radio sempit ke stasiun bumi ketika satelit mempertahankan sikap pengamatan."
+    }
+  ]
+}

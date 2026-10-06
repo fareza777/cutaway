@@ -2,7 +2,7 @@ import { StyleSheet, View } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import { Text, Touchable } from '../primitives';
-import { useColors, useT } from '@/state/settings';
+import { useColors, useReadableAccent, useT } from '@/state/settings';
 import { alpha, radius, space } from '../theme';
 
 type IconName = React.ComponentProps<typeof Ionicons>['name'];
@@ -21,6 +21,7 @@ export function IconButton({
   label: string;
 }) {
   const colors = useColors();
+  const accentText = useReadableAccent(accent);
   return (
     <Touchable
       onPress={onPress}
@@ -35,7 +36,7 @@ export function IconButton({
         },
       ]}
     >
-      <Ionicons name={icon} size={19} color={active ? accent : colors.textMuted} />
+      <Ionicons name={icon} size={19} color={active ? accentText : colors.textMuted} />
     </Touchable>
   );
 }

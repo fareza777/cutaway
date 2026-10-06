@@ -2,173 +2,289 @@
   "schema": 1,
   "id": "air-conditioner",
   "title": "Air Conditioner",
-  "subtitle": "Split system — indoor and outdoor unit",
+  "subtitle": "Cools a room by moving its heat outside",
   "category": "Appliances",
   "accent": "#6FE0C0",
   "scale": "≈ 800 mm indoor unit",
   "summary": "An air conditioner is the same machine as a refrigerator, cut in half and hung on either side of a wall. It cannot destroy heat, only move it — so half of it has to be outside, dumping into the street the heat it took out of your room, plus the energy it spent doing the moving. That is why closing the door and running the unit on your balcony makes the balcony hotter.",
   "model": "air_conditioner",
   "cutAxis": "z",
-  "restRotation": [0.12, -0.5, 0],
+  "restRotation": [
+    0.12,
+    -0.5,
+    0
+  ],
   "parts": [
     {
       "id": "evaporator_coil",
-      "nodes": ["evaporator_coil"],
+      "nodes": [
+        "evaporator_coil"
+      ],
       "name": "Evaporator Coil",
       "short": "The cold side, indoors",
       "detail": "Refrigerant arrives here as a cold low-pressure mist and boils as room air is blown across the fins, taking heat with it. The aluminium fins exist to multiply the surface area — a bare tube would touch almost no air. This coil is also where the room is dehumidified: it runs below the dew point, so water condenses out of the air onto it, which is most of what makes a room feel comfortable rather than merely cooler.",
       "layer": 2,
-      "explode": [0, 0.5, 1.2]
+      "explode": [
+        0,
+        0.5,
+        1.2
+      ]
     },
     {
       "id": "blower",
-      "nodes": ["blower"],
+      "nodes": [
+        "blower"
+      ],
       "name": "Cross-Flow Blower",
       "short": "A long drum, chosen for silence",
       "detail": "Not a propeller but a squirrel-cage roller running the full width of the unit, with dozens of small forward-curved blades. It moves a wide, slow, even sheet of air rather than a narrow fast jet — which is quieter, and matters enormously in a machine that has to run in a bedroom. The blade spacing is often deliberately irregular so the noise it does make is a hiss rather than a tone.",
       "layer": 3,
-      "explode": [0, 0.3, -1.3],
-      "motion": { "spin": { "axis": "x", "ratio": 4 } }
+      "explode": [
+        0,
+        0.3,
+        -1.3
+      ],
+      "motion": {
+        "spin": {
+          "axis": "x",
+          "ratio": 4
+        }
+      }
     },
     {
       "id": "air_filter",
-      "nodes": ["air_filter"],
+      "nodes": [
+        "air_filter"
+      ],
       "name": "Air Filter",
       "short": "Protects the coil, not your lungs",
       "detail": "A washable mesh across the intake. Its real job is to stop dust reaching the evaporator fins, because dust between fins blocks airflow and insulates the coil at the same time — the two things it is least able to tolerate. A blocked filter shows up as a unit that runs constantly, ices up, and cools badly, which is why the maintenance instruction that matters most is simply to rinse it.",
       "layer": 1,
-      "explode": [0, 0.4, 1.6]
+      "explode": [
+        0,
+        0.4,
+        1.6
+      ]
     },
     {
       "id": "drain_pan",
-      "nodes": ["drain_pan"],
+      "nodes": [
+        "drain_pan"
+      ],
       "name": "Drain Pan and Hose",
       "short": "The water has to go somewhere",
       "detail": "Condensation running off the cold coil is caught in a sloped tray and led outside by gravity through a hose. There is no pump on most split systems, which means the whole drain depends on the indoor unit being mounted dead level or tilted very slightly toward the outlet. A unit that drips down the wall has usually been hung wrong or has a blocked hose, not a refrigerant fault.",
       "layer": 2,
-      "explode": [0, -0.5, 1.3]
+      "explode": [
+        0,
+        -0.5,
+        1.3
+      ]
     },
     {
       "id": "louver",
-      "nodes": ["louver"],
+      "nodes": [
+        "louver"
+      ],
       "name": "Swing Louvres",
       "short": "Aiming the air is half of feeling cool",
       "detail": "Motorised vanes that sweep the discharge up and down. Cold air is denser and falls, so aiming it upward and letting it settle mixes the room far better than pointing it at the occupants. It is also the difference between a room at 24 °C that feels pleasant and the same room feeling like a draught.",
       "layer": 0,
-      "explode": [0, -0.3, 1.9]
+      "explode": [
+        0,
+        -0.3,
+        1.9
+      ]
     },
     {
       "id": "indoor_housing",
-      "nodes": ["indoor_housing"],
+      "nodes": [
+        "indoor_housing"
+      ],
       "name": "Indoor Housing",
       "short": "Mostly an acoustic shell",
       "detail": "The plastic case carries almost no load — it hangs on a steel backing plate screwed to the wall. Its shape is set by airflow and noise: the curved scroll behind the blower is what turns the roller's output into an even sheet, and the wall thickness is chosen to damp the frequencies the blower produces.",
       "layer": 0,
-      "explode": [0, 0.9, -1.5]
+      "explode": [
+        0,
+        0.9,
+        -1.5
+      ]
     },
     {
       "id": "refrigerant_lines",
-      "nodes": ["refrigerant_lines"],
+      "nodes": [
+        "refrigerant_lines"
+      ],
       "name": "Refrigerant Lines",
       "short": "Two pipes, and only one is insulated",
       "detail": "The thin line carries warm high-pressure liquid to the indoor unit; the fat one returns cold low-pressure vapour to the compressor. Only the fat one is lagged, because it is the only one below room temperature and would otherwise stream with condensation along its whole length. The pair is what makes this one machine rather than two.",
       "layer": 1,
-      "explode": [-1.4, 0, -0.6]
+      "explode": [
+        -1.4,
+        0,
+        -0.6
+      ]
     },
     {
       "id": "compressor",
-      "nodes": ["compressor"],
+      "nodes": [
+        "compressor"
+      ],
       "name": "Compressor",
       "short": "Outdoors, because it is the noisy, hot part",
       "detail": "A sealed rotary or scroll pump that raises the refrigerant to a pressure and temperature above the outdoor air, so heat will flow out of it. It is the only significant electrical load in the system and the source of nearly all the noise, which is precisely why it lives outside. On an inverter model its speed varies continuously instead of switching on and off — which is where most of the efficiency gain of the last twenty years came from.",
       "layer": 3,
-      "explode": [-1.2, -0.9, 0.4]
+      "explode": [
+        -1.2,
+        -0.9,
+        0.4
+      ]
     },
     {
       "id": "condenser_coil",
-      "nodes": ["condenser_coil"],
+      "nodes": [
+        "condenser_coil"
+      ],
       "name": "Condenser Coil",
       "short": "Where your room's heat is dumped",
       "detail": "Hot compressed vapour gives up its heat to outdoor air here and condenses back to liquid. It wraps around two sides of the outdoor unit to get enough area. Everything that hurts a condenser hurts the whole system: leaves in the fins, a wall too close behind it, or another unit blowing its exhaust at it — all of them raise the pressure the compressor must work against.",
       "layer": 2,
-      "explode": [-0.4, -1.3, -1.0]
+      "explode": [
+        -0.4,
+        -1.3,
+        -1.0
+      ]
     },
     {
       "id": "condenser_fan",
-      "nodes": ["condenser_fan"],
+      "nodes": [
+        "condenser_fan"
+      ],
       "name": "Condenser Fan",
       "short": "A propeller, because noise matters less outside",
       "detail": "Unlike the indoor blower this is a simple axial propeller — cheap, efficient at moving a large volume against almost no resistance, and unapologetically noisy. It pulls outdoor air through the coil and throws it out of the grille. If it fails, the compressor keeps running against rising pressure until a protection device stops it.",
       "layer": 2,
-      "explode": [0.3, -1.1, 1.4],
-      "motion": { "spin": { "axis": "z", "ratio": 3 } }
+      "explode": [
+        0.3,
+        -1.1,
+        1.4
+      ],
+      "motion": {
+        "spin": {
+          "axis": "z",
+          "ratio": 3
+        }
+      }
     },
     {
       "id": "expansion_valve",
-      "nodes": ["expansion_valve"],
+      "nodes": [
+        "expansion_valve"
+      ],
       "name": "Expansion Valve",
       "short": "Where the cold is actually made",
       "detail": "A metered restriction that drops high-pressure liquid to low pressure, at which point it flash-boils and turns cold. On better systems it is electronically controlled and constantly adjusts how much refrigerant it lets through, matching the flow to how hard the room is actually working the machine. Cheaper systems use a fixed capillary, like a fridge.",
       "layer": 3,
-      "explode": [-1.5, -0.6, 0.8]
+      "explode": [
+        -1.5,
+        -0.6,
+        0.8
+      ]
     },
     {
       "id": "reversing_valve",
-      "nodes": ["reversing_valve"],
+      "nodes": [
+        "reversing_valve"
+      ],
       "name": "Reversing Valve",
       "short": "One valve turns the cooler into a heater",
       "detail": "A four-way valve that swaps which coil is the evaporator and which is the condenser. Flip it and the machine takes heat from the cold outdoor air and pumps it into the room — the same hardware, running backwards. That is what a heat pump is, and why a reverse-cycle unit can deliver several kilowatts of heat for one kilowatt of electricity: it is moving heat, not making it.",
       "layer": 3,
-      "explode": [-0.2, -0.4, 1.5]
+      "explode": [
+        -0.2,
+        -0.4,
+        1.5
+      ]
     },
     {
       "id": "service_valves",
-      "nodes": ["service_valves"],
+      "nodes": [
+        "service_valves"
+      ],
       "name": "Service Valves",
       "short": "Where the system is charged and measured",
       "detail": "The two capped ports on the outdoor unit where the pipework is connected, evacuated and charged. An installer pulls a vacuum through these to boil out moisture and air before releasing the refrigerant — skip it and the water inside freezes at the expansion valve and blocks it. Most bad installations are bad here, at a step nobody can see afterwards.",
       "layer": 1,
-      "explode": [1.4, -0.8, 0.6]
+      "explode": [
+        1.4,
+        -0.8,
+        0.6
+      ]
     },
     {
       "id": "outdoor_casing",
-      "nodes": ["outdoor_casing"],
+      "nodes": [
+        "outdoor_casing"
+      ],
       "name": "Outdoor Casing",
       "short": "Weatherproof, and deliberately open",
       "detail": "Painted steel that shields the electronics from rain while leaving the coil almost entirely exposed — it has to breathe. The finger guard over the fan is a legal requirement rather than an aerodynamic one. Sited badly, in a hot enclosed corner, this box is the reason an otherwise healthy system cools poorly on the hottest days.",
       "layer": 0,
-      "explode": [0, -1.6, -1.2]
+      "explode": [
+        0,
+        -1.6,
+        -1.2
+      ]
     }
   ],
   "steps": [
     {
       "title": "Take heat out of the room",
       "body": "Cold refrigerant boils inside the indoor coil while the blower pushes room air across it. The air leaves colder and drier — the water that used to be in it is now running down the coil into the drain pan.",
-      "focus": ["evaporator_coil", "blower", "drain_pan"]
+      "focus": [
+        "evaporator_coil",
+        "blower",
+        "drain_pan"
+      ]
     },
     {
       "title": "Carry it outside",
       "body": "The refrigerant leaves as cold vapour through the insulated line and travels to the outdoor unit. This pipe is the only path the heat has out of your room.",
-      "focus": ["refrigerant_lines"]
+      "focus": [
+        "refrigerant_lines"
+      ]
     },
     {
       "title": "Raise its temperature",
       "body": "The compressor squeezes the vapour until it is hotter than the outdoor air. Nothing has been cooled by this — work has been added, and that work will be dumped outside along with the heat from the room.",
-      "focus": ["compressor"]
+      "focus": [
+        "compressor"
+      ]
     },
     {
       "title": "Dump it",
       "body": "The outdoor coil gives the heat to the street while a propeller fan drags air through it. The refrigerant condenses back to a warm liquid.",
-      "focus": ["condenser_coil", "condenser_fan"]
+      "focus": [
+        "condenser_coil",
+        "condenser_fan"
+      ]
     },
     {
       "title": "Make it cold again",
       "body": "The expansion valve drops the pressure and the liquid flash-boils, turning cold. It returns indoors and the loop repeats. Flip the reversing valve and the entire cycle runs backwards — the same box becomes a heater.",
-      "focus": ["expansion_valve", "reversing_valve"]
+      "focus": [
+        "expansion_valve",
+        "reversing_valve"
+      ]
     }
   ],
   "quiz": [
-    { "type": "identify", "prompt": "Tap the part that dumps your room's heat into the street.", "partId": "condenser_coil" },
+    {
+      "type": "identify",
+      "prompt": "Tap the part that dumps your room's heat into the street.",
+      "partId": "condenser_coil"
+    },
     {
       "type": "choice",
       "prompt": "Why must part of an air conditioner be outside?",
@@ -181,7 +297,11 @@
       "answer": 1,
       "explain": "An air conditioner is a heat pump. It moves heat from the room to outside, plus the energy it spent doing so — which is why a portable unit venting into the same room makes it warmer."
     },
-    { "type": "identify", "prompt": "Tap the single valve that lets the machine heat instead of cool.", "partId": "reversing_valve" },
+    {
+      "type": "identify",
+      "prompt": "Tap the single valve that lets the machine heat instead of cool.",
+      "partId": "reversing_valve"
+    },
     {
       "type": "choice",
       "prompt": "Why is only one of the two refrigerant pipes insulated?",
@@ -194,7 +314,11 @@
       "answer": 1,
       "explain": "The fat return line runs below room temperature. Uninsulated, water would condense along its entire length."
     },
-    { "type": "identify", "prompt": "Tap the part most likely to be why a unit runs constantly and cools badly.", "partId": "air_filter" },
+    {
+      "type": "identify",
+      "prompt": "Tap the part most likely to be why a unit runs constantly and cools badly.",
+      "partId": "air_filter"
+    },
     {
       "type": "choice",
       "prompt": "Where does the water dripping outside from a running air conditioner come from?",

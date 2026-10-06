@@ -17,7 +17,7 @@ import Animated, { FadeIn, FadeOut, SlideInDown, SlideOutDown } from 'react-nati
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import type { Part } from '@/content/types';
-import { useColors, useT } from '@/state/settings';
+import { useColors, useReadableAccent, useT } from '@/state/settings';
 import { useFavourites, useIsFavourite } from '@/state/favorites';
 import { Label, Text, Touchable } from '../primitives';
 import { alpha, radius, space } from '../theme';
@@ -57,6 +57,7 @@ export function PartSheet({
   bottom: number;
 }) {
   const colors = useColors();
+  const accentText = useReadableAccent(accent);
   const t = useT();
   const toggleFavourite = useFavourites((state) => state.toggle);
   const saved = useIsFavourite(objectId, part.id);
@@ -72,7 +73,7 @@ export function PartSheet({
     >
       <View style={styles.header}>
         <View style={{ flex: 1 }}>
-          <Label color={alpha(accent, 0.9)}>
+          <Label color={accentText}>
             {t('part.layer', { n: part.layer })} · {t('part.position', { index: position, total })}
           </Label>
           <Text variant="title" numberOfLines={expanded ? 2 : 1} style={{ marginTop: 3 }}>
@@ -86,7 +87,7 @@ export function PartSheet({
           accessibilityLabel={saved ? t('part.unsave') : t('part.save')}
           style={[styles.round, { backgroundColor: saved ? alpha(accent, 0.2) : colors.surfaceHigh }]}
         >
-          <Ionicons name={saved ? 'bookmark' : 'bookmark-outline'} size={17} color={saved ? accent : colors.textMuted} />
+          <Ionicons name={saved ? 'bookmark' : 'bookmark-outline'} size={17} color={saved ? accentText : colors.textMuted} />
         </Touchable>
         <Touchable
           onPress={onClose}
@@ -98,7 +99,7 @@ export function PartSheet({
         </Touchable>
       </View>
 
-      <Text variant="caption" color={accent} numberOfLines={expanded ? 3 : 2} style={{ marginTop: 2 }}>
+      <Text variant="caption" color={accentText} numberOfLines={expanded ? 3 : 2} style={{ marginTop: 2 }}>
         {part.short}
       </Text>
 
@@ -149,9 +150,9 @@ export function PartSheet({
           <Ionicons
             name={isolated ? 'eye-off-outline' : 'contract-outline'}
             size={15}
-            color={isolated ? accent : colors.textMuted}
+            color={isolated ? accentText : colors.textMuted}
           />
-          <Text variant="caption" color={isolated ? accent : colors.textMuted}>
+          <Text variant="caption" color={isolated ? accentText : colors.textMuted}>
             {isolated ? t('part.onlyThis') : t('part.isolate')}
           </Text>
         </Touchable>

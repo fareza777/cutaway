@@ -12,7 +12,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 
 import { LOCALES, type TranslationKey } from '@/i18n/strings';
-import { useColors, useLocale, useSettings, useT } from '@/state/settings';
+import { useColors, useReadableAccent, useLocale, useSettings, useT } from '@/state/settings';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { GhostButton, Label, PrimaryButton, Text, Touchable } from '@/ui/primitives';
 import { RotateArt, TapArt, ToolArt } from '@/ui/onboarding/Illustrations';
@@ -35,6 +35,7 @@ export default function Welcome() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const colors = useColors();
+  const accentText = useReadableAccent(ACCENT);
   const completeOnboarding = useSettings((state) => state.completeOnboarding);
   const setLocale = useSettings((state) => state.setLocale);
   const locale = useLocale();
@@ -101,17 +102,17 @@ export default function Welcome() {
                           },
                         ]}
                       >
-                        <Text variant="heading" color={active ? ACCENT : colors.text} style={{ flex: 1 }}>
+                        <Text variant="heading" color={active ? accentText : colors.text} style={{ flex: 1 }}>
                           {entry.label}
                         </Text>
-                        {active ? <Ionicons name="checkmark-circle" size={20} color={ACCENT} /> : null}
+                        {active ? <Ionicons name="checkmark-circle" size={20} color={accentText} /> : null}
                       </Touchable>
                     );
                   })}
                 </View>
               )}
             </View>
-            <Label color={alpha(ACCENT, 0.95)}>{t(COPY[index].kicker)}</Label>
+            <Label color={accentText}>{t(COPY[index].kicker)}</Label>
             <Text variant="display" style={{ marginTop: space.sm }}>
               {t(COPY[index].title)}
             </Text>

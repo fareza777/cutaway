@@ -1,0 +1,1 @@
+Explore the new espresso machine with 37 interactive parts, a pump animation, an eight-step brewing guide, and ten quiz questions. All new explanations and questions are available in English and Indonesian. The library now contains 29 objects.
