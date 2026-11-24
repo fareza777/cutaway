@@ -231,6 +231,36 @@ const ENTRIES: Entry[] = [
     icon: require('../../assets/object-icons/combine-harvester.png'),
     translations: { id: require('../../content/id/combine-harvester.json') },
   },
+  {
+    doc: require('../../content/tower-crane.json') as ObjectDoc,
+    model: require('../../assets/models/tower_crane.glb'),
+    icon: require('../../assets/object-icons/tower-crane.png'),
+    translations: { id: require('../../content/id/tower-crane.json') },
+  },
+  {
+    doc: require('../../content/mri-scanner.json') as ObjectDoc,
+    model: require('../../assets/models/mri_scanner.glb'),
+    icon: require('../../assets/object-icons/mri-scanner.png'),
+    translations: { id: require('../../content/id/mri-scanner.json') },
+  },
+  {
+    doc: require('../../content/server-rack.json') as ObjectDoc,
+    model: require('../../assets/models/server_rack.glb'),
+    icon: require('../../assets/object-icons/server-rack.png'),
+    translations: { id: require('../../content/id/server-rack.json') },
+  },
+  {
+    doc: require('../../content/observatory-telescope.json') as ObjectDoc,
+    model: require('../../assets/models/observatory_telescope.glb'),
+    icon: require('../../assets/object-icons/observatory-telescope.png'),
+    translations: { id: require('../../content/id/observatory-telescope.json') },
+  },
+  {
+    doc: require('../../content/francis-turbine.json') as ObjectDoc,
+    model: require('../../assets/models/francis_turbine.glb'),
+    icon: require('../../assets/object-icons/francis-turbine.png'),
+    translations: { id: require('../../content/id/francis-turbine.json') },
+  },
 ];
 
 const BY_ID = new Map(ENTRIES.map((entry) => [entry.doc.id, entry]));

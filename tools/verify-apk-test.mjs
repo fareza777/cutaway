@@ -144,7 +144,7 @@ try {
   const pristine = runVerifier(acceptedApk);
   const pristineOutput = `${pristine.stdout}\n${pristine.stderr}`;
   check(
-    'accepted 35-object APK satisfies the exact source and package contract',
+    'accepted 40-object APK satisfies the exact source and package contract',
     pristine.status === 0,
     `exit ${pristine.status}`,
   );
@@ -159,12 +159,12 @@ try {
     /Brand: 30\/30 current source-pixel matches/i.test(pristineOutput),
   );
   check(
-    'verifier requires exactly 35 source models',
-    !/source model count is 35, expected \d+/i.test(pristineOutput),
+    'verifier requires exactly 40 source models',
+    !/source model count is 40, expected \d+/i.test(pristineOutput),
   );
   check(
-    'verifier requires exactly 35 source object icons',
-    !/source object-icon count is 35, expected \d+/i.test(pristineOutput),
+    'verifier requires exactly 40 source object icons',
+    !/source object-icon count is 40, expected \d+/i.test(pristineOutput),
   );
   check(
     'verifier proves all 32 Metro models match current source bytes',
@@ -175,16 +175,16 @@ try {
     /Models \(AAPT\): 32\/32 exact named resource-byte matches \(32 packaged model resources\)/i.test(pristineOutput),
   );
   check(
-    'verifier proves exactly 70 GLB entries across both 35-model families',
+    'verifier proves exactly 80 GLB entries across both 40-model families',
     /GLB archive set: 64\/64 entries across the exact Metro \+ AAPT families/i.test(pristineOutput),
   );
   check(
-    'verifier proves all 35 unique object icons match current source pixels',
-    /Object icons: 32\/32 exact named decoded-pixel matches \(35 packaged icon resources\)/i.test(pristineOutput),
+    'verifier proves all 40 unique object icons match current source pixels',
+    /Object icons: 32\/32 exact named decoded-pixel matches \(40 packaged icon resources\)/i.test(pristineOutput),
   );
   check(
-    'verifier proves all 35 current source icons are uniquely decodable',
-    /Source object icons: 35\/32 unique decoded-pixel hashes/i.test(pristineOutput)
+    'verifier proves all 40 current source icons are uniquely decodable',
+    /Source object icons: 40\/32 unique decoded-pixel hashes/i.test(pristineOutput)
       && !/source object icons have only/i.test(pristineOutput),
   );
 

@@ -326,5 +326,45 @@
       0
     ],
     "opacity": {}
+  },
+  "tower_crane": {
+    "restRotation": [
+      0.55,
+      -0.62,
+      0.1
+    ],
+    "opacity": {}
+  },
+  "mri_scanner": {
+    "restRotation": [
+      0.12,
+      -0.55,
+      0.1
+    ],
+    "opacity": {}
+  },
+  "server_rack": {
+    "restRotation": [
+      0.06,
+      -0.52,
+      0.2
+    ],
+    "opacity": {}
+  },
+  "observatory_telescope": {
+    "restRotation": [
+      0.1,
+      -0.62,
+      0.06
+    ],
+    "opacity": {}
+  },
+  "francis_turbine": {
+    "restRotation": [
+      0.1,
+      -0.58,
+      0.04
+    ],
+    "opacity": {}
   }
 }

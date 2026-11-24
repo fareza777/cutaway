@@ -1,0 +1,40 @@
+{
+  "title": "Turbin Air Francis",
+  "subtitle": "Air masuk melalui rumah spiral, memutar roda jalan, lalu keluar melalui pipa buang",
+  "scale": "≈ tinggi 3,7 m · roda 1,2 m · kelas 150 MW",
+  "summary": "Turbin Francis adalah tulang punggung pembangkit hidroelektrik. Air masuk melalui rumah spiral yang membaginya merata ke sekeliling roda, sudu pengarah mengarahkannya ke bilah melengkung, dan roda memutar poros. Pipa buang memulihkan sisa kecepatan sebelum air keluar, dan di situlah sebagian besar efisiensinya berasal.",
+  "parts": {
+    "foundation": { "name": "Fondasi", "short": "Blok beton yang menahan mesin", "detail": "Fondasi menjangkarkan rumah spiral dan generator serta menahan torsi dan getaran roda." },
+    "spiral": { "name": "Rumah Spiral", "short": "Membagi air merata ke sekeliling roda", "detail": "Penampangnya mengecil saat melilit, sehingga setiap sudu pengarah menerima aliran yang sama." },
+    "stay_ring": { "name": "Cincin Tetap", "short": "Cincin struktural di dalam rumah spiral", "detail": "Cincin tetap menghubungkan rumah spiral ke fondasi dan membawa mekanisme sudu pengarah." },
+    "stay_vanes": { "name": "Sudu Tetap", "short": "Menghilangkan pusaran sebelum sudu pengarah", "detail": "Sudu tetap meluruskan aliran dan menopang cincin tetap. Sudu ini tidak bergerak saat operasi." },
+    "guide_vanes": { "name": "Sudu Pengarah", "short": "Mengatur jumlah air yang masuk ke roda", "detail": "Sudu pengarah berputar bersama. Membukanya menambah aliran dan daya; menutupnya menghentikan mesin." },
+    "guide_ring": { "name": "Cincin Pengarah", "short": "Menghubungkan semua sudu ke pengatur", "detail": "Cincin pengatur dan batang penghubung menggerakkan setiap sudu pada sudut yang sama agar aliran tetap simetris." },
+    "runner_hub": { "name": "Pusat Roda", "short": "Pusat tempat bilah dipasang", "detail": "Pusat roda membawa bilah dan meneruskan torsinya ke poros." },
+    "runner_blades": { "name": "Bilah Roda", "short": "Bilah melengkung yang mengambil energi", "detail": "Air keluar dari sudu pengarah dengan pusaran dan melewati bilah melengkung, kehilangan tekanan dan kecepatan sambil memutar roda." },
+    "draft_tube": { "name": "Pipa Buang", "short": "Memulihkan kecepatan saat air keluar", "detail": "Pipa yang melebar memperlambat air dan mengubah energi kinetiknya menjadi beda tekanan yang membantu menarik aliran melewati roda." },
+    "shaft": { "name": "Poros", "short": "Meneruskan torsi ke generator", "detail": "Poros vertikal menghubungkan roda ke rotor generator dan berputar di bantalan pemandu." },
+    "stator": { "name": "Bagian Diam Generator", "short": "Lilitan yang tidak berputar", "detail": "Bagian diam mengelilingi bagian putar. Perubahan fluks magnet menginduksi tegangan pada lilitannya." },
+    "rotor": { "name": "Bagian Putar Generator", "short": "Medan magnet yang berputar", "detail": "Bagian putar membawa kutub medan dan berputar bersama poros pada kecepatan sinkron jaringan." },
+    "generator_top": { "name": "Atas Generator", "short": "Bantalan atas dan rumahnya", "detail": "Rumah atas membawa bantalan dorong yang menopang seluruh massa berputar." },
+    "exciter": { "name": "Pembangkit Medan", "short": "Memasok arus medan ke rotor", "detail": "Pembangkit medan memberi arus searah ke rotor dan mengatur tegangan serta daya reaktif generator." },
+    "valve": { "name": "Katup Masuk", "short": "Memisahkan turbin dari pipa pesat", "detail": "Katup menutup untuk menghentikan air saat perawatan dan dibuka perlahan agar tidak terjadi lonjakan tekanan." },
+    "governor": { "name": "Pengatur Putaran", "short": "Menjaga kecepatan poros tetap", "detail": "Pengatur menggerakkan sudu pengarah mengikuti perubahan beban dan menjaga frekuensi pada 50 atau 60 Hz." },
+    "cooling": { "name": "Kumparan Pendingin", "short": "Membuang panas generator", "detail": "Pendingin air atau udara membawa panas dari lilitan dan rotor." },
+    "light": { "name": "Lampu Kerja", "short": "Menerangi ruang mesin", "detail": "Lampu di sekitar rumah spiral membantu operator memeriksa mesin saat perawatan." },
+    "nameplate": { "name": "Pelat Nama", "short": "Tinggi jatuh, debit, dan keluaran", "detail": "Pelat mencatat tinggi jatuh rencana, debit, dan daya nominal." }
+  },
+  "steps": [
+    { "title": "Rumah spiral menyebar aliran", "body": "Air masuk ke rumah spiral dan melilit roda. Penampangnya mengecil sepanjang lintasan, sehingga tekanan tetap merata dan setiap sudu pengarah menerima aliran sama." },
+    { "title": "Sudu pengarah menentukan daya", "body": "Sudu pengarah berputar bersama untuk membuka atau menutup aliran. Itulah kontrol utama: aliran lebih besar berarti torsi dan daya lebih besar." },
+    { "title": "Roda mengambil energi", "body": "Air melewati bilah melengkung dan kehilangan tekanan serta kecepatan saat memutar roda. Poros meneruskan torsi ke generator." },
+    { "title": "Pipa buang memulihkan sisanya", "body": "Air keluar dari roda dengan cepat. Pipa buang yang melebar memperlambatnya, memulihkan tekanan, dan membantu menarik aliran alih-alih membuang energi yang tersisa." }
+  ],
+  "quiz": [
+    { "prompt": "Ketuk bagian yang mengarahkan air ke bilah roda." },
+    { "prompt": "Ketuk bagian yang memulihkan kecepatan saat air keluar." },
+    { "prompt": "Ketuk bagian generator yang berputar." },
+    { "prompt": "Mengapa rumah spiral mengecil saat melilit?", "choices": ["Untuk menghemat cat", "Agar aliran tetap merata saat air keluar melalui sudu", "Untuk menambah tinggi jatuh", "Untuk mendinginkan air"], "explain": "Penampang yang mengecil mengimbangi air yang keluar di sepanjang lintasan, sehingga tekanan dan aliran tetap merata." },
+    { "prompt": "Apa yang diatur sudu pengarah?", "choices": ["Tegangan generator saja", "Aliran air masuk ke roda", "Tekanan pipa buang", "Kesejajaran poros"], "explain": "Membuka atau menutup sudu pengarah mengubah aliran dan karena itu mengubah daya." }
+  ]
+}

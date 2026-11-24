@@ -6,7 +6,7 @@ An offline-first Android app for exploring the inside of manufactured objects in
 3D — rotate them, blow them apart, cut through them, tap any part to learn what
 it does, then take a quiz on it. Anatomy, but for everything humans build.
 
-The catalog contains 35 objects across appliances, mechanics, electronics,
+The catalog contains 40 objects across appliances, mechanics, electronics,
 aerospace, anatomy and music. Every item has a dedicated model-rendered icon
 and complete English / Indonesian learning content. The espresso machine adds
 37 selectable parts, a slowed pump-plunger animation, an eight-step guide and

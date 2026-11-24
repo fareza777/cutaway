@@ -1,0 +1,36 @@
+{
+  "title": "Rak Komputasi Pusat Data",
+  "subtitle": "Delapan unit komputasi 2U, daya cadangan, dan pendingin dalam satu lemari tertutup",
+  "scale": "≈ tinggi 2,2 m · 8 unit · 42U",
+  "summary": "Rak komputasi adalah bangunan di dalam bangunan. Rangka menahan peralatan berukuran 19 inci, pintu dan panel samping mengatur aliran udara, dan sakelar jaringan di atas rak menghubungkan setiap unit. Daya masuk melalui dua jalur terpisah, dan unit pendingin membuang panas yang dihasilkan peralatan.",
+  "parts": {
+    "base": { "name": "Alas", "short": "Menyetel dan menyebar berat rak", "detail": "Alas membawa kaki lemari dan menyebarkan ratusan kilogram ke lantai yang ditinggikan." },
+    "frame": { "name": "Rangka Rak", "short": "Struktur 19 inci tempat semua perangkat dipasang", "detail": "Empat tiang dan rel horizontal membentuk rak standar. Tanda U menentukan posisi setiap unit." },
+    "panels": { "name": "Panel Samping", "short": "Menutup sisi lemari", "detail": "Panel samping menahan udara dingin di depan dan udara panas di belakang perangkat." },
+    "top": { "name": "Panel Atas", "short": "Menutup rak dan menjadi jalan kabel", "detail": "Panel atas menutup lemari dan menyediakan jalur kabel keluar dari rak." },
+    "door": { "name": "Pintu Depan", "short": "Membiarkan udara masuk dan LED terlihat", "detail": "Pintu berlubang atau berkaca melindungi peralatan sambil meneruskan udara dingin ke intake." },
+    "servers": { "name": "Unit Komputasi", "short": "Delapan unit 2U", "detail": "Setiap unit memiliki prosesor, memori, penyimpanan, dan kipas sendiri. Panel depan membawa slot drive dan LED status." },
+    "switches": { "name": "Sakelar Jaringan", "short": "Menghubungkan setiap unit ke jaringan", "detail": "Dua sakelar memberi uplink berlebih. Setiap unit terhubung ke keduanya, sehingga satu sakelar dapat gagal tanpa memutus layanan." },
+    "patch": { "name": "Panel Sambungan", "short": "Mengakhiri kabel terstruktur", "detail": "Port pada panel menyambungkan rak ke backbone serat optik dan tembaga gedung." },
+    "cable_tray": { "name": "Manajemen Kabel", "short": "Menata kabel tanpa menghalangi udara", "detail": "Cincin vertikal dan baki belakang menjaga kabel rapi dan memberi jalan udara buang." },
+    "psu": { "name": "Distribusi Daya", "short": "Dua jalur daya independen", "detail": "Setiap unit memiliki catu daya berlebih yang terhubung ke jalur berbeda, sehingga satu jalur dapat dirawat dengan aman." },
+    "fans": { "name": "Kipas Unit", "short": "Menarik udara dingin melewati sasis", "detail": "Kipas yang dapat diganti saat beroperasi mengalirkan udara dari depan melewati prosesor dan keluar belakang." },
+    "ups": { "name": "Catu Daya Cadangan", "short": "Menjembatani jeda ke daya genset", "detail": "Catu daya tak terputus menahan rak saat gangguan singkat dan menstabilkan daya masuk." },
+    "crac": { "name": "Unit Pendingin", "short": "Membuang panas yang dihasilkan perangkat", "detail": "Pendingin presisi meniupkan udara dingin ke lorong dan menarik udara panas kembali. Hampir semua daya listrik berakhir sebagai panas." },
+    "monitoring": { "name": "Panel Pemantauan", "short": "Menampilkan suhu, beban, dan alarm", "detail": "Panel menampilkan suhu masuk rak, daya terpakai, dan alarm yang aktif." },
+    "nameplate": { "name": "Pelat Nama", "short": "Identitas dan kapasitas rak", "detail": "Pelat mencatat nomor rak, kapasitas daya, dan pemiliknya." }
+  },
+  "steps": [
+    { "title": "Lebar standar membuat semuanya cocok", "body": "Rak 19 inci dan tinggi U dipakai bersama banyak produsen. Unit 2U apa pun dapat masuk ke rel yang sama, sehingga pusat data dapat mencampur peralatan dari berbagai pembuat." },
+    { "title": "Dingin di depan, panas di belakang", "body": "Unit menarik udara dingin melalui intake depan dan membuangnya di belakang rak. Pintu, panel, dan pelat penutup menjaga dua aliran udara tidak tercampur." },
+    { "title": "Dua jalur untuk setiap paket", "body": "Setiap unit terhubung ke dua sakelar jaringan, dan sakelar memiliki uplink terpisah. Kegagalan kabel atau sakelar dialihkan tanpa menghentikan layanan." },
+    { "title": "Daya dan panas adalah batas sebenarnya", "body": "Rak dibatasi oleh daya yang dapat ditarik dan panas yang dapat dibuang ruangan. Jalur daya berlebih dan pendingin khusus menjaga keduanya dalam batas aman." }
+  ],
+  "quiz": [
+    { "prompt": "Ketuk sakelar yang menghubungkan unit ke jaringan." },
+    { "prompt": "Ketuk unit yang membuang panas dari rak." },
+    { "prompt": "Ketuk bagian yang memberi daya saat gangguan singkat." },
+    { "prompt": "Mengapa setiap unit terhubung ke dua sakelar?", "choices": ["Agar kecepatannya berlipat", "Agar satu sakelar dapat gagal tanpa memutus jaringan", "Untuk mendinginkan unit", "Untuk menambah penyimpanan"], "explain": "Jalur berlebih memindahkan trafik ke sakelar kedua saat terjadi kegagalan." },
+    { "prompt": "Hampir semua listrik yang dipakai unit komputasi berubah menjadi apa?", "choices": ["Cahaya", "Panas", "Suara", "Trafik jaringan"], "explain": "Komputasi mengubah hampir seluruh energi listrik menjadi panas yang harus dibuang pendingin." }
+  ]
+}

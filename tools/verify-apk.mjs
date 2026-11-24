@@ -29,9 +29,9 @@ if (!existsSync(apk)) {
 }
 
 const sha256 = (buffer) => createHash('sha256').update(buffer).digest('hex');
-const EXPECTED_MODEL_COUNT = 35;
-const EXPECTED_ICON_COUNT = 35;
-const EXPECTED_GLB_COUNT = 64;
+const EXPECTED_MODEL_COUNT = 40;
+const EXPECTED_ICON_COUNT = 40;
+const EXPECTED_GLB_COUNT = 80;
 const problems = [];
 const problem = (message) => problems.push(message);
 const appConfig = JSON.parse(readFileSync(resolve(ROOT, 'app.json'), 'utf8')).expo;
@@ -633,4 +633,4 @@ if (problems.length) {
   process.exit(1);
 }
 
-console.log('OK: both exact 35-model families and all 35 unique object icons are present in the APK');
+console.log('OK: both exact 40-model families and all 40 unique object icons are present in the APK');

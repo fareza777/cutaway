@@ -1,0 +1,36 @@
+{
+  "title": "Menara Derek",
+  "subtitle": "Tiang kisi, lengan berputar, dan troli yang menempatkan beban ratusan meter jauhnya",
+  "scale": "≈ lengan 40 m · 8 t di troli · tiang 60 m",
+  "summary": "Menara derek adalah keseimbangan: beban di lengan kerja diimbangi pemberat di sisi lain tiang. Cincin putar memutar seluruh bagian atas, troli menggeser beban sepanjang lengan, dan drum kerek menarik atau melepas tali. Tiang menahan semuanya sebagai kisi, karena menara bersegitiga jauh lebih kaku daripada tabung pejal dengan berat yang sama.",
+  "parts": {
+    "base": { "name": "Alas dan Pemberat", "short": "Balok beton yang menahan derek", "detail": "Tiang berdiri di atas fondasi dan lingkaran pemberat. Pemberat melawan momen guling akibat beban di ujung lengan." },
+    "mast": { "name": "Tiang Kisi", "short": "Empat tiang sudut yang diperkuat menjadi menara kaku", "detail": "Tiang terdiri dari empat batang sudut dengan pengikat horizontal dan diagonal. Segitiga menahan tekan dan tarik tanpa membengkokkan batang." },
+    "slew": { "name": "Cincin Putar", "short": "Bantalan yang memutar bagian atas", "detail": "Bantalan besar bergigi berada antara tiang dan meja putar. Motor pinion kecil berjalan di sepanjang cincin untuk memutar derek." },
+    "cab": { "name": "Kabin Operator", "short": "Pandangan operator ke beban", "detail": "Kabin menggantung di samping tiang dengan kaca di tiga sisi. Dari sini operator mengatur putaran, troli, dan kerek." },
+    "jib": { "name": "Lengan Kerja", "short": "Lengan kisi yang menjangkau beban", "detail": "Lengan kisi segitiga membawa rel troli. Tingginya mengecil ke ujung untuk menghemat berat di bagian momen lentur kecil." },
+    "jib_tip": { "name": "Ujung Lengan", "short": "Ujung lengan kerja", "detail": "Ujung lengan membawa batas akhir troli serta anemometer dan lampu peringatan pada derek sungguhan." },
+    "counter_jib": { "name": "Lengan Penyeimbang", "short": "Lengan pendek di belakang tiang", "detail": "Lengan penyeimbang membawa pemberat dan kerek angkat. Lengan ini mengimbangi momen beban di lengan kerja." },
+    "counterweights": { "name": "Pemberat", "short": "Pelat beton penyeimbang lengan", "detail": "Pelat bertumpuk disusun agar derek tetap stabil tanpa beban dan masih memiliki cadangan saat beban penuh di ujung." },
+    "peak": { "name": "Puncak dan Batang Pengikat", "short": "Rangka A yang menggantung lengan", "detail": "Batang pengikat baja berjalan dari puncak ke lengan kerja dan lengan penyeimbang. Batang mengubah beban lentur menjadi tarikan." },
+    "trolley": { "name": "Troli", "short": "Menggeser beban sepanjang lengan", "detail": "Troli berjalan di rel bawah lengan. Menggesernya mengubah radius beban tanpa memutar derek." },
+    "hoist_rope": { "name": "Tali Angkat", "short": "Tali baja yang mengangkat beban", "detail": "Tali berjalan dari kerek melewati katrol lengan ke blok kait. Beberapa lilitan menggandakan gaya angkat." },
+    "hook": { "name": "Blok Kait", "short": "Blok katrol dan kait", "detail": "Blok membawa katrol dan kait. Beratnya menjaga tali tetap tegang saat beban dilepas." },
+    "winch": { "name": "Kerek Angkat", "short": "Drum dan motor yang menarik tali", "detail": "Motor bergigi memutar drum. Rem menahan beban saat operator melepas kontrol." },
+    "lights": { "name": "Lampu Peringatan", "short": "Menandai derek pada malam hari", "detail": "Lampu di lengan dan kabin membuat derek terlihat oleh derek lain dan pesawat." },
+    "nameplate": { "name": "Pelat Nama", "short": "Kapasitas dan nomor seri", "detail": "Pelat mencatat beban maksimum dan nomor seri derek." }
+  },
+  "steps": [
+    { "title": "Tiang adalah segitiga di empat arah", "body": "Setiap tingkat diperkuat diagonal. Beban di lengan membuat satu sisi tiang tertarik dan sisi lain tertekan, dan pengikat menjaga batang tetap lurus." },
+    { "title": "Putaran memutar seluruh bagian atas", "body": "Cincin putar adalah bantalan besar bergigi. Motor pinion berjalan mengelilinginya, sehingga lengan, penyeimbang, dan kabin berputar bersama di atas tiang tetap." },
+    { "title": "Troli mengubah radius", "body": "Tali angkat menggantung dari troli yang berjalan di lengan. Menggeser troli masuk atau keluar mengubah radius beban, kontrol paling sensitif pada derek." },
+    { "title": "Pemberat mengimbangi beban", "body": "Lengan penyeimbang membawa pelat beton di sisi berlawanan tiang. Momennya hampir meniadakan momen lengan, sehingga tiang terutama menahan selisihnya." }
+  ],
+  "quiz": [
+    { "prompt": "Ketuk bagian yang menggeser beban sepanjang lengan." },
+    { "prompt": "Ketuk bantalan yang memutar bagian atas derek." },
+    { "prompt": "Ketuk pelat yang mengimbangi lengan kerja." },
+    { "prompt": "Mengapa tiang dibuat sebagai kisi, bukan tabung pejal?", "choices": ["Lebih murah dicat", "Segitiga lebih kaku dengan berat yang sama", "Untuk membawa operator", "Untuk menahan pemberat"], "explain": "Kisi bersegitiga menahan lentur dan puntir dengan material jauh lebih sedikit daripada penampang pejal." },
+    { "prompt": "Apa yang terjadi saat troli bergerak keluar?", "choices": ["Radius beban bertambah", "Tiang menjadi pendek", "Pemberat jatuh", "Cincin putar berhenti"], "explain": "Troli membawa tali, jadi menjauh dari tiang menambah radius dan momen guling." }
+  ]
+}

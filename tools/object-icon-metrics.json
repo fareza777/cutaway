@@ -803,5 +803,120 @@
       "phi": 1.32,
       "roll": 0
     }
+  },
+  "tower-crane": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 24,
+      "minY": 48,
+      "maxX": 231,
+      "maxY": 208,
+      "width": 208,
+      "height": 161
+    },
+    "distance": 2.37827,
+    "view": {
+      "rotation": [
+        0.55,
+        -0.62,
+        0.1
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "mri-scanner": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 23,
+      "minY": 39,
+      "maxX": 232,
+      "maxY": 217,
+      "width": 210,
+      "height": 179
+    },
+    "distance": 3.17356,
+    "view": {
+      "rotation": [
+        0.12,
+        -0.55,
+        0.1
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "server-rack": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 48,
+      "minY": 23,
+      "maxX": 207,
+      "maxY": 232,
+      "width": 160,
+      "height": 210
+    },
+    "distance": 4.18491,
+    "view": {
+      "rotation": [
+        0.06,
+        -0.52,
+        0.2
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "observatory-telescope": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 47,
+      "minY": 28,
+      "maxX": 209,
+      "maxY": 227,
+      "width": 163,
+      "height": 200
+    },
+    "distance": 1.61496,
+    "view": {
+      "rotation": [
+        0.1,
+        -0.62,
+        0.06
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "francis-turbine": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 46,
+      "minY": 27,
+      "maxX": 210,
+      "maxY": 229,
+      "width": 165,
+      "height": 203
+    },
+    "distance": 1.75026,
+    "view": {
+      "rotation": [
+        0.1,
+        -0.58,
+        0.04
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
   }
 }

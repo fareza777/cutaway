@@ -1,0 +1,40 @@
+{
+  "title": "Teleskop Observatorium",
+  "subtitle": "Kubah bercelah, dudukan ekuatorial, dan cermin yang mengumpulkan cahaya berjam-jam",
+  "scale": "≈ aperture 1,3 m · f/8 · dudukan garpu",
+  "summary": "Teleskop penelitian melakukan dua hal sekaligus: mengumpulkan cukup cahaya untuk melihat objek redup, dan mengikuti langit saat Bumi berputar. Kubah melindungi alat dari angin dan cahaya liar, dudukan ekuatorial mengikuti satu sumbu rotasi, dan cermin utama memfokuskan cahaya bintang ke detektor.",
+  "parts": {
+    "dome_base": { "name": "Alas Kubah", "short": "Rel putar di bawah kubah", "detail": "Kubah berdiri di atas lingkaran rol. Motor memutar seluruh cangkang agar celah dapat mengikuti teleskop." },
+    "dome": { "name": "Cangkang Kubah", "short": "Setengah bola berputar dengan celah", "detail": "Cangkang melindungi teleskop dari angin dan hujan. Celahnya membuka ke bagian langit yang diamati." },
+    "slit_frame": { "name": "Rangka Celah", "short": "Tepi struktural bukaan", "detail": "Rangka celah menguatkan cangkang di bagian yang dipotong dan membawa rel penutup." },
+    "shutters": { "name": "Penutup Celah", "short": "Menutup celah saat cuaca buruk", "detail": "Dua penutup bergeser atau berayun bersama untuk menutup bukaan saat observatorium tidak dipakai." },
+    "pier": { "name": "Pilar", "short": "Kolom kaku sampai batuan dasar", "detail": "Pilar dipisahkan dari lantai bangunan agar langkah kaki dan angin tidak menggetarkan teleskop." },
+    "mount": { "name": "Basis Dudukan", "short": "Menghubungkan pilar ke dudukan", "detail": "Basis membawa garpu dan penggerak sumbu langit. Bautnya memungkinkan sumbu kutub disejajarkan." },
+    "fork": { "name": "Garpu", "short": "Menahan teleskop di dua sisi", "detail": "Dudukan garpu menopang tabung di dua titik, lebih kaku daripada dudukan satu sisi untuk cermin berat." },
+    "ra_axis": { "name": "Sumbu Langit", "short": "Berputar sekali per hari sidereal", "detail": "Sumbu kutub disejajarkan dengan sumbu rotasi Bumi. Menggerakkannya pada laju sidereal menjaga bintang tetap di tempatnya." },
+    "tube": { "name": "Tabung Optik", "short": "Menjaga cermin tetap sejajar", "detail": "Tabung memisahkan cermin utama dan sekunder serta menjaganya tegak lurus terhadap sumbu optik." },
+    "primary": { "name": "Cermin Utama", "short": "Mengumpulkan dan memfokuskan cahaya bintang", "detail": "Cermin cekung besar mengumpulkan cahaya dan memfokuskannya di dekat bagian atas tabung." },
+    "spider": { "name": "Penyangga Cermin", "short": "Menahan cermin sekunder pada sumbu", "detail": "Bilah tipis menopang cermin sekunder tanpa banyak menghalangi cahaya. Difraksinya tampak sebagai garis pada citra." },
+    "secondary": { "name": "Cermin Sekunder", "short": "Melipat cahaya menuju detektor", "detail": "Cermin cembung kecil mengirim berkas kembali melalui lubang di cermin utama atau ke port samping." },
+    "counterweight": { "name": "Penyeimbang", "short": "Mengimbangi tabung pada sumbu", "detail": "Pemberat di sisi berlawanan tabung mengurangi torsi yang harus ditahan penggerak." },
+    "drive": { "name": "Motor Penggerak", "short": "Mengarahkan dan mengikuti teleskop", "detail": "Motor pada kedua sumbu menggerakkan teleskop dan menahannya stabil terhadap angin dan ketidakseimbangan." },
+    "encoder": { "name": "Sensor Sudut", "short": "Mengukur sudut arah secara tepat", "detail": "Sensor resolusi tinggi melaporkan sudut sumbu agar sistem kendali tahu ke mana teleskop mengarah." },
+    "desk": { "name": "Meja Kendali", "short": "Stasiun astronom", "detail": "Meja memuat komputer, kontrol fokus dan kubah, serta pembacaan detektor." },
+    "screen": { "name": "Layar Kendali", "short": "Menampilkan citra detektor", "detail": "Layar menampilkan citra langsung, koreksi pemandu, dan status eksposur." },
+    "ladder": { "name": "Tangga Akses", "short": "Mencapai teleskop dan kubah", "detail": "Tangga memberi akses untuk perawatan dan penggantian instrumen di fokus." },
+    "nameplate": { "name": "Pelat Nama", "short": "Aperture dan nomor seri", "detail": "Pelat mencatat aperture, rasio fokus, dan nomor seri." }
+  },
+  "steps": [
+    { "title": "Kubah mengikuti celah", "body": "Kubah berputar di rel rol agar celah sejajar dengan teleskop. Cangkang menghalangi angin dan cahaya liar sementara bukaan menerima langit." },
+    { "title": "Pilar kaku menjaga citra diam", "body": "Teleskop berdiri di atas pilar yang terpisah dari lantai. Getaran bangunan akan mengaburkan eksposur panjang, karena itu pilar turun sampai batuan dasar." },
+    { "title": "Satu sumbu mengikuti Bumi", "body": "Sumbu kutub disejajarkan dengan rotasi Bumi. Memutarnya sekali per hari sidereal meniadakan gerak bintang, sehingga detektor dapat mengumpulkan cahaya berjam-jam." },
+    { "title": "Dua cermin membentuk citra", "body": "Cermin utama mengumpulkan cahaya; cermin sekunder melipatnya ke detektor. Tabung menjaga kedua cermin sejajar hingga sebagian kecil panjang gelombang." }
+  ],
+  "quiz": [
+    { "prompt": "Ketuk cermin yang mengumpulkan cahaya bintang." },
+    { "prompt": "Ketuk sumbu yang mengikuti rotasi Bumi." },
+    { "prompt": "Ketuk bagian yang melindungi teleskop dari angin dan cahaya." },
+    { "prompt": "Mengapa pilar teleskop dipisahkan dari lantai bangunan?", "choices": ["Untuk menghemat beton", "Agar langkah kaki dan angin tidak menggetarkan teleskop", "Agar kubah berputar lebih cepat", "Agar cermin tetap hangat"], "explain": "Pilar terpisah mengisolasi jalur optik dari getaran bangunan." },
+    { "prompt": "Apa fungsi cermin sekunder?", "choices": ["Mengumpulkan seluruh cahaya", "Melipat berkas terfokus menuju detektor", "Memutar kubah", "Menyaring warna"], "explain": "Cermin sekunder mengarahkan berkas ke instrumen dan menjaga tabung tetap pendek." }
+  ]
+}

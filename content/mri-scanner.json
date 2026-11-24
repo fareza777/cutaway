@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "id": "mri-scanner",
+  "title": "MRI Scanner",
+  "subtitle": "A superconducting magnet, three gradient coils and an RF coil that image the body without opening it",
+  "category": "Medical",
+  "accent": "#2F7F95",
+  "scale": "≈ 1.5 T magnet · 60 cm bore · 3.5 t",
+  "summary": "An MRI scanner does not take a photograph. It aligns the hydrogen nuclei in the body with a strong magnetic field, then knocks them out of alignment with a radio pulse. As they relax they emit a signal that depends on the tissue around them. Gradient coils encode position, and a computer turns the signals into slices.",
+  "model": "mri_scanner",
+  "cutAxis": "z",
+  "restRotation": [0.12, -0.55, 0.10],
+  "parts": [
+    { "id": "base", "nodes": ["base_skid"], "name": "Base Skid", "short": "The frame that spreads the magnet's weight", "detail": "The magnet weighs several tonnes, so the skid spreads the load across the floor and carries the leveling feet.", "layer": 0, "explode": [0, -0.6, 0] },
+    { "id": "magnet", "nodes": ["magnet_shell"], "name": "Magnet Housing", "short": "The white doughnut around the bore", "detail": "The housing contains the superconducting coil and its liquid-helium bath. The large white surface is the cryostat's outer cover.", "layer": 0 },
+    { "id": "cryostat", "nodes": ["cryostat_rings"], "name": "Cryostat", "short": "Keeps the coil at four kelvin", "detail": "The coil is bathed in liquid helium inside a vacuum vessel. The rings and struts support the cold mass while limiting heat leak.", "layer": 1 },
+    { "id": "bore", "nodes": ["bore_lining"], "name": "Bore Lining", "short": "The tunnel the patient enters", "detail": "A smooth plastic liner covers the gradient and RF coils and gives the patient a clear opening.", "layer": 1 },
+    { "id": "gradient", "nodes": ["gradient_coils"], "name": "Gradient Coils", "short": "Encode position in three directions", "detail": "Three coil sets create small field gradients along X, Y and Z. Switching them encodes which slice and which pixel each signal comes from.", "layer": 2 },
+    { "id": "rf_coil", "nodes": ["rf_body_coil"], "name": "RF Body Coil", "short": "Transmits the radio pulse and receives the echo", "detail": "A birdcage coil surrounds the body. It tips the hydrogen nuclei with a radio pulse and then listens for their relaxation signal.", "layer": 2 },
+    { "id": "helium", "nodes": ["helium_ports"], "name": "Helium Ports", "short": "Fill and vent the cryostat", "detail": "Service ports let engineers fill liquid helium and recover boil-off gas without warming the magnet.", "layer": 1, "hidden": true },
+    { "id": "quench", "nodes": ["quench_vent"], "name": "Quench Vent", "short": "Carries away helium in an emergency", "detail": "If the coil loses superconductivity, the stored energy boils the helium. The quench vent routes the gas safely out of the room.", "layer": 1 },
+    { "id": "table", "nodes": ["patient_table"], "name": "Patient Table", "short": "Slides the patient into the bore", "detail": "The table is non-magnetic and locks into the scanner. It positions the region of interest at the centre of the magnet.", "layer": 1 },
+    { "id": "rails", "nodes": ["table_rails"], "name": "Table Rails", "short": "Guide and drive the table", "detail": "Rails keep the table aligned with the bore. A drive moves it in precise steps during the scan.", "layer": 1 },
+    { "id": "console", "nodes": ["control_console"], "name": "Control Console", "short": "Where the technologist runs the scan", "detail": "The console holds the controls, display and intercom. The operator selects the sequence and monitors the patient from the adjacent room.", "layer": 0 },
+    { "id": "screen", "nodes": ["console_screen"], "name": "Console Screen", "short": "Shows the planning images", "detail": "The screen displays scout images, slice planning and scan progress.", "layer": 0 },
+    { "id": "chiller", "nodes": ["chiller"], "name": "Chiller", "short": "Removes heat from the gradient coils", "detail": "Gradient coils produce a lot of heat when switching. A water chiller carries that heat away so the coils stay stable.", "layer": 0 },
+    { "id": "hoses", "nodes": ["coolant_hoses"], "name": "Coolant Hoses", "short": "Connect the chiller to the magnet", "detail": "Flexible hoses carry chilled water to the gradient coil cooling circuit.", "layer": 1 },
+    { "id": "light", "nodes": ["work_light"], "name": "Bore Light", "short": "Lights the patient opening", "detail": "A ring light around the bore helps the patient and technologist see inside.", "layer": 1, "hidden": true },
+    { "id": "nameplate", "nodes": ["nameplate"], "name": "Nameplate", "short": "Field strength and serial number", "detail": "The plate records the field strength, magnet type and serial number.", "layer": 0, "hidden": true }
+  ],
+  "steps": [
+    { "title": "A field that lines up the nuclei", "body": "The superconducting magnet produces a strong, uniform field. Hydrogen nuclei in the body align with it, creating a tiny net magnetisation.", "focus": ["magnet", "cryostat", "bore"] },
+    { "title": "A radio pulse tips them over", "body": "The RF coil transmits a pulse at the resonance frequency. The nuclei absorb it and tip away from the field; when the pulse ends they relax back and emit a signal.", "focus": ["rf_coil", "bore"] },
+    { "title": "Gradients encode position", "body": "The gradient coils make the field slightly stronger in one direction. That changes the resonance frequency with position, so the received signal can be assigned to a slice and a pixel.", "focus": ["gradient", "rf_coil"] },
+    { "title": "Heat has to leave", "body": "Switching gradients quickly generates heat. The chiller and coolant hoses keep the coils at a stable temperature, which keeps the images reproducible.", "focus": ["chiller", "hoses", "console", "screen"] }
+  ],
+  "quiz": [
+    { "type": "identify", "prompt": "Tap the coil that transmits the radio pulse.", "partId": "rf_coil" },
+    { "type": "identify", "prompt": "Tap the coils that encode position in three directions.", "partId": "gradient" },
+    { "type": "identify", "prompt": "Tap the part that keeps the magnet cold.", "partId": "cryostat" },
+    { "type": "choice", "prompt": "What does an MRI scanner actually detect?", "choices": ["X-rays passing through bone", "Radio signals from relaxing hydrogen nuclei", "Sound waves from tissue", "Heat from the skin"], "answer": 1, "explain": "The scanner listens for the radio-frequency signal emitted by hydrogen nuclei as they relax." },
+    { "type": "choice", "prompt": "Why does the gradient coil need a chiller?", "choices": ["To cool the patient", "To remove heat from the switching coils", "To keep the helium liquid", "To power the RF coil"], "answer": 1, "explain": "Fast gradient switching produces heat; water cooling keeps the coils stable." }
+  ]
+}

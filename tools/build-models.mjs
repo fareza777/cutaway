@@ -64,6 +64,11 @@ import marineEngine from './models/marine_engine.mjs';
 import robotArm from './models/robot_arm.mjs';
 import cncMill from './models/cnc_mill.mjs';
 import combineHarvester from './models/combine_harvester.mjs';
+import towerCrane from './models/tower_crane.mjs';
+import mriScanner from './models/mri_scanner.mjs';
+import serverRack from './models/server_rack.mjs';
+import observatoryTelescope from './models/observatory_telescope.mjs';
+import francisTurbine from './models/francis_turbine.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = resolve(ROOT, 'assets/models');
@@ -104,6 +109,11 @@ const RECIPES = {
   robot_arm: robotArm,
   cnc_mill: cncMill,
   combine_harvester: combineHarvester,
+  tower_crane: towerCrane,
+  mri_scanner: mriScanner,
+  server_rack: serverRack,
+  observatory_telescope: observatoryTelescope,
+  francis_turbine: francisTurbine,
 };
 
 const ONLY = new Set(process.argv.slice(2).filter((a) => !a.startsWith('-')));

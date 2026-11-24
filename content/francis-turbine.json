@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "id": "francis-turbine",
+  "title": "Francis Hydro Turbine",
+  "subtitle": "Water enters a spiral, turns a runner and leaves through a draft tube",
+  "category": "Energy",
+  "accent": "#3F6F78",
+  "scale": "≈ 3.7 m tall · 1.2 m runner · 150 MW class",
+  "summary": "A Francis turbine is the workhorse of hydroelectric power. Water enters through a spiral casing that distributes it evenly around the runner, guide vanes direct it onto curved blades, and the runner turns the shaft. The draft tube recovers the remaining velocity before the water leaves, which is where much of the efficiency comes from.",
+  "model": "francis_turbine",
+  "cutAxis": "y",
+  "restRotation": [0.10, -0.58, 0.04],
+  "parts": [
+    { "id": "foundation", "nodes": ["foundation"], "name": "Foundation", "short": "The concrete block that carries the machine", "detail": "The foundation anchors the casing and generator and resists the torque and vibration of the runner.", "layer": 0, "explode": [0, -0.8, 0] },
+    { "id": "spiral", "nodes": ["spiral_casing"], "name": "Spiral Casing", "short": "Distributes water evenly around the runner", "detail": "The cross-section shrinks as the casing wraps around, so every guide vane receives the same flow.", "layer": 1 },
+    { "id": "stay_ring", "nodes": ["stay_ring"], "name": "Stay Ring", "short": "The structural ring inside the casing", "detail": "The stay ring ties the casing to the foundation and carries the guide-vane mechanism.", "layer": 1 },
+    { "id": "stay_vanes", "nodes": ["stay_vanes"], "name": "Stay Vanes", "short": "Remove swirl before the guide vanes", "detail": "Fixed vanes straighten the flow and support the stay ring. They do not move during operation.", "layer": 2 },
+    { "id": "guide_vanes", "nodes": ["guide_vanes"], "name": "Guide Vanes", "short": "Control how much water reaches the runner", "detail": "The guide vanes pivot together. Opening them admits more water and increases power; closing them shuts the machine down.", "layer": 2 },
+    { "id": "guide_ring", "nodes": ["guide_ring"], "name": "Guide-Vane Ring", "short": "Links all the vanes to the governor", "detail": "A regulating ring and links move every guide vane by the same angle, keeping the flow symmetrical.", "layer": 2, "hidden": true },
+    { "id": "runner_hub", "nodes": ["runner_hub"], "name": "Runner Hub", "short": "The centre the blades are fixed to", "detail": "The hub carries the blades and transfers their torque to the shaft.", "layer": 2 },
+    { "id": "runner_blades", "nodes": ["runner_blades"], "name": "Runner Blades", "short": "Curved blades that extract the energy", "detail": "Water leaves the guide vanes with swirl and passes through the curved blades, giving up pressure and velocity as it turns the runner.", "layer": 2 },
+    { "id": "draft_tube", "nodes": ["draft_tube"], "name": "Draft Tube", "short": "Recovers velocity as the water leaves", "detail": "The expanding tube slows the water and converts its remaining kinetic energy into a pressure difference that helps pull flow through the runner.", "layer": 1 },
+    { "id": "shaft", "nodes": ["shaft"], "name": "Shaft", "short": "Carries torque up to the generator", "detail": "The vertical shaft connects the runner to the generator rotor and runs in guide bearings.", "layer": 1 },
+    { "id": "stator", "nodes": ["generator_stator"], "name": "Generator Stator", "short": "The stationary windings", "detail": "The stator surrounds the rotor. Changing magnetic flux induces voltage in its windings.", "layer": 1 },
+    { "id": "rotor", "nodes": ["generator_rotor"], "name": "Generator Rotor", "short": "The rotating field", "detail": "The rotor carries the field poles and turns with the shaft at the grid's synchronous speed.", "layer": 2 },
+    { "id": "generator_top", "nodes": ["generator_top"], "name": "Generator Top", "short": "Upper bearing and housing", "detail": "The top housing carries the thrust bearing that supports the entire rotating mass.", "layer": 1 },
+    { "id": "exciter", "nodes": ["exciter"], "name": "Exciter", "short": "Supplies the rotor's field current", "detail": "The exciter feeds direct current to the rotor, controlling the generator's voltage and reactive power.", "layer": 1 },
+    { "id": "valve", "nodes": ["inlet_valve"], "name": "Inlet Valve", "short": "Isolates the turbine from the penstock", "detail": "The valve closes to stop water for maintenance and is opened slowly to avoid a pressure surge.", "layer": 1 },
+    { "id": "governor", "nodes": ["governor"], "name": "Governor", "short": "Holds the shaft speed constant", "detail": "The governor moves the guide vanes to match load changes and keep frequency at 50 or 60 Hz.", "layer": 0 },
+    { "id": "cooling", "nodes": ["cooling_coils"], "name": "Cooling Coils", "short": "Removes heat from the generator", "detail": "Water or air cooling carries away the losses in the stator and rotor.", "layer": 1, "hidden": true },
+    { "id": "light", "nodes": ["work_light"], "name": "Work Lights", "short": "Light the machine hall", "detail": "Lights around the casing let operators inspect the machine during maintenance.", "layer": 0, "hidden": true },
+    { "id": "nameplate", "nodes": ["nameplate"], "name": "Nameplate", "short": "Head, flow and output", "detail": "The plate records the design head, flow and rated output.", "layer": 0, "hidden": true }
+  ],
+  "steps": [
+    { "title": "The spiral spreads the flow", "body": "Water enters the casing and wraps around the runner. The casing narrows as it goes, so the pressure stays even and every guide vane sees the same flow.", "focus": ["spiral", "stay_ring", "stay_vanes"] },
+    { "title": "Guide vanes set the power", "body": "The guide vanes turn together to admit more or less water. That is the main control: more flow means more torque and more power.", "focus": ["guide_vanes", "guide_ring", "governor"] },
+    { "title": "The runner takes the energy", "body": "Water passes through curved blades and gives up pressure and velocity as it turns the runner. The shaft carries that torque to the generator.", "focus": ["runner_hub", "runner_blades", "shaft", "stator", "rotor"] },
+    { "title": "The draft tube recovers what is left", "body": "Water leaves the runner fast. The expanding draft tube slows it, recovering pressure and helping pull flow through the machine instead of wasting the remaining energy.", "focus": ["draft_tube", "runner_blades", "foundation", "valve", "cooling", "generator_top"] }
+  ],
+  "quiz": [
+    { "type": "identify", "prompt": "Tap the part that directs water onto the runner blades.", "partId": "guide_vanes" },
+    { "type": "identify", "prompt": "Tap the part that recovers velocity as the water leaves.", "partId": "draft_tube" },
+    { "type": "identify", "prompt": "Tap the rotating part of the generator.", "partId": "rotor" },
+    { "type": "choice", "prompt": "Why does the spiral casing get smaller as it wraps around?", "choices": ["To save paint", "To keep the flow even as water leaves through the vanes", "To increase the head", "To cool the water"], "answer": 1, "explain": "The shrinking section compensates for water leaving along the way, keeping pressure and flow uniform." },
+    { "type": "choice", "prompt": "What do the guide vanes control?", "choices": ["The generator voltage only", "The water flow into the runner", "The draft tube pressure", "The shaft alignment"], "answer": 1, "explain": "Opening or closing the guide vanes changes the flow and therefore the power." }
+  ]
+}

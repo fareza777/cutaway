@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "id": "observatory-telescope",
+  "title": "Observatory Telescope",
+  "subtitle": "A slit dome, an equatorial fork and a mirror that gathers light for hours",
+  "category": "Optics",
+  "accent": "#C47B2E",
+  "scale": "≈ 1.3 m aperture · f/8 · fork mount",
+  "summary": "A research telescope does two things at once: it collects enough light to see faint objects, and it tracks the sky as the Earth turns. The dome shields the instrument from wind and stray light, the equatorial mount follows one axis of rotation, and the primary mirror focuses starlight onto a detector.",
+  "model": "observatory_telescope",
+  "cutAxis": "y",
+  "restRotation": [0.10, -0.62, 0.06],
+  "parts": [
+    { "id": "dome_base", "nodes": ["dome_base"], "name": "Dome Base", "short": "The rotating track under the dome", "detail": "The dome sits on a ring of rollers. A motor turns the whole shell so the slit can follow the telescope.", "layer": 0, "explode": [0, -0.8, 0] },
+    { "id": "dome", "nodes": ["dome_shell"], "name": "Dome Shell", "short": "A rotating hemisphere with a slit", "detail": "The shell protects the telescope from wind and rain. Its slit opens toward the part of the sky being observed.", "layer": 0 },
+    { "id": "slit_frame", "nodes": ["dome_slit_frame"], "name": "Slit Frame", "short": "The structural edge of the opening", "detail": "The slit frame stiffens the shell where material has been removed and carries the shutter tracks.", "layer": 1, "hidden": true },
+    { "id": "shutters", "nodes": ["dome_shutters"], "name": "Dome Shutters", "short": "Close the slit in bad weather", "detail": "Two shutters slide or swing together to seal the opening when the observatory is not in use.", "layer": 1, "hidden": true },
+    { "id": "pier", "nodes": ["pier"], "name": "Pier", "short": "A rigid column from the bedrock", "detail": "The pier is isolated from the building floor so footsteps and wind do not shake the telescope.", "layer": 0 },
+    { "id": "mount", "nodes": ["mount_base"], "name": "Mount Base", "short": "Connects the pier to the mount", "detail": "The base carries the fork and the RA drive. Its bolts allow the polar axis to be aligned.", "layer": 1 },
+    { "id": "fork", "nodes": ["fork"], "name": "Fork", "short": "Holds the telescope on both sides", "detail": "A fork mount supports the tube at two points, which is stiffer than a single-sided mount for a heavy mirror.", "layer": 1 },
+    { "id": "ra_axis", "nodes": ["ra_axis"], "name": "Right Ascension Axis", "short": "Turns once per sidereal day", "detail": "The polar axis is aligned with Earth's rotation axis. Driving it at sidereal rate keeps a star fixed in the eyepiece.", "layer": 2 },
+    { "id": "tube", "nodes": ["telescope_tube"], "name": "Optical Tube", "short": "Holds the mirrors in alignment", "detail": "The tube keeps the primary and secondary mirrors separated and square to the optical axis.", "layer": 2 },
+    { "id": "primary", "nodes": ["primary_mirror"], "name": "Primary Mirror", "short": "Gathers and focuses the starlight", "detail": "The large concave mirror collects light and brings it to a focus near the top of the tube.", "layer": 2 },
+    { "id": "spider", "nodes": ["secondary_spider"], "name": "Secondary Spider", "short": "Holds the secondary mirror on the axis", "detail": "Thin vanes support the secondary mirror without blocking much light. Their diffraction spikes are visible in images.", "layer": 2, "hidden": true },
+    { "id": "secondary", "nodes": ["secondary_mirror"], "name": "Secondary Mirror", "short": "Folds the light back toward the detector", "detail": "A small convex mirror sends the converging beam back through a hole in the primary or out to a side port.", "layer": 2, "hidden": true },
+    { "id": "counterweight", "nodes": ["counterweight"], "name": "Counterweight", "short": "Balances the tube around the axis", "detail": "Weights on the opposite side of the tube reduce the torque the drive must hold.", "layer": 2 },
+    { "id": "drive", "nodes": ["drive_motor"], "name": "Drive Motors", "short": "Slew and track the telescope", "detail": "Motors on both axes move the telescope and hold it steady against wind and imbalance.", "layer": 1 },
+    { "id": "encoder", "nodes": ["encoder"], "name": "Axis Encoders", "short": "Measure the exact pointing angle", "detail": "High-resolution encoders report the axis angle so the control system knows where the telescope is pointing.", "layer": 1, "hidden": true },
+    { "id": "desk", "nodes": ["control_desk"], "name": "Control Desk", "short": "The astronomer's station", "detail": "The desk holds the computer, focus and dome controls, and the detector readout.", "layer": 0 },
+    { "id": "screen", "nodes": ["desk_screen"], "name": "Control Screen", "short": "Shows the detector image", "detail": "The screen displays the live image, guiding corrections and exposure status.", "layer": 0 },
+    { "id": "ladder", "nodes": ["ladder"], "name": "Access Ladder", "short": "Reaches the telescope and dome", "detail": "A ladder gives access for maintenance and for changing instruments at the focus.", "layer": 0, "hidden": true },
+    { "id": "nameplate", "nodes": ["nameplate"], "name": "Nameplate", "short": "Aperture and serial number", "detail": "The plate records the aperture, focal ratio and serial number.", "layer": 0, "hidden": true }
+  ],
+  "steps": [
+    { "title": "The dome follows the slit", "body": "The dome turns on its roller track so the slit lines up with the telescope. The shell blocks wind and stray light while the opening admits the sky.", "focus": ["dome_base", "dome", "shutters"] },
+    { "title": "A stiff pier keeps the image still", "body": "The telescope stands on a pier separated from the floor. Any vibration in the building would blur a long exposure, so the pier goes down to bedrock.", "focus": ["pier", "mount", "fork"] },
+    { "title": "One axis follows the Earth", "body": "The polar axis is aligned with Earth's rotation. Turning it once per sidereal day cancels the apparent motion of the stars, so the detector can integrate for hours.", "focus": ["ra_axis", "drive", "encoder", "counterweight"] },
+    { "title": "Two mirrors make the image", "body": "The concave primary gathers light; the small secondary folds it toward the detector. The tube keeps both mirrors aligned to a fraction of a wavelength.", "focus": ["tube", "primary", "secondary", "spider", "desk", "screen"] }
+  ],
+  "quiz": [
+    { "type": "identify", "prompt": "Tap the mirror that gathers the starlight.", "partId": "primary" },
+    { "type": "identify", "prompt": "Tap the axis that follows Earth's rotation.", "partId": "ra_axis" },
+    { "type": "identify", "prompt": "Tap the part that protects the telescope from wind and light.", "partId": "dome" },
+    { "type": "choice", "prompt": "Why is the telescope pier separated from the building floor?", "choices": ["To save concrete", "To stop footsteps and wind from shaking the telescope", "To make the dome turn faster", "To keep the mirror warm"], "answer": 1, "explain": "A separate pier isolates the optical path from building vibrations." },
+    { "type": "choice", "prompt": "What does the secondary mirror do?", "choices": ["Collects all the light", "Folds the focused beam toward the detector", "Turns the dome", "Filters the colours"], "answer": 1, "explain": "It redirects the converging beam to the instrument while keeping the tube short." }
+  ]
+}

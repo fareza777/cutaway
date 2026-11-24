@@ -17,7 +17,7 @@ const CONTACT_SHEET = resolve(
 );
 const PORT = 5186;
 const BASE_URL = `http://127.0.0.1:${PORT}`;
-const EXPECTED_COUNT = 35;
+const EXPECTED_COUNT = 40;
 const REQUESTED_IDS = (process.env.CUTAWAY_ICON_IDS ?? '')
   .split(',')
   .map((value) => value.trim())
@@ -200,7 +200,7 @@ try {
 
   await verifyOutputSet(docs);
   if (JSON.stringify(Object.keys(metrics).sort()) !== JSON.stringify(docs.map((doc) => doc.id).sort())) {
-    throw new Error('icon metrics set does not exactly match the 35-object catalog');
+    throw new Error('icon metrics set does not exactly match the 40-object catalog');
   }
   await writeFile(METRICS_FILE, `${JSON.stringify(metrics, null, 2)}\n`);
   await createContactSheet(page, docs);

@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "id": "server-rack",
+  "title": "Data Center Server Rack",
+  "subtitle": "Eight 2U servers, redundant power and a cooling unit in one sealed cabinet",
+  "category": "Computing",
+  "accent": "#2E7F9A",
+  "scale": "≈ 2.2 m tall · 8 servers · 42U",
+  "summary": "A server rack is a building inside a building. The frame holds standard 19-inch equipment, the door and side panels control airflow, and the top-of-rack switch ties every server to the network. Power comes in on two independent buses, and a precision cooling unit removes the heat that the servers turn electricity into.",
+  "model": "server_rack",
+  "cutAxis": "y",
+  "restRotation": [0.06, -0.52, 0.02],
+  "parts": [
+    { "id": "base", "nodes": ["base_plinth"], "name": "Base Plinth", "short": "Levels the rack and spreads its load", "detail": "The plinth carries the cabinet's feet and spreads several hundred kilograms over the raised floor.", "layer": 0, "explode": [0, -0.8, 0] },
+    { "id": "frame", "nodes": ["rack_frame"], "name": "Rack Frame", "short": "The 19-inch structure everything mounts to", "detail": "Four posts and horizontal rails form the EIA-310 rack. The U markings set where each server sits.", "layer": 0 },
+    { "id": "panels", "nodes": ["side_panels"], "name": "Side Panels", "short": "Close the sides of the cabinet", "detail": "Side panels keep cold air in front of the servers and hot air behind them.", "layer": 0 },
+    { "id": "top", "nodes": ["top_panel"], "name": "Top Panel", "short": "Caps the rack and carries cable entry", "detail": "The top panel closes the cabinet and provides brush strips for cables leaving the rack.", "layer": 0, "hidden": true },
+    { "id": "door", "nodes": ["glass_door"], "name": "Front Door", "short": "Lets air in and lets engineers see the LEDs", "detail": "A perforated or glazed door protects the equipment while allowing cool air to reach the server intakes.", "layer": 1 },
+    { "id": "servers", "nodes": ["server_units", "server_leds"], "name": "Server Units", "short": "Eight 2U compute nodes", "detail": "Each server has its own CPUs, memory, drives and fans. The front panel carries drive bays and status LEDs.", "layer": 2 },
+    { "id": "switches", "nodes": ["switches"], "name": "Top-of-Rack Switches", "short": "Connect every server to the network", "detail": "Two switches give redundant uplinks. Each server connects to both, so one switch can fail without dropping traffic.", "layer": 2 },
+    { "id": "patch", "nodes": ["patch_panel"], "name": "Patch Panel", "short": "Terminates the structured cabling", "detail": "Ports on the patch panel connect the rack to the building's fiber and copper backbone.", "layer": 2, "hidden": true },
+    { "id": "cable_tray", "nodes": ["cable_tray"], "name": "Cable Management", "short": "Routes cables without blocking airflow", "detail": "Vertical rings and a rear tray keep cables tidy and leave a clear path for exhaust air.", "layer": 1 },
+    { "id": "psu", "nodes": ["psu_bus"], "name": "Power Distribution", "short": "Two independent power feeds", "detail": "Each server has redundant supplies connected to separate PDUs, so a single feed can be serviced safely.", "layer": 1 },
+    { "id": "fans", "nodes": ["cooling_fans"], "name": "Server Fans", "short": "Pull cold air through each chassis", "detail": "Hot-swappable fans move air from the front intakes across the CPUs and out the rear.", "layer": 2, "hidden": true },
+    { "id": "ups", "nodes": ["ups"], "name": "UPS", "short": "Bridges the gap to generator power", "detail": "The uninterruptible supply carries the rack through short outages and conditions the incoming power.", "layer": 1 },
+    { "id": "crac", "nodes": ["crac"], "name": "Cooling Unit", "short": "Removes the heat the servers produce", "detail": "A precision air conditioner blows cold air into the aisle and takes hot air back. Almost all the electrical power ends up as heat.", "layer": 0 },
+    { "id": "monitoring", "nodes": ["monitoring"], "name": "Monitoring Panel", "short": "Shows temperature, load and alarms", "detail": "The panel displays rack inlet temperature, power draw and any active alarm.", "layer": 1, "hidden": true },
+    { "id": "nameplate", "nodes": ["nameplate"], "name": "Nameplate", "short": "Rack ID and capacity", "detail": "The plate records the rack number, power capacity and owner.", "layer": 0, "hidden": true }
+  ],
+  "steps": [
+    { "title": "A standard width makes everything fit", "body": "The 19-inch rack and its U height are shared across vendors. Any 2U server slides onto the same rails, which is why data centres can mix equipment from many makers.", "focus": ["frame", "servers", "base"] },
+    { "title": "Cold in the front, hot out the back", "body": "Servers pull cool air through their front intakes and exhaust it behind the rack. Doors, panels and blanking plates keep the two air streams from mixing.", "focus": ["door", "panels", "fans", "crac"] },
+    { "title": "Two paths for every packet", "body": "Each server connects to two top-of-rack switches, and the switches uplink over separate paths. A cable or switch failure reroutes traffic without stopping the service.", "focus": ["switches", "patch", "cable_tray"] },
+    { "title": "Power and heat are the real limits", "body": "A rack is limited by how much power it can draw and how much heat the room can remove. Redundant PDUs and a dedicated cooling unit keep both within safe limits.", "focus": ["psu", "ups", "crac", "monitoring"] }
+  ],
+  "quiz": [
+    { "type": "identify", "prompt": "Tap the switches that connect the servers to the network.", "partId": "switches" },
+    { "type": "identify", "prompt": "Tap the unit that removes heat from the rack.", "partId": "crac" },
+    { "type": "identify", "prompt": "Tap the part that supplies power during a short outage.", "partId": "ups" },
+    { "type": "choice", "prompt": "Why does each server connect to two switches?", "choices": ["To double its speed", "So one switch can fail without losing the network", "To cool the server", "To increase storage"], "answer": 1, "explain": "Redundant links let traffic fail over to the second switch." },
+    { "type": "choice", "prompt": "Where does almost all the electricity used by a server end up?", "choices": ["As light", "As heat", "As sound", "As network traffic"], "answer": 1, "explain": "Computing converts nearly all its electrical energy into heat, which the cooling system must remove." }
+  ]
+}

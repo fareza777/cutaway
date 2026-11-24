@@ -1,0 +1,37 @@
+{
+  "title": "Pemindai MRI",
+  "subtitle": "Magnet superkonduktor, tiga kumparan gradien, dan kumparan RF yang mencitrakan tubuh tanpa membukanya",
+  "scale": "≈ magnet 1,5 T · lubang 60 cm · 3,5 t",
+  "summary": "MRI tidak mengambil foto. Alat ini menyelaraskan inti hidrogen dalam tubuh dengan medan magnet kuat, lalu menggesernya dengan pulsa radio. Saat kembali sejajar, inti memancarkan sinyal yang bergantung pada jaringan di sekitarnya. Kumparan gradien memberi kode posisi, dan komputer mengubah sinyal menjadi irisan.",
+  "parts": {
+    "base": { "name": "Alas Dasar", "short": "Rangka yang menyebar berat magnet", "detail": "Magnet berbobot beberapa ton, sehingga alas menyebarkan beban ke lantai dan membawa kaki penyetel." },
+    "magnet": { "name": "Rumah Magnet", "short": "Cangkang putih di sekeliling lubang", "detail": "Rumah magnet memuat kumparan superkonduktor dan rendaman helium cair. Permukaan putih besar adalah penutup luar kriostat." },
+    "cryostat": { "name": "Kriostat", "short": "Menjaga kumparan pada empat kelvin", "detail": "Kumparan direndam helium cair di dalam bejana vakum. Cincin dan penopang menahan massa dingin sambil membatasi masuknya panas." },
+    "bore": { "name": "Lapisan Lubang", "short": "Terowongan yang dimasuki pasien", "detail": "Lapisan plastik halus menutupi kumparan gradien dan RF serta memberi lubang yang lapang bagi pasien." },
+    "gradient": { "name": "Kumparan Gradien", "short": "Memberi kode posisi tiga arah", "detail": "Tiga set kumparan membuat gradien medan kecil pada X, Y, dan Z. Pensaklaran cepat menentukan irisan dan piksel setiap sinyal." },
+    "rf_coil": { "name": "Kumparan RF", "short": "Mengirim pulsa radio dan menerima gema", "detail": "Kumparan berbentuk sangkar mengelilingi tubuh. Kumparan ini memiringkan inti hidrogen lalu mendengar sinyal relaksasinya." },
+    "helium": { "name": "Port Helium", "short": "Mengisi dan membuang gas kriostat", "detail": "Port servis memungkinkan teknisi mengisi helium cair dan memulihkan gas yang menguap tanpa menghangatkan magnet." },
+    "quench": { "name": "Ventilasi Darurat", "short": "Membuang helium saat quench", "detail": "Jika kumparan kehilangan sifat superkonduktor, energi tersimpan mendidihkan helium. Ventilasi mengalirkan gas keluar ruangan dengan aman." },
+    "table": { "name": "Meja Pasien", "short": "Menggeser pasien ke dalam lubang", "detail": "Meja tidak bersifat magnet dan terkunci ke pemindai. Meja menempatkan area yang diperiksa di pusat magnet." },
+    "rails": { "name": "Rel Meja", "short": "Memandu dan menggerakkan meja", "detail": "Rel menjaga meja sejajar dengan lubang. Penggerak menggesernya dalam langkah presisi selama pemindaian." },
+    "console": { "name": "Konsol Kontrol", "short": "Tempat teknolog menjalankan pemindaian", "detail": "Konsol memuat kontrol, layar, dan interkom. Operator memilih sekuens dan memantau pasien dari ruang sebelah." },
+    "screen": { "name": "Layar Konsol", "short": "Menampilkan citra perencanaan", "detail": "Layar menampilkan citra pendahuluan, perencanaan irisan, dan kemajuan pemindaian." },
+    "chiller": { "name": "Pendingin", "short": "Membuang panas dari kumparan gradien", "detail": "Kumparan gradien menghasilkan banyak panas saat berganti medan. Pendingin air membawa panas itu agar kumparan tetap stabil." },
+    "hoses": { "name": "Selang Pendingin", "short": "Menghubungkan pendingin ke magnet", "detail": "Selang lentur membawa air dingin ke sirkuit pendingin kumparan gradien." },
+    "light": { "name": "Lampu Lubang", "short": "Menerangi bukaan pasien", "detail": "Lampu cincin di sekitar lubang membantu pasien dan teknolog melihat bagian dalam." },
+    "nameplate": { "name": "Pelat Nama", "short": "Kekuatan medan dan nomor seri", "detail": "Pelat mencatat kekuatan medan, jenis magnet, dan nomor seri." }
+  },
+  "steps": [
+    { "title": "Medan yang menyelaraskan inti", "body": "Magnet superkonduktor menghasilkan medan kuat dan seragam. Inti hidrogen dalam tubuh sejajar dengan medan dan membentuk magnetisasi kecil." },
+    { "title": "Pulsa radio memiringkannya", "body": "Kumparan RF mengirim pulsa pada frekuensi resonansi. Inti menyerapnya dan miring dari medan; setelah pulsa berhenti, inti kembali dan memancarkan sinyal." },
+    { "title": "Gradien memberi kode posisi", "body": "Kumparan gradien membuat medan sedikit lebih kuat pada satu arah. Frekuensi resonansi berubah sesuai posisi, sehingga sinyal dapat dipetakan ke irisan dan piksel." },
+    { "title": "Panas harus keluar", "body": "Pensaklaran gradien cepat menghasilkan panas. Pendingin dan selang menjaga suhu kumparan stabil agar citra tetap dapat diulang." }
+  ],
+  "quiz": [
+    { "prompt": "Ketuk kumparan yang mengirim pulsa radio." },
+    { "prompt": "Ketuk kumparan yang memberi kode posisi tiga arah." },
+    { "prompt": "Ketuk bagian yang menjaga magnet tetap dingin." },
+    { "prompt": "Apa yang sebenarnya dideteksi pemindai MRI?", "choices": ["Sinar-X yang melewati tulang", "Sinyal radio dari inti hidrogen yang relaksasi", "Gelombang suara dari jaringan", "Panas dari kulit"], "explain": "Pemindai mendengar sinyal radio yang dipancarkan inti hidrogen saat kembali sejajar." },
+    { "prompt": "Mengapa kumparan gradien memerlukan pendingin?", "choices": ["Untuk mendinginkan pasien", "Untuk membuang panas dari kumparan yang berganti medan", "Untuk menjaga helium tetap cair", "Untuk memberi daya kumparan RF"], "explain": "Pergantian gradien yang cepat menghasilkan panas; pendingin air menjaga kumparan tetap stabil." }
+  ]
+}

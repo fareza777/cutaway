@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "id": "tower-crane",
+  "title": "Tower Crane",
+  "subtitle": "A lattice mast, a slewing jib and a trolley that places loads hundreds of metres away",
+  "category": "Construction",
+  "accent": "#D6A21E",
+  "scale": "≈ 40 m jib · 8 t at the trolley · 60 m mast",
+  "summary": "A tower crane is a balance: the load on the jib is counterweighted on the other side of the mast. The slewing ring turns the whole upper works, the trolley moves the load along the jib, and the hoist drum pays cable in and out. The mast carries all of that as a lattice, because a triangulated tower is far stiffer than a solid tube of the same weight.",
+  "model": "tower_crane",
+  "cutAxis": "y",
+  "restRotation": [0.06, -0.62, 0.04],
+  "parts": [
+    { "id": "base", "nodes": ["base_ballast"], "name": "Base and Ballast", "short": "The concrete blocks that hold the crane down", "detail": "The mast stands on a foundation and a ring of ballast. The ballast resists the overturning moment of a load at the jib tip.", "layer": 0, "explode": [0, -0.8, 0] },
+    { "id": "mast", "nodes": ["mast"], "name": "Lattice Mast", "short": "Four posts braced into a stiff tower", "detail": "The mast is four corner posts with horizontal and diagonal bracing. The triangles carry compression and tension without bending the posts.", "layer": 0 },
+    { "id": "slew", "nodes": ["slew_ring", "slewing_drive"], "name": "Slewing Ring", "short": "The bearing that turns the upper works", "detail": "A large geared bearing sits between the mast and the turntable. A small pinion motor walks around the ring to slew the crane.", "layer": 1 },
+    { "id": "cab", "nodes": ["cab_shell", "cab_glass", "cab_interior"], "name": "Operator Cab", "short": "The operator's view of the load", "detail": "The cab hangs beside the mast with glass on three sides. From here the operator controls slew, trolley and hoist.", "layer": 1 },
+    { "id": "jib", "nodes": ["jib"], "name": "Working Jib", "short": "The lattice arm that reaches the load", "detail": "A triangular lattice jib carries the trolley rail. Its depth tapers toward the tip to save weight where the bending moment is small.", "layer": 2 },
+    { "id": "jib_tip", "nodes": ["jib_tip"], "name": "Jib Tip", "short": "The end of the working arm", "detail": "The tip carries the last trolley stop and the anemometer and warning light on a real crane.", "layer": 2, "hidden": true },
+    { "id": "counter_jib", "nodes": ["counter_jib"], "name": "Counter-Jib", "short": "The short arm behind the mast", "detail": "The counter-jib carries the counterweights and the hoist winch. It balances the load moment on the working jib.", "layer": 2 },
+    { "id": "counterweights", "nodes": ["counterweights"], "name": "Counterweights", "short": "Concrete slabs that balance the jib", "detail": "Stacked slabs are sized so the crane stays stable with no load and still has margin with a full load at the tip.", "layer": 2 },
+    { "id": "peak", "nodes": ["tower_peak", "tie_bars"], "name": "Tower Peak and Tie Bars", "short": "The A-frame that hangs the jib", "detail": "Steel tie bars run from the peak to the jib and counter-jib. They turn the jib's bending load into tension in the bars.", "layer": 2 },
+    { "id": "trolley", "nodes": ["trolley"], "name": "Trolley", "short": "Rolls the load along the jib", "detail": "The trolley runs on rails under the jib. Moving it changes the load radius without slewing the crane.", "layer": 2, "motion": { "slide": { "axis": "x", "amplitude": 0.45 } } },
+    { "id": "hoist_rope", "nodes": ["hoist_rope"], "name": "Hoist Rope", "short": "Wire rope that lifts the load", "detail": "The rope runs from the winch over the jib sheaves to the hook block. Multiple falls multiply the lifting force.", "layer": 2 },
+    { "id": "hook", "nodes": ["hook_block"], "name": "Hook Block", "short": "The pulley block and hook", "detail": "The block carries the sheaves and the hook. Its weight keeps the rope taut when the load is removed.", "layer": 2 },
+    { "id": "winch", "nodes": ["hoist_drum", "hoist_motor"], "name": "Hoist Winch", "short": "The drum and motor that pay out cable", "detail": "A geared motor turns the drum. The brake holds the load when the operator releases the control.", "layer": 1 },
+    { "id": "lights", "nodes": ["lights"], "name": "Warning Lights", "short": "Marks the crane at night", "detail": "Lights on the jib and cab make the crane visible to other cranes and aircraft.", "layer": 1, "hidden": true },
+    { "id": "nameplate", "nodes": ["nameplate"], "name": "Nameplate", "short": "Capacity and serial number", "detail": "The plate records the maximum load and the crane's serial number.", "layer": 0, "hidden": true }
+  ],
+  "steps": [
+    { "title": "The mast is a triangle in four directions", "body": "Each bay is braced diagonally. A load at the jib puts one side of the mast in tension and the other in compression, and the bracing keeps the posts from bending.", "focus": ["mast", "base"] },
+    { "title": "Slewing turns the whole upper works", "body": "The slewing ring is a large geared bearing. Its pinion motor drives around the ring, so the jib, counter-jib and cab rotate together above the fixed mast.", "focus": ["slew", "cab", "jib"] },
+    { "title": "The trolley changes the radius", "body": "The hoist rope hangs from a trolley that rolls along the jib. Moving the trolley in or out changes the load radius, which is the crane's most sensitive control.", "focus": ["trolley", "jib", "hoist_rope"] },
+    { "title": "Counterweight balances the load", "body": "The counter-jib carries concrete slabs on the opposite side of the mast. Their moment nearly cancels the jib's, so the mast mainly carries the difference.", "focus": ["counter_jib", "counterweights", "peak", "winch"] }
+  ],
+  "quiz": [
+    { "type": "identify", "prompt": "Tap the part that rolls the load along the jib.", "partId": "trolley" },
+    { "type": "identify", "prompt": "Tap the bearing that turns the upper works.", "partId": "slew" },
+    { "type": "identify", "prompt": "Tap the slabs that balance the jib.", "partId": "counterweights" },
+    { "type": "choice", "prompt": "Why is the mast built as a lattice instead of a solid tube?", "choices": ["It is cheaper to paint", "Triangles are stiffer for the same weight", "It carries the operator", "It holds the counterweight"], "answer": 1, "explain": "A triangulated lattice resists bending and torsion with far less material than a solid section." },
+    { "type": "choice", "prompt": "What happens when the trolley moves outward?", "choices": ["The load radius increases", "The mast gets shorter", "The counterweight falls", "The slewing ring stops"], "answer": 0, "explain": "The trolley carries the rope, so moving it away from the mast increases the radius and the overturning moment." }
+  ]
+}
