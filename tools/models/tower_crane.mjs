@@ -23,9 +23,11 @@ export default function towerCrane() {
   const add = (name, geometry, material) => g.add(part(name, geometry, material));
 
   add('base_ballast', [
-    roundedBox(1.30, 0.16, 1.30, 0.02, 2, { pos: [0, 0.08, 0] }),
-    ...[-1, 1].flatMap((sx) => [-1, 1].map((sz) => box(0.42, 0.26, 0.42, { pos: [sx * 0.50, 0.19, sz * 0.50] }))),
-    ...[-1, 1].map((s) => box(1.15, 0.08, 0.12, { pos: [0, 0.25, s * 0.58] })),
+    roundedBox(1.62, 0.26, 1.62, 0.03, 3, { pos: [0, 0.13, 0] }),
+    roundedBox(1.42, 0.10, 1.42, 0.02, 2, { pos: [0, 0.29, 0] }),
+    ...[-1, 1].flatMap((sx) => [-1, 1].map((sz) => box(0.46, 0.30, 0.46, { pos: [sx * 0.55, 0.34, sz * 0.55] }))),
+    ...[-1, 1].map((s) => box(1.30, 0.09, 0.12, { pos: [0, 0.40, s * 0.66] })),
+    ...Array.from({ length: 8 }, (_, i) => cylinder(0.024, 0.024, 0.10, 8, { pos: [Math.cos((i / 8) * TAU) * 0.70, 0.28, Math.sin((i / 8) * TAU) * 0.70] })),
   ], concrete());
 
   const mast = [];
@@ -38,6 +40,18 @@ export default function towerCrane() {
     mast.push(strut([-0.19, y, 0.19], [0.19, y + 0.31, 0.19]));
     mast.push(strut([0.19, y, -0.19], [-0.19, y + 0.31, -0.19]));
   }
+  // Climbing cage and ladder around the lower mast: the access route is a
+  // recognisable part of a tower crane and gives the silhouette scale.
+  for (let i = 0; i < 4; i += 1) {
+    const x = i < 2 ? -0.30 : 0.30;
+    const z = i % 2 ? -0.30 : 0.30;
+    mast.push(cylinder(0.012, 0.012, 1.70, 6, { pos: [x, 1.16, z] }));
+  }
+  for (let y = 0.34; y < 2.0; y += 0.28) {
+    mast.push(...[-1, 1].map((s) => box(0.60, 0.012, 0.012, { pos: [0, y, s * 0.30] })));
+    mast.push(...[-1, 1].map((s) => box(0.012, 0.012, 0.30, { pos: [s * 0.30, y, 0] })));
+  }
+  mast.push(...Array.from({ length: 7 }, (_, i) => box(0.30, 0.018, 0.018, { pos: [0, 0.40 + i * 0.22, 0.30] })));
   add('mast', mast, yellow());
 
   add('slew_ring', [
@@ -85,7 +99,10 @@ export default function towerCrane() {
       jib.push(strut([x, 2.95, 0.16], [x + 0.25, 3.22, 0.16], 0.012));
       jib.push(strut([x, 2.95, -0.16], [x + 0.25, 3.22, -0.16], 0.012));
     }
+    // Walkway handrail along the working jib, where the trolley is serviced.
+    jib.push(box(0.018, 0.34, 0.018, { pos: [x, 3.39, 0.155] }));
   }
+  jib.push(box(2.55, 0.018, 0.018, { pos: [1.52, 3.56, 0.155] }));
   add('jib', jib, yellow());
 
   add('jib_tip', [

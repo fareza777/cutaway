@@ -28,7 +28,7 @@ assert.equal(config.extra.admob.bannerUnitId, 'ca-app-pub-6279186647593327/52092
 assert.equal(config.plugins.find((value) => Array.isArray(value) && value[0] === 'react-native-google-mobile-ads')[1].delayAppMeasurementInit, true);
 const models = readdirSync(resolve(root, 'assets/models')).filter((name) => name.endsWith('.glb'));
 assert.equal(models.length, 40);
-assert.equal(entryNames.filter((name) => name.endsWith('.glb')).length, 64);
+assert.equal(entryNames.filter((name) => name.endsWith('.glb')).length, 80);
 for (const model of models) {
   const digest = sha(readFileSync(resolve(root, 'assets/models', model)));
   for (const path of [`base/assets/${model}`, `base/res/raw/assets_models_${model}`]) {

@@ -21,9 +21,13 @@ const FRONT_Z = 0.72;
 const HEADER_Z = 1.62;
 
 function wheel(radius, width, x, z) {
+  // The axle runs across the machine (X), so the tyre's cylinder axis has to
+  // lie on X too. Rotating it about X instead would face the wheel forward
+  // like a disc and leave the tread blocks orbiting a different axis.
   const bits = [
-    cylinder(radius, radius, width, 30, { pos: [x, radius, z], rot: [Math.PI / 2, 0, 0] }),
-    cylinder(radius * 0.56, radius * 0.56, width * 1.04, 24, { pos: [x, radius, z], rot: [Math.PI / 2, 0, 0] }),
+    cylinder(radius, radius, width, 30, { pos: [x, radius, z], rot: [0, 0, Math.PI / 2] }),
+    cylinder(radius * 0.56, radius * 0.56, width * 1.04, 24, { pos: [x, radius, z], rot: [0, 0, Math.PI / 2] }),
+    ...[-1, 1].map((s) => torus(radius * 0.82, radius * 0.055, 26, 8, { pos: [x + s * width * 0.42, radius, z], rot: [0, Math.PI / 2, 0] })),
     ...Array.from({ length: 20 }, (_, i) => {
       const a = (i / 20) * TAU;
       return box(width * 0.92, radius * 0.10, radius * 0.11, {

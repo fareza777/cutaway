@@ -59,6 +59,11 @@
       "short": "Tiga ruang yang dibilas pada waktu berbeda",
       "detail": "Laci menyediakan ruang untuk pencucian utama, prapencucian, dan pelembut. Ruang pelembut memakai sifon: air mengisinya sampai melewati lengkungan, lalu seluruh isi tersedot sekaligus. Mekanisme ini menambahkan pelembut saat bilasan terakhir, bukan membuangnya ke saluran sejak awal."
     },
+    "control_panel": {
+      "name": "Panel Kontrol",
+      "short": "Satu-satunya antarmuka mesin dengan Anda",
+      "detail": "Putaran dial, tombol, dan layar menentukan program, suhu, serta kecepatan perasan. Di balik panel terdapat papan kendali yang membaca sensor level air, suhu, dan ketidakseimbangan drum, lalu mengatur katup masuk, pemanas, pompa, dan motor. Papan yang sama menyimpan kode kesalahan, sehingga layar panel biasanya menjadi tempat pertama memeriksa ketika siklus berhenti."
+    },
     "front_panel": {
       "name": "Panel Depan",
       "short": "Bagian tetap di depan rakitan yang bergerak",

@@ -5,7 +5,16 @@
       -0.5,
       0
     ],
-    "opacity": {}
+    "opacity": {},
+    "icon": {
+      "rotation": [
+        0.10,
+        -0.75,
+        0.04
+      ],
+      "phi": 1.2,
+      "coverage": 0.8
+    }
   },
   "brain": {
     "restRotation": [
@@ -27,6 +36,14 @@
     "opacity": {
       "front_element": 0.62,
       "lens_group": 0.35
+    },
+    "icon": {
+      "rotation": [
+        0.12,
+        -0.9,
+        0
+      ],
+      "coverage": 0.8
     }
   },
   "cordless_drill": {
@@ -211,7 +228,16 @@
       -0.5,
       0
     ],
-    "opacity": {}
+    "opacity": {},
+    "icon": {
+      "rotation": [
+        0.04,
+        -0.34,
+        0
+      ],
+      "roll": -0.56,
+      "coverage": 0.8
+    }
   },
   "tooth": {
     "restRotation": [
@@ -237,7 +263,16 @@
       -0.5,
       0
     ],
-    "opacity": {}
+    "opacity": {
+      "door": 0.3
+    },
+    "icon": {
+      "rotation": [
+        0.06,
+        -0.7,
+        0
+      ]
+    }
   },
   "turboshaft_helicopter": {
     "restRotation": [
@@ -293,7 +328,15 @@
       -0.62,
       0
     ],
-    "opacity": {}
+    "opacity": {},
+    "icon": {
+      "rotation": [
+        0.06,
+        -1.15,
+        0
+      ],
+      "phi": 1.15
+    }
   },
   "marine_engine": {
     "restRotation": [
@@ -325,7 +368,16 @@
       -0.58,
       0
     ],
-    "opacity": {}
+    "opacity": {},
+    "icon": {
+      "rotation": [
+        0.18,
+        -0.9,
+        0
+      ],
+      "phi": 1.15,
+      "coverage": 0.82
+    }
   },
   "tower_crane": {
     "restRotation": [
@@ -333,7 +385,15 @@
       -0.62,
       0.1
     ],
-    "opacity": {}
+    "opacity": {},
+    "icon": {
+      "rotation": [
+        0.28,
+        -0.95,
+        0.04
+      ],
+      "coverage": 0.8
+    }
   },
   "mri_scanner": {
     "restRotation": [
@@ -341,7 +401,15 @@
       -0.55,
       0.1
     ],
-    "opacity": {}
+    "opacity": {},
+    "icon": {
+      "rotation": [
+        0.12,
+        -0.72,
+        0.06
+      ],
+      "coverage": 0.8
+    }
   },
   "server_rack": {
     "restRotation": [
@@ -349,7 +417,17 @@
       -0.52,
       0.2
     ],
-    "opacity": {}
+    "opacity": {
+      "glass_door": 0.18
+    },
+    "icon": {
+      "rotation": [
+        0.04,
+        -0.55,
+        0.02
+      ],
+      "roll": 0.08
+    }
   },
   "observatory_telescope": {
     "restRotation": [
@@ -357,7 +435,15 @@
       -0.62,
       0.06
     ],
-    "opacity": {}
+    "opacity": {},
+    "icon": {
+      "rotation": [
+        0.10,
+        -1.05,
+        0.02
+      ],
+      "phi": 1.25
+    }
   },
   "francis_turbine": {
     "restRotation": [
@@ -365,6 +451,18 @@
       -0.58,
       0.04
     ],
-    "opacity": {}
+    "opacity": {
+      "spiral_casing": 0.55
+    },
+    "icon": {
+      "rotation": [
+        0.18,
+        -0.35,
+        0.02
+      ],
+      "theta": -0.7,
+      "phi": 1.0,
+      "coverage": 0.8
+    }
   }
 }

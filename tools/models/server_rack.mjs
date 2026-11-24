@@ -2,11 +2,11 @@
 // cable management, UPS and a precision cooling unit.
 import { TAU, THREE, part, pbr, roundedBox, box, cylinder, torus, merge } from '../lib/geo.mjs';
 
-const frameMat = () => pbr('#3a4248', { metalness: 0.55, roughness: 0.4 });
-const panel = () => pbr('#20262a', { metalness: 0.35, roughness: 0.55 });
-const face = () => pbr('#c7ccce', { metalness: 0.4, roughness: 0.42 });
-const dark = () => pbr('#161b1e', { roughness: 0.7 });
-const blue = () => pbr('#2e7f9a', { roughness: 0.2, emissive: '#1d5264', emissiveIntensity: 0.4 });
+const frameMat = () => pbr('#59636b', { metalness: 0.55, roughness: 0.4 });
+const panel = () => pbr('#333b41', { metalness: 0.35, roughness: 0.55 });
+const face = () => pbr('#d5d9da', { metalness: 0.4, roughness: 0.42 });
+const dark = () => pbr('#1d2226', { roughness: 0.7 });
+const blue = () => pbr('#3d93ad', { roughness: 0.2, emissive: '#2a7590', emissiveIntensity: 0.55 });
 const green = () => pbr('#64b06a', { roughness: 0.3, emissive: '#3d7a42', emissiveIntensity: 0.5 });
 const orange = () => pbr('#d08034', { roughness: 0.5 });
 const steel = () => pbr('#9aa3a7', { metalness: 0.8, roughness: 0.3 });
@@ -28,8 +28,11 @@ export default function serverRack() {
   const add = (name, geometry, material) => g.add(part(name, geometry, material));
 
   add('base_plinth', [
-    roundedBox(0.80, 0.10, 0.94, 0.015, 2, { pos: [0, 0.05, 0] }),
+    // Raised data-centre floor tile wide enough to carry the rack and the CRAC.
+    roundedBox(2.24, 0.10, 1.14, 0.015, 2, { pos: [0.24, 0.05, 0] }),
+    ...Array.from({ length: 6 }, (_, i) => box(0.02, 0.012, 1.04, { pos: [-0.72 + i * 0.42, 0.106, 0] })),
     ...[-1, 1].flatMap((sx) => [-1, 1].map((sz) => cylinder(0.035, 0.035, 0.06, 10, { pos: [sx * 0.31, 0.03, sz * 0.36] }))),
+    ...[-1, 1].map((s) => cylinder(0.035, 0.035, 0.06, 10, { pos: [1.12, 0.03, s * 0.32] })),
   ], dark());
 
   add('rack_frame', [
@@ -37,12 +40,19 @@ export default function serverRack() {
     ...[-1, 1].map((s) => box(0.76, 0.05, 0.05, { pos: [0, 2.24, s * 0.42] })),
     ...[-1, 1].map((s) => box(0.76, 0.05, 0.05, { pos: [0, 0.12, s * 0.42] })),
     ...[-1, 1].map((s) => box(0.05, 0.05, 0.88, { pos: [s * 0.36, 2.24, 0] })),
+    // Front door frame, so the transparent door reads as a glazed panel rather
+    // than an open set of shelves.
+    ...[-1, 1].map((s) => box(0.055, 2.10, 0.055, { pos: [s * 0.345, 1.18, 0.445] })),
+    box(0.74, 0.055, 0.055, { pos: [0, 2.21, 0.445] }),
+    box(0.74, 0.055, 0.055, { pos: [0, 0.15, 0.445] }),
     ...Array.from({ length: 10 }, (_, i) => box(0.02, 0.02, 0.78, { pos: [-0.33, 0.24 + i * 0.20, 0] })),
   ], frameMat());
 
   add('side_panels', [
     ...[-1, 1].map((s) => box(0.025, 2.08, 0.80, { pos: [s * 0.377, 1.17, 0] })),
     ...[-1, 1].map((s) => box(0.025, 1.90, 0.03, { pos: [s * 0.377, 1.17, 0.38] })),
+    // Blanking strips between the 2U servers give the front its rack rhythm.
+    ...Array.from({ length: 9 }, (_, i) => box(0.66, 0.030, 0.018, { pos: [0, 0.245 + i * 0.205, 0.358] })),
   ], panel());
 
   add('top_panel', [
@@ -56,13 +66,14 @@ export default function serverRack() {
     ...[-1, 1].map((s) => box(0.02, 1.96, 0.03, { pos: [s * 0.33, 1.18, 0.45] })),
     cylinder(0.018, 0.018, 0.20, 10, { pos: [0.27, 1.18, 0.47] }),
     ...[-1, 1].map((s) => cylinder(0.02, 0.02, 0.045, 8, { pos: [s * 0.28, 1.05, 0.445], rot: [Math.PI / 2, 0, 0] })),
-  ], pbr('#6e99a8', { roughness: 0.14, metalness: 0.35 }));
+  ], pbr('#a9c9d4', { roughness: 0.08, metalness: 0.3 }));
 
   add('server_units', Array.from({ length: 8 }, (_, i) => serverUnit(0.32 + i * 0.205)).flat(), face());
 
   add('server_leds', [
-    ...Array.from({ length: 8 }, (_, i) => box(0.012, 0.012, 0.006, { pos: [-0.27, 0.335 + i * 0.205, 0.366] })),
-    ...Array.from({ length: 8 }, (_, i) => box(0.012, 0.012, 0.006, { pos: [-0.245, 0.335 + i * 0.205, 0.366] })),
+    ...Array.from({ length: 8 }, (_, i) => box(0.018, 0.018, 0.006, { pos: [-0.27, 0.335 + i * 0.205, 0.368] })),
+    ...Array.from({ length: 8 }, (_, i) => box(0.018, 0.018, 0.006, { pos: [-0.243, 0.335 + i * 0.205, 0.368] })),
+    ...Array.from({ length: 8 }, (_, i) => box(0.014, 0.014, 0.006, { pos: [-0.216, 0.335 + i * 0.205, 0.368] })),
   ], green());
 
   add('switches', [
@@ -113,8 +124,9 @@ export default function serverRack() {
   ], panel());
 
   add('monitoring', [
-    roundedBox(0.24, 0.18, 0.03, 0.01, 1, { pos: [0.82, 1.72, 0.20] }),
-    box(0.20, 0.14, 0.006, { pos: [0.82, 1.72, 0.218] }),
+    roundedBox(0.30, 0.22, 0.03, 0.01, 1, { pos: [0.82, 1.72, 0.20] }),
+    box(0.25, 0.17, 0.006, { pos: [0.82, 1.72, 0.218] }),
+    ...Array.from({ length: 5 }, (_, i) => box(0.18, 0.012, 0.002, { pos: [0.82, 1.66 + i * 0.022, 0.222] })),
     cylinder(0.012, 0.012, 0.18, 8, { pos: [1.00, 1.72, 0.14] }),
     box(0.04, 0.04, 0.10, { pos: [1.00, 1.72, 0.08] }),
   ], blue());

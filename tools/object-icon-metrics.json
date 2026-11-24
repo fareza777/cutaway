@@ -3,22 +3,22 @@
     "width": 256,
     "height": 256,
     "bounds": {
-      "minX": 41,
-      "minY": 24,
-      "maxX": 214,
-      "maxY": 232,
-      "width": 174,
-      "height": 209
+      "minX": 44,
+      "minY": 26,
+      "maxX": 212,
+      "maxY": 229,
+      "width": 169,
+      "height": 204
     },
-    "distance": 3.73542,
+    "distance": 3.9311,
     "view": {
       "rotation": [
-        0.12,
-        -0.5,
-        0
+        0.1,
+        -0.75,
+        0.04
       ],
       "theta": -0.6,
-      "phi": 1.32,
+      "phi": 1.2,
       "roll": 0
     }
   },
@@ -49,18 +49,18 @@
     "width": 256,
     "height": 256,
     "bounds": {
-      "minX": 25,
-      "minY": 24,
-      "maxX": 230,
-      "maxY": 232,
-      "width": 206,
-      "height": 209
+      "minX": 49,
+      "minY": 26,
+      "maxX": 207,
+      "maxY": 229,
+      "width": 159,
+      "height": 204
     },
-    "distance": 3.08094,
+    "distance": 3.685,
     "view": {
       "rotation": [
         0.12,
-        -0.55,
+        -0.9,
         0
       ],
       "theta": -0.6,
@@ -487,17 +487,17 @@
     "height": 256,
     "bounds": {
       "minX": 45,
-      "minY": 23,
+      "minY": 26,
       "maxX": 211,
-      "maxY": 232,
+      "maxY": 230,
       "width": 167,
-      "height": 210
+      "height": 205
     },
-    "distance": 4.55935,
+    "distance": 4.6,
     "view": {
       "rotation": [
-        0.12,
-        -0.5,
+        0.04,
+        -0.34,
         0
       ],
       "theta": -0.6,
@@ -555,18 +555,18 @@
     "width": 256,
     "height": 256,
     "bounds": {
-      "minX": 24,
-      "minY": 24,
-      "maxX": 232,
-      "maxY": 231,
-      "width": 209,
-      "height": 208
+      "minX": 25,
+      "minY": 23,
+      "maxX": 231,
+      "maxY": 232,
+      "width": 207,
+      "height": 210
     },
-    "distance": 3.20888,
+    "distance": 3.08975,
     "view": {
       "rotation": [
-        0.08,
-        -0.5,
+        0.06,
+        -0.7,
         0
       ],
       "theta": -0.6,
@@ -647,22 +647,22 @@
     "width": 256,
     "height": 256,
     "bounds": {
-      "minX": 24,
-      "minY": 37,
-      "maxX": 232,
-      "maxY": 218,
-      "width": 209,
-      "height": 182
+      "minX": 40,
+      "minY": 24,
+      "maxX": 216,
+      "maxY": 231,
+      "width": 177,
+      "height": 208
     },
-    "distance": 2.63058,
+    "distance": 1.72228,
     "view": {
       "rotation": [
-        0.08,
-        -0.62,
+        0.06,
+        -1.15,
         0
       ],
       "theta": -0.6,
-      "phi": 1.32,
+      "phi": 1.15,
       "roll": 0
     }
   },
@@ -740,21 +740,21 @@
     "height": 256,
     "bounds": {
       "minX": 24,
-      "minY": 48,
+      "minY": 40,
       "maxX": 232,
-      "maxY": 207,
+      "maxY": 216,
       "width": 209,
-      "height": 160
+      "height": 177
     },
-    "distance": 2.92036,
+    "distance": 2.98354,
     "view": {
       "rotation": [
-        0.08,
-        -0.58,
+        0.18,
+        -0.9,
         0
       ],
       "theta": -0.6,
-      "phi": 1.32,
+      "phi": 1.15,
       "roll": 0
     }
   },
@@ -808,19 +808,19 @@
     "width": 256,
     "height": 256,
     "bounds": {
-      "minX": 24,
-      "minY": 48,
-      "maxX": 231,
-      "maxY": 208,
-      "width": 208,
-      "height": 161
+      "minX": 26,
+      "minY": 49,
+      "maxX": 230,
+      "maxY": 207,
+      "width": 205,
+      "height": 159
     },
-    "distance": 2.37827,
+    "distance": 2.56724,
     "view": {
       "rotation": [
-        0.55,
-        -0.62,
-        0.1
+        0.28,
+        -0.95,
+        0.04
       ],
       "theta": -0.6,
       "phi": 1.32,
@@ -831,19 +831,19 @@
     "width": 256,
     "height": 256,
     "bounds": {
-      "minX": 23,
-      "minY": 39,
-      "maxX": 232,
-      "maxY": 217,
-      "width": 210,
-      "height": 179
+      "minX": 26,
+      "minY": 36,
+      "maxX": 229,
+      "maxY": 220,
+      "width": 204,
+      "height": 185
     },
-    "distance": 3.17356,
+    "distance": 3.17699,
     "view": {
       "rotation": [
         0.12,
-        -0.55,
-        0.1
+        -0.72,
+        0.06
       ],
       "theta": -0.6,
       "phi": 1.32,
@@ -854,45 +854,45 @@
     "width": 256,
     "height": 256,
     "bounds": {
-      "minX": 48,
+      "minX": 33,
       "minY": 23,
-      "maxX": 207,
+      "maxX": 222,
       "maxY": 232,
-      "width": 160,
+      "width": 190,
       "height": 210
     },
-    "distance": 4.18491,
+    "distance": 3.61224,
     "view": {
       "rotation": [
-        0.06,
-        -0.52,
-        0.2
+        0.04,
+        -0.55,
+        0.02
       ],
       "theta": -0.6,
       "phi": 1.32,
-      "roll": 0
+      "roll": 0.08
     }
   },
   "observatory-telescope": {
     "width": 256,
     "height": 256,
     "bounds": {
-      "minX": 47,
-      "minY": 28,
-      "maxX": 209,
-      "maxY": 227,
-      "width": 163,
-      "height": 200
+      "minX": 26,
+      "minY": 30,
+      "maxX": 230,
+      "maxY": 226,
+      "width": 205,
+      "height": 197
     },
-    "distance": 1.61496,
+    "distance": 1.75737,
     "view": {
       "rotation": [
         0.1,
-        -0.62,
-        0.06
+        -1.05,
+        0.02
       ],
       "theta": -0.6,
-      "phi": 1.32,
+      "phi": 1.25,
       "roll": 0
     }
   },
@@ -900,22 +900,22 @@
     "width": 256,
     "height": 256,
     "bounds": {
-      "minX": 46,
-      "minY": 27,
-      "maxX": 210,
-      "maxY": 229,
-      "width": 165,
-      "height": 203
+      "minX": 26,
+      "minY": 32,
+      "maxX": 230,
+      "maxY": 223,
+      "width": 205,
+      "height": 192
     },
-    "distance": 1.75026,
+    "distance": 1.85757,
     "view": {
       "rotation": [
-        0.1,
-        -0.58,
-        0.04
+        0.18,
+        -0.35,
+        0.02
       ],
-      "theta": -0.6,
-      "phi": 1.32,
+      "theta": -0.7,
+      "phi": 1,
       "roll": 0
     }
   }

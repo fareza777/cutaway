@@ -7,15 +7,15 @@ import {
   sphere,
 } from '../lib/geo.mjs';
 
-const BODY = () => pbr('#5c646e', { metalness: 0.32, roughness: 0.44 });
-const GRIP = () => pbr('#3a4048', { metalness: 0.08, roughness: 0.78 });
-const CHROME = () => pbr('#e0e6ec', { metalness: 1, roughness: 0.12 });
+const BODY = () => pbr('#707a84', { metalness: 0.32, roughness: 0.44 });
+const GRIP = () => pbr('#464e57', { metalness: 0.08, roughness: 0.78 });
+const CHROME = () => pbr('#dfe4e8', { metalness: 0.55, roughness: 0.3 });
 const GLASS = () => pbr('#e8f2f8', { metalness: 0.12, roughness: 0.04 });
 const BRASS = () => pbr('#a88858', { metalness: 0.75, roughness: 0.36 });
 const SHUTTER = () => pbr('#4a2a1a', { metalness: 0.22, roughness: 0.55 });
 const SENSOR = () => pbr('#1a3850', { metalness: 0.35, roughness: 0.18, emissive: '#1a4060', emissiveIntensity: 0.18 });
 const MIRROR = () => pbr('#d0d8e0', { metalness: 1, roughness: 0.06 });
-const BLADE = () => pbr('#5a6068', { metalness: 0.65, roughness: 0.36 });
+const BLADE = () => pbr('#2a2f35', { metalness: 0.65, roughness: 0.5 });
 export default function camera() {
   const group = new THREE.Group();
 
@@ -40,7 +40,15 @@ export default function camera() {
         torus(0.36, 0.018, 12, 48, { pos: [0.08, 0, 0.52] }),
         torus(0.34, 0.016, 12, 44, { pos: [0.08, 0, 0.72] }),
         torus(0.38, 0.012, 10, 48, { pos: [0.08, 0, 0.88] }),
-        ring(24, () => box(0.035, 0.01, 0.028, { pos: [0.36, 0, 0.84] })),
+        // Knurls belong on the focus ring around the lens axis, not on a ring
+        // turned about the camera's Y axis at the world origin.
+        ...Array.from({ length: 24 }, (_, i) => {
+          const a = (i / 24) * TAU;
+          return box(0.012, 0.032, 0.026, {
+            pos: [0.08 + Math.cos(a) * 0.365, Math.sin(a) * 0.365, 0.84],
+            rot: [0, 0, a],
+          });
+        }),
       ]),
       CHROME(),
     ),
@@ -121,7 +129,13 @@ export default function camera() {
       'mount',
       merge([
         torus(0.32, 0.022, 12, 40, { pos: [0.08, 0, 0.28] }),
-        ring(3, () => box(0.07, 0.022, 0.045, { pos: [0.32, 0, 0.28] })),
+        ...Array.from({ length: 3 }, (_, i) => {
+          const a = (i / 3) * TAU + 0.5;
+          return box(0.07, 0.022, 0.045, {
+            pos: [0.08 + Math.cos(a) * 0.32, Math.sin(a) * 0.32, 0.28],
+            rot: [0, 0, a],
+          });
+        }),
       ]),
       BRASS(),
     ),
@@ -129,7 +143,13 @@ export default function camera() {
       'shutter_dial',
       merge([
         cylinder(0.09, 0.09, 0.045, 24, { pos: [0.44, 0.42, -0.04] }),
-        ring(10, () => box(0.022, 0.014, 0.032, { pos: [0.51, 0.42, -0.04] })),
+        ...Array.from({ length: 10 }, (_, i) => {
+          const a = (i / 10) * TAU;
+          return box(0.03, 0.014, 0.012, {
+            pos: [0.44 + Math.cos(a) * 0.09, 0.42, -0.04 + Math.sin(a) * 0.09],
+            rot: [0, -a, 0],
+          });
+        }),
         cylinder(0.045, 0.045, 0.05, 16, { pos: [-0.42, 0.42, -0.04] }),
       ]),
       CHROME(),

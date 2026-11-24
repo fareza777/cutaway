@@ -1,7 +1,8 @@
 // Observatory: slit dome, pier, equatorial fork mount, truss telescope and desk.
 import { TAU, THREE, part, pbr, roundedBox, box, cylinder, tube, torus, lathe, curve, merge } from '../lib/geo.mjs';
 
-const domeMat = () => pbr('#d9dcd6', { roughness: 0.48, metalness: 0.18 });
+const domeMat = () => pbr('#98a4ad', { roughness: 0.52, metalness: 0.18 });
+const tubeMat = () => pbr('#dfe2dc', { roughness: 0.4, metalness: 0.22 });
 const frame = () => pbr('#5b646b', { metalness: 0.55, roughness: 0.4 });
 const dark = () => pbr('#2b3237', { roughness: 0.65, metalness: 0.2 });
 const steel = () => pbr('#aab1b4', { metalness: 0.82, roughness: 0.24 });
@@ -71,7 +72,14 @@ export default function observatoryTelescope() {
       pos: [Math.cos((i / 8) * TAU) * 0.28, 2.95 - Math.sin(0.28) * 0.05, 0.10],
       rot: [0.28, 0, (i / 8) * TAU],
     })),
-  ], pbr('#5d6870', { metalness: 0.4, roughness: 0.45 }));
+    // Finder scope and its two brackets, parallel to the main tube.
+    cylinder(0.075, 0.075, 0.62, 20, { pos: [0.48, 3.18, 0.36], rot: [Math.PI / 2 + 0.28, 0, 0] }),
+    cylinder(0.085, 0.085, 0.06, 20, { pos: [0.48, 3.31, 0.17], rot: [Math.PI / 2 + 0.28, 0, 0] }),
+    ...[-1, 1].map((s) => box(0.16, 0.035, 0.035, { pos: [0.39, 3.10 + s * 0.11, 0.30 + s * 0.05] })),
+    // Focuser and eyepiece at the back of the tube.
+    cylinder(0.10, 0.10, 0.18, 22, { pos: [0, 3.17, -0.72], rot: [Math.PI / 2 + 0.28, 0, 0] }),
+    cylinder(0.06, 0.06, 0.12, 18, { pos: [0, 3.18, -0.84], rot: [Math.PI / 2 + 0.28, 0, 0] }),
+  ], tubeMat());
 
   add('primary_mirror', [
     lathe([[0.31, 0], [0.30, 0.03], [0.22, 0.08], [0.10, 0.11], [0.02, 0.12]], 40, { pos: [0, 2.95, -0.76], rot: [Math.PI / 2 + 0.28, 0, 0] }),

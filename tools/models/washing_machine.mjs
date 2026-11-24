@@ -33,11 +33,28 @@ export default function washingMachine() {
     part(
       'front_panel',
       merge([
-        box(W, H, 0.05, { pos: [0, 0, D / 2] }),
+        // A frame with a real opening: a solid sheet here hides the drum and
+        // makes the glass door look like a painted circle.
+        box(W, H / 2 - 0.38, 0.05, { pos: [0, (H / 2 + 0.38) / 2, D / 2] }),
+        box(W, H / 2 - 0.38, 0.05, { pos: [0, -(H / 2 + 0.38) / 2, D / 2] }),
+        ...[1, -1].map((s) => box(W / 2 - 0.38, 0.76, 0.05, { pos: [s * (0.38 + (W / 2 - 0.38) / 2), 0, D / 2] })),
+        // Chrome door rim, wide enough to cover the square opening's corners.
+        torus(0.40, 0.045, 40, 12, { pos: [0, -0.06, D / 2 + 0.03], rot: [Math.PI / 2, 0, 0] }),
         roundedBox(W - 0.1, 0.2, 0.07, 0.03, 2, { pos: [0, H / 2 - 0.16, D / 2 + 0.02] }),
         cylinder(0.07, 0.07, 0.06, 20, { pos: [W / 2 - 0.2, H / 2 - 0.16, D / 2 + 0.06], rot: [Math.PI / 2, 0, 0] }),
       ]),
       SHELL(),
+    ),
+    part(
+      'control_panel',
+      merge([
+        roundedBox(0.36, 0.11, 0.02, 0.012, 2, { pos: [0.12, H / 2 - 0.16, D / 2 + 0.075] }),
+        ...Array.from({ length: 4 }, (_, i) => roundedBox(0.045, 0.022, 0.012, 0.006, 1, {
+          pos: [-0.10 + i * 0.06, H / 2 - 0.25, D / 2 + 0.072],
+        })),
+        roundedBox(0.05, 0.05, 0.014, 0.01, 1, { pos: [0.32, H / 2 - 0.23, D / 2 + 0.072] }),
+      ]),
+      pbr('#1b2026', { metalness: 0.25, roughness: 0.35 }),
     ),
     part(
       'door',
@@ -49,7 +66,7 @@ export default function washingMachine() {
     ),
     part(
       'door_seal',
-      torus(0.33, 0.07, 40, 14, { rot: [Math.PI / 2, 0, 0], pos: [0, -0.06, D / 2 - 0.02] }),
+      torus(0.33, 0.07, 40, 14, { rot: [Math.PI / 2, 0, 0], pos: [0, -0.06, D / 2 + 0.055] }),
       RUBBER(),
     ),
     part(

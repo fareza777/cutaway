@@ -5,7 +5,7 @@ import { TAU, THREE, part, pbr, roundedBox, box, cylinder, tube, torus, merge, c
 const shell = () => pbr('#e7e8e3', { roughness: 0.42, metalness: 0.08 });
 const trim = () => pbr('#8a949b', { roughness: 0.38, metalness: 0.45 });
 const dark = () => pbr('#2c3338', { roughness: 0.62, metalness: 0.25 });
-const bore = () => pbr('#d8dbd7', { roughness: 0.55 });
+const bore = () => pbr('#6f7c80', { roughness: 0.68 });
 const copper = () => pbr('#a96a3e', { metalness: 0.75, roughness: 0.32 });
 const steel = () => pbr('#aeb5b8', { metalness: 0.8, roughness: 0.26 });
 const blue = () => pbr('#2d7088', { roughness: 0.2, metalness: 0.2 });
@@ -23,8 +23,14 @@ export default function mriScanner() {
 
   add('magnet_shell', [
     tube(0.98, 0.78, 1.20, 48, { pos: [0, 1.22, 0], rot: [Math.PI / 2, 0, 0] }),
-    ...[-1, 1].map((s) => cylinder(0.98, 0.98, 0.10, 48, { pos: [0, 1.22, s * 0.62], rot: [Math.PI / 2, 0, 0] })),
+    // Annuli, not discs: a solid end cap is exactly what hides the bore.
+    ...[-1, 1].map((s) => tube(0.98, 0.655, 0.10, 48, { pos: [0, 1.22, s * 0.62], rot: [Math.PI / 2, 0, 0] })),
     ...[-1, 1].map((s) => torus(0.88, 0.035, 40, 10, { pos: [0, 1.22, s * 0.67], rot: [0, 0, 0] })),
+    ...[-1, 1].map((s) => torus(0.675, 0.030, 40, 8, { pos: [0, 1.22, s * 0.675], rot: [0, 0, 0] })),
+    ...Array.from({ length: 10 }, (_, i) => box(0.05, 0.10, 0.06, {
+      pos: [Math.cos((i / 10) * TAU) * 0.90, 1.22 + Math.sin((i / 10) * TAU) * 0.90, 0.675],
+      rot: [0, 0, (i / 10) * TAU],
+    })),
   ], shell());
 
   add('cryostat_rings', [
@@ -39,7 +45,7 @@ export default function mriScanner() {
   add('bore_lining', [
     tube(0.67, 0.60, 1.22, 44, { pos: [0, 1.22, 0], rot: [Math.PI / 2, 0, 0] }),
     ...[-1, 1].map((s) => torus(0.635, 0.032, 40, 10, { pos: [0, 1.22, s * 0.63] })),
-    ...[-1, 1].map((s) => cylinder(0.60, 0.60, 0.03, 44, { pos: [0, 1.22, s * 0.64], rot: [Math.PI / 2, 0, 0] })),
+    ...[-1, 1].map((s) => torus(0.59, 0.018, 40, 8, { pos: [0, 1.22, s * 0.65], rot: [0, 0, 0] })),
   ], bore());
 
   add('gradient_coils', [
@@ -72,15 +78,19 @@ export default function mriScanner() {
   ], dark());
 
   add('patient_table', [
-    roundedBox(0.56, 0.10, 1.72, 0.03, 3, { pos: [0, 0.79, -0.42] }),
-    roundedBox(0.44, 0.06, 0.42, 0.03, 2, { pos: [0, 0.68, -0.10] }),
-    ...[-1, 1].map((s) => roundedBox(0.10, 0.10, 0.10, 0.01, 1, { pos: [s * 0.19, 0.69, -0.86] })),
-    cylinder(0.05, 0.05, 0.26, 16, { pos: [0, 0.62, -0.05] }),
+    roundedBox(0.56, 0.10, 2.20, 0.03, 3, { pos: [0, 0.79, -0.10] }),
+    roundedBox(0.44, 0.06, 0.42, 0.03, 2, { pos: [0, 0.68, -0.55] }),
+    ...[-1, 1].map((s) => roundedBox(0.10, 0.10, 0.10, 0.01, 1, { pos: [s * 0.19, 0.69, -1.16] })),
+    cylinder(0.05, 0.05, 0.26, 16, { pos: [0, 0.62, -0.50] }),
+    // Head coil, resting on the table where the patient's head would go.
+    roundedBox(0.52, 0.16, 0.46, 0.05, 3, { pos: [0, 0.90, 0.28] }),
+    roundedBox(0.38, 0.11, 0.34, 0.04, 2, { pos: [0, 0.95, 0.28] }),
+    ...[-1, 1].map((s) => roundedBox(0.06, 0.05, 0.40, 0.02, 1, { pos: [s * 0.24, 0.84, 0.28] })),
   ], shell());
 
   add('table_rails', [
-    ...[-1, 1].map((s) => cylinder(0.022, 0.022, 1.62, 10, { pos: [s * 0.28, 0.70, -0.38] })),
-    ...[-1, 1].map((s) => box(0.30, 0.10, 0.34, { pos: [s * 0.31, 0.72, -1.10] })),
+    ...[-1, 1].map((s) => cylinder(0.022, 0.022, 2.05, 10, { pos: [s * 0.28, 0.70, -0.10] })),
+    ...[-1, 1].map((s) => box(0.30, 0.10, 0.34, { pos: [s * 0.31, 0.72, -1.16] })),
     ...[-1, 1].map((s) => cylinder(0.035, 0.035, 0.06, 12, { pos: [s * 0.31, 0.66, -1.10], rot: [0, 0, Math.PI / 2] })),
   ], steel());
 

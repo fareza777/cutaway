@@ -11,7 +11,7 @@ const OUT_Y = -0.85;
 const CASE = () => pbr('#eef0f3', { metalness: 0.15, roughness: 0.5 });
 const OUTDOOR = () => pbr('#c9ccd1', { metalness: 0.4, roughness: 0.55 });
 const FIN = () => pbr('#b9c6cf', { metalness: 0.85, roughness: 0.35 });
-const COPPER = () => pbr('#c07a45', { metalness: 1, roughness: 0.3 });
+const COPPER = () => pbr('#c98a55', { metalness: 0.55, roughness: 0.4 });
 const DARK = () => pbr('#33383f', { metalness: 0.5, roughness: 0.55 });
 const COLD = () => pbr('#a8cfe2', { metalness: 0.7, roughness: 0.3 });
 
@@ -38,15 +38,18 @@ export default function airConditioner() {
       'indoor_housing',
       merge([
         roundedBox(1.7, 0.44, 0.42, 0.12, 3, { pos: [0, IN_Y, 0] }),
+        // Closed front fascia: the filter and coil are internals, not the face.
+        roundedBox(1.62, 0.36, 0.02, 0.07, 2, { pos: [0, IN_Y + 0.02, 0.212] }),
         box(1.5, 0.03, 0.2, { pos: [0, IN_Y - 0.19, 0.14] }),
+        ...Array.from({ length: 7 }, (_, i) => box(1.44, 0.012, 0.012, { pos: [0, IN_Y + 0.13 - i * 0.035, 0.225] })),
       ]),
       CASE(),
     ),
     part(
       'air_filter',
       merge([
-        box(1.44, 0.3, 0.012, { pos: [0, IN_Y + 0.08, 0.19] }),
-        ...Array.from({ length: 22 }, (_, i) => box(0.012, 0.3, 0.02, { pos: [-0.7 + i * 0.066, IN_Y + 0.08, 0.19] })),
+        box(1.44, 0.3, 0.012, { pos: [0, IN_Y + 0.08, 0.16] }),
+        ...Array.from({ length: 22 }, (_, i) => box(0.012, 0.3, 0.02, { pos: [-0.7 + i * 0.066, IN_Y + 0.08, 0.16] })),
       ]),
       pbr('#dfe4ea', { metalness: 0.05, roughness: 0.75 }),
     ),
@@ -91,11 +94,12 @@ export default function airConditioner() {
       merge([
         // The cold return line, inside its foam lagging — the content calls out
         // that only one pipe is insulated, so the model has to show it.
-        cylinder(0.035, 0.035, 1.5, 12, { pos: [-0.78, IN_Y - 0.85, -0.12] }),
-        tube(0.058, 0.037, 1.42, 14, { rot: [Math.PI / 2, 0, 0], pos: [-0.78, IN_Y - 0.85, -0.12] }),
-        cylinder(0.022, 0.022, 1.5, 12, { pos: [-0.68, IN_Y - 0.85, -0.12] }),
-        torus(0.1, 0.035, 12, 8, { rot: [0, Math.PI / 2, 0], pos: [-0.68, OUT_Y + 0.5, -0.12] }),
-        cylinder(0.035, 0.035, 0.2, 12, { rot: [0, 0, Math.PI / 2], pos: [-0.62, OUT_Y + 0.5, -0.12] }),
+        cylinder(0.035, 0.035, 1.5, 12, { pos: [-0.78, IN_Y - 0.85, -0.28] }),
+        tube(0.058, 0.037, 1.42, 14, { pos: [-0.78, IN_Y - 0.85, -0.28] }),
+        cylinder(0.022, 0.022, 1.5, 12, { pos: [-0.68, IN_Y - 0.85, -0.28] }),
+        ...[-0.78, -0.68].map((x) => cylinder(0.03, 0.03, 0.16, 10, {
+          rot: [Math.PI / 2, 0, 0], pos: [x, IN_Y - 0.24, -0.20],
+        })),
       ]),
       COPPER(),
     ),
@@ -109,6 +113,7 @@ export default function airConditioner() {
         box(1.5, 0.84, 0.03, { pos: [0, OUT_Y, -0.36] }),
         // The grille the fan blows through.
         ...Array.from({ length: 5 }, (_, i) => torus(0.1 + i * 0.07, 0.014, 28, 6, { pos: [0.2, OUT_Y, 0.36] })),
+        ...Array.from({ length: 7 }, (_, i) => box(1.44, 0.014, 0.014, { pos: [0, OUT_Y - 0.33 + i * 0.11, 0.375] })),
       ]),
       OUTDOOR(),
     ),

@@ -2,9 +2,10 @@
 // vertical shaft and generator.
 import { TAU, THREE, part, pbr, roundedBox, box, cylinder, tube, torus, lathe, curve, merge } from '../lib/geo.mjs';
 
-const casing = () => pbr('#3f6f78', { roughness: 0.5, metalness: 0.28 });
+const casing = () => pbr('#4e8792', { roughness: 0.48, metalness: 0.3 });
 const steel = () => pbr('#aeb5b8', { metalness: 0.8, roughness: 0.28 });
 const dark = () => pbr('#30383d', { roughness: 0.6, metalness: 0.3 });
+const machineGrey = () => pbr('#7d888f', { roughness: 0.42, metalness: 0.5 });
 const copper = () => pbr('#a96c3f', { metalness: 0.78, roughness: 0.32 });
 const concrete = () => pbr('#a7a49a', { roughness: 0.88 });
 const accent = () => pbr('#d08a2c', { roughness: 0.46 });
@@ -97,14 +98,21 @@ export default function francisTurbine() {
   ], steel());
 
   add('generator_stator', [
-    cylinder(0.62, 0.62, 0.72, 36, { pos: [0, 2.72, 0] }),
-    ...Array.from({ length: 18 }, (_, i) => box(0.03, 0.60, 0.06, {
-      pos: [Math.cos((i / 18) * TAU) * 0.63, 2.72, Math.sin((i / 18) * TAU) * 0.63],
-      rot: [0, -(i / 18) * TAU, 0],
-    })),
+    // A cutaway shell, open toward the viewer, so the copper rotor is visible
+    // instead of a black drum.
+    lathe([[0.51, -0.36], [0.62, -0.36], [0.62, 0.36], [0.51, 0.36]], 48,
+      { pos: [0, 2.72, 0] }, { phiStart: 0.05, phiLength: TAU - 1.5 }),
+    ...Array.from({ length: 18 }, (_, i) => {
+      const a = (i / 18) * TAU;
+      const gap = Math.abs(Math.atan2(Math.sin(a + 0.7), Math.cos(a + 0.7)));
+      return gap < 0.75 ? null : box(0.03, 0.60, 0.06, {
+        pos: [Math.cos(a) * 0.63, 2.72, Math.sin(a) * 0.63],
+        rot: [0, -a, 0],
+      });
+    }),
     torus(0.63, 0.035, 38, 8, { pos: [0, 2.38, 0], rot: [Math.PI / 2, 0, 0] }),
     torus(0.63, 0.035, 38, 8, { pos: [0, 3.06, 0], rot: [Math.PI / 2, 0, 0] }),
-  ], dark());
+  ], machineGrey());
 
   add('generator_rotor', [
     cylinder(0.44, 0.44, 0.62, 30, { pos: [0, 2.72, 0] }),

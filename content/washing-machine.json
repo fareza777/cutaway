@@ -193,6 +193,21 @@
       ]
     },
     {
+      "id": "control_panel",
+      "nodes": [
+        "control_panel"
+      ],
+      "name": "Control Panel",
+      "short": "The machine's only interface with you",
+      "detail": "The dial, buttons and display set the programme, temperature and spin speed. Behind the fascia a control board reads the water-level, temperature and imbalance sensors and switches the inlet valve, heater, pump and motor. The same board stores fault codes, which is why the display is usually the first place to look when a cycle stops.",
+      "layer": 0,
+      "explode": [
+        0,
+        0,
+        1.9
+      ]
+    },
+    {
       "id": "front_panel",
       "nodes": [
         "front_panel"
