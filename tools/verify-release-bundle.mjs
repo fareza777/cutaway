@@ -1,11 +1,12 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { unzipSync } from 'fflate';
 import { PNG } from 'pngjs';
 
-const root = 'C:/How it works 3D';
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 assert.ok(process.argv[2], 'Usage: node tools/verify-release-bundle.mjs <bundle.aab> [version] [versionCode]');
 const file = resolve(process.argv[2]);
 const sha = (data) => createHash('sha256').update(data).digest('hex');
@@ -81,4 +82,5 @@ console.log(JSON.stringify({ bundle: file, bytes: statSync(file).size, sha256: s
   versionCode: config.android.versionCode, package: config.android.package, abis, matchingModelCopies: 80,
   matchingObjectIcons: iconHashes.size, checked64BitLibraries, elf64LoadAlignmentAtLeast16KiB: true,
   bannerUnitId: config.extra.admob.bannerUnitId,
-  interstitialUnitId: config.extra.admob.interstitialUnitId, freshJavaScript: true, signatureEntries: signatures }, null, 2));
+  interstitialUnitId: config.extra.admob.interstitialUnitId,
+  rewardedUnitId: config.extra.admob.rewardedUnitId, freshJavaScript: true, signatureEntries: signatures }, null, 2));
