@@ -52,12 +52,18 @@ import hardDisk from './models/hard_disk.mjs';
 import electricMotor from './models/electric_motor.mjs';
 import differential from './models/differential.mjs';
 import camera from './models/camera.mjs';
-import violin from './models/violin.mjs';
 import brain from './models/brain.mjs';
 import innerEar from './models/inner_ear.mjs';
 import tooth from './models/tooth.mjs';
 import turboshaftHelicopter from './models/turboshaft_helicopter.mjs';
 import earthObservationSatellite from './models/earth_observation_satellite.mjs';
+import sewingMachine from './models/sewing_machine.mjs';
+import bicycle from './models/bicycle.mjs';
+import windTurbine from './models/wind_turbine.mjs';
+import marineEngine from './models/marine_engine.mjs';
+import robotArm from './models/robot_arm.mjs';
+import cncMill from './models/cnc_mill.mjs';
+import combineHarvester from './models/combine_harvester.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = resolve(ROOT, 'assets/models');
@@ -86,12 +92,18 @@ const RECIPES = {
   electric_motor: electricMotor,
   differential,
   camera,
-  violin,
   brain,
   inner_ear: innerEar,
   tooth,
   turboshaft_helicopter: turboshaftHelicopter,
   earth_observation_satellite: earthObservationSatellite,
+  sewing_machine: sewingMachine,
+  bicycle,
+  wind_turbine: windTurbine,
+  marine_engine: marineEngine,
+  robot_arm: robotArm,
+  cnc_mill: cncMill,
+  combine_harvester: combineHarvester,
 };
 
 const ONLY = new Set(process.argv.slice(2).filter((a) => !a.startsWith('-')));

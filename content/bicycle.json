@@ -1,0 +1,391 @@
+{
+  "schema": 1,
+  "id": "bicycle",
+  "title": "Road Bicycle",
+  "subtitle": "Two triangles of steel, two tensioned wheels and a chain drive",
+  "category": "Mechanical",
+  "accent": "#C0453C",
+  "scale": "Wheelbase ≈ 1.04 m · 700c wheels · 8 speeds",
+  "summary": "A bicycle is the most efficient machine a person can own: about ninety-eight percent of the energy put into the pedals reaches the road. Everything about it is arranged to keep the frame light and stiff while two wire wheels carry the load, and the chain drive lets a pair of legs turn a wheel several times per stroke.",
+  "model": "bicycle",
+  "cutAxis": "y",
+  "restRotation": [0.03, -1.9, 0],
+  "parts": [
+    {
+      "id": "frame",
+      "nodes": ["frame"],
+      "name": "Frame",
+      "short": "Two triangles of steel tubing",
+      "detail": "The diamond frame is two triangles sharing a wall. The top tube, down tube and seat tube carry bending; the chainstays and seatstays hold the rear wheel. Splitting the load between triangles is what makes a frame stiff without being heavy.",
+      "layer": 0,
+      "explode": [0, 0.8, 0]
+    },
+    {
+      "id": "head_badge",
+      "nodes": ["head_badge"],
+      "name": "Head Badge",
+      "short": "The maker's plate on the head tube",
+      "detail": "A small brass or foil badge fixed to the head tube. On older frames it also covered the brazed joint between the head tube and the down tube.",
+      "layer": 0,
+      "explode": [0, 0.5, 0.6]
+    },
+    {
+      "id": "fork",
+      "nodes": ["fork"],
+      "name": "Fork",
+      "short": "Steers the front wheel and absorbs the road",
+      "detail": "Two blades brazed into a crown, with the steerer tube above it. The blades are raked forward, which puts the tyre's contact patch slightly behind the steering axis and is what lets the bike run straight with no hands on the bar.",
+      "layer": 0,
+      "explode": [0, 0.3, 1.1]
+    },
+    {
+      "id": "headset",
+      "nodes": ["headset"],
+      "name": "Headset",
+      "short": "The bearings that let the fork turn",
+      "detail": "Two sets of angular-contact bearings press the fork's steerer into the head tube. Preload is set by the top cap: too tight and the steering binds, too loose and the fork rattles under braking.",
+      "layer": 1,
+      "hidden": true,
+      "explode": [0, 0.5, 0.5]
+    },
+    {
+      "id": "stem",
+      "nodes": ["stem"],
+      "name": "Stem",
+      "short": "Clamps the steerer and carries the bar",
+      "detail": "A forged or machined arm that grips the steerer at one end and the handlebar at the other. Its length sets how far forward the hands sit, and that changes how the steering feels more than any other part.",
+      "layer": 0,
+      "explode": [0, 0.7, 0.6]
+    },
+    {
+      "id": "handlebar",
+      "nodes": ["handlebar"],
+      "name": "Handlebar",
+      "short": "A drop bar with three hand positions",
+      "detail": "The tops for climbing, the hoods for cruising and the drops for sprinting. The curve lets a rider tuck low without changing the shoulder position, which is why it has survived a century of design.",
+      "layer": 0,
+      "explode": [0, 0.9, 0.5]
+    },
+    {
+      "id": "brake_levers",
+      "nodes": ["brake_levers"],
+      "name": "Brake Levers",
+      "short": "Levers on the hoods",
+      "detail": "Each lever pulls a cable that closes a caliper. These are integrated shifters as well, with a paddle behind the brake lever that moves the derailleur cable one sprocket at a time.",
+      "layer": 0,
+      "explode": [1, 0.6, 0.5]
+    },
+    {
+      "id": "front_rim",
+      "nodes": ["front_rim"],
+      "name": "Front Rim",
+      "short": "An aluminium hoop with a 622 mm bead seat",
+      "detail": "A shallow box-section rim, drilled for 28 spokes. It takes the spoke tension and gives the tyre a hard edge to hook under; its depth is a compromise between weight, stiffness and braking surface.",
+      "layer": 0,
+      "explode": [0, 0.2, 1.2]
+    },
+    {
+      "id": "front_tyre",
+      "nodes": ["front_tyre"],
+      "name": "Front Tyre",
+      "short": "A clincher with a tan sidewall",
+      "detail": "A rubber carcass with a fabric bead that hooks under the rim's edge. The tan sidewall is the carcass itself, not a decoration; the black tread is a separate band of harder rubber.",
+      "layer": 0,
+      "explode": [0, 0.3, 1.3]
+    },
+    {
+      "id": "front_spokes",
+      "nodes": ["front_spokes"],
+      "name": "Front Spokes",
+      "short": "28 thin steel wires, all in tension",
+      "detail": "The hub hangs from the rim on spokes that are almost entirely in tension. Each spoke is laced to one flange or the other, and that triangulation is what lets a wheel carry sideways loads as well as weight.",
+      "layer": 0,
+      "explode": [0, 0.25, 1.15]
+    },
+    {
+      "id": "front_hub",
+      "nodes": ["front_hub"],
+      "name": "Front Hub",
+      "short": "Two bearings around a hollow axle",
+      "detail": "The axle clamps into the fork dropouts while the hub shell turns on two bearings around it. A quick-release cam squeezes the dropouts onto the axle ends, which is why a wheel comes off without tools.",
+      "layer": 0,
+      "explode": [0.5, 0.25, 1.1]
+    },
+    {
+      "id": "front_valve",
+      "nodes": ["front_valve"],
+      "name": "Front Valve",
+      "short": "A Presta valve and cap",
+      "detail": "A narrow valve with a small locknut. Presta holds high pressure through a small hole, which is what allows a road rim to be only 20 mm wide.",
+      "layer": 0,
+      "hidden": true,
+      "explode": [0, 0.5, 1.2]
+    },
+    {
+      "id": "rear_rim",
+      "nodes": ["rear_rim"],
+      "name": "Rear Rim",
+      "short": "The same hoop, built for the drive load",
+      "detail": "Rims are handed at the rear: the cassette pushes the hub flanges off centre, so the spoke holes and the dishing are set to keep the wheel centred in the frame.",
+      "layer": 0,
+      "explode": [0, 0.2, -1.2]
+    },
+    {
+      "id": "rear_tyre",
+      "nodes": ["rear_tyre"],
+      "name": "Rear Tyre",
+      "short": "Carries most of the weight",
+      "detail": "The rear tyre takes about sixty percent of the load and transmits the drive, so it wears faster than the front. Its tread and pressure are usually matched to the front for balance rather than grip.",
+      "layer": 0,
+      "explode": [0, 0.3, -1.3]
+    },
+    {
+      "id": "rear_spokes",
+      "nodes": ["rear_spokes"],
+      "name": "Rear Spokes",
+      "short": "28 spokes, dished around the cassette",
+      "detail": "The rear hub is asymmetric: the cassette pushes the right flange inboard, so the right spokes sit more vertically and carry more tension. A rear wheel is therefore built with different tensions on each side.",
+      "layer": 0,
+      "explode": [0, 0.25, -1.15]
+    },
+    {
+      "id": "rear_hub",
+      "nodes": ["rear_hub"],
+      "name": "Rear Hub and Freehub",
+      "short": "Bearings, axle and the ratchet",
+      "detail": "The freehub body carries the cassette and ratchets on the hub shell, so the wheel can turn while the pedals stay still. That ratchet is the clicking you hear when you coast.",
+      "layer": 0,
+      "explode": [0.5, 0.25, -1.1]
+    },
+    {
+      "id": "rear_valve",
+      "nodes": ["rear_valve"],
+      "name": "Rear Valve",
+      "short": "The other Presta valve",
+      "detail": "Under the seat tube, and usually the easiest one to reach with a pump. Both valves are the same size, so one pump fits either wheel.",
+      "layer": 0,
+      "hidden": true,
+      "explode": [0, 0.5, -1.2]
+    },
+    {
+      "id": "bottom_bracket",
+      "nodes": ["bottom_bracket"],
+      "name": "Bottom Bracket",
+      "short": "The bearings the cranks turn on",
+      "detail": "A bearing unit threaded or pressed into the frame's shell. It carries the pedal load, which is the highest cyclic load anywhere on a bicycle — a sprint can put a thousand newtons through it.",
+      "layer": 2,
+      "explode": [0.8, -0.2, 0]
+    },
+    {
+      "id": "crankset",
+      "nodes": ["crankset"],
+      "name": "Crankset",
+      "short": "Two arms and the chainrings",
+      "detail": "170 mm arms on a splined spindle, turning 52 and 39 tooth rings. The size of the rings is the front half of the gear ratio; the rear sprockets are the other half.",
+      "layer": 2,
+      "explode": [0.9, -0.2, 0],
+      "motion": {
+        "pivot": [0, 0.275, -0.075],
+        "spin": { "axis": "x", "ratio": 0.35 }
+      }
+    },
+    {
+      "id": "pedals",
+      "nodes": ["pedals"],
+      "name": "Pedals",
+      "short": "The platform the feet push",
+      "detail": "Each pedal spins on its own axle, screwed into the end of a crank arm. Bearings inside let the platform stay level as the crank circles, so the foot does not have to follow the arm's rotation.",
+      "layer": 1,
+      "explode": [1, -0.4, 0],
+      "motion": {
+        "pivot": [0, 0.275, -0.075],
+        "spin": { "axis": "x", "ratio": 0.35 }
+      }
+    },
+    {
+      "id": "cassette",
+      "nodes": ["cassette"],
+      "name": "Cassette",
+      "short": "Eight sprockets on the freehub",
+      "detail": "The sprockets are splined onto the freehub and held by a lockring. Their sizes give the rear half of every gear ratio, and their spacing has to match the derailleur's travel exactly.",
+      "layer": 2,
+      "explode": [0.9, 0, -0.8],
+      "motion": {
+        "pivot": [0, 0.340, -0.510],
+        "spin": { "axis": "x", "ratio": 1 }
+      }
+    },
+    {
+      "id": "chain",
+      "nodes": ["chain"],
+      "name": "Chain",
+      "short": "A loop of alternating links",
+      "detail": "Each link is a pair of steel plates on a pin, and only the top run pulls. The derailleur takes up the slack by pushing the lower run through an S-shaped cage, so the chain stays on the sprockets as they change size.",
+      "layer": 1,
+      "explode": [0.9, 0.1, -0.4]
+    },
+    {
+      "id": "rear_derailleur",
+      "nodes": ["rear_derailleur"],
+      "name": "Rear Derailleur",
+      "short": "Moves the chain across the cassette",
+      "detail": "A parallelogram linkage shifts a cage sideways while two jockey wheels keep the chain tensioned. Its limit screws stop it throwing the chain past the biggest or smallest sprocket.",
+      "layer": 2,
+      "explode": [1, -0.4, -0.8]
+    },
+    {
+      "id": "front_derailleur",
+      "nodes": ["front_derailleur"],
+      "name": "Front Derailleur",
+      "short": "Moves the chain between chainrings",
+      "detail": "A cage that pushes the chain sideways from the 52 to the 39 tooth ring. It has to sit a couple of millimetres above the big ring, or the chain overshoots and drops onto the bottom bracket.",
+      "layer": 2,
+      "explode": [0.9, -0.1, 0.5]
+    },
+    {
+      "id": "front_brake",
+      "nodes": ["front_brake"],
+      "name": "Front Brake",
+      "short": "A caliper on the fork crown",
+      "detail": "Two arms pivot on a single bolt and pull blocks onto the rim. The front brake does most of the stopping because weight transfers forward under braking, which is also why it is the easier one to lock.",
+      "layer": 1,
+      "explode": [0, 0.1, 1.2]
+    },
+    {
+      "id": "rear_brake",
+      "nodes": ["rear_brake"],
+      "name": "Rear Brake",
+      "short": "A caliper under the seatstay bridge",
+      "detail": "The same caliper, mounted behind the seat cluster. It stabilises the bike more than it stops it; on a wet road the rear wheel locks long before the front does.",
+      "layer": 1,
+      "explode": [0, 0.1, -1.2]
+    },
+    {
+      "id": "cables",
+      "nodes": ["cables"],
+      "name": "Cables and Housings",
+      "short": "Steel inner wire in a lined outer",
+      "detail": "The inner cable carries the pull, while the spiral housing resists compression so the force arrives at the brake instead of squeezing the outer. A kink in the housing costs braking power at the lever.",
+      "layer": 1,
+      "explode": [0, 0.7, 0.2]
+    },
+    {
+      "id": "saddle",
+      "nodes": ["saddle"],
+      "name": "Saddle",
+      "short": "A seat, not a cushion",
+      "detail": "A leather or synthetic shell on steel rails. It supports the sit bones and nothing else, which is why a narrow, firm saddle is more comfortable on a long ride than a wide soft one.",
+      "layer": 0,
+      "explode": [0, 1, -0.5]
+    },
+    {
+      "id": "seatpost",
+      "nodes": ["seatpost"],
+      "name": "Seatpost",
+      "short": "Sets saddle height and setback",
+      "detail": "A tube clamped in the seat tube, with a head that grips the saddle rails. Saddle height is the single most important fit measurement on a bicycle, and 5 mm is enough to feel.",
+      "layer": 0,
+      "explode": [0, 0.8, -0.4]
+    },
+    {
+      "id": "bell",
+      "nodes": ["bell"],
+      "name": "Bell",
+      "short": "A warning, not a decoration",
+      "detail": "A small domed bell struck by a spring lever. On a shared path it is the polite alternative to shouting, and it is the only part of the bike that makes no contribution to moving it.",
+      "layer": 0,
+      "explode": [0, 0.6, 0.4]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Two triangles",
+      "body": "Every tube in the frame belongs to one of two triangles. Splitting the load this way keeps the frame stiff in torsion while using the least steel, which is why the layout has barely changed in a century.",
+      "focus": ["frame", "seatpost", "saddle"]
+    },
+    {
+      "title": "Steering with built-in stability",
+      "body": "The head tube, headset and fork turn as one. The fork is raked forward so the tyre's contact patch trails behind the steering axis, and that trailing distance is what makes the bike steer itself.",
+      "focus": ["fork", "headset", "stem", "handlebar", "frame"]
+    },
+    {
+      "title": "A wheel is a hanging bridge",
+      "body": "The hub hangs from the rim on spokes in tension. Load at the hub slackens the spokes underneath and adds tension to the ones above, so the rim is supported from the top rather than resting on the bottom.",
+      "focus": ["front_rim", "front_spokes", "front_hub", "front_tyre", "rear_spokes"]
+    },
+    {
+      "title": "Stopping transfers weight",
+      "body": "Braking throws weight onto the front wheel, which increases its grip just when you need it. That is why the front brake does most of the work, and why grabbing it on gravel still puts you down.",
+      "focus": ["front_brake", "rear_brake", "brake_levers", "cables", "front_rim"]
+    },
+    {
+      "title": "Legs to chain to wheel",
+      "body": "The crankset turns the chain, the chain pulls the cassette, and the cassette turns the rear wheel. Two chainrings and eight sprockets give sixteen ratios, though some of them repeat.",
+      "focus": ["crankset", "chain", "cassette", "pedals", "bottom_bracket"]
+    },
+    {
+      "title": "Changing gear while moving",
+      "body": "The derailleurs push the chain sideways while it is moving. The chain has to be under load and turning for the shift to happen, which is why you cannot change gear standing still.",
+      "focus": ["rear_derailleur", "front_derailleur", "cassette", "chain", "cables"]
+    },
+    {
+      "title": "Coasting is a ratchet",
+      "body": "The freehub lets the cassette overrun the wheel. Pedal forward and pawls catch; stop pedalling and the wheel keeps turning while the cranks stay still. The clicking is those pawls skipping.",
+      "focus": ["rear_hub", "cassette", "chain", "crankset"]
+    }
+  ],
+  "quiz": [
+    { "type": "identify", "prompt": "Tap the part that holds the rear sprockets and lets you coast.", "partId": "rear_hub" },
+    { "type": "identify", "prompt": "Tap the part that moves the chain between rear sprockets.", "partId": "rear_derailleur" },
+    { "type": "identify", "prompt": "Tap the part that turns pedal force into chain pull.", "partId": "crankset" },
+    {
+      "type": "choice",
+      "prompt": "How does a spoked wheel carry the weight of the bike?",
+      "choices": [
+        "The bottom spokes push the hub up",
+        "The hub hangs from spokes in tension",
+        "The rim rests on the tyre",
+        "The axle sits on the spokes"
+      ],
+      "answer": 1,
+      "explain": "A wheel is pre-tensioned: the hub hangs from the upper spokes, and the lower ones go slightly slack."
+    },
+    {
+      "type": "choice",
+      "prompt": "Why does the front brake do most of the stopping?",
+      "choices": [
+        "It has a bigger cable",
+        "Braking transfers weight onto the front wheel",
+        "The rear wheel has no rim",
+        "The rear brake is only for parking"
+      ],
+      "answer": 1,
+      "explain": "Weight moves forward under braking, which increases the front tyre's grip and reduces the rear's."
+    },
+    {
+      "type": "choice",
+      "prompt": "What happens when you stop pedalling and coast?",
+      "choices": [
+        "The chain stops but the wheel keeps turning",
+        "The wheel locks",
+        "The derailleur shifts down",
+        "The cranks keep turning"
+      ],
+      "answer": 0,
+      "explain": "The freehub ratchet lets the cassette and wheel overrun the stationary cranks."
+    },
+    {
+      "type": "choice",
+      "prompt": "Why is the rear wheel built with different spoke tensions on each side?",
+      "choices": [
+        "To make it look symmetrical",
+        "Because the cassette pushes the flanges off centre",
+        "Because the tyre is wider",
+        "To fit the brake caliper"
+      ],
+      "answer": 1,
+      "explain": "Dishing the hub to clear the cassette makes the right spokes steeper, so they carry more tension."
+    },
+    { "type": "identify", "prompt": "Tap the bearings the crank arms turn on.", "partId": "bottom_bracket" }
+  ]
+}

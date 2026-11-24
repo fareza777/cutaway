@@ -1,0 +1,257 @@
+{
+  "title": "Mesin Jahit Kunci",
+  "subtitle": "Satu jarum, satu kumparan, dan kait yang berputar tepat waktu",
+  "scale": "Alas ≈ 440 mm · tinggi sekitar 300 mm",
+  "summary": "Mesin jahit kunci melakukan empat hal dalam urutan yang tepat: mendorong lengkungan benang jarum menembus kain, membawa lengkungan itu mengelilingi kumparan, menarik simpulnya masuk ke dalam kain, lalu menggeser kain sepanjang satu jahitan. Satu poros menggerakkan semuanya, karena itu mesin yang waktunya meleset sedikit akan memutus benang alih-alih menjahit.",
+  "parts": {
+    "bed": {
+      "name": "Alas Mesin",
+      "short": "Dasar datar tempat kain dan mesin berdiri",
+      "detail": "Coran atau cetakan kaku selebar sekitar 440 mm. Permukaannya difrais rata karena pelat jarum, gigi penarik, dan sepatu penekan mengambil acuan dari sana; alas yang tidak rata muncul sebagai jahitan yang melompat."
+    },
+    "body_shell": {
+      "name": "Rumah Mesin",
+      "short": "Tiang, lengan, dan kepala dalam satu lengkungan",
+      "detail": "Satu coran membentuk tiang di kanan, lengan di atas, dan kepala di kiri. Lengkungan di bawahnya adalah ruang leher, dan kedalamannya menentukan seberapa banyak kain yang muat di kanan jarum."
+    },
+    "top_cover": {
+      "name": "Tutup Atas",
+      "short": "Penutup berengsel di atas titik pelumasan",
+      "detail": "Tutup ini dibuka untuk mencapai poros atas, cam, dan pelepas ketegangan. Diagram pelumasan biasanya dicetak di sisi bawahnya agar selalu terlihat saat tutup dipegang."
+    },
+    "faceplate": {
+      "name": "Pelat Depan",
+      "short": "Pelat krom di depan kepala mesin",
+      "detail": "Menutupi mekanisme batang jarum dan membawa pemandu benang. Dua sekrup melepaskannya, dan begitulah teknisi mencapai batang jarum serta tuas pengambil benang."
+    },
+    "handwheel": {
+      "name": "Roda Tangan",
+      "short": "Roda bersirip di sisi kanan",
+      "detail": "Memutarnya dengan tangan menempatkan jarum tanpa menyalakan motor. Massanya menghaluskan gerakan, dan bagian tengahnya membawa kopling yang memutus jarum saat kumparan digulung."
+    },
+    "stop_motion_knob": {
+      "name": "Knop Penghenti Gerak",
+      "short": "Memutus jarum untuk menggulung kumparan",
+      "detail": "Knop berukir di tengah roda tangan melonggarkan kopling. Motor tetap memutar roda, tetapi jarum diam sementara penggulung mengisi kumparan."
+    },
+    "bobbin_winder": {
+      "name": "Penggulung Kumparan",
+      "short": "Mengisi kumparan dari kelos",
+      "detail": "Roda karet kecil yang ditekan ke roda tangan memutar poros kumparan. Penggulung melepas sendiri saat kumparan penuh, sehingga bisa ditinggal berjalan."
+    },
+    "stitch_length_dial": {
+      "name": "Dial Panjang Jahitan",
+      "short": "Menetapkan jarak gerak gigi penarik",
+      "detail": "Dial mengubah langkah eksentrik, dan karenanya jarak kain dibawa pada setiap jahitan. Angkanya adalah milimeter kain per jahitan, bukan jumlah benang."
+    },
+    "reverse_lever": {
+      "name": "Tuas Mundur",
+      "short": "Membalik arah gerak kain",
+      "detail": "Menekannya mengalahkan pengatur dan membalik arah penarikan, itulah cara kedua ujung jahitan dikunci. Lepaskan dan penarikan kembali ke panjang yang disetel."
+    },
+    "pressure_dial": {
+      "name": "Dial Tekanan Sepatu",
+      "short": "Menetapkan seberapa kuat sepatu menekan",
+      "detail": "Pegas di atas batang sepatu menekan kain. Tekanan terlalu kecil membuat kain terangkat bersama jarum; terlalu besar membekas pada beludru dan menghentikan penarikan."
+    },
+    "work_light": {
+      "name": "Lampu Kerja",
+      "short": "Lampu di bawah lengan",
+      "detail": "Ditempatkan agar cahayanya jatuh ke pelat jarum tanpa bayangan kepala mesin di sepanjang garis jahitan. Bagian ini murni untuk kenyamanan."
+    },
+    "rubber_feet": {
+      "name": "Kaki Karet",
+      "short": "Empat kaki yang menjaga mesin tetap diam",
+      "detail": "Meredam getaran mesin yang berjalan dan mencegahnya berjalan sendiri di atas meja. Kaki yang aus sering menjadi penyebab mesin tiba-tiba terdengar berisik."
+    },
+    "needle_plate": {
+      "name": "Pelat Jarum",
+      "short": "Pelat baja di sekitar jarum",
+      "detail": "Permukaannya yang halus membuat kain meluncur, lubangnya meneruskan jarum, dan celahnya memberi jalan bagi gigi penarik. Garis ukir di atasnya adalah panduan lebar jahitan."
+    },
+    "slide_plate": {
+      "name": "Pelat Geser",
+      "short": "Penutup rumah kumparan",
+      "detail": "Digeser untuk membuka kumparan dan kait. Pelat ini harus benar-benar rata dengan pelat jarum, karena pelat yang menonjol akan menahan kain pada setiap jahitan."
+    },
+    "needle_bar": {
+      "name": "Batang Jarum",
+      "short": "Batang tegak yang membawa jarum",
+      "detail": "Bergerak di dua bus dan digerakkan oleh engkol dari poros atas. Jarum dijepit pada kakinya, dan seluruh batang bergerak sekitar 30 mm pada setiap jahitan."
+    },
+    "presser_bar": {
+      "name": "Batang Sepatu Penekan",
+      "short": "Menahan kain saat ditarik",
+      "detail": "Batang berpegas dengan sepatu yang menekan kain ke gigi penarik. Sepatu harus menahan tanpa menyeret, karena itu alasnya dipoles dan biasanya dibelah agar jarum lewat di tengah."
+    },
+    "feed_dogs": {
+      "name": "Gigi Penarik",
+      "short": "Tiga batang bergerigi yang menggeser kain",
+      "detail": "Gigi naik melewati pelat jarum, membawa kain maju sepanjang satu jahitan, turun di bawah pelat, lalu kembali. Siklus empat gerak itulah yang membuat panjang jahitan selalu sama."
+    },
+    "rotary_hook": {
+      "name": "Kait Putar",
+      "short": "Penangkap lengkungan di bawah pelat",
+      "detail": "Kait baja yang berputar tepat satu kali per jahitan. Ujungnya menangkap lengkungan benang jarum dan membawanya mengelilingi kumparan, dan begitulah jahitan kunci terbentuk."
+    },
+    "bobbin_case": {
+      "name": "Rumah Kumparan",
+      "short": "Menahan kumparan dan menyetel ketegangannya",
+      "detail": "Rumah diam di dalam kait yang berputar. Pegas kecil di sisinya menyetel ketegangan benang kumparan, dan jari pada bibirnya mencegah rumah ikut berputar."
+    },
+    "bobbin": {
+      "name": "Kumparan",
+      "short": "Pasokan benang bawah",
+      "detail": "Kelos bertepi dengan benang yang sama seperti jarum, sering berwarna berbeda agar hasil jahitan mudah diperiksa. Isinya jauh lebih sedikit daripada kelos atas, karena itu lebih cepat habis."
+    },
+    "hook_shaft": {
+      "name": "Poros Penggerak Kait",
+      "short": "Menyalurkan gerak ke kait",
+      "detail": "Poros dari poros bawah, bergigi agar kait berputar satu kali per langkah jarum. Sinkronisasi jarum dan kait adalah penyetelan paling kritis pada mesin ini."
+    },
+    "take_up_lever": {
+      "name": "Tuas Pengambil Benang",
+      "short": "Menarik sisa benang dari setiap jahitan",
+      "detail": "Naik dan turun satu kali per jahitan. Pada gerak naik ia menarik benang jarum menjadi tegang dan menyeret simpul masuk ke dalam kain, tersembunyi di antara dua lapis."
+    },
+    "tension_unit": {
+      "name": "Unit Ketegangan",
+      "short": "Cakram yang menyetel ketegangan benang jarum",
+      "detail": "Dua cakram berpegas menjepit benang, dan knop berukir mengubah tekanannya. Selisih antara tegangan ini dan tegangan kumparan yang menempatkan simpul di tengah kain."
+    },
+    "spool_pin": {
+      "name": "Pasak Kelos",
+      "short": "Menahan kelos benang",
+      "detail": "Pasak tetap atau lipat di atas lengan. Benang keluar dari kelos melewati bagian atas lalu masuk pemandu agar tidak tersangkut pada tepi kelos."
+    },
+    "spool": {
+      "name": "Kelos Benang",
+      "short": "Pasokan benang atas",
+      "detail": "Kerucut atau silinder benang. Benang jahit dipilin untuk kekuatan dan punya arah; menjalankannya melawan arah pilin membuatnya kusut, melingkar, dan putus."
+    },
+    "thread_guides": {
+      "name": "Pemandu Benang",
+      "short": "Lingkaran kecil yang menjaga jalur benang",
+      "detail": "Setiap pemandu menambah satu tekukan terkendali pada jalur benang. Tampilannya sederhana, tetapi pemandu menetapkan ketegangan dan mencegah benang melentur saat tuas pengambil bergerak."
+    },
+    "thread": {
+      "name": "Jalur Benang",
+      "short": "Dari kelos sampai lubang jarum",
+      "detail": "Benang berjalan dari kelos melewati pemandu, cakram ketegangan, tuas pengambil, dan dua pemandu lagi sebelum masuk jarum. Setiap tekukan menyimpan sedikit panjang, dan tuas pengambil mengambilnya kembali."
+    },
+    "upper_shaft": {
+      "name": "Poros Atas",
+      "short": "Satu poros menggerakkan jarum, tuas, dan penarik",
+      "detail": "Poros baja melintang di lengan dengan cam untuk penarikan dan engkol untuk batang jarum. Karena semuanya berasal dari poros ini, mesin tidak mungkin keluar dari sinkronisasi dengan dirinya sendiri."
+    },
+    "bevel_gears": {
+      "name": "Roda Gigi Kerucut",
+      "short": "Membelokkan gerak sembilan puluh derajat",
+      "detail": "Sepasang roda gigi kerucut di ujung kiri menyalurkan gerak dari poros atas mendatar ke mekanisme jarum yang tegak. Rasio keduanya satu banding satu, sehingga jarum naik tepat sekali setiap putaran poros."
+    },
+    "feed_regulator": {
+      "name": "Pengatur Gigi Penarik",
+      "short": "Eksentrik yang menetapkan panjang jahitan",
+      "detail": "Eksentrik yang dapat diatur mengubah jarak ayunan tuas penarik, dan dial panjang jahitan terhubung langsung ke sana. Tumpukan cam-nya juga tempat tuas mundur membalik arah."
+    },
+    "motor": {
+      "name": "Motor dan Pulley",
+      "short": "Sumber tenaga di dalam tiang",
+      "detail": "Motor kecil dengan pulley pada porosnya. Sabuk menurunkan putarannya yang tinggi ke roda tangan, dan kontrol kaki mengubah tegangan listrik yang sampai ke motor."
+    },
+    "drive_belt": {
+      "name": "Sabuk Penggerak",
+      "short": "Sabuk karet dari motor ke roda tangan",
+      "detail": "Sabuk ini menyalurkan gerak motor ke roda tangan dengan sedikit slip. Sabuk sengaja dibuat sebagai mata rantai terlemah agar slip saat macet, bukan membengkokkan batang jarum."
+    },
+    "wiring": {
+      "name": "Berkas Kabel",
+      "short": "Listrik, lampu, dan kendali kecepatan",
+      "detail": "Kabel listrik, kapasitor penekan gangguan, dan rangkaian lampu. Pada mesin dengan kendali elektronik, pedal kaki hanya menjadi sensor dan papan di samping motor yang melakukan penyakelaran."
+    }
+  },
+  "steps": [
+    {
+      "title": "Dua benang, satu kunci",
+      "body": "Jahitan kunci membutuhkan benang atas melalui jarum dan benang bawah pada kumparan. Jahitannya bukan simpul di permukaan: kedua benang bersilangan di dalam kain, karena itu jahitan ini kuat dari kedua sisi."
+    },
+    {
+      "title": "Jarum membentuk lengkungan",
+      "body": "Jarum menembus kain lalu mulai naik. Gesekan dengan kain menahan benang sesaat, dan itu cukup untuk membentuk lengkungan kecil di samping lubang jarum."
+    },
+    {
+      "title": "Kait membawanya mengelilingi kumparan",
+      "body": "Ujung kait putar menangkap lengkungan dan membawanya mengelilingi rumah kumparan. Satu putaran kait per jahitan, dengan waktu yang tepat agar ujungnya tiba saat lengkungan terbentuk."
+    },
+    {
+      "title": "Tuas pengambil mengunci simpul",
+      "body": "Saat jarum naik, tuas pengambil menarik sisa benang jarum dan menyeret titik persilangan masuk ke dalam kain. Tanpa tuas ini jahitan akan longgar di permukaan."
+    },
+    {
+      "title": "Kain bergerak maju",
+      "body": "Gigi penarik naik melewati pelat, mendorong kain ke depan sepanjang satu jahitan, turun, lalu kembali di bawah. Sepatu penekan menahan kain pada gigi sepanjang proses itu."
+    },
+    {
+      "title": "Satu poros mengatur semuanya",
+      "body": "Motor memutar roda tangan dan poros atas. Cam pada poros itu menggerakkan jarum, tuas pengambil, dan gigi penarik, sehingga posisi ketiganya terikat oleh geometri, bukan oleh penyetelan."
+    },
+    {
+      "title": "Ketegangan menentukan letak simpul",
+      "body": "Ketegangan benang jarum diatur cakram, ketegangan benang kumparan diatur pegas di rumahnya. Seimbangkan keduanya dan titik persilangan tersembunyi di tengah kain; kencangkan salah satu dan simpul tertarik ke permukaan."
+    }
+  ],
+  "quiz": [
+    {
+      "prompt": "Ketuk bagian yang menangkap lengkungan benang dan membawanya mengelilingi kumparan."
+    },
+    {
+      "prompt": "Ketuk bagian yang menggeser kain maju satu jahitan setiap kali."
+    },
+    {
+      "prompt": "Ketuk tuas yang menarik simpul masuk ke dalam kain."
+    },
+    {
+      "prompt": "Apa yang membuat jahitan kunci kuat dari kedua sisi kain?",
+      "choices": [
+        "Simpul yang diikat di permukaan",
+        "Dua benang yang bersilangan di dalam kain",
+        "Lem pada benang kumparan",
+        "Sepatu penekan yang menekan benang"
+      ],
+      "explain": "Benang jarum dan benang kumparan saling mengunci di tengah kain, sehingga tidak ada sisi yang memperlihatkan lengkungan longgar."
+    },
+    {
+      "prompt": "Mengapa kait harus berputar tepat satu kali per jahitan?",
+      "choices": [
+        "Agar motor tetap dingin",
+        "Agar bertemu lengkungan benang jarum pada saat yang tepat",
+        "Untuk menggulung kumparan",
+        "Untuk menggerakkan gigi penarik"
+      ],
+      "explain": "Ujung kait harus tiba tepat saat jarum membentuk lengkungan. Jika waktunya meleset, kait melewatkan lengkungan atau memutus benang."
+    },
+    {
+      "prompt": "Apa fungsi dua cakram pada unit ketegangan?",
+      "choices": [
+        "Memotong benang di akhir jahitan",
+        "Menjepit benang jarum untuk menetapkan ketegangannya",
+        "Mengarahkan kain di bawah jarum",
+        "Menahan kumparan di tempatnya"
+      ],
+      "explain": "Tekanan pegas di antara cakram menahan benang agar tidak tertarik lewat dengan bebas, dan itulah yang menetapkan ketegangan benang atas."
+    },
+    {
+      "prompt": "Apa yang terjadi bila knop penghenti gerak dilonggarkan?",
+      "choices": [
+        "Jarum berhenti sementara roda tangan tetap berputar",
+        "Motor berbalik arah",
+        "Gigi penarik terangkat",
+        "Lampu mati"
+      ],
+      "explain": "Knop itu memutus roda tangan dari mekanisme jarum agar kumparan bisa digulung tanpa jarum bergerak."
+    },
+    {
+      "prompt": "Ketuk bagian yang menetapkan seberapa kuat kain ditekan."
+    }
+  ]
+}

@@ -551,29 +551,6 @@
       "roll": 0.08
     }
   },
-  "violin": {
-    "width": 256,
-    "height": 256,
-    "bounds": {
-      "minX": 41,
-      "minY": 24,
-      "maxX": 215,
-      "maxY": 232,
-      "width": 175,
-      "height": 209
-    },
-    "distance": 3.65949,
-    "view": {
-      "rotation": [
-        0.14,
-        -0.4,
-        0
-      ],
-      "theta": -0.6,
-      "phi": 1.32,
-      "roll": 0.5
-    }
-  },
   "washing-machine": {
     "width": 256,
     "height": 256,
@@ -663,6 +640,167 @@
       ],
       "theta": 0,
       "phi": 1.18,
+      "roll": 0
+    }
+  },
+  "wind-turbine": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 24,
+      "minY": 37,
+      "maxX": 232,
+      "maxY": 218,
+      "width": 209,
+      "height": 182
+    },
+    "distance": 2.63058,
+    "view": {
+      "rotation": [
+        0.08,
+        -0.62,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "marine-engine": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 24,
+      "minY": 34,
+      "maxX": 232,
+      "maxY": 221,
+      "width": 209,
+      "height": 188
+    },
+    "distance": 3.62424,
+    "view": {
+      "rotation": [
+        0.12,
+        -0.55,
+        0.3
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "robot-arm": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 24,
+      "minY": 27,
+      "maxX": 232,
+      "maxY": 228,
+      "width": 209,
+      "height": 202
+    },
+    "distance": 3.70828,
+    "view": {
+      "rotation": [
+        0.1,
+        -0.45,
+        0.35
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "cnc-mill": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 23,
+      "minY": 34,
+      "maxX": 232,
+      "maxY": 221,
+      "width": 210,
+      "height": 188
+    },
+    "distance": 3.56035,
+    "view": {
+      "rotation": [
+        0.1,
+        -0.6,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "combine-harvester": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 24,
+      "minY": 48,
+      "maxX": 232,
+      "maxY": 207,
+      "width": 209,
+      "height": 160
+    },
+    "distance": 2.92036,
+    "view": {
+      "rotation": [
+        0.08,
+        -0.58,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "bicycle": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 37,
+      "minY": 23,
+      "maxX": 219,
+      "maxY": 232,
+      "width": 183,
+      "height": 210
+    },
+    "distance": 3.03425,
+    "view": {
+      "rotation": [
+        0.03,
+        -1.2,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
+      "roll": 0
+    }
+  },
+  "sewing-machine": {
+    "width": 256,
+    "height": 256,
+    "bounds": {
+      "minX": 24,
+      "minY": 42,
+      "maxX": 232,
+      "maxY": 214,
+      "width": 209,
+      "height": 173
+    },
+    "distance": 3.77049,
+    "view": {
+      "rotation": [
+        0.05,
+        -0.95,
+        0
+      ],
+      "theta": -0.6,
+      "phi": 1.32,
       "roll": 0
     }
   }

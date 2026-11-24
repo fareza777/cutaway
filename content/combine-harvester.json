@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "id": "combine-harvester",
+  "title": "Combine Harvester",
+  "subtitle": "Cuts, threshes, separates and cleans a field of grain in one pass",
+  "category": "Agriculture",
+  "accent": "#C49A2C",
+  "scale": "≈ 7 m header · 300 hp · 10 t grain tank",
+  "summary": "A combine does four jobs at once: it cuts the crop, beats the grain out of the ears, separates it from the straw, and cleans it with air. The header gathers the stalks, the threshing drum knocks the grain loose, the straw walkers carry the straw away, and sieves shake the grain clean before an auger lifts it into the tank.",
+  "model": "combine_harvester",
+  "cutAxis": "x",
+  "restRotation": [0.08, -0.58, 0],
+  "parts": [
+    { "id": "chassis", "nodes": ["chassis"], "name": "Chassis", "short": "The frame that carries every system", "detail": "A welded frame on two axles. It carries the header, threshing body, grain tank and engine.", "layer": 0, "explode": [0, -1, 0] },
+    { "id": "body_panels", "nodes": ["body_panels"], "name": "Body Panels", "short": "Close the threshing and cleaning area", "detail": "Removable side panels keep dust in and let technicians reach the drum and sieves.", "layer": 0 },
+    { "id": "cab", "nodes": ["cab_shell", "cab_glass", "cab_interior", "cab_lights", "mirrors"], "name": "Operator Cab", "short": "The driver's control room above the header", "detail": "A sealed cab with a wide view of the header. The operator controls speed, height and separation from here.", "layer": 0 },
+    { "id": "ladder", "nodes": ["ladder"], "name": "Access Ladder", "short": "The climb to the cab", "detail": "Steps with handrails lead from the ground to the cab door.", "layer": 1, "hidden": true },
+    { "id": "header", "nodes": ["header_frame", "cutter_bar", "header_lift_cylinders"], "name": "Header and Cutter Bar", "short": "Cuts the crop at the stem", "detail": "A wide frame carries a reciprocating cutter bar. Hydraulic cylinders raise and lower it to follow the ground.", "layer": 1 },
+    { "id": "reel", "nodes": ["reel", "reel_supports"], "name": "Reel", "short": "Bends the crop into the cutter bar", "detail": "Five bats sweep the stems backward so the knife cuts them cleanly and the auger can gather them.", "layer": 1, "motion": { "spin": { "axis": "x", "ratio": 0.5 } } },
+    { "id": "header_auger", "nodes": ["header_auger"], "name": "Header Auger", "short": "Gathers cut crop toward the centre", "detail": "A screw with retractable fingers moves the cut stems to the feeder house.", "layer": 2 },
+    { "id": "feeder_house", "nodes": ["feeder_house"], "name": "Feeder House", "short": "Lifts the crop into the threshing drum", "detail": "A sloping duct with a chain conveyor feeds the crop upward at a controlled rate.", "layer": 1 },
+    { "id": "threshing", "nodes": ["threshing_drum", "concave"], "name": "Threshing Drum and Concave", "short": "Beats the grain out of the ears", "detail": "Rasp bars on the drum rub the crop against the concave. Most grain falls through the concave; straw carries on.", "layer": 2, "motion": { "spin": { "axis": "x", "ratio": 1.2 } } },
+    { "id": "straw_walkers", "nodes": ["straw_walkers"], "name": "Straw Walkers", "short": "Shake loose grain out of the straw", "detail": "Stepped bars carry straw to the rear while shaking remaining grain through to the cleaning shoe.", "layer": 2 },
+    { "id": "cleaning", "nodes": ["cleaning_fan", "sieves"], "name": "Cleaning Fan and Sieves", "short": "Blows chaff away from the grain", "detail": "A cross-flow fan lifts light chaff while sieves shake the grain through. Clean grain falls to the auger.", "layer": 2 },
+    { "id": "grain_tank", "nodes": ["grain_tank", "grain"], "name": "Grain Tank", "short": "Stores the cleaned grain", "detail": "A large tank above the threshing body. The operator empties it before it gets heavy enough to affect stability.", "layer": 0 },
+    { "id": "grain_auger", "nodes": ["grain_auger"], "name": "Grain Auger", "short": "Lifts grain into the tank", "detail": "A screw conveyor at the bottom of the cleaning shoe carries clean grain up into the tank.", "layer": 2 },
+    { "id": "unloading_auger", "nodes": ["unloading_auger"], "name": "Unloading Auger", "short": "Empties the tank into a trailer", "detail": "A long folding auger swings out and discharges grain while the combine keeps moving.", "layer": 1 },
+    { "id": "engine", "nodes": ["engine", "radiator", "exhaust"], "name": "Engine and Cooling", "short": "Powers the drive, drum and hydraulics", "detail": "A diesel engine drives the wheels, threshing and hydraulic pumps. The radiator and exhaust sit at the rear.", "layer": 1 },
+    { "id": "chaff_spreader", "nodes": ["chaff_spreader"], "name": "Chaff Spreader", "short": "Spreads residue behind the machine", "detail": "A spinning disc throws chaff and short straw across the field for even residue cover.", "layer": 1 },
+    { "id": "wheels", "nodes": ["front_wheels", "rear_wheels", "front_axle", "rear_axle"], "name": "Wheels and Axles", "short": "Carry the machine over the field", "detail": "Large front drive wheels carry most of the weight; smaller rear wheels steer.", "layer": 0 },
+    { "id": "lights", "nodes": ["lights", "nameplate"], "name": "Lights and Nameplate", "short": "Work lights and machine identification", "detail": "Work lights allow harvesting after dark. The nameplate records the model and serial number.", "layer": 0, "hidden": true }
+  ],
+  "steps": [
+    { "title": "The header gathers the crop", "body": "The reel bends stems toward the cutter bar, the knife cuts them, and the auger sweeps them into the feeder house.", "focus": ["header", "reel", "header_auger", "feeder_house"] },
+    { "title": "The drum threshes", "body": "The rotating drum rubs the crop against the concave. Grain loosens from the ears and falls through, while straw continues over the top.", "focus": ["threshing", "feeder_house"] },
+    { "title": "Straw and grain separate", "body": "Straw walkers shake the straw to recover grain, then carry the straw out the back. The grain falls onto the cleaning shoe.", "focus": ["straw_walkers", "cleaning"] },
+    { "title": "Air cleans the grain", "body": "The fan blows chaff sideways while the sieves shake grain through. Clean grain drops to the auger and is lifted into the tank.", "focus": ["cleaning", "grain_auger", "grain_tank", "chaff_spreader"] }
+  ],
+  "quiz": [
+    { "type": "identify", "prompt": "Tap the part that cuts the crop stems.", "partId": "header" },
+    { "type": "identify", "prompt": "Tap the part that beats grain out of the ears.", "partId": "threshing" },
+    { "type": "identify", "prompt": "Tap the part that blows chaff away from the grain.", "partId": "cleaning" },
+    { "type": "choice", "prompt": "What do the straw walkers do?", "choices": ["Cut the stalks", "Shake loose grain out of the straw", "Store clean grain", "Lift the header"], "answer": 1, "explain": "They carry straw rearward while shaking remaining grain through to the cleaning shoe." },
+    { "type": "choice", "prompt": "Why does the unloading auger fold out?", "choices": ["To cut wider", "To empty the grain tank into a trailer", "To cool the engine", "To steer the machine"], "answer": 1, "explain": "The auger reaches sideways so a trailer can receive grain while the combine keeps harvesting." }
+  ]
+}

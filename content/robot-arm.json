@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "id": "robot-arm",
+  "title": "Six-Axis Industrial Robot",
+  "subtitle": "Six joints, a harmonic drive in every axis and a gripper that repeats to a tenth of a millimetre",
+  "category": "Robotics",
+  "accent": "#D9772B",
+  "scale": "≈ 1.8 m reach · 6 axes · 20 kg payload",
+  "summary": "An industrial robot is a chain of six controlled joints. Each joint has a motor, a gearbox that multiplies its torque, a brake and an encoder that reports its angle. The controller combines those six angles into one position in space, so the tool can follow a path, hold a part, or weld a seam with the same accuracy every cycle.",
+  "model": "robot_arm",
+  "cutAxis": "y",
+  "restRotation": [0.1, -0.45, 0],
+  "parts": [
+    { "id": "base", "nodes": ["base_plate", "base_housing"], "name": "Base and Foot", "short": "Bolts the robot to the floor", "detail": "A stiff cast base carries the first joint and spreads the arm's overturning load into the foundation. Its bolts are pre-tensioned so the base never rocks.", "layer": 0, "explode": [0, -1, 0] },
+    { "id": "j1", "nodes": ["j1_gearbox", "j1_motor"], "name": "Axis 1 Drive", "short": "Rotates the whole arm about the base", "detail": "A servo motor drives a reduction gearbox that turns the turret. Axis 1 has to move the mass of the entire arm, so its gear ratio is high.", "layer": 2, "motion": { "spin": { "axis": "y", "ratio": 0.18 } } },
+    { "id": "turret", "nodes": ["turret"], "name": "Turret", "short": "Carries the shoulder and the upper arm", "detail": "The rotating column between axis 1 and axis 2. It contains the shoulder bearing and the cable path from the base into the arm.", "layer": 1 },
+    { "id": "j2", "nodes": ["j2_yoke", "j2_motor"], "name": "Axis 2 Shoulder", "short": "Raises and lowers the upper arm", "detail": "A horizontal joint with a large servo and gearbox on the shoulder. Its brake must hold the arm's weight when power is removed.", "layer": 2, "motion": { "swing": { "axis": "z", "amplitude": 0.05 } } },
+    { "id": "upper_arm", "nodes": ["upper_arm", "upper_arm_ribs"], "name": "Upper Arm", "short": "The main link from shoulder to elbow", "detail": "A hollow cast or welded link. It is stiff in bending but light, because every kilogram here becomes torque the shoulder motor must carry.", "layer": 1 },
+    { "id": "j3", "nodes": ["j3_motor", "elbow_housing"], "name": "Axis 3 Elbow", "short": "Bends the forearm", "detail": "The elbow joint shares the arm's reach between two links. Its motor and gearbox sit on the joint axis to keep the moving mass balanced.", "layer": 2, "motion": { "swing": { "axis": "z", "amplitude": 0.04 } } },
+    { "id": "forearm", "nodes": ["forearm"], "name": "Forearm", "short": "The second link, out to the wrist", "detail": "A slimmer link that carries the wrist motors and the tool. Its low mass is what lets the robot accelerate quickly at full reach.", "layer": 1 },
+    { "id": "j4_motor", "nodes": ["j4_motor"], "name": "Axis 4 Roll", "short": "Rolls the wrist around the forearm", "detail": "Axis 4 rotates the wrist along the forearm's axis. Its motor is often mounted back in the arm and drives through a shaft or belt.", "layer": 2 },
+    { "id": "wrist", "nodes": ["wrist_roll", "j5_motor", "wrist_fork"], "name": "Wrist and Axis 5", "short": "Pitches the tool up and down", "detail": "A compact two-axis wrist. Axis 5 bends the tool, and the fork transfers the load into the roll bearing of axis 4.", "layer": 2 },
+    { "id": "j6_motor", "nodes": ["j6_motor"], "name": "Axis 6 Flange", "short": "Spins the tool on its own axis", "detail": "The final joint turns the mounting flange. Its hollow shaft often carries air and wiring for the gripper.", "layer": 2 },
+    { "id": "tool_flange", "nodes": ["tool_flange"], "name": "Tool Flange", "short": "The standard mounting face for tools", "detail": "A precision disc with a bolt circle and locating feature. Any tool that matches the flange can be fitted and calibrated.", "layer": 1 },
+    { "id": "gripper", "nodes": ["gripper_body", "gripper_fingers", "gripper_pads", "gripper_cylinder"], "name": "Parallel Gripper", "short": "Two jaws that hold the workpiece", "detail": "A pneumatic cylinder closes two fingers on the part. The pads spread the grip load and are changed for different materials.", "layer": 1 },
+    { "id": "air_hoses", "nodes": ["air_hoses"], "name": "Air Hoses", "short": "Supply the gripper cylinder", "detail": "Two flexible lines carry compressed air to the gripper. They are routed with a service loop so they do not stretch at full wrist rotation.", "layer": 2 },
+    { "id": "cable_harness", "nodes": ["cable_harness"], "name": "Cable Harness", "short": "Power and signals along the arm", "detail": "Motor cables and encoder signals run from the base to each joint. The harness is clamped to the links so it flexes instead of chafing.", "layer": 2 },
+    { "id": "counterbalance", "nodes": ["counterbalance"], "name": "Counterbalance Spring", "short": "Helps the shoulder lift the arm", "detail": "A gas spring or mechanical spring offsets part of the arm's weight. It lets a smaller shoulder motor hold the arm steady.", "layer": 2 },
+    { "id": "brakes", "nodes": ["brakes"], "name": "Joint Brakes", "short": "Hold each axis when power is off", "detail": "Spring-applied, electrically released brakes sit on the motor shafts. They keep the arm from falling during a stop or power failure.", "layer": 3, "hidden": true },
+    { "id": "encoders", "nodes": ["encoders"], "name": "Encoders", "short": "Report every joint angle", "detail": "Each axis carries an absolute encoder. The controller needs the exact angle of all six joints to know where the tool is.", "layer": 3 },
+    { "id": "control_cabinet", "nodes": ["control_cabinet"], "name": "Control Cabinet", "short": "The computer and drives that move the arm", "detail": "The cabinet holds the robot controller, servo drives and safety circuits. It converts a programmed path into six motor commands.", "layer": 0, "explode": [-1, 0, 0.4] },
+    { "id": "teach_pendant", "nodes": ["teach_pendant", "pendant_cable"], "name": "Teach Pendant", "short": "The hand-held programming terminal", "detail": "A screen and jog buttons used to move the robot and record points. The dead-man switch must be held for the arm to move in teach mode.", "layer": 0 },
+    { "id": "nameplate", "nodes": ["nameplate"], "name": "Nameplate", "short": "Model, payload and serial number", "detail": "The plate gives the robot's rated payload, reach and serial number, which set the safe working envelope.", "layer": 0, "hidden": true }
+  ],
+  "steps": [
+    { "title": "Six joints, one point", "body": "Each joint adds one rotation. The controller multiplies the six angles through the link lengths to find the tool's position and orientation.", "focus": ["j1", "j2", "j3", "wrist", "j6_motor"] },
+    { "title": "Motors are too fast, so gears slow them", "body": "A servo spins quickly with little torque. A harmonic or cycloidal drive reduces the speed and multiplies the torque, while adding almost no backlash.", "focus": ["j1", "j2", "j3", "j4_motor"] },
+    { "title": "The arm must not fall", "body": "Each axis has a spring-applied brake. When power drops, the brakes clamp the motor shafts and hold the arm where it is.", "focus": ["brakes", "encoders", "counterbalance"] },
+    { "title": "The tool repeats, not just reaches", "body": "Encoders and a stiff structure let the same program return to the same point cycle after cycle. Repeatability, not just reach, is what makes a robot useful.", "focus": ["encoders", "tool_flange", "gripper", "cable_harness"] }
+  ],
+  "quiz": [
+    { "type": "identify", "prompt": "Tap the joint that rotates the whole arm on its base.", "partId": "j1" },
+    { "type": "identify", "prompt": "Tap the part that holds the workpiece.", "partId": "gripper" },
+    { "type": "identify", "prompt": "Tap the part that reports each joint's angle.", "partId": "encoders" },
+    { "type": "choice", "prompt": "Why does each axis need a gearbox?", "choices": ["To make the motor spin faster", "To trade motor speed for torque", "To cool the motor", "To connect the air supply"], "answer": 1, "explain": "Servo motors are fast and weak; the gearbox reduces speed and multiplies torque." },
+    { "type": "choice", "prompt": "What happens when power is removed?", "choices": ["The arm free-falls", "Spring brakes clamp the joints", "The gripper opens", "The controller resets the encoders"], "answer": 1, "explain": "The brakes are spring-applied and electrically released, so they hold the arm when power is lost." }
+  ]
+}

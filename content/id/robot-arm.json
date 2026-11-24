@@ -1,0 +1,41 @@
+{
+  "title": "Robot Industri Enam Sumbu",
+  "subtitle": "Enam sendi, harmonic drive di setiap sumbu, dan gripper yang berulang hingga sepersepuluh milimeter",
+  "scale": "≈ jangkauan 1,8 m · 6 sumbu · muatan 20 kg",
+  "summary": "Robot industri adalah rangkaian enam sendi terkendali. Setiap sendi memiliki motor, kotak roda gigi yang melipatgandakan torsi, rem, dan encoder yang melaporkan sudutnya. Pengendali menggabungkan keenam sudut itu menjadi satu posisi di ruang, sehingga alat dapat mengikuti jalur, memegang benda, atau mengelas dengan ketelitian yang sama setiap siklus.",
+  "parts": {
+    "base": { "name": "Basis dan Kaki", "short": "Membaut robot ke lantai", "detail": "Basis cor yang kaku menopang sendi pertama dan menyebarkan beban guling lengan ke fondasi. Bautnya ditegangkan agar basis tidak bergoyang." },
+    "j1": { "name": "Penggerak Sumbu 1", "short": "Memutar seluruh lengan pada basis", "detail": "Motor servo memutar kotak roda gigi yang menggerakkan turret. Sumbu 1 harus menggerakkan seluruh massa lengan, karena itu rasio giginya tinggi." },
+    "turret": { "name": "Menara Putar", "short": "Membawa bahu dan lengan atas", "detail": "Kolom berputar antara sumbu 1 dan sumbu 2. Di dalamnya ada bantalan bahu dan jalur kabel dari basis ke lengan." },
+    "j2": { "name": "Bahu Sumbu 2", "short": "Menaikkan dan menurunkan lengan atas", "detail": "Sendi horizontal dengan servo dan kotak roda gigi besar. Remnya harus menahan berat lengan saat daya dimatikan." },
+    "upper_arm": { "name": "Lengan Atas", "short": "Penghubung utama dari bahu ke siku", "detail": "Penghubung berongga dari coran atau las. Kaku terhadap lentur tetapi ringan, karena setiap kilogram di sini menjadi torsi yang harus ditahan motor bahu." },
+    "j3": { "name": "Siku Sumbu 3", "short": "Membengkokkan lengan bawah", "detail": "Sendi siku membagi jangkauan lengan ke dua penghubung. Motor dan kotak roda giginya diletakkan pada sumbu sendi agar massa bergerak seimbang." },
+    "forearm": { "name": "Lengan Bawah", "short": "Penghubung kedua menuju pergelangan", "detail": "Penghubung yang lebih ramping, membawa motor pergelangan dan alat. Massanya yang kecil membuat robot dapat berakselerasi cepat pada jangkauan penuh." },
+    "j4_motor": { "name": "Gulung Sumbu 4", "short": "Memutar pergelangan mengelilingi lengan bawah", "detail": "Sumbu 4 memutar pergelangan sepanjang sumbu lengan bawah. Motornya sering dipasang di dalam lengan dan digerakkan lewat poros atau sabuk." },
+    "wrist": { "name": "Pergelangan dan Sumbu 5", "short": "Menganggukkan alat naik turun", "detail": "Pergelangan dua sumbu yang ringkas. Sumbu 5 membengkokkan alat, dan garpu meneruskan beban ke bantalan gulung sumbu 4." },
+    "j6_motor": { "name": "Flens Sumbu 6", "short": "Memutar alat pada sumbunya", "detail": "Sendi terakhir memutar flens pemasangan. Porosnya yang berongga sering membawa udara dan kabel untuk gripper." },
+    "tool_flange": { "name": "Flens Alat", "short": "Permukaan pemasangan standar untuk alat", "detail": "Cakram presisi dengan lingkaran baut dan fitur penepat. Alat yang cocok dengan flens dapat dipasang dan dikalibrasi." },
+    "gripper": { "name": "Gripper Paralel", "short": "Dua rahang yang memegang benda kerja", "detail": "Silinder pneumatik menutup dua jari pada benda. Bantalan jari menyebarkan beban cengkeraman dan dapat diganti sesuai bahan." },
+    "air_hoses": { "name": "Selang Udara", "short": "Memasok silinder gripper", "detail": "Dua saluran lentur membawa udara mampat ke gripper. Keduanya dipasang dengan simpal servis agar tidak teregang saat pergelangan berputar penuh." },
+    "cable_harness": { "name": "Berkas Kabel", "short": "Daya dan sinyal sepanjang lengan", "detail": "Kabel motor dan sinyal encoder berjalan dari basis ke setiap sendi. Berkas dijepit ke penghubung agar melentur, bukan bergesekan." },
+    "counterbalance": { "name": "Pegas Penyeimbang", "short": "Membantu bahu mengangkat lengan", "detail": "Pegas gas atau pegas mekanis mengimbangi sebagian berat lengan. Dengan begitu motor bahu yang lebih kecil dapat menahan lengan dengan stabil." },
+    "brakes": { "name": "Rem Sendi", "short": "Menahan setiap sumbu saat daya mati", "detail": "Rem yang dikencangkan pegas dan dilepas listrik dipasang pada poros motor. Rem mencegah lengan jatuh saat berhenti atau listrik gagal." },
+    "encoders": { "name": "Encoder", "short": "Melaporkan setiap sudut sendi", "detail": "Setiap sumbu memiliki encoder absolut. Pengendali membutuhkan sudut tepat keenam sendi untuk mengetahui posisi alat." },
+    "control_cabinet": { "name": "Kabinet Kendali", "short": "Komputer dan penggerak yang menggerakkan lengan", "detail": "Kabinet memuat pengendali robot, penggerak servo, dan sirkuit keselamatan. Kabinet mengubah jalur program menjadi enam perintah motor." },
+    "teach_pendant": { "name": "Panel Ajar", "short": "Terminal pemrograman genggam", "detail": "Layar dan tombol jog untuk menggerakkan robot dan merekam titik. Sakelar keselamatan harus ditahan agar lengan bergerak dalam mode ajar." },
+    "nameplate": { "name": "Pelat Nama", "short": "Model, muatan, dan nomor seri", "detail": "Pelat mencantumkan muatan nominal, jangkauan, dan nomor seri yang menentukan batas kerja aman." }
+  },
+  "steps": [
+    { "title": "Enam sendi, satu titik", "body": "Setiap sendi menambah satu rotasi. Pengendali mengalikan keenam sudut melalui panjang penghubung untuk menemukan posisi dan orientasi alat." },
+    { "title": "Motor terlalu cepat, jadi diperlambat roda gigi", "body": "Servo berputar cepat dengan torsi kecil. Harmonic atau cycloidal drive menurunkan kecepatan dan melipatgandakan torsi hampir tanpa celah." },
+    { "title": "Lengan tidak boleh jatuh", "body": "Setiap sumbu memiliki rem berpegas. Saat daya hilang, rem menjepit poros motor dan menahan lengan di posisinya." },
+    { "title": "Alat harus berulang, bukan hanya menjangkau", "body": "Encoder dan struktur kaku membuat program yang sama kembali ke titik yang sama setiap siklus. Daya ulang, bukan hanya jangkauan, yang membuat robot berguna." }
+  ],
+  "quiz": [
+    { "prompt": "Ketuk sendi yang memutar seluruh lengan pada basis." },
+    { "prompt": "Ketuk bagian yang memegang benda kerja." },
+    { "prompt": "Ketuk bagian yang melaporkan sudut setiap sendi." },
+    { "prompt": "Mengapa setiap sumbu memerlukan kotak roda gigi?", "choices": ["Agar motor berputar lebih cepat", "Untuk menukar kecepatan motor dengan torsi", "Untuk mendinginkan motor", "Untuk menyambung pasokan udara"], "explain": "Motor servo cepat tetapi lemah; kotak roda gigi menurunkan kecepatan dan melipatgandakan torsi." },
+    { "prompt": "Apa yang terjadi saat daya listrik diputus?", "choices": ["Lengan jatuh bebas", "Rem pegas menjepit sendi", "Gripper terbuka", "Pengendali menyetel ulang encoder"], "explain": "Rem dikencangkan pegas dan dilepas listrik, sehingga menahan lengan saat daya hilang." }
+  ]
+}

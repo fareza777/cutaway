@@ -172,12 +172,6 @@ const ENTRIES: Entry[] = [
     translations: { id: require('../../content/id/camera.json') },
   },
   {
-    doc: require('../../content/violin.json') as ObjectDoc,
-    model: require('../../assets/models/violin.glb'),
-    icon: require('../../assets/object-icons/violin.png'),
-    translations: { id: require('../../content/id/violin.json') },
-  },
-  {
     doc: require('../../content/brain.json') as ObjectDoc,
     model: require('../../assets/models/brain.glb'),
     icon: require('../../assets/object-icons/brain.png'),
@@ -194,6 +188,48 @@ const ENTRIES: Entry[] = [
     model: require('../../assets/models/tooth.glb'),
     icon: require('../../assets/object-icons/tooth.png'),
     translations: { id: require('../../content/id/tooth.json') },
+  },
+  {
+    doc: require('../../content/sewing-machine.json') as ObjectDoc,
+    model: require('../../assets/models/sewing_machine.glb'),
+    icon: require('../../assets/object-icons/sewing-machine.png'),
+    translations: { id: require('../../content/id/sewing-machine.json') },
+  },
+  {
+    doc: require('../../content/bicycle.json') as ObjectDoc,
+    model: require('../../assets/models/bicycle.glb'),
+    icon: require('../../assets/object-icons/bicycle.png'),
+    translations: { id: require('../../content/id/bicycle.json') },
+  },
+  {
+    doc: require('../../content/wind-turbine.json') as ObjectDoc,
+    model: require('../../assets/models/wind_turbine.glb'),
+    icon: require('../../assets/object-icons/wind-turbine.png'),
+    translations: { id: require('../../content/id/wind-turbine.json') },
+  },
+  {
+    doc: require('../../content/marine-engine.json') as ObjectDoc,
+    model: require('../../assets/models/marine_engine.glb'),
+    icon: require('../../assets/object-icons/marine-engine.png'),
+    translations: { id: require('../../content/id/marine-engine.json') },
+  },
+  {
+    doc: require('../../content/robot-arm.json') as ObjectDoc,
+    model: require('../../assets/models/robot_arm.glb'),
+    icon: require('../../assets/object-icons/robot-arm.png'),
+    translations: { id: require('../../content/id/robot-arm.json') },
+  },
+  {
+    doc: require('../../content/cnc-mill.json') as ObjectDoc,
+    model: require('../../assets/models/cnc_mill.glb'),
+    icon: require('../../assets/object-icons/cnc-mill.png'),
+    translations: { id: require('../../content/id/cnc-mill.json') },
+  },
+  {
+    doc: require('../../content/combine-harvester.json') as ObjectDoc,
+    model: require('../../assets/models/combine_harvester.glb'),
+    icon: require('../../assets/object-icons/combine-harvester.png'),
+    translations: { id: require('../../content/id/combine-harvester.json') },
   },
 ];
 

@@ -1,0 +1,39 @@
+{
+  "title": "Mesin Panen Kombinasi",
+  "subtitle": "Memotong, merontokkan, memisahkan, dan membersihkan gabah dalam satu lintasan",
+  "scale": "≈ header 7 m · 300 hp · tangki 10 ton",
+  "summary": "Mesin kombinasi mengerjakan empat tugas sekaligus: memotong tanaman, merontokkan gabah dari malai, memisahkannya dari jerami, dan membersihkannya dengan udara. Header mengumpulkan batang, drum perontok melepaskan gabah, straw walker membawa jerami keluar, dan ayakan menggoyang gabah hingga bersih sebelum auger mengangkatnya ke tangki.",
+  "parts": {
+    "chassis": { "name": "Rangka", "short": "Rangka yang membawa semua sistem", "detail": "Rangka las di atas dua as. Rangka membawa header, badan perontok, tangki gabah, dan mesin." },
+    "body_panels": { "name": "Panel Badan", "short": "Menutup area perontokan dan pembersihan", "detail": "Panel samping yang dapat dilepas menahan debu dan memberi akses teknisi ke drum serta ayakan." },
+    "cab": { "name": "Kabin Operator", "short": "Ruang kendali di atas header", "detail": "Kabin tertutup dengan pandangan luas ke header. Operator mengatur kecepatan, ketinggian, dan pemisahan dari sini." },
+    "ladder": { "name": "Tangga Akses", "short": "Jalur naik ke kabin", "detail": "Tangga dengan pegangan tangan menghubungkan tanah ke pintu kabin." },
+    "header": { "name": "Header dan Batang Pemotong", "short": "Memotong tanaman pada batangnya", "detail": "Rangka lebar membawa batang pemotong bolak-balik. Silinder hidraulik menaikkan dan menurunkannya mengikuti permukaan tanah." },
+    "reel": { "name": "Reel Penarik", "short": "Membengkokkan tanaman ke batang pemotong", "detail": "Lima batang menyapu batang tanaman ke belakang agar pisau memotong bersih dan auger dapat mengumpulkannya." },
+    "header_auger": { "name": "Auger Header", "short": "Mengumpulkan tanaman ke tengah", "detail": "Sekrup dengan jari yang dapat masuk menggerakkan batang terpotong ke feeder house." },
+    "feeder_house": { "name": "Rumah Pemasok", "short": "Mengangkat tanaman ke drum perontok", "detail": "Saluran miring dengan konveyor rantai memasok tanaman ke atas pada laju terkendali." },
+    "threshing": { "name": "Drum Perontok dan Concave", "short": "Merontokkan gabah dari malai", "detail": "Batang perontok pada drum menggosok tanaman melawan concave. Sebagian besar gabah jatuh melewati concave; jerami melanjutkan perjalanan." },
+    "straw_walkers": { "name": "Straw Walker", "short": "Menggoyang gabah dari jerami", "detail": "Batang berundak membawa jerami ke belakang sambil menggoyang gabah yang tersisa ke ayakan pembersih." },
+    "cleaning": { "name": "Kipas dan Ayakan", "short": "Menarik sekam menjauh dari gabah", "detail": "Kipas aliran silang mengangkat sekam ringan sementara ayakan menggoyang gabah melewatinya. Gabah bersih jatuh ke auger." },
+    "grain_tank": { "name": "Tangki Gabah", "short": "Menyimpan gabah bersih", "detail": "Tangki besar di atas badan perontok. Operator mengosongkannya sebelum terlalu berat dan memengaruhi kestabilan." },
+    "grain_auger": { "name": "Auger Gabah", "short": "Mengangkat gabah ke tangki", "detail": "Konveyor sekrup di dasar ayakan membawa gabah bersih naik ke tangki." },
+    "unloading_auger": { "name": "Auger Bongkar", "short": "Mengosongkan tangki ke trailer", "detail": "Auger lipat panjang berayun keluar dan membuang gabah saat mesin tetap berjalan." },
+    "engine": { "name": "Mesin dan Pendingin", "short": "Menggerakkan roda, drum, dan hidraulik", "detail": "Mesin diesel menggerakkan roda, perontokan, dan pompa hidraulik. Radiator dan knalpot berada di belakang." },
+    "chaff_spreader": { "name": "Penyebar Sekam", "short": "Menyebar sisa panen di belakang mesin", "detail": "Cakram berputar melempar sekam dan jerami pendek ke seluruh lahan agar sisa merata." },
+    "wheels": { "name": "Roda dan As", "short": "Membawa mesin melintasi lahan", "detail": "Roda depan penggerak yang besar menahan sebagian besar berat; roda belakang yang lebih kecil mengarahkan." },
+    "lights": { "name": "Lampu dan Pelat Nama", "short": "Lampu kerja dan identitas mesin", "detail": "Lampu kerja memungkinkan panen malam hari. Pelat nama mencatat model dan nomor seri." }
+  },
+  "steps": [
+    { "title": "Header mengumpulkan tanaman", "body": "Reel membengkokkan batang ke arah batang pemotong, pisau memotongnya, dan auger menyapu ke feeder house." },
+    { "title": "Drum merontokkan", "body": "Drum berputar menggosok tanaman melawan concave. Gabah terlepas dari malai dan jatuh melewati concave, sementara jerami berlanjut di atas." },
+    { "title": "Jerami dan gabah terpisah", "body": "Straw walker menggoyang jerami untuk mengambil gabah yang tersisa, lalu membawa jerami keluar belakang. Gabah jatuh ke ayakan." },
+    { "title": "Udara membersihkan gabah", "body": "Kipas meniup sekam ke samping sementara ayakan menggoyang gabah melewatinya. Gabah bersih jatuh ke auger dan diangkat ke tangki." }
+  ],
+  "quiz": [
+    { "prompt": "Ketuk bagian yang memotong batang tanaman." },
+    { "prompt": "Ketuk bagian yang merontokkan gabah dari malai." },
+    { "prompt": "Ketuk bagian yang meniup sekam menjauh dari gabah." },
+    { "prompt": "Apa fungsi straw walker?", "choices": ["Memotong batang", "Menggoyang gabah dari jerami", "Menyimpan gabah bersih", "Mengangkat header"], "explain": "Straw walker membawa jerami ke belakang sambil menggoyang gabah yang tersisa ke ayakan." },
+    { "prompt": "Mengapa auger bongkar dilipat keluar?", "choices": ["Agar memotong lebih lebar", "Untuk mengosongkan tangki ke trailer", "Untuk mendinginkan mesin", "Untuk mengarahkan mesin"], "explain": "Auger menjangkau ke samping agar trailer menerima gabah saat mesin tetap memanen." }
+  ]
+}

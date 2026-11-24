@@ -1,0 +1,37 @@
+{
+  "title": "Pusat Pemesinan Vertikal CNC",
+  "subtitle": "Tiga ballscrew, spindel 12.000 rpm, dan pengganti alat yang bertukar dalam dua detik",
+  "scale": "≈ lebar 1,7 m · 3 sumbu · 8.000 rpm",
+  "summary": "Pusat pemesinan CNC menggerakkan alat potong melalui logam pada tiga sumbu presisi. Ballscrew mengubah putaran servo menjadi gerak lurus, rel linier menjaga luncuran tetap sejajar, dan spindel memutar alat. Pengganti alat menukar cutter antaroperasi sementara pengendali mengikuti program koordinat.",
+  "parts": {
+    "base": { "name": "Coran Dasar", "short": "Fondasi kaku mesin", "detail": "Coran berat yang menyerap getaran pemotongan dan menopang kolom serta luncuran meja." },
+    "column": { "name": "Kolom", "short": "Menopang sumbu spindel vertikal", "detail": "Coran tinggi di belakang meja. Kekakuan kolom menentukan seberapa dalam mesin dapat memotong tanpa getaran." },
+    "enclosure": { "name": "Selubung", "short": "Menahan geram dan cairan pendingin", "detail": "Panel dan pintu geser menjaga geram serta cairan tetap di dalam area kerja." },
+    "worktable": { "name": "Meja Kerja dan Ragum", "short": "Memegang benda di bawah spindel", "detail": "Meja beralur T membawa ragum. Meja bergerak di sumbu X sementara spindel bergerak di Y dan Z." },
+    "saddle": { "name": "Sadel dan Pelindung Rel", "short": "Menopang meja di atas rel", "detail": "Sadel meluncur di rel Y. Pelindung akordeon menjaga geram dari permukaan presisi." },
+    "x_axis": { "name": "Sumbu X", "short": "Menggerakkan meja ke kiri dan kanan", "detail": "Dua rel memandu meja sementara ballscrew mengubah putaran servo menjadi gerak lurus halus." },
+    "y_axis": { "name": "Sumbu Y", "short": "Menggerakkan spindel ke depan dan belakang", "detail": "Rel vertikal di kolom memandu kepala. Ballscrew menahan posisi terhadap gaya potong." },
+    "z_axis": { "name": "Sumbu Z", "short": "Menusukkan alat ke benda kerja", "detail": "Langkah vertikal pendek yang menusukkan cutter. Remnya menahan kepala saat daya mati." },
+    "spindle_head": { "name": "Kepala Spindel", "short": "Blok bergerak yang membawa spindel", "detail": "Coran berusuk yang meluncur di rel Y dan Z serta menahan kartrid spindel." },
+    "spindle": { "name": "Spindel", "short": "Memutar alat potong", "detail": "Motor memutar spindel presisi melalui sabuk atau kopling langsung. Taper menempatkan pemegang alat." },
+    "atc": { "name": "Pengganti Alat", "short": "Menukar cutter selama program", "detail": "Karusel menyimpan alat di kantong bernomor. Lengan menarik satu alat, memasukkan berikutnya, lalu kembali." },
+    "coolant": { "name": "Sistem Pendingin", "short": "Mendinginkan potongan dan membuang geram", "detail": "Pompa mengirim cairan pendingin melalui nozel ke alat, membawa panas dan mencuci geram dari potongan." },
+    "chip_auger": { "name": "Auger Geram", "short": "Mengeluarkan geram logam dari mesin", "detail": "Sekrup berputar memindahkan geram ke wadah di luar selubung." },
+    "control": { "name": "Panel Kontrol", "short": "Jendela operator ke program", "detail": "Layar menampilkan koordinat, nomor alat, dan laju pemakanan. Tombol menjalankan, menghentikan, dan menggeser mesin." },
+    "work_light": { "name": "Lampu Kerja", "short": "Menerangi area pemotongan", "detail": "Lampu cincin terang membantu operator melihat potongan melalui pintu." },
+    "nameplate": { "name": "Pelat Nama", "short": "Model dan nomor seri", "detail": "Pelat mencatat model mesin, jangkauan gerak, dan nomor seri." }
+  },
+  "steps": [
+    { "title": "Sekrup mengubah putaran menjadi gerak lurus", "body": "Servo memutar ballscrew. Bola yang bersirkulasi membuat mur bergerak hampir tanpa gesekan atau celah, sehingga perintah 0,01 mm benar-benar bergerak 0,01 mm." },
+    { "title": "Rel menahan gaya potong", "body": "Meja dan kepala meluncur di rel linier yang dikeraskan. Rel menahan beban ke segala arah kecuali arah gerak, menjaga alat tetap pada jalurnya." },
+    { "title": "Spindel melakukan pemotongan", "body": "Alat berputar sementara sumbu memakannya ke benda kerja. Cairan pendingin membuang panas dan mencuci geram sebelum terpotong ulang." },
+    { "title": "Alat berganti tanpa berhenti", "body": "Program memanggil nomor alat, karusel berputar, dan lengan menukarnya ke spindel. Operasi berikutnya dimulai tanpa operator menyentuh mesin." }
+  ],
+  "quiz": [
+    { "prompt": "Ketuk sumbu yang menusukkan alat ke benda kerja." },
+    { "prompt": "Ketuk bagian yang memutar alat potong." },
+    { "prompt": "Ketuk sistem yang membuang panas dan geram dari potongan." },
+    { "prompt": "Mengapa dipakai ballscrew, bukan sekrup biasa?", "choices": ["Lebih murah", "Mengurangi gesekan dan celah", "Memutar alat", "Memegang benda"], "explain": "Bola yang bersirkulasi menggantikan gesekan geser dengan kontak menggelinding, menghasilkan gerak halus dan presisi." },
+    { "prompt": "Apa fungsi pengganti alat?", "choices": ["Mengukur benda", "Menukar cutter antaroperasi", "Mendinginkan spindel", "Menggerakkan meja"], "explain": "Karusel menyimpan alat dan lengan menukar alat yang ada di spindel." }
+  ]
+}

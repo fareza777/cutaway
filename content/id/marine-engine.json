@@ -1,0 +1,42 @@
+{
+  "title": "Diesel Laut Enam Silinder Sebaris",
+  "subtitle": "Enam silinder, satu poros engkol, dan turbocharger yang memasok udara mampat",
+  "scale": "≈ panjang 2,3 m · 6 silinder · kelas 500 kW",
+  "summary": "Diesel laut mengubah bahan bakar menjadi tenaga poros untuk kapal. Udara dimampatkan turbocharger, didinginkan, lalu didorong ke enam silinder; bahan bakar disemprotkan di puncak langkah kompresi dan menyala tanpa busi. Piston mendorong batang penghubung, batang memutar poros engkol, dan roda terbang meratakan denyut menjadi putaran yang stabil.",
+  "parts": {
+    "bedplate": { "name": "Pelat Dasar dan Dudukan", "short": "Fondasi yang menopang mesin", "detail": "Pelat dasar cor yang kaku menyebarkan berat dan beban pembakaran mesin ke lambung kapal. Dudukan lentur memisahkan getaran dari struktur." },
+    "crankcase": { "name": "Rumah Poros Engkol", "short": "Menampung poros engkol dan oli", "detail": "Rumah ini mengelilingi poros engkol yang berputar dan membentuk bak oli. Pintu inspeksi memungkinkan teknisi memeriksa bantalan tanpa mengangkat mesin." },
+    "cylinder_block": { "name": "Blok Silinder", "short": "Tubuh mesin berjaket air", "detail": "Satu coran yang membawa enam liner, camshaft, dan kepala silinder. Saluran pendingin dicor di dindingnya." },
+    "cylinder_liners": { "name": "Liner Silinder", "short": "Dinding silinder yang dapat diganti", "detail": "Liner basah yang dikeraskan duduk di blok dan didinginkan air di sisi luarnya. Liner dapat diganti tanpa mengganti seluruh blok." },
+    "pistons": { "name": "Piston", "short": "Enam piston yang mengubah tekanan menjadi gaya", "detail": "Setiap piston menerima dorongan pembakaran dan meneruskannya ke batang penghubung. Ring piston menyegel silinder dan menyalurkan panas ke liner." },
+    "connecting_rods": { "name": "Batang Penghubung", "short": "Menghubungkan piston ke poros engkol", "detail": "Ujung kecil batang mengikuti piston sementara ujung besarnya berputar pada pin engkol. Batang mengubah gaya lurus menjadi putaran." },
+    "crankshaft": { "name": "Poros Engkol dan Roda Terbang", "short": "Mengumpulkan semua langkah tenaga", "detail": "Pin engkol yang berjarak mengubah dorongan batang menjadi torsi. Roda terbang yang berat menyimpan energi di antara langkah pembakaran dan meratakan putaran." },
+    "cylinder_heads": { "name": "Kepala Silinder", "short": "Menutup silinder dan menahan katup", "detail": "Setiap kepala membawa katup masuk dan buang, pegas, serta injektor. Kepala menyegel ruang bakar terhadap tekanan yang sangat besar." },
+    "valvetrain": { "name": "Camshaft dan Rocker", "short": "Membuka katup pada saat yang tepat", "detail": "Lobus camshaft mendorong pushrod, yang menggerakkan rocker untuk membuka katup. Penggeraknya setengah kecepatan poros engkol dan disetel waktunya." },
+    "injectors": { "name": "Injektor Bahan Bakar", "short": "Menyemprotkan bahan bakar ke setiap silinder", "detail": "Injektor mengabutkan bahan bakar di akhir kompresi, saat udara cukup panas untuk menyalakannya tanpa busi." },
+    "fuel_system": { "name": "Pompa Bahan Bakar dan Governor", "short": "Mengatur bahan bakar dan kecepatan mesin", "detail": "Pompa injeksi mengatur waktu setiap denyut, sedangkan governor menyesuaikan pasokan bahan bakar agar kecepatan tetap sesuai beban." },
+    "intake_manifold": { "name": "Manifold Masuk", "short": "Membagi udara mampat ke silinder", "detail": "Rel bersama mengalirkan udara mampat yang sudah didinginkan ke setiap porta masuk. Pembagian yang merata menjaga suhu silinder seimbang." },
+    "exhaust_system": { "name": "Manifold Buang", "short": "Mengumpulkan gas panas untuk turbin", "detail": "Manifold menyatukan keenam porta buang menjadi satu aliran panas yang memutar roda turbin turbocharger." },
+    "turbocharger": { "name": "Pemampat Turbo", "short": "Memakai gas buang untuk memampatkan udara masuk", "detail": "Gas buang memutar roda turbin, yang memutar roda kompresor pada poros yang sama. Udara lebih banyak berarti bahan bakar lebih banyak dapat dibakar." },
+    "air_filter": { "name": "Filter Udara", "short": "Membersihkan udara sebelum kompresor", "detail": "Elemen berlipat menahan debu dan garam sebelum mencapai kompresor, tempat keduanya dapat mengikis bilah." },
+    "intercooler": { "name": "Pendingin Udara Mampat", "short": "Mendinginkan udara mampat sebelum masuk mesin", "detail": "Pemampatan memanaskan udara; pendinginan membuatnya lebih padat sehingga setiap silinder menampung lebih banyak oksigen." },
+    "starter_motor": { "name": "Motor Starter", "short": "Memutar mesin untuk pembakaran pertama", "detail": "Motor listrik beroda gigi memutar roda terbang sampai kompresi dan bahan bakar menghasilkan langkah tenaga pertama." },
+    "lube_oil_pump": { "name": "Pompa Oli Pelumas", "short": "Menekan oli untuk bantalan", "detail": "Pompa mendorong oli melalui filter dan saluran ke setiap bantalan. Kehilangan tekanan menghentikan mesin dalam hitungan detik." },
+    "seawater_pump": { "name": "Pompa Air Laut", "short": "Memasok air mentah untuk pendinginan", "detail": "Pompa mengalirkan air laut melalui penukar panas, tempat air mengambil panas dari sirkuit pendingin mesin yang tertutup." },
+    "heat_exchanger": { "name": "Penukar Panas", "short": "Memindahkan panas mesin ke air laut", "detail": "Berkas tabung menjaga cairan pendingin dan air laut tetap terpisah sambil membiarkan panas berpindah." },
+    "nameplate": { "name": "Pelat Nama", "short": "Model, daya, dan nomor seri", "detail": "Pelat mencatat daya kontinu mesin dan nomor seri untuk servis serta suku cadang." }
+  },
+  "steps": [
+    { "title": "Udara lebih dulu", "body": "Turbocharger memampatkan udara masuk dan pendingin udara mampat membuang panas pemampatan. Udara padat memungkinkan setiap silinder membakar lebih banyak bahan bakar dalam volume yang sama." },
+    { "title": "Kompresi menyalakan bahan bakar", "body": "Piston naik dan memampatkan udara hingga tekanan serta suhu tinggi. Injektor menyemprotkan bahan bakar ke udara panas itu; bahan bakar menyala tanpa busi." },
+    { "title": "Batang mengubah dorongan menjadi putaran", "body": "Pembakaran mendorong setiap piston ke bawah. Batang penghubung mengikuti pin engkol dan memutar poros engkol, sementara roda terbang membawa mesin melewati langkah kompresi berikutnya." },
+    { "title": "Panas harus keluar dari mesin", "body": "Cairan pendingin bersirkulasi melalui blok dan kepala silinder, lalu menyerahkan panasnya ke air laut di penukar panas. Oli juga membawa panas dari bantalan." }
+  ],
+  "quiz": [
+    { "prompt": "Ketuk bagian yang mengumpulkan keenam langkah tenaga menjadi putaran." },
+    { "prompt": "Ketuk bagian yang memakai gas buang untuk memampatkan udara masuk." },
+    { "prompt": "Ketuk bagian yang menyemprotkan bahan bakar ke silinder." },
+    { "prompt": "Mengapa pendingin udara mampat dipakai?", "choices": ["Untuk menghangatkan bahan bakar", "Agar udara mampat lebih padat", "Untuk meredam suara buang", "Untuk mendinginkan poros engkol"], "explain": "Mendinginkan udara mampat memperkecil volumenya, sehingga lebih banyak oksigen masuk ke setiap silinder." },
+    { "prompt": "Apa yang memutar roda kompresor turbocharger?", "choices": ["Motor starter", "Camshaft", "Gas buang yang memutar roda turbin", "Pompa air laut"], "explain": "Roda turbin dan kompresor berbagi poros; gas buang memutar turbin dan sekaligus kompresor." }
+  ]
+}

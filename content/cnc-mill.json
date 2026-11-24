@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "id": "cnc-mill",
+  "title": "CNC Vertical Machining Center",
+  "subtitle": "Three ballscrews, a 12,000 rpm spindle and a tool changer that swaps in two seconds",
+  "category": "Industrial",
+  "accent": "#5E7F8C",
+  "scale": "≈ 1.7 m wide · 3 axes · 8,000 rpm",
+  "summary": "A CNC machining centre moves a cutting tool through metal along three precise axes. Ballscrews turn servo rotation into straight motion, linear rails keep the slide aligned, and the spindle spins the tool. A tool changer swaps cutters between operations while the controller follows a program of coordinates.",
+  "model": "cnc_mill",
+  "cutAxis": "x",
+  "restRotation": [0.1, -0.6, 0],
+  "parts": [
+    { "id": "base", "nodes": ["base_casting", "leveling_feet"], "name": "Base Casting", "short": "The rigid foundation of the machine", "detail": "A heavy casting that absorbs cutting vibration and carries the column and table slides.", "layer": 0, "explode": [0, -1, 0] },
+    { "id": "column", "nodes": ["column"], "name": "Column", "short": "Carries the vertical spindle axis", "detail": "The tall casting behind the table. Its stiffness decides how deeply the machine can cut without chatter.", "layer": 0 },
+    { "id": "enclosure", "nodes": ["enclosure_frame", "enclosure_panels", "front_door"], "name": "Enclosure", "short": "Contains chips and coolant", "detail": "Panels and a sliding door keep swarf and coolant inside the working area.", "layer": 0 },
+    { "id": "worktable", "nodes": ["worktable", "vise"], "name": "Worktable and Vise", "short": "Holds the part under the spindle", "detail": "A T-slotted table carries the vise. The table moves in X while the spindle moves in Y and Z.", "layer": 1 },
+    { "id": "saddle", "nodes": ["table_saddle", "way_covers"], "name": "Saddle and Way Covers", "short": "Supports the table on its rails", "detail": "The saddle slides on the Y rails. Accordion covers keep chips off the precision ways.", "layer": 2 },
+    { "id": "x_axis", "nodes": ["x_rails", "x_ballscrew", "x_servo"], "name": "X Axis", "short": "Moves the table left and right", "detail": "Two rails guide the table while a ballscrew converts servo rotation into smooth linear motion.", "layer": 2 },
+    { "id": "y_axis", "nodes": ["y_rails", "y_ballscrew", "y_servo"], "name": "Y Axis", "short": "Moves the spindle front and back", "detail": "Vertical rails on the column guide the head. The ballscrew holds position against cutting force.", "layer": 2 },
+    { "id": "z_axis", "nodes": ["z_rails", "z_ballscrew", "z_servo"], "name": "Z Axis", "short": "Feeds the tool into the part", "detail": "The short vertical stroke that plunges the cutter. Its brake holds the head when power is off.", "layer": 2 },
+    { "id": "spindle_head", "nodes": ["spindle_head"], "name": "Spindle Head", "short": "The moving block that carries the spindle", "detail": "A ribbed casting that slides on the Y and Z ways and holds the spindle cartridge.", "layer": 1 },
+    { "id": "spindle", "nodes": ["spindle_motor", "spindle"], "name": "Spindle", "short": "Spins the cutting tool", "detail": "A motor drives a precision spindle through a belt or direct coupling. The taper locates the tool holder.", "layer": 2, "motion": { "spin": { "axis": "y", "ratio": 2.2 } } },
+    { "id": "atc", "nodes": ["tool_carousel", "atc_arm"], "name": "Tool Changer", "short": "Swaps cutters during the program", "detail": "A carousel stores tools in numbered pockets. The arm pulls one, inserts the next and returns to its rest position.", "layer": 2 },
+    { "id": "coolant", "nodes": ["coolant_tank", "coolant_pump"], "name": "Coolant System", "short": "Cools the cut and flushes chips", "detail": "A pump sends coolant through nozzles at the tool. It carries heat away and washes chips out of the cut.", "layer": 1 },
+    { "id": "chip_auger", "nodes": ["chip_auger"], "name": "Chip Auger", "short": "Screws metal chips out of the machine", "detail": "A rotating screw moves chips to a bin outside the enclosure.", "layer": 1, "hidden": true },
+    { "id": "control", "nodes": ["control_panel", "control_screen", "pneumatic_panel"], "name": "Control Panel", "short": "The operator's window into the program", "detail": "The screen shows coordinates, tool number and feed rate. Buttons start, stop and jog the machine.", "layer": 0 },
+    { "id": "work_light", "nodes": ["work_light"], "name": "Work Light", "short": "Lights the cutting area", "detail": "A bright ring light lets the operator see the cut through the door.", "layer": 1, "hidden": true },
+    { "id": "nameplate", "nodes": ["nameplate"], "name": "Nameplate", "short": "Model and serial number", "detail": "The plate records the machine model, travels and serial number.", "layer": 0, "hidden": true }
+  ],
+  "steps": [
+    { "title": "A screw turns rotation into straight motion", "body": "The servo turns a ballscrew. Recirculating balls make the nut travel with almost no friction or backlash, so a command of 0.01 mm actually moves 0.01 mm.", "focus": ["x_axis", "y_axis", "z_axis", "saddle"] },
+    { "title": "Rails take the cutting force", "body": "The table and head slide on hardened linear rails. They carry the load in every direction except travel, keeping the tool on its path.", "focus": ["x_axis", "y_axis", "z_axis", "spindle_head"] },
+    { "title": "The spindle makes the cut", "body": "The tool rotates while the axes feed it into the part. Coolant removes heat and flushes chips before they are recut.", "focus": ["spindle", "worktable", "coolant", "chip_auger"] },
+    { "title": "Tools change without stopping", "body": "The program calls a tool number, the carousel indexes, and the arm swaps it into the spindle. The next operation starts without an operator touching the machine.", "focus": ["atc", "spindle", "control"] }
+  ],
+  "quiz": [
+    { "type": "identify", "prompt": "Tap the axis that feeds the tool into the workpiece.", "partId": "z_axis" },
+    { "type": "identify", "prompt": "Tap the part that spins the cutting tool.", "partId": "spindle" },
+    { "type": "identify", "prompt": "Tap the system that removes heat and chips from the cut.", "partId": "coolant" },
+    { "type": "choice", "prompt": "Why are ballscrews used instead of plain screws?", "choices": ["They are cheaper", "They reduce friction and backlash", "They spin the tool", "They hold the part"], "answer": 1, "explain": "Recirculating balls replace sliding friction with rolling contact, giving smooth, precise motion." },
+    { "type": "choice", "prompt": "What does the tool changer do?", "choices": ["It measures the part", "It swaps cutters between operations", "It cools the spindle", "It moves the table"], "answer": 1, "explain": "The carousel stores tools and the arm exchanges the one in the spindle." }
+  ]
+}

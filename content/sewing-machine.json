@@ -1,0 +1,727 @@
+{
+  "schema": 1,
+  "id": "sewing-machine",
+  "title": "Lockstitch Sewing Machine",
+  "subtitle": "One needle, one bobbin and a hook spinning in perfect time",
+  "category": "Appliances",
+  "accent": "#5C8F86",
+  "scale": "Bed ≈ 440 mm wide · about 300 mm tall",
+  "summary": "A lockstitch machine does four things in an exact order: it pushes a loop of needle thread through the cloth, carries that loop around a bobbin, pulls the knot tight inside the fabric, and moves the cloth on by one stitch length. A single shaft drives all of it, which is why a machine that is a fraction out of time breaks thread instead of sewing.",
+  "model": "sewing_machine",
+  "cutAxis": "z",
+  "restRotation": [
+    0.05,
+    -0.95,
+    0
+  ],
+  "parts": [
+    {
+      "id": "bed",
+      "nodes": [
+        "bed"
+      ],
+      "name": "Bed",
+      "short": "The flat base the fabric slides across",
+      "detail": "A rigid casting or moulding about 440 mm wide. Its top is machined flat because the needle plate, the feed dogs and the presser foot all take their reference from it; a bed that is not flat shows up as skipped stitches.",
+      "layer": 0,
+      "explode": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "id": "body_shell",
+      "nodes": [
+        "body_shell"
+      ],
+      "name": "Body Shell",
+      "short": "Pillar, arm and head in one open arch",
+      "detail": "One casting forms the pillar on the right, the arm across the top and the head on the left. The arch underneath is the throat space, and its depth decides how much fabric can fit to the right of the needle.",
+      "layer": 0,
+      "explode": [
+        0,
+        0.4,
+        -1
+      ]
+    },
+    {
+      "id": "top_cover",
+      "nodes": [
+        "top_cover"
+      ],
+      "name": "Top Cover",
+      "short": "A hinged lid over the oiling points",
+      "detail": "It lifts to expose the upper shaft, the cams and the tension release. The oiling diagram is usually printed on its underside, where you cannot miss it while holding the lid.",
+      "layer": 0,
+      "explode": [
+        0,
+        0.9,
+        -0.3
+      ]
+    },
+    {
+      "id": "faceplate",
+      "nodes": [
+        "faceplate"
+      ],
+      "name": "Faceplate",
+      "short": "The chrome plate on the front of the head",
+      "detail": "It covers the needle-bar mechanism and carries the thread guides. Two screws release it, which is how a technician reaches the needle bar and the take-up lever without dismantling the arm.",
+      "layer": 0,
+      "explode": [
+        0,
+        0.2,
+        1
+      ]
+    },
+    {
+      "id": "handwheel",
+      "nodes": [
+        "handwheel"
+      ],
+      "name": "Handwheel",
+      "short": "The spoked flywheel on the right",
+      "detail": "Turning it by hand places the needle without running the motor. Its mass smooths the stroke, and its inner hub carries the clutch that disconnects the needle when a bobbin is being wound.",
+      "layer": 0,
+      "explode": [
+        1.1,
+        0.2,
+        0
+      ],
+      "motion": {
+        "pivot": [
+          0.222,
+          0.22,
+          0
+        ],
+        "spin": {
+          "axis": "x",
+          "ratio": 1
+        }
+      }
+    },
+    {
+      "id": "stop_motion_knob",
+      "nodes": [
+        "stop_motion_knob"
+      ],
+      "name": "Stop Motion Knob",
+      "short": "Releases the needle for bobbin winding",
+      "detail": "The knurled knob at the centre of the handwheel loosens the clutch. The motor still turns the wheel, but the needle stays still while the winder fills a bobbin.",
+      "layer": 0,
+      "hidden": true,
+      "explode": [
+        1.2,
+        0.2,
+        0
+      ]
+    },
+    {
+      "id": "bobbin_winder",
+      "nodes": [
+        "bobbin_winder"
+      ],
+      "name": "Bobbin Winder",
+      "short": "Fills a bobbin from the spool",
+      "detail": "A small rubber wheel pressed against the handwheel drives the bobbin spindle. It releases itself when the bobbin is full, so the winder can be left running while you keep sewing.",
+      "layer": 0,
+      "explode": [
+        0.8,
+        0.5,
+        -0.4
+      ]
+    },
+    {
+      "id": "stitch_length_dial",
+      "nodes": [
+        "stitch_length_dial"
+      ],
+      "name": "Stitch Length Dial",
+      "short": "Sets how far the feed dogs travel",
+      "detail": "The dial changes the throw of an eccentric, and therefore how far the feed dogs carry the cloth on each stitch. Its numbers are millimetres of feed per stitch, not a count of threads.",
+      "layer": 0,
+      "explode": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": "reverse_lever",
+      "nodes": [
+        "reverse_lever"
+      ],
+      "name": "Reverse Lever",
+      "short": "Runs the feed backwards",
+      "detail": "Pressing it overrides the regulator and reverses the feed, which is how both ends of a seam are locked. Release it and the feed returns to the length set on the dial.",
+      "layer": 0,
+      "explode": [
+        0,
+        0,
+        1.05
+      ]
+    },
+    {
+      "id": "pressure_dial",
+      "nodes": [
+        "pressure_dial"
+      ],
+      "name": "Presser Pressure Dial",
+      "short": "Sets how hard the foot presses",
+      "detail": "A spring above the presser bar pushes the foot onto the cloth. Too little pressure lets the fabric lift with the needle; too much marks velvet and stalls the feed.",
+      "layer": 0,
+      "explode": [
+        0,
+        0.9,
+        0
+      ]
+    },
+    {
+      "id": "work_light",
+      "nodes": [
+        "work_light"
+      ],
+      "name": "Work Light",
+      "short": "A lamp under the arm",
+      "detail": "Placed so the light falls on the needle plate without the head casting a shadow along the stitch line. It is the one part of the machine that is pure convenience.",
+      "layer": 0,
+      "explode": [
+        0,
+        0.2,
+        0.8
+      ]
+    },
+    {
+      "id": "rubber_feet",
+      "nodes": [
+        "rubber_feet"
+      ],
+      "name": "Rubber Feet",
+      "short": "Four feet that keep the machine still",
+      "detail": "They absorb the vibration of a running machine and stop it walking across the table. Worn feet are one of the commonest causes of a machine that suddenly sounds loud.",
+      "layer": 0,
+      "hidden": true,
+      "explode": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "id": "needle_plate",
+      "nodes": [
+        "needle_plate"
+      ],
+      "name": "Needle Plate",
+      "short": "The steel plate around the needle",
+      "detail": "Its polished face lets cloth slide, its round hole lets the needle through, and its slot lets the feed dogs rise. The engraved lines on it are seam guides, not decoration.",
+      "layer": 0,
+      "explode": [
+        0,
+        0.3,
+        0.9
+      ]
+    },
+    {
+      "id": "slide_plate",
+      "nodes": [
+        "slide_plate"
+      ],
+      "name": "Slide Plate",
+      "short": "The cover over the bobbin case",
+      "detail": "It slides off to expose the bobbin and hook. It has to sit exactly flush with the needle plate, because a plate that stands proud catches the fabric on every stitch.",
+      "layer": 0,
+      "explode": [
+        0,
+        0.2,
+        1
+      ]
+    },
+    {
+      "id": "needle_bar",
+      "nodes": [
+        "needle_bar"
+      ],
+      "name": "Needle Bar",
+      "short": "The vertical bar that carries the needle",
+      "detail": "It slides in two bushings and is driven by a crank from the upper shaft. The needle clamps into its foot, and the whole bar travels about 30 mm on every stitch.",
+      "layer": 1,
+      "explode": [
+        0,
+        0.6,
+        0.6
+      ],
+      "motion": {
+        "slide": {
+          "axis": "y",
+          "amplitude": 0.155
+        }
+      }
+    },
+    {
+      "id": "presser_bar",
+      "nodes": [
+        "presser_bar"
+      ],
+      "name": "Presser Bar and Foot",
+      "short": "Holds the cloth down while it feeds",
+      "detail": "A spring-loaded bar with a foot that presses the fabric onto the feed dogs. It has to hold without dragging, so its sole is polished and usually split so the needle can pass through the middle.",
+      "layer": 1,
+      "explode": [
+        0,
+        0.3,
+        0.7
+      ]
+    },
+    {
+      "id": "feed_dogs",
+      "nodes": [
+        "feed_dogs"
+      ],
+      "name": "Feed Dogs",
+      "short": "Serrated bars that advance the cloth",
+      "detail": "They rise through the needle plate, carry the fabric forward by one stitch length, drop below the plate and return. That four-motion cycle is what makes every stitch the same length.",
+      "layer": 1,
+      "explode": [
+        0,
+        0.5,
+        0.5
+      ],
+      "motion": {
+        "slide": {
+          "axis": "z",
+          "amplitude": 0.03
+        }
+      }
+    },
+    {
+      "id": "rotary_hook",
+      "nodes": [
+        "rotary_hook"
+      ],
+      "name": "Rotary Hook",
+      "short": "The loop-taker under the plate",
+      "detail": "A hardened steel hook that spins exactly once per stitch. Its point catches the loop of needle thread and carries it around the bobbin, which is how a lockstitch is formed rather than a chain stitch.",
+      "layer": 2,
+      "explode": [
+        0,
+        -0.5,
+        0.5
+      ],
+      "motion": {
+        "pivot": [
+          -0.186,
+          0.028,
+          -0.004
+        ],
+        "spin": {
+          "axis": "y",
+          "ratio": 1
+        }
+      }
+    },
+    {
+      "id": "bobbin_case",
+      "nodes": [
+        "bobbin_case"
+      ],
+      "name": "Bobbin Case",
+      "short": "Holds the bobbin and sets its tension",
+      "detail": "A stationary case inside the rotating hook. A small spring on its side sets the bobbin thread tension, and a finger on its rim stops the case turning with the hook.",
+      "layer": 2,
+      "explode": [
+        0,
+        -0.4,
+        0.7
+      ]
+    },
+    {
+      "id": "bobbin",
+      "nodes": [
+        "bobbin"
+      ],
+      "name": "Bobbin",
+      "short": "The lower thread supply",
+      "detail": "A flanged spool wound with the same thread as the needle, often in a different colour so the stitch is easy to inspect. It holds far less thread than the spool, which is why it runs out first.",
+      "layer": 3,
+      "explode": [
+        0,
+        -0.3,
+        0.9
+      ]
+    },
+    {
+      "id": "hook_shaft",
+      "nodes": [
+        "hook_shaft"
+      ],
+      "name": "Hook Drive Shaft",
+      "short": "Takes the drive down to the hook",
+      "detail": "A shaft from the lower main shaft, geared to turn the hook once per needle stroke. The timing between needle and hook is the most critical adjustment on the whole machine.",
+      "layer": 3,
+      "hidden": true,
+      "explode": [
+        0,
+        -0.6,
+        -0.2
+      ]
+    },
+    {
+      "id": "take_up_lever",
+      "nodes": [
+        "take_up_lever"
+      ],
+      "name": "Take-Up Lever",
+      "short": "Pulls the slack out of each stitch",
+      "detail": "It rises and falls once per stitch. On the upstroke it pulls the needle thread tight and draws the knot into the fabric, where it is hidden between the two layers.",
+      "layer": 0,
+      "explode": [
+        0,
+        0.5,
+        0.9
+      ],
+      "motion": {
+        "pivot": [
+          -0.158,
+          0.272,
+          0.076
+        ],
+        "swing": {
+          "axis": "z",
+          "amplitude": 0.3
+        }
+      }
+    },
+    {
+      "id": "tension_unit",
+      "nodes": [
+        "tension_unit"
+      ],
+      "name": "Tension Unit",
+      "short": "The discs that set needle thread tension",
+      "detail": "Two spring-loaded discs squeeze the thread, and the knurled knob changes the force. The difference between this tension and the bobbin's is what puts the knot in the middle of the cloth.",
+      "layer": 0,
+      "explode": [
+        0,
+        0.4,
+        1.1
+      ]
+    },
+    {
+      "id": "spool_pin",
+      "nodes": [
+        "spool_pin"
+      ],
+      "name": "Spool Pin",
+      "short": "Holds the thread spool",
+      "detail": "A fixed or folding pin on top of the arm. The thread leaves the spool over the top and through a guide, so it cannot snag on the spool's flange as it unwinds.",
+      "layer": 0,
+      "explode": [
+        0,
+        1,
+        -0.4
+      ]
+    },
+    {
+      "id": "spool",
+      "nodes": [
+        "spool"
+      ],
+      "name": "Thread Spool",
+      "short": "The upper thread supply",
+      "detail": "A cone or cylinder of thread. Sewing thread is twisted for strength and has a direction; running it against the twist makes it snarl, loop and break.",
+      "layer": 1,
+      "explode": [
+        0,
+        1.1,
+        -0.4
+      ]
+    },
+    {
+      "id": "thread_guides",
+      "nodes": [
+        "thread_guides"
+      ],
+      "name": "Thread Guides",
+      "short": "Small loops that keep the thread in line",
+      "detail": "Each guide adds a controlled bend to the thread path. They look incidental, but they set the tension and stop the thread whipping about as the take-up lever swings.",
+      "layer": 1,
+      "hidden": true,
+      "explode": [
+        0,
+        0.7,
+        0.5
+      ]
+    },
+    {
+      "id": "thread",
+      "nodes": [
+        "thread"
+      ],
+      "name": "Thread Path",
+      "short": "From the spool to the needle eye",
+      "detail": "The thread runs from the spool through a guide, between the tension discs, around the take-up lever and down two more guides to the needle. Every bend stores a little length, which the take-up lever takes back.",
+      "layer": 1,
+      "explode": [
+        0,
+        0.9,
+        0.2
+      ]
+    },
+    {
+      "id": "upper_shaft",
+      "nodes": [
+        "upper_shaft"
+      ],
+      "name": "Upper Shaft",
+      "short": "One shaft drives needle, take-up and feed",
+      "detail": "A steel shaft across the arm carrying the cams for the feed and the crank for the needle bar. Because everything comes off this one shaft, the machine cannot get out of time with itself.",
+      "layer": 2,
+      "explode": [
+        0,
+        0.5,
+        -0.5
+      ],
+      "motion": {
+        "pivot": [
+          0,
+          0.25,
+          0.006
+        ],
+        "spin": {
+          "axis": "x",
+          "ratio": 1
+        }
+      }
+    },
+    {
+      "id": "bevel_gears",
+      "nodes": [
+        "bevel_gears"
+      ],
+      "name": "Bevel Gears",
+      "short": "Turn the drive through ninety degrees",
+      "detail": "A pair of bevel gears at the left end hands the drive from the horizontal upper shaft to the vertical needle mechanism. Their ratio is one to one, so the needle rises exactly as often as the shaft turns.",
+      "layer": 2,
+      "explode": [
+        -0.5,
+        0.5,
+        -0.3
+      ]
+    },
+    {
+      "id": "feed_regulator",
+      "nodes": [
+        "feed_regulator"
+      ],
+      "name": "Feed Regulator",
+      "short": "The eccentric that sets the stitch length",
+      "detail": "An adjustable eccentric changes how far the feed lever swings, and the stitch length dial is connected straight to it. Its cam stack is also where the reverse lever changes the direction.",
+      "layer": 3,
+      "explode": [
+        0,
+        -0.5,
+        -0.6
+      ]
+    },
+    {
+      "id": "motor",
+      "nodes": [
+        "motor"
+      ],
+      "name": "Motor and Pulley",
+      "short": "The power source inside the pillar",
+      "detail": "A small motor with a pulley on its shaft. The belt steps its high speed down to the handwheel, and the foot control varies the voltage that reaches it.",
+      "layer": 3,
+      "explode": [
+        0.4,
+        -0.6,
+        -0.6
+      ],
+      "motion": {
+        "pivot": [
+          0.15,
+          0.115,
+          0
+        ],
+        "spin": {
+          "axis": "x",
+          "ratio": 2.2
+        }
+      }
+    },
+    {
+      "id": "drive_belt",
+      "nodes": [
+        "drive_belt"
+      ],
+      "name": "Drive Belt",
+      "short": "A rubber belt from motor to handwheel",
+      "detail": "It takes the motor's drive to the handwheel with very little slip. It is deliberately the weakest link in the drive: on a jam it slips instead of bending the needle bar.",
+      "layer": 3,
+      "explode": [
+        0.6,
+        -0.4,
+        -0.7
+      ]
+    },
+    {
+      "id": "wiring",
+      "nodes": [
+        "wiring"
+      ],
+      "name": "Wiring Harness",
+      "short": "Power, light and speed control",
+      "detail": "Mains wiring, a suppression capacitor and the lamp circuit. On a machine with electronic speed control the foot pedal is only a sensor, and the board beside the motor does the switching.",
+      "layer": 3,
+      "hidden": true,
+      "explode": [
+        0,
+        -0.7,
+        -0.9
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Two threads, one lock",
+      "body": "A lockstitch needs an upper thread through the needle and a lower thread on a bobbin. The stitch is not a knot on the surface: the two threads cross inside the cloth, which is why it holds from both sides.",
+      "focus": [
+        "spool",
+        "thread",
+        "needle_bar",
+        "bobbin",
+        "bobbin_case"
+      ]
+    },
+    {
+      "title": "The needle makes a loop",
+      "body": "The needle pushes through the cloth and starts back up. Friction with the cloth holds the thread back for an instant, and that is enough to form a small loop beside the needle's eye.",
+      "focus": [
+        "needle_bar",
+        "presser_bar",
+        "needle_plate"
+      ]
+    },
+    {
+      "title": "The hook takes it around the bobbin",
+      "body": "The rotary hook's point catches the loop and carries it right around the bobbin case. One hook revolution per stitch, timed so the point arrives exactly as the loop forms.",
+      "focus": [
+        "rotary_hook",
+        "bobbin_case",
+        "bobbin",
+        "hook_shaft"
+      ]
+    },
+    {
+      "title": "The take-up lever locks the knot",
+      "body": "As the needle rises, the take-up lever pulls the slack out of the needle thread and drags the crossing point into the fabric. Without it the stitch would sit loose on the surface.",
+      "focus": [
+        "take_up_lever",
+        "thread",
+        "tension_unit"
+      ]
+    },
+    {
+      "title": "The cloth moves on",
+      "body": "The feed dogs rise through the plate, push the cloth forward by the stitch length, drop away and return underneath. The presser foot holds the cloth against them the whole time.",
+      "focus": [
+        "feed_dogs",
+        "presser_bar",
+        "stitch_length_dial",
+        "feed_regulator"
+      ]
+    },
+    {
+      "title": "One shaft times everything",
+      "body": "The motor turns the handwheel and the upper shaft. Cams on that shaft drive the needle, the take-up lever and the feed, so their positions are locked to each other by geometry rather than by adjustment.",
+      "focus": [
+        "motor",
+        "drive_belt",
+        "handwheel",
+        "upper_shaft",
+        "bevel_gears"
+      ]
+    },
+    {
+      "title": "Tension decides where the knot sits",
+      "body": "The needle thread tension is set by the discs; the bobbin thread tension by a spring in the case. Balance them and the crossing point hides in the middle of the cloth. Pull one tighter and the knot is dragged to the surface.",
+      "focus": [
+        "tension_unit",
+        "bobbin_case",
+        "thread"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "type": "identify",
+      "prompt": "Tap the part that catches the loop and carries it around the bobbin.",
+      "partId": "rotary_hook"
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the part that moves the cloth forward one stitch at a time.",
+      "partId": "feed_dogs"
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the lever that pulls the knot into the fabric.",
+      "partId": "take_up_lever"
+    },
+    {
+      "type": "choice",
+      "prompt": "What makes a lockstitch hold from both sides of the cloth?",
+      "choices": [
+        "A knot tied on the surface",
+        "Two threads crossing inside the fabric",
+        "Glue on the bobbin thread",
+        "The presser foot pressing the thread flat"
+      ],
+      "answer": 1,
+      "explain": "The needle thread and bobbin thread interlock in the middle of the cloth, so neither side shows a loose loop."
+    },
+    {
+      "type": "choice",
+      "prompt": "Why must the hook turn exactly once per stitch?",
+      "choices": [
+        "To keep the motor cool",
+        "To meet the needle thread loop at the right moment",
+        "To wind the bobbin",
+        "To move the feed dogs"
+      ],
+      "answer": 1,
+      "explain": "The hook point has to arrive just as the needle forms its loop. If the timing drifts, it misses the loop or breaks the thread."
+    },
+    {
+      "type": "choice",
+      "prompt": "What do the two discs in the tension unit do?",
+      "choices": [
+        "Cut the thread at the end of a seam",
+        "Squeeze the needle thread to set its tension",
+        "Guide the cloth under the needle",
+        "Hold the bobbin in place"
+      ],
+      "answer": 1,
+      "explain": "Spring pressure between the discs resists the thread being pulled through, which sets the upper thread tension."
+    },
+    {
+      "type": "choice",
+      "prompt": "What happens when the stop motion knob is loosened?",
+      "choices": [
+        "The needle stops while the handwheel still turns",
+        "The motor reverses",
+        "The feed dogs lift",
+        "The light switches off"
+      ],
+      "answer": 0,
+      "explain": "It disconnects the handwheel from the needle mechanism so a bobbin can be wound without the needle moving."
+    },
+    {
+      "type": "identify",
+      "prompt": "Tap the part that sets how hard the cloth is pressed down.",
+      "partId": "pressure_dial"
+    }
+  ]
+}

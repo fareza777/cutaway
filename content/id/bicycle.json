@@ -1,0 +1,242 @@
+{
+  "title": "Sepeda Jalan",
+  "subtitle": "Dua segitiga baja, dua roda bertegang, dan penggerak rantai",
+  "scale": "Jarak sumbu ≈ 1,04 m · roda 700c · 8 kecepatan",
+  "summary": "Sepeda adalah mesin paling efisien yang bisa dimiliki seseorang: sekitar sembilan puluh delapan persen energi yang masuk ke pedal sampai ke jalan. Semua bagiannya disusun agar rangka tetap ringan dan kaku sementara dua roda kawat menahan beban, dan penggerak rantai memungkinkan sepasang kaki memutar roda beberapa kali per kayuhan.",
+  "parts": {
+    "frame": {
+      "name": "Rangka",
+      "short": "Dua segitiga dari pipa baja",
+      "detail": "Rangka diamond terdiri dari dua segitiga yang berbagi satu dinding. Pipa atas, pipa bawah, dan pipa sadel menahan lentur; batang rantai dan batang sadel menahan roda belakang. Membagi beban ke dua segitiga membuat rangka kaku tanpa berat berlebih."
+    },
+    "head_badge": {
+      "name": "Emblem Kepala",
+      "short": "Pelat pembuat pada pipa kepala",
+      "detail": "Emblem kuningan atau foil kecil yang dipasang di pipa kepala. Pada rangka lama emblem ini juga menutupi sambungan patri antara pipa kepala dan pipa bawah."
+    },
+    "fork": {
+      "name": "Garpu",
+      "short": "Mengarahkan roda depan dan menyerap jalan",
+      "detail": "Dua bilah yang dipatri ke mahkota, dengan pipa kemudi di atasnya. Bilahnya dimiringkan ke depan sehingga titik sentuh ban berada sedikit di belakang sumbu kemudi, dan jarak itulah yang membuat sepeda lurus sendiri tanpa tangan di setang."
+    },
+    "headset": {
+      "name": "Bantalan Kemudi",
+      "short": "Bantalan yang membuat garpu dapat berputar",
+      "detail": "Dua set bantalan kontak sudut menekan pipa kemudi garpu ke dalam pipa kepala. Preload diatur oleh tutup atas: terlalu kencang membuat kemudi berat, terlalu longgar membuat garpu bergetar saat mengerem."
+    },
+    "stem": {
+      "name": "Batang Setang",
+      "short": "Menjepit pipa kemudi dan menahan setang",
+      "detail": "Lengan tempa atau mesin yang menjepit pipa kemudi di satu ujung dan setang di ujung lain. Panjangnya menentukan seberapa jauh tangan ke depan, dan itu mengubah rasa kemudi lebih besar daripada bagian lain."
+    },
+    "handlebar": {
+      "name": "Setang Drop",
+      "short": "Setang dengan tiga posisi tangan",
+      "detail": "Bagian atas untuk menanjak, hood untuk bersantai, dan drop untuk sprint. Lengkungnya memungkinkan pengendara menunduk tanpa mengubah posisi bahu, itulah sebabnya bentuk ini bertahan seabad."
+    },
+    "brake_levers": {
+      "name": "Tuas Rem",
+      "short": "Tuas di atas hood",
+      "detail": "Setiap tuas menarik kabel yang menutup kaliper. Tuas ini juga terintegrasi dengan pemindah gigi, dengan tuas kecil di belakang tuas rem yang menggerakkan kabel derailleur satu sproket setiap kali."
+    },
+    "front_rim": {
+      "name": "Pelek Depan",
+      "short": "Cincin aluminium dengan dudukan ban 622 mm",
+      "detail": "Pelek berpenampang kotak dangkal, dibor untuk 28 jari-jari. Pelek menahan tegangan jari-jari dan memberi ban tepi keras untuk mengait; kedalamannya adalah kompromi antara berat, kekakuan, dan permukaan pengereman."
+    },
+    "front_tyre": {
+      "name": "Ban Depan",
+      "short": "Ban clincher dengan dinding samping cokelat",
+      "detail": "Rangka karet dengan kawat penguat yang mengait di bawah tepi pelek. Dinding samping cokelat itu adalah rangka ban itu sendiri, bukan hiasan; tapak hitam adalah lapisan karet yang lebih keras."
+    },
+    "front_spokes": {
+      "name": "Jari-jari Depan",
+      "short": "28 kawat baja tipis, semuanya menegang",
+      "detail": "Nap menggantung dari pelek pada jari-jari yang hampir seluruhnya menegang. Setiap jari-jari disilang ke salah satu flensa, dan triangulasi itulah yang membuat roda menahan beban samping maupun berat."
+    },
+    "front_hub": {
+      "name": "Nap Depan",
+      "short": "Dua bantalan mengelilingi poros berongga",
+      "detail": "Poros dijepit di ujung garpu sementara rumah nap berputar pada dua bantalan di sekelilingnya. Cam quick-release menjepit ujung garpu ke ujung poros, itulah sebabnya roda bisa dilepas tanpa alat."
+    },
+    "front_valve": {
+      "name": "Katup Depan",
+      "short": "Katup Presta dan tutupnya",
+      "detail": "Katup sempit dengan mur pengunci kecil. Presta menahan tekanan tinggi melalui lubang kecil, dan itulah yang memungkinkan pelek jalan raya hanya selebar 20 mm."
+    },
+    "rear_rim": {
+      "name": "Pelek Belakang",
+      "short": "Pelek yang sama, dibangun untuk beban penggerak",
+      "detail": "Pelek belakang tidak simetris: kaset mendorong flensa nap keluar dari tengah, sehingga lubang jari-jari dan dishnya diatur agar roda tetap di tengah rangka."
+    },
+    "rear_tyre": {
+      "name": "Ban Belakang",
+      "short": "Menahan sebagian besar berat",
+      "detail": "Ban belakang menahan sekitar enam puluh persen beban dan menyalurkan penggerak, karena itu lebih cepat aus daripada ban depan. Tapak dan tekanannya biasanya disamakan dengan depan untuk keseimbangan."
+    },
+    "rear_spokes": {
+      "name": "Jari-jari Belakang",
+      "short": "28 jari-jari, dibentuk mengelilingi kaset",
+      "detail": "Nap belakang asimetris: kaset mendorong flensa kanan ke dalam, sehingga jari-jari kanan lebih tegak dan menahan tegangan lebih besar. Roda belakang karena itu dibangun dengan tegangan berbeda di kedua sisi."
+    },
+    "rear_hub": {
+      "name": "Nap dan Freehub Belakang",
+      "short": "Bantalan, poros, dan ratchet",
+      "detail": "Badan freehub membawa kaset dan beratik pada rumah nap, sehingga roda dapat berputar saat pedal diam. Ratchet itulah bunyi klik yang terdengar saat Anda meluncur."
+    },
+    "rear_valve": {
+      "name": "Katup Belakang",
+      "short": "Katup Presta yang lain",
+      "detail": "Berada di bawah pipa sadel dan biasanya paling mudah dijangkau dengan pompa. Kedua katup berukuran sama, jadi satu pompa cocok untuk kedua roda."
+    },
+    "bottom_bracket": {
+      "name": "Poros Bawah",
+      "short": "Bantalan tempat kruk berputar",
+      "detail": "Unit bantalan yang disekrup atau ditekan ke dalam rumah poros rangka. Bagian ini menahan beban pedal, beban siklik terbesar di seluruh sepeda; sprint dapat mengirim seribu newton melaluinya."
+    },
+    "crankset": {
+      "name": "Kruk dan Gir",
+      "short": "Dua lengan dan gir depan",
+      "detail": "Lengan 170 mm pada poros bergerigi, memutar gir 52 dan 39 gigi. Ukuran gir adalah separuh depan rasio gigi; sproket belakang adalah separuh lainnya."
+    },
+    "pedals": {
+      "name": "Pedal",
+      "short": "Pijakan tempat kaki mendorong",
+      "detail": "Setiap pedal berputar pada porosnya sendiri yang disekrup ke ujung lengan kruk. Bantalan di dalamnya membuat pijakan tetap datar saat kruk berputar, sehingga kaki tidak perlu mengikuti putaran lengan."
+    },
+    "cassette": {
+      "name": "Kaset Sproket",
+      "short": "Delapan sproket pada freehub",
+      "detail": "Sproket dipasang bergerigi pada freehub dan ditahan cincin pengunci. Ukurannya memberi separuh belakang rasio gigi, dan jaraknya harus sama dengan langkah derailleur."
+    },
+    "chain": {
+      "name": "Rantai",
+      "short": "Lingkaran sambungan yang berselang-seling",
+      "detail": "Setiap sambungan adalah sepasang pelat baja pada pin, dan hanya bagian atas yang menarik. Derailleur mengambil kelonggaran dengan mendorong bagian bawah melewati kandang berbentuk huruf S agar rantai tetap pada sproket saat ukurannya berubah."
+    },
+    "rear_derailleur": {
+      "name": "Derailleur Belakang",
+      "short": "Memindahkan rantai melintasi kaset",
+      "detail": "Sambungan paralelogram menggeser kandang ke samping sementara dua roda joki menjaga rantai tetap tegang. Sekrup pembatas atas dan bawah mencegahnya melempar rantai melewati sproket terbesar atau terkecil."
+    },
+    "front_derailleur": {
+      "name": "Derailleur Depan",
+      "short": "Memindahkan rantai antara gir depan",
+      "detail": "Kandang yang mendorong rantai ke samping dari gir 52 ke gir 39 gigi. Bagian ini harus berada beberapa milimeter di atas gir besar, jika tidak rantai melompat turun ke poros bawah."
+    },
+    "front_brake": {
+      "name": "Rem Depan",
+      "short": "Kaliper pada mahkota garpu",
+      "detail": "Dua lengan berputar pada satu baut dan menekan blok rem ke pelek. Rem depan melakukan sebagian besar pengereman karena berat berpindah ke depan saat mengerem, dan itu juga sebabnya rem depan lebih mudah terkunci."
+    },
+    "rear_brake": {
+      "name": "Rem Belakang",
+      "short": "Kaliper di bawah jembatan batang sadel",
+      "detail": "Kaliper yang sama, dipasang di belakang pertemuan sadel. Bagian ini lebih menstabilkan sepeda daripada menghentikannya; di jalan basah roda belakang terkunci jauh sebelum roda depan."
+    },
+    "cables": {
+      "name": "Kabel dan Selubung",
+      "short": "Kawat baja di dalam selubung berlapis",
+      "detail": "Kabel dalam menyalurkan tarikan, sementara selubung spiral menahan tekanan agar gaya sampai ke rem, bukan memeras selubung. Selubung yang tertekuk mengurangi tenaga pengereman di tuas."
+    },
+    "saddle": {
+      "name": "Sadel",
+      "short": "Tempat duduk, bukan bantalan",
+      "detail": "Cangkang kulit atau sintetis di atas rel baja. Sadel menopang tulang duduk dan tidak banyak lagi, karena itu sadel sempit dan keras lebih nyaman untuk perjalanan jauh daripada sadel lebar yang empuk."
+    },
+    "seatpost": {
+      "name": "Tiang Sadel",
+      "short": "Menetapkan tinggi dan mundurnya sadel",
+      "detail": "Tabung yang dijepit di pipa sadel, dengan kepala yang menahan rel sadel. Tinggi sadel adalah ukuran fit paling penting pada sepeda, dan selisih 5 mm sudah terasa."
+    },
+    "bell": {
+      "name": "Bel",
+      "short": "Peringatan, bukan hiasan",
+      "detail": "Bel berkubah kecil yang dipukul tuas berpegas. Di jalur bersama, bel adalah cara sopan menggantikan teriakan, dan bel adalah satu-satunya bagian sepeda yang tidak membantu sepeda bergerak."
+    }
+  },
+  "steps": [
+    {
+      "title": "Dua segitiga",
+      "body": "Setiap tabung rangka termasuk salah satu dari dua segitiga. Membagi beban dengan cara ini menjaga rangka tetap kaku terhadap puntiran dengan baja sesedikit mungkin, itulah sebabnya tata letaknya nyaris tidak berubah selama seabad."
+    },
+    {
+      "title": "Kemudi yang stabil dengan sendirinya",
+      "body": "Pipa kepala, bantalan kemudi, dan garpu berputar sebagai satu kesatuan. Garpu dimiringkan ke depan sehingga titik sentuh ban tertinggal di belakang sumbu kemudi, dan jarak tertinggal itu yang membuat sepeda mengemudikan dirinya sendiri."
+    },
+    {
+      "title": "Roda adalah jembatan yang menggantung",
+      "body": "Nap menggantung dari pelek pada jari-jari yang menegang. Beban di nap mengurangi tegangan jari-jari di bawah dan menambah tegangan di atas, sehingga pelek ditopang dari atas, bukan bertumpu di bawah."
+    },
+    {
+      "title": "Mengerem memindahkan berat",
+      "body": "Mengerem melempar berat ke roda depan, yang justru menambah cengkeramannya saat paling dibutuhkan. Karena itu rem depan melakukan sebagian besar pekerjaan, dan karena itu pula menariknya di kerikil tetap bisa menjatuhkan Anda."
+    },
+    {
+      "title": "Kaki ke rantai ke roda",
+      "body": "Kruk memutar rantai, rantai menarik kaset, dan kaset memutar roda belakang. Dua gir depan dan delapan sproket memberi enam belas rasio, meskipun beberapa di antaranya berulang."
+    },
+    {
+      "title": "Memindah gigi saat bergerak",
+      "body": "Derailleur mendorong rantai ke samping saat rantai bergerak. Rantai harus berputar dan berada di bawah beban agar perpindahan terjadi, itulah sebabnya gigi tidak bisa dipindah saat berhenti."
+    },
+    {
+      "title": "Meluncur adalah ratchet",
+      "body": "Freehub membiarkan kaset berputar lebih cepat daripada roda. Kayuh ke depan dan pawl mengait; berhenti mengayuh dan roda terus berputar sementara kruk diam. Bunyi klik itu adalah pawl yang melompat."
+    }
+  ],
+  "quiz": [
+    {
+      "prompt": "Ketuk bagian yang menahan sproket belakang dan memungkinkan Anda meluncur."
+    },
+    {
+      "prompt": "Ketuk bagian yang memindahkan rantai antarsproket belakang."
+    },
+    {
+      "prompt": "Ketuk bagian yang mengubah tenaga pedal menjadi tarikan rantai."
+    },
+    {
+      "prompt": "Bagaimana roda berjari-jari menahan berat sepeda?",
+      "choices": [
+        "Jari-jari bawah mendorong nap ke atas",
+        "Nap menggantung pada jari-jari yang menegang",
+        "Pelek bertumpu pada ban",
+        "Poros duduk di atas jari-jari"
+      ],
+      "explain": "Roda berada dalam prategang: nap menggantung pada jari-jari atas, sedangkan jari-jari bawah sedikit mengendur."
+    },
+    {
+      "prompt": "Mengapa rem depan melakukan sebagian besar pengereman?",
+      "choices": [
+        "Kabelnya lebih besar",
+        "Mengerem memindahkan berat ke roda depan",
+        "Roda belakang tidak punya pelek",
+        "Rem belakang hanya untuk parkir"
+      ],
+      "explain": "Berat bergerak ke depan saat mengerem, sehingga cengkeraman ban depan bertambah dan ban belakang berkurang."
+    },
+    {
+      "prompt": "Apa yang terjadi saat Anda berhenti mengayuh dan meluncur?",
+      "choices": [
+        "Rantai berhenti tetapi roda terus berputar",
+        "Roda terkunci",
+        "Derailleur turun gigi",
+        "Kruk terus berputar"
+      ],
+      "explain": "Ratchet freehub membiarkan kaset dan roda berputar melewati kruk yang diam."
+    },
+    {
+      "prompt": "Mengapa roda belakang dibangun dengan tegangan jari-jari berbeda di kedua sisi?",
+      "choices": [
+        "Agar terlihat simetris",
+        "Karena kaset mendorong flensa keluar dari tengah",
+        "Karena bannya lebih lebar",
+        "Agar muat kaliper rem"
+      ],
+      "explain": "Dish pada nap untuk memberi ruang kaset membuat jari-jari kanan lebih tegak, sehingga menahan tegangan lebih besar."
+    },
+    {
+      "prompt": "Ketuk bantalan tempat lengan kruk berputar."
+    }
+  ]
+}

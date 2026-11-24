@@ -1,0 +1,299 @@
+{
+  "schema": 1,
+  "id": "wind-turbine",
+  "title": "Utility Wind Turbine",
+  "subtitle": "Three blades, a 100-tonne nacelle and a gearbox that turns 15 rpm into 1,500",
+  "category": "Energy",
+  "accent": "#4E9E9B",
+  "scale": "≈ 120 m rotor · 90 m hub height · 3 MW",
+  "summary": "A wind turbine is a power station that stands in the wind. Its blades do not push the tower; they act as wings, producing lift as air passes, and that lift turns a low-speed shaft. A gearbox multiplies the slow, enormous torque of the rotor into the fast, small torque a generator needs, while the yaw and pitch systems keep the machine pointed at the wind and protect it from too much of it.",
+  "model": "wind_turbine",
+  "cutAxis": "x",
+  "restRotation": [0.08, -0.62, 0],
+  "parts": [
+    {
+      "id": "tower",
+      "nodes": ["tower"],
+      "name": "Steel Tower",
+      "short": "A tapered tube that carries the whole machine",
+      "detail": "The tower is a rolled steel cone in several bolted sections. It must resist the bending moment of a rotor tens of metres across, so it is widest at the base and narrows toward the yaw bearing.",
+      "layer": 0,
+      "explode": [0, -1, 0]
+    },
+    {
+      "id": "tower_ladder",
+      "nodes": ["tower_ladder"],
+      "name": "Service Ladder",
+      "short": "The climb from the door to the nacelle",
+      "detail": "A fixed ladder with a fall-arrest rail runs up the inside of the tower. Technicians climb it carrying tools, because the nacelle has no lift in most land-based machines.",
+      "layer": 2,
+      "hidden": true
+    },
+    {
+      "id": "foundation_bolts",
+      "nodes": ["foundation_bolts"],
+      "name": "Foundation Bolts",
+      "short": "Anchor the tower to its concrete footing",
+      "detail": "A ring of high-strength bolts ties the tower flange to a reinforced concrete foundation. The bolts are tensioned so the flange never opens under the tower's rocking load.",
+      "layer": 1,
+      "hidden": true
+    },
+    {
+      "id": "yaw_bearing",
+      "nodes": ["yaw_bearing"],
+      "name": "Yaw Bearing",
+      "short": "Lets the nacelle turn to face the wind",
+      "detail": "A large slewing bearing between the tower top and the bedplate. It carries the nacelle's weight and the rotor's overturning moment while allowing the whole machine to rotate through a full turn.",
+      "layer": 1
+    },
+    {
+      "id": "yaw_drives",
+      "nodes": ["yaw_drives"],
+      "name": "Yaw Drives",
+      "short": "Electric motors that steer the nacelle",
+      "detail": "Several small geared motors climb a toothed ring on the yaw bearing. They work together to hold the rotor into the wind, and their brakes lock the nacelle when the wind is too strong.",
+      "layer": 2
+    },
+    {
+      "id": "bedplate",
+      "nodes": ["bedplate"],
+      "name": "Bedplate",
+      "short": "The cast frame inside the nacelle",
+      "detail": "A heavy cast or welded frame that carries the main bearing, gearbox, generator and yaw drives. Every drive component is aligned from it, so its stiffness sets the life of the gearbox.",
+      "layer": 2
+    },
+    {
+      "id": "nacelle_shell",
+      "nodes": ["nacelle_shell"],
+      "name": "Nacelle Cover",
+      "short": "The weatherproof housing around the machinery",
+      "detail": "A lightweight composite cover, not a structural part. It keeps rain and salt out and is shaped to guide air over the machinery, with louvres at the rear for cooling.",
+      "layer": 0
+    },
+    {
+      "id": "nacelle_hatch_hinges",
+      "nodes": ["nacelle_hatch_hinges"],
+      "name": "Service Hatch",
+      "short": "The roof opening used by technicians",
+      "detail": "A hinged hatch in the nacelle roof lets a crane lift tools and replacement parts in. Its hinges are deliberately over-sized because the hatch is used in high wind.",
+      "layer": 0,
+      "hidden": true
+    },
+    {
+      "id": "low_speed_shaft",
+      "nodes": ["low_speed_shaft"],
+      "name": "Low-Speed Shaft",
+      "short": "The rotor shaft, turning at about 15 rpm",
+      "detail": "The rotor hub is bolted to this shaft. It turns slowly but with enormous torque, so it is thick and supported by a separate main bearing rather than by the gearbox alone.",
+      "layer": 2,
+      "motion": { "spin": { "axis": "z", "ratio": 0.10 } }
+    },
+    {
+      "id": "main_bearing",
+      "nodes": ["main_bearing"],
+      "name": "Main Bearing",
+      "short": "Takes the rotor's weight and bending load",
+      "detail": "A spherical roller bearing that carries the full weight of the hub and blades. It isolates the gearbox from rotor bending, which is why it sits close to the hub.",
+      "layer": 2
+    },
+    {
+      "id": "gearbox_housing",
+      "nodes": ["gearbox_housing"],
+      "name": "Gearbox",
+      "short": "Multiplies 15 rpm to about 1,500 rpm",
+      "detail": "A three-stage gearbox, usually one planetary stage and two helical stages. It trades torque for speed so the generator can be small enough to fit inside the nacelle.",
+      "layer": 2
+    },
+    {
+      "id": "planetary_stage",
+      "nodes": ["planetary_stage"],
+      "name": "Planetary Stage",
+      "short": "The first, highest-torque gear stage",
+      "detail": "A sun gear, three or more planet gears and a ring gear share the rotor's torque across several teeth at once. Splitting the load is what lets a compact stage survive the rotor's force.",
+      "layer": 3,
+      "hidden": true
+    },
+    {
+      "id": "high_speed_shaft",
+      "nodes": ["high_speed_shaft"],
+      "name": "High-Speed Shaft",
+      "short": "Carries the geared-up drive to the generator",
+      "detail": "A thin shaft turning at roughly a hundred times rotor speed. A flexible coupling absorbs the small misalignment between the gearbox output and the generator.",
+      "layer": 2,
+      "motion": { "spin": { "axis": "z", "ratio": 1.4 } }
+    },
+    {
+      "id": "brake",
+      "nodes": ["brake"],
+      "name": "Brake Disc",
+      "short": "Stops the high-speed shaft when needed",
+      "detail": "A hydraulic disc brake on the high-speed side, where little torque is needed to hold the rotor. It is used for maintenance and emergency stops, not for routine speed control.",
+      "layer": 2
+    },
+    {
+      "id": "generator_stator",
+      "nodes": ["generator_stator"],
+      "name": "Generator Stator",
+      "short": "The stationary winding that makes the current",
+      "detail": "The stator's copper windings surround the rotor. As the magnetic field sweeps past them, they produce alternating current, which the converter then conditions for the grid.",
+      "layer": 2
+    },
+    {
+      "id": "generator_rotor",
+      "nodes": ["generator_rotor"],
+      "name": "Generator Rotor",
+      "short": "The spinning magnet inside the stator",
+      "detail": "A shaft carrying permanent magnets or a field winding. On a direct-drive machine this is the hub itself; here the gearbox has already raised its speed.",
+      "layer": 3,
+      "motion": { "spin": { "axis": "z", "ratio": 1.4 } }
+    },
+    {
+      "id": "converter",
+      "nodes": ["converter"],
+      "name": "Power Converter",
+      "short": "Matches generator output to the grid",
+      "detail": "The generator's frequency changes with wind speed, so the converter rectifies it to direct current and rebuilds a fixed-frequency AC output. It is what lets a variable-speed turbine stay grid-compliant.",
+      "layer": 2
+    },
+    {
+      "id": "transformer",
+      "nodes": ["transformer"],
+      "name": "Transformer",
+      "short": "Steps voltage up for the collection cable",
+      "detail": "A transformer inside or just below the nacelle raises the generator's few hundred volts to the tens of kilovolts used by the wind farm's collection network.",
+      "layer": 2
+    },
+    {
+      "id": "radiator",
+      "nodes": ["radiator"],
+      "name": "Cooling Radiator",
+      "short": "Rejects heat from gearbox and converter",
+      "detail": "A fan-driven radiator mounted on the nacelle roof. Gearbox oil and power electronics both need cooling, and a sealed nacelle has no other way to shed the heat.",
+      "layer": 1
+    },
+    {
+      "id": "service_crane",
+      "nodes": ["service_crane"],
+      "name": "Service Crane",
+      "short": "A small hoist for parts inside the nacelle",
+      "detail": "A rail and chain hoist rated for a few hundred kilograms. It moves gearbox components and tools from the hatch to the bedplate without opening the whole roof.",
+      "layer": 1,
+      "hidden": true
+    },
+    {
+      "id": "anemometer",
+      "nodes": ["anemometer"],
+      "name": "Anemometer",
+      "short": "Measures wind speed and direction",
+      "detail": "Cup anemometers and a wind vane on the nacelle roof tell the controller when to start, how fast to turn, and when to yaw. Their readings also trigger shutdown at the cut-out speed.",
+      "layer": 1
+    },
+    {
+      "id": "blades",
+      "nodes": ["blades"],
+      "name": "Rotor Blades",
+      "short": "Three aerofoils that turn wind into torque",
+      "detail": "Each blade is a hollow composite shell with a structural spar. Its twisting, tapered aerofoil produces lift along the whole span, and the root is thick enough to take the bending load.",
+      "layer": 0,
+      "explode": [0, 0, 1],
+      "motion": { "pivot": [0, 2.3, 0.46], "spin": { "axis": "z", "ratio": 0.12 } }
+    },
+    {
+      "id": "blade_tips",
+      "nodes": ["blade_tips"],
+      "name": "Blade Tips",
+      "short": "The fastest-moving part of the machine",
+      "detail": "The tip of a 60-metre blade can move faster than 300 km/h. Its shape is tuned to reduce the noise and tip vortex that dominate a turbine's sound.",
+      "layer": 0,
+      "motion": { "pivot": [0, 2.3, 0.46], "spin": { "axis": "z", "ratio": 0.12 } }
+    },
+    {
+      "id": "hub",
+      "nodes": ["hub"],
+      "name": "Hub",
+      "short": "Connects the three blades to the shaft",
+      "detail": "A cast hub carries the blade bearings and the pitch drives. The whole hub can be locked for maintenance, and on many machines it also houses the pitch motors.",
+      "layer": 1,
+      "motion": { "pivot": [0, 2.3, 0.46], "spin": { "axis": "z", "ratio": 0.12 } }
+    },
+    {
+      "id": "spinner",
+      "nodes": ["spinner"],
+      "name": "Spinner",
+      "short": "The nose cone that smooths the airflow",
+      "detail": "A lightweight cover over the hub. It keeps rain out of the pitch mechanism and guides air smoothly into the blade roots instead of letting it separate.",
+      "layer": 0,
+      "motion": { "pivot": [0, 2.3, 0.46], "spin": { "axis": "z", "ratio": 0.12 } }
+    },
+    {
+      "id": "pitch_bearings",
+      "nodes": ["pitch_bearings"],
+      "name": "Pitch Bearings",
+      "short": "Let each blade twist around its own root",
+      "detail": "Large slewing rings at the blade roots. They carry the blade's centrifugal and bending loads while allowing the pitch drive to change its angle by a few degrees.",
+      "layer": 2
+    },
+    {
+      "id": "pitch_actuators",
+      "nodes": ["pitch_actuators"],
+      "name": "Pitch Actuators",
+      "short": "Turn the blades to control power",
+      "detail": "Electric or hydraulic drives that twist each blade. Pitching the leading edge out of the wind sheds power in a gust and is the turbine's main aerodynamic brake.",
+      "layer": 3,
+      "hidden": true
+    },
+    {
+      "id": "rotor_lock",
+      "nodes": ["rotor_lock"],
+      "name": "Rotor Lock",
+      "short": "A pin that holds the rotor still for service",
+      "detail": "A mechanical pin inserted into a hole in the high-speed shaft or brake disc. It is the positive lock used when a technician enters the hub.",
+      "layer": 2,
+      "hidden": true
+    },
+    {
+      "id": "nameplate",
+      "nodes": ["nameplate"],
+      "name": "Nameplate",
+      "short": "Rated power, wind class and serial number",
+      "detail": "A stainless plate on the nacelle. It records the machine's rated power, design wind class and the serial number used for service history.",
+      "layer": 0,
+      "hidden": true
+    }
+  ],
+  "steps": [
+    {
+      "title": "The blades are wings",
+      "body": "Air passing over a blade travels faster over one face than the other, so pressure drops on that side and lifts the blade sideways. The lift turns the hub; the wind is not simply pushing a flat plate.",
+      "focus": ["blades", "blade_tips", "hub", "spinner"]
+    },
+    {
+      "title": "Slow torque becomes fast rotation",
+      "body": "The rotor turns at about 15 rpm with enormous torque. The gearbox's planetary and helical stages multiply that speed by roughly a hundred so a compact generator can be used.",
+      "focus": ["low_speed_shaft", "main_bearing", "gearbox_housing", "planetary_stage", "high_speed_shaft"]
+    },
+    {
+      "title": "A spinning magnet makes current",
+      "body": "The generator rotor's magnetic field sweeps past the stator windings and induces alternating current. The converter then adjusts its frequency to match the grid, whatever the wind is doing.",
+      "focus": ["generator_stator", "generator_rotor", "converter", "transformer"]
+    },
+    {
+      "title": "Yaw keeps the rotor facing the wind",
+      "body": "The anemometer reports direction, and the yaw drives turn the nacelle on its slewing bearing. The machine spends its life chasing small changes in wind direction.",
+      "focus": ["yaw_bearing", "yaw_drives", "anemometer", "bedplate"]
+    },
+    {
+      "title": "Pitch is the brake",
+      "body": "In a gust, the pitch drives twist the blades so less of their face meets the wind. At cut-out speed the blades feather completely and the rotor stops, which protects the gearbox and tower.",
+      "focus": ["pitch_bearings", "pitch_actuators", "brake", "rotor_lock"]
+    }
+  ],
+  "quiz": [
+    { "type": "identify", "prompt": "Tap the stage that multiplies the rotor's torque into high speed.", "partId": "gearbox_housing" },
+    { "type": "identify", "prompt": "Tap the bearing that lets the nacelle turn to face the wind.", "partId": "yaw_bearing" },
+    { "type": "identify", "prompt": "Tap the stationary winding in which current is induced.", "partId": "generator_stator" },
+    { "type": "choice", "prompt": "Why does a turbine need a gearbox?", "choices": ["To make the blades turn faster", "To trade slow, high torque for fast, low torque", "To cool the generator", "To aim the nacelle"], "answer": 1, "explain": "The rotor is slow and powerful; the generator needs high speed and modest torque. The gearbox converts one into the other." },
+    { "type": "choice", "prompt": "What happens at cut-out wind speed?", "choices": ["The blades pitch to shed the wind and the rotor stops", "The tower bends away from the wind", "The gearbox changes into reverse", "The generator becomes a motor"], "answer": 0, "explain": "Feathering the blades removes lift, so the rotor slows and stops before the structure is overloaded." },
+    { "type": "choice", "prompt": "What is the spinner's job?", "choices": ["It stores spare parts", "It smooths airflow over the hub", "It measures wind speed", "It locks the rotor"], "answer": 1, "explain": "The nose cone covers the pitch mechanism and guides air cleanly into the blade roots." }
+  ]
+}

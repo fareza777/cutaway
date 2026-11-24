@@ -6,7 +6,7 @@ An offline-first Android app for exploring the inside of manufactured objects in
 3D — rotate them, blow them apart, cut through them, tap any part to learn what
 it does, then take a quiz on it. Anatomy, but for everything humans build.
 
-The catalog contains 29 objects across appliances, mechanics, electronics,
+The catalog contains 35 objects across appliances, mechanics, electronics,
 aerospace, anatomy and music. Every item has a dedicated model-rendered icon
 and complete English / Indonesian learning content. The espresso machine adds
 37 selectable parts, a slowed pump-plunger animation, an eight-step guide and
@@ -305,8 +305,8 @@ does not delete generated directories or run a native clean.
 
 The result is always `dist/cutaway-<app-version>-arm64.apk`. Before accepting
 it, `tools/verify-apk.mjs` proves the current package/version/code, valid APK
-signature, arm64-only native libraries, the exact 29 Metro model assets plus
-the exact 29 AAPT model resources, all 29 unique object icons, and every current
+signature, arm64-only native libraries, the exact 32 Metro model assets plus
+the exact 32 AAPT model resources, all 32 unique object icons, and every current
 launcher/adaptive/splash density derived from `app.json`. Configure an Android
 SDK through `ANDROID_SDK_ROOT`, `ANDROID_HOME`, or `android/local.properties`.
 A newer timestamp on the APK proves nothing; the stale one had that too.

@@ -2,7 +2,7 @@
   "expo": {
     "name": "Cutaway: How Things Work 3D",
     "slug": "cutaway",
-    "version": "0.19.0",
+    "version": "0.20.0",
     "orientation": "portrait",
     "scheme": "cutaway",
     "userInterfaceStyle": "light",
@@ -13,7 +13,7 @@
     ],
     "android": {
       "package": "com.cutaway.explorer",
-      "versionCode": 24,
+      "versionCode": 25,
       "adaptiveIcon": {
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
@@ -56,6 +56,16 @@
         {
           "androidAppId": "ca-app-pub-6279186647593327~8674849287",
           "delayAppMeasurementInit": true
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "enableMinifyInReleaseBuilds": true,
+            "enableShrinkResourcesInReleaseBuilds": true,
+            "extraProguardRules": "# expo-gl GLView is instantiated reflectively by expo-modules\n-keep class expo.modules.gl.** { *; }\n"
+          }
         }
       ]
     ],

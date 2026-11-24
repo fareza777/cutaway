@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "id": "marine-engine",
+  "title": "Inline-Six Marine Diesel",
+  "subtitle": "Six cylinders, one crankshaft and a turbocharger that feeds them compressed air",
+  "category": "Marine",
+  "accent": "#3E7C8C",
+  "scale": "≈ 2.3 m long · 6 cylinders · 500 kW class",
+  "summary": "A marine diesel turns heavy fuel into shaft power for a ship. Air is compressed by the turbocharger, cooled, and forced into six cylinders; fuel is injected at the top of each compression stroke and ignites without a spark. The pistons push connecting rods, the rods turn the crankshaft, and the flywheel smooths the pulses into steady rotation.",
+  "model": "marine_engine",
+  "cutAxis": "y",
+  "restRotation": [0.12, -0.55, 0],
+  "parts": [
+    { "id": "bedplate", "nodes": ["bedplate", "engine_mounts"], "name": "Bedplate and Mounts", "short": "The foundation that carries the engine", "detail": "A rigid cast bedplate spreads the engine's weight and firing loads into the ship's hull. Flexible mounts isolate vibration from the structure.", "layer": 0, "explode": [0, -1, 0] },
+    { "id": "crankcase", "nodes": ["crankcase"], "name": "Crankcase", "short": "Houses the crankshaft and oil", "detail": "The crankcase surrounds the rotating crankshaft and forms the oil sump. Inspection doors let engineers check bearings without lifting the engine.", "layer": 0 },
+    { "id": "cylinder_block", "nodes": ["cylinder_block"], "name": "Cylinder Block", "short": "The water-jacketed body of the engine", "detail": "A single casting that carries the six liners, the camshaft and the cylinder heads. Coolant passages are cast into its walls.", "layer": 1 },
+    { "id": "cylinder_liners", "nodes": ["cylinder_liners"], "name": "Cylinder Liners", "short": "Replaceable bores the pistons run in", "detail": "Hardened wet liners sit in the block and are cooled by water on their outside. They can be renewed without replacing the whole block.", "layer": 2 },
+    { "id": "pistons", "nodes": ["pistons_a", "pistons_b"], "name": "Pistons", "short": "Six pistons that turn pressure into force", "detail": "Each piston takes the push of combustion and passes it to a connecting rod. Rings seal the bore and carry heat into the liner.", "layer": 2 },
+    { "id": "connecting_rods", "nodes": ["connecting_rods"], "name": "Connecting Rods", "short": "Link each piston to the crankshaft", "detail": "The rod's small end follows the piston while its big end circles the crank pin. It converts straight-line force into rotation.", "layer": 2 },
+    { "id": "crankshaft", "nodes": ["crankshaft", "flywheel", "front_pulley", "turning_gear"], "name": "Crankshaft and Flywheel", "short": "Collects all six power strokes", "detail": "Offset crank pins turn the rods' push into torque. The heavy flywheel stores energy between firing strokes and smooths the drive.", "layer": 2, "motion": { "spin": { "axis": "x", "ratio": 0.25 } } },
+    { "id": "cylinder_heads", "nodes": ["cylinder_heads", "valve_covers", "valve_springs"], "name": "Cylinder Heads", "short": "Close the cylinders and hold the valves", "detail": "Each head carries intake and exhaust valves, springs and the injector. It seals the combustion chamber against enormous pressure.", "layer": 2 },
+    { "id": "valvetrain", "nodes": ["camshaft", "camshaft_bearings", "rockers", "pushrods"], "name": "Camshaft and Rockers", "short": "Open the valves at the right moment", "detail": "The camshaft's lobes push pushrods, which rock the arms that open the valves. Its half-speed drive is timed to the crankshaft.", "layer": 3, "motion": { "spin": { "axis": "x", "ratio": 0.12 } } },
+    { "id": "injectors", "nodes": ["injectors"], "name": "Fuel Injectors", "short": "Spray fuel into each cylinder", "detail": "The injector atomises fuel at the end of compression, when the air is hot enough to ignite it without a spark.", "layer": 3 },
+    { "id": "fuel_system", "nodes": ["fuel_pump", "fuel_lines", "governor"], "name": "Fuel Pump and Governor", "short": "Meters fuel and holds engine speed", "detail": "The injection pump times each pulse, while the governor adjusts fuel delivery to keep the requested speed as load changes.", "layer": 2 },
+    { "id": "intake_manifold", "nodes": ["intake_manifold"], "name": "Intake Manifold", "short": "Distributes charge air to the cylinders", "detail": "A common rail feeds cooled, compressed air to each intake port. Even distribution matters for balanced cylinder temperatures.", "layer": 1 },
+    { "id": "exhaust_system", "nodes": ["exhaust_manifold", "exhaust_silencer"], "name": "Exhaust Manifold", "short": "Collects hot gas for the turbine", "detail": "The manifold joins all six exhaust ports into one hot stream that drives the turbocharger's turbine wheel.", "layer": 1 },
+    { "id": "turbocharger", "nodes": ["turbocharger", "turbo_wheels"], "name": "Turbocharger", "short": "Uses exhaust gas to compress intake air", "detail": "Exhaust spins the turbine wheel, which turns the compressor wheel on the same shaft. More air means more fuel can be burned.", "layer": 2 },
+    { "id": "air_filter", "nodes": ["air_filter"], "name": "Air Filter", "short": "Cleans air before the compressor", "detail": "A pleated element traps dust and salt before it reaches the compressor, where it would erode the blades.", "layer": 1 },
+    { "id": "intercooler", "nodes": ["intercooler", "charge_pipe"], "name": "Charge-Air Cooler", "short": "Cools compressed air before the engine", "detail": "Compression heats the air; cooling it makes it denser, so each cylinder can take in more oxygen.", "layer": 1 },
+    { "id": "starter_motor", "nodes": ["starter_motor"], "name": "Starter Motor", "short": "Turns the engine for the first firing", "detail": "A geared electric motor spins the flywheel until compression and fuel produce the first power strokes.", "layer": 1 },
+    { "id": "lube_oil_pump", "nodes": ["lube_oil_pump"], "name": "Lube Oil Pump", "short": "Pressurises oil for bearings", "detail": "The pump pushes oil through a filter and gallery to every bearing. Loss of pressure stops the engine within seconds.", "layer": 1 },
+    { "id": "seawater_pump", "nodes": ["seawater_pump", "coolant_hoses"], "name": "Seawater Pump", "short": "Supplies raw water for cooling", "detail": "The pump moves seawater through the heat exchanger, where it takes heat from the engine's closed coolant loop.", "layer": 1 },
+    { "id": "heat_exchanger", "nodes": ["heat_exchanger"], "name": "Heat Exchanger", "short": "Transfers engine heat to seawater", "detail": "A bundle of tubes keeps coolant and seawater apart while letting heat pass from one to the other.", "layer": 2 },
+    { "id": "nameplate", "nodes": ["nameplate"], "name": "Nameplate", "short": "Model, rating and serial number", "detail": "The plate records the engine's continuous rating and serial number for service and spare parts.", "layer": 0, "hidden": true }
+  ],
+  "steps": [
+    { "title": "Air first", "body": "The turbocharger compresses intake air and the charge cooler removes the heat of compression. Dense air lets each cylinder burn more fuel in the same volume.", "focus": ["air_filter", "turbocharger", "intercooler", "intake_manifold"] },
+    { "title": "Compression ignites the fuel", "body": "The piston rises and squeezes air to a high pressure and temperature. The injector sprays fuel into that hot air; it ignites without a spark.", "focus": ["pistons", "cylinder_liners", "injectors", "cylinder_heads"] },
+    { "title": "Rods turn push into rotation", "body": "Combustion drives each piston down. The connecting rod follows the crank pin and turns the crankshaft, while the flywheel carries the engine through the next compression stroke.", "focus": ["connecting_rods", "crankshaft", "crankshaft", "bedplate"] },
+    { "title": "Heat must leave the engine", "body": "Coolant circulates through the block and head, then gives its heat to seawater in the heat exchanger. Oil carries heat away from bearings at the same time.", "focus": ["heat_exchanger", "seawater_pump", "lube_oil_pump", "seawater_pump"] }
+  ],
+  "quiz": [
+    { "type": "identify", "prompt": "Tap the part that collects all six power strokes into rotation.", "partId": "crankshaft" },
+    { "type": "identify", "prompt": "Tap the part that uses exhaust gas to compress intake air.", "partId": "turbocharger" },
+    { "type": "identify", "prompt": "Tap the part that sprays fuel into the cylinder.", "partId": "injectors" },
+    { "type": "choice", "prompt": "Why is the charge-air cooler used?", "choices": ["To warm the fuel", "To make compressed air denser", "To silence the exhaust", "To cool the crankshaft"], "answer": 1, "explain": "Cooling compressed air reduces its volume, so more oxygen enters each cylinder." },
+    { "type": "choice", "prompt": "What drives the turbocharger's compressor wheel?", "choices": ["The starter motor", "The camshaft", "Exhaust gas turning the turbine wheel", "The seawater pump"], "answer": 2, "explain": "The turbine and compressor share a shaft; exhaust gas spins the turbine and therefore the compressor." }
+  ]
+}

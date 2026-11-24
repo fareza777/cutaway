@@ -79,6 +79,69 @@ function nearestVertex(meshes: THREE.Mesh[]): THREE.Vector3 {
   return best;
 }
 
+/**
+ * A point on the part's front surface, if it has one to offer.
+ *
+ * Used only when the nearest vertex cannot be reached by a front ray: a chain
+ * loop's innermost point is tangent to the view, so a dot there falls through
+ * the gap between two facets. Triangles rather than vertices, one candidate per
+ * direction bucket, so a hollow or curved part is probed from every side.
+ */
+function visibleSurfacePoint(meshes: THREE.Mesh[], group: THREE.Group): THREE.Vector3 | null {
+  group.updateMatrixWorld(true);
+  const origin = new THREE.Vector3().setFromMatrixPosition(group.matrixWorld);
+  const a = new THREE.Vector3();
+  const b = new THREE.Vector3();
+  const c = new THREE.Vector3();
+  const candidate = new THREE.Vector3();
+  const triangle = new THREE.Triangle();
+  // One candidate per direction bucket, so a part that is hollow or curved is
+  // probed from every side rather than only from its innermost face.
+  const buckets = new Map<string, { distance: number; point: THREE.Vector3 }>();
+  const direction = new THREE.Vector3();
+
+  for (const mesh of meshes) {
+    mesh.updateWorldMatrix(true, false);
+    const position = mesh.geometry.getAttribute('position');
+    const index = mesh.geometry.getIndex();
+    const count = Math.floor((index ? index.count : position.count) / 3);
+    const step = Math.max(1, Math.floor(count / 1500));
+    for (let t = 0; t < count; t += step) {
+      const i = t * 3;
+      const ia = index ? index.getX(i) : i;
+      const ib = index ? index.getX(i + 1) : i + 1;
+      const ic = index ? index.getX(i + 2) : i + 2;
+      a.fromBufferAttribute(position, ia).applyMatrix4(mesh.matrixWorld);
+      b.fromBufferAttribute(position, ib).applyMatrix4(mesh.matrixWorld);
+      c.fromBufferAttribute(position, ic).applyMatrix4(mesh.matrixWorld);
+      triangle.set(a, b, c);
+      triangle.closestPointToPoint(origin, candidate);
+      const distance = candidate.distanceToSquared(origin);
+      direction.subVectors(candidate, origin);
+      if (direction.lengthSq() < 1e-12) continue;
+      const key = `${Math.round(Math.atan2(direction.z, direction.x) / (Math.PI / 6))}:${Math.round(direction.y / 0.5)}`;
+      const bucket = buckets.get(key);
+      if (!bucket || distance < bucket.distance) buckets.set(key, { distance, point: candidate.clone() });
+    }
+  }
+
+  const close = [...buckets.values()].sort((left, right) => left.distance - right.distance);
+  const raycaster = new THREE.Raycaster();
+  const toward = new THREE.Vector3(0, 0, -1);
+  const from = new THREE.Vector3();
+  for (const entry of close) {
+    from.copy(entry.point).addScaledVector(toward, -FIT_SIZE * 4);
+    raycaster.set(from, toward);
+    const hit = raycaster.intersectObjects(meshes, false)[0];
+    // The point has to be on the surface the front ray reaches first — a
+    // hotspot behind another face of the same part is a dot inside the object.
+    if (hit && hit.point.distanceToSquared(entry.point) < 1e-6) {
+      return group.worldToLocal(entry.point);
+    }
+  }
+  return null;
+}
+
 export class Assembly {
   readonly root = new THREE.Group();
   readonly parts: PartHandle[] = [];
@@ -121,6 +184,7 @@ export class Assembly {
     }
 
     this.solveExplode();
+    this.verifyAnchors();
     this.maxLayer = this.parts.reduce((max, part) => Math.max(max, part.def.layer), 0);
     this.hasMotion = this.parts.some((part) => hasMotionDriver(part.def));
     this.parts.forEach((part) => this.byId.set(part.def.id, part));
@@ -212,7 +276,10 @@ export class Assembly {
    */
   private solveExplode() {
     const step = (FIT_SIZE * 0.05) / this.scale;
-    const ceiling = (FIT_SIZE * 3) / this.scale;
+    // A cap in assembled space, not model space: the boxes this has to pull
+    // apart are measured there, and a long object's shells are wider than the
+    // old limit allowed any part to travel.
+    const ceiling = FIT_SIZE * 2;
 
     const dirs = this.parts.map((part) => {
       const d = part.explode.clone();
@@ -318,6 +385,31 @@ export class Assembly {
     const radial = centre.clone();
     if (radial.lengthSq() < 1e-6) radial.set(0, 1, 0);
     return radial.normalize().multiplyScalar(1.1 / this.scale);
+  }
+
+  /**
+   * Keeps every hotspot on a surface a front ray actually reaches.
+   *
+   * The nearest vertex is right for almost every part, but not for all: the
+   * bicycle chain's innermost point is tangent to the view, so the dot landed in
+   * the gap between two links. Those parts get a front-facing surface point
+   * instead — only when one exists, so parts that pass today are untouched.
+   */
+  private verifyAnchors() {
+    this.root.updateMatrixWorld(true);
+    const toward = new THREE.Vector3(0, 0, -1);
+    const from = new THREE.Vector3();
+    const point = new THREE.Vector3();
+    const meshes = this.parts.flatMap((part) => part.meshes);
+    const raycaster = new THREE.Raycaster();
+    for (const part of this.parts) {
+      point.copy(part.anchor).applyMatrix4(part.group.matrixWorld);
+      from.copy(point).addScaledVector(toward, -FIT_SIZE * 4);
+      raycaster.set(from, toward);
+      if (raycaster.intersectObjects(meshes, false).length) continue;
+      const replacement = visibleSurfacePoint(part.meshes, part.group);
+      if (replacement) part.anchor.copy(replacement);
+    }
   }
 
   // ------------------------------------------------------------------ tools
