@@ -2,7 +2,7 @@
   "expo": {
     "name": "Cutaway: How Things Work 3D",
     "slug": "cutaway",
-    "version": "0.22.0",
+    "version": "0.23.0",
     "orientation": "portrait",
     "scheme": "cutaway",
     "userInterfaceStyle": "light",
@@ -13,7 +13,7 @@
     ],
     "android": {
       "package": "com.cutaway.explorer",
-      "versionCode": 27,
+      "versionCode": 28,
       "adaptiveIcon": {
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
@@ -80,7 +80,8 @@
       "privacyPolicyUrl": "https://raw.githubusercontent.com/fareza777/cutaway/agent/add-realistic-rice-cooker/docs/privacy-policy.html",
       "admob": {
         "bannerUnitId": "ca-app-pub-6279186647593327/5209257311",
-        "interstitialUnitId": "ca-app-pub-6279186647593327/7776650259"
+        "interstitialUnitId": "ca-app-pub-6279186647593327/7776650259",
+        "rewardedUnitId": "ca-app-pub-6279186647593327/7551778147"
       }
     }
   }

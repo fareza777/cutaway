@@ -7,7 +7,7 @@
  */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -22,7 +22,9 @@ import { Viewport } from '@/ui/Viewport';
 import { IconButton } from '@/ui/explorer/TopBar';
 import { useColors, useReadableAccent, useLocale, useT } from '@/state/settings';
 import { alpha, radius, space } from '@/ui/theme';
-import { showInterstitialIfAllowed } from '@/monetization/ads';
+import { showRewardedAd, showTransitionInterstitial } from '@/monetization/ads';
+import { useRewardedReady } from '@/monetization/useRewardedReady';
+import { useMonetization } from '@/state/monetization';
 
 type Feedback = { correct: boolean; message: string } | null;
 
@@ -44,7 +46,12 @@ export default function Quiz() {
   const [feedback, setFeedback] = useState<Feedback>(null);
   const [finished, setFinished] = useState(false);
   const [loadError, setLoadError] = useState<string | null>(null);
-  const interstitialShownForResult = useRef(false);
+  const [hintUsed, setHintUsed] = useState(false);
+  const [hintBusy, setHintBusy] = useState(false);
+  const [hiddenChoices, setHiddenChoices] = useState<number[]>([]);
+  const removeAds = useMonetization((state) => state.removeAds);
+  const rewardedReady = useRewardedReady();
+  const leaving = useRef(false);
 
   const questions = doc?.quiz ?? [];
   const question: Question | undefined = questions[index];
@@ -76,6 +83,8 @@ export default function Quiz() {
 
   const advance = useCallback(() => {
     setFeedback(null);
+    setHintUsed(false);
+    setHiddenChoices([]);
     if (index + 1 >= questions.length) {
       setFinished(true);
       return;
@@ -113,21 +122,58 @@ export default function Quiz() {
     if (finished && doc) recordQuiz(doc.id, { correct: score, total: questions.length });
   }, [finished, doc, recordQuiz, score, questions.length]);
 
-  useEffect(() => {
-    if (!finished || !doc || interstitialShownForResult.current) return;
-    interstitialShownForResult.current = true;
-    const timeout = setTimeout(() => {
-      void showInterstitialIfAllowed();
-    }, 450);
-    return () => clearTimeout(timeout);
-  }, [finished, doc]);
+  // Leaving a finished quiz is a natural transition. It shares the viewer's
+  // transition counter and cooldown, so it is only occasionally an ad break.
+  const leaveFinished = useCallback(async () => {
+    if (leaving.current) return;
+    leaving.current = true;
+    await showTransitionInterstitial();
+    router.back();
+  }, [router]);
+
+  // Rewarded placement (opt-in): one hint per question. Remove-ads buyers get
+  // the hint without an ad; everyone else chooses to watch one.
+  const applyHint = useCallback(() => {
+    if (!question) return;
+    setHintUsed(true);
+    if (question.type === 'identify') {
+      viewerRef.current?.flash(question.partId, true);
+      return;
+    }
+    const wrong = question.choices.map((_choice, position) => position).filter((position) => position !== question.answer);
+    const removable = Math.min(2, Math.max(wrong.length - 1, 0));
+    const shuffled = wrong.sort(() => Math.random() - 0.5);
+    setHiddenChoices(shuffled.slice(0, removable));
+  }, [question]);
+
+  const requestHint = useCallback(async () => {
+    if (!question || feedback || hintBusy) return;
+    if (hintUsed) {
+      // Repeating an identify hint is free: the user already earned it.
+      if (question.type === 'identify') viewerRef.current?.flash(question.partId, true);
+      return;
+    }
+    if (removeAds) {
+      applyHint();
+      return;
+    }
+    setHintBusy(true);
+    try {
+      if (await showRewardedAd()) applyHint();
+    } finally {
+      setHintBusy(false);
+    }
+  }, [applyHint, feedback, hintBusy, hintUsed, question, removeAds]);
+
+  const hintAvailable = Platform.OS === 'android' && !feedback && (removeAds || rewardedReady || hintUsed);
 
   const restart = () => {
     setIndex(0);
     setScore(0);
     setFeedback(null);
     setFinished(false);
-    interstitialShownForResult.current = false;
+    setHintUsed(false);
+    setHiddenChoices([]);
     viewerRef.current?.setQuizMode(true);
   };
 
@@ -170,7 +216,7 @@ export default function Quiz() {
           score={score}
           total={questions.length}
           onRetry={restart}
-          onDone={() => router.back()}
+          onDone={() => void leaveFinished()}
           bottom={insets.bottom}
           t={t}
         />
@@ -186,6 +232,7 @@ export default function Quiz() {
           {question?.type === 'choice' ? (
             <View style={{ gap: space.sm, marginTop: space.lg }}>
               {question.choices.map((choice, position) => {
+                if (hiddenChoices.includes(position)) return null;
                 const isAnswer = position === question.answer;
                 const chosenWrong = feedback && !feedback.correct && !isAnswer;
                 const highlight = feedback ? (isAnswer ? colors.correct : chosenWrong ? colors.hairline : colors.hairline) : colors.hairline;
@@ -215,6 +262,30 @@ export default function Quiz() {
               {t('quiz.tapHint')}
             </Text>
           )}
+
+          {hintAvailable ? (
+            <Touchable
+              onPress={() => void requestHint()}
+              disabled={hintBusy || (hintUsed && question?.type === 'choice')}
+              accessibilityRole="button"
+              style={[styles.hint, { borderColor: alpha(accent, 0.3), backgroundColor: colors.surface }]}
+            >
+              <Ionicons
+                name={hintUsed ? 'bulb' : removeAds ? 'bulb-outline' : 'play-circle-outline'}
+                size={16}
+                color={accentText}
+              />
+              <Text variant="caption" color={colors.text} style={{ flex: 1 }}>
+                {hintUsed
+                  ? question?.type === 'identify'
+                    ? t('quiz.hintIdentify')
+                    : t('quiz.hintChoice')
+                  : removeAds
+                    ? t('quiz.hintFree')
+                    : t('quiz.hintAd')}
+              </Text>
+            </Touchable>
+          ) : null}
 
           {feedback ? (
             <Animated.View
@@ -343,5 +414,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   resultsBody: { alignItems: 'center', padding: space.xxl, flexGrow: 1, justifyContent: 'center' },
+  hint: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: space.sm,
+    marginTop: space.md,
+    paddingHorizontal: space.md,
+    paddingVertical: 10,
+    borderRadius: radius.pill,
+    borderWidth: StyleSheet.hairlineWidth,
+    alignSelf: 'flex-start',
+  },
   resultsActions: { flexDirection: 'row', gap: space.md, marginTop: space.xxl, alignSelf: 'stretch' },
 });

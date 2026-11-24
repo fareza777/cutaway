@@ -6,6 +6,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 import { categories, getLibrary, type LibraryItem } from '@/content/registry';
 import { filterLibrary } from '@/content/search';
+import { AdFreeOffer } from '@/monetization/AdFreeOffer';
 import { LibraryBanner } from '@/monetization/LibraryBanner';
 import { useProgress } from '@/state/progress';
 import { Chip, Label, Text, Touchable } from '@/ui/primitives';
@@ -121,6 +122,8 @@ export default function Library() {
             />
           ))}
         </ScrollView>
+
+        {!query.trim() && filter === ALL ? <AdFreeOffer /> : null}
 
         <View style={{ gap: space.md }}>
           {query.trim() || filter !== ALL ? (

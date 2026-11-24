@@ -20,6 +20,7 @@ import { useProgress } from '@/state/progress';
 import { GhostButton, Label, PrimaryButton, Text, Touchable } from '@/ui/primitives';
 import { alpha, radius, space } from '@/ui/theme';
 import { loadRemoveAdsProduct, purchaseRemoveAds, restoreRemoveAds } from '@/monetization/billing';
+import { AdFreeOffer } from '@/monetization/AdFreeOffer';
 import { useMonetization } from '@/state/monetization';
 import { showAdPrivacyOptions } from '@/monetization/ads';
 
@@ -209,6 +210,7 @@ export default function Settings() {
           {!removeAds ? (
             <GhostButton label={t('settings.restorePurchases')} onPress={() => void handleRestore()} />
           ) : null}
+          <AdFreeOffer showActive />
           {purchaseFailed ? (
             <Text variant="caption" color={colors.wrong}>
               {t('settings.purchaseFailed')}

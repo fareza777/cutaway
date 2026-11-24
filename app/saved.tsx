@@ -14,6 +14,7 @@ import { useRouter } from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import { getDoc } from '@/content/registry';
+import { LibraryBanner } from '@/monetization/LibraryBanner';
 import { useFavourites } from '@/state/favorites';
 import { useColors, useLocale, useT } from '@/state/settings';
 import { GhostButton, Label, Text, Touchable } from '@/ui/primitives';
@@ -103,6 +104,7 @@ export default function Saved() {
           ))
         )}
       </ScrollView>
+      <LibraryBanner keyboardVisible={false} />
     </View>
   );
 }

@@ -2,7 +2,14 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { DEFAULT_THEME_MODE } from '../src/state/defaults.ts';
 
-import { AD_POLICY, shouldShowInterstitial, shouldShowViewerExitInterstitial } from '../src/monetization/policy.ts';
+import {
+  AD_POLICY,
+  fullscreenRetryDelayMs,
+  isEligibleTransition,
+  shouldOfferAdFreeBreak,
+  shouldShowInterstitial,
+  shouldShowViewerExitInterstitial,
+} from '../src/monetization/policy.ts';
 import { bannerRetryDelayMs, shouldMountLibraryBanner } from '../src/monetization/banner-policy.ts';
 
 type Case = { name: string; run: () => void };
@@ -127,6 +134,64 @@ const cases: Case[] = [
         }),
         true,
       );
+    },
+  },
+  {
+    name: 'keeps the client cooldown between 60 and 90 seconds',
+    run: () => {
+      assert.ok(AD_POLICY.cooldownMs >= 60_000 && AD_POLICY.cooldownMs <= 90_000);
+    },
+  },
+  {
+    name: 'never shows an interstitial during the launch grace period',
+    run: () => {
+      const base = { removeAds: false, lastShownAt: null, shownThisSession: 0, sessionStartedAt: 1_000 };
+      assert.equal(shouldShowInterstitial({ ...base, now: 1_000 + AD_POLICY.launchGraceMs - 1 }), false);
+      assert.equal(shouldShowInterstitial({ ...base, now: 1_000 + AD_POLICY.launchGraceMs }), true);
+    },
+  },
+  {
+    name: 'only every Nth natural transition is an ad break',
+    run: () => {
+      const eligible = Array.from({ length: 6 }, (_value, index) => isEligibleTransition(index + 1));
+      assert.deepEqual(eligible, [false, true, false, true, false, true]);
+      assert.equal(isEligibleTransition(0), false);
+    },
+  },
+  {
+    name: 'an earned ad-free break suppresses interstitials until it ends',
+    run: () => {
+      const base = { removeAds: false, lastShownAt: null, shownThisSession: 0 };
+      assert.equal(shouldShowInterstitial({ ...base, now: 5_000, adFreeUntil: 10_000 }), false);
+      assert.equal(shouldShowInterstitial({ ...base, now: 10_000, adFreeUntil: 10_000 }), true);
+      assert.equal(AD_POLICY.rewardedAdFreeMs, 30 * 60 * 1000);
+    },
+  },
+  {
+    name: 'the ad-free offer is hidden from buyers and during an active break',
+    run: () => {
+      assert.equal(shouldOfferAdFreeBreak({ removeAds: true, now: 0, adFreeUntil: null }), false);
+      assert.equal(shouldOfferAdFreeBreak({ removeAds: false, now: 0, adFreeUntil: null }), true);
+      assert.equal(shouldOfferAdFreeBreak({ removeAds: false, now: 5, adFreeUntil: 10 }), false);
+      assert.equal(shouldOfferAdFreeBreak({ removeAds: false, now: 10, adFreeUntil: 10 }), true);
+    },
+  },
+  {
+    name: 'full-screen ad loads retry with a capped backoff',
+    run: () => {
+      assert.equal(fullscreenRetryDelayMs(0), 15_000);
+      assert.ok(fullscreenRetryDelayMs(1) > fullscreenRetryDelayMs(0));
+      assert.equal(fullscreenRetryDelayMs(50), fullscreenRetryDelayMs(51));
+      const ads = readFileSync(new URL('../src/monetization/ads.tsx', import.meta.url), 'utf8');
+      assert.match(ads, /preloadInterstitial\(api\)/, 'Interstitials must be preloaded');
+      assert.match(ads, /EARNED_REWARD/, 'A reward is granted only when earned');
+    },
+  },
+  {
+    name: 'quiz completion no longer triggers an interstitial on the result screen',
+    run: () => {
+      const quiz = readFileSync(new URL('../app/quiz/[id].tsx', import.meta.url), 'utf8');
+      assert.doesNotMatch(quiz, /showInterstitialIfAllowed/);
     },
   },
 ];

@@ -403,9 +403,14 @@ rate with the animation running.
 Done: package id `com.cutaway.explorer`, portrait lock, edge-to-edge, adaptive
 icon slots, light/dark themes, local-first 3D content, privacy policy page, store
 listing assets, Google Mobile Ads wiring, and a Google Play Billing Remove Ads
-flow. The free version uses an anchored library banner and capped interstitials
-after a completed quiz or when leaving a viewer session lasting at least one
-minute; the one-time purchase disables both. SDK requests are gated by UMP
+flow. The free version uses an anchored adaptive banner on the library and
+saved screens, preloaded interstitials at natural transitions (every 2nd exit
+from a viewer session of at least 10 s back to the library, or leaving a
+finished quiz) with a 75 s client cooldown and a 60 s launch grace period, and
+opt-in rewarded ads (a quiz hint, or a 30-minute break from full-screen ads).
+AdMob's frequency cap (3 interstitials / 10 min) is the outer limit. The
+one-time purchase disables banners, interstitials and the ad-free offer; quiz
+hints become free for buyers. SDK requests are gated by UMP
 consent and the persisted purchase entitlement. The banner is unmounted when
 the library loses focus, the app backgrounds, or the search keyboard opens.
 
@@ -417,7 +422,8 @@ store updates; the local APK workflow is intentionally ARM64-only. Download
 size must be measured from the resulting bundle rather than inferred from
 the universal APK size.
 
-Production AdMob app, banner, and interstitial IDs are configured in app.json.
+Production AdMob app, banner, interstitial, and rewarded IDs are configured in
+app.json (`expo.extra.admob`); debug builds always use Google test units.
 Before publishing, verify Play product activation, AdMob privacy messages,
 Data Safety, the hosted privacy page, and native device behavior. Release
 signing defaults to the debug key unless the private `cutawayUpload*` Gradle
