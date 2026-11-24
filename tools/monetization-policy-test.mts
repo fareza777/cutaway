@@ -188,6 +188,17 @@ const cases: Case[] = [
     },
   },
   {
+    name: 'ad personalization follows UMP consent instead of being forced off',
+    run: () => {
+      for (const file of ['../src/monetization/ads.tsx', '../src/monetization/LibraryBanner.tsx']) {
+        const source = readFileSync(new URL(file, import.meta.url), 'utf8');
+        assert.doesNotMatch(source, /requestNonPersonalizedAdsOnly:\s*true/, file);
+      }
+      const app = JSON.parse(readFileSync(new URL('../app.json', import.meta.url), 'utf8'));
+      assert.equal(app.expo.extra.privacyPolicyUrl, 'https://fareza777.github.io/cutaway/privacy-policy.html');
+    },
+  },
+  {
     name: 'quiz completion no longer triggers an interstitial on the result screen',
     run: () => {
       const quiz = readFileSync(new URL('../app/quiz/[id].tsx', import.meta.url), 'utf8');

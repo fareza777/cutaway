@@ -14,9 +14,10 @@ type AdsApi = typeof import('react-native-google-mobile-ads');
 type InterstitialInstance = ReturnType<AdsApi['InterstitialAd']['createForAdRequest']>;
 type RewardedInstance = ReturnType<AdsApi['RewardedAd']['createForAdRequest']>;
 
-// Consent decides what Google may do; the app keeps requesting
-// non-personalized ads, as stated in the privacy policy.
-const REQUEST_OPTIONS = { requestNonPersonalizedAdsOnly: true };
+// No personalization override: the Google Mobile Ads SDK reads the UMP / IAB
+// TCF consent result itself, so ads are personalized only where consent was
+// given (or is not required) and stay non-personalized otherwise.
+const REQUEST_OPTIONS = {};
 
 let adsApi: AdsApi | null = null;
 let adsApiPromise: Promise<AdsApi | null> | null = null;

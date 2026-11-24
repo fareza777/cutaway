@@ -9,7 +9,8 @@ import { useScreenActive } from '@/ui/useScreenActive';
 import { bannerRetryDelayMs, shouldMountLibraryBanner } from './banner-policy';
 import { getLibraryBanner } from './ads';
 
-const REQUEST_OPTIONS = { requestNonPersonalizedAdsOnly: true };
+// Personalization follows the UMP consent result; see ads.tsx.
+const REQUEST_OPTIONS = {};
 
 export function LibraryBanner({ keyboardVisible }: { keyboardVisible: boolean }) {
   const active = useScreenActive();

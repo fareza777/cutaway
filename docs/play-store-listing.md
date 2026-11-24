@@ -68,4 +68,4 @@ Keep asking better questions. Start with one object and follow the parts all the
 - Core account/data sync: No
 - Primary category: Education
 - Target audience: General audience; not directed primarily to children
-- Privacy policy: `https://raw.githubusercontent.com/fareza777/cutaway/agent/add-realistic-rice-cooker/docs/privacy-policy.html`
+- Privacy policy: `https://fareza777.github.io/cutaway/privacy-policy.html` (source: `docs/privacy-policy.html`, mirrored to the fareza777.github.io repo)
